@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1621580418753" org.eventb.texttools.text_representation="machine MoreTyping&#10;&#10;variables alfa beta&#10;&#10;invariants&#10;  @inv1 alfa ∈ ℕ⇸BOOL&#10;  @inv2 beta ∩ ran(alfa) = ∅ // Here type type of ran(alfa) will propagate to beta.&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @init1 alfa ≔ ∅&#10;      @init2 beta ≔ ∅&#10;  end&#10;&#10;  event gamma&#10;    any b&#10;    where&#10;      @grd11 b∈beta&#10;    then&#10;      @act11 beta ≔ beta∖{b}&#10;  end&#10;end&#10;" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="_i_V2sLVGEeuMZpPdXDEZwA" org.eventb.core.assignment="alfa ≔ ∅" org.eventb.core.generated="false" org.eventb.core.label="init1"/>
+        <org.eventb.core.action name="_i_V2sbVGEeuMZpPdXDEZwA" org.eventb.core.assignment="beta ≔ ∅" org.eventb.core.generated="false" org.eventb.core.label="init2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="_MagX0LVGEeuMZpPdXDEZwA" org.eventb.core.generated="false" org.eventb.core.identifier="alfa"/>
+    <org.eventb.core.variable name="_MagX0bVGEeuMZpPdXDEZwA" org.eventb.core.generated="false" org.eventb.core.identifier="beta"/>
+    <org.eventb.core.invariant name="_MagX0rVGEeuMZpPdXDEZwA" org.eventb.core.generated="false" org.eventb.core.label="inv1" org.eventb.core.predicate="alfa ∈ ℕ⇸BOOL"/>
+    <org.eventb.core.invariant name="_MagX07VGEeuMZpPdXDEZwA" org.eventb.core.comment="Here type type of ran(alfa) will propagate to beta." org.eventb.core.generated="false" org.eventb.core.label="inv2" org.eventb.core.predicate="beta ∩ ran(alfa) = ∅"/>
+    <org.eventb.core.event name="_3LkfcLVGEeuMZpPdXDEZwA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="gamma">
+        <org.eventb.core.parameter name="_3LkfcbVGEeuMZpPdXDEZwA" org.eventb.core.generated="false" org.eventb.core.identifier="b"/>
+        <org.eventb.core.guard name="_3LkfcrVGEeuMZpPdXDEZwA" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="b∈beta"/>
+        <org.eventb.core.action name="_3Lkfc7VGEeuMZpPdXDEZwA" org.eventb.core.assignment="beta ≔ beta∖{b}" org.eventb.core.generated="false" org.eventb.core.label="act11"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

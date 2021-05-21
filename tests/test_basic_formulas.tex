@@ -1,0 +1,178 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{bsymb}
+
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+
+EVBT(show template "TeXPackages")
+EVBT(show template "TeXDefinitions")
+
+% EVBT(add defaults) make sure we have PQR ST xy mn cd in the symbol table.
+
+\begin{document}
+
+  \fbox{EVBT(sf x:=1+y*5+z/3)}
+  \hfill
+  \fbox{EVBT(sf y::NAT)}
+  \hfill
+  \fbox{EVBT(sf x:|x'=x+1)}
+
+  \fbox{EVBT(sf x circ y)}
+  \hfill
+  \fbox{EVBT(sf false => 0=1)}
+  \hfill
+  \fbox{EVBT(sf S/\T)}
+
+  \fbox{EVBT(sf x mod 42 < 42)}
+  \hfill
+  \fbox{EVBT(sf FALSE : BOOL)}
+  \hfill
+  \fbox{EVBT(sf bool(x=2):BOOL)}
+
+  \fbox{EVBT(sf true & true => true)}
+  \hfill
+  \fbox{EVBT(sf S\/T)}
+  \hfill
+  \fbox{EVBT(sf card(S) >= 0)}
+
+  \fbox{EVBT(sf x|->y : S**T)}
+  \hfill
+  $f \defi g$
+  \hfill
+  \fbox{EVBT(sf x / 2)}
+
+  \fbox{EVBT(sf dom(x))}
+  \hfill
+  \fbox{EVBT(sf x <| y)}
+  \hfill
+  \fbox{EVBT(sf x <<| y)}
+
+  \fbox{EVBT(sf S >< T)}
+  \hfill
+  \fbox{EVBT(sf {})}
+  \hfill
+  \fbox{EVBT(sf #x.x:NAT&x>0)}
+
+  \fbox{EVBT(sf 1 ^ 2)}
+  \hfill
+  \fbox{EVBT(sf FALSE:BOOL)}
+  \hfill
+  \fbox{EVBT(sf x ; y)}
+
+  \fbox{EVBT(sf finite(S/\T))}
+  \hfill
+  \fbox{EVBT(sf !x,y.x:NAT&y:NAT=>y+x>=x)}
+  \hfill
+  \fbox{EVBT(sf 5 >= y)}
+
+  \fbox{EVBT(sf S <| id)}
+  \hfill
+  \fbox{EVBT(sf 4711 : NAT)}
+  \hfill
+  \fbox{EVBT(sf inter(S))}
+
+  \fbox{EVBT(sf INTER x . x:0..20 | NAT)}
+  \hfill
+  \fbox{EVBT(sf 17 : INT)}
+  \hfill
+  \fbox{EVBT(sf (%a.a:NAT|a+1))}
+
+  \fbox{EVBT(sf P&Q&R)}
+  \hfill
+  \fbox{EVBT(sf 7 <= 77)}
+  \hfill
+  \fbox{EVBT(sf P <=> Q)}
+
+  \fbox{EVBT(sf P=>Q)}
+  \hfill
+  \fbox{EVBT(sf not P)}
+  \hfill
+  \fbox{EVBT(sf P or Q)}
+
+  \fbox{EVBT(sf x|->y : S)}
+  \hfill
+  \fbox{EVBT(sf max(S) < 17)}
+  \hfill
+  \fbox{EVBT(sf { x,y . x:0..22 & y:23..44 | x|->(x+y) })}
+
+  \fbox{EVBT(sf min(T) <= max(T))}
+  \hfill
+  \fbox{EVBT(sf x:NAT)}
+  \hfill
+  \fbox{EVBT(sf y:NAT1)}
+
+  \fbox{EVBT(sf x /= y)}
+  \hfill
+  \fbox{EVBT(sf x /: S)}
+  \hfill
+  \fbox{EVBT(sf {} oftype POW(INT**INT))}
+
+  \fbox{EVBT(sf x <+ { 1|->2 } )}
+  \hfill
+  \fbox{EVBT(sf partition(S,{c},{d}))}
+  \hfill
+  \fbox{EVBT(sf x : S +-> T)}
+
+  \fbox{EVBT(sf y : S >+> T)}
+  \hfill
+  \fbox{EVBT(sf x:POW(NAT))}
+  \hfill
+  \fbox{EVBT(sf S <<: NAT1)}
+
+  \fbox{EVBT(sf S || T)}
+  \hfill
+  \fbox{EVBT(sf prj1(x|->y))}
+  \hfill
+  \fbox{EVBT(sf prj2(x|->y))}
+
+  \fbox{EVBT(sf S +->> T)}
+  \hfill
+  \fbox{EVBT(sf !x.x=x)}
+  \hfill
+  \fbox{EVBT(sf ran(x))}
+
+  \fbox{EVBT(sf S |> x)}
+  \hfill
+  \fbox{EVBT(sf S |>> x)}
+  \hfill
+  \fbox{EVBT(sf S <-> T)}
+
+  \fbox{EVBT(sf S \ T)}
+  \hfill
+  \fbox{EVBT(sf S <->> T)}
+  \hfill
+  \fbox{EVBT(sf S <<->> T)}
+
+  \fbox{EVBT(sf S <<: T)}
+  \hfill
+  \fbox{EVBT(sf S /<<: T)}
+  \hfill
+  \fbox{EVBT(sf S <: T)}
+
+  \fbox{EVBT(sf S /<: T)}
+  \hfill
+  \fbox{EVBT(sf S >->> T)}
+  \hfill
+  \fbox{EVBT(sf S --> T)}
+
+  \fbox{EVBT(sf S >-> T)}
+  \hfill
+  \fbox{EVBT(sf S <<-> T)}
+  \hfill
+  \fbox{EVBT(sf TRUE : BOOL)}
+
+  \fbox{EVBT(sf S -->> T)}
+  \hfill
+  \fbox{EVBT(sf union(S))}
+  \hfill
+  \fbox{EVBT(sf UNION x . x:0..20 | NAT)}
+
+  pred?
+  \hfill
+  \fbox{EVBT(sf 1..111)}
+  \hfill
+  succ?
+
+
+\end{document}

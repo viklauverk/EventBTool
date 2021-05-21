@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1586680927497" org.eventb.texttools.text_representation="context HouseContext&#10;&#10;sets DIR // The direction of travel&#10;&#10;&#10;constants up // Moving up&#10;          down // Moving down&#10;          max_floor // The house has no more than these number of floors.&#10;&#10;&#10;axioms&#10;  @axm_01 partition(DIR, {up}, {down})&#10;  @axm_02 max_floor ∈ ℕ // The maximum floor is a number.&#10;  @axm_03 max_floor = 10&#10;end&#10;" version="3">
+<org.eventb.core.carrierSet name="_CH0LYHyXEeqx46hu0EIm_A" org.eventb.core.comment="The direction of travel" org.eventb.core.generated="false" org.eventb.core.identifier="DIR"/>
+<org.eventb.core.constant name="_CH0LYXyXEeqx46hu0EIm_A" org.eventb.core.comment="Moving up" org.eventb.core.generated="false" org.eventb.core.identifier="up"/>
+<org.eventb.core.constant name="_CH0LYnyXEeqx46hu0EIm_A" org.eventb.core.comment="Moving down" org.eventb.core.generated="false" org.eventb.core.identifier="down"/>
+<org.eventb.core.axiom name="_CH0LY3yXEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="axm_01" org.eventb.core.predicate="partition(DIR, {up}, {down})"/>
+<org.eventb.core.constant name="_QiaMsHyXEeqx46hu0EIm_A" org.eventb.core.comment="The house has no more than these number of floors." org.eventb.core.generated="false" org.eventb.core.identifier="max_floor"/>
+<org.eventb.core.axiom name="_QiaMsXyXEeqx46hu0EIm_A" org.eventb.core.comment="The maximum floor is a number." org.eventb.core.generated="false" org.eventb.core.label="axm_02" org.eventb.core.predicate="max_floor ∈ ℕ"/>
+<org.eventb.core.axiom name="_QiaMsnyXEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="axm_03" org.eventb.core.predicate="max_floor = 10"/>
+</org.eventb.core.contextFile>

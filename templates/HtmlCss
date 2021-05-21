@@ -1,0 +1,6 @@
+body { }
+.KEYW { display:block; color: red; margin-top:10pt; font-size:24px; }
+.VARDEF { font-style: italic; }
+.VAR { font-style: italic; }
+.CON { color: blue; }
+.LABEL { color: #0066cc };

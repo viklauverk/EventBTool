@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="41">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="35">
+        <org.eventb.core.poIdentifier name="loo" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="hii" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="hi" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="index" org.eventb.core.type="ℙ(ℤ)"/>
+        <org.eventb.core.poIdentifier name="lo" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="thm1/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP,"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="finite(index)∧index≠(∅ ⦂ ℙ(ℤ))∧(∃b⦂ℤ·∀x⦂ℤ·x∈index⇒b≥x)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_isBMsHgqEeuIobokpwUdmw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_isBMsHgqEeuIobokpwUdmw"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP,"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="thm1/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP,"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="card(index)=max(index)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_isBMsHgqEeuIobokpwUdmw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_isBMsHgqEeuIobokpwUdmw"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP,"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="thm2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP-"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="index≠(∅ ⦂ ℙ(ℤ))∧(∃b⦂ℤ·∀x⦂ℤ·x∈index⇒b≤x)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_F-J5EHg1EeuIobokpwUdmw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_F-J5EHg1EeuIobokpwUdmw"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP-"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="thm2/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP-"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="lo=min(index)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_F-J5EHg1EeuIobokpwUdmw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_F-J5EHg1EeuIobokpwUdmw"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP-"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="thm3/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP."/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="index≠(∅ ⦂ ℙ(ℤ))∧(∃b⦂ℤ·∀x⦂ℤ·x∈index⇒b≥x)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_2GJpIXg1EeuIobokpwUdmw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_2GJpIXg1EeuIobokpwUdmw"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP."/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="thm3/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP."/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="hi=max(index)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_2GJpIXg1EeuIobokpwUdmw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_2GJpIXg1EeuIobokpwUdmw"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP."/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="thm4/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP\/"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="finite(5 ‥ 9)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_ZxLiMHg2EeuIobokpwUdmw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_ZxLiMHg2EeuIobokpwUdmw"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP\/"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="thm4/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP\/"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="5=card(5 ‥ 9)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_ZxLiMHg2EeuIobokpwUdmw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_ZxLiMHg2EeuIobokpwUdmw"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP\/"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="thm5/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP0"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="5 ‥ 9≠(∅ ⦂ ℙ(ℤ))∧(∃b⦂ℤ·∀x⦂ℤ·x∈5 ‥ 9⇒b≥x)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_cviwwHg2EeuIobokpwUdmw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_cviwwHg2EeuIobokpwUdmw"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="thm5/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP0"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="9=max(5 ‥ 9)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_cviwwHg2EeuIobokpwUdmw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_cviwwHg2EeuIobokpwUdmw"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="thm6/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP1"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="loo ‥ hii≠(∅ ⦂ ℙ(ℤ))∧(∃b⦂ℤ·∀x⦂ℤ·x∈loo ‥ hii⇒b≥x)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#__ki8kHg9EeuIobokpwUdmw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#__ki8kHg9EeuIobokpwUdmw"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="thm6/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP1"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="hii=max(loo ‥ hii)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#__ki8kHg9EeuIobokpwUdmw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#__ki8kHg9EeuIobokpwUdmw"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="HYP," org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="lo=1" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_eqxk0XgqEeuIobokpwUdmw"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="hi=10" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_Y2G2gHg1EeuIobokpwUdmw"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="index=lo ‥ hi" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_Y2G2gXg1EeuIobokpwUdmw"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="loo∈ℤ" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_QgTTEHg-EeuIobokpwUdmw"/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="hii∈ℤ" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_QgTTEXg-EeuIobokpwUdmw"/>
+        <org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="hii&gt;loo" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_d6UBIHg-EeuIobokpwUdmw"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYP-" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP," org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="card(index)=max(index)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_isBMsHgqEeuIobokpwUdmw"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYP." org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP-" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="lo=min(index)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_F-J5EHg1EeuIobokpwUdmw"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYP/" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP." org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicate name="PRD8" org.eventb.core.predicate="hi=max(index)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_2GJpIXg1EeuIobokpwUdmw"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYP0" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP\/" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicate name="PRD9" org.eventb.core.predicate="5=card(5 ‥ 9)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_ZxLiMHg2EeuIobokpwUdmw"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYP1" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP0" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicate name="PRD10" org.eventb.core.predicate="9=max(5 ‥ 9)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#_cviwwHg2EeuIobokpwUdmw"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Vectors/Context.bpo|org.eventb.core.poFile#Context|org.eventb.core.poPredicateSet#HYP1" org.eventb.core.poStamp="41">
+        <org.eventb.core.poPredicate name="PRD11" org.eventb.core.predicate="hii=max(loo ‥ hii)" org.eventb.core.source="/Vectors/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#__ki8kHg9EeuIobokpwUdmw"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

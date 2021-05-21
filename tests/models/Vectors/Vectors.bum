@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1614419632963" org.eventb.texttools.text_representation="machine Vectors&#10;&#10;variables heights // A fixed size vector of heights.&#10;          bytes_size // Size of the bytes vector&#10;          bytes // A vector of bytes&#10;&#10;invariants&#10;  @inv_he heights ∈ (1‥100) → ℕ&#10;  @inv_bs bytes_size ∈ ℕ&#10;  @inv_by bytes ∈ (1‥bytes_size) → 0‥255&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @init_he heights ≔ 1‥100 × {0}&#10;      @init_ws bytes_size ≔ 0&#10;      @init_we bytes ≔ ∅&#10;  end&#10;&#10;  event setHeight&#10;    any at h&#10;    where&#10;      @grd_p at ∈ dom(heights)&#10;      @grd_h h ∈ ℕ&#10;    then&#10;      @act_1 heights(at) ≔ h&#10;  end&#10;&#10;  event setHeights&#10;    any hs&#10;    where&#10;      @grd_hs hs ∈ (1‥100) → ℕ&#10;    then&#10;      @act_1 heights ≔ hs&#10;  end&#10;&#10;  event findHeight&#10;    any h out_i&#10;    where&#10;      @grd1 h ∈ ℕ&#10;      @grd3 out_i ∈ dom(heights)&#10;      @grd4 ∃x·x∈dom(heights) ∧ heights(x)=h ∧ out_i = x&#10;  end&#10;&#10;  event addByte&#10;    any b&#10;    where&#10;      @grd_b b ∈ 0‥255&#10;    then&#10;      @act_1 bytes≔ bytes ∪ { bytes_size+1 ↦ b }&#10;      @act_2 bytes_size ≔ bytes_size+1&#10;  end&#10;&#10;  event cut&#10;    any new_size&#10;    where&#10;      @grd1 bytes_size &gt; 1&#10;      @grd2 new_size ∈ ℕ1&#10;      @grd3 new_size = bytes_size−1&#10;    then&#10;      @act1 bytes_size ≔ new_size&#10;      @act2 bytes ≔ { x · x ∈ 1‥new_size ∣ x↦bytes(x+1) }&#10;  end&#10;&#10;end&#10;" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="_dHNk8HBWEeu8JvUcKDaiIQ" org.eventb.core.assignment="heights ≔ 1‥100 × {0}" org.eventb.core.generated="false" org.eventb.core.label="init_he"/>
+        <org.eventb.core.action name="_Eh-GAHCBEeu8JvUcKDaiIQ" org.eventb.core.assignment="bytes_size ≔ 0" org.eventb.core.generated="false" org.eventb.core.label="init_ws"/>
+        <org.eventb.core.action name="_Eh-GAXCBEeu8JvUcKDaiIQ" org.eventb.core.assignment="bytes ≔ ∅" org.eventb.core.generated="false" org.eventb.core.label="init_we"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="_PMAOUHBWEeu8JvUcKDaiIQ" org.eventb.core.comment="A fixed size vector of heights." org.eventb.core.generated="false" org.eventb.core.identifier="heights"/>
+    <org.eventb.core.invariant name="_RcXucXBWEeu8JvUcKDaiIQ" org.eventb.core.generated="false" org.eventb.core.label="inv_he" org.eventb.core.predicate="heights ∈ (1‥100) → ℕ"/>
+    <org.eventb.core.event name="_JLR4oHBvEeu8JvUcKDaiIQ" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="setHeight">
+        <org.eventb.core.parameter name="_9bTqgHBuEeu8JvUcKDaiIQ" org.eventb.core.generated="false" org.eventb.core.identifier="at"/>
+        <org.eventb.core.parameter name="_vkzhoHBWEeu8JvUcKDaiIQ" org.eventb.core.generated="false" org.eventb.core.identifier="h"/>
+        <org.eventb.core.guard name="_7ArbIXBuEeu8JvUcKDaiIQ" org.eventb.core.generated="false" org.eventb.core.label="grd_p" org.eventb.core.predicate="at ∈ dom(heights)"/>
+        <org.eventb.core.guard name="_vkzhoXBWEeu8JvUcKDaiIQ" org.eventb.core.generated="false" org.eventb.core.label="grd_h" org.eventb.core.predicate="h ∈ ℕ"/>
+        <org.eventb.core.action name="_vkzho3BWEeu8JvUcKDaiIQ" org.eventb.core.assignment="heights(at) ≔ h" org.eventb.core.generated="false" org.eventb.core.label="act_1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_sBwKQHBZEeu8JvUcKDaiIQ" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="setHeights">
+        <org.eventb.core.parameter name="_sBwKQXBZEeu8JvUcKDaiIQ" org.eventb.core.generated="false" org.eventb.core.identifier="hs"/>
+        <org.eventb.core.guard name="_sBwKQnBZEeu8JvUcKDaiIQ" org.eventb.core.generated="false" org.eventb.core.label="grd_hs" org.eventb.core.predicate="hs ∈ (1‥100) → ℕ"/>
+        <org.eventb.core.action name="_sBwKQ3BZEeu8JvUcKDaiIQ" org.eventb.core.assignment="heights ≔ hs" org.eventb.core.generated="false" org.eventb.core.label="act_1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_SSGrkHIiEeu5EP7sZGlP-w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="findHeight">
+        <org.eventb.core.parameter name="_SSGrkXIiEeu5EP7sZGlP-w" org.eventb.core.generated="false" org.eventb.core.identifier="h"/>
+        <org.eventb.core.parameter name="_SSHSoHIiEeu5EP7sZGlP-w" org.eventb.core.generated="false" org.eventb.core.identifier="out_i"/>
+        <org.eventb.core.guard name="_SSHSoXIiEeu5EP7sZGlP-w" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="h ∈ ℕ"/>
+        <org.eventb.core.guard name="_ZBvKpHgoEeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="grd3" org.eventb.core.predicate="out_i ∈ dom(heights)"/>
+        <org.eventb.core.guard name="_5GqM8HhaEeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="grd4" org.eventb.core.predicate="∃x·x∈dom(heights) ∧ heights(x)=h ∧ out_i = x"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_syDAsHhaEeuIobokpwUdmw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="addByte">
+        <org.eventb.core.parameter name="_syDAsXhaEeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="b"/>
+        <org.eventb.core.guard name="_syDAsnhaEeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="grd_b" org.eventb.core.predicate="b ∈ 0‥255"/>
+        <org.eventb.core.action name="_M_Bx43CBEeu8JvUcKDaiIQ" org.eventb.core.assignment="bytes≔ bytes ∪ { bytes_size+1 ↦ b }" org.eventb.core.generated="false" org.eventb.core.label="act_1"/>
+        <org.eventb.core.action name="_M_Bx5HCBEeu8JvUcKDaiIQ" org.eventb.core.assignment="bytes_size ≔ bytes_size+1" org.eventb.core.generated="false" org.eventb.core.label="act_2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="_irXUIHgkEeuIobokpwUdmw" org.eventb.core.comment="Size of the bytes vector" org.eventb.core.generated="false" org.eventb.core.identifier="bytes_size"/>
+    <org.eventb.core.variable name="_irX7MHgkEeuIobokpwUdmw" org.eventb.core.comment="A vector of bytes" org.eventb.core.generated="false" org.eventb.core.identifier="bytes"/>
+    <org.eventb.core.invariant name="_i3ZdoHgnEeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="inv_bs" org.eventb.core.predicate="bytes_size ∈ ℕ"/>
+    <org.eventb.core.invariant name="_i3ZdoXgnEeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="inv_by" org.eventb.core.predicate="bytes ∈ (1‥bytes_size) → 0‥255"/>
+    <org.eventb.core.event name="_wUcJYHhaEeuIobokpwUdmw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="cut">
+        <org.eventb.core.parameter name="_0HQzMHg4EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="new_size"/>
+        <org.eventb.core.guard name="_0I1tUXKiEeu5EP7sZGlP-w" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="bytes_size &gt; 1"/>
+        <org.eventb.core.guard name="_SSH5sHIiEeu5EP7sZGlP-w" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="new_size ∈ ℕ1"/>
+        <org.eventb.core.guard name="_5Gq0AHhaEeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="grd3" org.eventb.core.predicate="new_size = bytes_size−1"/>
+        <org.eventb.core.action name="_bncOUHg4EeuIobokpwUdmw" org.eventb.core.assignment="bytes_size ≔ new_size" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_itSPoHg4EeuIobokpwUdmw" org.eventb.core.assignment="bytes ≔ { x · x ∈ 1‥new_size ∣ x↦bytes(x+1) }" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

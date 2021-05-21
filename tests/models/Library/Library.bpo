@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="borrowers" org.eventb.core.type="ℙ(ℤ)"/>
+        <org.eventb.core.poIdentifier name="books" org.eventb.core.type="ℙ(ℤ)"/>
+        <org.eventb.core.poIdentifier name="loans" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="INITIALISATION/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTALLHYPborrowert"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(ℤ))∈ℙ(ℕ)" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh84PUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh84PUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poSequent#INITIALISATION\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTALLHYPborrowert"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(ℤ))∈ℙ(ℕ)" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9IPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9IPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poSequent#INITIALISATION\/inv2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTALLHYPborrowert"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(ℤ×ℤ))∈(∅ ⦂ ℙ(ℤ)) ⇸ (∅ ⦂ ℙ(ℤ))" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9YPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9YPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poSequent#INITIALISATION\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTborrowert" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="borrowers'" org.eventb.core.type="ℙ(ℤ)"/>
+        <org.eventb.core.poIdentifier name="loans'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+        <org.eventb.core.poIdentifier name="books'" org.eventb.core.type="ℙ(ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPborrowert" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTIDENTborrowert" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poSequent name="addBook/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTALLHYPborroweru"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="books∪{b}∈ℙ(ℕ)" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh84PUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_BMnT8IPVEeqNes-VfAApdw"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh84PUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poSequent#addBook\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="addBook/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTALLHYPborroweru"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="loans∈books∪{b} ⇸ borrowers" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9YPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_BMnT8IPVEeqNes-VfAApdw"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9YPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poSequent#addBook\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTborroweru" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="b" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="books'" org.eventb.core.type="ℙ(ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPborroweru" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTIDENTborroweru" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="b∈ℕ" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_BMnT8IPVEeqNes-VfAApdw|org.eventb.core.guard#_BMnT8oPVEeqNes-VfAApdw"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="b∉books" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_BMnT8IPVEeqNes-VfAApdw|org.eventb.core.guard#_BMnT84PVEeqNes-VfAApdw"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="addBorrower/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTALLHYPborrowerv"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="borrowers∪{b}∈ℙ(ℕ)" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9IPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_S3kSwIPVEeqNes-VfAApdw"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9IPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poSequent#addBorrower\/inv2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="addBorrower/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTALLHYPborrowerv"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="loans∈books ⇸ borrowers∪{b}" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9YPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_S3kSwIPVEeqNes-VfAApdw"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9YPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poSequent#addBorrower\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTborrowerv" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="b" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="borrowers'" org.eventb.core.type="ℙ(ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPborrowerv" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTIDENTborrowerv" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="b∈ℕ" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_S3kSwIPVEeqNes-VfAApdw|org.eventb.core.guard#_S3kSwoPVEeqNes-VfAApdw"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="b∉borrowers" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_S3kSwIPVEeqNes-VfAApdw|org.eventb.core.guard#_S3kSw4PVEeqNes-VfAApdw"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="addLoan/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTALLHYPborrowerw"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="loans{book ↦ borr}∈books ⇸ borrowers" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9YPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_S3kSxYPVEeqNes-VfAApdw"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9YPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poSequent#addLoan\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTborrowerw" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="borr" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="book" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="loans'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPborrowerw" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTIDENTborrowerw" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="borr∈borrowers" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_S3kSxYPVEeqNes-VfAApdw|org.eventb.core.guard#_S3k50oPVEeqNes-VfAApdw"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="book∈books" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_S3kSxYPVEeqNes-VfAApdw|org.eventb.core.guard#_S3k504PVEeqNes-VfAApdw"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="book ↦ borr∉loans" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_S3kSxYPVEeqNes-VfAApdw|org.eventb.core.guard#_S3k51IPVEeqNes-VfAApdw"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="book∉dom(loans)" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_S3kSxYPVEeqNes-VfAApdw|org.eventb.core.guard#_UfqHcIWBEeqkCIuNVm0eUw"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="returnBook/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTALLHYPborrowerx"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{book} ⩤ loans∈books ⇸ borrowers" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9YPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_UfqHcYWBEeqkCIuNVm0eUw"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9YPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poSequent#returnBook\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTborrowerx" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="book" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="loans'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPborrowerx" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTIDENTborrowerx" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="book∈books" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_UfqHcYWBEeqkCIuNVm0eUw|org.eventb.core.guard#_UfqugYWBEeqkCIuNVm0eUw"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="book∈dom(loans)" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_UfqHcYWBEeqkCIuNVm0eUw|org.eventb.core.guard#_UfrVkIWBEeqkCIuNVm0eUw"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTIDENTborrowery" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="out_onloan" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="book" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPborrowery" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTIDENTborrowery" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="book∈books" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_wrvcgoWeEeqYw98xIWM9bg|org.eventb.core.guard#_wrwDkoWeEeqYw98xIWM9bg"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="out_onloan=bool(book∈dom(loans))" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_wrvcgoWeEeqYw98xIWM9bg|org.eventb.core.guard#_wrwDk4WeEeqYw98xIWM9bg"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="whoBorrowsBook/grd3/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTHYPborrowerz("/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="book∈dom(loans)∧loans∈ℤ ⇸ ℤ" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_o6FmAIYKEeqVAIX0zZFvPg|org.eventb.core.guard#_o6G0IoYKEeqVAIX0zZFvPg"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_o6FmAIYKEeqVAIX0zZFvPg|org.eventb.core.guard#_o6G0IoYKEeqVAIX0zZFvPg"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTHYPborrowerz("/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTborrowerz" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="out_borrower" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="book" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTHYPborrowerz(" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTIDENTborrowerz" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="book∈books" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_o6FmAIYKEeqVAIX0zZFvPg|org.eventb.core.guard#_o6G0IIYKEeqVAIX0zZFvPg"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="book∈dom(loans)" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_o6FmAIYKEeqVAIX0zZFvPg|org.eventb.core.guard#_o6G0IYYKEeqVAIX0zZFvPg"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPborrowerz" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#EVTHYPborrowerz(" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="out_borrower=loans(book)" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.event#_o6FmAIYKEeqVAIX0zZFvPg|org.eventb.core.guard#_o6G0IoYKEeqVAIX0zZFvPg"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Library/Library.bpo|org.eventb.core.poFile#Library|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="books∈ℙ(ℕ)" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh84PUEeqNes-VfAApdw"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="borrowers∈ℙ(ℕ)" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9IPUEeqNes-VfAApdw"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="loans∈books ⇸ borrowers" org.eventb.core.source="/Library/Library.bum|org.eventb.core.machineFile#Library|org.eventb.core.invariant#_8Hmh9YPUEeqNes-VfAApdw"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

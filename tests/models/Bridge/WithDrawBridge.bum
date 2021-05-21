@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1590088851797" org.eventb.texttools.text_representation="machine WithGate refines Bridge&#10;&#10;variables draw_bridge_open // If true, then the bridge is open and cars cannot enter the bridge.&#10;          count&#10;&#10;invariants&#10;  @inv1 draw_bridge_open ∈ BOOL&#10;&#10;events&#10;  event INITIALISATION extends INITIALISATION&#10;  then&#10;  @init1_1 draw_bridge_open ≔ TRUE&#10;  end&#10;&#10;  event setBridge&#10;  any state&#10;  where&#10;  @grd1_1 state ∈ BOOL&#10;  then&#10;  @act1_1 draw_bridge_open ≔ state&#10;  end&#10;&#10;  event enter extends enter&#10;  when&#10;  @grd1_1 draw_bridge_open = FALSE&#10;  end&#10;&#10;  event leave extends leave&#10;  when&#10;  @grd1_1 draw_bridge_open = FALSE&#10;  end&#10;&#10;end&#10;" version="5">
+<org.eventb.core.refinesMachine name="_iXTGgJuXEeqSt-shezaupA" org.eventb.core.target="Bridge"/>
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="_mjEjYJuXEeqSt-shezaupA" org.eventb.core.assignment="draw_bridge_open ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="init1_1"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_9hTZsJuXEeqSt-shezaupA" org.eventb.core.comment="If true, then the bridge is open and cars cannot enter the bridge." org.eventb.core.generated="false" org.eventb.core.identifier="draw_bridge_open"/>
+<org.eventb.core.variable name="_iXTtkZuXEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.identifier="count"/>
+<org.eventb.core.invariant name="_iXTtkpuXEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.label="inv1" org.eventb.core.predicate="draw_bridge_open ∈ BOOL"/>
+<org.eventb.core.event name="_Lz4HcJuYEeqSt-shezaupA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="setBridge">
+<org.eventb.core.parameter name="_Lz4ugJuYEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.identifier="state"/>
+<org.eventb.core.guard name="_9hUAwZuXEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.label="grd1_1" org.eventb.core.predicate="state ∈ BOOL"/>
+<org.eventb.core.action name="_9hUAwpuXEeqSt-shezaupA" org.eventb.core.assignment="draw_bridge_open ≔ state" org.eventb.core.generated="false" org.eventb.core.label="act1_1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_9hUAw5uXEeqSt-shezaupA" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="enter">
+<org.eventb.core.refinesEvent name="_9hUAxJuXEeqSt-shezaupA" org.eventb.core.target="enter"/>
+<org.eventb.core.guard name="_9hUAxZuXEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.label="grd1_1" org.eventb.core.predicate="draw_bridge_open = FALSE"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="__0GiwJuXEeqSt-shezaupA" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="leave">
+<org.eventb.core.refinesEvent name="_CaYBcJuYEeqSt-shezaupA" org.eventb.core.target="leave"/>
+<org.eventb.core.guard name="__0GiwpuXEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.label="grd1_1" org.eventb.core.predicate="draw_bridge_open = FALSE"/>
+</org.eventb.core.event>
+</org.eventb.core.machineFile>

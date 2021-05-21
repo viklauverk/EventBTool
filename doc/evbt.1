@@ -1,0 +1,132 @@
+.TH EVBT 1
+.SH NAME
+evbt \- An Event-B tool with which you can inspect,document and generate code from an Event-B system.
+
+.SH SYNOPSIS
+evbt codegen [options] <language> <machine.bum>
+
+evbt console [options] { <dir> }
+
+evbt docgen  [options] <format> <dir>
+
+evbt docmod  [options] <format> <source_file> <dest_file> { <dir> }
+
+evbt show    [options] <format> <dir> <part_identifier>*
+
+evbt help
+
+evbt license
+
+.SH DESCRIPTION
+
+Evbt reads a directory with Event-B files created by the Rodin tool. It can then show the contents
+of the directory using the \fBshow\fR command, generate documentation using the \fBdocgen\fR command
+or generate code using the \fBcodegen\fR command.
+
+There is also a \fBconsole\fR command that can be used to interactively examine the parsing of formulas
+and the machines and contexts.
+
+.SH GLOBAL OPTIONS
+
+\fB\--verbose\fR for some more information on what it is doing
+
+\fB\--debug=all\fR for a lot of information, debugging a can be enabled for different parts of evbt.
+
+\fB\--ll\fR to list all modules that can be enabled.
+
+.SH codegen
+
+The codegen command generates source files based on the project directory.
+The sources contains the generated code from the specified <machine> inside <dir>.
+
+\fBc++\fR  generates a <project_name>.h and a <project_name>.cc file.
+.br
+\fBjava\fR generates a <project_name>.java and a <project_name>Implementation.java file.
+.br
+\fBjavascript\fR generates a <project_name>.js file.
+.br
+\fBsql\fR generates a <project_name>.sql file.
+.br
+
+Examples:
+
+To generate Elevator.h and Elevator.cc from the Refinement4FinalImplementation.bum file
+stored in workspace/ElevatorProject:
+.br
+\fBevbt codegen c++ Elevator workspace/ElevatorProject Refinement4FinalImplementation\fR
+
+.SH console
+
+The console command enters an interactive mode where you can type formulas
+and have them parsed. Type \fBhelp\fR for instructions within the console.
+You can also request additional instructions on a command: \fBhelp show\fR
+
+.SH docgen
+
+The docgen command generates file(s) with the <project_name> that contains the documentation
+for the <dir> containing Event-B files. The supported languages are:
+
+\fBtex\fR generates a <project_name>.tex file.
+
+\fBhtmq\fR generates a <project_name>.htmq file which can then be converted into a html file.
+
+Examples:
+
+Generate tex documentation for the entire ElevatorProject:
+.br
+\fBevbt docgen tex Elevator workspace/ElevatorProject\fR
+
+.SH docmod
+
+The docmod command reads the <source> file and looks for the tags like
+\fBEVBT(...)\fR and executes the ... as if it had been typed in the console
+and stores the resulting output in the document.
+
+Examples:
+
+Inject generated documentation into a tex-document \fBarticle.tex\fR and store the result
+into \fBfinal.tex\fR:
+.br
+\fBevbt docmod tex article.tex final.tex Elevator workspace/ElevatorProject\fR
+
+.SH show
+
+The show command outputs the whole Event-B system (or parts of it) to the terminal.
+The output can be formatted using the styles:
+
+\fBplain\fR for plain unicode, no colors, only spaces as formatting.
+
+\fBterminal\fR uses ANSI codes to set colors and spacing.
+
+\fBtex\fR for generating tex snippets for inclusion into another document.
+
+\fBhtmq\fR for generating htmq snippets for inclusion into another document.
+
+Examples:
+
+To show the entire project do:
+.br
+\fBevbt show terminal Elevator workspace/ElevatorProject\fR
+
+To show only the moveUp event inside the Elevator.bum file:
+.br
+\fBevbt show terminal Elevator workspace/ElevatorProject Elevator.moveUp\fR
+
+To render as tex a single guard inside a specific event inside a specific machine:
+.br
+\fBevbt show tex Elevator workspace/ElevatorProject Elevator.moveUp.grd_2 > moveup_grd_2.tex\fR
+
+.SH help
+
+The help command gives information on the other commands.
+
+.SH license
+
+The license command prints the license text for evbt.
+
+
+.SH AUTHOR
+Written by Fredrik Öhrström.
+
+.SH COPYRIGHT
+Copyright \(co 2021 Viklauverk AB

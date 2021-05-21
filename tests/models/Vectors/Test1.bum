@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1614361312668" org.eventb.texttools.text_representation="machine Test1 refines Test&#10;&#10;variables bytes bytes_size&#10;&#10;events&#10;  event INITIALISATION extends INITIALISATION&#10;  end&#10;&#10;  event cut extends cut&#10;  end&#10;&#10;  event split extends split&#10;    where&#10;      @grd1_1 2 ∈ dom(bytes)&#10;      @grd1_2 left_size = bytes(1)&#10;  end&#10;end&#10;" version="5">
+    <org.eventb.core.refinesMachine name="'" org.eventb.core.target="Test"/>
+    <org.eventb.core.variable name="_f9Ji8Hg7EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="bytes"/>
+    <org.eventb.core.variable name="_f9Ji8Xg7EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="bytes_size"/>
+    <org.eventb.core.event name="_f9Ji8Xg7EeuIobokpwUdmx" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION"/>
+    <org.eventb.core.event name="_f9Ji8Xg7EeuIobokpwUdmy" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="cut">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="cut"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_f9Ji8Xg7EeuIobokpwUdmz" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="split">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="split"/>
+        <org.eventb.core.guard name="_6VBS8HhZEeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="grd1_1" org.eventb.core.predicate="2 ∈ dom(bytes)"/>
+        <org.eventb.core.guard name="_6VBS8XhZEeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="grd1_2" org.eventb.core.predicate="left_size = bytes(1)"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

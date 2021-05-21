@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+    <org.eventb.core.scAxiom name="'" org.eventb.core.label="axm_01" org.eventb.core.predicate="partition(DIR,{up},{down})" org.eventb.core.source="/Elevator/HouseContext.buc|org.eventb.core.contextFile#HouseContext|org.eventb.core.axiom#_CH0LY3yXEeqx46hu0EIm_A" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name="(" org.eventb.core.label="axm_02" org.eventb.core.predicate="max_floor∈ℕ" org.eventb.core.source="/Elevator/HouseContext.buc|org.eventb.core.contextFile#HouseContext|org.eventb.core.axiom#_QiaMsXyXEeqx46hu0EIm_A" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name=")" org.eventb.core.label="axm_03" org.eventb.core.predicate="max_floor=10" org.eventb.core.source="/Elevator/HouseContext.buc|org.eventb.core.contextFile#HouseContext|org.eventb.core.axiom#_QiaMsnyXEeqx46hu0EIm_A" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scConstant name="max_floor" org.eventb.core.source="/Elevator/HouseContext.buc|org.eventb.core.contextFile#HouseContext|org.eventb.core.constant#_QiaMsHyXEeqx46hu0EIm_A" org.eventb.core.type="ℤ"/>
+    <org.eventb.core.scCarrierSet name="DIR" org.eventb.core.source="/Elevator/HouseContext.buc|org.eventb.core.contextFile#HouseContext|org.eventb.core.carrierSet#_CH0LYHyXEeqx46hu0EIm_A" org.eventb.core.type="ℙ(DIR)"/>
+    <org.eventb.core.scConstant name="down" org.eventb.core.source="/Elevator/HouseContext.buc|org.eventb.core.contextFile#HouseContext|org.eventb.core.constant#_CH0LYnyXEeqx46hu0EIm_A" org.eventb.core.type="DIR"/>
+    <org.eventb.core.scConstant name="up" org.eventb.core.source="/Elevator/HouseContext.buc|org.eventb.core.contextFile#HouseContext|org.eventb.core.constant#_CH0LYXyXEeqx46hu0EIm_A" org.eventb.core.type="DIR"/>
+</org.eventb.core.scContextFile>

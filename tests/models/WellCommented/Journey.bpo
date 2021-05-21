@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="5">
+    <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="STUFF" org.eventb.core.type="ℙ(STUFF)"/>
+        <org.eventb.core.poIdentifier name="AAAA" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="BBBB" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="CCCC" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="DDDD" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="EEEE" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="FFFF" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="GGGG" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="HHHH" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="IIII" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="maa" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="mii" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poPredicate name="STUFG" org.eventb.core.predicate="partition(STUFF,{AAAA},{BBBB},{CCCC},{DDDD},{EEEE},{FFFF},{GGGG},{HHHH},{IIII})" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.axiom#_lwLkgI_UEeupk-0J3ZLYpg"/>
+        <org.eventb.core.poPredicate name="STUFH" org.eventb.core.predicate="maa&gt;1" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.axiom#_ocTCIY_4Eeupk-0J3ZLYpg"/>
+        <org.eventb.core.poPredicate name="STUFI" org.eventb.core.predicate="mii&gt;−10" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.axiom#_9MgFMY_5Eeupk-0J3ZLYpg"/>
+        <org.eventb.core.poPredicate name="STUFJ" org.eventb.core.predicate="maa&gt;1⇒maa&gt;1" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.axiom#_uwWM8JLTEeuOiIjEm4X4Kg"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="4">
+        <org.eventb.core.poIdentifier name="r" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="x" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="z" org.eventb.core.type="STUFF"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="INITIALISATION/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="4">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#EVTALLHYPTalk"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="maa&gt;0" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_yIDgIo_UEeupk-0J3ZLYpg"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_yIDgIo_UEeupk-0J3ZLYpg"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poSequent#INITIALISATION\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="4">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#EVTALLHYPTalk"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;3∨maa&gt;0∨maa&gt;0∨maa&gt;4∨maa&gt;0∨maa&gt;0∨maa&gt;5∨maa&gt;0∨maa&gt;0∨maa&gt;6∨maa&gt;0∨maa&gt;0∨maa&gt;7∨maa&gt;0" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_yIDgI4_UEeupk-0J3ZLYpg"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_yIDgI4_UEeupk-0J3ZLYpg"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poSequent#INITIALISATION\/inv2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="4">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#EVTALLHYPTalk"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="2∈1 ‥ 99" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_BFFjEZVaEeuOiIjEm4X4Kg"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_BFFjEZVaEeuOiIjEm4X4Kg"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poSequent#INITIALISATION\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/inv4/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="4">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#EVTALLHYPTalk"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;0∨maa&gt;0" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_dTa4oLEHEeuxfrOjtow0wg"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_dTa4oLEHEeuxfrOjtow0wg"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poSequent#INITIALISATION\/inv4\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD3"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTTalk" org.eventb.core.parentSet="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="4">
+        <org.eventb.core.poIdentifier name="r'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="x'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="z'" org.eventb.core.type="STUFF"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPTalk" org.eventb.core.parentSet="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#EVTIDENTTalk" org.eventb.core.poStamp="4"/>
+    <org.eventb.core.poSequent name="About/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="5">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#EVTALLHYPTall"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="2&gt;0" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_yIDgIo_UEeupk-0J3ZLYpg"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.event#_N6khYJVSEeuOiIjEm4X4Kg"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_yIDgIo_UEeupk-0J3ZLYpg"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poSequent#About\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="About/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="5">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#EVTALLHYPTall"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="2&gt;0∨2&gt;0∨2&gt;0∨2&gt;3∨2&gt;0∨2&gt;0∨2&gt;4∨2&gt;0∨2&gt;0∨2&gt;5∨2&gt;0∨2&gt;0∨2&gt;6∨2&gt;0∨2&gt;0∨2&gt;7∨2&gt;0" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_yIDgI4_UEeupk-0J3ZLYpg"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.event#_N6khYJVSEeuOiIjEm4X4Kg"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_yIDgI4_UEeupk-0J3ZLYpg"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poSequent#About\/inv2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="About/inv4/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="5">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#EVTALLHYPTall"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="2&gt;0∨2&gt;0∨2&gt;0∨2&gt;0∨2&gt;0∨2&gt;0∨2&gt;0∨2&gt;0∨2&gt;0∨2&gt;0∨2&gt;0∨2&gt;0∨2&gt;0∨2&gt;0∨2&gt;0∨2&gt;0∨2&gt;0" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_dTa4oLEHEeuxfrOjtow0wg"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.event#_N6khYJVSEeuOiIjEm4X4Kg"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_dTa4oLEHEeuxfrOjtow0wg"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poSequent#About\/inv4\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD3"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTTall" org.eventb.core.parentSet="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="y" org.eventb.core.type="ℤ×ℤ"/>
+        <org.eventb.core.poIdentifier name="x'" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPTall" org.eventb.core.parentSet="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#EVTIDENTTall" org.eventb.core.poStamp="5">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="y=1 ↦ 2" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.event#_N6khYJVSEeuOiIjEm4X4Kg|org.eventb.core.guard#_N6khYpVSEeuOiIjEm4X4Kg"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="∀y⦂ℤ·y∈ℕ⇒y&gt;0" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.event#_N6khYJVSEeuOiIjEm4X4Kg|org.eventb.core.guard#_mSBVQLFdEeuxfrOjtow0wg"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/WellCommented/Journey.bpo|org.eventb.core.poFile#Journey|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="4">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="x&gt;0" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_yIDgIo_UEeupk-0J3ZLYpg"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="x&gt;0∨x&gt;0∨x&gt;0∨x&gt;3∨x&gt;0∨x&gt;0∨x&gt;4∨x&gt;0∨x&gt;0∨x&gt;5∨x&gt;0∨x&gt;0∨x&gt;6∨x&gt;0∨x&gt;0∨x&gt;7∨x&gt;0" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_yIDgI4_UEeupk-0J3ZLYpg"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="r∈1 ‥ 99" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_BFFjEZVaEeuOiIjEm4X4Kg"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="x&gt;0∨x&gt;0∨x&gt;0∨x&gt;0∨x&gt;0∨x&gt;0∨x&gt;0∨x&gt;0∨x&gt;0∨x&gt;0∨x&gt;0∨x&gt;0∨x&gt;0∨x&gt;0∨x&gt;0∨x&gt;0∨x&gt;0" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_dTa4oLEHEeuxfrOjtow0wg"/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="z∈STUFF" org.eventb.core.source="/WellCommented/Journey.bum|org.eventb.core.machineFile#Journey|org.eventb.core.invariant#_vJaCILFcEeuxfrOjtow0wg"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

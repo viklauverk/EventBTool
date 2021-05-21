@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1586681764513" org.eventb.texttools.text_representation="machine Elevator sees HouseContext&#10;&#10;variables curr // Current floor&#10;          dest // Destination floor, stop when curr == dest&#10;          dir // Direction of movement&#10;&#10;&#10;invariants&#10;  @inv_1 curr ∈ ℕ&#10;  @inv_2 curr &gt; 0&#10;  @inv_3 curr ≤ max_floor&#10;  @inv_4 dest ∈ ℕ&#10;  @inv_5 dest &gt; 0&#10;  @inv_6 dest ≤ max_floor&#10;  @inv_7 dir ∈ DIR&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @init_1 curr≔1&#10;      @init_2 dest≔1&#10;      @init_3 dir≔up&#10;  end&#10;&#10;  event moveUp&#10;    where&#10;      @grd_1 dir = up&#10;      @grd_2 curr &lt; max_floor&#10;      @grd_3 curr ≠ dest&#10;    then&#10;      @act_01 curr ≔ curr+1&#10;  end&#10;&#10;  event moveDown&#10;    where&#10;      @grd_1 dir = down&#10;      @grd_2 curr &gt; 1&#10;      @grd_3 curr ≠ dest&#10;    then&#10;      @act_01 curr ≔ curr−1&#10;  end&#10;&#10;  event enterDest&#10;    any d&#10;    where&#10;      @grd_1 d ∈ ℕ&#10;      @grd_2 d &gt; 0&#10;      @grd_3 d ≤ max_floor&#10;    then&#10;      @act_1 dest ≔ d&#10;  end&#10;&#10;  event startMovingUp&#10;    where&#10;      @grd_1 dest &gt; curr&#10;      @gtd_2 dir = down&#10;    then&#10;      @act_1 dir ≔ up&#10;  end&#10;&#10;  event startMovingDown&#10;    where&#10;      @grd_1 dest &lt; curr&#10;      @gtd_2 dir = up&#10;    then&#10;      @act_1 dir ≔ down&#10;  end&#10;end&#10;" version="5">
+<org.eventb.core.seesContext name="_XIeFQHyYEeqx46hu0EIm_A" org.eventb.core.target="HouseContext"/>
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="_JIresHyaEeqx46hu0EIm_A" org.eventb.core.assignment="curr≔1" org.eventb.core.generated="false" org.eventb.core.label="init_1"/>
+<org.eventb.core.action name="_JIresXyaEeqx46hu0EIm_A" org.eventb.core.assignment="dest≔1" org.eventb.core.generated="false" org.eventb.core.label="init_2"/>
+<org.eventb.core.action name="_JIresnyaEeqx46hu0EIm_A" org.eventb.core.assignment="dir≔up" org.eventb.core.generated="false" org.eventb.core.label="init_3"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_G36n4HyYEeqx46hu0EIm_A" org.eventb.core.comment="Current floor" org.eventb.core.generated="false" org.eventb.core.identifier="curr"/>
+<org.eventb.core.event name="_JIres3yaEeqx46hu0EIm_A" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="moveUp">
+<org.eventb.core.guard name="_JIretHyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="grd_1" org.eventb.core.predicate="dir = up"/>
+<org.eventb.core.guard name="_JIretXyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="grd_2" org.eventb.core.predicate="curr &lt; max_floor"/>
+<org.eventb.core.guard name="_JIsFwHyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="grd_3" org.eventb.core.predicate="curr ≠ dest"/>
+<org.eventb.core.action name="__d1mgnyYEeqx46hu0EIm_A" org.eventb.core.assignment="curr ≔ curr+1" org.eventb.core.generated="false" org.eventb.core.label="act_01"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_JIsFwXyaEeqx46hu0EIm_A" org.eventb.core.comment="Destination floor, stop when curr == dest" org.eventb.core.generated="false" org.eventb.core.identifier="dest"/>
+<org.eventb.core.variable name="_JIsFwnyaEeqx46hu0EIm_A" org.eventb.core.comment="Direction of movement" org.eventb.core.generated="false" org.eventb.core.identifier="dir"/>
+<org.eventb.core.invariant name="_JIsFw3yaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="inv_1" org.eventb.core.predicate="curr ∈ ℕ"/>
+<org.eventb.core.invariant name="_JIsFxHyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="inv_2" org.eventb.core.predicate="curr &gt; 0"/>
+<org.eventb.core.invariant name="_JIsFxXyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="inv_3" org.eventb.core.predicate="curr ≤ max_floor"/>
+<org.eventb.core.invariant name="_JIss0HyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="inv_4" org.eventb.core.predicate="dest ∈ ℕ"/>
+<org.eventb.core.invariant name="_JIss0XyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="inv_5" org.eventb.core.predicate="dest &gt; 0"/>
+<org.eventb.core.invariant name="_JIss0nyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="inv_6" org.eventb.core.predicate="dest ≤ max_floor"/>
+<org.eventb.core.invariant name="_JIss03yaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="inv_7" org.eventb.core.predicate="dir ∈ DIR"/>
+<org.eventb.core.event name="_RYwegHyaEeqx46hu0EIm_A" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="moveDown">
+<org.eventb.core.guard name="_RYwegXyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="grd_1" org.eventb.core.predicate="dir = down"/>
+<org.eventb.core.guard name="_RYwegnyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="grd_2" org.eventb.core.predicate="curr &gt; 1"/>
+<org.eventb.core.guard name="_RYxFkHyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="grd_3" org.eventb.core.predicate="curr ≠ dest"/>
+<org.eventb.core.action name="_CllaknyZEeqx46hu0EIm_A" org.eventb.core.assignment="curr ≔ curr−1" org.eventb.core.generated="false" org.eventb.core.label="act_01"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_eigjAHyaEeqx46hu0EIm_A" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="enterDest">
+<org.eventb.core.parameter name="_eigjAXyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.identifier="d"/>
+<org.eventb.core.guard name="_eigjAnyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="grd_1" org.eventb.core.predicate="d ∈ ℕ"/>
+<org.eventb.core.guard name="_eihKEHyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="grd_2" org.eventb.core.predicate="d &gt; 0"/>
+<org.eventb.core.guard name="_eihKEXyaEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="grd_3" org.eventb.core.predicate="d ≤ max_floor"/>
+<org.eventb.core.action name="_eihKEnyaEeqx46hu0EIm_A" org.eventb.core.assignment="dest ≔ d" org.eventb.core.generated="false" org.eventb.core.label="act_1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_UlY9IHybEeqx46hu0EIm_A" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="startMovingUp">
+<org.eventb.core.guard name="_UlY9IXybEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="grd_1" org.eventb.core.predicate="dest &gt; curr"/>
+<org.eventb.core.guard name="_cPlBoHybEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="gtd_2" org.eventb.core.predicate="dir = down"/>
+<org.eventb.core.action name="_UlY9InybEeqx46hu0EIm_A" org.eventb.core.assignment="dir ≔ up" org.eventb.core.generated="false" org.eventb.core.label="act_1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_UlY9I3ybEeqx46hu0EIm_A" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="startMovingDown">
+<org.eventb.core.guard name="_UlY9JHybEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="grd_1" org.eventb.core.predicate="dest &lt; curr"/>
+<org.eventb.core.guard name="_cPlBoXybEeqx46hu0EIm_A" org.eventb.core.generated="false" org.eventb.core.label="gtd_2" org.eventb.core.predicate="dir = up"/>
+<org.eventb.core.action name="_UlY9JXybEeqx46hu0EIm_A" org.eventb.core.assignment="dir ≔ down" org.eventb.core.generated="false" org.eventb.core.label="act_1"/>
+</org.eventb.core.event>
+</org.eventb.core.machineFile>

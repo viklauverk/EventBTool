@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1614350326124" org.eventb.texttools.text_representation="machine Test&#10;&#10;variables bytes bytes_size&#10;&#10;invariants&#10;  @inv1 bytes ∈ 1‥bytes_size → 0‥255&#10;  @inv2 bytes_size = card(dom(bytes))&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @init1 bytes ≔ 1‥10 × { 1 }&#10;      @init2 bytes_size ≔ 10&#10;  end&#10;&#10;  event cut&#10;    any new_size&#10;    where&#10;      @grd1 bytes_size &gt; 1&#10;      @grd2 new_size = bytes_size−1&#10;      @grd3 new_size ∈ ℕ1&#10;    then&#10;      @act1 bytes_size ≔ new_size&#10;      @act2 bytes ≔ { x · x ∈ 1‥new_size ∣ x↦bytes(x+1) }&#10;  end&#10;&#10;  event split&#10;    any new_size left_size out_msg&#10;    where&#10;      @grd1 new_size ∈ ℕ1&#10;      @grd2 left_size ∈ ℕ1&#10;      @grd3 bytes_size &gt; left_size&#10;      @grd4 new_size = bytes_size − left_size&#10;      @grd5 out_msg = 1‥new_size ◁ bytes&#10;    then&#10;      @act1 bytes_size ≔ new_size&#10;      @act2 bytes ≔ { x · x ∈ 1‥new_size ∣ x↦bytes(x+left_size) }&#10;  end&#10;end&#10;" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="_lu9wkXg7EeuIobokpwUdmw" org.eventb.core.assignment="bytes ≔ 1‥10 × { 1 }" org.eventb.core.generated="false" org.eventb.core.label="init1"/>
+        <org.eventb.core.action name="_lu9wkHg7EeuIobokpwUdmw" org.eventb.core.assignment="bytes_size ≔ 10" org.eventb.core.generated="false" org.eventb.core.label="init2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="_f9Ji8Hg7EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="bytes"/>
+    <org.eventb.core.variable name="_f9Ji8Xg7EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="bytes_size"/>
+    <org.eventb.core.invariant name="_f9Ji8ng7EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="inv1" org.eventb.core.predicate="bytes ∈ 1‥bytes_size → 0‥255"/>
+    <org.eventb.core.invariant name="_f9Ji83g7EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="inv2" org.eventb.core.predicate="bytes_size = card(dom(bytes))"/>
+    <org.eventb.core.event name="_3XK9YHg7EeuIobokpwUdmw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="cut">
+        <org.eventb.core.parameter name="_FWG9cHg8EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="new_size"/>
+        <org.eventb.core.guard name="_3XLkcHg7EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="bytes_size &gt; 1"/>
+        <org.eventb.core.guard name="_FWG9cXg8EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="new_size = bytes_size−1"/>
+        <org.eventb.core.guard name="_KWIFQHg9EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="grd3" org.eventb.core.predicate="new_size ∈ ℕ1"/>
+        <org.eventb.core.action name="_3XLkcXg7EeuIobokpwUdmw" org.eventb.core.assignment="bytes_size ≔ new_size" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_3XLkcng7EeuIobokpwUdmw" org.eventb.core.assignment="bytes ≔ { x · x ∈ 1‥new_size ∣ x↦bytes(x+1) }" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_YTTf4Hg_EeuIobokpwUdmw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="split">
+        <org.eventb.core.parameter name="_YTUG8Hg_EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="new_size"/>
+        <org.eventb.core.parameter name="_YTUG8Xg_EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="left_size"/>
+        <org.eventb.core.parameter name="_UElAMHhAEeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="out_msg"/>
+        <org.eventb.core.guard name="_YTUG8ng_EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="new_size ∈ ℕ1"/>
+        <org.eventb.core.guard name="_YTUG83g_EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="left_size ∈ ℕ1"/>
+        <org.eventb.core.guard name="_YTUG9Hg_EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="grd3" org.eventb.core.predicate="bytes_size &gt; left_size"/>
+        <org.eventb.core.guard name="_YTUG9Xg_EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="grd4" org.eventb.core.predicate="new_size = bytes_size − left_size"/>
+        <org.eventb.core.guard name="_UElAMXhAEeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="grd5" org.eventb.core.predicate="out_msg = 1‥new_size ◁ bytes"/>
+        <org.eventb.core.action name="_YTUG9ng_EeuIobokpwUdmw" org.eventb.core.assignment="bytes_size ≔ new_size" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_YTUG93g_EeuIobokpwUdmw" org.eventb.core.assignment="bytes ≔ { x · x ∈ 1‥new_size ∣ x↦bytes(x+left_size) }" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

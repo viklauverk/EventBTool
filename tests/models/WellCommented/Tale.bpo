@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="STUFF" org.eventb.core.type="ℙ(STUFF)"/>
+        <org.eventb.core.poIdentifier name="AAAA" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="BBBB" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="CCCC" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="DDDD" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="EEEE" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="FFFF" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="GGGG" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="HHHH" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="IIII" org.eventb.core.type="STUFF"/>
+        <org.eventb.core.poIdentifier name="maa" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="mii" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/WellCommented/Tale.bpo|org.eventb.core.poFile#Tale|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="partition(STUFF,{AAAA},{BBBB},{CCCC},{DDDD},{EEEE},{FFFF},{GGGG},{HHHH},{IIII})" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.axiom#_lwLkgI_UEeupk-0J3ZLYpg"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="maa&gt;1" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.axiom#_ocTCIY_4Eeupk-0J3ZLYpg"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="mii&gt;−10" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.axiom#_9MgFMY_5Eeupk-0J3ZLYpg"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="maa&gt;1⇒maa&gt;1" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.axiom#_uwWM8JLTEeuOiIjEm4X4Kg"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

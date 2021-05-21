@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/Bridge/WithDrawBridge.bpo|org.eventb.core.poFile#WithDrawBridge|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="draw_bridge_open" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="count" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poPredicate name="draw_bridge_opeo" org.eventb.core.predicate="count∈ℕ" org.eventb.core.source="/Bridge/Bridge.bum|org.eventb.core.machineFile#Bridge|org.eventb.core.invariant#_U4f_EJuXEeqSt-shezaupA"/>
+        <org.eventb.core.poPredicate name="draw_bridge_opep" org.eventb.core.predicate="count≥0" org.eventb.core.source="/Bridge/Bridge.bum|org.eventb.core.machineFile#Bridge|org.eventb.core.invariant#_U4f_EZuXEeqSt-shezaupA"/>
+        <org.eventb.core.poPredicate name="draw_bridge_opeq" org.eventb.core.predicate="count≤10" org.eventb.core.source="/Bridge/Bridge.bum|org.eventb.core.machineFile#Bridge|org.eventb.core.invariant#_deyC85uYEeqSt-shezaupA"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdraw_bridge_opeo" org.eventb.core.parentSet="/Bridge/WithDrawBridge.bpo|org.eventb.core.poFile#WithDrawBridge|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="count'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="draw_bridge_open'" org.eventb.core.type="BOOL"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdraw_bridge_opeo" org.eventb.core.parentSet="/Bridge/WithDrawBridge.bpo|org.eventb.core.poFile#WithDrawBridge|org.eventb.core.poPredicateSet#EVTIDENTdraw_bridge_opeo" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdraw_bridge_opep" org.eventb.core.parentSet="/Bridge/WithDrawBridge.bpo|org.eventb.core.poFile#WithDrawBridge|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="state" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="draw_bridge_open'" org.eventb.core.type="BOOL"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdraw_bridge_opep" org.eventb.core.parentSet="/Bridge/WithDrawBridge.bpo|org.eventb.core.poFile#WithDrawBridge|org.eventb.core.poPredicateSet#EVTIDENTdraw_bridge_opep" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="state∈BOOL" org.eventb.core.source="/Bridge/WithDrawBridge.bum|org.eventb.core.machineFile#WithDrawBridge|org.eventb.core.event#_Lz4HcJuYEeqSt-shezaupA|org.eventb.core.guard#_9hUAwZuXEeqSt-shezaupA"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdraw_bridge_opeq" org.eventb.core.parentSet="/Bridge/WithDrawBridge.bpo|org.eventb.core.poFile#WithDrawBridge|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="nr" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="count'" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdraw_bridge_opeq" org.eventb.core.parentSet="/Bridge/WithDrawBridge.bpo|org.eventb.core.poFile#WithDrawBridge|org.eventb.core.poPredicateSet#EVTIDENTdraw_bridge_opeq" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="nr∈ℕ" org.eventb.core.source="/Bridge/Bridge.bum|org.eventb.core.machineFile#Bridge|org.eventb.core.event#_U4f_EpuXEeqSt-shezaupA|org.eventb.core.guard#_U4f_E5uXEeqSt-shezaupA"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="count+nr≤10" org.eventb.core.source="/Bridge/Bridge.bum|org.eventb.core.machineFile#Bridge|org.eventb.core.event#_U4f_EpuXEeqSt-shezaupA|org.eventb.core.guard#_deyC8puYEeqSt-shezaupA"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="draw_bridge_open=FALSE" org.eventb.core.source="/Bridge/WithDrawBridge.bum|org.eventb.core.machineFile#WithDrawBridge|org.eventb.core.event#_9hUAw5uXEeqSt-shezaupA|org.eventb.core.guard#_9hUAxZuXEeqSt-shezaupA"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTIDENTdraw_bridge_oper" org.eventb.core.parentSet="/Bridge/WithDrawBridge.bpo|org.eventb.core.poFile#WithDrawBridge|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="nr" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="count'" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPdraw_bridge_oper" org.eventb.core.parentSet="/Bridge/WithDrawBridge.bpo|org.eventb.core.poFile#WithDrawBridge|org.eventb.core.poPredicateSet#EVTIDENTdraw_bridge_oper" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="nr∈ℕ" org.eventb.core.source="/Bridge/Bridge.bum|org.eventb.core.machineFile#Bridge|org.eventb.core.event#_U4gmIZuXEeqSt-shezaupA|org.eventb.core.guard#_U4gmIpuXEeqSt-shezaupA"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="count − nr≥0" org.eventb.core.source="/Bridge/Bridge.bum|org.eventb.core.machineFile#Bridge|org.eventb.core.event#_U4gmIZuXEeqSt-shezaupA|org.eventb.core.guard#_ebSHcJuYEeqSt-shezaupA"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="draw_bridge_open=FALSE" org.eventb.core.source="/Bridge/WithDrawBridge.bum|org.eventb.core.machineFile#WithDrawBridge|org.eventb.core.event#__0GiwJuXEeqSt-shezaupA|org.eventb.core.guard#__0GiwpuXEeqSt-shezaupA"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Bridge/WithDrawBridge.bpo|org.eventb.core.poFile#WithDrawBridge|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="draw_bridge_open∈BOOL" org.eventb.core.source="/Bridge/WithDrawBridge.bum|org.eventb.core.machineFile#WithDrawBridge|org.eventb.core.invariant#_iXTtkpuXEeqSt-shezaupA"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

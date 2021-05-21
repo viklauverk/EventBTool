@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1614349535105" org.eventb.texttools.text_representation="context Context&#10;&#10;constants lo hi index loo hii&#10;&#10;axioms&#10;  @axm1 lo = 1&#10;  @axm2 hi = 10&#10;  @axm3 index = lo‥hi&#10;  @axm4 loo ∈ ℤ&#10;  @axm5 hii ∈ ℤ&#10;  @axm6 hii &gt; loo&#10;  theorem @thm1 card(index) = max(index)&#10;  theorem @thm2 lo = min(index)&#10;  theorem @thm3 hi = max(index)&#10;  theorem @thm4 5 = card(5‥9)&#10;  theorem @thm5 9 = max(5‥9)&#10;  theorem @thm6 hii = max(loo‥hii)&#10;end&#10;" version="3">
+    <org.eventb.core.constant name="_Y2GPcHg1EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="lo"/>
+    <org.eventb.core.constant name="_Y2GPcXg1EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="hi"/>
+    <org.eventb.core.axiom name="_eqxk0XgqEeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="axm1" org.eventb.core.predicate="lo = 1"/>
+    <org.eventb.core.axiom name="_Y2G2gHg1EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="axm2" org.eventb.core.predicate="hi = 10"/>
+    <org.eventb.core.axiom name="_Y2G2gXg1EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="axm3" org.eventb.core.predicate="index = lo‥hi"/>
+    <org.eventb.core.axiom name="_QgTTEHg-EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="axm4" org.eventb.core.predicate="loo ∈ ℤ"/>
+    <org.eventb.core.axiom name="_QgTTEXg-EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="axm5" org.eventb.core.predicate="hii ∈ ℤ"/>
+    <org.eventb.core.axiom name="_d6UBIHg-EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="axm6" org.eventb.core.predicate="hii &gt; loo"/>
+    <org.eventb.core.axiom name="_isBMsHgqEeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="thm1" org.eventb.core.predicate="card(index) = max(index)" org.eventb.core.theorem="true"/>
+    <org.eventb.core.axiom name="_F-J5EHg1EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="thm2" org.eventb.core.predicate="lo = min(index)" org.eventb.core.theorem="true"/>
+    <org.eventb.core.constant name="_2GJpIHg1EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="index"/>
+    <org.eventb.core.axiom name="_2GJpIXg1EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="thm3" org.eventb.core.predicate="hi = max(index)" org.eventb.core.theorem="true"/>
+    <org.eventb.core.axiom name="_ZxLiMHg2EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="thm4" org.eventb.core.predicate="5 = card(5‥9)" org.eventb.core.theorem="true"/>
+    <org.eventb.core.axiom name="_cviwwHg2EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="thm5" org.eventb.core.predicate="9 = max(5‥9)" org.eventb.core.theorem="true"/>
+    <org.eventb.core.axiom name="__ki8kHg9EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.label="thm6" org.eventb.core.predicate="hii = max(loo‥hii)" org.eventb.core.theorem="true"/>
+    <org.eventb.core.constant name="_Rk4VgHg-EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="loo"/>
+    <org.eventb.core.constant name="_Rk4VgXg-EeuIobokpwUdmw" org.eventb.core.generated="false" org.eventb.core.identifier="hii"/>
+</org.eventb.core.contextFile>

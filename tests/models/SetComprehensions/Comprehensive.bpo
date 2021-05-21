@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="38">
+    <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="29">
+        <org.eventb.core.poIdentifier name="coords" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+        <org.eventb.core.poIdentifier name="aboolean" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="numbers" org.eventb.core.type="ℙ(ℤ)"/>
+        <org.eventb.core.poIdentifier name="bools" org.eventb.core.type="ℙ(ℤ×BOOL)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="INITIALISATION/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="30">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTALLHYPabooleao"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(ℤ))⊆ℕ" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_K-eOAbSeEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_K-eOAbSeEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poSequent#INITIALISATION\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="30">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTALLHYPabooleao"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(ℤ×ℤ))⊆ℕ × ℕ" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_GnZDk7SfEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_GnZDk7SfEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poSequent#INITIALISATION\/inv2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="30">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTALLHYPabooleao"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(ℤ×BOOL))⊆ℕ × BOOL" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_DzF6gbSgEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_DzF6gbSgEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poSequent#INITIALISATION\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTabooleao" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="coords'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+        <org.eventb.core.poIdentifier name="bools'" org.eventb.core.type="ℙ(ℤ×BOOL)"/>
+        <org.eventb.core.poIdentifier name="aboolean'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="numbers'" org.eventb.core.type="ℙ(ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPabooleao" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTIDENTabooleao" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poSequent name="assignzPF/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="38">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTALLHYPabooleap"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{x⦂ℤ·x∈ℕ∧x&lt;10 ∣ x}⊆ℕ" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_K-eOAbSeEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.event#_CDHnILSfEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_K-eOAbSeEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poSequent#assignzPF\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTabooleap" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="38">
+        <org.eventb.core.poIdentifier name="numbers'" org.eventb.core.type="ℙ(ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPabooleap" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTIDENTabooleap" org.eventb.core.poStamp="38"/>
+    <org.eventb.core.poSequent name="assignFPSpecialForm/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="38">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTALLHYPabooleaq"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{x⦂ℤ·x∈ℕ∧x&lt;10 ∣ x+2}⊆ℕ" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_K-eOAbSeEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.event#_CDIOMLSfEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_K-eOAbSeEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poSequent#assignFPSpecialForm\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTabooleaq" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="38">
+        <org.eventb.core.poIdentifier name="numbers'" org.eventb.core.type="ℙ(ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPabooleaq" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTIDENTabooleaq" org.eventb.core.poStamp="38"/>
+    <org.eventb.core.poSequent name="assignFPSpecialFormPair/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="38">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTALLHYPaboolear"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{x⦂ℤ,y⦂ℤ·x∈ℕ∧y∈ℕ∧y&lt;x∧x&lt;10 ∣ x ↦ y}⊆ℕ × ℕ" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_GnZDk7SfEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.event#_NpnwMLSfEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_GnZDk7SfEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poSequent#assignFPSpecialFormPair\/inv2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTaboolear" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="38">
+        <org.eventb.core.poIdentifier name="coords'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPaboolear" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTIDENTaboolear" org.eventb.core.poStamp="38"/>
+    <org.eventb.core.poSequent name="assignFPSpecialCase/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="38">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTALLHYPabooleas"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{x⦂ℤ·x∈ℕ∧x&lt;10 ∣ x}⊆ℕ" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_K-eOAbSeEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.event#_CDIOMbSfEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_K-eOAbSeEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poSequent#assignFPSpecialCase\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTabooleas" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="38">
+        <org.eventb.core.poIdentifier name="numbers'" org.eventb.core.type="ℙ(ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPabooleas" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTIDENTabooleas" org.eventb.core.poStamp="38"/>
+    <org.eventb.core.poSequent name="assignFPSpecialCaseWithGlobal/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="38">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTALLHYPabooleat"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{x⦂ℤ,y⦂BOOL·x∈ℕ∧aboolean=y ∣ x ↦ y}⊆ℕ × BOOL" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_DzF6gbSgEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.event#_7oG9oLTBEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_DzF6gbSgEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poSequent#assignFPSpecialCaseWithGlobal\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTabooleat" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="38">
+        <org.eventb.core.poIdentifier name="bools'" org.eventb.core.type="ℙ(ℤ×BOOL)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPabooleat" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTIDENTabooleat" org.eventb.core.poStamp="38"/>
+    <org.eventb.core.poSequent name="assignFPSpecialCaseWithGloball/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="38">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTALLHYPabooleau"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{x⦂ℤ,aboolean⦂ℤ·x∈ℕ∧aboolean=1 ∣ x+aboolean}⊆ℕ" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_K-eOAbSeEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.event#_HS3mgLTAEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_K-eOAbSeEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poSequent#assignFPSpecialCaseWithGloball\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTabooleau" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="38">
+        <org.eventb.core.poIdentifier name="numbers'" org.eventb.core.type="ℙ(ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPabooleau" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#EVTIDENTabooleau" org.eventb.core.poStamp="38"/>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/SetComprehensions/Comprehensive.bpo|org.eventb.core.poFile#Comprehensive|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="38">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="numbers⊆ℕ" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_K-eOAbSeEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="coords⊆ℕ × ℕ" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_GnZDk7SfEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="bools⊆ℕ × BOOL" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_DzF6gbSgEeuMZpPdXDEZwA"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="aboolean∈BOOL" org.eventb.core.source="/SetComprehensions/Comprehensive.bum|org.eventb.core.machineFile#Comprehensive|org.eventb.core.invariant#_HXU90LTCEeuMZpPdXDEZwA"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

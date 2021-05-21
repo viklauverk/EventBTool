@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+    <org.eventb.core.scAxiom name="'" org.eventb.core.label="axm1" org.eventb.core.predicate="partition(STUFF,{AAAA},{BBBB},{CCCC},{DDDD},{EEEE},{FFFF},{GGGG},{HHHH},{IIII})" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.axiom#_lwLkgI_UEeupk-0J3ZLYpg" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name="(" org.eventb.core.label="axm2" org.eventb.core.predicate="maa&gt;1" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.axiom#_ocTCIY_4Eeupk-0J3ZLYpg" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name=")" org.eventb.core.label="axm3" org.eventb.core.predicate="mii&gt;−10" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.axiom#_9MgFMY_5Eeupk-0J3ZLYpg" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name="*" org.eventb.core.label="axm4" org.eventb.core.predicate="maa&gt;1⇒maa&gt;1" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.axiom#_uwWM8JLTEeuOiIjEm4X4Kg" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scConstant name="AAAA" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.constant#_lwK9cY_UEeupk-0J3ZLYpg" org.eventb.core.type="STUFF"/>
+    <org.eventb.core.scConstant name="BBBB" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.constant#_lwK9co_UEeupk-0J3ZLYpg" org.eventb.core.type="STUFF"/>
+    <org.eventb.core.scConstant name="CCCC" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.constant#_lwK9c4_UEeupk-0J3ZLYpg" org.eventb.core.type="STUFF"/>
+    <org.eventb.core.scConstant name="DDDD" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.constant#_lwK9dI_UEeupk-0J3ZLYpg" org.eventb.core.type="STUFF"/>
+    <org.eventb.core.scConstant name="EEEE" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.constant#_lwK9dY_UEeupk-0J3ZLYpg" org.eventb.core.type="STUFF"/>
+    <org.eventb.core.scCarrierSet name="STUFF" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.carrierSet#_lwK9cI_UEeupk-0J3ZLYpg" org.eventb.core.type="ℙ(STUFF)"/>
+    <org.eventb.core.scConstant name="FFFF" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.constant#_lwK9do_UEeupk-0J3ZLYpg" org.eventb.core.type="STUFF"/>
+    <org.eventb.core.scConstant name="GGGG" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.constant#_lwK9d4_UEeupk-0J3ZLYpg" org.eventb.core.type="STUFF"/>
+    <org.eventb.core.scConstant name="HHHH" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.constant#_lwK9eI_UEeupk-0J3ZLYpg" org.eventb.core.type="STUFF"/>
+    <org.eventb.core.scConstant name="IIII" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.constant#_lwK9eY_UEeupk-0J3ZLYpg" org.eventb.core.type="STUFF"/>
+    <org.eventb.core.scConstant name="maa" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.constant#_xsBhEI_4Eeupk-0J3ZLYpg" org.eventb.core.type="ℤ"/>
+    <org.eventb.core.scConstant name="mii" org.eventb.core.source="/WellCommented/Tale.buc|org.eventb.core.contextFile#Tale|org.eventb.core.constant#_9MgFMI_5Eeupk-0J3ZLYpg" org.eventb.core.type="ℤ"/>
+</org.eventb.core.scContextFile>

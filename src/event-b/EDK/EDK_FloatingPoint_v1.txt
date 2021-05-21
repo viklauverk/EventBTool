@@ -1,0 +1,24 @@
+context EDK_FloatingPoint_v1
+
+sets
+    Float
+constants
+    makeFloat        // A function to create a new Floating point number from a significand and an exponent.
+    addFloat         // Function to add two Floating point numbers.
+    subFloat         // Function to subtract two Floating point numbers.
+    mulFloat         // Function to multiply two Floating point numbers.
+    divFloat         // Function to divide two Floating point numbers.
+    greaterThanFloat // An infinte set of pairs of Floats where the left greater than the right.
+    lessThanFloat    // An infinte set of pairs of Floats where the left is less than the right.
+    equalFloat       // An infinte set of pairs of Floats where left equals right.
+    ZEROF            // Number 0.0 in Float.
+axioms
+     makeFloat∈ℤ×ℤ→ Float
+     ZEROF∈Float
+     ZEROF=makeFloat(0↦0)
+     addFloat∈Float×Float→ Float
+     subFloat∈Float×Float→ Float
+     mulFloat∈Float×Float→ Float
+     divFloat∈Float×Float→ Float
+     partition((Float×Float),greaterThanFloat,lessThanFloat,equalFloat)
+end

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.comment="Instructional use cases for the EDK. (License BSD-2-Clause © 2020 Viklauverk Author Fredrik Öhrström)" org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1591389979615" org.eventb.texttools.text_representation="machine ExamplesOfUse // Instructional use cases for the EDK. (License BSD-2-Clause © 2020 Viklauverk Author Fredrik Öhrström)&#10; sees EDK_FloatingPoint_v1 EDK_String_v1&#10;&#10;variables temperature // Track the temperature of the boiler.&#10;          name // Name of the game.&#10;&#10;&#10;invariants&#10;  @inv_temp temperature ∈ Float // The temperature is floating point.&#10;  @inv_name name ∈ String // Name is a string.&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @init_temp temperature ≔  ZEROF&#10;      @init_name name ≔ EMPTYS&#10;  end&#10;&#10;  event setTemperature&#10;    any s // Significand&#10;        e // Exponent&#10;&#10;    where&#10;      @grd1 s ∈ ℤ&#10;      @grd2 e ∈ ℤ&#10;    then&#10;      @act temperature ≔ makeFloat(s↦e)&#10;  end&#10;&#10;  event raiseTemperature&#10;    any inc&#10;    where&#10;      @grd1 inc ∈ Float&#10;    then&#10;      @act1 temperature ≔ addFloat(temperature ↦ inc) // Add inc to the current temperature.&#10;  end&#10;&#10;  event queryTemperature&#10;    any out_temp&#10;    where&#10;      @grd1 out_temp ∈ Float&#10;      @grd2 out_temp = temperature&#10;  end&#10;&#10;  event appendToName&#10;    any n&#10;    where&#10;      @grd1 n ∈ String&#10;    then&#10;      @act1 name≔concatString(name↦n)&#10;  end&#10;end&#10;" version="5">
+<org.eventb.core.seesContext name="_C70JYKcDEeqSntVW2Pte0w" org.eventb.core.target="EDK_FloatingPoint_v1"/>
+<org.eventb.core.seesContext name="_flIcIKdkEeqSntVW2Pte0w" org.eventb.core.target="EDK_String_v1"/>
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="_lfOTEKcDEeqSntVW2Pte0w" org.eventb.core.assignment="temperature ≔  ZEROF" org.eventb.core.generated="false" org.eventb.core.label="init_temp"/>
+<org.eventb.core.action name="_flIcIadkEeqSntVW2Pte0w" org.eventb.core.assignment="name ≔ EMPTYS" org.eventb.core.generated="false" org.eventb.core.label="init_name"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_TRvO8KcDEeqSntVW2Pte0w" org.eventb.core.comment="Track the temperature of the boiler." org.eventb.core.generated="false" org.eventb.core.identifier="temperature"/>
+<org.eventb.core.invariant name="_TRvO8acDEeqSntVW2Pte0w" org.eventb.core.comment="The temperature is floating point." org.eventb.core.generated="false" org.eventb.core.label="inv_temp" org.eventb.core.predicate="temperature ∈ Float"/>
+<org.eventb.core.event name="_-SZ8AKcHEeqSntVW2Pte0w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="setTemperature">
+<org.eventb.core.parameter name="_-SZ8AacHEeqSntVW2Pte0w" org.eventb.core.comment="Significand" org.eventb.core.generated="false" org.eventb.core.identifier="s"/>
+<org.eventb.core.parameter name="_-SZ8AqcHEeqSntVW2Pte0w" org.eventb.core.comment="Exponent" org.eventb.core.generated="false" org.eventb.core.identifier="e"/>
+<org.eventb.core.guard name="_lqVaEqcHEeqSntVW2Pte0w" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="s ∈ ℤ"/>
+<org.eventb.core.guard name="_lqVaE6cHEeqSntVW2Pte0w" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="e ∈ ℤ"/>
+<org.eventb.core.action name="_-SZ8A6cHEeqSntVW2Pte0w" org.eventb.core.assignment="temperature ≔ makeFloat(s↦e)" org.eventb.core.generated="false" org.eventb.core.label="act"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_lqVaEKcHEeqSntVW2Pte0w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="raiseTemperature">
+<org.eventb.core.parameter name="_lqVaEacHEeqSntVW2Pte0w" org.eventb.core.generated="false" org.eventb.core.identifier="inc"/>
+<org.eventb.core.guard name="_-SZ8BKcHEeqSntVW2Pte0w" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="inc ∈ Float"/>
+<org.eventb.core.action name="_lqWBIKcHEeqSntVW2Pte0w" org.eventb.core.assignment="temperature ≔ addFloat(temperature ↦ inc)" org.eventb.core.comment="Add inc to the current temperature." org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_flJDMKdkEeqSntVW2Pte0w" org.eventb.core.comment="Name of the game." org.eventb.core.generated="false" org.eventb.core.identifier="name"/>
+<org.eventb.core.invariant name="_flJDMadkEeqSntVW2Pte0w" org.eventb.core.comment="Name is a string." org.eventb.core.generated="false" org.eventb.core.label="inv_name" org.eventb.core.predicate="name ∈ String"/>
+<org.eventb.core.event name="_aoUNwKdtEeqSntVW2Pte0w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="queryTemperature">
+<org.eventb.core.parameter name="_aoUNwadtEeqSntVW2Pte0w" org.eventb.core.generated="false" org.eventb.core.identifier="out_temp"/>
+<org.eventb.core.guard name="_j_cEQqdkEeqSntVW2Pte0w" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="out_temp ∈ Float"/>
+<org.eventb.core.guard name="_m9n9kKdtEeqSntVW2Pte0w" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="out_temp = temperature"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_p6SSEKdkEeqSntVW2Pte0w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="appendToName">
+<org.eventb.core.parameter name="_j_cEQadkEeqSntVW2Pte0w" org.eventb.core.generated="false" org.eventb.core.identifier="n"/>
+<org.eventb.core.guard name="_aoUNwqdtEeqSntVW2Pte0w" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="n ∈ String"/>
+<org.eventb.core.action name="_j_cEQ6dkEeqSntVW2Pte0w" org.eventb.core.assignment="name≔concatString(name↦n)" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+</org.eventb.core.machineFile>

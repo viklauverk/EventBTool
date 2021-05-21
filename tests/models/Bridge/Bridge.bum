@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1590088979630" org.eventb.texttools.text_representation="machine Bridge&#10;&#10;variables count // Number of cars on bridge&#10;&#10;&#10;invariants&#10;  @inv1 count ∈ ℕ&#10;  @inv2 count ≥ 0&#10;  @inv3 count ≤ 10&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @init1 count≔0&#10;  end&#10;&#10;  event enter&#10;    any nr&#10;    where&#10;      @grd1 nr ∈ ℕ&#10;      @grd2 count+nr ≤ 10&#10;    then&#10;      @act1 count≔count+nr&#10;  end&#10;&#10;  event leave&#10;    any nr&#10;    where&#10;      @grd1 nr ∈ ℕ&#10;      @grd2 count−nr ≥ 0&#10;    then&#10;      @act1 count≔count−nr&#10;  end&#10;end&#10;" version="5">
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="_J-r84JuXEeqSt-shezaupA" org.eventb.core.assignment="count≔0" org.eventb.core.generated="false" org.eventb.core.label="init1"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_J-sj8JuXEeqSt-shezaupA" org.eventb.core.comment="Number of cars on bridge" org.eventb.core.generated="false" org.eventb.core.identifier="count"/>
+<org.eventb.core.invariant name="_U4f_EJuXEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.label="inv1" org.eventb.core.predicate="count ∈ ℕ"/>
+<org.eventb.core.invariant name="_U4f_EZuXEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.label="inv2" org.eventb.core.predicate="count ≥ 0"/>
+<org.eventb.core.event name="_U4f_EpuXEeqSt-shezaupA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="enter">
+<org.eventb.core.parameter name="_dexb4JuYEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.identifier="nr"/>
+<org.eventb.core.guard name="_U4f_E5uXEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="nr ∈ ℕ"/>
+<org.eventb.core.guard name="_deyC8puYEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="count+nr ≤ 10"/>
+<org.eventb.core.action name="_U4gmIJuXEeqSt-shezaupA" org.eventb.core.assignment="count≔count+nr" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_U4gmIZuXEeqSt-shezaupA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="leave">
+<org.eventb.core.parameter name="_deyC8JuYEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.identifier="nr"/>
+<org.eventb.core.guard name="_U4gmIpuXEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="nr ∈ ℕ"/>
+<org.eventb.core.guard name="_ebSHcJuYEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="count−nr ≥ 0"/>
+<org.eventb.core.action name="_U4gmI5uXEeqSt-shezaupA" org.eventb.core.assignment="count≔count−nr" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.invariant name="_deyC85uYEeqSt-shezaupA" org.eventb.core.generated="false" org.eventb.core.label="inv3" org.eventb.core.predicate="count ≤ 10"/>
+</org.eventb.core.machineFile>
