@@ -13,7 +13,7 @@ are looking for, it might not, ie the tool is work in progress. :-)
 
 The tool is a single binary `evbt`. It is distributed as a single executable jar file (ie
 a jar file that starts with a Posix shell-script that starts java on the jar itself.
-[Download latest release here!](https://github.com/viklauverk/EventBTool/releases/latest/download/evbt)
+[Download latest release here!](https://github.com/viklauverk/EventBTool/releases/download/v1.0.0/evbt)
 
 Do `chmod a+x evbt` and place evbt in your PATH and make sure you have Java 11 or later in your path as well.
 
