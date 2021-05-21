@@ -110,7 +110,7 @@ Odd version numbers of the contexts in the EDK are in development and flux, even
 ```
 Event-B Tools (EVBT) AGPL-3.0-or-later
 
-Copyright (C) 2019-2020 Viklauverk AB
+Copyright (C) 2021 Viklauverk AB
 Author Fredrik Öhrström
 
 This program is free software: you can redistribute it and/or modify
@@ -133,7 +133,7 @@ and into any generated code.
 ```
 Event-B Development Kit (EDK) BSD-2-Clause
 
-Copyright 2020 Viklauverk AB
+Copyright 2021 Viklauverk AB
 Author Fredrik Öhrström
 
 Redistribution and use in source and binary forms, with or without
