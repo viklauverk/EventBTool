@@ -98,6 +98,7 @@ public class Unicode
     {
         BACKSLASH         ('\\',"\\textbackslash "),
         HASH              ('#', "\\#"),
+        AMPERSAND         ('&', "\\&"),
         LBRACE            ('{', "\\{"),
         RBRACE            ('}', "\\}"),
         UNDERLINE         ('_', "\\_"),

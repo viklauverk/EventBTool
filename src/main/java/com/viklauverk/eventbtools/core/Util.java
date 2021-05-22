@@ -289,6 +289,11 @@ public class Util
                 sb.append("\\protect\\UL ");
             }
             else
+            if (c == '&')
+            {
+                sb.append("\\&");
+            }
+            else
             if (c == '^')
             {
                 sb.append("\\^");
