@@ -29,6 +29,13 @@ public class Typed
         return type_;
     }
 
+    public Type updateType(Type t)
+    {
+        if (t == null) return type_;
+        setType(t);
+        return type_;
+    }
+
     public void setType(Type t)
     {
         assert t != null : "Type must not be null!";

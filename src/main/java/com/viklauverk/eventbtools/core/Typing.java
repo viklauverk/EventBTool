@@ -220,16 +220,14 @@ public class Typing
         case "var_primitive": // x:NAT
         {
             Variable variable = symbols.getVariable(pattern().getVar("x"));
-            Type type = lookupType(predicate.right());
-            variable.setType(type);
+            Type type = variable.updateType(lookupType(predicate.right()));
             log.debug("typing variable %s to %s", variable, type);
             return;
         }
         case "const_primitive": // c:NAT
         {
             Constant constant = symbols.getConstant(pattern().getConst("c"));
-            Type type = lookupType(predicate.right());
-            constant.setType(type);
+            Type type = constant.updateType(lookupType(predicate.right()));
             log.debug("typing constant %s to %s", constant, type);
             return;
         }
@@ -238,7 +236,7 @@ public class Typing
             Variable variable = symbols.getVariable(pattern().getVar("x"));
             Formula n = pattern().getNumber("N");
             Type type = lookup("NAT");
-            if (n.intData() == 0)
+            if (n.intData() > 0)
             {
                 type = lookup("NAT1");
             }
@@ -251,7 +249,7 @@ public class Typing
             Constant constant = symbols.getConstant(pattern().getConst("c"));
             Formula n = pattern().getNumber("N");
             Type type = lookup("NAT");
-            if (n.intData() == 0)
+            if (n.intData() > 0)
             {
                 type = lookup("NAT1");
             }
@@ -262,7 +260,6 @@ public class Typing
         case "var_in_set": // x:S used for dir:DIR ids:POW(NAT)
         {
             Variable member = symbols.getVariable(pattern().getVar("x"));
-            Type type = null;
 
             Formula S = pattern().getSet("S");
             if (S.isSymbol())
@@ -270,15 +267,13 @@ public class Typing
                 // Its a set symbol, could be DIR for example.
                 CarrierSet set  = symbols.getSet(S.symbol());
                 assert (set != null) : "internal error: set not found: "+pattern().getSet("S")+" in "+symbols.tree();
-                type = lookup(set.name()); // A carrier set is its own type!
-                member.setType(type);
-                log.debug("typing variable %s to carrier set %s in %s", member, member.type(), symbols.tree());
+                Type type = member.updateType(lookup(set.name())); // A carrier set is its own type!
+                log.debug("typing variable %s to carrier set %s in %s", member, type, symbols.tree());
             }
             else
             {
-                // It is not a symbol, coult be a set like POW(NAT).
-                type = lookupType(S);
-                member.setType(type);
+                // It is not a symbol, could be a set like POW(NAT).
+                Type type = member.updateType(lookupType(S));
                 log.debug("typing variable %s to set %s", member, type);
             }
             return;
@@ -286,7 +281,6 @@ public class Typing
         case "const_in_set": // c:S used for MakeFlot:NAT**NAT --> Float
         {
             Constant member = symbols.getConstant(pattern().getConst("c"));
-            Type type = null;
 
             Formula S = pattern().getSet("S");
             if (S.isSymbol())
@@ -294,15 +288,13 @@ public class Typing
                 // Its a set symbol, could be DIR for example.
                 CarrierSet set  = symbols.getSet(S.symbol());
                 assert (set != null) : "internal error: set not found: "+pattern().getSet("S")+" in "+symbols.tree();
-                type = lookup(set.name()); // A carrier set is its own type!
-                member.setType(type);
-                log.debug("typing constant %s to carrier set %s in %s", member, member.type(), symbols.tree());
+                Type type = member.updateType(lookup(set.name())); // A carrier set is its own type!
+                log.debug("typing constant %s to carrier set %s in %s", member, type, symbols.tree());
             }
             else
             {
                 // It is not a symbol, coult be a set like POW(NAT).
-                type = lookupType(S);
-                member.setType(type);
+                Type type = member.updateType(lookupType(S));
                 log.debug("typing constant %s to set %s", member, type);
             }
             return;
@@ -311,20 +303,13 @@ public class Typing
         {
             Variable member = symbols.getVariable(pattern().getVar("x"));
             Variable set    = symbols.getVariable(pattern().getVar("y"));
-            if (set.type() == null)
-            {
-                log.info("Oups! No type found for %s in predicate: %s", set, predicate);
-                return;
-            }
-            Type type = deduceInnerType(set.type());
-            member.setType(type);
+            Type type = member.updateType(deduceInnerType(set.type()));
             log.debug("typing variable %s to %s through %s", member, type, set);
             return;
         }
         case "var_is_subset": // x<:NAT used for id  ⊆ ℕ
         {
             Variable member = symbols.getVariable(pattern().getVar("x"));
-            Type type = null;
 
             Formula S = pattern().getSet("S");
             if (S.isSymbol())
@@ -332,17 +317,17 @@ public class Typing
                 // Its a set symbol, could be DIR for example.
                 CarrierSet set  = symbols.getSet(S.symbol());
                 assert (set != null) : "internal error: set not found: "+pattern().getSet("S")+" in "+symbols.tree();
-                type = lookup(set.name());
+                Type type = lookup(set.name());
                 type = lookupType(FormulaFactory.newPowerSet(type.formula()));
-                member.setType(type);
-                log.debug("typing (subset) variable %s to %s in %s", member, member.type(), symbols.tree());
+                type = member.updateType(type);
+                log.debug("typing (subset) variable %s to %s in %s", member, type, symbols.tree());
             }
             else
             {
-                // It is not a symbol, coult be a set like POW(NAT).
-                type = lookupType(S);
+                // It is not a symbol, could be a set like POW(NAT).
+                Type type = lookupType(S);
                 type = lookupType(FormulaFactory.newPowerSet(type.formula()));
-                member.setType(type);
+                type = member.updateType(type);
                 log.debug("typing (subset) variable %s to %s", member, type);
             }
             return;
@@ -353,19 +338,19 @@ public class Typing
             Variable y = symbols.getVariable(pattern().getVar("y"));
             if (y.type() == null)
             {
-                log.info("Oups! No type found for %s in predicate: %s", y, predicate);
+                log.debug("No type known for %s in predicate: %s", y, predicate);
                 return;
             }
             log.debug("%s has type %s", y, y.type());
             Type type = deduceInnerType(y.type());
             if (type == null)
             {
-                log.debug("could not deduce inner type of %s", y.type());
+                log.debug("Could not deduce inner type of %s", y.type());
                 return;
             }
             type = lookupType(FormulaFactory.newPowerSet(type.formula()));
-            x.setType(type);
-            log.debug("typing (subset of var) variable %s to %s through %s", x, x.type(), symbols.tree());
+            type = x.updateType(type);
+            log.debug("typing (subset of var) variable %s to %s through %s", x, type, symbols.tree());
             return;
         }
 
@@ -380,6 +365,8 @@ public class Typing
      */
     public void forceTypeOnExpression(Formula expression, Type type, SymbolTable symbols)
     {
+        assert type != null;
+
         boolean ok = pattern().match(expression,
                                      "variable", "x");
 
@@ -604,35 +591,27 @@ public class Typing
             Formula lvalue = pattern().getVar("x");
             Formula rvalue = pattern().getPred("P");
             Variable var = symbols.getVariable(lvalue.symbol());
-            var.setType(lookup("BOOL"));
-            log.debug("defining variable %s to be bool(%s) of type %s", var.name(), rvalue, "BOOL");
+            Type type = var.updateType(lookup("BOOL"));
+            log.debug("defining variable %s to be bool(%s) of type %s", var.name(), rvalue, type);
             return true;
         }
         case "var_def": // x = E
         {
             Formula lvalue = pattern().getVar("x");
             Formula rvalue = pattern().getExpr("E");
-
-            Type type = deducePossibleTypesFromExpression(rvalue, symbols);
-            if (type != null)
-            {
-                Variable var = symbols.getVariable(lvalue.symbol());
-                var.setType(type);
-                var.setDefinition(rvalue);
-                log.debug("defining variable %s to be var_def %s of type %s", var.name(), var.definition(), type);
-                return true;
-            }
-            return false;
+            Variable var = symbols.getVariable(lvalue.symbol());
+            Type type = var.updateType(deducePossibleTypesFromExpression(rvalue, symbols));
+            var.setDefinition(rvalue);
+            log.debug("defining variable %s to be var_def %s of type %s", var.name(), var.definition(), type);
+            return true;
         }
         case "const_def": // c = E
         {
             Formula lvalue = pattern().getConst("c");
             Formula rvalue = pattern().getExpr("E");
 
-            Type type = deducePossibleTypesFromExpression(rvalue, symbols);
             Constant co = symbols.getConstant(lvalue.symbol());
-
-            co.setType(type);
+            Type type = co.updateType(deducePossibleTypesFromExpression(rvalue, symbols));
             co.setDefinition(rvalue);
             log.debug("defining constant %s to be const_def %s of type %s", co.name(), co.definition(), type);
             return true;
@@ -650,11 +629,8 @@ public class Typing
             Formula var = pattern().getVar("x");
             Formula func = pattern().getVar("y");
             Formula index = pattern().getExpr("E");
-
-            Type type = deducePossibleTypesFromExpression(fapp, symbols);
             Variable variable = symbols.getVariable(var.symbol());
-
-            variable.setType(type);
+            Type type = variable.updateType(deducePossibleTypesFromExpression(fapp, symbols));
             variable.setDefinition(f.right());
             log.debug("defining variable %s to be var_def_func %s of type %s", variable.name(), variable.definition(), type);
             return true;
@@ -665,11 +641,8 @@ public class Typing
             Formula var = pattern().getVar("x");
             Formula func = pattern().getConst("c");
             Formula index = pattern().getExpr("E");
-
-            Type type = deducePossibleTypesFromExpression(fapp, symbols);
             Variable variable = symbols.getVariable(var.symbol());
-
-            variable.setType(type);
+            Type type = variable.updateType(deducePossibleTypesFromExpression(fapp, symbols));
             variable.setDefinition(f.right());
             log.debug("defining variable %s to be var_def_const_func %s of type %s", variable.name(), variable.definition(), type);
             return true;
@@ -736,25 +709,19 @@ public class Typing
         {
             Formula lvalue = pattern().getVar("x");
             Formula rvalue = pattern().getExpr("E");
+            Variable var = symbols.getVariable(lvalue.symbol());
 
-            Type type = deducePossibleTypesFromExpression(rvalue, symbols);
-            if (type != null)
-            {
-                Variable var = symbols.getVariable(lvalue.symbol());
-                var.setType(type);
-                log.debug("typing (become) variable %s to %s", lvalue, type);
-            }
+            Type type = var.updateType(deducePossibleTypesFromExpression(rvalue, symbols));
+            log.debug("typing (become) variable %s to %s", lvalue, type);
             return;
         }
         case "const": // x := c
         {
             Formula lvalue = pattern().getVar("x");
             Formula rvalue = pattern().getConst("c");
-
-            Type type = deducePossibleTypesFromExpression(rvalue, symbols);
             Variable var = symbols.getVariable(lvalue.symbol());
 
-            var.setType(type);
+            Type type = var.updateType(deducePossibleTypesFromExpression(rvalue, symbols));
             log.debug("typing (become) variable %s to %s", lvalue, type);
             return;
         }
