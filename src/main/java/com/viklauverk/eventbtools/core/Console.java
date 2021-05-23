@@ -126,21 +126,15 @@ public class Console
         BaseDocGen bdg = DocGen.lookup(cs, ds, sys_);
 
         String result = "";
-        try
+
+        Canvas cnvs = sys().console().currentCanvas();
+        cnvs.setRenderTarget(rt);
+        cnvs.setRenderAttributes(ra);
+        cnvs.clear();
+        result = bdg.renderParts(cnvs, name);
+        if (ra.frame())
         {
-            Canvas cnvs = sys().console().currentCanvas();
-            cnvs.setRenderTarget(rt);
-            cnvs.setRenderAttributes(ra);
-            cnvs.clear();
-            result = bdg.renderParts(cnvs, name);
-            if (ra.frame())
-            {
-                result = cnvs.frame("", result, Canvas.sline);
-            }
-        }
-        catch (Exception e)
-        {
-            return e.getMessage();
+            result = cnvs.frame("", result, Canvas.sline);
         }
         return result;
     }
@@ -282,50 +276,52 @@ public class Console
         {
             log.debug("expanded command: '%s' to '%s'", line_in, line);
         }
+        CharStream lineStream = CharStreams.fromString(line);
+
+        ConsoleLexer lexer = new ConsoleLexer(lineStream);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        ConsoleParser parser = new ConsoleParser(tokens);
+        //parser.setTrace(true);
+        lexer.removeErrorListeners();
+        parser.removeErrorListeners();
+        parser.addErrorListener(ThrowingErrorListener.INSTANCE);
+
+        log.debug("go: %s", line);
+        ParseTree tree = null;
         try
         {
-            CharStream lineStream = CharStreams.fromString(line);
-
-            ConsoleLexer lexer = new ConsoleLexer(lineStream);
-            CommonTokenStream tokens = new CommonTokenStream(lexer);
-            ConsoleParser parser = new ConsoleParser(tokens);
-            //parser.setTrace(true);
-            lexer.removeErrorListeners();
-            parser.removeErrorListeners();
-            parser.addErrorListener(ThrowingErrorListener.INSTANCE);
-
-            try
-            {
-                log.debug("go: %s", line);
-                ParseTree tree = parser.start();
-                if (parser.getNumberOfSyntaxErrors() > 0)
-                {
-                    String info = "Could not parse: \""+line+"\" since it has "+
-                        parser.getNumberOfSyntaxErrors()+
-                        " syntax errors.\n";
-
-                    log.debug(info);
-                    return info;
-                }
-
-                ConsoleExecutor ce = new ConsoleExecutor(this, tokens);
-                return ce.visit(tree);
-            }
-            catch (Exception e)
-            {
-                String info = "Could not parse command: \""+line+"\"\n"+e.getMessage();
-                log.info(info);
-                System.out.println("========================");
-                System.out.println(ReflectionToStringBuilder.toString(parser));
-                System.out.println("========================");
-                return info;
-            }
+            tree = parser.start();
         }
         catch (Exception e)
         {
-            String info = "Exception when parsing: \""+line+"\"\n"+e.getMessage();
-            log.debug(info);
+            String info = "Could not parse command: \""+line+"\"\n"+e.getMessage();
+            log.info("%s", info);
+            /*
+              System.out.println("========================");
+              System.out.println(ReflectionToStringBuilder.toString(parser));
+              System.out.println("========================");*/
             return info;
+        }
+        if (parser.getNumberOfSyntaxErrors() > 0)
+        {
+            String info = "Could not parse: \""+line+"\" since it has "+
+                parser.getNumberOfSyntaxErrors()+
+                " syntax errors.\n";
+
+            log.debug("%s", info);
+            return info;
+        }
+
+        try
+        {
+            ConsoleExecutor ce = new ConsoleExecutor(this, tokens);
+            return ce.visit(tree);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            log.info("Could not execute command \"%s\"", line);
+            return "FAILED COMMAND \""+line+"\"";
         }
     }
 

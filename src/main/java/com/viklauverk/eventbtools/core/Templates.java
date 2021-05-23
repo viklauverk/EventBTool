@@ -273,6 +273,7 @@ public static String TeXDefinitions =
 "\\newcommand{\\AXM}[1]{#1}%\n"+
 "\\newcommand{\\THM}[1]{#1}%\n"+
 "\\newcommand{\\GRD}[1]{#1}%\n"+
+"\\newcommand{\\WIT}[1]{#1}%\n"+
 "\\newcommand{\\ACT}[1]{#1}%\n"+
 "\n"+
 "\\setlength\\LTpre{-2mm}\n"+

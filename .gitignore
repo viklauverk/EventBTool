@@ -1,1 +1,11 @@
 build
+*.bpo
+*.bps
+*.bcc
+*.bcm
+*.aux
+*.bcf
+*.log
+*.rai
+*.rao
+*.toc

@@ -409,6 +409,15 @@ public class Machine
                 event.addGuard(new Guard(l, p, c));
             }
 
+            List<Node> witnesses = e.selectNodes("org.eventb.core.witness");
+            for (Node w : witnesses)
+            {
+                String l = w.valueOf("@org.eventb.core.label");
+                String p = w.valueOf("@org.eventb.core.predicate");
+                String c = w.valueOf("@org.eventb.core.comment");
+                event.addWitness(new Witness(l, p, c));
+            }
+
             List<Node> actions = e.selectNodes("org.eventb.core.action");
             for (Node a : actions)
             {

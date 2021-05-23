@@ -94,7 +94,7 @@ public abstract class BaseDocGen
 
     public abstract String generateDocument() throws Exception;
 
-    public String renderParts(Canvas cnvs, String pattern) throws Exception
+    public String renderParts(Canvas cnvs, String pattern)
     {
         AllRenders ar = sys().lookupRenders(cnvs.renderTarget(),
                                             cnvs);

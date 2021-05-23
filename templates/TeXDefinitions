@@ -201,6 +201,7 @@
 \newcommand{\AXM}[1]{#1}%
 \newcommand{\THM}[1]{#1}%
 \newcommand{\GRD}[1]{#1}%
+\newcommand{\WIT}[1]{#1}%
 \newcommand{\ACT}[1]{#1}%
 
 \setlength\LTpre{-2mm}

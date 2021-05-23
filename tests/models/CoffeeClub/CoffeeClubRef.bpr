@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.prFile version="1">
+    <org.eventb.core.prProof name="INITIALISATION/inv11/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p1">
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p1" org.eventb.core.prHyps=""/>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="⊤"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="(∅ ⦂ ℙ(MEMBER×ℤ))∈(∅ ⦂ ℙ(MEMBER)) → ℕ"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="INITIALISATION/inv12/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0"/>
+        <org.eventb.core.prIdent name="coffeeprice'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="coffeeprice'∈ℕ1"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="INITIALISATION/act12/FIS" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p1">
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p1" org.eventb.core.prHyps=""/>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="ℕ1≠(∅ ⦂ ℙ(ℤ))"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="⊤"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="SetPrice/inv12/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p6"/>
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p2,p3,p4,p1,p5">
+                    <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="coffeeprice" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prIdent name="new_price" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="coffeeprice∈ℕ1"/>
+        <org.eventb.core.prPred name="p6" org.eventb.core.predicate="members⊆MEMBER"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="finite(MEMBER)"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="piggybank∈ℕ"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="new_price∈ℕ1"/>
+        <org.eventb.core.prPred name="p5" org.eventb.core.predicate="new_price∈1 ‥ 30"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="NewMember/inv11/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p5"/>
+                <org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p6"/>
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p2,p3,p4,p1">
+                    <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="coffeeprice" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prIdent name="new_member" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prIdent name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="coffeeprice∈ℕ1"/>
+        <org.eventb.core.prPred name="p5" org.eventb.core.predicate="members⊆MEMBER"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="finite(MEMBER)"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="piggybank∈ℕ"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p6" org.eventb.core.predicate="new_member∈MEMBER"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="accounts{new_member ↦ 0}∈members∪{new_member} → ℕ"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="Contribute/inv11/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p9"/>
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p2,p3,p4,p1,p7,p5,p6,p8">
+                    <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="coffeeprice" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="contribution" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="member" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prIdent name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="coffeeprice∈ℕ1"/>
+        <org.eventb.core.prPred name="p9" org.eventb.core.predicate="members⊆MEMBER"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="accounts{member ↦ accounts(member)+contribution}∈members → ℕ"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="finite(MEMBER)"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="piggybank∈ℕ"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p5" org.eventb.core.predicate="member∈members"/>
+        <org.eventb.core.prPred name="p6" org.eventb.core.predicate="member∈dom(accounts)"/>
+        <org.eventb.core.prPred name="p7" org.eventb.core.predicate="contribution∈1 ‥ 70"/>
+        <org.eventb.core.prPred name="p8" org.eventb.core.predicate="accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="Contribute/act0/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p3"/>
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∧ goal" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+                    <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+                        <org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="total function dom substitution in goal" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="p2">
+                            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p1">
+                                <org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p1" org.eventb.core.prHyps="p1"/>
+                            </org.eventb.core.prAnte>
+                            <org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+                            <org.eventb.core.prExprRef name=".subst" org.eventb.core.prRef="e0"/>
+                        </org.eventb.core.prRule>
+                    </org.eventb.core.prAnte>
+                    <org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p5">
+                        <org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="functional goal" org.eventb.core.prGoal="p5" org.eventb.core.prHyps="p2"/>
+                    </org.eventb.core.prAnte>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="member" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="members⊆MEMBER"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="member∈dom(accounts)∧accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="member∈members"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="member∈dom(accounts)"/>
+        <org.eventb.core.prPred name="p5" org.eventb.core.predicate="accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prExpr name="e0" org.eventb.core.expression="members"/>
+        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
+        <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="Contribute/piggybank/EQL" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prHyps="">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p0"/>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="members⊆MEMBER">
+            <org.eventb.core.prIdent name="MEMBER" org.eventb.core.type="ℙ(MEMBER)"/>
+            <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        </org.eventb.core.prPred>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="BuyCoffee/grd0/WD" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p2"/>
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∧ goal" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+                    <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p3"/>
+                    <org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p4">
+                        <org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="functional goal" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="p1"/>
+                    </org.eventb.core.prAnte>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="member_buy" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="member_buy∈dom(accounts)∧accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="members⊆MEMBER"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="member_buy∈dom(accounts)"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="BuyCoffee/inv11/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p8"/>
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p2,p4,p5,p1,p6,p3,p7">
+                    <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="coffeeprice" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="member_buy" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prIdent name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="coffeeprice∈ℕ1"/>
+        <org.eventb.core.prPred name="p8" org.eventb.core.predicate="members⊆MEMBER"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="finite(MEMBER)"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="accounts(member_buy)≥coffeeprice"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="piggybank∈ℕ"/>
+        <org.eventb.core.prPred name="p5" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p6" org.eventb.core.predicate="member_buy∈dom(accounts)"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="accounts{member_buy ↦ accounts(member_buy) − coffeeprice}∈members → ℕ"/>
+        <org.eventb.core.prPred name="p7" org.eventb.core.predicate="accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="BuyCoffee/act0/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p2">
+            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p3">
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p3" org.eventb.core.prHyps="">
+                    <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+                        <org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="functional goal" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="p1"/>
+                    </org.eventb.core.prAnte>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="member_buy" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="member_buy∈dom(accounts)∧accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="member_buy∈dom(accounts)"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="⊤∧accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="Contribute/grd1/GRD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p7"/>
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p2,p3,p4,p1,p6,p5">
+                    <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="coffeeprice" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="contribution" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="member" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prIdent name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="coffeeprice∈ℕ1"/>
+        <org.eventb.core.prPred name="p7" org.eventb.core.predicate="members⊆MEMBER"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="finite(MEMBER)"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="piggybank∈ℕ"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p5" org.eventb.core.predicate="member∈members"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="contribution∈1 ‥ 100"/>
+        <org.eventb.core.prPred name="p6" org.eventb.core.predicate="contribution∈1 ‥ 70"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="Contribute/act1/SIM" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p1">
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p1" org.eventb.core.prHyps=""/>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="contribution" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="⊤"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="piggybank+contribution=piggybank+contribution"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="BuyCoffee/grd1/GRD" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prHyps="">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p0"/>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="members⊆MEMBER">
+            <org.eventb.core.prIdent name="MEMBER" org.eventb.core.type="ℙ(MEMBER)"/>
+            <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        </org.eventb.core.prPred>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="BuyCoffee/grd2/GRD" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prHyps="">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p0"/>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="members⊆MEMBER">
+            <org.eventb.core.prIdent name="MEMBER" org.eventb.core.type="ℙ(MEMBER)"/>
+            <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        </org.eventb.core.prPred>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="BuyCoffee/act1/SIM" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prHyps="">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p0"/>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="members⊆MEMBER">
+            <org.eventb.core.prIdent name="MEMBER" org.eventb.core.type="ℙ(MEMBER)"/>
+            <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        </org.eventb.core.prPred>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="BuyCoffee/grd1/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p2">
+            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p3">
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p3" org.eventb.core.prHyps="">
+                    <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+                        <org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="functional goal" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="p1"/>
+                    </org.eventb.core.prAnte>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="member_buy" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="member_buy∈dom(accounts)∧accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="member_buy∈dom(accounts)"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="⊤∧accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="Contribute/grd_1/GRD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p8"/>
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p6,p7,p4,p5">
+                    <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="coffeeprice" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="contribution" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="member" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prIdent name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p8" org.eventb.core.predicate="members⊆MEMBER"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="finite(MEMBER)"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="piggybank∈ℕ"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="member∈members"/>
+        <org.eventb.core.prPred name="p5" org.eventb.core.predicate="member∈dom(accounts)"/>
+        <org.eventb.core.prPred name="p6" org.eventb.core.predicate="coffeeprice∈1 ‥ 30"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="contribution∈1 ‥ 100"/>
+        <org.eventb.core.prPred name="p7" org.eventb.core.predicate="contribution∈1 ‥ 70"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="Contribute/act_1/SIM" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p1">
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p1" org.eventb.core.prHyps=""/>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="contribution" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="⊤"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="piggybank+contribution=piggybank+contribution"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="BuyCoffee/grd_1/GRD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p8"/>
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p3,p4,p6,p5,p2,p7">
+                    <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="coffeeprice" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="member_buy" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prIdent name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p8" org.eventb.core.predicate="members⊆MEMBER"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="coffeeprice∈1 ‥ 50"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="finite(MEMBER)"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="accounts(member_buy)≥coffeeprice"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="piggybank∈ℕ"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p5" org.eventb.core.predicate="member_buy∈dom(accounts)"/>
+        <org.eventb.core.prPred name="p6" org.eventb.core.predicate="coffeeprice∈1 ‥ 30"/>
+        <org.eventb.core.prPred name="p7" org.eventb.core.predicate="accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="BuyCoffee/grd_2/GRD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0"/>
+        <org.eventb.core.prIdent name="coffeeprice" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="coffeeprice≤piggybank"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="BuyCoffee/act_1/SIM" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p1">
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p1" org.eventb.core.prHyps=""/>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="coffeeprice" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="⊤"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="piggybank − coffeeprice=piggybank − coffeeprice"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="BuyCoffee/grd1_2/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p2">
+            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p3">
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p3" org.eventb.core.prHyps="">
+                    <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+                        <org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="functional goal" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="p1"/>
+                    </org.eventb.core.prAnte>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="member_buy" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="member_buy∈dom(accounts)∧accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="member_buy∈dom(accounts)"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="⊤∧accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="BuyCoffee/act1_1/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2">
+            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p3">
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p3" org.eventb.core.prHyps="">
+                    <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+                        <org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p4" org.eventb.core.prHyps=""/>
+                    </org.eventb.core.prAnte>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="member_buy" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="member_buy∈dom(accounts)∧accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="⊤∧⊤"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="⊤"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="member_buy∈dom(accounts)"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="INITIALISATION/inv1_2/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p1">
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p1" org.eventb.core.prHyps=""/>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="⊤"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="(∅ ⦂ ℙ(MEMBER×ℤ))∈(∅ ⦂ ℙ(MEMBER)) → ℕ"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="INITIALISATION/inv1_3/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1">
+            <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="finite(MEMBER)"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="1∈1 ‥ 30"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="SetPrice/inv1_3/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0"/>
+        <org.eventb.core.prIdent name="new_price" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="new_price∈1 ‥ 30"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="NewMember/inv1_2/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p6"/>
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+                    <org.eventb.core.prAnte name="'">
+                        <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p7"/>
+                        <org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p8"/>
+                        <org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p2,p3,p4,p5,p6">
+                            <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+                        </org.eventb.core.prRule>
+                    </org.eventb.core.prAnte>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="coffeeprice" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prIdent name="new_member" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prIdent name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p6" org.eventb.core.predicate="¬new_member∈members"/>
+        <org.eventb.core.prPred name="p7" org.eventb.core.predicate="members⊆MEMBER"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="new_member∉members"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="finite(MEMBER)"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="piggybank∈ℕ"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p8" org.eventb.core.predicate="new_member∈MEMBER"/>
+        <org.eventb.core.prPred name="p5" org.eventb.core.predicate="coffeeprice∈1 ‥ 30"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="accounts{new_member ↦ 0}∈members∪{new_member} → ℕ"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="Contribute/inv1_2/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p9"/>
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p6,p7,p4,p5,p8">
+                    <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="coffeeprice" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="contribution" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="member" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prIdent name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p9" org.eventb.core.predicate="members⊆MEMBER"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="accounts{member ↦ accounts(member)+contribution}∈members → ℕ"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="finite(MEMBER)"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="piggybank∈ℕ"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="member∈members"/>
+        <org.eventb.core.prPred name="p5" org.eventb.core.predicate="member∈dom(accounts)"/>
+        <org.eventb.core.prPred name="p6" org.eventb.core.predicate="coffeeprice∈1 ‥ 30"/>
+        <org.eventb.core.prPred name="p7" org.eventb.core.predicate="contribution∈1 ‥ 70"/>
+        <org.eventb.core.prPred name="p8" org.eventb.core.predicate="accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+    <org.eventb.core.prProof name="BuyCoffee/inv1_2/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7" org.eventb.core.prSets="MEMBER">
+        <org.eventb.core.lang name="L"/>
+        <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+            <org.eventb.core.prAnte name="'">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p8"/>
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p3,p4,p6,p5,p2,p7">
+                    <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
+                </org.eventb.core.prRule>
+            </org.eventb.core.prAnte>
+        </org.eventb.core.prRule>
+        <org.eventb.core.prIdent name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.prIdent name="coffeeprice" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="member_buy" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.prIdent name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.prIdent name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prPred name="p8" org.eventb.core.predicate="members⊆MEMBER"/>
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="finite(MEMBER)"/>
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="accounts(member_buy)≥coffeeprice"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="piggybank∈ℕ"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="accounts∈members → ℕ"/>
+        <org.eventb.core.prPred name="p5" org.eventb.core.predicate="member_buy∈dom(accounts)"/>
+        <org.eventb.core.prPred name="p0" org.eventb.core.predicate="accounts{member_buy ↦ accounts(member_buy) − coffeeprice}∈members → ℕ"/>
+        <org.eventb.core.prPred name="p6" org.eventb.core.predicate="coffeeprice∈1 ‥ 30"/>
+        <org.eventb.core.prPred name="p7" org.eventb.core.predicate="accounts∈MEMBER ⇸ ℤ"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+    </org.eventb.core.prProof>
+</org.eventb.core.prFile>

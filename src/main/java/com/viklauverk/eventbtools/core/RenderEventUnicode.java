@@ -155,6 +155,37 @@ public class RenderEventUnicode extends RenderEvent
     }
 
     @Override
+    public void visit_WitnessesStart(Event eve)
+    {
+        cnvs().startLine();
+        cnvs().keyword("with");
+        cnvs().endLine();
+
+        cnvs().startAlignments(Canvas.align_3col);
+    }
+
+    @Override
+    public void visit_Witness(Event eve, Witness witness)
+    {
+        cnvs().startAlignedLine();
+        cnvs().label(witness.name());
+        cnvs().align();
+        cnvs().startWitness();
+        cnvs().startMath();
+        witness.writeFormulaStringToCanvas(cnvs());
+        cnvs().stopMath();
+        cnvs().stopWitness();
+
+        stopAlignedLineAndHandlePotentialComment(witness.comment(), cnvs());
+    }
+
+    @Override
+    public void visit_WitnessesEnd(Event eve)
+    {
+        cnvs().stopAlignments();
+    }
+
+    @Override
     public void visit_ActionsStart(Event eve)
     {
         cnvs().startLine();

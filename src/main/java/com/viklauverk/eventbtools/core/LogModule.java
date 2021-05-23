@@ -131,44 +131,58 @@ public class LogModule implements Log
         }
     }
 
+    static String safeFormat(String msg, Object... args)
+    {
+        try
+        {
+            return String.format(msg, args);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return "ERROR_FORMATTING "+msg;
+    }
+
     public void error(String msg, Object... args)
     {
-        String m = "("+module_+") "+String.format(msg, args);
+        String m = "("+module_+") "+safeFormat(msg, args);
         System.err.println(m);
         System.exit(1);
     }
 
     public void usageError(String msg, Object... args)
     {
-        String out = String.format(msg, args);
+        String out = safeFormat(msg, args);
         System.out.println(out);
         System.exit(1);
     }
 
     public static void usageErrorStatic(String msg, Object... args)
     {
-        String out = String.format(msg, args);
+        String out = safeFormat(msg, args);
         System.out.println(out);
         System.exit(1);
     }
 
     public void internalError(String msg, Object... args)
     {
-        String out = "("+module_+") internal error "+String.format(msg, args);
+        String out = "("+module_+") internal error "+safeFormat(msg, args);
         System.out.println(out);
         System.exit(1);
     }
 
     private static void internalErrorStatic(String msg, Object... args)
     {
-        String out = "(log) internal error "+String.format(msg, args);
+        String out = "(log) internal error "+safeFormat(msg, args);
         System.out.println(out);
         System.exit(1);
     }
 
     public void failure(String msg, Object... args)
     {
-        String out = "("+module_+") failure "+String.format(msg, args);
+        String out = "("+module_+") failure "+safeFormat(msg, args);
         System.out.println(out);
     }
 
@@ -176,7 +190,7 @@ public class LogModule implements Log
     {
         if (log_level_.value() >= LogLevel.WARN.value())
         {
-            String out = "("+module_+") warning "+String.format(msg, args);
+            String out = "("+module_+") warning "+safeFormat(msg, args);
             System.out.println(out);
         }
     }
@@ -185,7 +199,7 @@ public class LogModule implements Log
     {
         if (log_level_.value() >= LogLevel.INFO.value())
         {
-            String out = String.format(msg, args);
+            String out = safeFormat(msg, args);
             System.out.println(out);
         }
     }
@@ -194,7 +208,7 @@ public class LogModule implements Log
     {
         if (log_level_.value() >= LogLevel.VERBOSE.value())
         {
-            String out = String.format(msg, args);
+            String out = safeFormat(msg, args);
             System.out.println(out);
         }
     }
@@ -203,7 +217,7 @@ public class LogModule implements Log
     {
         if (log_level_.value() >= LogLevel.DEBUG.value())
         {
-            String out = "("+module_+") "+String.format(msg, args);
+            String out = "("+module_+") "+safeFormat(msg, args);
             System.out.println(out);
         }
     }
@@ -212,7 +226,7 @@ public class LogModule implements Log
     {
         if (log_level_.value() >= LogLevel.DEBUG.value())
         {
-            String out = "("+module_+"-"+part+") "+String.format(msg, args);
+            String out = "("+module_+"-"+part+") "+safeFormat(msg, args);
             System.out.println(out);
         }
     }
@@ -221,7 +235,7 @@ public class LogModule implements Log
     {
         if (log_level_.value() >= LogLevel.TRACE.value())
         {
-            String out = "("+module_+") "+String.format(msg, args);
+            String out = "("+module_+") "+safeFormat(msg, args);
             System.out.println(out);
         }
     }

@@ -53,7 +53,6 @@ public class VisitEvent
 
         if (e.hasParameters())
         {
-            boolean p =  Util.match(path+"parameters/", pattern);
             if (m) re.visit_ParametersStart(e);
             for (Variable par : e.parameterOrdering())
             {
@@ -65,8 +64,6 @@ public class VisitEvent
 
         if (e.hasGuards())
         {
-            boolean g =  Util.match(path+"guards/", pattern);
-
             if (m) re.visit_GuardsStart(e);
             for (Guard gua : e.guardOrdering())
             {
@@ -75,11 +72,19 @@ public class VisitEvent
             }
             if (m) re.visit_GuardsEnd(e);
         }
+        if (e.hasWitnesses())
+        {
+            if (m) re.visit_WitnessesStart(e);
+            for (Witness wit : e.witnessOrdering())
+            {
+                boolean ww =  Util.match(path+"witnesses/"+wit.name()+"/", pattern);
+                if (ww) re.visit_Witness(e, wit);
+            }
+            if (m) re.visit_WitnessesEnd(e);
+        }
 
         if (e.hasActions())
         {
-            boolean a =  Util.match(path+"actions/", pattern);
-
             if (m) re.visit_ActionsStart(e);
             for (Action act : e.actionOrdering())
             {

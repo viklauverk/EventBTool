@@ -35,6 +35,7 @@ import java.util.function.Function;
 public class Util
 {
     public static Log log = LogModule.lookup("util");
+    public static Log log_match = LogModule.lookup("match");
 
     public static String[] shiftLeft(String[] args)
     {
@@ -231,21 +232,29 @@ public class Util
 
     public static boolean match(String path, String pattern)
     {
+        log_match.trace("match? \"%s\" \"%s\"", path, pattern);
         if (pattern == null || pattern.length() == 0)
         {
+            log_match.trace("yes!");
             return true;
         }
 
-        if (path.startsWith(pattern)) return true;
+        if (path.startsWith(pattern))
+        {
+            log_match.trace("yes!");
+            return true;
+        }
 
         // Very rudimentary wildcard. To be improved.
         if (pattern.startsWith("*"))
         {
             if (path.indexOf(pattern.substring(1)) != -1)
             {
+                log_match.trace("yes!");
                 return true;
             }
         }
+        log_match.trace("no!");
         return false;
     }
 

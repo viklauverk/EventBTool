@@ -45,6 +45,10 @@ public class RenderEvent extends CommonRenderFunctions
     public void visit_Guard(Event eve, Guard gua) { }
     public void visit_GuardsEnd(Event eve) { }
 
+    public void visit_WitnessesStart(Event eve) { }
+    public void visit_Witness(Event eve, Witness wit) { }
+    public void visit_WitnessesEnd(Event eve) { }
+
     public void visit_ActionsStart(Event eve) { }
     public void visit_Action(Event eve, Action act) { }
     public void visit_ActionsEnd(Event eve) { }

@@ -449,7 +449,7 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         String content = console_.renderPart(pattern, rt, ra);
         if (content == null)
         {
-            return "EVBT_ERROR: Part "+pattern+" not found!";
+            return "EVBT_ERROR: Part \""+pattern+"\" not found!";
         }
         return content;
     }

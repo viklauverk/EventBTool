@@ -98,6 +98,11 @@ public class Typing
         extractPossibleTypesFromPredicate(g.formula(), symbols);
     }
 
+    public void extractInfoFromWitness(Witness w, SymbolTable symbols)
+    {
+        // Can/should any typing be extracted here?
+    }
+
     public void extractInfoFromAction(Action a, SymbolTable symbols)
     {
         extractPossibleTypesFromBecome(a.formula(), symbols);

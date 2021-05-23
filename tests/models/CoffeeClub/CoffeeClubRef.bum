@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.comment="We now introduce the concept of member accounts, the sum of the member accounts&#10;should be the total piggy bank account. " org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1621687921498" org.eventb.texttools.text_representation="machine CoffeeClubRef&#10;/* We now introduce the concept of member accounts, the sum of the member accounts&#10;should be the total piggy bank account. */&#10;&#10;refines CoffeeClubMch  sees CoffeeClubCtx&#10;&#10;variables piggybank members accounts coffeeprice&#10;&#10;invariants&#10;  @inv1_1 members ⊆ MEMBER&#10;  @inv1_2 accounts ∈ members → ℕ&#10;  @inv1_3 coffeeprice ∈ 1‥30&#10;&#10;events&#10;  event INITIALISATION extends INITIALISATION&#10;    then&#10;      @init1_1 members ≔ ∅&#10;      @init1_2 accounts ≔ ∅&#10;      @init1_3 coffeeprice ≔ 1&#10;  end&#10;&#10;  event SetPrice&#10;    any new_price&#10;    where&#10;      @grd0 new_price ∈ 1‥30&#10;    then&#10;      @act0 coffeeprice ≔ new_price&#10;  end&#10;&#10;  event NewMember&#10;    any new_member&#10;    where&#10;      @grd0 new_member ∈ MEMBER&#10;      @grd1 new_member ∉ members&#10;    then&#10;      @act0 accounts(new_member) ≔ 0&#10;      @act1 members ≔ members ∪ {new_member}&#10;  end&#10;&#10;  event Contribute refines FeedBank&#10;    any contribution member&#10;    where&#10;      @grd0 contribution ∈ 1‥70&#10;      @grd1 member ∈ members&#10;      @grd2 member ∈ dom(accounts)&#10;    with&#10;      @amount_feed amount_feed = contribution&#10;    then&#10;      @act0 accounts(member) ≔  accounts(member) + contribution&#10;      @act1 piggybank ≔ piggybank + contribution&#10;  end&#10;&#10;  event BuyCoffee refines RobBank&#10;    any member_buy&#10;    where&#10;      @grd1_1 member_buy ∈ dom(accounts)&#10;      @grd1_2 accounts(member_buy) ≥ coffeeprice&#10;      @grd1_3 coffeeprice ≤ piggybank&#10;    with&#10;      @amount_rob amount_rob = coffeeprice&#10;      /* The amount is replaced with the coffee price. Note that proof&#10;      for amount_rob ∈ 1‥50 is easily proven since the coffeeprice is defined&#10;      as coffeeprice ∈ 1‥30 */&#10;    then&#10;      @act1_1 accounts(member_buy) ≔  accounts(member_buy) − coffeeprice&#10;      @act1_2 piggybank ≔ piggybank − coffeeprice&#10;  end&#10;end&#10;" version="5">
+    <org.eventb.core.refinesMachine name="_f7_ysLryEeudH6yHdhNg2A" org.eventb.core.target="CoffeeClubMch"/>
+    <org.eventb.core.seesContext name="_f7_ysbryEeudH6yHdhNg2A" org.eventb.core.target="CoffeeClubCtx"/>
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="_C95SYLr3EeudH6yHdhNg2A" org.eventb.core.assignment="members ≔ ∅" org.eventb.core.generated="false" org.eventb.core.label="init1_1"/>
+        <org.eventb.core.action name="_C95SYbr3EeudH6yHdhNg2A" org.eventb.core.assignment="accounts ≔ ∅" org.eventb.core.generated="false" org.eventb.core.label="init1_2"/>
+        <org.eventb.core.action name="_C95SYrr3EeudH6yHdhNg2A" org.eventb.core.assignment="coffeeprice ≔ 1" org.eventb.core.generated="false" org.eventb.core.label="init1_3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="_f8AZw7ryEeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.identifier="piggybank"/>
+    <org.eventb.core.variable name="_f8AZxLryEeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.identifier="members"/>
+    <org.eventb.core.variable name="_f8BA0LryEeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.identifier="accounts"/>
+    <org.eventb.core.variable name="_f8BA0bryEeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.identifier="coffeeprice"/>
+    <org.eventb.core.event name="_f8Bn5LryEeudH6yHdhNg2A" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="SetPrice">
+        <org.eventb.core.parameter name="_f8CO8LryEeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.identifier="new_price"/>
+        <org.eventb.core.guard name="_f8CO8bryEeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.label="grd0" org.eventb.core.predicate="new_price ∈ 1‥30"/>
+        <org.eventb.core.action name="_f8CO8rryEeudH6yHdhNg2A" org.eventb.core.assignment="coffeeprice ≔ new_price" org.eventb.core.generated="false" org.eventb.core.label="act0"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_f8CO87ryEeudH6yHdhNg2A" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="NewMember">
+        <org.eventb.core.parameter name="_f8CO9LryEeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.identifier="new_member"/>
+        <org.eventb.core.guard name="_f8CO9bryEeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.label="grd0" org.eventb.core.predicate="new_member ∈ MEMBER"/>
+        <org.eventb.core.guard name="_f8C2BbryEeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="new_member ∉ members"/>
+        <org.eventb.core.action name="_f8CO9rryEeudH6yHdhNg2A" org.eventb.core.assignment="accounts(new_member) ≔ 0" org.eventb.core.generated="false" org.eventb.core.label="act0"/>
+        <org.eventb.core.action name="_f8C2ALryEeudH6yHdhNg2A" org.eventb.core.assignment="members ≔ members ∪ {new_member}" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_f8C2AbryEeudH6yHdhNg2A" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="Contribute">
+        <org.eventb.core.refinesEvent name="_Ke7iQLr0EeudH6yHdhNg2A" org.eventb.core.target="FeedBank"/>
+        <org.eventb.core.parameter name="_f8C2ArryEeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.identifier="contribution"/>
+        <org.eventb.core.parameter name="_f8C2A7ryEeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.identifier="member"/>
+        <org.eventb.core.guard name="_f8C2BLryEeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.label="grd0" org.eventb.core.predicate="contribution ∈ 1‥70"/>
+        <org.eventb.core.guard name="_f8DdFLryEeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="member ∈ members"/>
+        <org.eventb.core.guard name="_uTR58Lr1EeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="member ∈ dom(accounts)"/>
+        <org.eventb.core.witness name="_RFltMLr0EeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.label="amount_feed" org.eventb.core.predicate="amount_feed = contribution"/>
+        <org.eventb.core.action name="_f8C2BrryEeudH6yHdhNg2A" org.eventb.core.assignment="accounts(member) ≔  accounts(member) + contribution" org.eventb.core.generated="false" org.eventb.core.label="act0"/>
+        <org.eventb.core.action name="_f8DdELryEeudH6yHdhNg2A" org.eventb.core.assignment="piggybank ≔ piggybank + contribution" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_f8DdEbryEeudH6yHdhNg2A" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="BuyCoffee">
+        <org.eventb.core.refinesEvent name="_VIAZwLr0EeudH6yHdhNg2A" org.eventb.core.target="RobBank"/>
+        <org.eventb.core.parameter name="_f8DdErryEeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.identifier="member_buy"/>
+        <org.eventb.core.guard name="_y-8iYLr2EeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.label="grd1_1" org.eventb.core.predicate="member_buy ∈ dom(accounts)"/>
+        <org.eventb.core.guard name="_y-9JcLr2EeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.label="grd1_2" org.eventb.core.predicate="accounts(member_buy) ≥ coffeeprice"/>
+        <org.eventb.core.guard name="_LVE_wLr3EeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.label="grd1_3" org.eventb.core.predicate="coffeeprice ≤ piggybank"/>
+        <org.eventb.core.witness name="_YG0UQLr0EeudH6yHdhNg2A" org.eventb.core.comment="The amount is replaced with the coffee price. Note that proof&#10;      for amount_rob ∈ 1‥50 is easily proven since the coffeeprice is defined&#10;      as coffeeprice ∈ 1‥30 " org.eventb.core.generated="false" org.eventb.core.label="amount_rob" org.eventb.core.predicate="amount_rob = coffeeprice"/>
+        <org.eventb.core.action name="_y-9Jcbr2EeudH6yHdhNg2A" org.eventb.core.assignment="accounts(member_buy) ≔  accounts(member_buy) − coffeeprice" org.eventb.core.generated="false" org.eventb.core.label="act1_1"/>
+        <org.eventb.core.action name="_3GZf8Lr2EeudH6yHdhNg2A" org.eventb.core.assignment="piggybank ≔ piggybank − coffeeprice" org.eventb.core.generated="false" org.eventb.core.label="act1_2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="_E-R1wLr3EeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.label="inv1_1" org.eventb.core.predicate="members ⊆ MEMBER"/>
+    <org.eventb.core.invariant name="_E-R1wbr3EeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.label="inv1_2" org.eventb.core.predicate="accounts ∈ members → ℕ"/>
+    <org.eventb.core.invariant name="_E-R1wrr3EeudH6yHdhNg2A" org.eventb.core.generated="false" org.eventb.core.label="inv1_3" org.eventb.core.predicate="coffeeprice ∈ 1‥30"/>
+</org.eventb.core.machineFile>

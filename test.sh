@@ -37,6 +37,9 @@ if [ "$?" != "0" ]; then exit 1; fi
 ./tests/test_library.sh $PROG $OUT
 if [ "$?" != "0" ]; then exit 1; fi
 
+./tests/test_coffeeclub.sh $PROG $OUT
+if [ "$?" != "0" ]; then exit 1; fi
+
 #tests/test_trivial_atc.sh $PROG $OUT
 #if [ "$?" != "0" ]; then RC="1"; fi
 

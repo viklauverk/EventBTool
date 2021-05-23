@@ -779,6 +779,40 @@ public class Canvas
         assert (false) : "Unknown encoding "+render_target_;
     }
 
+    public void startWitness()
+    {
+        switch (render_target_)
+        {
+        case PLAIN:
+            return;
+        case TERMINAL:
+            return;
+        case TEX:
+            append("\\WIT{");
+            return;
+        case HTMQ:
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
+    public void stopWitness()
+    {
+        switch (render_target_)
+        {
+        case PLAIN:
+            return;
+        case TERMINAL:
+            return;
+        case TEX:
+            append("}");
+            return;
+        case HTMQ:
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
     public void startAction()
     {
         switch (render_target_)

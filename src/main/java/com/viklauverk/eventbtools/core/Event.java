@@ -47,6 +47,9 @@ public class Event
     private Map<String,Guard> guards_;
     private List<Guard> guard_ordering_;
     private List<String> guard_names_;
+    private Map<String,Witness> witnesses_;
+    private List<Witness> witness_ordering_;
+    private List<String> witness_names_;
     private Map<String,Action> actions_;
     private List<Action> action_ordering_;
     private List<String> action_names_;
@@ -72,6 +75,10 @@ public class Event
         guards_ = new HashMap<>();
         guard_ordering_ = new  ArrayList<>();
         guard_names_ = new  ArrayList<>();
+
+        witnesses_ = new HashMap<>();
+        witness_ordering_ = new  ArrayList<>();
+        witness_names_ = new  ArrayList<>();
 
         actions_ = new HashMap<>();
         action_ordering_ = new  ArrayList<>();
@@ -163,6 +170,11 @@ public class Event
         return guards_.size() > 0;
     }
 
+    public boolean hasWitnesses()
+    {
+        return witnesses_.size() > 0;
+    }
+
     public boolean hasActions()
     {
         return actions_.size() > 0;
@@ -216,6 +228,28 @@ public class Event
     public Guard getGuard(String name)
     {
         return guards_.get(name);
+    }
+
+    public void addWitness(Witness witness)
+    {
+        witnesses_.put(witness.name(), witness);
+        witness_ordering_.add(witness);
+        witness_names_ = witnesses_.keySet().stream().sorted().collect(Collectors.toList());
+    }
+
+    public List<Witness> witnessOrdering()
+    {
+        return witness_ordering_;
+    }
+
+    public List<String> witnessNames()
+    {
+        return witness_names_;
+    }
+
+    public Witness getWitness(String name)
+    {
+        return witnesses_.get(name);
     }
 
     public void addAction(Action action)
@@ -338,6 +372,18 @@ public class Event
             Guard g = getGuard(name);
             g.parse(symbol_table_);
             sys().typing().extractInfoFromGuard(g, symbol_table_);
+        }
+
+        for (String name : witnessNames())
+        {
+            Witness w = getWitness(name);
+            // The witness formula contains a variable that does not exist in this symbol table!
+            // This is the disappearing variable for which the witness establishes a replacement relation.
+            // The Rodin format specifies the witnes name as the label. Odd location perhaps. But it works.
+            // Lets add the symbol to the symbol table before parsing.
+            symbol_table_.addVariableSymbol(w.name());
+            w.parse(symbol_table_);
+            sys().typing().extractInfoFromWitness(w, symbol_table_);
         }
 
         for (String name : actionNames())
