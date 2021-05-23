@@ -1,0 +1,10 @@
+
+Version 1.1.0: 2021-05-23
+
+Add witnesses to the rendered documentation.
+Escape & chars in comments before put into the TeX document.
+Improve handling of missing types, try not to fail when generating documentation.
+
+Version 1.0.0: 2021-05-21
+
+First release.
