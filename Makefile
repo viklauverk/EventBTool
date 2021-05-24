@@ -211,12 +211,15 @@ testinternals:
 
 testm: testinternals
 	@./test.sh $(BUILD)/mvn_bin/evbt mvn
+	@(cd tests/models; make EVBT=$(BUILD)/mvn_bin/evbt CLEAN=true)
 
 testj: testinternals
 	@./test.sh $(BUILD)/javac_bin/evbt javac
+	@(cd tests/models; make EVBT=$(BUILD)/javac_bin/evbt CLEAN=true)
 
 testg: testinternals
 	@./test.sh $(BUILD)/graal_bin/evbt graal
+	@(cd tests/models; make EVBT=$(BUILD)/graal_bin/evbt CLEAN=true)
 
 PREFIX=/usr/local
 

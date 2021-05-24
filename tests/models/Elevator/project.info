@@ -1,0 +1,3 @@
+A machine for testing the basics of code generation.
+It can move an elevator up and down between limits
+specified by constants.

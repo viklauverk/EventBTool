@@ -1,0 +1,5 @@
+Set comprehension syntax is the most complex part of the Event-B grammar.
+This project tests all the ways of expressing set comprehension.
+
+It also demonstrates that a machine variable can be overridden with
+a non-free variable in a set comprehension.

@@ -71,6 +71,13 @@ public class DocGenTeX extends BaseDocGen
         cnvs.append("{\\Huge "+Util.texSafe(commonSettings().nickName())+"} \\\\\n");
         cnvs.append("\\HRULE\n\n");
 
+        if (sys().projectInfo().length() > 0)
+        {
+            cnvs.append("\n\n\\par ");
+            cnvs.append(Unicode.commentToTeX(sys().projectInfo()));
+            cnvs.append("\n\n\\HRULE\n\n");
+        }
+
         cnvs.append("\\tableofcontents\n");
 
         for (String ctx : sys().contextNames())

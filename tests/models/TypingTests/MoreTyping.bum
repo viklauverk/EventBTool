@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1621580418753" org.eventb.texttools.text_representation="machine MoreTyping&#10;&#10;variables alfa beta&#10;&#10;invariants&#10;  @inv1 alfa ∈ ℕ⇸BOOL&#10;  @inv2 beta ∩ ran(alfa) = ∅ // Here type type of ran(alfa) will propagate to beta.&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @init1 alfa ≔ ∅&#10;      @init2 beta ≔ ∅&#10;  end&#10;&#10;  event gamma&#10;    any b&#10;    where&#10;      @grd11 b∈beta&#10;    then&#10;      @act11 beta ≔ beta∖{b}&#10;  end&#10;end&#10;" version="5">
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1621857082359" org.eventb.texttools.text_representation="machine MoreTyping&#10;&#10;variables alfa beta x y&#10;&#10;invariants&#10;  @inv1 alfa ∈ ℕ⇸BOOL&#10;  @inv2 beta ∩ ran(alfa) = ∅ // The type of ran(alfa) will propagate to beta.&#10;  @inv3 x ∈ ℕ&#10;  @inv4 x+y=7 // The type of y is deduced to ℤ.&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @init1 alfa ≔ ∅&#10;      @init2 beta ≔ ∅&#10;      @init3 x ≔ 14&#10;      @init4 y ≔ −7&#10;  end&#10;&#10;  event gamma&#10;    any b&#10;    where&#10;      @grd11 b∈beta&#10;    then&#10;      @act11 beta ≔ beta∖{b}&#10;  end&#10;end&#10;" version="5">
     <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
         <org.eventb.core.action name="_i_V2sLVGEeuMZpPdXDEZwA" org.eventb.core.assignment="alfa ≔ ∅" org.eventb.core.generated="false" org.eventb.core.label="init1"/>
         <org.eventb.core.action name="_i_V2sbVGEeuMZpPdXDEZwA" org.eventb.core.assignment="beta ≔ ∅" org.eventb.core.generated="false" org.eventb.core.label="init2"/>
+        <org.eventb.core.action name="_-d6RMLyEEeuQo7qM-CI_Qw" org.eventb.core.assignment="x ≔ 14" org.eventb.core.generated="false" org.eventb.core.label="init3"/>
+        <org.eventb.core.action name="_-d6RMbyEEeuQo7qM-CI_Qw" org.eventb.core.assignment="y ≔ −7" org.eventb.core.generated="false" org.eventb.core.label="init4"/>
     </org.eventb.core.event>
     <org.eventb.core.variable name="_MagX0LVGEeuMZpPdXDEZwA" org.eventb.core.generated="false" org.eventb.core.identifier="alfa"/>
     <org.eventb.core.variable name="_MagX0bVGEeuMZpPdXDEZwA" org.eventb.core.generated="false" org.eventb.core.identifier="beta"/>
     <org.eventb.core.invariant name="_MagX0rVGEeuMZpPdXDEZwA" org.eventb.core.generated="false" org.eventb.core.label="inv1" org.eventb.core.predicate="alfa ∈ ℕ⇸BOOL"/>
-    <org.eventb.core.invariant name="_MagX07VGEeuMZpPdXDEZwA" org.eventb.core.comment="Here type type of ran(alfa) will propagate to beta." org.eventb.core.generated="false" org.eventb.core.label="inv2" org.eventb.core.predicate="beta ∩ ran(alfa) = ∅"/>
+    <org.eventb.core.invariant name="_MagX07VGEeuMZpPdXDEZwA" org.eventb.core.comment="The type of ran(alfa) will propagate to beta." org.eventb.core.generated="false" org.eventb.core.label="inv2" org.eventb.core.predicate="beta ∩ ran(alfa) = ∅"/>
     <org.eventb.core.event name="_3LkfcLVGEeuMZpPdXDEZwA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="gamma">
         <org.eventb.core.parameter name="_3LkfcbVGEeuMZpPdXDEZwA" org.eventb.core.generated="false" org.eventb.core.identifier="b"/>
         <org.eventb.core.guard name="_3LkfcrVGEeuMZpPdXDEZwA" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="b∈beta"/>
         <org.eventb.core.action name="_3Lkfc7VGEeuMZpPdXDEZwA" org.eventb.core.assignment="beta ≔ beta∖{b}" org.eventb.core.generated="false" org.eventb.core.label="act11"/>
     </org.eventb.core.event>
+    <org.eventb.core.variable name="_7_-2MLyEEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="x"/>
+    <org.eventb.core.variable name="_7__dQLyEEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="y"/>
+    <org.eventb.core.invariant name="_7__dQbyEEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="inv3" org.eventb.core.predicate="x ∈ ℕ"/>
+    <org.eventb.core.invariant name="_7__dQryEEeuQo7qM-CI_Qw" org.eventb.core.comment="The type of y is deduced to ℤ." org.eventb.core.generated="false" org.eventb.core.label="inv4" org.eventb.core.predicate="x+y=7"/>
 </org.eventb.core.machineFile>

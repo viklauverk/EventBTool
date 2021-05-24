@@ -25,6 +25,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.nio.file.Files;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.stream.Collectors;
@@ -34,6 +35,8 @@ import java.util.Comparator;
 public class Sys
 {
     private static LogModule log = LogModule.lookup("sys");
+
+    private String project_info_; // Loaded from project.info and displayed above the table of contents.
 
     private SymbolTable root_symbol_table_; // Contains TRUE FALSE BOOL
     private Map<String,SymbolTable> all_symbol_tables_;
@@ -52,6 +55,8 @@ public class Sys
 
     public Sys()
     {
+        project_info_ = "";
+
         contexts_ = new HashMap<>();
         context_ordering_ = new ArrayList<>();
         context_names_ = new ArrayList<>();
@@ -78,6 +83,11 @@ public class Sys
 
         console_ = new Console(this, new Canvas());
         edk_ = new EDK(this);
+    }
+
+    public String projectInfo()
+    {
+        return project_info_;
     }
 
     public Console console()
@@ -193,6 +203,10 @@ public class Sys
         {
             log.info("No contexts or machines found in %s\n",  path);
         }
+
+        // Load the projct.info file, if it exists.
+        loadProjectInfo(dir);
+
         return "read "+contextNames().size()+" contexts and "+machineNames().size()+" machines";
     }
 
@@ -258,6 +272,22 @@ public class Sys
         {
             Machine m = getMachine(name);
             m.load();
+        }
+    }
+
+    private void loadProjectInfo(File dir) throws Exception
+    {
+        List<Pair<String,File>> files = eachFileEndingIn(dir, ".info");
+
+        for (Pair<String,File> p : files)
+        {
+            if (p.left.equals("project"))
+            {
+                Stream<String> lines = Files.lines(p.right.toPath());
+                project_info_ = lines.collect(Collectors.joining("\n"));
+                lines.close();
+                log.debug("found project.info");
+            }
         }
     }
 

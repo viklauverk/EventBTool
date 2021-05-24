@@ -1,0 +1,10 @@
+This Event-B system is based on a model that appeared in the book:
+System Modelling & Design Using Event-B by Ken Robinson.
+
+It illustrates how a an abstract machine describes
+the consistency of a single bank account. The refinement
+then add multiple membership accounts while still
+maintaining the single bank account.
+
+It also illustrates the use of a witness to drop (or replace)
+a variable when refining an event.
