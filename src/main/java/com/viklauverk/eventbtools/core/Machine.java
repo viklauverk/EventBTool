@@ -328,8 +328,8 @@ public class Machine
         {
             String m = r.valueOf("@org.eventb.core.target");
             Machine mch = sys_.getMachine(m);
-            assert (mch != null) : "Error while loading machine xml, could not find refined machine "+m;
-            assert (refines_ == null) : "Error while machine cannot refine more than one mache.";
+            if (mch == null) log.error("Error while loading machine %s, could not find refined machine %s", name(), m);
+            if (refines_ != null) log.error("Error while loading machine %s, cannot refine more than one mache.");
             refines_ = mch;
         }
 
@@ -338,6 +338,7 @@ public class Machine
         {
             String t = c.valueOf("@org.eventb.core.target");
             Context context = sys_.getContext(t);
+            if (context == null) log.error("Error while loading machine %s, could not find context %s", name(), t);
             addContext(context);
         }
 
