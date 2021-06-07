@@ -42,6 +42,17 @@ a non-free variable in a set comprehension.
 
 [SetComprehensions.pdf](SetComprehensions.pdf)
 
+## SquareRoot
+This Event-B system is based on a model that appeared in the book:
+System Modelling & Design Using Event-B by Ken Robinson.
+
+This project implements an integer square root algorithm. The
+algorithm performs a binary search of a value x such that
+x*x = input, ie x will become the square root.
+
+
+[SquareRoot.pdf](SquareRoot.pdf)
+
 ## TypingTests
 I assume that typing can be made arbitrarily smart, however
 I do not yet know the limits of how much typing Rodin can do.

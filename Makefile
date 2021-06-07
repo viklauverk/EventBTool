@@ -211,15 +211,15 @@ testinternals:
 
 testm: testinternals
 	@./test.sh $(BUILD)/mvn_bin/evbt mvn
-	@(cd tests/models; make EVBT=$(BUILD)/mvn_bin/evbt CLEAN=true)
+	@(cd tests/models; make EVBT=$(BUILD)/mvn_bin/evbt CLEAN=true && make reset_pdfs)
 
 testj: testinternals
 	@./test.sh $(BUILD)/javac_bin/evbt javac
-	@(cd tests/models; make EVBT=$(BUILD)/javac_bin/evbt CLEAN=true)
+	@(cd tests/models; make EVBT=$(BUILD)/javac_bin/evbt CLEAN=true && make reset_pdfs)
 
 testg: testinternals
 	@./test.sh $(BUILD)/graal_bin/evbt graal
-	@(cd tests/models; make EVBT=$(BUILD)/graal_bin/evbt CLEAN=true)
+	@(cd tests/models; make EVBT=$(BUILD)/graal_bin/evbt CLEAN=true && make reset_pdfs)
 
 PREFIX=/usr/local
 

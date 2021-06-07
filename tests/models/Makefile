@@ -39,3 +39,8 @@ README.md: $(INFOS)
 	@echo "" >> README.md
 	@$(foreach d,$(DIRS),$(call SUMMARIZE,$d))
 	@echo "Created README.md"
+
+# The pdfs are recreated as part of running make test.
+# This command resets them to the version in git.
+reset_pdfs:
+	git checkout $(PDFS)
