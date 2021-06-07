@@ -42,10 +42,11 @@ xelatex YourGreatEventBSystem.tex
 ```
 to generate a pdf with table of contents and an index.
 
-Since evbt parses the Event-B specifiction the document generation
-has access to semantic knowledge about the specification. Therefore it
-can color constants blue, carrier sets green, italicise variables and
-non-free variables as reddish-brown.
+Evbt parses the Event-B specifiction also for the document generation
+and has therefore access to semantic knowledge about the
+specification.  This knowledge is used to colorise and italicise the
+parts of the components, such as constants, carrier sets and
+variables.
 
 ## console - exploration of Event-B models.
 
