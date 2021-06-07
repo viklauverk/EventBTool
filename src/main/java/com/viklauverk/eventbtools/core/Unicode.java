@@ -98,6 +98,7 @@ public class Unicode
     {
         BACKSLASH         ('\\',"\\textbackslash "),
         HASH              ('#', "\\#"),
+        PERCENT           ('%', "\\%"),
         AMPERSAND         ('&', "\\&"),
         LBRACE            ('{', "\\{"),
         RBRACE            ('}', "\\}"),
