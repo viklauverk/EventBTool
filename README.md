@@ -4,8 +4,8 @@ The evbt (Event-B Tool) generates code and documentation from Event-B models
 stored in a Rodin workspace. The models are developed using the Rodin tool.
 [http://www.event-b.org/](http://www.event-b.org/)
 
-The tool is still in beta (the current version 1.0.0, and any future odd numbered
-release will be highly prone to radical changes and have a lot of bugs/missing features),
+The tool is still in beta (the current version 1.2.0, and any future version with an odd numbered
+major release number, will be highly prone to radical changes and have a lot of bugs/missing features),
 still it can be used to generate nice TeX documents.  It might generate the code you
 are looking for, it might not, ie the tool is work in progress. :-)
 
