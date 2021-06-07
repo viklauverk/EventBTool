@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.comment="We now split the improve event into improveLowerBound and improveUpperBound. " org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1621970599182" org.eventb.texttools.text_representation="machine SquareRoot_R2_WithImproveLowerOrUpper&#10;/* We now split the improve event into improveLowerBound and improveUpperBound. */&#10;refines SquareRoot_R1_AddIncrementalImprovements&#10;&#10;sees SquareRootDefinition&#10;&#10;variables low high input input_valid result result_valid&#10;&#10;events&#10;  event INITIALISATION extends INITIALISATION&#10;  end&#10;&#10;  event setInput extends setInput&#10;  end&#10;&#10;  event getResult extends getResult&#10;  end&#10;&#10;  event ImproveLowerBound refines Improve&#10;    any m&#10;    where&#10;      @grd2_1 low+1≠high&#10;      @grd2_2 m∈ℕ&#10;      @grd2_3 low&lt;m ∧ m&lt;high&#10;      @grd2_4 m∗m≤input // m is a better lower bound!&#10;    with&#10;      @l l = m&#10;      @h h = high&#10;    then&#10;      @act2_1 low≔m&#10;  end&#10;&#10;  event ImproveUpperBound refines Improve&#10;    any m&#10;    where&#10;      @grd2_1 low+1≠high&#10;      @grd2_2 m∈ℕ&#10;      @grd2_3 low&lt;m ∧ m&lt;high&#10;      @grd2_4 m∗m&gt;input // m is a better upper bound!&#10;    with&#10;      @l l = low&#10;      @h h = m&#10;    then&#10;      @act2_1 high ≔ m&#10;  end&#10;&#10;  event SquareRoot extends SquareRoot&#10;  end&#10;end&#10;" version="5">
+    <org.eventb.core.refinesMachine name="_1_w-8L0uEeuQo7qM-CI_Qw" org.eventb.core.target="SquareRoot_R1_AddIncrementalImprovements"/>
+    <org.eventb.core.seesContext name="_KiGlUL1VEeuQo7qM-CI_Qw" org.eventb.core.target="SquareRootDefinition"/>
+    <org.eventb.core.variable name="_1_xmA70uEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="low"/>
+    <org.eventb.core.variable name="_1_xmBL0uEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="high"/>
+    <org.eventb.core.event name="_4YdUoL0uEeuQo7qM-CI_Qw" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION"/>
+    <org.eventb.core.event name="_mRUugL2OEeuQo7qM-CI_Qw" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="setInput">
+        <org.eventb.core.refinesEvent name="_mRUugb2OEeuQo7qM-CI_Qw" org.eventb.core.target="setInput"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_mRUugr2OEeuQo7qM-CI_Qw" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="getResult">
+        <org.eventb.core.refinesEvent name="_mRUug72OEeuQo7qM-CI_Qw" org.eventb.core.target="getResult"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="__cmX4r1REeuQo7qM-CI_Qw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="ImproveLowerBound">
+        <org.eventb.core.refinesEvent name="__cmX471REeuQo7qM-CI_Qw" org.eventb.core.target="Improve"/>
+        <org.eventb.core.parameter name="_1_xmB70uEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="m"/>
+        <org.eventb.core.guard name="__cmX5L1REeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="grd2_1" org.eventb.core.predicate="low+1≠high"/>
+        <org.eventb.core.guard name="__cmX5b1REeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="grd2_2" org.eventb.core.predicate="m∈ℕ"/>
+        <org.eventb.core.guard name="__cmX5r1REeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="grd2_3" org.eventb.core.predicate="low&lt;m ∧ m&lt;high"/>
+        <org.eventb.core.guard name="__cmX571REeuQo7qM-CI_Qw" org.eventb.core.comment="m is a better lower bound!" org.eventb.core.generated="false" org.eventb.core.label="grd2_4" org.eventb.core.predicate="m∗m≤input"/>
+        <org.eventb.core.witness name="_1_xmDL0uEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="l" org.eventb.core.predicate="l = m"/>
+        <org.eventb.core.witness name="_1_xmDb0uEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="h" org.eventb.core.predicate="h = high"/>
+        <org.eventb.core.action name="__cmX6L1REeuQo7qM-CI_Qw" org.eventb.core.assignment="low≔m" org.eventb.core.generated="false" org.eventb.core.label="act2_1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_BurIML1SEeuQo7qM-CI_Qw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="ImproveUpperBound">
+        <org.eventb.core.refinesEvent name="_BurIMb1SEeuQo7qM-CI_Qw" org.eventb.core.target="Improve"/>
+        <org.eventb.core.parameter name="_VB72gr0vEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="m"/>
+        <org.eventb.core.guard name="_BurIMr1SEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="grd2_1" org.eventb.core.predicate="low+1≠high"/>
+        <org.eventb.core.guard name="_BurIM71SEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="grd2_2" org.eventb.core.predicate="m∈ℕ"/>
+        <org.eventb.core.guard name="_BurINL1SEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="grd2_3" org.eventb.core.predicate="low&lt;m ∧ m&lt;high"/>
+        <org.eventb.core.guard name="_BurINb1SEeuQo7qM-CI_Qw" org.eventb.core.comment="m is a better upper bound!" org.eventb.core.generated="false" org.eventb.core.label="grd2_4" org.eventb.core.predicate="m∗m&gt;input"/>
+        <org.eventb.core.witness name="_VB8dk70vEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="l" org.eventb.core.predicate="l = low"/>
+        <org.eventb.core.witness name="_VB8dlL0vEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="h" org.eventb.core.predicate="h = m"/>
+        <org.eventb.core.action name="_BurINr1SEeuQo7qM-CI_Qw" org.eventb.core.assignment="high ≔ m" org.eventb.core.generated="false" org.eventb.core.label="act2_1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_ZCfh4L0vEeuQo7qM-CI_Qw" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="SquareRoot">
+        <org.eventb.core.refinesEvent name="_ZCfh4b0vEeuQo7qM-CI_Qw" org.eventb.core.target="SquareRoot"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="_mRVVkL2OEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="input"/>
+    <org.eventb.core.variable name="_mRVVkb2OEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="input_valid"/>
+    <org.eventb.core.variable name="_62-3or1REeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="result"/>
+    <org.eventb.core.variable name="_62-3o71REeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="result_valid"/>
+</org.eventb.core.machineFile>

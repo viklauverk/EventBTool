@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.comment="We now store the middle value in a variable." org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1621970830298" org.eventb.texttools.text_representation="machine SquareRoot_R4_WithMiddleInVariable // We now store the middle value in a variable.&#10; refines SquareRoot_R3_AddDivisionToFindM  sees SquareRootDefinition&#10;&#10;variables mid // Track each middle value to find next bound.,&#10;          input input_valid result result_valid low high&#10;&#10;invariants&#10;  @inv1 mid = (low + high)÷2&#10;  @inv2 mid ∈ ℕ&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @init4_1 input ≔ 0&#10;      @init4_2 input_valid ≔ FALSE&#10;      @init4_3 low ≔ 0&#10;      @init4_4 mid ≔ 0&#10;      @init4_5 high ≔ 1&#10;      @init4_6 result ≔ 0&#10;      @init4_7 result_valid ≔ FALSE&#10;  end&#10;&#10;  event setInput refines setInput&#10;    any v&#10;    where&#10;      @grd4_1 v ∈ ℕ&#10;      @grd4_2 input_valid = FALSE&#10;      @grd4_3 result_valid = FALSE&#10;    then&#10;      @init4_0 input ≔ v&#10;      @init4_1 low ≔ 0&#10;      @init4_2 high ≔ v + 1&#10;      @init4_3 mid ≔ (v + 1)÷2&#10;      @init4_4 input_valid ≔ TRUE&#10;  end&#10;&#10;  event getResult extends getResult&#10;  end&#10;&#10;  event SquareRoot extends SquareRoot&#10;  end&#10;&#10;  event ImproveLowerBound refines ImproveLowerBound&#10;    where&#10;      @grd4_1 low+1≠high&#10;      @grd4_2 mid ∗ mid ≤ input&#10;    with&#10;      @m m = mid // mid is a better value for low&#10;    then&#10;      @act4_1 low ≔ mid&#10;      @act4_2 mid ≔ (mid + high)÷2&#10;  end&#10;&#10;  event ImproveUpperBound refines ImproveUpperBound&#10;    where&#10;      @grd4_1 low+1≠high&#10;      @grd4_2 mid ∗ mid &gt; input&#10;    with&#10;      @m m = mid // mid is a better value for high&#10;    then&#10;      @act4_1 high ≔ mid&#10;      @act4_2 mid ≔ (low + mid)÷2&#10;  end&#10;end&#10;" version="5">
+    <org.eventb.core.refinesMachine name="_uyc8UL0xEeuQo7qM-CI_Qw" org.eventb.core.target="SquareRoot_R3_AddDivisionToFindM"/>
+    <org.eventb.core.seesContext name="_NIxFkL1VEeuQo7qM-CI_Qw" org.eventb.core.target="SquareRootDefinition"/>
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="_hHlPUL1TEeuQo7qM-CI_Qw" org.eventb.core.assignment="input ≔ 0" org.eventb.core.generated="false" org.eventb.core.label="init4_1"/>
+        <org.eventb.core.action name="_hHlPUb1TEeuQo7qM-CI_Qw" org.eventb.core.assignment="input_valid ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="init4_2"/>
+        <org.eventb.core.action name="_hHlPUr1TEeuQo7qM-CI_Qw" org.eventb.core.assignment="low ≔ 0" org.eventb.core.generated="false" org.eventb.core.label="init4_3"/>
+        <org.eventb.core.action name="_hHlPU71TEeuQo7qM-CI_Qw" org.eventb.core.assignment="mid ≔ 0" org.eventb.core.generated="false" org.eventb.core.label="init4_4"/>
+        <org.eventb.core.action name="_DqOkAL1UEeuQo7qM-CI_Qw" org.eventb.core.assignment="high ≔ 1" org.eventb.core.generated="false" org.eventb.core.label="init4_5"/>
+        <org.eventb.core.action name="_oGwn8r1TEeuQo7qM-CI_Qw" org.eventb.core.assignment="result ≔ 0" org.eventb.core.generated="false" org.eventb.core.label="init4_6"/>
+        <org.eventb.core.action name="_z-z0AL1TEeuQo7qM-CI_Qw" org.eventb.core.assignment="result_valid ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="init4_7"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="_uyc8Wr0xEeuQo7qM-CI_Qw" org.eventb.core.comment="Track each middle value to find next bound.," org.eventb.core.generated="false" org.eventb.core.identifier="mid"/>
+    <org.eventb.core.variable name="_BgnKUL2PEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="input"/>
+    <org.eventb.core.variable name="_BgnKUb2PEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="input_valid"/>
+    <org.eventb.core.variable name="_ZxYd0r1TEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="result"/>
+    <org.eventb.core.variable name="_ZxZE4L1TEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="result_valid"/>
+    <org.eventb.core.variable name="_uyc8WL0xEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="low"/>
+    <org.eventb.core.variable name="_uyc8Wb0xEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="high"/>
+    <org.eventb.core.invariant name="_uydjYL0xEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="inv1" org.eventb.core.predicate="mid = (low + high)÷2"/>
+    <org.eventb.core.event name="_BgnxYL2PEeuQo7qM-CI_Qw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="setInput">
+        <org.eventb.core.refinesEvent name="_BgnxYb2PEeuQo7qM-CI_Qw" org.eventb.core.target="setInput"/>
+        <org.eventb.core.parameter name="_bNZTYL1UEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="v"/>
+        <org.eventb.core.guard name="_w2ibhr1TEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="grd4_1" org.eventb.core.predicate="v ∈ ℕ"/>
+        <org.eventb.core.guard name="_w2ibh71TEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="grd4_2" org.eventb.core.predicate="input_valid = FALSE"/>
+        <org.eventb.core.guard name="_M0X9kL2PEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="grd4_3" org.eventb.core.predicate="result_valid = FALSE"/>
+        <org.eventb.core.action name="_VNMrgb1UEeuQo7qM-CI_Qw" org.eventb.core.assignment="input ≔ v" org.eventb.core.generated="false" org.eventb.core.label="init4_0"/>
+        <org.eventb.core.action name="_3-t_IL1TEeuQo7qM-CI_Qw" org.eventb.core.assignment="low ≔ 0" org.eventb.core.generated="false" org.eventb.core.label="init4_1"/>
+        <org.eventb.core.action name="_3-t_Ib1TEeuQo7qM-CI_Qw" org.eventb.core.assignment="high ≔ v + 1" org.eventb.core.generated="false" org.eventb.core.label="init4_2"/>
+        <org.eventb.core.action name="_AwEgAL1UEeuQo7qM-CI_Qw" org.eventb.core.assignment="mid ≔ (v + 1)÷2" org.eventb.core.generated="false" org.eventb.core.label="init4_3"/>
+        <org.eventb.core.action name="_VNMrgr1UEeuQo7qM-CI_Qw" org.eventb.core.assignment="input_valid ≔ TRUE" org.eventb.core.generated="false" org.eventb.core.label="init4_4"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_BgnxYr2PEeuQo7qM-CI_Qw" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="getResult">
+        <org.eventb.core.refinesEvent name="_BgnxY72PEeuQo7qM-CI_Qw" org.eventb.core.target="getResult"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_uydjYb0xEeuQo7qM-CI_Qw" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="SquareRoot">
+        <org.eventb.core.refinesEvent name="_uydjYr0xEeuQo7qM-CI_Qw" org.eventb.core.target="SquareRoot"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="_9xo4cL0xEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="inv2" org.eventb.core.predicate="mid ∈ ℕ"/>
+    <org.eventb.core.event name="_w2ibhL1TEeuQo7qM-CI_Qw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="ImproveLowerBound">
+        <org.eventb.core.refinesEvent name="_w2ibhb1TEeuQo7qM-CI_Qw" org.eventb.core.target="ImproveLowerBound"/>
+        <org.eventb.core.guard name="_w2ibjL1TEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="grd4_1" org.eventb.core.predicate="low+1≠high"/>
+        <org.eventb.core.guard name="_w2ibjb1TEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="grd4_2" org.eventb.core.predicate="mid ∗ mid ≤ input"/>
+        <org.eventb.core.witness name="_uydjZ70xEeuQo7qM-CI_Qw" org.eventb.core.comment="mid is a better value for low" org.eventb.core.generated="false" org.eventb.core.label="m" org.eventb.core.predicate="m = mid"/>
+        <org.eventb.core.action name="_w2ibiL1TEeuQo7qM-CI_Qw" org.eventb.core.assignment="low ≔ mid" org.eventb.core.generated="false" org.eventb.core.label="act4_1"/>
+        <org.eventb.core.action name="_w2ibib1TEeuQo7qM-CI_Qw" org.eventb.core.assignment="mid ≔ (mid + high)÷2" org.eventb.core.generated="false" org.eventb.core.label="act4_2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_w2ibir1TEeuQo7qM-CI_Qw" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="ImproveUpperBound">
+        <org.eventb.core.refinesEvent name="_w2ibi71TEeuQo7qM-CI_Qw" org.eventb.core.target="ImproveUpperBound"/>
+        <org.eventb.core.guard name="_VNNSkL1UEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="grd4_1" org.eventb.core.predicate="low+1≠high"/>
+        <org.eventb.core.guard name="_VNNSkb1UEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="grd4_2" org.eventb.core.predicate="mid ∗ mid &gt; input"/>
+        <org.eventb.core.witness name="_uyeKcL0xEeuQo7qM-CI_Qw" org.eventb.core.comment="mid is a better value for high" org.eventb.core.generated="false" org.eventb.core.label="m" org.eventb.core.predicate="m = mid"/>
+        <org.eventb.core.action name="_w2ibjr1TEeuQo7qM-CI_Qw" org.eventb.core.assignment="high ≔ mid" org.eventb.core.generated="false" org.eventb.core.label="act4_1"/>
+        <org.eventb.core.action name="_w2jCkL1TEeuQo7qM-CI_Qw" org.eventb.core.assignment="mid ≔ (low + mid)÷2" org.eventb.core.generated="false" org.eventb.core.label="act4_2"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

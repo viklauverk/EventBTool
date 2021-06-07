@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.comment="This is the mathematical definition of the function SQRT." org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1623089743502" org.eventb.texttools.text_representation="context SquareRootDefinition // This is the mathematical definition of the function SQRT.&#10; extends Theories&#10;&#10;constants SQRT&#10;&#10;axioms&#10;  @axm1 SQRT ∈ ℕ → ℕ&#10;  @axm2 ∀m,n·m∈ℕ∧n∈ℕ ⇒ (m=SQRT(n) ⇔ m∗m ≤ n ∧ (m+1)∗(m+1) &gt; n)&#10;  theorem @thm1 ∀n·n ∈ ℕ ⇒ SQRT(n)∗SQRT(n) ≤ n ∧ (SQRT(n)+1)∗(SQRT(n)+1) &gt; n&#10;  theorem @thm2 ∀n·n ∈ ℕ ⇒ n = SQRT(n∗n)&#10;end&#10;" version="3">
+    <org.eventb.core.extendsContext name="_GDtV8L0qEeuQo7qM-CI_Qw" org.eventb.core.target="Theories"/>
+    <org.eventb.core.constant name="_GDt9AL0qEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.identifier="SQRT"/>
+    <org.eventb.core.axiom name="_GDt9Ab0qEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="axm1" org.eventb.core.predicate="SQRT ∈ ℕ → ℕ"/>
+    <org.eventb.core.axiom name="_GDt9Ar0qEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="axm2" org.eventb.core.predicate="∀m,n·m∈ℕ∧n∈ℕ ⇒ (m=SQRT(n) ⇔ m∗m ≤ n ∧ (m+1)∗(m+1) &gt; n)"/>
+    <org.eventb.core.axiom name="_GDt9A70qEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="thm1" org.eventb.core.predicate="∀n·n ∈ ℕ ⇒ SQRT(n)∗SQRT(n) ≤ n ∧ (SQRT(n)+1)∗(SQRT(n)+1) &gt; n" org.eventb.core.theorem="true"/>
+    <org.eventb.core.axiom name="_F3DwsL2QEeuQo7qM-CI_Qw" org.eventb.core.generated="false" org.eventb.core.label="thm2" org.eventb.core.predicate="∀n·n ∈ ℕ ⇒ n = SQRT(n∗n)" org.eventb.core.theorem="true"/>
+</org.eventb.core.contextFile>

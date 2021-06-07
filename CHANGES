@@ -1,4 +1,9 @@
 
+Added Square Root test model.
+Print user friendly warning when referenced machine or contexts do not exist.
+Protect % in Event-B comments.
+Load project.info from the workspace directory and include it into the generated documentation.
+
 Version 1.1.0: 2021-05-23
 
 Add witnesses to the rendered documentation.
