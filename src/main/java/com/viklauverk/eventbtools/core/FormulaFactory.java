@@ -25,11 +25,11 @@ public class FormulaFactory
 {
 
     public static
-    Formula newBecomeEQ(Formula var, Formula f)
+    Formula newBecomeEQ(Formula syms, Formula exprs)
     {
         return new Formula(Node.BECOME_EQ,
-                           var,
-                           f);
+                           syms,
+                           exprs);
     }
 
     public static

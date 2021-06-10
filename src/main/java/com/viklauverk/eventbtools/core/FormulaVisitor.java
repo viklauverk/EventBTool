@@ -105,6 +105,7 @@ public interface FormulaVisitor
     Formula visit_SET_COMPREHENSION(Formula i);
     Formula visit_SET_COMPREHENSION_SPECIAL(Formula i);
     Formula visit_ENUMERATED_SET(Formula i);
+    Formula visit_LIST_OF_VARIABLES(Formula i);
     Formula visit_LIST_OF_NONFREE_VARIABLES(Formula i);
     Formula visit_LIST_OF_EXPRESSIONS(Formula i);
     Formula visit_ADDITION(Formula i);

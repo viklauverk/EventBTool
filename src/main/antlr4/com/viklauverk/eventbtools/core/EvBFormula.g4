@@ -210,7 +210,7 @@ SYMBOL: [a-zA-Z][a-zA-Z0-9_]*;
 start : ( substitution | predicate | expression ) EOF # Done;
 
 substitution
-   : variable=SYMBOL BCMEQ inner=expression  # BecomeEQ
+   : left=listOfSymbols BCMEQ right=listOfExpressions  # BecomeEQ
    | variable=SYMBOL '(' left=expression ')' BCMEQ right=expression # BecomeEQFuncApp
    | variable=SYMBOL BCMIN inner=expression  # BecomeIN
    | variable=SYMBOL BCMSUCH inner=predicate # BecomeSUCH

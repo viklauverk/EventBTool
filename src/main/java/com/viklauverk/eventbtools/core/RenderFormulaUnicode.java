@@ -389,6 +389,11 @@ public class RenderFormulaUnicode extends RenderFormula
         cnvs().symbol("{"); visitChildren(i, ()->{cnvs().symbol(","); }); cnvs().symbol("}"); return i;
     }
 
+    @Override public Formula visit_LIST_OF_VARIABLES(Formula i)
+    {
+        visitChildren(i, ()->{cnvs().symbol(","); }); return i;
+    }
+
     @Override public Formula visit_LIST_OF_NONFREE_VARIABLES(Formula i)
     {
         visitChildren(i, ()->{cnvs().symbol(","); }); return i;

@@ -306,9 +306,9 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
     @Override
     public Formula visitBecomeEQ(EvBFormulaParser.BecomeEQContext ctx)
     {
-        Formula var = FormulaFactory.newVariableSymbol(ctx.variable.getText());
-        Formula inner = this.visit(ctx.inner);
-        return FormulaFactory.newBecomeEQ(var, inner);
+        Formula left = this.visit(ctx.left);
+        Formula right = this.visit(ctx.right);
+        return FormulaFactory.newBecomeEQ(left, right);
     }
 
     @Override

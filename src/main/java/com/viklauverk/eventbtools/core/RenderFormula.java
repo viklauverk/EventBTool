@@ -130,6 +130,8 @@ public class RenderFormula implements FormulaVisitor
     public Formula visit_SET_COMPREHENSION_SPECIAL(Formula i) { visitLeft(i); visitRight(i); return i; }
     public Formula visit_SET_COMPREHENSION_SPECIAL_CASE(Formula i) { visitLeft(i); visitRight(i); return i; }
     public Formula visit_ENUMERATED_SET(Formula i) { visitChildren(i, ()->{}); return i; }
+    public Formula visit_LIST_VARIABLES(Formula i) { visitChildren(i, ()->{}); return i; }
+    public Formula visit_LIST_OF_VARIABLES(Formula i) { visitChildren(i, ()->{}); return i; }
     public Formula visit_LIST_OF_NONFREE_VARIABLES(Formula i) { visitChildren(i, ()->{}); return i; }
     public Formula visit_LIST_OF_EXPRESSIONS(Formula i) { visitChildren(i, ()->{}); return i; }
     public Formula visit_ADDITION(Formula i) { visitLeft(i); visitRight(i); return i; }
@@ -258,6 +260,7 @@ public class RenderFormula implements FormulaVisitor
         case SET_COMPREHENSION_SPECIAL: i = visit_SET_COMPREHENSION_SPECIAL(i); break;
         case ENUMERATED_SET: i = visit_ENUMERATED_SET(i); break;
         case CARDINALITY: i = visit_CARDINALITY(i); break;
+        case LIST_OF_VARIABLES: i = visit_LIST_OF_VARIABLES(i); break;
         case LIST_OF_NONFREE_VARIABLES: i = visit_LIST_OF_NONFREE_VARIABLES(i); break;
         case LIST_OF_EXPRESSIONS: i = visit_LIST_OF_EXPRESSIONS(i); break;
         case ADDITION: i = visit_ADDITION(i); break;
