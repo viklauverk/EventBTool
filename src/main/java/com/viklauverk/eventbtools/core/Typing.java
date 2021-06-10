@@ -217,7 +217,7 @@ public class Typing
                 // Both are the non-empty set, lets compare.
                 if (!left.equals(right))
                 {
-                    log.info("Oups! Types do not match for equals %s left %s right %s", predicate, left, right);
+                    log.debug("Oups! Types do not match for equals %s left %s right %s", predicate, left, right);
                 }
             }
             return;
@@ -401,7 +401,7 @@ public class Typing
                 }
                 else
                 {
-                    log.info("Oups! Not possible to force type %s onto variable %s with type %s",
+                    log.debug("Oups! Not possible to force type %s onto variable %s with type %s",
                              type, var, var.type());
                     return;
                 }
