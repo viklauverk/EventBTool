@@ -44,3 +44,6 @@ README.md: $(INFOS)
 # This command resets them to the version in git.
 reset_pdfs:
 	git checkout $(PDFS)
+
+reset:
+	git checkout -f .
