@@ -271,7 +271,8 @@ public class Sys
         for (String name : machineNames())
         {
             Machine m = getMachine(name);
-            m.load();
+            m.loadBUM();
+            m.loadProofs();
         }
     }
 

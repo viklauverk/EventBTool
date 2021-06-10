@@ -80,7 +80,8 @@ public class Machine
     String comment_; // Usually the copyright notice.
 
     Sys sys_;
-    File source_;
+    File bum_;
+    File bpr_;
 
     public Machine(String n, Sys s, File f)
     {
@@ -88,8 +89,12 @@ public class Machine
 
         types_ = new HashMap<>();
         type_names_ = new ArrayList<>();
+        bum_ = f;
+        // Check if we have a bpr file as well.
+        String p = f.getPath().replace(".bum", ".bpr");
+        bpr_ = new File(p);
         sys_ = s;
-        source_ = f;
+        bum_ = f;
     }
 
     public SymbolTable symbolTable()
@@ -310,11 +315,11 @@ public class Machine
         variant_names_ = variants_.keySet().stream().sorted().collect(Collectors.toList());
     }
 
-    public void load() throws Exception
+    public void loadBUM() throws Exception
     {
         SAXReader reader = new SAXReader();
-        Document document = reader.read(source_);
-        log.debug("loading machine "+source_);
+        Document document = reader.read(bum_);
+        log.debug("loading machine "+bum_);
 
         List<Node> machine_comment = document.selectNodes("//org.eventb.core.machineFile");
 
@@ -428,6 +433,13 @@ public class Machine
                 event.addAction(new Action(l, f, c));
             }
         }
+    }
+
+    public void loadProofs() throws Exception
+    {
+        SAXReader reader = new SAXReader();
+        Document document = reader.read(bpr_);
+        log.debug("loading machine proofs "+bpr_);
     }
 
     private void buildSymbolTable(SymbolTable parent)
