@@ -32,7 +32,7 @@ public SymbolTable symbol_table = null;
 public boolean all_symbols_are_non_free_vars = false;
 public List<String> non_free_vars = new LinkedList<>();
 
-void pushFrame(EvBFormulaParser.ListOfSymbolsContext sc)
+void pushFrame(EvBFormulaParser.ListOfNonFreeSymbolsContext sc)
 {
     EvBFormulaParser.ListOfNonFreeVariablesContext vars = (EvBFormulaParser.ListOfNonFreeVariablesContext)sc;
     List<String> syms = new LinkedList<>();
@@ -216,8 +216,12 @@ substitution
    | variable=SYMBOL BCMSUCH inner=predicate # BecomeSUCH
    ;
 
-listOfSymbols
+listOfNonFreeSymbols
    : SYMBOL (',' SYMBOL)*                          # ListOfNonFreeVariables
+   ;
+
+listOfSymbols
+   : SYMBOL (',' SYMBOL)*                          # ListOfVariables
    ;
 
 predicate
@@ -233,12 +237,12 @@ predicate
    | left=predicate operator=EQUIV right=predicate  # Equivalence
    | left=predicate operator=OR right=predicate     # Disjunction
    | operator=NOT right=predicate                   # Negation
-   | ALL left=listOfSymbols
+   | ALL left=listOfNonFreeSymbols
      { pushFrame(((UniversalContext)_localctx).left); }
      QDOT right=predicate
      { popFrame(); }
      # Universal
-   | EXI left=listOfSymbols
+   | EXI left=listOfNonFreeSymbols
      { pushFrame(((ExistentialContext)_localctx).left); }
      QDOT right=predicate
      { popFrame(); }
@@ -311,19 +315,19 @@ expression
     | left=expression OFTYPE right=expression  # OfType
     | '{' expression (',' expression)* '}' # EnumeratedSet
 
-    | '(' LAMBDA vars=listOfSymbols
+    | '(' LAMBDA vars=listOfNonFreeSymbols
           { pushFrame(((LambdaAbstractionExpressionContext)_localctx).vars); }
        QDOT pred=predicate MID formula=expression
           { popFrame(); } ')'
       # LambdaAbstractionExpression
 
-    | '(' LAMBDA vars=listOfSymbols
+    | '(' LAMBDA vars=listOfNonFreeSymbols
           { pushFrame(((LambdaAbstractionSetContext)_localctx).vars); }
        QDOT pred=predicate MID formula=expression
           { popFrame(); } ')'
       # LambdaAbstractionSet
 
-    | '{' vars=listOfSymbols
+    | '{' vars=listOfNonFreeSymbols
           { pushFrame(((SetComprehensionContext)_localctx).vars); }
       QDOT pred=predicate MID formula=expression
           { popFrame(); }
@@ -367,13 +371,13 @@ expression
     | GUNION '(' inner=expression ')' # GeneralizedUnion
     | GINTER '(' inner=expression ')' # GeneralizedIntersection
 
-    | QUNION vars=listOfSymbols
+    | QUNION vars=listOfNonFreeSymbols
           { pushFrame(((QuantifiedUnionContext)_localctx).vars); }
        QDOT pred=predicate MID inner=expression
           { popFrame(); }
       # QuantifiedUnion
 
-    | QINTER vars=listOfSymbols
+    | QINTER vars=listOfNonFreeSymbols
           { pushFrame(((QuantifiedIntersectionContext)_localctx).vars); }
        QDOT pred=predicate MID inner=expression
           { popFrame(); }

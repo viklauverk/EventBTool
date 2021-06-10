@@ -583,6 +583,12 @@ public class FormulaFactory
     }
 
     public static
+    Formula newListOfVariables(List<Formula> elements)
+    {
+        return new Formula(Node.LIST_OF_VARIABLES, elements);
+    }
+
+    public static
     Formula newListOfNonFreeVariables(List<Formula> elements)
     {
         return new Formula(Node.LIST_OF_NONFREE_VARIABLES, elements);

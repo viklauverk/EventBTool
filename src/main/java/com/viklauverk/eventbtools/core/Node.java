@@ -38,6 +38,7 @@ public enum Node
     ANY_SYMBOL(false, false, false, false, false, true, false, false),      // Symbol that matches any other element, eg A,B,C.
     NUMBER_SYMBOL(false, false, false, false, false, true, false, false),   // Symbol that matches a number.
 
+    LIST_OF_VARIABLES(false, false, false, false, false, false, false, false), // x,y,z := 1,2,3
     LIST_OF_NONFREE_VARIABLES(false, false, false, false, false, false, false, false), // In a forall ∀x,y,z· or exists ∃a,b· the variables are such a list.
     LIST_OF_EXPRESSIONS(false, false, false, false, false, false, false, false),      // In a partition {a},{b},{c} is a list of sets.
 

@@ -232,6 +232,18 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
     }
 
     @Override
+    public Formula visitListOfVariables(EvBFormulaParser.ListOfVariablesContext ctx)
+    {
+        List<Formula> elements = new LinkedList<>();
+        for (org.antlr.v4.runtime.tree.TerminalNode sec : ctx.SYMBOL())
+        {
+            // Prim variables not allowed here?
+            elements.add(FormulaFactory.newVariableSymbol(sec.getText()));
+        }
+        return FormulaFactory.newListOfVariables(elements);
+    }
+
+    @Override
     public Formula visitListOfNonFreeVariables(EvBFormulaParser.ListOfNonFreeVariablesContext ctx)
     {
         List<Formula> elements = new LinkedList<>();
