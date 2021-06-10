@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="MEMBER" org.eventb.core.type="ℙ(MEMBER)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubCtx.bpo|org.eventb.core.poFile#CoffeeClubCtx|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="finite(MEMBER)" org.eventb.core.source="/CoffeeClub/CoffeeClubCtx.buc|org.eventb.core.contextFile#CoffeeClubCtx|org.eventb.core.axiom#_4sa00brxEeudH6yHdhNg2A"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

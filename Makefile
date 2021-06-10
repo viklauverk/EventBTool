@@ -249,6 +249,11 @@ clean-tests:
 	@rm -rf build/test_*
 	@echo "done."
 
+# Rodin touchs bps and some other files when a workspace is opened.
+# To prevent cluttering the git history, you can easily revert such changes.
+reset-models:
+	(cd tests/models; make reset)
+
 doc:
 	@mkdir -p $(BUILD)/doc
 	$(AT)evbt docmod tex doc/article.tex $(BUILD)/doc/art.tex

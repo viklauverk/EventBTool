@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="MEMBER" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.poPredicate name="MEMBES" org.eventb.core.predicate="finite(MEMBER)" org.eventb.core.source="/CoffeeClub/CoffeeClubCtx.buc|org.eventb.core.contextFile#CoffeeClubCtx|org.eventb.core.axiom#_4sa00brxEeudH6yHdhNg2A"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="coffeeprice" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="members" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.poIdentifier name="piggybank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="accounts" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.poPredicate name="coffeepricf" org.eventb.core.predicate="piggybank∈ℕ" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.invariant#_X8N4sbryEeudH6yHdhNg2A"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="INITIALISATION/inv1_2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCt\|"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(MEMBER×ℤ))∈(∅ ⦂ ℙ(MEMBER)) → ℕ" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wbr3EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wbr3EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poSequent#INITIALISATION\/inv1_2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/inv1_3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCt\|"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="1∈1 ‥ 30" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wrr3EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wrr3EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poSequent#INITIALISATION\/inv1_3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTCoffeeClubCt|" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="members'" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.poIdentifier name="coffeeprice'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="accounts'" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.poIdentifier name="piggybank'" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPCoffeeClubCt|" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTIDENTCoffeeClubCt\|" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poSequent name="SetPrice/inv1_3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCt}"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="new_price∈1 ‥ 30" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wrr3EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8Bn5LryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wrr3EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poSequent#SetPrice\/inv1_3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD2"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTCoffeeClubCt}" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="new_price" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="coffeeprice'" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPCoffeeClubCt}" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTIDENTCoffeeClubCt}" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="new_price∈1 ‥ 30" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8Bn5LryEeudH6yHdhNg2A|org.eventb.core.guard#_f8CO8bryEeudH6yHdhNg2A"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="NewMember/inv1_2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCt~"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="accounts{new_member ↦ 0}∈members∪{new_member} → ℕ" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wbr3EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8CO87ryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wbr3EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poSequent#NewMember\/inv1_2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTCoffeeClubCt~" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="new_member" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.poIdentifier name="members'" org.eventb.core.type="ℙ(MEMBER)"/>
+        <org.eventb.core.poIdentifier name="accounts'" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPCoffeeClubCt~" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTIDENTCoffeeClubCt~" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="new_member∈MEMBER" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8CO87ryEeudH6yHdhNg2A|org.eventb.core.guard#_f8CO9bryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="new_member∉members" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8CO87ryEeudH6yHdhNg2A|org.eventb.core.guard#_f8C2BbryEeudH6yHdhNg2A"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="Contribute/inv1_2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCu'"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="accounts{member ↦ accounts(member)+contribution}∈members → ℕ" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wbr3EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8N4srryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8C2AbryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wbr3EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poSequent#Contribute\/inv1_2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Contribute/grd_1/GRD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Guard strengthening (split)" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCu'"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="contribution∈1 ‥ 100" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8N4srryEeudH6yHdhNg2A|org.eventb.core.guard#_bwoosbr2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8N4srryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8N4srryEeudH6yHdhNg2A|org.eventb.core.guard#_bwoosbr2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8C2AbryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poSequent#Contribute\/grd_1\/GRD|org.eventb.core.poPredicateSet#SEQHYP"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Contribute/act0/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCu'"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="member∈dom(accounts)∧accounts∈MEMBER ⇸ ℤ" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8C2AbryEeudH6yHdhNg2A|org.eventb.core.action#_f8C2BrryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8C2AbryEeudH6yHdhNg2A|org.eventb.core.action#_f8C2BrryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCu'"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Contribute/act_1/SIM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Action simulation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCu'"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="piggybank+contribution=piggybank+contribution" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8N4srryEeudH6yHdhNg2A|org.eventb.core.action#_bwoosrr2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8N4srryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8N4srryEeudH6yHdhNg2A|org.eventb.core.action#_bwoosrr2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8C2AbryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poSequent#Contribute\/act_1\/SIM|org.eventb.core.poPredicateSet#SEQHYP"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTCoffeeClubCu'" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="member" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.poIdentifier name="accounts'" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.poIdentifier name="contribution" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="amount_feed" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="piggybank'" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPCoffeeClubCu'" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTIDENTCoffeeClubCu'" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="contribution∈1 ‥ 70" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8C2AbryEeudH6yHdhNg2A|org.eventb.core.guard#_f8C2BLryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="member∈members" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8C2AbryEeudH6yHdhNg2A|org.eventb.core.guard#_f8DdFLryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="member∈dom(accounts)" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8C2AbryEeudH6yHdhNg2A|org.eventb.core.guard#_uTR58Lr1EeudH6yHdhNg2A"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="BuyCoffee/grd1_2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTHYPCoffeeClubCu(("/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="member_buy∈dom(accounts)∧accounts∈MEMBER ⇸ ℤ" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8DdEbryEeudH6yHdhNg2A|org.eventb.core.guard#_y-9JcLr2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8DdEbryEeudH6yHdhNg2A|org.eventb.core.guard#_y-9JcLr2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTHYPCoffeeClubCu(("/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="BuyCoffee/inv1_2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCu("/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="accounts{member_buy ↦ accounts(member_buy) − coffeeprice}∈members → ℕ" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wbr3EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8OfwrryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8DdEbryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wbr3EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poSequent#BuyCoffee\/inv1_2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="BuyCoffee/grd_1/GRD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Guard strengthening (split)" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCu("/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="coffeeprice∈1 ‥ 50" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8OfwrryEeudH6yHdhNg2A|org.eventb.core.guard#_bwoos7r2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8OfwrryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8OfwrryEeudH6yHdhNg2A|org.eventb.core.guard#_bwoos7r2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8DdEbryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poSequent#BuyCoffee\/grd_1\/GRD|org.eventb.core.poPredicateSet#SEQHYP"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="BuyCoffee/grd_2/GRD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Guard strengthening (split)" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCu("/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="coffeeprice≤piggybank" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8OfwrryEeudH6yHdhNg2A|org.eventb.core.guard#_bwootLr2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8OfwrryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8OfwrryEeudH6yHdhNg2A|org.eventb.core.guard#_bwootLr2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8DdEbryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poSequent#BuyCoffee\/grd_2\/GRD|org.eventb.core.poPredicateSet#SEQHYP"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="BuyCoffee/act1_1/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCu("/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="member_buy∈dom(accounts)∧accounts∈MEMBER ⇸ ℤ" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8DdEbryEeudH6yHdhNg2A|org.eventb.core.action#_y-9Jcbr2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8DdEbryEeudH6yHdhNg2A|org.eventb.core.action#_y-9Jcbr2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCu("/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="BuyCoffee/act_1/SIM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Action simulation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTALLHYPCoffeeClubCu("/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="piggybank − coffeeprice=piggybank − coffeeprice" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8OfwrryEeudH6yHdhNg2A|org.eventb.core.action#_bwootbr2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8OfwrryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/CoffeeClub/CoffeeClubMch.bum|org.eventb.core.machineFile#CoffeeClubMch|org.eventb.core.event#_X8OfwrryEeudH6yHdhNg2A|org.eventb.core.action#_bwootbr2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8DdEbryEeudH6yHdhNg2A"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poSequent#BuyCoffee\/act_1\/SIM|org.eventb.core.poPredicateSet#SEQHYP"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTCoffeeClubCu(" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="accounts'" org.eventb.core.type="ℙ(MEMBER×ℤ)"/>
+        <org.eventb.core.poIdentifier name="member_buy" org.eventb.core.type="MEMBER"/>
+        <org.eventb.core.poIdentifier name="amount_rob" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="piggybank'" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTHYPCoffeeClubCu((" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTIDENTCoffeeClubCu(" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="member_buy∈dom(accounts)" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8DdEbryEeudH6yHdhNg2A|org.eventb.core.guard#_y-8iYLr2EeudH6yHdhNg2A"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPCoffeeClubCu(" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#EVTHYPCoffeeClubCu((" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="accounts(member_buy)≥coffeeprice" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8DdEbryEeudH6yHdhNg2A|org.eventb.core.guard#_y-9JcLr2EeudH6yHdhNg2A"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="coffeeprice≤piggybank" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.event#_f8DdEbryEeudH6yHdhNg2A|org.eventb.core.guard#_LVE_wLr3EeudH6yHdhNg2A"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/CoffeeClub/CoffeeClubRef.bpo|org.eventb.core.poFile#CoffeeClubRef|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="members⊆MEMBER" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wLr3EeudH6yHdhNg2A"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="accounts∈members → ℕ" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wbr3EeudH6yHdhNg2A"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="coffeeprice∈1 ‥ 30" org.eventb.core.source="/CoffeeClub/CoffeeClubRef.bum|org.eventb.core.machineFile#CoffeeClubRef|org.eventb.core.invariant#_E-R1wrr3EeudH6yHdhNg2A"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>
