@@ -21,6 +21,38 @@ package com.viklauverk.eventbtools.core;
 public class RenderContextTeX extends RenderContextUnicode
 {
     @Override
+    public void renderProofSummary(Context ctx)
+    {
+
+        int npa   = ctx.numProvedAuto();
+        int npmnr = ctx.numProvedManualNotReviewed();
+        int npmr  = ctx.numProvedManualReviewed();
+        int nup   = ctx.numUnproven();
+
+        if (npa > 0 || npmnr > 0 || npmr > 0 || nup > 0)
+        {
+            cnvs().append("\\hfil ");
+        }
+        if (npa > 0)
+        {
+            cnvs().append("\\ \\ {\\footnotesize "+npa+"}\\ProvedAuto");
+        }
+        if (npmnr > 0)
+        {
+            cnvs().append("\\ \\ {\\footnotesize "+npmnr+"}\\ProvedManual");
+        }
+        if (npmr > 0)
+        {
+            cnvs().append("\\ \\ {\\footnotesize "+npmr+"}\\Reviewed");
+        }
+        if (nup > 0)
+        {
+            cnvs().append("\\ \\ {\\footnotesize "+nup+"}\\Unproved");
+        }
+    }
+
+
+    @Override
     public void visit_SetsStart(Context ctx)
     {
         cnvs().append("\\subsection{\\footnotesize ");

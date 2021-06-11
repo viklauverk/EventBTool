@@ -23,16 +23,14 @@ import org.dom4j.Node;
 public class ProofObligation
 {
     String name_; // Name of the proof obligation.
-    int confidence_; // 1000 means proven. Less means not proven.
+    int confidence_; // 1000 means proven. 500 is used for reviewed. 0 means not proven.
     boolean manual_; // True if manual intervention was needed to perform the proof.
-    boolean reviewed_; // True if some part of the proof tree has been reviewed manually and declared true.
 
-    public ProofObligation(String n, int c, boolean m, boolean r)
+    public ProofObligation(String n, int c, boolean m)
     {
         name_ = n;
         confidence_ = c;
         manual_ = m;
-        reviewed_ = r;
     }
 
     public String name()
@@ -42,7 +40,12 @@ public class ProofObligation
 
     public boolean isProved()
     {
-        return confidence_ == 1000;
+        return confidence_ >= 500;
+    }
+
+    public boolean isReviewed()
+    {
+        return confidence_ == 500 && manual_ == true;
     }
 
     public boolean manual()
@@ -50,8 +53,19 @@ public class ProofObligation
         return manual_;
     }
 
-    public boolean reviewed()
+    public boolean isProvedAuto()
     {
-        return reviewed_;
+        return isProved() && !manual();
     }
+
+    public boolean isProvedManualNotReviewed()
+    {
+        return isProved() && manual() && !isReviewed();
+    }
+
+    public boolean isProvedManualReviewed()
+    {
+        return isProved() && manual() && isReviewed();
+    }
+
 }

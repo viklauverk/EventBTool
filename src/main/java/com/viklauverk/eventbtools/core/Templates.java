@@ -14,6 +14,7 @@ public static String TeXHeader =
 "\\graphicspath{ {$PATH_TO_IMAGES$} }\n"+
 "\\usepackage{xltabular}\n"+
 "\\usepackage{xcolor}\n"+
+"\\usepackage{tikz}\n"+
 "\\usepackage{makeidx}\n"+
 "\\usepackage[margin=3cm]{geometry}\n"+
 "\\usepackage[explicit]{titlesec}\n"+
@@ -39,6 +40,7 @@ public static String TeXPackages =
 "\\usepackage{graphicx}\n"+
 "\\graphicspath{ {$PATH_TO_IMAGES$} }\n"+
 "\\usepackage{xltabular}\n"+
+"\\usepackage{tikz}\n"+
 "\\usepackage{xcolor}\n"+
 "\\usepackage{makeidx}\n"+
 "\\usepackage[margin=3cm]{geometry}\n"+
@@ -78,6 +80,41 @@ public static String TeXDefinitions =
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n"+
 "\\overfullrule=10pt\n"+
 "\\newcommand{\\EVBTcolor}[1]{\\color{#1}}\n"+
+"\\DeclareRobustCommand{\\ProvedAuto}[0]{%\n"+
+" \\raisebox{-1mm}{%\n"+
+" \\begin{tikzpicture}%\n"+
+"    \\filldraw[color=green!60, fill=green!60, very thick](0,0) circle (1.5mm);%\n"+
+"    \\node[color=white] {\\footnotesize a};%\n"+
+"  \\end{tikzpicture}%\n"+
+"  } %\n"+
+"}\n"+
+"\n"+
+"\\DeclareRobustCommand{\\ProvedManual}[0]{%\n"+
+" \\raisebox{-1mm}{%\n"+
+" \\begin{tikzpicture}%\n"+
+"    \\filldraw[color=green!60, fill=green!60, very thick](0,0) circle (1.5mm);%\n"+
+"    \\node[color=white] {\\footnotesize m};%\n"+
+"  \\end{tikzpicture}%\n"+
+"  } %\n"+
+"}\n"+
+"\n"+
+"\\DeclareRobustCommand{\\Unproved}[0]{%\n"+
+" \\raisebox{-1mm}{%\n"+
+" \\begin{tikzpicture}%\n"+
+"    \\filldraw[color=red!60, fill=red!60, very thick](0,0) circle (1.5mm);%\n"+
+"    \\node[color=white] {\\footnotesize u};%\n"+
+"  \\end{tikzpicture}%\n"+
+"  } %\n"+
+"}\n"+
+"\n"+
+"\\DeclareRobustCommand{\\Reviewed}[0]{%\n"+
+" \\raisebox{-1mm}{%\n"+
+"  \\begin{tikzpicture}%\n"+
+"    \\filldraw[color=blue!60, fill=blue!60, very thick](0,0) circle (1.5mm);%\n"+
+"    \\node[color=white] {\\footnotesize r};%\n"+
+"  \\end{tikzpicture}%\n"+
+"  }%\n"+
+"}\n"+
 "\n"+
 "\\newcommand{\\AliceBlue}{F0F8FF}\n"+
 "\\newcommand{\\AntiqueWhite}{FAEBD7}\n"+

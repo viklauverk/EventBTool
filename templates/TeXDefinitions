@@ -6,6 +6,41 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \overfullrule=10pt
 \newcommand{\EVBTcolor}[1]{\color{#1}}
+\DeclareRobustCommand{\ProvedAuto}[0]{%
+ \raisebox{-1mm}{%
+ \begin{tikzpicture}%
+    \filldraw[color=green!60, fill=green!60, very thick](0,0) circle (1.5mm);%
+    \node[color=white] {\footnotesize a};%
+  \end{tikzpicture}%
+  } %
+}
+
+\DeclareRobustCommand{\ProvedManual}[0]{%
+ \raisebox{-1mm}{%
+ \begin{tikzpicture}%
+    \filldraw[color=green!60, fill=green!60, very thick](0,0) circle (1.5mm);%
+    \node[color=white] {\footnotesize m};%
+  \end{tikzpicture}%
+  } %
+}
+
+\DeclareRobustCommand{\Unproved}[0]{%
+ \raisebox{-1mm}{%
+ \begin{tikzpicture}%
+    \filldraw[color=red!60, fill=red!60, very thick](0,0) circle (1.5mm);%
+    \node[color=white] {\footnotesize u};%
+  \end{tikzpicture}%
+  } %
+}
+
+\DeclareRobustCommand{\Reviewed}[0]{%
+ \raisebox{-1mm}{%
+  \begin{tikzpicture}%
+    \filldraw[color=blue!60, fill=blue!60, very thick](0,0) circle (1.5mm);%
+    \node[color=white] {\footnotesize r};%
+  \end{tikzpicture}%
+  }%
+}
 
 \newcommand{\AliceBlue}{F0F8FF}
 \newcommand{\AntiqueWhite}{FAEBD7}

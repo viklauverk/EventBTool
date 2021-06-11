@@ -56,8 +56,13 @@ public class Context
     private List<Theorem> theorem_ordering_;
     private List<String> theorem_names_;
 
+    private Map<String,ProofObligation> proof_obligations_ = new HashMap<>();
+    private List<ProofObligation> proof_obligation_ordering_ = new ArrayList<>();
+    private List<String> proof_obligation_names_ = new ArrayList<>();
+
     private boolean loaded_;
-    private File source_;
+    private File buc_;
+    private File bps_;
     private Sys sys_;
 
     private SymbolTable symbol_table_;
@@ -86,9 +91,11 @@ public class Context
         theorem_names_ = new ArrayList<>();
 
         loaded_ = false;
-        source_ = f;
+        buc_ = f;
 
-        assert (source_ != null) : "Source file must not be null!";
+        assert (buc_ != null) : "Source file must not be null!";
+
+        bps_ = new File(f.getPath().replace(".buc", ".bps"));
 
         sys_ = s;
 
@@ -148,6 +155,66 @@ public class Context
     public boolean hasTheorems()
     {
         return theorem_ordering_.size() > 0;
+    }
+
+    public boolean hasProofObligations()
+    {
+        return proof_obligations_.size() > 0;
+    }
+
+    public int numProvedAuto()
+    {
+        int n = 0;
+        for (ProofObligation po : proof_obligation_ordering_)
+        {
+            if (po.isProvedAuto()) n++;
+        }
+        return n;
+    }
+
+    public int numProvedManualNotReviewed()
+    {
+        int n = 0;
+        for (ProofObligation po : proof_obligation_ordering_)
+        {
+            if (po.isProvedManualNotReviewed()) n++;
+        }
+        return n;
+    }
+
+    public int numProvedManualReviewed()
+    {
+        int n = 0;
+        for (ProofObligation po : proof_obligation_ordering_)
+        {
+            if (po.isProvedManualReviewed()) n++;
+        }
+        return n;
+    }
+
+    public int numUnproven()
+    {
+        int n = 0;
+        for (ProofObligation po : proof_obligation_ordering_)
+        {
+            if (!po.isProved()) n++;
+        }
+        return n;
+    }
+
+    public ProofObligation getProofObligation(String name)
+    {
+        return proof_obligations_.get(name);
+    }
+
+    List<ProofObligation> proofObligationOrdering()
+    {
+        return proof_obligation_ordering_;
+    }
+
+    public List<String> proofObligationNames()
+    {
+        return proof_obligation_names_;
     }
 
     public void addSet(CarrierSet cs)
@@ -238,6 +305,13 @@ public class Context
         return theorem_names_;
     }
 
+    public void addProofObligation(ProofObligation po)
+    {
+        proof_obligations_.put(po.name(), po);
+        proof_obligation_ordering_.add(po);
+        proof_obligation_names_ = proof_obligations_.keySet().stream().sorted().collect(Collectors.toList());
+    }
+
     public boolean isEDKContext()
     {
         return edk_context_ != null;
@@ -248,17 +322,17 @@ public class Context
         return edk_context_;
     }
 
-    public synchronized void load() throws Exception
+    public synchronized void loadBUC() throws Exception
     {
         if (loaded_) return;
         loaded_ = true;
         SAXReader reader = new SAXReader();
 
-        log.debug("loading context "+source_);
+        log.debug("loading context "+buc_);
 
-        Document document = reader.read(source_);
+        Document document = reader.read(buc_);
 
-        edk_context_ = sys().edk().lookup(name(), source_);
+        edk_context_ = sys().edk().lookup(name(), buc_);
 
         if (edk_context_ != null)
         {
@@ -332,6 +406,32 @@ public class Context
                 Theorem t = new Theorem(name, pred, comment);
                 addTheorem(t);
             }
+        }
+    }
+
+    public void loadProofs() throws Exception
+    {
+        SAXReader reader = new SAXReader();
+        Document document = reader.read(bps_);
+        log.debug("loading context proof status file "+bps_);
+
+        // /aa/bb/machine.bps
+        String filename = bps_.toString();
+        String[] tokens = filename.split(".+?/(?=[^/]+$)");
+        filename = tokens[1];
+        filename = filename.replace(".bps", "");
+
+        List<Node> pos = document.selectNodes("//org.eventb.core.psStatus");
+        for (Node r : pos)
+        {
+            String name = r.valueOf("@name").trim();
+            String conf = r.valueOf("@org.eventb.core.confidence").trim();
+            String man  = r.valueOf("@org.eventb.core.psManual").trim();
+            ProofObligation po = new ProofObligation(name, Integer.parseInt(conf), man.equals("true"));
+            log.debug("PO %s %s proved_auto=%s proved_manual_not_reviewed=%s proved_manual_reviewed=%s unproven=%s",
+                      filename, name, po.isProvedAuto(), po.isProvedManualNotReviewed(), po.isProvedManualReviewed(), !po.isProved());
+
+            addProofObligation(po);
         }
     }
 

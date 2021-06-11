@@ -21,6 +21,70 @@ package com.viklauverk.eventbtools.core;
 public class RenderMachineTeX extends RenderMachineUnicode
 {
     @Override
+    public void renderProofSummary(Machine mch)
+    {
+
+        int npa   = mch.numProvedAuto();
+        int npmnr = mch.numProvedManualNotReviewed();
+        int npmr  = mch.numProvedManualReviewed();
+        int nup   = mch.numUnproven();
+
+        if (npa > 0 || npmnr > 0 || npmr > 0 || nup > 0)
+        {
+            cnvs().append("\\hfil ");
+        }
+        if (npa > 0)
+        {
+            cnvs().append("\\ \\ {\\footnotesize "+npa+"}\\ProvedAuto");
+        }
+        if (npmnr > 0)
+        {
+            cnvs().append("\\ \\ {\\footnotesize "+npmnr+"}\\ProvedManual");
+        }
+        if (npmr > 0)
+        {
+            cnvs().append("\\ \\ {\\footnotesize "+npmr+"}\\Reviewed");
+        }
+        if (nup > 0)
+        {
+            cnvs().append("\\ \\ {\\footnotesize "+nup+"}\\Unproved");
+        }
+    }
+
+    @Override
+    public void visit_MachineStart(Machine mch)
+    {
+        super.visit_MachineStart(mch);
+        boolean add_par = false;
+        if (mch.numUnproven() > 0)
+        {
+            for (ProofObligation po : mch.proofObligationOrdering())
+            {
+                if (!po.isProved())
+                {
+                    cnvs().append("\\noindent\\Unproved\\ \\texttt{\\small "+Util.texSafe(po.name())+"}\\newline ");
+                }
+            }
+            add_par = true;
+        }
+        if (mch.numProvedManualReviewed() > 0)
+        {
+            for (ProofObligation po : mch.proofObligationOrdering())
+            {
+                if (po.isProvedManualReviewed())
+                {
+                    cnvs().append("\\noindent\\Reviewed\\ \\texttt{\\small "+Util.texSafe(po.name())+"}\\newline ");
+                }
+            }
+            add_par = true;
+        }
+        if (add_par)
+        {
+            cnvs().append("\\par \n");
+        }
+    }
+
+    @Override
     public void visit_VariablesStart(Machine mch)
     {
         cnvs().append("\\subsection{\\footnotesize ");

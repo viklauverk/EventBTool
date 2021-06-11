@@ -20,12 +20,17 @@ package com.viklauverk.eventbtools.core;
 
 public class RenderContextUnicode extends RenderContext
 {
+    public void renderProofSummary(Context ctx)
+    {
+    }
+
     @Override public void visit_ContextStart(Context ctx)
     {
         cnvs().startLine();
         cnvs().keywordLeft("context");
         cnvs().space();
         cnvs().id(ctx.name());
+        renderProofSummary(ctx);
         cnvs().endLine();
 
         cnvs().hrule();

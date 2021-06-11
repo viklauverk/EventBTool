@@ -8,6 +8,7 @@
 \graphicspath{ {$PATH_TO_IMAGES$} }
 \usepackage{xltabular}
 \usepackage{xcolor}
+\usepackage{tikz}
 \usepackage{makeidx}
 \usepackage[margin=3cm]{geometry}
 \usepackage[explicit]{titlesec}

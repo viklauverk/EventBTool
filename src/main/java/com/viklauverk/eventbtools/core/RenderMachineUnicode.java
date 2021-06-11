@@ -25,6 +25,11 @@ import java.util.LinkedList;
 
 public class RenderMachineUnicode extends RenderMachine
 {
+
+    public void renderProofSummary(Machine mch)
+    {
+    }
+
     @Override
     public void visit_MachineStart(Machine mch)
     {
@@ -32,6 +37,7 @@ public class RenderMachineUnicode extends RenderMachine
         cnvs().keywordLeft(mch.machineOrRefinement());
         cnvs().space();
         cnvs().id(mch.name());
+        renderProofSummary(mch);
         cnvs().endLine();
 
         cnvs().hrule();

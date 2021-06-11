@@ -85,8 +85,19 @@ public class DocGenTeX extends BaseDocGen
             // Skip EDK contexts for the moment.
             if (ctx.startsWith("EDK_")) continue;
 
+            Context c = sys().getContext(ctx);
+            String pos = "";
+            if (c.numUnproven() > 0)
+            {
+                pos += "\\Unproved ";
+            }
+            if (c.numProvedManualReviewed() > 0)
+            {
+                pos += "\\Reviewed ";
+            }
+
             cnvs.append("\\pagebreak\n\n");
-            cnvs.append("\\section{\\KEYWL{CONTEXT}\\small\\ "+Util.texSafe(ctx)+"}\n\n");
+            cnvs.append("\\section{\\KEYWL{CONTEXT}\\small\\ "+Util.texSafe(ctx)+" "+pos+"}\n\n");
             cnvs.append("EVBT(show part tex \""+ctx+"\")\n");
         }
 
@@ -94,7 +105,17 @@ public class DocGenTeX extends BaseDocGen
         {
             cnvs.append("\\pagebreak\n\n");
             Machine m = sys().getMachine(mch);
-            cnvs.append("\\section{\\KEYWL{"+m.machineOrRefinement().toUpperCase()+"}\\small\\ "+Util.texSafe(mch)+"}\n\n");
+            String pos = "";
+            if (m.numUnproven() > 0)
+            {
+                pos += "\\Unproved ";
+            }
+            if (m.numProvedManualReviewed() > 0)
+            {
+                pos += "\\Reviewed ";
+            }
+
+            cnvs.append("\\section{\\KEYWL{"+m.machineOrRefinement().toUpperCase()+"}\\small\\ "+Util.texSafe(mch)+" "+pos+"}\n\n");
             cnvs.append("EVBT(show part tex \""+mch+"\")\n");
         }
 

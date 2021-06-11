@@ -33,6 +33,11 @@ from a machine through parameters prefixed with out_.
 
 [Library.pdf](Library.pdf)
 
+## ProofFailures
+A machine with unproven, reviewed and manually proven POs.
+
+[ProofFailures.pdf](ProofFailures.pdf)
+
 ## SetComprehensions
 Set comprehension syntax is the most complex part of the Event-B grammar.
 This project tests all the ways of expressing set comprehension.

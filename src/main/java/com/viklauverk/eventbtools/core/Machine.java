@@ -287,6 +287,46 @@ public class Machine
         return proof_obligations_.size() > 0;
     }
 
+    public int numProvedAuto()
+    {
+        int n = 0;
+        for (ProofObligation po : proof_obligation_ordering_)
+        {
+            if (po.isProvedAuto()) n++;
+        }
+        return n;
+    }
+
+    public int numProvedManualNotReviewed()
+    {
+        int n = 0;
+        for (ProofObligation po : proof_obligation_ordering_)
+        {
+            if (po.isProvedManualNotReviewed()) n++;
+        }
+        return n;
+    }
+
+    public int numProvedManualReviewed()
+    {
+        int n = 0;
+        for (ProofObligation po : proof_obligation_ordering_)
+        {
+            if (po.isProvedManualReviewed()) n++;
+        }
+        return n;
+    }
+
+    public int numUnproven()
+    {
+        int n = 0;
+        for (ProofObligation po : proof_obligation_ordering_)
+        {
+            if (!po.isProved()) n++;
+        }
+        return n;
+    }
+
     public ProofObligation getProofObligation(String name)
     {
         return proof_obligations_.get(name);
@@ -486,11 +526,14 @@ public class Machine
         List<Node> pos = document.selectNodes("//org.eventb.core.psStatus");
         for (Node r : pos)
         {
-            String name = r.valueOf("@name");
-            String conf = r.valueOf("@org.eventb.core.confidence");
-            String man  = r.valueOf("@org.eventb.core.psManual");
-            log.info("PO %s %s %s %s", filename, name, conf, man);
-            addProofObligation(new ProofObligation(name, Integer.parseInt(conf), man.equals("true"), false));
+            String name = r.valueOf("@name").trim();
+            String conf = r.valueOf("@org.eventb.core.confidence").trim();
+            String man  = r.valueOf("@org.eventb.core.psManual").trim();
+            ProofObligation po = new ProofObligation(name, Integer.parseInt(conf), man.equals("true"));
+            log.debug("PO %s %s proved_auto=%s proved_manual_not_reviewed=%s proved_manual_reviewed=%s unproven=%s",
+                      filename, name, po.isProvedAuto(), po.isProvedManualNotReviewed(), po.isProvedManualReviewed(), !po.isProved());
+
+            addProofObligation(po);
         }
     }
 

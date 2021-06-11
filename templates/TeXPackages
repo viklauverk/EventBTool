@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \graphicspath{ {$PATH_TO_IMAGES$} }
 \usepackage{xltabular}
+\usepackage{tikz}
 \usepackage{xcolor}
 \usepackage{makeidx}
 \usepackage[margin=3cm]{geometry}

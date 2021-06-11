@@ -262,7 +262,8 @@ public class Sys
         for (String name : contextNames())
         {
             Context c = getContext(name);
-            c.load();
+            c.loadBUC();
+            c.loadProofs();
         }
     }
 
