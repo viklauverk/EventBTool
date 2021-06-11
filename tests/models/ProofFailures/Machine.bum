@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1623393601362" org.eventb.texttools.text_representation="machine Machine&#10;&#10;variables power thing its&#10;&#10;invariants&#10;  @inv1 power ∈ BOOL&#10;  @inv2 thing ∈ ℕ&#10;  @inv3 its ⊆ ℕ&#10;  @inv4 thing = max(its)&#10;  theorem @thm1 1 = max({1}) // Manual proof of WD&#10;  theorem @thm2 2 = max({17}) // Reviewed badly! Manual proof WD&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @init1 power ≔ FALSE&#10;      @init2 thing ≔ 1&#10;      @init3 its ≔ ∅ // Why is this auto-proved?&#10;  end&#10;&#10;  event go&#10;    then&#10;      @act1 its ≔ its ∪ {47} // PO cannot be proven&#10;  end&#10;end&#10;" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="_HZy2gMoMEeuOnsx8lpCKJA" org.eventb.core.assignment="power ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="init1"/>
+        <org.eventb.core.action name="_HZzdkMoMEeuOnsx8lpCKJA" org.eventb.core.assignment="thing ≔ 1" org.eventb.core.generated="false" org.eventb.core.label="init2"/>
+        <org.eventb.core.action name="_hLvKkMoMEeuOnsx8lpCKJA" org.eventb.core.assignment="its ≔ ∅" org.eventb.core.comment="Why is this auto-proved?" org.eventb.core.generated="false" org.eventb.core.label="init3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="_CjCSAMoDEeuJ3NFP6psiHw" org.eventb.core.generated="false" org.eventb.core.identifier="power"/>
+    <org.eventb.core.invariant name="_CjCSAcoDEeuJ3NFP6psiHw" org.eventb.core.generated="false" org.eventb.core.label="inv1" org.eventb.core.predicate="power ∈ BOOL"/>
+    <org.eventb.core.invariant name="_CjCSAsoDEeuJ3NFP6psiHw" org.eventb.core.generated="false" org.eventb.core.label="inv2" org.eventb.core.predicate="thing ∈ ℕ"/>
+    <org.eventb.core.invariant name="_f1DrgcoMEeuOnsx8lpCKJA" org.eventb.core.generated="false" org.eventb.core.label="inv3" org.eventb.core.predicate="its ⊆ ℕ"/>
+    <org.eventb.core.invariant name="_m7HIMsoMEeuOnsx8lpCKJA" org.eventb.core.generated="false" org.eventb.core.label="inv4" org.eventb.core.predicate="thing = max(its)"/>
+    <org.eventb.core.variable name="_HZiGcMp9EeuOnsx8lpCKJA" org.eventb.core.generated="false" org.eventb.core.identifier="thing"/>
+    <org.eventb.core.variable name="_HZiGccp9EeuOnsx8lpCKJA" org.eventb.core.generated="false" org.eventb.core.identifier="its"/>
+    <org.eventb.core.event name="_2BrNUMp9EeuOnsx8lpCKJA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="go">
+        <org.eventb.core.action name="_2Br0YMp9EeuOnsx8lpCKJA" org.eventb.core.assignment="its ≔ its ∪ {47}" org.eventb.core.comment="PO cannot be proven" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="_OKEwsMp-EeuOnsx8lpCKJA" org.eventb.core.comment="Manual proof of WD" org.eventb.core.generated="false" org.eventb.core.label="thm1" org.eventb.core.predicate="1 = max({1})" org.eventb.core.theorem="true"/>
+    <org.eventb.core.invariant name="_tos6wMp-EeuOnsx8lpCKJA" org.eventb.core.comment="Reviewed badly! Manual proof WD" org.eventb.core.generated="false" org.eventb.core.label="thm2" org.eventb.core.predicate="2 = max({17})" org.eventb.core.theorem="true"/>
+</org.eventb.core.machineFile>

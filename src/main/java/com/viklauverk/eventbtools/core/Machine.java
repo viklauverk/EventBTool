@@ -67,6 +67,10 @@ public class Machine
     private ArrayList<Event> event_ordering_ = new ArrayList<>();
     private List<String> event_names_ = new ArrayList<>();
 
+    private Map<String,ProofObligation> proof_obligations_ = new HashMap<>();
+    private List<ProofObligation> proof_obligation_ordering_ = new ArrayList<>();
+    private List<String> proof_obligation_names_ = new ArrayList<>();
+
     // These are the calculated types that variables can be of.
     private Map<String,Type> types_;
     private List<String> type_names_;
@@ -82,6 +86,9 @@ public class Machine
     Sys sys_;
     File bum_;
     File bpr_;
+    File bps_;
+    File bpo_;
+    File bcc_;
 
     public Machine(String n, Sys s, File f)
     {
@@ -90,11 +97,13 @@ public class Machine
         types_ = new HashMap<>();
         type_names_ = new ArrayList<>();
         bum_ = f;
-        // Check if we have a bpr file as well.
-        String p = f.getPath().replace(".bum", ".bpr");
-        bpr_ = new File(p);
         sys_ = s;
         bum_ = f;
+
+        bpr_ = new File(f.getPath().replace(".bum", ".bpr"));
+        bps_ = new File(f.getPath().replace(".bum", ".bps"));
+        bpo_ = new File(f.getPath().replace(".bum", ".bpo"));
+        bcc_ = new File(f.getPath().replace(".bum", ".bcc"));
     }
 
     public SymbolTable symbolTable()
@@ -273,6 +282,26 @@ public class Machine
         return context_names_;
     }
 
+    public boolean hasProofObligations()
+    {
+        return proof_obligations_.size() > 0;
+    }
+
+    public ProofObligation getProofObligation(String name)
+    {
+        return proof_obligations_.get(name);
+    }
+
+    List<ProofObligation> proofObligationOrdering()
+    {
+        return proof_obligation_ordering_;
+    }
+
+    public List<String> proofObligationNames()
+    {
+        return proof_obligation_names_;
+    }
+
     public void addEvent(Event e)
     {
         events_.put(e.name(), e);
@@ -313,6 +342,13 @@ public class Machine
         variants_.put(variant.name(), variant);
         variant_ordering_.add(variant);
         variant_names_ = variants_.keySet().stream().sorted().collect(Collectors.toList());
+    }
+
+    public void addProofObligation(ProofObligation po)
+    {
+        proof_obligations_.put(po.name(), po);
+        proof_obligation_ordering_.add(po);
+        proof_obligation_names_ = proof_obligations_.keySet().stream().sorted().collect(Collectors.toList());
     }
 
     public void loadBUM() throws Exception
@@ -438,8 +474,24 @@ public class Machine
     public void loadProofs() throws Exception
     {
         SAXReader reader = new SAXReader();
-        Document document = reader.read(bpr_);
-        log.debug("loading machine proofs "+bpr_);
+        Document document = reader.read(bps_);
+        log.debug("loading machine proof status file "+bps_);
+
+        // /aa/bb/machine.bps
+        String filename = bps_.toString();
+        String[] tokens = filename.split(".+?/(?=[^/]+$)");
+        filename = tokens[1];
+        filename = filename.replace(".bps", "");
+
+        List<Node> pos = document.selectNodes("//org.eventb.core.psStatus");
+        for (Node r : pos)
+        {
+            String name = r.valueOf("@name");
+            String conf = r.valueOf("@org.eventb.core.confidence");
+            String man  = r.valueOf("@org.eventb.core.psManual");
+            log.info("PO %s %s %s %s", filename, name, conf, man);
+            addProofObligation(new ProofObligation(name, Integer.parseInt(conf), man.equals("true"), false));
+        }
     }
 
     private void buildSymbolTable(SymbolTable parent)

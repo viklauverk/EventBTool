@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <org.eventb.core.psFile>
     <org.eventb.core.psStatus name="thm1_1/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="thm1_1/THM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psBroken="true" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="thm1_1/THM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="thm1_2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="thm1_2/THM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="thm1_3/THM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
@@ -19,10 +19,10 @@
     <org.eventb.core.psStatus name="setInput/inv1_5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="setInput/inv1_6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="setInput/act1_1/FIS" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="setInput/act1_2/FIS" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psBroken="true" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="setInput/act1_2/FIS" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="true"/>
     <org.eventb.core.psStatus name="SquareRoot/thm1_1/THM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="SquareRoot/thm1_2/THM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="SquareRoot/act_1/SIM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psBroken="true" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="SquareRoot/act_1/SIM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="true"/>
     <org.eventb.core.psStatus name="Improve/inv1_1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="Improve/inv1_2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="Improve/inv1_3/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
@@ -30,5 +30,5 @@
     <org.eventb.core.psStatus name="Improve/inv1_5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="Improve/inv1_6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="Improve/vrt/NAT" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="Improve/vrt/VAR" org.eventb.core.confidence="0" org.eventb.core.poStamp="0" org.eventb.core.psBroken="true" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="Improve/vrt/VAR" org.eventb.core.confidence="0" org.eventb.core.poStamp="0" org.eventb.core.psManual="true"/>
 </org.eventb.core.psFile>

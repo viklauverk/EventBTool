@@ -18,6 +18,8 @@
 
 package com.viklauverk.eventbtools.core;
 
+import org.dom4j.Node;
+
 public class ProofObligation
 {
     String name_; // Name of the proof obligation.
@@ -52,5 +54,4 @@ public class ProofObligation
     {
         return reviewed_;
     }
-
 }

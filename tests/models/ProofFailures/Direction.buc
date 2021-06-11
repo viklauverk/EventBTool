@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1623394625763" org.eventb.texttools.text_representation="context Direction&#10;&#10;sets DIR&#10;&#10;constants LEFT RIGHT&#10;&#10;axioms&#10;  @axm1 partition(DIR,{LEFT},{RIGHT})&#10;&#10;&#10;theorem @thm1 1=2 // Not provable.&#10;theorem @thm2 1=max({1,2,3}) // Woot?&#10;&#10;end&#10;" version="3">
+    <org.eventb.core.carrierSet name="_OUSSgMoDEeuOnsx8lpCKJA" org.eventb.core.generated="false" org.eventb.core.identifier="DIR"/>
+    <org.eventb.core.constant name="_OUS5kMoDEeuOnsx8lpCKJA" org.eventb.core.generated="false" org.eventb.core.identifier="LEFT"/>
+    <org.eventb.core.constant name="_OUS5kcoDEeuOnsx8lpCKJA" org.eventb.core.generated="false" org.eventb.core.identifier="RIGHT"/>
+    <org.eventb.core.axiom name="_OUS5ksoDEeuOnsx8lpCKJA" org.eventb.core.generated="false" org.eventb.core.label="axm1" org.eventb.core.predicate="partition(DIR,{LEFT},{RIGHT})"/>
+    <org.eventb.core.axiom name="_5fV8IMp_EeuOnsx8lpCKJA" org.eventb.core.comment="Not provable." org.eventb.core.generated="false" org.eventb.core.label="thm1" org.eventb.core.predicate="1=2" org.eventb.core.theorem="true"/>
+    <org.eventb.core.axiom name="_DQu9sMqAEeuOnsx8lpCKJA" org.eventb.core.comment="Woot?" org.eventb.core.generated="false" org.eventb.core.label="thm2" org.eventb.core.predicate="1=max({1,2,3})" org.eventb.core.theorem="true"/>
+</org.eventb.core.contextFile>
