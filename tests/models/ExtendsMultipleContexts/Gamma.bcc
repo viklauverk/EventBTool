@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+    <org.eventb.core.scExtendsContext name="'" org.eventb.core.scTarget="/ExtendsMultipleContexts/Alfa.bcc|org.eventb.core.scContextFile#Alfa" org.eventb.core.source="/ExtendsMultipleContexts/Gamma.buc|org.eventb.core.contextFile#Gamma|org.eventb.core.extendsContext#_fbhE4MriEeuOnsx8lpCKJA"/>
+    <org.eventb.core.scExtendsContext name="(" org.eventb.core.scTarget="/ExtendsMultipleContexts/Beta.bcc|org.eventb.core.scContextFile#Beta" org.eventb.core.source="/ExtendsMultipleContexts/Gamma.buc|org.eventb.core.contextFile#Gamma|org.eventb.core.extendsContext#_fbhE4criEeuOnsx8lpCKJA"/>
+    <org.eventb.core.scInternalContext name="Alfa">
+        <org.eventb.core.scAxiom name="'" org.eventb.core.label="axm1" org.eventb.core.predicate="partition(AA,{a},{aa},{aaa})" org.eventb.core.source="/ExtendsMultipleContexts/Alfa.buc|org.eventb.core.contextFile#Alfa|org.eventb.core.axiom#_jS4YAcriEeuOnsx8lpCKJA" org.eventb.core.theorem="false"/>
+        <org.eventb.core.scCarrierSet name="AA" org.eventb.core.source="/ExtendsMultipleContexts/Alfa.buc|org.eventb.core.contextFile#Alfa|org.eventb.core.carrierSet#_jS3w8MriEeuOnsx8lpCKJA" org.eventb.core.type="ℙ(AA)"/>
+        <org.eventb.core.scConstant name="aaa" org.eventb.core.source="/ExtendsMultipleContexts/Alfa.buc|org.eventb.core.contextFile#Alfa|org.eventb.core.constant#_jS4YAMriEeuOnsx8lpCKJA" org.eventb.core.type="AA"/>
+        <org.eventb.core.scConstant name="a" org.eventb.core.source="/ExtendsMultipleContexts/Alfa.buc|org.eventb.core.contextFile#Alfa|org.eventb.core.constant#_jS3w8criEeuOnsx8lpCKJA" org.eventb.core.type="AA"/>
+        <org.eventb.core.scConstant name="aa" org.eventb.core.source="/ExtendsMultipleContexts/Alfa.buc|org.eventb.core.contextFile#Alfa|org.eventb.core.constant#_jS3w8sriEeuOnsx8lpCKJA" org.eventb.core.type="AA"/>
+    </org.eventb.core.scInternalContext>
+    <org.eventb.core.scInternalContext name="Beta">
+        <org.eventb.core.scAxiom name="'" org.eventb.core.label="axm1" org.eventb.core.predicate="partition(BB,{b},{bb},{bbb})" org.eventb.core.source="/ExtendsMultipleContexts/Beta.buc|org.eventb.core.contextFile#Beta|org.eventb.core.axiom#_qI2xVMriEeuOnsx8lpCKJA" org.eventb.core.theorem="false"/>
+        <org.eventb.core.scCarrierSet name="BB" org.eventb.core.source="/ExtendsMultipleContexts/Beta.buc|org.eventb.core.contextFile#Beta|org.eventb.core.carrierSet#_qI2xUMriEeuOnsx8lpCKJA" org.eventb.core.type="ℙ(BB)"/>
+        <org.eventb.core.scConstant name="b" org.eventb.core.source="/ExtendsMultipleContexts/Beta.buc|org.eventb.core.contextFile#Beta|org.eventb.core.constant#_qI2xUcriEeuOnsx8lpCKJA" org.eventb.core.type="BB"/>
+        <org.eventb.core.scConstant name="bbb" org.eventb.core.source="/ExtendsMultipleContexts/Beta.buc|org.eventb.core.contextFile#Beta|org.eventb.core.constant#_qI2xU8riEeuOnsx8lpCKJA" org.eventb.core.type="BB"/>
+        <org.eventb.core.scConstant name="bb" org.eventb.core.source="/ExtendsMultipleContexts/Beta.buc|org.eventb.core.contextFile#Beta|org.eventb.core.constant#_qI2xUsriEeuOnsx8lpCKJA" org.eventb.core.type="BB"/>
+    </org.eventb.core.scInternalContext>
+    <org.eventb.core.scAxiom name="Betb" org.eventb.core.label="axm1" org.eventb.core.predicate="partition(GG,{g},{gg},{ggg})" org.eventb.core.source="/ExtendsMultipleContexts/Gamma.buc|org.eventb.core.contextFile#Gamma|org.eventb.core.axiom#_ugjxY8riEeuOnsx8lpCKJA" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scConstant name="g" org.eventb.core.source="/ExtendsMultipleContexts/Gamma.buc|org.eventb.core.contextFile#Gamma|org.eventb.core.constant#_ugjxYMriEeuOnsx8lpCKJA" org.eventb.core.type="GG"/>
+    <org.eventb.core.scCarrierSet name="GG" org.eventb.core.source="/ExtendsMultipleContexts/Gamma.buc|org.eventb.core.contextFile#Gamma|org.eventb.core.carrierSet#_ugjKUMriEeuOnsx8lpCKJA" org.eventb.core.type="ℙ(GG)"/>
+    <org.eventb.core.scConstant name="gg" org.eventb.core.source="/ExtendsMultipleContexts/Gamma.buc|org.eventb.core.contextFile#Gamma|org.eventb.core.constant#_ugjxYcriEeuOnsx8lpCKJA" org.eventb.core.type="GG"/>
+    <org.eventb.core.scConstant name="ggg" org.eventb.core.source="/ExtendsMultipleContexts/Gamma.buc|org.eventb.core.contextFile#Gamma|org.eventb.core.constant#_ugjxYsriEeuOnsx8lpCKJA" org.eventb.core.type="GG"/>
+</org.eventb.core.scContextFile>

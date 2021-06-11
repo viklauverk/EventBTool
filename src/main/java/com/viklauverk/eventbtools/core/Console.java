@@ -141,7 +141,8 @@ public class Console
 
     void pushSymbolTable(String name)
     {
-        SymbolTable st = sys_.newSymbolTable(name, current_symbol_table_);
+        SymbolTable st = sys_.newSymbolTable(name);
+        st.addParent(current_symbol_table_);
         table_stack_.addFirst(st);
         current_symbol_table_ = st;
     }

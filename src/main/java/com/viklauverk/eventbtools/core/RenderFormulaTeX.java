@@ -283,6 +283,16 @@ public class RenderFormulaTeX extends RenderFormulaUnicode
         visitLeft(i); cnvs().append("\\expn "); visitRight(i); return i;
     }
 
+    @Override public Formula visit_MINIMUM(Formula i)
+    {
+        cnvs().symbol("\\min("); visitChild(i); cnvs().symbol(")"); return i;
+    }
+
+    @Override public Formula visit_MAXIMUM(Formula i)
+    {
+        cnvs().symbol("\\max("); visitChild(i); cnvs().symbol(")"); return i;
+    }
+
     @Override public Formula visit_TEST_BOOL(Formula i)
     {
         cnvs().append("\\bool ("); visitChild(i); cnvs().append(")"); return i;
@@ -291,6 +301,11 @@ public class RenderFormulaTeX extends RenderFormulaUnicode
     @Override public Formula visit_CARDINALITY(Formula i)
     {
         cnvs().append("\\card ("); visitChild(i); cnvs().append(")"); return i;
+    }
+
+    @Override public Formula visit_ID_SET(Formula i)
+    {
+        cnvs().symbol("\\id "); return i;
     }
 
     @Override public Formula visit_DOMAIN(Formula i)

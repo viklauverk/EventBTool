@@ -87,6 +87,14 @@ public class SymbolTable
         frames_.removeFirst();
     }
 
+    public void addParents(List<SymbolTable> parents)
+    {
+        for (SymbolTable p : parents)
+        {
+            parents_.add(p);
+        }
+    }
+
     public void addParent(SymbolTable p)
     {
         parents_.add(p);

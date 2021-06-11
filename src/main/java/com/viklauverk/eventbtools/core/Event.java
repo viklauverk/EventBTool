@@ -336,7 +336,8 @@ public class Event
     {
         if (symbol_table_ != null) return;
 
-        symbol_table_ = machine_.sys().newSymbolTable(name_, machine_.symbolTable());
+        symbol_table_ = machine_.sys().newSymbolTable(name_);
+        symbol_table_.addParent(machine_.symbolTable());
 
         addParentParameters(this, symbol_table_);
     }

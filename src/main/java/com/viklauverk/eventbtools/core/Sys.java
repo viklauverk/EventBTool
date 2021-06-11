@@ -105,11 +105,10 @@ public class Sys
         return root_symbol_table_;
     }
 
-    public SymbolTable newSymbolTable(String name, SymbolTable parent)
+    public SymbolTable newSymbolTable(String name)
     {
-        if (parent == null) parent = root_symbol_table_;
         SymbolTable st = new SymbolTable(name);
-        st.addParent(parent);
+        st.addParent(root_symbol_table_);
         all_symbol_tables_.put(name, st);
         return st;
     }

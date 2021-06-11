@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="BB" org.eventb.core.type="ℙ(BB)"/>
+        <org.eventb.core.poIdentifier name="b" org.eventb.core.type="BB"/>
+        <org.eventb.core.poIdentifier name="bbb" org.eventb.core.type="BB"/>
+        <org.eventb.core.poIdentifier name="bb" org.eventb.core.type="BB"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/ExtendsMultipleContexts/Beta.bpo|org.eventb.core.poFile#Beta|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="partition(BB,{b},{bb},{bbb})" org.eventb.core.source="/ExtendsMultipleContexts/Beta.buc|org.eventb.core.contextFile#Beta|org.eventb.core.axiom#_qI2xVMriEeuOnsx8lpCKJA"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

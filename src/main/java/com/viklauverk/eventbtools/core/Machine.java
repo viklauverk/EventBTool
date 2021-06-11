@@ -541,7 +541,8 @@ public class Machine
     {
         if (symbol_table_ != null) return;
 
-        symbol_table_ = sys_.newSymbolTable(name_, parent);
+        symbol_table_ = sys_.newSymbolTable(name_);
+        symbol_table_.addParent(parent);
 
         if (refines_ != null)
         {

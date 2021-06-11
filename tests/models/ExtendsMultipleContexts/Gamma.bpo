@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="5">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="5">
+        <org.eventb.core.poIdentifier name="AA" org.eventb.core.type="ℙ(AA)"/>
+        <org.eventb.core.poIdentifier name="aaa" org.eventb.core.type="AA"/>
+        <org.eventb.core.poIdentifier name="a" org.eventb.core.type="AA"/>
+        <org.eventb.core.poIdentifier name="aa" org.eventb.core.type="AA"/>
+        <org.eventb.core.poPredicate name="aab" org.eventb.core.predicate="partition(AA,{a},{aa},{aaa})" org.eventb.core.source="/ExtendsMultipleContexts/Alfa.buc|org.eventb.core.contextFile#Alfa|org.eventb.core.axiom#_jS4YAcriEeuOnsx8lpCKJA"/>
+        <org.eventb.core.poIdentifier name="BB" org.eventb.core.type="ℙ(BB)"/>
+        <org.eventb.core.poIdentifier name="b" org.eventb.core.type="BB"/>
+        <org.eventb.core.poIdentifier name="bbb" org.eventb.core.type="BB"/>
+        <org.eventb.core.poIdentifier name="bb" org.eventb.core.type="BB"/>
+        <org.eventb.core.poPredicate name="bbc" org.eventb.core.predicate="partition(BB,{b},{bb},{bbb})" org.eventb.core.source="/ExtendsMultipleContexts/Beta.buc|org.eventb.core.contextFile#Beta|org.eventb.core.axiom#_qI2xVMriEeuOnsx8lpCKJA"/>
+        <org.eventb.core.poIdentifier name="GG" org.eventb.core.type="ℙ(GG)"/>
+        <org.eventb.core.poIdentifier name="g" org.eventb.core.type="GG"/>
+        <org.eventb.core.poIdentifier name="gg" org.eventb.core.type="GG"/>
+        <org.eventb.core.poIdentifier name="ggg" org.eventb.core.type="GG"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/ExtendsMultipleContexts/Gamma.bpo|org.eventb.core.poFile#Gamma|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="5">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="partition(GG,{g},{gg},{ggg})" org.eventb.core.source="/ExtendsMultipleContexts/Gamma.buc|org.eventb.core.contextFile#Gamma|org.eventb.core.axiom#_ugjxY8riEeuOnsx8lpCKJA"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

@@ -38,7 +38,7 @@ public class Context
 
     private String name_;
     private String comment_;
-    private Context extends_context_;
+    private List<Context> extends_contexts_;
 
     private Map<String,CarrierSet> sets_;
     private List<CarrierSet> set_ordering_;
@@ -73,7 +73,7 @@ public class Context
     {
         name_ = n;
         comment_ = "";
-        extends_context_ = null;
+        extends_contexts_ = new ArrayList<>();
         sets_ = new HashMap<>();
         set_ordering_ = new ArrayList<>();
         set_names_ = new ArrayList<>();
@@ -124,12 +124,12 @@ public class Context
 
     public boolean hasExtend()
     {
-        return extends_context_ != null;
+        return extends_contexts_.size() > 0;
     }
 
-    Context extendsContext()
+    List<Context> extendsContexts()
     {
-        return extends_context_;
+        return extends_contexts_;
     }
 
     SymbolTable symbolTable()
@@ -351,9 +351,9 @@ public class Context
         for (Node n : list)
         {
             String name = n.valueOf("@org.eventb.core.target");
-            extends_context_ = sys_.getContext(name);
-            assert (extends_context_ != null) : "Error in loaded context xml file. Cannot find context "+name;
-            assert (list.size() == 1) : "Error in loaded context xml file, only one extends expected.";
+            Context c = sys_.getContext(name);
+            assert (c != null) : "Error in loaded context xml file. Cannot find context "+name;
+            extends_contexts_.add(c);
         }
 
         // Load the carrier sets.
@@ -439,14 +439,15 @@ public class Context
     {
         if (symbol_table_ != null) return;
 
-        SymbolTable parent = null;
-        if (extends_context_ != null)
+        List<SymbolTable> parents = new ArrayList<>();
+        for (Context p : extends_contexts_)
         {
-            extends_context_.buildSymbolTable();
-            parent = extends_context_.symbolTable();
+            p.buildSymbolTable();
+            parents.add(p.symbolTable());
         }
 
-        symbol_table_ = sys_.newSymbolTable(name_, parent);
+        symbol_table_ = sys_.newSymbolTable(name_);
+        symbol_table_.addParents(parents);
 
         for (CarrierSet cs : setOrdering())
         {
@@ -486,9 +487,13 @@ public class Context
     {
         StringBuilder o = new StringBuilder();
         o.append(name_);
-        if (extends_context_ != null)
+        if (extends_contexts_.size() > 0)
         {
-            o.append(" ⊏ "+extends_context_.name());
+            o.append(" ⊏ ");
+            for (Context c : extends_contexts_)
+            {
+                o.append(c.name()+" ");
+            }
         }
         o.append("\n");
         o.append("-\n");

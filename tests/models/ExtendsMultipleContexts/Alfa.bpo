@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="1">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="1">
+        <org.eventb.core.poIdentifier name="AA" org.eventb.core.type="ℙ(AA)"/>
+        <org.eventb.core.poIdentifier name="aaa" org.eventb.core.type="AA"/>
+        <org.eventb.core.poIdentifier name="a" org.eventb.core.type="AA"/>
+        <org.eventb.core.poIdentifier name="aa" org.eventb.core.type="AA"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/ExtendsMultipleContexts/Alfa.bpo|org.eventb.core.poFile#Alfa|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="partition(AA,{a},{aa},{aaa})" org.eventb.core.source="/ExtendsMultipleContexts/Alfa.buc|org.eventb.core.contextFile#Alfa|org.eventb.core.axiom#_jS4YAcriEeuOnsx8lpCKJA"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

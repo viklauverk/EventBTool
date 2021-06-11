@@ -54,7 +54,10 @@ public class CodeGenCpp extends BaseCodeGen
         }
         if (ctx.hasExtend())
         {
-            writeContext(ctx.extendsContext());
+            for (Context c : ctx.extendsContexts())
+            {
+                writeContext(c);
+            }
         }
         log.debug("Writing context "+ctx);
         for (String csn : ctx.setNames())

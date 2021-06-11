@@ -31,7 +31,10 @@ public class VisitContext
         if (m && ctx.hasExtend())
         {
             rc.visit_ExtendsStart(ctx);
-            rc.visit_Extend(ctx, ctx.extendsContext());
+            for (Context c : ctx.extendsContexts())
+            {
+                rc.visit_Extend(ctx, c);
+            }
             rc.visit_ExtendsEnd(ctx);
         }
 
