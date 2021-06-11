@@ -1,3 +1,7 @@
+Version 1.4.0: 2021-06-11
+
+Add Event-B syntax for extending multiple contexts.
+
 Version 1.3.0: 2021-06-11
 
 Render status of proof obligations (from bps file) in pdf.
