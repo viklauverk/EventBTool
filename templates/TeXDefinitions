@@ -6,41 +6,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \overfullrule=10pt
 \newcommand{\EVBTcolor}[1]{\color{#1}}
-\DeclareRobustCommand{\ProvedAuto}[0]{%
- \raisebox{-1mm}{%
- \begin{tikzpicture}%
-    \filldraw[color=green!60, fill=green!60, very thick](0,0) circle (1.5mm);%
-    \node[color=white] {\footnotesize a};%
-  \end{tikzpicture}%
-  } %
-}
-
-\DeclareRobustCommand{\ProvedManual}[0]{%
- \raisebox{-1mm}{%
- \begin{tikzpicture}%
-    \filldraw[color=green!60, fill=green!60, very thick](0,0) circle (1.5mm);%
-    \node[color=white] {\footnotesize m};%
-  \end{tikzpicture}%
-  } %
-}
-
-\DeclareRobustCommand{\Unproved}[0]{%
- \raisebox{-1mm}{%
- \begin{tikzpicture}%
-    \filldraw[color=red!60, fill=red!60, very thick](0,0) circle (1.5mm);%
-    \node[color=white] {\footnotesize u};%
-  \end{tikzpicture}%
-  } %
-}
-
-\DeclareRobustCommand{\Reviewed}[0]{%
- \raisebox{-1mm}{%
-  \begin{tikzpicture}%
-    \filldraw[color=blue!60, fill=blue!60, very thick](0,0) circle (1.5mm);%
-    \node[color=white] {\footnotesize r};%
-  \end{tikzpicture}%
-  }%
-}
 
 \newcommand{\AliceBlue}{F0F8FF}
 \newcommand{\AntiqueWhite}{FAEBD7}
@@ -192,7 +157,10 @@
 \definecolor{EvBKeyword}{HTML}{000000}%
 \definecolor{EvBVariable}{HTML}{000000}%
 \definecolor{EvBConstant}{HTML}{\Indigo}%
-\definecolor{EvBCarrierSet}{HTML}{\ForestGreen}%
+\definecolor{EvBCarrierSet}{HTML}{\LimeGreen}%
+\definecolor{ProvedColor}{HTML}{\LimeGreen}%
+\definecolor{NotProvedColor}{HTML}{\Firebrick}%
+\definecolor{ReviewedColor}{HTML}{\CornflowerBlue}%
 \definecolor{EvBPrimitiveSet}{HTML}{000000}%
 \definecolor{EvBComment}{HTML}{000000}%
 \definecolor{EvBLabel}{HTML}{0066cc}%
@@ -223,6 +191,42 @@
 \newcommand{\NUM}[1]{{\EVBTcolor{EvBNumber}#1}}%
 \newcommand{\ANY}[1]{\textrm{\EVBTcolor{EvBAny}#1}}%
 \newcommand{\INDENT}[0]{\rule{5mm}{0mm}}%
+
+\DeclareRobustCommand{\ProvedAuto}[0]{%
+ \raisebox{-1mm}{%
+ \begin{tikzpicture}%
+    \filldraw[color=ProvedColor, fill=ProvedColor, very thick](0,0) circle (1.5mm);%
+    \node[color=white] {\footnotesize a};%
+  \end{tikzpicture}%
+  } %
+}
+
+\DeclareRobustCommand{\ProvedManual}[0]{%
+ \raisebox{-1mm}{%
+ \begin{tikzpicture}%
+    \filldraw[color=ProvedColor, fill=ProvedColor, very thick](0,0) circle (1.5mm);%
+    \node[color=black] {\footnotesize \raisebox{-0.2mm}[1ex][0ex]{i}};%
+  \end{tikzpicture}%
+  } %
+}
+
+\DeclareRobustCommand{\Unproved}[0]{%
+ \raisebox{-1mm}{%
+ \begin{tikzpicture}%
+    \filldraw[color=NotProvedColor, fill=NotProvedColor, very thick](0,0) circle (1.5mm);%
+    \node[color=white] {\footnotesize u};%
+  \end{tikzpicture}%
+  } %
+}
+
+\DeclareRobustCommand{\Reviewed}[0]{%
+ \raisebox{-1mm}{%
+  \begin{tikzpicture}%
+    \filldraw[color=ReviewedColor, fill=ReviewedColor, very thick](0,0) circle (1.5mm);%
+    \node[color=white] {\footnotesize r};%
+  \end{tikzpicture}%
+  }%
+}
 
 % Adjust the underscore to be narrower.
 \newcommand{\UL}{\kern-.1pt\adjustbox{scale={0.5}{1},raise={0.1pt}{\height}}{\textunderscore}\kern-.1pt}

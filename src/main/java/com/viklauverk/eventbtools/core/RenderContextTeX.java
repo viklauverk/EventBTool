@@ -51,6 +51,38 @@ public class RenderContextTeX extends RenderContextUnicode
         }
     }
 
+    @Override
+    public void visit_ContextStart(Context ctx)
+    {
+        super.visit_ContextStart(ctx);
+        boolean add_par = false;
+        if (ctx.numUnproven() > 0)
+        {
+            for (ProofObligation po : ctx.proofObligationOrdering())
+            {
+                if (!po.hasProof())
+                {
+                    cnvs().append("\\noindent\\Unproved\\ \\texttt{\\small "+Util.texSafe(po.name())+"}\\newline ");
+                }
+            }
+            add_par = true;
+        }
+        if (ctx.numProvedManualReviewed() > 0)
+        {
+            for (ProofObligation po : ctx.proofObligationOrdering())
+            {
+                if (po.isProvedManualReviewed())
+                {
+                    cnvs().append("\\noindent\\Reviewed\\ \\texttt{\\small "+Util.texSafe(po.name())+"}\\newline ");
+                }
+            }
+            add_par = true;
+        }
+        if (add_par)
+        {
+            cnvs().append("\\par \n");
+        }
+    }
 
     @Override
     public void visit_SetsStart(Context ctx)

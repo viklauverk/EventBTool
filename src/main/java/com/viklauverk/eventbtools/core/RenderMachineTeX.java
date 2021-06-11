@@ -60,7 +60,7 @@ public class RenderMachineTeX extends RenderMachineUnicode
         {
             for (ProofObligation po : mch.proofObligationOrdering())
             {
-                if (!po.isProved())
+                if (!po.hasProof())
                 {
                     cnvs().append("\\noindent\\Unproved\\ \\texttt{\\small "+Util.texSafe(po.name())+"}\\newline ");
                 }

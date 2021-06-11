@@ -80,41 +80,6 @@ public static String TeXDefinitions =
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n"+
 "\\overfullrule=10pt\n"+
 "\\newcommand{\\EVBTcolor}[1]{\\color{#1}}\n"+
-"\\DeclareRobustCommand{\\ProvedAuto}[0]{%\n"+
-" \\raisebox{-1mm}{%\n"+
-" \\begin{tikzpicture}%\n"+
-"    \\filldraw[color=green!60, fill=green!60, very thick](0,0) circle (1.5mm);%\n"+
-"    \\node[color=white] {\\footnotesize a};%\n"+
-"  \\end{tikzpicture}%\n"+
-"  } %\n"+
-"}\n"+
-"\n"+
-"\\DeclareRobustCommand{\\ProvedManual}[0]{%\n"+
-" \\raisebox{-1mm}{%\n"+
-" \\begin{tikzpicture}%\n"+
-"    \\filldraw[color=green!60, fill=green!60, very thick](0,0) circle (1.5mm);%\n"+
-"    \\node[color=white] {\\footnotesize m};%\n"+
-"  \\end{tikzpicture}%\n"+
-"  } %\n"+
-"}\n"+
-"\n"+
-"\\DeclareRobustCommand{\\Unproved}[0]{%\n"+
-" \\raisebox{-1mm}{%\n"+
-" \\begin{tikzpicture}%\n"+
-"    \\filldraw[color=red!60, fill=red!60, very thick](0,0) circle (1.5mm);%\n"+
-"    \\node[color=white] {\\footnotesize u};%\n"+
-"  \\end{tikzpicture}%\n"+
-"  } %\n"+
-"}\n"+
-"\n"+
-"\\DeclareRobustCommand{\\Reviewed}[0]{%\n"+
-" \\raisebox{-1mm}{%\n"+
-"  \\begin{tikzpicture}%\n"+
-"    \\filldraw[color=blue!60, fill=blue!60, very thick](0,0) circle (1.5mm);%\n"+
-"    \\node[color=white] {\\footnotesize r};%\n"+
-"  \\end{tikzpicture}%\n"+
-"  }%\n"+
-"}\n"+
 "\n"+
 "\\newcommand{\\AliceBlue}{F0F8FF}\n"+
 "\\newcommand{\\AntiqueWhite}{FAEBD7}\n"+
@@ -266,7 +231,10 @@ public static String TeXDefinitions =
 "\\definecolor{EvBKeyword}{HTML}{000000}%\n"+
 "\\definecolor{EvBVariable}{HTML}{000000}%\n"+
 "\\definecolor{EvBConstant}{HTML}{\\Indigo}%\n"+
-"\\definecolor{EvBCarrierSet}{HTML}{\\ForestGreen}%\n"+
+"\\definecolor{EvBCarrierSet}{HTML}{\\LimeGreen}%\n"+
+"\\definecolor{ProvedColor}{HTML}{\\LimeGreen}%\n"+
+"\\definecolor{NotProvedColor}{HTML}{\\Firebrick}%\n"+
+"\\definecolor{ReviewedColor}{HTML}{\\CornflowerBlue}%\n"+
 "\\definecolor{EvBPrimitiveSet}{HTML}{000000}%\n"+
 "\\definecolor{EvBComment}{HTML}{000000}%\n"+
 "\\definecolor{EvBLabel}{HTML}{0066cc}%\n"+
@@ -297,6 +265,42 @@ public static String TeXDefinitions =
 "\\newcommand{\\NUM}[1]{{\\EVBTcolor{EvBNumber}#1}}%\n"+
 "\\newcommand{\\ANY}[1]{\\textrm{\\EVBTcolor{EvBAny}#1}}%\n"+
 "\\newcommand{\\INDENT}[0]{\\rule{5mm}{0mm}}%\n"+
+"\n"+
+"\\DeclareRobustCommand{\\ProvedAuto}[0]{%\n"+
+" \\raisebox{-1mm}{%\n"+
+" \\begin{tikzpicture}%\n"+
+"    \\filldraw[color=ProvedColor, fill=ProvedColor, very thick](0,0) circle (1.5mm);%\n"+
+"    \\node[color=white] {\\footnotesize a};%\n"+
+"  \\end{tikzpicture}%\n"+
+"  } %\n"+
+"}\n"+
+"\n"+
+"\\DeclareRobustCommand{\\ProvedManual}[0]{%\n"+
+" \\raisebox{-1mm}{%\n"+
+" \\begin{tikzpicture}%\n"+
+"    \\filldraw[color=ProvedColor, fill=ProvedColor, very thick](0,0) circle (1.5mm);%\n"+
+"    \\node[color=black] {\\footnotesize \\raisebox{-0.2mm}[1ex][0ex]{i}};%\n"+
+"  \\end{tikzpicture}%\n"+
+"  } %\n"+
+"}\n"+
+"\n"+
+"\\DeclareRobustCommand{\\Unproved}[0]{%\n"+
+" \\raisebox{-1mm}{%\n"+
+" \\begin{tikzpicture}%\n"+
+"    \\filldraw[color=NotProvedColor, fill=NotProvedColor, very thick](0,0) circle (1.5mm);%\n"+
+"    \\node[color=white] {\\footnotesize u};%\n"+
+"  \\end{tikzpicture}%\n"+
+"  } %\n"+
+"}\n"+
+"\n"+
+"\\DeclareRobustCommand{\\Reviewed}[0]{%\n"+
+" \\raisebox{-1mm}{%\n"+
+"  \\begin{tikzpicture}%\n"+
+"    \\filldraw[color=ReviewedColor, fill=ReviewedColor, very thick](0,0) circle (1.5mm);%\n"+
+"    \\node[color=white] {\\footnotesize r};%\n"+
+"  \\end{tikzpicture}%\n"+
+"  }%\n"+
+"}\n"+
 "\n"+
 "% Adjust the underscore to be narrower.\n"+
 "\\newcommand{\\UL}{\\kern-.1pt\\adjustbox{scale={0.5}{1},raise={0.1pt}{\\height}}{\\textunderscore}\\kern-.1pt}\n"+

@@ -38,14 +38,15 @@ public class ProofObligation
         return name_;
     }
 
-    public boolean isProved()
+    public boolean hasProof()
     {
-        return confidence_ >= 500;
+        // This includes proofs that have steps that have been manually reviewed.
+        return confidence_ > 100;
     }
 
     public boolean isReviewed()
     {
-        return confidence_ == 500 && manual_ == true;
+        return confidence_ > 100 && confidence_ <= 500;
     }
 
     public boolean manual()
@@ -55,17 +56,17 @@ public class ProofObligation
 
     public boolean isProvedAuto()
     {
-        return isProved() && !manual();
+        return hasProof() && !manual() && !isReviewed();
     }
 
     public boolean isProvedManualNotReviewed()
     {
-        return isProved() && manual() && !isReviewed();
+        return hasProof() && manual() && !isReviewed();
     }
 
     public boolean isProvedManualReviewed()
     {
-        return isProved() && manual() && isReviewed();
+        return hasProof() && manual() && isReviewed();
     }
 
 }

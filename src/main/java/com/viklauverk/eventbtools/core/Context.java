@@ -197,7 +197,7 @@ public class Context
         int n = 0;
         for (ProofObligation po : proof_obligation_ordering_)
         {
-            if (!po.isProved()) n++;
+            if (!po.hasProof()) n++;
         }
         return n;
     }
@@ -429,7 +429,7 @@ public class Context
             String man  = r.valueOf("@org.eventb.core.psManual").trim();
             ProofObligation po = new ProofObligation(name, Integer.parseInt(conf), man.equals("true"));
             log.debug("PO %s %s proved_auto=%s proved_manual_not_reviewed=%s proved_manual_reviewed=%s unproven=%s",
-                      filename, name, po.isProvedAuto(), po.isProvedManualNotReviewed(), po.isProvedManualReviewed(), !po.isProved());
+                      filename, name, po.isProvedAuto(), po.isProvedManualNotReviewed(), po.isProvedManualReviewed(), !po.hasProof());
 
             addProofObligation(po);
         }
