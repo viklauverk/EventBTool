@@ -1,6 +1,7 @@
 Version 1.3.0: 2021-06-11
 
-
+Render status of proof obligations (from bps file) in pdf.
+Add Event-B syntax parallel substitution. x,y := 1,2
 
 Version 1.2.0: 2021-06-07
 
