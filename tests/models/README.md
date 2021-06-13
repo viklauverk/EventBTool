@@ -27,6 +27,11 @@ specified by constants.
 
 [Elevator.pdf](Elevator.pdf)
 
+## ExtendsMultipleContexts
+Test extending from multiple contexts.
+
+[ExtendsMultipleContexts.pdf](ExtendsMultipleContexts.pdf)
+
 ## Library
 This project tests extracting information out
 from a machine through parameters prefixed with out_.

@@ -34,29 +34,22 @@ public static String TeXHeader =
 public static String TeXPackages =
 "\\usepackage[T1]{fontenc}    % Ignored when using xelatex\n"+
 "\\usepackage[utf8]{inputenc} % Ignored when using xelatex\n"+
-"\\usepackage{bsymb}\n"+
-"\\usepackage{calc}\n"+
-"\\usepackage{parskip}\n"+
-"\\usepackage{graphicx}\n"+
-"\\graphicspath{ {$PATH_TO_IMAGES$} }\n"+
-"\\usepackage{xltabular}\n"+
-"\\usepackage{tikz}\n"+
-"\\usepackage{xcolor}\n"+
-"\\usepackage{makeidx}\n"+
-"\\usepackage[margin=3cm]{geometry}\n"+
-"\\usepackage[explicit]{titlesec}\n"+
-"\\usepackage{varwidth} % for the varwidth minipage environment\n"+
-"\\usepackage{adjustbox}\n"+
+"\\usepackage{bsymb} % Standard latex symbols for Event-B formulas.\n"+
+"\\usepackage{calc}  % Improve latex calculation abilities.\n"+
+"\\usepackage{parskip} % Use parskip, instead of line-indent for new paragraphs.\n"+
+"\\usepackage{graphicx} % Include graphics.\n"+
+"\\graphicspath{ {$PATH_TO_IMAGES$} } % Points to workspace directory to find images.\n"+
+"\\usepackage{xltabular} % Advanced tabular command.\n"+
+"\\usepackage{tikz} % Draw icons for (a) (i) (r) (u)\n"+
+"\\usepackage{xcolor} % Specify colors\n"+
+"\\usepackage{makeidx} % Index generation\n"+
+"\\usepackage[margin=3cm]{geometry} % Set margins.\n"+
+"\\usepackage[explicit]{titlesec} % Used to tweak table of contents and sections.\n"+
+"\\usepackage{varwidth} % For the varwidth minipage environment.\n"+
+"\\usepackage{adjustbox} % Minimum sized box.\n"+
 "\n"+
-"%\\usepackage{blindtext}\n"+
-"%\\usepackage{showframe}\n"+
-"\n"+
-"\\titleformat{\\section}[rightmargin]{}{\\fbox{\\thesection}}{0pt}{}[]\n"+
-"\\titlespacing{\\section}{10mm}{*0.5}{*0.5}\n"+
-"\\titleformat{\\subsection}[rightmargin]{}{\\fbox{\\thesubsection}}{0pt}{}[]\n"+
-"\\titlespacing{\\subsection}{10mm}{*0.5}{*0.5}\n"+
-"\\titleformat{\\subsubsection}[rightmargin]{}{\\fbox{\\thesubsubsection}}{0pt}{}[]\n"+
-"\\titlespacing{\\subsubsection}{10mm}{*0.5}{*0.5}\n"+
+"%\\usepackage{blindtext} % Use this to debug latex.\n"+
+"%\\usepackage{showframe} % Use this to debug latex.\n"+
 "";
 public static String HtmqHeader =
 "html {\n"+
@@ -81,6 +74,7 @@ public static String TeXDefinitions =
 "\\overfullrule=10pt\n"+
 "\\newcommand{\\EVBTcolor}[1]{\\color{#1}}\n"+
 "\n"+
+"%% The X11 colors.\n"+
 "\\newcommand{\\AliceBlue}{F0F8FF}\n"+
 "\\newcommand{\\AntiqueWhite}{FAEBD7}\n"+
 "\\newcommand{\\Aqua}{00FFFF}\n"+
@@ -227,14 +221,20 @@ public static String TeXDefinitions =
 "\\newcommand{\\Yellow}{FFFF00}\n"+
 "\\newcommand{\\YellowGreen}{9ACD32}\n"+
 "\n"+
+"%To render this document in grayscale do:\n"+
+"%xelatex \"\\def\\EvBUseGrayScale{1} \\input{thisfile.tex}\"\n"+
+"%Or uncomment this line:\n"+
+"%\\def\\EvBUseGrayScale{1}\n"+
+"\n"+
+"\\ifx\\EvBUseGrayScale\\undefined\n"+
+"\\definecolor{ProvedColor}{HTML}{\\LimeGreen}%\n"+
+"\\definecolor{NotProvedColor}{HTML}{\\Firebrick}%\n"+
+"\\definecolor{ReviewedColor}{HTML}{\\CornflowerBlue}%\n"+
 "\\definecolor{EvBId}{HTML}{880000}%\n"+
 "\\definecolor{EvBKeyword}{HTML}{000000}%\n"+
 "\\definecolor{EvBVariable}{HTML}{000000}%\n"+
 "\\definecolor{EvBConstant}{HTML}{\\Indigo}%\n"+
 "\\definecolor{EvBCarrierSet}{HTML}{\\LimeGreen}%\n"+
-"\\definecolor{ProvedColor}{HTML}{\\LimeGreen}%\n"+
-"\\definecolor{NotProvedColor}{HTML}{\\Firebrick}%\n"+
-"\\definecolor{ReviewedColor}{HTML}{\\CornflowerBlue}%\n"+
 "\\definecolor{EvBPrimitiveSet}{HTML}{000000}%\n"+
 "\\definecolor{EvBComment}{HTML}{000000}%\n"+
 "\\definecolor{EvBLabel}{HTML}{0066cc}%\n"+
@@ -244,6 +244,25 @@ public static String TeXDefinitions =
 "\\definecolor{EvBNonFree}{HTML}{660000}%\n"+
 "\\definecolor{EvBNumber}{HTML}{\\Orange}%\n"+
 "\\definecolor{EvBAny}{HTML}{000000}%\n"+
+"\\else\n"+
+"\\definecolor{ProvedColor}{HTML}{888888}%\n"+
+"\\definecolor{NotProvedColor}{HTML}{888888}%\n"+
+"\\definecolor{ReviewedColor}{HTML}{888888}%\n"+
+"\\definecolor{EvBId}{HTML}{000000}%\n"+
+"\\definecolor{EvBKeyword}{HTML}{000000}%\n"+
+"\\definecolor{EvBVariable}{HTML}{000000}%\n"+
+"\\definecolor{EvBConstant}{HTML}{000000}%\n"+
+"\\definecolor{EvBCarrierSet}{HTML}{000000}%\n"+
+"\\definecolor{EvBPrimitiveSet}{HTML}{000000}%\n"+
+"\\definecolor{EvBComment}{HTML}{000000}%\n"+
+"\\definecolor{EvBLabel}{HTML}{000000}%\n"+
+"\\definecolor{EvBNames}{HTML}{000000}%\n"+
+"\\definecolor{EvBExpression}{HTML}{000000}%\n"+
+"\\definecolor{EvBPredicate}{HTML}{000000}%\n"+
+"\\definecolor{EvBNonFree}{HTML}{000000}%\n"+
+"\\definecolor{EvBNumber}{HTML}{000000}%\n"+
+"\\definecolor{EvBAny}{HTML}{000000}%\n"+
+"\\fi\n"+
 "\n"+
 "\\newcommand{\\nl}[0]{ \\\\ }%\n"+
 "\\newcommand{\\HRULE}[0]{\\rule{\\textwidth}{0.5pt}}%\n"+
@@ -285,12 +304,14 @@ public static String TeXDefinitions =
 "}\n"+
 "\n"+
 "\\DeclareRobustCommand{\\Unproved}[0]{%\n"+
-" \\raisebox{-1mm}{%\n"+
+" \\lapbox[4mm]{-1mm}{%\n"+
+" \\raisebox{-1.5mm}{%\n"+
 " \\begin{tikzpicture}%\n"+
-"    \\filldraw[color=NotProvedColor, fill=NotProvedColor, very thick](0,0) circle (1.5mm);%\n"+
-"    \\node[color=white] {\\footnotesize u};%\n"+
+"   \\filldraw[color=NotProvedColor, fill=NotProvedColor, very thick] (-1.5mm,-1mm) node{} -- (0mm,1.8mm) node{} -- (1.5mm,-1mm) node{}  -- cycle;%\n"+
+"  \\node[color=white] {\\tiny u};%\n"+
 "  \\end{tikzpicture}%\n"+
-"  } %\n"+
+" }%\n"+
+" }%\n"+
 "}\n"+
 "\n"+
 "\\DeclareRobustCommand{\\Reviewed}[0]{%\n"+
@@ -324,6 +345,13 @@ public static String TeXDefinitions =
 "    {\\multicolumn{#1}\n"+
 "                 {>{\\hsize=\\dimexpr#1\\hsize+#1\\tabcolsep+\\arrayrulewidth\\relax}#2}\n"+
 "                 {#3}}\n"+
+"\n"+
+"\\titleformat{\\section}[rightmargin]{}{\\fbox{\\thesection}}{0pt}{}[]\n"+
+"\\titlespacing{\\section}{10mm}{*0.5}{*0.5}\n"+
+"\\titleformat{\\subsection}[rightmargin]{}{\\fbox{\\thesubsection}}{0pt}{}[]\n"+
+"\\titlespacing{\\subsection}{10mm}{*0.5}{*0.5}\n"+
+"\\titleformat{\\subsubsection}[rightmargin]{}{\\fbox{\\thesubsubsection}}{0pt}{}[]\n"+
+"\\titlespacing{\\subsubsection}{10mm}{*0.5}{*0.5}\n"+
 "\n"+
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n"+
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n"+

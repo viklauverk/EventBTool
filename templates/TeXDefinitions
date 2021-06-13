@@ -7,6 +7,7 @@
 \overfullrule=10pt
 \newcommand{\EVBTcolor}[1]{\color{#1}}
 
+%% The X11 colors.
 \newcommand{\AliceBlue}{F0F8FF}
 \newcommand{\AntiqueWhite}{FAEBD7}
 \newcommand{\Aqua}{00FFFF}
@@ -153,14 +154,20 @@
 \newcommand{\Yellow}{FFFF00}
 \newcommand{\YellowGreen}{9ACD32}
 
+%To render this document in grayscale do:
+%xelatex "\def\EvBUseGrayScale{1} \input{thisfile.tex}"
+%Or uncomment this line:
+%\def\EvBUseGrayScale{1}
+
+\ifx\EvBUseGrayScale\undefined
+\definecolor{ProvedColor}{HTML}{\LimeGreen}%
+\definecolor{NotProvedColor}{HTML}{\Firebrick}%
+\definecolor{ReviewedColor}{HTML}{\CornflowerBlue}%
 \definecolor{EvBId}{HTML}{880000}%
 \definecolor{EvBKeyword}{HTML}{000000}%
 \definecolor{EvBVariable}{HTML}{000000}%
 \definecolor{EvBConstant}{HTML}{\Indigo}%
 \definecolor{EvBCarrierSet}{HTML}{\LimeGreen}%
-\definecolor{ProvedColor}{HTML}{\LimeGreen}%
-\definecolor{NotProvedColor}{HTML}{\Firebrick}%
-\definecolor{ReviewedColor}{HTML}{\CornflowerBlue}%
 \definecolor{EvBPrimitiveSet}{HTML}{000000}%
 \definecolor{EvBComment}{HTML}{000000}%
 \definecolor{EvBLabel}{HTML}{0066cc}%
@@ -170,6 +177,25 @@
 \definecolor{EvBNonFree}{HTML}{660000}%
 \definecolor{EvBNumber}{HTML}{\Orange}%
 \definecolor{EvBAny}{HTML}{000000}%
+\else
+\definecolor{ProvedColor}{HTML}{888888}%
+\definecolor{NotProvedColor}{HTML}{888888}%
+\definecolor{ReviewedColor}{HTML}{888888}%
+\definecolor{EvBId}{HTML}{000000}%
+\definecolor{EvBKeyword}{HTML}{000000}%
+\definecolor{EvBVariable}{HTML}{000000}%
+\definecolor{EvBConstant}{HTML}{000000}%
+\definecolor{EvBCarrierSet}{HTML}{000000}%
+\definecolor{EvBPrimitiveSet}{HTML}{000000}%
+\definecolor{EvBComment}{HTML}{000000}%
+\definecolor{EvBLabel}{HTML}{000000}%
+\definecolor{EvBNames}{HTML}{000000}%
+\definecolor{EvBExpression}{HTML}{000000}%
+\definecolor{EvBPredicate}{HTML}{000000}%
+\definecolor{EvBNonFree}{HTML}{000000}%
+\definecolor{EvBNumber}{HTML}{000000}%
+\definecolor{EvBAny}{HTML}{000000}%
+\fi
 
 \newcommand{\nl}[0]{ \\ }%
 \newcommand{\HRULE}[0]{\rule{\textwidth}{0.5pt}}%
@@ -211,12 +237,14 @@
 }
 
 \DeclareRobustCommand{\Unproved}[0]{%
- \raisebox{-1mm}{%
+ \lapbox[4mm]{-1mm}{%
+ \raisebox{-1.5mm}{%
  \begin{tikzpicture}%
-    \filldraw[color=NotProvedColor, fill=NotProvedColor, very thick](0,0) circle (1.5mm);%
-    \node[color=white] {\footnotesize u};%
+   \filldraw[color=NotProvedColor, fill=NotProvedColor, very thick] (-1.5mm,-1mm) node{} -- (0mm,1.8mm) node{} -- (1.5mm,-1mm) node{}  -- cycle;%
+  \node[color=white] {\tiny u};%
   \end{tikzpicture}%
-  } %
+ }%
+ }%
 }
 
 \DeclareRobustCommand{\Reviewed}[0]{%
@@ -250,6 +278,13 @@
     {\multicolumn{#1}
                  {>{\hsize=\dimexpr#1\hsize+#1\tabcolsep+\arrayrulewidth\relax}#2}
                  {#3}}
+
+\titleformat{\section}[rightmargin]{}{\fbox{\thesection}}{0pt}{}[]
+\titlespacing{\section}{10mm}{*0.5}{*0.5}
+\titleformat{\subsection}[rightmargin]{}{\fbox{\thesubsection}}{0pt}{}[]
+\titlespacing{\subsection}{10mm}{*0.5}{*0.5}
+\titleformat{\subsubsection}[rightmargin]{}{\fbox{\thesubsubsection}}{0pt}{}[]
+\titlespacing{\subsubsection}{10mm}{*0.5}{*0.5}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
