@@ -181,7 +181,6 @@ public class RenderAttributes implements Cloneable
         case "labels":
         {
             if (!val.equals("true") && !val.equals("false")) return false;
-            System.err.println("LBAAO "+val);
             setLabels(val.equals(true));
             return true;
         }

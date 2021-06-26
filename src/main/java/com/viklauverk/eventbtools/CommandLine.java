@@ -197,6 +197,22 @@ public class CommandLine
         return args;
     }
 
+    private static boolean parseDocStyle(Settings s, String arg)
+    {
+        if (arg.startsWith("--docstyle="))
+        {
+            String style = arg.substring(11);
+            log.debug("doc style \"%s\"", style);
+            boolean ok = s.docGenSettings().renderAttributes().setStyle(style);
+            if (!ok)
+            {
+                log.error("Could not parse document style: "+style);
+            }
+            return true;
+        }
+        return false;
+    }
+
     private static String[] parseDocGen(Settings s, String[] args)
     {
         for (;;)
@@ -208,17 +224,8 @@ public class CommandLine
 
             if (!arg.startsWith("--")) break;
 
-            if (arg.startsWith("--docstyle="))
+            if (parseDocStyle(s, arg))
             {
-                String style = arg.substring(11);
-                log.debug("doc style \"%s\"", style);
-                System.err.println("GURKA "+style);
-                boolean ok = s.docGenSettings().renderAttributes().setStyle(style);
-                if (!ok)
-                {
-                    log.error("Could not parse document style: "+style);
-                }
-                System.err.println("GURKAB "+s.docGenSettings().renderAttributes().labels());
                 args = Util.shiftLeft(args);
                 continue;
             }
@@ -264,15 +271,8 @@ public class CommandLine
 
             if (!arg.startsWith("--")) break;
 
-            if (arg.startsWith("--docstyle="))
+            if (parseDocStyle(s, arg))
             {
-                String style = arg.substring(11);
-                log.debug("doc style \"%s\"", style);
-                boolean ok = s.docGenSettings().renderAttributes().setStyle(style);
-                if (!ok)
-                {
-                    log.error("Could not parse document style: "+style);
-                }
                 args = Util.shiftLeft(args);
                 continue;
             }
@@ -391,6 +391,11 @@ public class CommandLine
             if (args.length == 0) break;
             String arg = args[0];
 
+            if (parseDocStyle(s, arg))
+            {
+                args = Util.shiftLeft(args);
+                continue;
+            }
             if (arg.startsWith("--parts="))
             {
                 String parts = arg.substring(8);

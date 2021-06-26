@@ -54,8 +54,6 @@ public class Canvas
     private boolean math_active_ = false;
     private int num_aligns_ = 0;
 
-    private Set<String> hiding_ = new HashSet<>();
-
     public Canvas() {}
 
     public static String align_2col = "l,X";
@@ -71,7 +69,6 @@ public class Canvas
         use_borders_ = parent.use_borders_;
         render_target_ = parent.render_target_;
         render_attributes_ = parent.render_attributes_;
-        hiding_ = parent.hiding_;
 
         line_active_ = parent.line_active_;
         alignments_active_ = parent.alignments_active_;
@@ -83,26 +80,11 @@ public class Canvas
         return new Canvas(this);
     }
 
-    public void hide(String h)
-    {
-        if (h == null) return;
-        String[] parts = h.split(",", -1);
-        for (String p : parts)
-        {
-            hiding_.add(p);
-        }
-        log.debug("hiding %s", h);
-    }
-
     public void clear()
     {
         lines_ = new ArrayList<>();
     }
 
-    public boolean hiding(String m)
-    {
-        return hiding_.contains(m);
-    }
 
     public RenderTarget renderTarget()
     {
@@ -1279,7 +1261,7 @@ public class Canvas
 
     public void comment(String s)
     {
-        if (hiding("comment")) return;
+        if (!renderAttributes().comments()) return;
 
         if (s.equals("")) return;
 
@@ -1303,7 +1285,7 @@ public class Canvas
 
     public void acomment(String s)
     {
-        if (hiding("comment")) return;
+        if (!renderAttributes().comments()) return;
 
         if (s.equals("")) return;
 
