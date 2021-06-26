@@ -30,7 +30,7 @@ public class Canvas
     static Log log = LogModule.lookup("canvas");
 
     private RenderTarget render_target_ = RenderTarget.PLAIN;
-    private RenderAttributes render_attributes_ = new RenderAttributes();
+    private RenderAttributes render_attributes_ = null;
 
     private boolean use_layout_ = true;
     private boolean use_at_signs_ = false;
@@ -1331,7 +1331,7 @@ public class Canvas
 
         String pre = "";
         String post = ":";
-        if (renderAttributes().at())
+        if (renderAttributes().atLabel())
         {
             pre = "@";
             post = "";

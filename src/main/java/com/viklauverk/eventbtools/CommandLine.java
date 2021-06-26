@@ -25,6 +25,7 @@ import com.viklauverk.eventbtools.core.ShowSettings;
 import com.viklauverk.eventbtools.core.CodeGenSettings;
 import com.viklauverk.eventbtools.core.DocGenSettings;
 import com.viklauverk.eventbtools.core.RenderTarget;
+import com.viklauverk.eventbtools.core.Settings;
 import com.viklauverk.eventbtools.core.Util;
 
 import java.io.File;
@@ -207,11 +208,17 @@ public class CommandLine
 
             if (!arg.startsWith("--")) break;
 
-            if (arg.startsWith("--hide="))
+            if (arg.startsWith("--docstyle="))
             {
-                String parts = arg.substring(7);
-                log.debug("hiding parts \"%s\"", parts);
-                s.docGenSettings().parseHiding(parts);
+                String style = arg.substring(11);
+                log.debug("doc style \"%s\"", style);
+                System.err.println("GURKA "+style);
+                boolean ok = s.docGenSettings().renderAttributes().setStyle(style);
+                if (!ok)
+                {
+                    log.error("Could not parse document style: "+style);
+                }
+                System.err.println("GURKAB "+s.docGenSettings().renderAttributes().labels());
                 args = Util.shiftLeft(args);
                 continue;
             }
@@ -257,11 +264,15 @@ public class CommandLine
 
             if (!arg.startsWith("--")) break;
 
-            if (arg.startsWith("--hide="))
+            if (arg.startsWith("--docstyle="))
             {
-                String parts = arg.substring(7);
-                log.debug("hiding parts \"%s\"", parts);
-                s.docGenSettings().parseHiding(parts);
+                String style = arg.substring(11);
+                log.debug("doc style \"%s\"", style);
+                boolean ok = s.docGenSettings().renderAttributes().setStyle(style);
+                if (!ok)
+                {
+                    log.error("Could not parse document style: "+style);
+                }
                 args = Util.shiftLeft(args);
                 continue;
             }

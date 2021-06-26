@@ -48,6 +48,11 @@ specification.  This knowledge is used to colorise and italicise the
 parts of the components, such as constants, carrier sets and
 variables.
 
+You can tailor the output to remove labels:
+```
+evbt docgen --docstyle=default,-labels tex workspace/YourGreatEventBSystem
+```
+
 ## console - exploration of Event-B models.
 
 The evbt tool also provides a console for exploration of Event-B models and formulas. You start

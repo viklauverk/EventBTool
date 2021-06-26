@@ -50,10 +50,11 @@ public class Sys
     private List<Machine> machine_ordering_;
     private List<String> machine_names_;
 
+    private Settings settings_;
     private Console console_;
     private EDK edk_;
 
-    public Sys()
+    public Sys(Settings s)
     {
         project_info_ = "";
 
@@ -81,7 +82,8 @@ public class Sys
         root_symbol_table_.addConstant(TRUE);
         root_symbol_table_.addConstant(FALSE);
 
-        console_ = new Console(this, new Canvas());
+        settings_ = s;
+        console_ = new Console(this, settings_, new Canvas());
         edk_ = new EDK(this);
     }
 

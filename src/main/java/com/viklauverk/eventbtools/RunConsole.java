@@ -35,6 +35,7 @@ import com.viklauverk.eventbtools.core.SymbolTable;
 import com.viklauverk.eventbtools.core.Prover;
 import com.viklauverk.eventbtools.core.RenderAttributes;
 import com.viklauverk.eventbtools.core.RenderTarget;
+import com.viklauverk.eventbtools.core.Settings;
 import com.viklauverk.eventbtools.core.Sys;
 import com.viklauverk.eventbtools.core.Type;
 
@@ -55,13 +56,13 @@ public class RunConsole
 {
     public static void run(Settings s) throws Exception
     {
-        Sys sys = new Sys();
+        Sys sys = new Sys(s);
 
         sys.loadMachinesAndContexts(s.commonSettings().sourceDir());
 
         Canvas canvas = new Canvas();
         canvas.setRenderTarget(RenderTarget.TERMINAL);
-        RenderAttributes ra = new RenderAttributes();
+        RenderAttributes ra = sys.console().renderAttributes();
         ra.setColor(true);
         canvas.setRenderAttributes(ra);
 

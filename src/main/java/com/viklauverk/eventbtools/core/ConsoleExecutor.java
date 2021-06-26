@@ -39,10 +39,10 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         tokens_ = tokens;
     }
 
-    String useOrDefault(ParserRuleContext t, String d)
+    RenderTarget useOrDefault(ParserRuleContext t, RenderTarget dt)
     {
-        if (t == null || t.getText() == null || t.getText().equals("")) return d;
-        return t.getText();
+        if (t == null || t.getText() == null || t.getText().equals("")) return dt;
+        return RenderTarget.lookup(t.getText());
     }
 
     boolean isSet(ParserRuleContext t, String d)
@@ -419,8 +419,8 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
     @Override
     public String visitSetDefaultFormat(ConsoleParser.SetDefaultFormatContext ctx)
     {
-        String format = ctx.format().getText();
-        console_.setDefaultFormat(format);
+        String target = ctx.format().getText();
+        console_.setRenderTarget(RenderTarget.lookup(target));
         return "OK";
     }
 
@@ -441,9 +441,8 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
             // Force the pattern to match all to the end of the path.
             pattern += "/";
         }
-        String format = useOrDefault(ctx.format(), console_.defaultFormat());
-        RenderTarget rt = RenderTarget.lookup(format);
-        RenderAttributes ra = new RenderAttributes();
+        RenderTarget rt = useOrDefault(ctx.format(), console_.renderTarget());
+        RenderAttributes ra = console_.renderAttributes().copy();
         ra.setFrame(isSet(ctx.framed(), "framed"));
 
         String content = console_.renderPart(pattern, rt, ra);
@@ -473,9 +472,8 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
     {
         String f = removeQuotes(ctx.formula.getText());
         String treee = ctx.treee() != null ? ctx.treee().getText() : "";
-        String format = ctx.format() != null ? ctx.format().getText() : console_.defaultFormat();
-        RenderTarget rt = RenderTarget.lookup(format);
-        RenderAttributes ra = new RenderAttributes();
+        RenderTarget rt = useOrDefault(ctx.format(), console_.renderTarget());
+        RenderAttributes ra = console_.renderAttributes();
         String framed = ctx.framed() != null ? ctx.framed().getText() : "";
 
         boolean show_tree = treee.equals("tree");

@@ -53,11 +53,12 @@ public class Console
     private SymbolTable current_symbol_table_;
     private Deque<SymbolTable> table_stack_ = new ArrayDeque<>();
 
-    private String default_format_ = "terminal";
+    private RenderTarget render_target_ = RenderTarget.TERMINAL;
+    private RenderAttributes render_attributes_;
 
     private boolean running_ = true;
 
-    public Console(Sys s, Canvas canvas)
+    public Console(Sys s, Settings set, Canvas canvas)
     {
         sys_ = s;
 
@@ -67,11 +68,24 @@ public class Console
         current_symbol_table_ = sys_.rootSymbolTable();
 
         table_stack_.addFirst(current_symbol_table_);
+
+        render_target_ = RenderTarget.TERMINAL;
+        render_attributes_ = set.docGenSettings().renderAttributes();
     }
 
     Sys sys()
     {
         return sys_;
+    }
+
+    public RenderTarget renderTarget()
+    {
+        return render_target_;
+    }
+
+    public RenderAttributes renderAttributes()
+    {
+        return render_attributes_;
     }
 
     void quit()
@@ -94,14 +108,9 @@ public class Console
         return current_canvas_;
     }
 
-    public void setDefaultFormat(String f)
+    public void setRenderTarget(RenderTarget t)
     {
-        default_format_ = f;
-    }
-
-    String defaultFormat()
-    {
-        return default_format_;
+        render_target_ = t;
     }
 
     String renderTemplate(String name)
@@ -119,9 +128,7 @@ public class Console
     String renderPart(String name, RenderTarget rt, RenderAttributes ra)
     {
         CommonSettings cs = new CommonSettings();
-        DocGenSettings ds = new DocGenSettings();
-        ds.setRenderTarget(rt);
-        ds.setRenderAttributes(ra);
+        DocGenSettings ds = new DocGenSettings(rt, ra);
 
         BaseDocGen bdg = DocGen.lookup(cs, ds, sys_);
 

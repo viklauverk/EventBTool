@@ -18,11 +18,16 @@
 
 package com.viklauverk.eventbtools.core;
 
-public class RenderAttributes
+import com.viklauverk.eventbtools.core.Log;
+
+public class RenderAttributes implements Cloneable
 {
+    private static LogModule log = LogModule.lookup("renderattributes");
+
     private boolean color_ = true;    // Colorize the output.
     private boolean labels_ = true;   // Display the labels, like axm0_1: or @inv2 etc.
-    private boolean at_ = false;      // If at_ then display labels as @inv2 instead of inv2:
+    private boolean comments_ = true;  // Display the comments.
+    private boolean at_label_ = false;// If at_=true then display labels as @inv2 otherwise labels look like inv2:
     private boolean frame_ = false;   // Frame the output.
     private boolean horizontal_layout_ = false; // Make the output a horizontal box, like display:inline in css.
     private boolean indent_ = true;   // Indent the sub-parts.
@@ -30,12 +35,35 @@ public class RenderAttributes
     private boolean indexes_ = false; // Add index notices.
     private boolean debug_ = false;   // Inject debug information into the generated rendered output.
 
+    public RenderAttributes()
+    {
+    }
+
+    public RenderAttributes clone() throws CloneNotSupportedException
+    {
+        return (RenderAttributes)super.clone();
+    }
+
+    public RenderAttributes copy()
+    {
+        try
+        {
+            return this.clone();
+        }
+        catch (CloneNotSupportedException e)
+        {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return null;
+    }
+
     public void setColor(boolean co)
     {
         color_ = co;
     }
 
-    public boolean color()
+    boolean color()
     {
         return color_;
     }
@@ -50,14 +78,44 @@ public class RenderAttributes
         return labels_;
     }
 
-    public void setAt(boolean v)
+    public void setComments(boolean l)
     {
-        at_ = v;
+        comments_ = l;
     }
 
-    public boolean at()
+    public boolean comments()
     {
-        return at_;
+        return comments_;
+    }
+
+    public void setAtLabel(boolean v)
+    {
+        at_label_ = v;
+    }
+
+    public boolean atLabel()
+    {
+        return at_label_;
+    }
+
+    public void setAnchors(boolean t)
+    {
+        anchors_ = t;
+    }
+
+    public boolean anchors()
+    {
+        return anchors_;
+    }
+
+    public void setIndexes(boolean t)
+    {
+        indexes_ = t;
+    }
+
+    public boolean index()
+    {
+        return indexes_;
     }
 
     public void setFrame(boolean wf)
@@ -90,43 +148,89 @@ public class RenderAttributes
         return indent_;
     }
 
-    public void setAnchors(boolean t)
+    public void setDefault()
     {
-        anchors_ = t;
+        set("color", "true");
+        set("labels", "true");
+        set("comments", "true");
+        set("at_label", "false");
+        set("anchors", "true");
+        set("indexes", "true");
     }
 
-    public boolean anchors()
+    public void setCompact()
     {
-        return anchors_;
+        set("color", "true");
+        set("labels", "false");
+        set("comments", "false");
+        set("at_label", "false");
+        set("anchors", "true");
+        set("indexes", "true");
     }
 
-    public void setIndexes(boolean t)
-    {
-        indexes_ = t;
-    }
-
-    public boolean index()
-    {
-        return indexes_;
-    }
-
-    public void set(String key, String val)
+    boolean set(String key, String val)
     {
         switch (key)
         {
         case "color":
         {
-            assert(val.equals("true") || val.equals("false"));
+            if (!val.equals("true") && !val.equals("false")) return false;
             setColor(val.equals(true));
-            return;
+            return true;
         }
         case "labels":
         {
-            assert(val.equals("true") || val.equals("false"));
+            if (!val.equals("true") && !val.equals("false")) return false;
+            System.err.println("LBAAO "+val);
             setLabels(val.equals(true));
-            return;
+            return true;
+        }
+        case "comments":
+        {
+            if (!val.equals("true") && !val.equals("false")) return false;
+            setComments(val.equals(true));
+            return true;
+        }
+        case "at_label":
+        {
+            if (!val.equals("true") && !val.equals("false")) return false;
+            setAtLabel(val.equals(true));
+            return true;
         }
         }
+        return false;
     }
 
+    public boolean setStyle(String s)
+    {
+        log.debug("decoding style: %s", s);
+
+        Style style = new Style(s);
+
+        if (!style.valid())
+        {
+            log.debug("not valid: %s", s);
+            return false;
+        }
+
+        log.debug("set doc style: %s", style.main());
+
+        switch (style.main())
+        {
+        case "default": setDefault(); break;
+        case "compact": setCompact(); break;
+        default:
+            return false;
+        }
+
+        for (String key : style.keys())
+        {
+            String val = style.get(key);
+            boolean ok = set(key, val);
+            log.debug("set %s = %s", key, val);
+            if (!ok) return false;
+        }
+
+        return true;
+    }
 }

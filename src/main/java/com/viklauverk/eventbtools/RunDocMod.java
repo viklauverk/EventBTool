@@ -18,11 +18,13 @@
 
 package com.viklauverk.eventbtools;
 
+import com.viklauverk.eventbtools.core.BaseDocGen;
+import com.viklauverk.eventbtools.core.DocGen;
 import com.viklauverk.eventbtools.core.Log;
 import com.viklauverk.eventbtools.core.LogModule;
+import com.viklauverk.eventbtools.core.RenderTarget;
+import com.viklauverk.eventbtools.core.Settings;
 import com.viklauverk.eventbtools.core.Sys;
-import com.viklauverk.eventbtools.core.DocGen;
-import com.viklauverk.eventbtools.core.BaseDocGen;
 
 public class RunDocMod
 {
@@ -31,7 +33,7 @@ public class RunDocMod
     public static void run(Settings s)
         throws Exception
     {
-        Sys sys = new Sys();
+        Sys sys = new Sys(s);
         if (s.commonSettings().sourceDir() != null)
         {
             log.info("Loading machines and contexts from: %s", s.commonSettings().sourceDir());
@@ -39,7 +41,7 @@ public class RunDocMod
         }
 
         BaseDocGen bdg = DocGen.lookup(s.commonSettings(), s.docGenSettings(), sys);
-        sys.console().setDefaultFormat("tex");
+        sys.console().setRenderTarget(RenderTarget.TEX);
         bdg.modFile(s.commonSettings().sourceFile(), s.commonSettings().destFile());
     }
 }

@@ -21,6 +21,7 @@ package com.viklauverk.eventbtools;
 import com.viklauverk.eventbtools.core.Log;
 import com.viklauverk.eventbtools.core.LogLevel;
 import com.viklauverk.eventbtools.core.LogModule;
+import com.viklauverk.eventbtools.core.Settings;
 import com.viklauverk.eventbtools.core.Version;
 
 public class Main

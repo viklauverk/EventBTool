@@ -26,10 +26,17 @@ public class DocGenSettings
 {
     private RenderTarget render_target_;
     private RenderAttributes render_attributes_;
-    private String hiding_;
 
     public DocGenSettings()
     {
+        render_target_ = RenderTarget.PLAIN;
+        render_attributes_ = new RenderAttributes();
+    }
+
+    public DocGenSettings(RenderTarget rt, RenderAttributes ra)
+    {
+        render_target_ = rt;
+        render_attributes_ = ra;
     }
 
     public RenderTarget renderTarget()
@@ -45,20 +52,5 @@ public class DocGenSettings
     public RenderAttributes renderAttributes()
     {
         return render_attributes_;
-    }
-
-    public void setRenderAttributes(RenderAttributes ra)
-    {
-        render_attributes_ = ra;
-    }
-
-    public void parseHiding(String h)
-    {
-        hiding_ = h;
-    }
-
-    public String hiding()
-    {
-        return hiding_;
     }
 }

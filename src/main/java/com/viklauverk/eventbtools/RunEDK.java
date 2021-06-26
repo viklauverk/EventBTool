@@ -18,11 +18,13 @@
 
 package com.viklauverk.eventbtools;
 
+import com.viklauverk.eventbtools.core.BaseDocGen;
+import com.viklauverk.eventbtools.core.DocGen;
 import com.viklauverk.eventbtools.core.Log;
 import com.viklauverk.eventbtools.core.LogModule;
+import com.viklauverk.eventbtools.core.Settings;
 import com.viklauverk.eventbtools.core.Sys;
-import com.viklauverk.eventbtools.core.DocGen;
-import com.viklauverk.eventbtools.core.BaseDocGen;
+
 
 import java.io.InputStream;
 import java.io.IOException;

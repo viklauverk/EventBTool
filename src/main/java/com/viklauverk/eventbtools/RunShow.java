@@ -23,13 +23,14 @@ import com.viklauverk.eventbtools.core.Machine;
 import com.viklauverk.eventbtools.core.Sys;
 import com.viklauverk.eventbtools.core.RenderTarget;
 import com.viklauverk.eventbtools.core.RenderAttributes;
+import com.viklauverk.eventbtools.core.Settings;
 
 public class RunShow
 {
     public static void run(Settings s)
         throws Exception
     {
-        Sys sys = new Sys();
+        Sys sys = new Sys(s);
 
         sys.loadMachinesAndContexts(s.commonSettings().sourceDir());
         for (Machine mch : sys.machineOrdering())
@@ -39,9 +40,9 @@ public class RunShow
 
         Canvas canvas = new Canvas();
         RenderTarget rt = RenderTarget.TERMINAL;
-        RenderAttributes ra = new RenderAttributes();
+        RenderAttributes ra = sys.console().renderAttributes();
         ra.setColor(true);
-        ra.setAt(true);
+        ra.setAtLabel(true);
         canvas.setRenderTarget(rt);
         canvas.setRenderAttributes(ra);
 

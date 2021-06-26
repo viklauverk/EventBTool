@@ -24,7 +24,6 @@ public class DocGen
 
     public static BaseDocGen lookup(CommonSettings cs, DocGenSettings ds, Sys sys)
     {
-
         switch (ds.renderTarget())
         {
         case PLAIN:

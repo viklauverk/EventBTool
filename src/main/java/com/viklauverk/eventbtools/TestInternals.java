@@ -27,6 +27,7 @@ import com.viklauverk.eventbtools.core.Typing;
 import com.viklauverk.eventbtools.core.Pattern;
 import com.viklauverk.eventbtools.core.SymbolTable;
 import com.viklauverk.eventbtools.core.RenderTarget;
+import com.viklauverk.eventbtools.core.Settings;
 import com.viklauverk.eventbtools.core.Unicode;
 
 public class TestInternals

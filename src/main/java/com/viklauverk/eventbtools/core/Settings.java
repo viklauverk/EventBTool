@@ -16,7 +16,7 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.viklauverk.eventbtools;
+package com.viklauverk.eventbtools.core;
 
 import java.util.List;
 import java.util.ArrayList;
