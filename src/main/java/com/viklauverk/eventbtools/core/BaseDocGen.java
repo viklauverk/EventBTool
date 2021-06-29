@@ -133,6 +133,7 @@ public abstract class BaseDocGen
     public void modFile(String in, String out)
     {
         log.info("Writing "+out);
+        log.debug("modfile render attributes %s", sys().settings().docGenSettings().renderAttributes());
         sys().console().go("set default format "+default_format_);
         try
         {

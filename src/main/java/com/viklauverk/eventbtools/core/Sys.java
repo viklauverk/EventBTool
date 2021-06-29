@@ -97,6 +97,11 @@ public class Sys
         return console_;
     }
 
+    public Settings settings()
+    {
+        return settings_;
+    }
+
     public EDK edk()
     {
         return edk_;

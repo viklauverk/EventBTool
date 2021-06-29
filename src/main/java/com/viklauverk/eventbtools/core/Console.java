@@ -44,6 +44,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 public class Console
 {
     private static Log log = LogModule.lookup("console");
+    private static Log log_docgen = LogModule.lookup("docgen");
 
     private Sys sys_;
 
@@ -138,6 +139,8 @@ public class Console
         cnvs.setRenderTarget(rt);
         cnvs.setRenderAttributes(ra);
         cnvs.clear();
+
+        log_docgen.debug("console render part attributes "+cnvs.renderAttributes());
         result = bdg.renderParts(cnvs, name);
         if (ra.frame())
         {

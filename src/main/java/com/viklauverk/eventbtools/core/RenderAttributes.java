@@ -170,30 +170,31 @@ public class RenderAttributes implements Cloneable
 
     boolean set(String key, String val)
     {
+        log.debug("setting %s to %s", key, val);
         switch (key)
         {
         case "color":
         {
             if (!val.equals("true") && !val.equals("false")) return false;
-            setColor(val.equals(true));
+            setColor(val.equals("true"));
             return true;
         }
         case "labels":
         {
             if (!val.equals("true") && !val.equals("false")) return false;
-            setLabels(val.equals(true));
+            setLabels(val.equals("true"));
             return true;
         }
         case "comments":
         {
             if (!val.equals("true") && !val.equals("false")) return false;
-            setComments(val.equals(true));
+            setComments(val.equals("true"));
             return true;
         }
         case "at_label":
         {
             if (!val.equals("true") && !val.equals("false")) return false;
-            setAtLabel(val.equals(true));
+            setAtLabel(val.equals("true"));
             return true;
         }
         }
@@ -232,4 +233,20 @@ public class RenderAttributes implements Cloneable
 
         return true;
     }
+
+    public String toString()
+    {
+        return
+            "color="+color_+" "+
+            "labels="+labels_+" "+
+            "comments="+comments_+" "+
+            "at_label="+at_label_+" "+
+            "frame="+frame_+" "+
+            "horizontal_layout="+horizontal_layout_+" "+
+            "indent="+indent_+" "+
+            "anchors="+anchors_+" "+
+            "indexes="+indexes_+" "+
+            "debug="+debug_;
+    }
+
 }

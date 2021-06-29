@@ -203,7 +203,9 @@ public class CommandLine
         {
             String style = arg.substring(11);
             log.debug("doc style \"%s\"", style);
+            log.debug("style render attributes before set "+s.docGenSettings().renderAttributes());
             boolean ok = s.docGenSettings().renderAttributes().setStyle(style);
+            log.debug("style render attributes "+s.docGenSettings().renderAttributes());
             if (!ok)
             {
                 log.error("Could not parse document style: "+style);
