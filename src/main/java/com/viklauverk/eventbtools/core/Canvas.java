@@ -1268,10 +1268,10 @@ public class Canvas
         switch (render_target_)
         {
         case PLAIN:
-            append("// "+s);
+            append(Unicode.commentToCpp(s));
             return;
         case TERMINAL:
-            append(colorize(Green, "// "+s));
+            append(colorize(Green, Unicode.commentToCpp(s)));
             return;
         case TEX:
             append("\\COM{"+Unicode.commentToTeX(s)+"}");
@@ -1292,10 +1292,10 @@ public class Canvas
         switch (render_target_)
         {
         case PLAIN:
-            append("// "+s);
+            append(Unicode.commentToCpp(s));
             return;
         case TERMINAL:
-            append(colorize(Green, s));
+            append(colorize(Green, Unicode.commentToCpp(s)));
             return;
         case TEX:
             append("\\ACOM{"+Unicode.commentToTeX(s)+"}");
