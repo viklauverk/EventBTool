@@ -273,6 +273,7 @@
 
 \setlength\LTpre{-2mm}
 \setlength\LTpost{-2mm}
+\newcolumntype{R}{>{\raggedright\arraybackslash}X}
 
 \newcommand{\tlxmulticolumn}[3]
     {\multicolumn{#1}

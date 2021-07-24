@@ -340,6 +340,7 @@ public static String TeXDefinitions =
 "\n"+
 "\\setlength\\LTpre{-2mm}\n"+
 "\\setlength\\LTpost{-2mm}\n"+
+"\\newcolumntype{R}{>{\\raggedright\\arraybackslash}X}\n"+
 "\n"+
 "\\newcommand{\\tlxmulticolumn}[3]\n"+
 "    {\\multicolumn{#1}\n"+

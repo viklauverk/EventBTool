@@ -81,15 +81,27 @@ class AlignmentBlock
             return o.toString();
         }
 
+        // To work around a bug in xltabular we restart the table after 20 lines.
+        StringBuilder result = new StringBuilder();
+        int count = 0;
         StringBuilder o = new StringBuilder();
-        for (String[] cols : lines_)
+        for (int i = 0; i < lines_.size(); ++i)
         {
-/*            for (String s : cols) System.out.print(">"+s+"<    ");
-              System.out.println("");*/
+            String[] cols = lines_.get(i);
             o.append(wrapRow(applyAlignment(cols)));
+            count++;
+            if (count >= 20)
+            {
+                count = 0;
+                result.append(wrapBlock(o.toString(), i+1 < lines_.size()));
+                o = new StringBuilder();
+            }
         }
-
-        return wrapBlock(o.toString());
+        if (count > 0)
+        {
+            result.append(wrapBlock(o.toString(), false));
+        }
+        return result.toString();
     }
 
     void addLine(String l)
@@ -177,7 +189,7 @@ class AlignmentBlock
         return sb.toString();
     }
 
-    protected String wrapBlock(String s)
+    protected String wrapBlock(String s, boolean add_vspace)
     {
         String prefix = "";
         String postfix = "";
@@ -185,11 +197,19 @@ class AlignmentBlock
         {
             prefix = generateStartTabbingTeX(this);
             postfix = generateStopTabbingTeX();
+            if (add_vspace)
+            {
+                postfix += generateRuleAndVSpace();
+            }
         }
         if (render_target_ == RenderTarget.HTMQ)
         {
             prefix = generateStartTabbingHTMQ(this);
             postfix = generateStopTabbingHTMQ();
+            if (add_vspace)
+            {
+                postfix += "";
+            }
         }
         return dbgCnvsMsg("[block]")+prefix+s+postfix+dbgCnvsMsg("[/block]");
     }
@@ -228,7 +248,7 @@ class AlignmentBlock
         case TEX:
             if (colspan > 1)
             {
-                s = "\\tlxmulticolumn{"+colspan+"}{X}{"+s+"}";
+                s = "\\tlxmulticolumn{"+colspan+"}{R}{"+s+"}";
             }
             return s+(is_last_cell?"":"&");
         case HTMQ:
@@ -272,7 +292,7 @@ class AlignmentBlock
     protected String generateStartTabbingTeX(AlignmentBlock cols)
     {
         StringBuilder o = new StringBuilder();
-        o.append("\\begin{xltabular}{\\linewidth}{");
+        o.append("\\begin{xltabular}{\\linewidth}[l]{");
         if (false) o.append("|");
         for (int i=0; i<aligns_.size(); ++i)
         {
@@ -299,6 +319,12 @@ class AlignmentBlock
     {
         // \\hline
         return "\\end{xltabular}\n";
+    }
+
+    protected String generateRuleAndVSpace()
+    {
+        // \\hline
+        return "\\vspace{4mm}\n";
     }
 
     protected String generateStartTabbingHTMQ(AlignmentBlock cols)

@@ -56,8 +56,8 @@ public class Canvas
 
     public Canvas() {}
 
-    public static String align_2col = "l,X";
-    public static String align_3col = "l,V{8cm},X";
+    public static String align_2col = "l,R";
+    public static String align_3col = "l,R,R";
 
     public Canvas(Canvas parent)
     {
@@ -1283,6 +1283,30 @@ public class Canvas
         assert (false) : "Unknown encoding "+render_target_;
     }
 
+    public void commentWithExtraVSpace(String s)
+    {
+        if (!renderAttributes().comments()) return;
+
+        if (s.equals("")) return;
+
+        switch (render_target_)
+        {
+        case PLAIN:
+            append(Unicode.commentToCpp(s));
+            return;
+        case TERMINAL:
+            append(colorize(Green, Unicode.commentToCpp(s)));
+            return;
+        case TEX:
+            append("\\COM{"+Unicode.commentToTeX(s)+"\\rule[-1.2ex]{0pt}{0pt}}");
+            return;
+        case HTMQ:
+            append(" span(class=COM)="+Util.quoteXMQ(s)+" ");
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
     public void acomment(String s)
     {
         if (!renderAttributes().comments()) return;
@@ -1331,6 +1355,28 @@ public class Canvas
             return;
         case HTMQ:
             append(" span(class=LAB)="+Util.quoteXMQ(pre+s+post)+" ");
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
+    public void theorem()
+    {
+        if (!renderAttributes().labels()) return;
+
+        switch (render_target_)
+        {
+        case PLAIN:
+            append("theorem ");
+            return;
+        case TERMINAL:
+            append(colorize(Blue, "theorem "));
+            return;
+        case TEX:
+            append("\\LAB{theorem}");
+            return;
+        case HTMQ:
+            append(" span(class=LAB)="+Util.quoteXMQ("theorem")+" ");
             return;
         }
         assert (false) : "Unknown encoding "+render_target_;

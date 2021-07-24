@@ -57,17 +57,20 @@ public class CommonRenderFunctions
 
     protected void stopAlignedLineAndHandlePotentialComment(String comment, Canvas cnvs)
     {
+        // If comment contains line breaks, then always place the comment below
+        // the commented material.
         boolean mlc = Util.hasNewLine(comment);
         boolean has = comment.length() > 0;
         if (comment.length() > 100)
         {
-            // Any comment with a length longer
-            // than 100 characters is put on its own line below.
+            // Also any comment with a length longer than 100 characters
+            // will also be placed on its own line below the commented material.
             mlc = true;
         }
         if (!mlc && has)
         {
-            // We have a single line comment.
+            // We have a single line comment with not too many characters.
+            // Place the comment on the same line.
             cnvs.align();
             cnvs.comment(comment);
         }
@@ -78,7 +81,7 @@ public class CommonRenderFunctions
         {
             cnvs.startAlignedLine();
             cnvs.align();
-            cnvs.comment(comment);
+            cnvs.commentWithExtraVSpace(comment);
             cnvs.stopAlignedLine();
         }
     }

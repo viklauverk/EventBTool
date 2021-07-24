@@ -145,7 +145,7 @@ public class RenderMachineUnicode extends RenderMachine
         if (invariant.isTheorem())
         {
             cnvs().startAlignedLine();
-            cnvs().append("theorem");
+            cnvs().theorem();
             cnvs().align();
             cnvs().label(invariant.name());
             cnvs().stopAlignedLine();
