@@ -20,8 +20,16 @@ package com.viklauverk.eventbtools.core;
 
 public class Axiom extends IsAFormula
 {
-    public Axiom(String n, String fs, String c)
+    boolean is_theorem_;
+
+    public Axiom(String n, String fs, String c, boolean is_theorem)
     {
         super(n, fs, c);
+        is_theorem_ = is_theorem;
+    }
+
+    public boolean isTheorem()
+    {
+        return is_theorem_;
     }
 }

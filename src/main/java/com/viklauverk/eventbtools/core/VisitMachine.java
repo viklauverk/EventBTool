@@ -84,20 +84,6 @@ public class VisitMachine
             if (vs) v.visit_VariantsEnd(mch);
         }
 
-        if (mch.hasTheorems())
-        {
-            boolean t =  Util.match(mch.name()+"/theorems", pattern);
-
-            if (t) v.visit_TheoremsStart(mch);
-            for (Theorem the : mch.theoremOrdering())
-            {
-                boolean tt =  Util.match(mch.name()+"/theorems/"+the.name()+"/", pattern);
-                if (tt) v.visit_Theorem(mch, the);
-            }
-            if (t) v.visit_TheoremsEnd(mch);
-        }
-
-
         if (mch.hasEvents())
         {
             String name = mch.name()+"/events/";

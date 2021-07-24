@@ -47,10 +47,6 @@ public class RenderContext extends CommonRenderFunctions
     public void visit_Axiom(Context ctx, Axiom axiom) { }
     public void visit_AxiomsEnd(Context ctx) { }
 
-    public void visit_TheoremsStart(Context ctx) { }
-    public void visit_Theorem(Context ctx, Theorem theorem) { }
-    public void visit_TheoremsEnd(Context ctx) { }
-
     public void visit_ContextEnd(Context ctx) { }
 
     protected String buildContextPartName(Context ctx)

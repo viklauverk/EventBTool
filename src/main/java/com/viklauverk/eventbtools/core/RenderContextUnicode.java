@@ -123,41 +123,29 @@ public class RenderContextUnicode extends RenderContext
 
     @Override public void visit_Axiom(Context ctx, Axiom axiom)
     {
+        if (axiom.isTheorem())
+        {
+            cnvs().startAlignedLine();
+            cnvs().theorem();
+            cnvs().align();
+            cnvs().label(axiom.name());
+            cnvs().stopAlignedLine();
+        }
         cnvs().startAlignedLine();
-        cnvs().label(axiom.name());
+        if (!axiom.isTheorem())
+        {
+            cnvs().label(axiom.name());
+        }
         cnvs().align();
         cnvs().startMath();
         axiom.writeFormulaStringToCanvas(cnvs());
         cnvs().stopMath();
+
         stopAlignedLineAndHandlePotentialComment(axiom.comment(), cnvs());
+
     }
 
     @Override public void visit_AxiomsEnd(Context ctx)
-    {
-        cnvs().stopAlignments();
-    }
-
-    @Override public void visit_TheoremsStart(Context ctx)
-    {
-        cnvs().startLine();
-        cnvs().keyword("theorem");
-        cnvs().endLine();
-
-        cnvs().startAlignments(Canvas.align_3col);
-    }
-
-    @Override public void visit_Theorem(Context ctx, Theorem theorem)
-    {
-        cnvs().startAlignedLine();
-        cnvs().label(theorem.name());
-        cnvs().align();
-        cnvs().startMath();
-        theorem.writeFormulaStringToCanvas(cnvs());
-        cnvs().stopMath();
-        stopAlignedLineAndHandlePotentialComment(theorem.comment(), cnvs());
-    }
-
-    @Override public void visit_TheoremsEnd(Context ctx)
     {
         cnvs().stopAlignments();
     }

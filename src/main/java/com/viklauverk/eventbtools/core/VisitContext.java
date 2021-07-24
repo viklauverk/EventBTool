@@ -82,19 +82,6 @@ public class VisitContext
             if (a) rc.visit_AxiomsEnd(ctx);
         }
 
-        if (ctx.hasTheorems())
-        {
-            boolean t = Util.match(ctx.name()+"/theorems/", pattern);
-
-            if (t) rc.visit_TheoremsStart(ctx);
-            for (Theorem the : ctx.theoremOrdering())
-            {
-                boolean tt =  Util.match(ctx.name()+"/theorems/"+the.name()+"/", pattern);
-                if (tt) rc.visit_Theorem(ctx, the);
-            }
-            if (t) rc.visit_TheoremsEnd(ctx);
-        }
-
         if (m) rc.visit_ContextEnd(ctx);
     }
 }

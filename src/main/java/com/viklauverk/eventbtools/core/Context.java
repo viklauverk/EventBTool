@@ -52,10 +52,6 @@ public class Context
     private List<Axiom> axiom_ordering_;
     private List<String> axiom_names_;
 
-    private Map<String,Theorem> theorems_;
-    private List<Theorem> theorem_ordering_;
-    private List<String> theorem_names_;
-
     private Map<String,ProofObligation> proof_obligations_ = new HashMap<>();
     private List<ProofObligation> proof_obligation_ordering_ = new ArrayList<>();
     private List<String> proof_obligation_names_ = new ArrayList<>();
@@ -85,10 +81,6 @@ public class Context
         axioms_ = new HashMap<>();
         axiom_ordering_ = new ArrayList<>();
         axiom_names_ = new ArrayList<>();
-
-        theorems_ = new HashMap<>();
-        theorem_ordering_ = new ArrayList<>();
-        theorem_names_ = new ArrayList<>();
 
         loaded_ = false;
         buc_ = f;
@@ -150,11 +142,6 @@ public class Context
     public boolean hasAxioms()
     {
         return axiom_ordering_.size() > 0;
-    }
-
-    public boolean hasTheorems()
-    {
-        return theorem_ordering_.size() > 0;
     }
 
     public boolean hasProofObligations()
@@ -283,28 +270,6 @@ public class Context
         return axiom_names_;
     }
 
-    public void addTheorem(Theorem t)
-    {
-        theorems_.put(t.name(), t);
-        theorem_ordering_.add(t);
-        theorem_names_ = theorems_.keySet().stream().sorted().collect(Collectors.toList());
-    }
-
-    public Theorem getTheorem(String name)
-    {
-        return theorems_.get(name);
-    }
-
-    public List<Theorem> theoremOrdering()
-    {
-        return theorem_ordering_;
-    }
-
-    public List<String> theoremNames()
-    {
-        return theorem_names_;
-    }
-
     public void addProofObligation(ProofObligation po)
     {
         proof_obligations_.put(po.name(), po);
@@ -379,7 +344,6 @@ public class Context
         }
 
         // Load the axioms and theorems.
-        boolean adding_axioms = true;
         list = document.selectNodes("//org.eventb.core.axiom");
         for (Node n : list)
         {
@@ -388,24 +352,9 @@ public class Context
             String comment = n.valueOf("@org.eventb.core.comment");
             String is_theorem = n.valueOf("@org.eventb.core.theorem");
 
-            if (is_theorem.equals("true"))
-            {
-                // It seems like the start of the theorems is marked
-                // with theorem=true, the the following theorems
-                // are not marked....
-                adding_axioms = false;
-            }
-
-            if (adding_axioms)
-            {
-                Axiom a = new Axiom(name, pred, comment);
-                addAxiom(a);
-            }
-            else
-            {
-                Theorem t = new Theorem(name, pred, comment);
-                addTheorem(t);
-            }
+            boolean it = is_theorem.equals("true");
+            Axiom a = new Axiom(name, pred, comment, it);
+            addAxiom(a);
         }
     }
 
@@ -475,11 +424,6 @@ public class Context
         {
             a.parse(symbol_table_);
             sys().typing().extractInfoFromAxiom(a.formula(), symbol_table_);
-        }
-        for (Theorem t : theoremOrdering())
-        {
-            t.parse(symbol_table_);
-            sys().typing().extractInfoFromAxiom(t.formula(), symbol_table_);
         }
     }
 

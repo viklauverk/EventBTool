@@ -45,10 +45,6 @@ public class RenderMachine extends CommonRenderFunctions
     public void visit_Invariant(Machine mch, Invariant invariant) { }
     public void visit_InvariantsEnd(Machine mch) { }
 
-    public void visit_TheoremsStart(Machine mch) { }
-    public void visit_Theorem(Machine mch, Theorem theorem) { }
-    public void visit_TheoremsEnd(Machine mch) { }
-
     public void visit_VariantsStart(Machine mch) { }
     public void visit_Variant(Machine mch, Variant variant) { }
     public void visit_VariantsEnd(Machine mch) { }
