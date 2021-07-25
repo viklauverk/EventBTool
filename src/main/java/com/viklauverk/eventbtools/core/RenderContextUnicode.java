@@ -141,7 +141,7 @@ public class RenderContextUnicode extends RenderContext
         axiom.writeFormulaStringToCanvas(cnvs());
         cnvs().stopMath();
 
-        stopAlignedLineAndHandlePotentialComment(axiom.comment(), cnvs());
+        stopAlignedLineAndHandlePotentialComment(axiom.comment(), cnvs(), axiom);
 
     }
 

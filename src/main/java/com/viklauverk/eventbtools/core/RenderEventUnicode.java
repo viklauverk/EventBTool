@@ -145,7 +145,7 @@ public class RenderEventUnicode extends RenderEvent
         cnvs().stopMath();
         cnvs().stopGuard();
 
-        stopAlignedLineAndHandlePotentialComment(guard.comment(), cnvs());
+        stopAlignedLineAndHandlePotentialComment(guard.comment(), cnvs(), guard);
     }
 
     @Override
@@ -176,7 +176,7 @@ public class RenderEventUnicode extends RenderEvent
         cnvs().stopMath();
         cnvs().stopWitness();
 
-        stopAlignedLineAndHandlePotentialComment(witness.comment(), cnvs());
+        stopAlignedLineAndHandlePotentialComment(witness.comment(), cnvs(), witness);
     }
 
     @Override
@@ -206,7 +206,7 @@ public class RenderEventUnicode extends RenderEvent
         action.writeFormulaStringToCanvas(cnvs());
         cnvs().stopMath();
         cnvs().stopAction();
-        stopAlignedLineAndHandlePotentialComment(action.comment(), cnvs());
+        stopAlignedLineAndHandlePotentialComment(action.comment(), cnvs(), action);
     }
 
     @Override

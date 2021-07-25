@@ -1298,7 +1298,7 @@ public class Canvas
             append(colorize(Green, Unicode.commentToCpp(s)));
             return;
         case TEX:
-            append("\\COM{"+Unicode.commentToTeX(s)+"\\rule[-1.2ex]{0pt}{0pt}}");
+            append("\\COM{\\rule{0pt}{2.5ex}"+Unicode.commentToTeX(s)+"\\rule[-2.5ex]{0pt}{0pt}}");
             return;
         case HTMQ:
             append(" span(class=COM)="+Util.quoteXMQ(s)+" ");

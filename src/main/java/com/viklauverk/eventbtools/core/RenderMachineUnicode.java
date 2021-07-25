@@ -160,7 +160,7 @@ public class RenderMachineUnicode extends RenderMachine
         invariant.writeFormulaStringToCanvas(cnvs());
         cnvs().stopMath();
 
-        stopAlignedLineAndHandlePotentialComment(invariant.comment(), cnvs());
+        stopAlignedLineAndHandlePotentialComment(invariant.comment(), cnvs(), invariant);
     }
 
     @Override
@@ -186,7 +186,7 @@ public class RenderMachineUnicode extends RenderMachine
         variant.writeFormulaStringToCanvas(cnvs());
         cnvs().stopMath();
 
-        stopAlignedLineAndHandlePotentialComment(variant.comment(), cnvs());
+        stopAlignedLineAndHandlePotentialComment(variant.comment(), cnvs(), variant);
     }
 
     @Override

@@ -55,32 +55,43 @@ public class CommonRenderFunctions
         renders().popStoreCanvasAndAppendd(id);
     }
 
-    protected void stopAlignedLineAndHandlePotentialComment(String comment, Canvas cnvs)
+    protected void stopAlignedLineAndHandlePotentialComment(String comment, Canvas cnvs, IsAFormula f)
     {
-        // If comment contains line breaks, then always place the comment below
-        // the commented material.
-        boolean mlc = Util.hasNewLine(comment);
-        boolean has = comment.length() > 0;
-        if (comment.length() > 100)
+        boolean has_comment = comment.length() > 0;
+        boolean use_next_line = false;
+
+        // If comment contains line breaks, then always place
+        // the comment on its own line below the commented material.
+        if (Util.hasNewLine(comment))
         {
-            // Also any comment with a length longer than 100 characters
-            // will also be placed on its own line below the commented material.
-            mlc = true;
+            use_next_line = true;
         }
-        if (!mlc && has)
+        // Also any comment with a length longer than 30 characters
+        // will also be placed on its own line below the commented material.
+        if (comment.length() > 30)
         {
-            // We have a single line comment with not too many characters.
-            // Place the comment on the same line.
+            use_next_line = true;
+        }
+        // Check if the commented formula has a raw unicode length longer than 30 characters.
+        // If so, then place the comment on its own line.
+        if (f != null && f.formula() != null && f.formula().toString().length() > 30)
+        {
+            use_next_line = true;
+        }
+
+        if (has_comment && !use_next_line)
+        {
+            // Placing the comment on the same line.
             cnvs.align();
             cnvs.comment(comment);
         }
 
         cnvs.stopAlignedLine();
 
-        if (mlc)
+        if (has_comment && use_next_line)
         {
+            // Place the comment on a new line.
             cnvs.startAlignedLine();
-            cnvs.align();
             cnvs.commentWithExtraVSpace(comment);
             cnvs.stopAlignedLine();
         }
