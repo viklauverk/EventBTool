@@ -342,10 +342,8 @@ public static String TeXDefinitions =
 "\\setlength\\LTpost{-2mm}\n"+
 "\\newcolumntype{R}{>{\\raggedright\\arraybackslash}X}\n"+
 "\n"+
-"\\newcommand{\\tlxmulticolumn}[3]\n"+
-"    {\\multicolumn{#1}\n"+
-"                 {>{\\hsize=\\dimexpr#1\\hsize+#1\\tabcolsep+\\arrayrulewidth\\relax}#2}\n"+
-"                 {#3}}\n"+
+"\\newcommand*{\\spantwo}[1]{\\multicolumn{2}{>{\\hsize=\\dimexpr 2\\hsize-2\\tabcolsep\\relax\\raggedright\\arraybackslash}X}{#1}}\n"+
+"\\newcommand*{\\spanthree}[1]{\\multicolumn{3}{>{\\hsize=0.95\\textwidth\\relax\\raggedright\\arraybackslash}X}{#1}}\n"+
 "\n"+
 "\\titleformat{\\section}[rightmargin]{}{\\fbox{\\thesection}}{0pt}{}[]\n"+
 "\\titlespacing{\\section}{10mm}{*0.5}{*0.5}\n"+

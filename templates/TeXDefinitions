@@ -275,10 +275,8 @@
 \setlength\LTpost{-2mm}
 \newcolumntype{R}{>{\raggedright\arraybackslash}X}
 
-\newcommand{\tlxmulticolumn}[3]
-    {\multicolumn{#1}
-                 {>{\hsize=\dimexpr#1\hsize+#1\tabcolsep+\arrayrulewidth\relax}#2}
-                 {#3}}
+\newcommand*{\spantwo}[1]{\multicolumn{2}{>{\hsize=\dimexpr 2\hsize-2\tabcolsep\relax\raggedright\arraybackslash}X}{#1}}
+\newcommand*{\spanthree}[1]{\multicolumn{3}{>{\hsize=0.95\textwidth\relax\raggedright\arraybackslash}X}{#1}}
 
 \titleformat{\section}[rightmargin]{}{\fbox{\thesection}}{0pt}{}[]
 \titlespacing{\section}{10mm}{*0.5}{*0.5}

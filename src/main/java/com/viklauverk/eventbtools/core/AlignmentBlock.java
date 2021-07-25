@@ -248,7 +248,18 @@ class AlignmentBlock
         case TEX:
             if (colspan > 1)
             {
-                s = "\\tlxmulticolumn{"+colspan+"}{R}{"+s+"}";
+                if (colspan == 2)
+                {
+                    s = "\\spantwo{"+s+"}";
+                }
+                else if (colspan == 3)
+                {
+                    s = "\\spanthree{"+s+"}";
+                }
+                else
+                {
+                    assert false : "Oups! Not implemented wider spans!";
+                }
             }
             return s+(is_last_cell?"":"&");
         case HTMQ:

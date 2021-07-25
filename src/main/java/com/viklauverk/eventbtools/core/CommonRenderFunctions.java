@@ -72,9 +72,9 @@ public class CommonRenderFunctions
         {
             use_next_line = true;
         }
-        // Check if the commented formula has a raw unicode length longer than 30 characters.
+        // Check if the commented formula has a raw unicode length longer than 26 characters.
         // If so, then place the comment on its own line.
-        if (f != null && f.formula() != null && f.formula().toString().length() > 30)
+        if (f != null && f.formula() != null && f.formula().toString().length() > 26)
         {
             use_next_line = true;
         }
