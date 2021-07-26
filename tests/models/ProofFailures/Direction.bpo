@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.poFile org.eventb.core.poStamp="10">
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
     <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
         <org.eventb.core.poIdentifier name="DIR" org.eventb.core.type="ℙ(DIR)"/>
         <org.eventb.core.poIdentifier name="LEFT" org.eventb.core.type="DIR"/>
         <org.eventb.core.poIdentifier name="RIGHT" org.eventb.core.type="DIR"/>
     </org.eventb.core.poPredicateSet>
-    <org.eventb.core.poSequent name="thm1/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="8">
+    <org.eventb.core.poSequent name="thm1/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ProofFailures/Direction.bpo|org.eventb.core.poFile#Direction|org.eventb.core.poPredicateSet#HYP'"/>
         <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="1=2" org.eventb.core.source="/ProofFailures/Direction.buc|org.eventb.core.contextFile#Direction|org.eventb.core.axiom#_5fV8IMp_EeuOnsx8lpCKJA"/>
         <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ProofFailures/Direction.buc|org.eventb.core.contextFile#Direction|org.eventb.core.axiom#_5fV8IMp_EeuOnsx8lpCKJA"/>
         <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ProofFailures/Direction.bpo|org.eventb.core.poFile#Direction|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/ProofFailures/Direction.bpo|org.eventb.core.poFile#Direction|org.eventb.core.poPredicateSet#HYP'"/>
     </org.eventb.core.poSequent>
-    <org.eventb.core.poSequent name="thm2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="8">
+    <org.eventb.core.poSequent name="thm2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ProofFailures/Direction.bpo|org.eventb.core.poFile#Direction|org.eventb.core.poPredicateSet#HYP("/>
         <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{1,2,3}≠(∅ ⦂ ℙ(ℤ))∧(∃b⦂ℤ·∀x⦂ℤ·x∈{1,2,3}⇒b≥x)" org.eventb.core.source="/ProofFailures/Direction.buc|org.eventb.core.contextFile#Direction|org.eventb.core.axiom#_DQu9sMqAEeuOnsx8lpCKJA"/>
         <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ProofFailures/Direction.buc|org.eventb.core.contextFile#Direction|org.eventb.core.axiom#_DQu9sMqAEeuOnsx8lpCKJA"/>
         <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ProofFailures/Direction.bpo|org.eventb.core.poFile#Direction|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/ProofFailures/Direction.bpo|org.eventb.core.poFile#Direction|org.eventb.core.poPredicateSet#HYP("/>
     </org.eventb.core.poSequent>
-    <org.eventb.core.poSequent name="thm2/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="8">
+    <org.eventb.core.poSequent name="thm2/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ProofFailures/Direction.bpo|org.eventb.core.poFile#Direction|org.eventb.core.poPredicateSet#HYP("/>
         <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="1=max({1,2,3})" org.eventb.core.source="/ProofFailures/Direction.buc|org.eventb.core.contextFile#Direction|org.eventb.core.axiom#_DQu9sMqAEeuOnsx8lpCKJA"/>
         <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ProofFailures/Direction.buc|org.eventb.core.contextFile#Direction|org.eventb.core.axiom#_DQu9sMqAEeuOnsx8lpCKJA"/>
@@ -29,7 +29,7 @@
     <org.eventb.core.poPredicateSet name="HYP(" org.eventb.core.parentSet="/ProofFailures/Direction.bpo|org.eventb.core.poFile#Direction|org.eventb.core.poPredicateSet#HYP'" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="1=2" org.eventb.core.source="/ProofFailures/Direction.buc|org.eventb.core.contextFile#Direction|org.eventb.core.axiom#_5fV8IMp_EeuOnsx8lpCKJA"/>
     </org.eventb.core.poPredicateSet>
-    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/ProofFailures/Direction.bpo|org.eventb.core.poFile#Direction|org.eventb.core.poPredicateSet#HYP(" org.eventb.core.poStamp="10">
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/ProofFailures/Direction.bpo|org.eventb.core.poFile#Direction|org.eventb.core.poPredicateSet#HYP(" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="1=max({1,2,3})" org.eventb.core.source="/ProofFailures/Direction.buc|org.eventb.core.contextFile#Direction|org.eventb.core.axiom#_DQu9sMqAEeuOnsx8lpCKJA"/>
     </org.eventb.core.poPredicateSet>
 </org.eventb.core.poFile>

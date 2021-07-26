@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.poFile org.eventb.core.poStamp="18">
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
     <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0"/>
-    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="1">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
         <org.eventb.core.poIdentifier name="bytes_size" org.eventb.core.type="ℤ"/>
         <org.eventb.core.poIdentifier name="bytes" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
     </org.eventb.core.poPredicateSet>
-    <org.eventb.core.poSequent name="inv2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Invariant" org.eventb.core.poStamp="1">
+    <org.eventb.core.poSequent name="inv2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Invariant" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#HYP'"/>
         <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="finite(dom(bytes))" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.invariant#_f9Ji83g7EeuIobokpwUdmw"/>
         <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.invariant#_f9Ji83g7EeuIobokpwUdmw"/>
         <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#HYP'"/>
     </org.eventb.core.poSequent>
-    <org.eventb.core.poSequent name="INITIALISATION/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="2">
+    <org.eventb.core.poSequent name="INITIALISATION/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTALLHYPbytes_sizf"/>
         <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="1 ‥ 10 × {1}∈1 ‥ 10 → 0 ‥ 255" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.invariant#_f9Ji8ng7EeuIobokpwUdmw"/>
         <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#'"/>
@@ -19,7 +19,7 @@
         <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poSequent#INITIALISATION\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
         <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#HYP'|org.eventb.core.poPredicate#PRD0"/>
     </org.eventb.core.poSequent>
-    <org.eventb.core.poSequent name="INITIALISATION/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="2">
+    <org.eventb.core.poSequent name="INITIALISATION/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTALLHYPbytes_sizf"/>
         <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="10=card(dom(1 ‥ 10 × {1}))" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.invariant#_f9Ji83g7EeuIobokpwUdmw"/>
         <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#'"/>
@@ -32,7 +32,7 @@
         <org.eventb.core.poIdentifier name="bytes'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
     </org.eventb.core.poPredicateSet>
     <org.eventb.core.poPredicateSet name="EVTALLHYPbytes_sizf" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTIDENTbytes_sizf" org.eventb.core.poStamp="0"/>
-    <org.eventb.core.poSequent name="cut/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="16">
+    <org.eventb.core.poSequent name="cut/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTALLHYPbytes_sizg"/>
         <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{x⦂ℤ·x∈1 ‥ new_size ∣ x ↦ bytes(x+1)}∈1 ‥ new_size → 0 ‥ 255" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.invariant#_f9Ji8ng7EeuIobokpwUdmw"/>
         <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#_3XK9YHg7EeuIobokpwUdmw"/>
@@ -40,7 +40,7 @@
         <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poSequent#cut\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
         <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#HYP'|org.eventb.core.poPredicate#PRD0"/>
     </org.eventb.core.poSequent>
-    <org.eventb.core.poSequent name="cut/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="16">
+    <org.eventb.core.poSequent name="cut/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTALLHYPbytes_sizg"/>
         <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="new_size=card(dom({x⦂ℤ·x∈1 ‥ new_size ∣ x ↦ bytes(x+1)}))" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.invariant#_f9Ji83g7EeuIobokpwUdmw"/>
         <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#_3XK9YHg7EeuIobokpwUdmw"/>
@@ -48,23 +48,23 @@
         <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poSequent#cut\/inv2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
         <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
     </org.eventb.core.poSequent>
-    <org.eventb.core.poSequent name="cut/act2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="16">
+    <org.eventb.core.poSequent name="cut/act2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTALLHYPbytes_sizg"/>
         <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℤ·x∈1 ‥ new_size⇒x+1∈dom(bytes)∧bytes∈ℤ ⇸ ℤ" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#_3XK9YHg7EeuIobokpwUdmw|org.eventb.core.action#_3XLkcng7EeuIobokpwUdmw"/>
         <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#_3XK9YHg7EeuIobokpwUdmw|org.eventb.core.action#_3XLkcng7EeuIobokpwUdmw"/>
         <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTALLHYPbytes_sizg"/>
     </org.eventb.core.poSequent>
-    <org.eventb.core.poPredicateSet name="EVTIDENTbytes_sizg" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="5">
+    <org.eventb.core.poPredicateSet name="EVTIDENTbytes_sizg" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
         <org.eventb.core.poIdentifier name="bytes_size'" org.eventb.core.type="ℤ"/>
         <org.eventb.core.poIdentifier name="new_size" org.eventb.core.type="ℤ"/>
         <org.eventb.core.poIdentifier name="bytes'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
     </org.eventb.core.poPredicateSet>
-    <org.eventb.core.poPredicateSet name="EVTALLHYPbytes_sizg" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTIDENTbytes_sizg" org.eventb.core.poStamp="16">
+    <org.eventb.core.poPredicateSet name="EVTALLHYPbytes_sizg" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTIDENTbytes_sizg" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="bytes_size&gt;1" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#_3XK9YHg7EeuIobokpwUdmw|org.eventb.core.guard#_3XLkcHg7EeuIobokpwUdmw"/>
         <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="new_size=bytes_size − 1" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#_3XK9YHg7EeuIobokpwUdmw|org.eventb.core.guard#_FWG9cXg8EeuIobokpwUdmw"/>
         <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="new_size∈ℕ1" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#_3XK9YHg7EeuIobokpwUdmw|org.eventb.core.guard#_KWIFQHg9EeuIobokpwUdmw"/>
     </org.eventb.core.poPredicateSet>
-    <org.eventb.core.poSequent name="split/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="18">
+    <org.eventb.core.poSequent name="split/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTALLHYPbytes_sizh"/>
         <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{x⦂ℤ·x∈1 ‥ new_size ∣ x ↦ bytes(x+left_size)}∈1 ‥ new_size → 0 ‥ 255" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.invariant#_f9Ji8ng7EeuIobokpwUdmw"/>
         <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#_YTTf4Hg_EeuIobokpwUdmw"/>
@@ -72,7 +72,7 @@
         <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poSequent#split\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
         <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#HYP'|org.eventb.core.poPredicate#PRD0"/>
     </org.eventb.core.poSequent>
-    <org.eventb.core.poSequent name="split/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="18">
+    <org.eventb.core.poSequent name="split/inv2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTALLHYPbytes_sizh"/>
         <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="new_size=card(dom({x⦂ℤ·x∈1 ‥ new_size ∣ x ↦ bytes(x+left_size)}))" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.invariant#_f9Ji83g7EeuIobokpwUdmw"/>
         <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#_YTTf4Hg_EeuIobokpwUdmw"/>
@@ -80,20 +80,20 @@
         <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poSequent#split\/inv2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
         <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
     </org.eventb.core.poSequent>
-    <org.eventb.core.poSequent name="split/act2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="18">
+    <org.eventb.core.poSequent name="split/act2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTALLHYPbytes_sizh"/>
         <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℤ·x∈1 ‥ new_size⇒x+left_size∈dom(bytes)∧bytes∈ℤ ⇸ ℤ" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#_YTTf4Hg_EeuIobokpwUdmw|org.eventb.core.action#_YTUG93g_EeuIobokpwUdmw"/>
         <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#_YTTf4Hg_EeuIobokpwUdmw|org.eventb.core.action#_YTUG93g_EeuIobokpwUdmw"/>
         <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTALLHYPbytes_sizh"/>
     </org.eventb.core.poSequent>
-    <org.eventb.core.poPredicateSet name="EVTIDENTbytes_sizh" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="18">
+    <org.eventb.core.poPredicateSet name="EVTIDENTbytes_sizh" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
         <org.eventb.core.poIdentifier name="bytes_size'" org.eventb.core.type="ℤ"/>
         <org.eventb.core.poIdentifier name="new_size" org.eventb.core.type="ℤ"/>
         <org.eventb.core.poIdentifier name="left_size" org.eventb.core.type="ℤ"/>
         <org.eventb.core.poIdentifier name="bytes'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
         <org.eventb.core.poIdentifier name="out_msg" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
     </org.eventb.core.poPredicateSet>
-    <org.eventb.core.poPredicateSet name="EVTALLHYPbytes_sizh" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTIDENTbytes_sizh" org.eventb.core.poStamp="18">
+    <org.eventb.core.poPredicateSet name="EVTALLHYPbytes_sizh" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#EVTIDENTbytes_sizh" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="new_size∈ℕ1" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#_YTTf4Hg_EeuIobokpwUdmw|org.eventb.core.guard#_YTUG8ng_EeuIobokpwUdmw"/>
         <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="left_size∈ℕ1" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#_YTTf4Hg_EeuIobokpwUdmw|org.eventb.core.guard#_YTUG83g_EeuIobokpwUdmw"/>
         <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="bytes_size&gt;left_size" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.event#_YTTf4Hg_EeuIobokpwUdmw|org.eventb.core.guard#_YTUG9Hg_EeuIobokpwUdmw"/>
@@ -103,7 +103,7 @@
     <org.eventb.core.poPredicateSet name="HYP'" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="bytes∈1 ‥ bytes_size → 0 ‥ 255" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.invariant#_f9Ji8ng7EeuIobokpwUdmw"/>
     </org.eventb.core.poPredicateSet>
-    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#HYP'" org.eventb.core.poStamp="1">
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Vectors/Test.bpo|org.eventb.core.poFile#Test|org.eventb.core.poPredicateSet#HYP'" org.eventb.core.poStamp="0">
         <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="bytes_size=card(dom(bytes))" org.eventb.core.source="/Vectors/Test.bum|org.eventb.core.machineFile#Test|org.eventb.core.invariant#_f9Ji83g7EeuIobokpwUdmw"/>
     </org.eventb.core.poPredicateSet>
 </org.eventb.core.poFile>

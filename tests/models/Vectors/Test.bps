@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <org.eventb.core.psFile>
-    <org.eventb.core.psStatus name="inv2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="INITIALISATION/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="2" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="INITIALISATION/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="2" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="cut/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="16" org.eventb.core.psManual="true"/>
-    <org.eventb.core.psStatus name="cut/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="16" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="cut/act2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="16" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="split/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="18" org.eventb.core.psManual="true"/>
-    <org.eventb.core.psStatus name="split/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="18" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="split/act2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="18" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="inv2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="INITIALISATION/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="INITIALISATION/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="cut/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="cut/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="cut/act2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="split/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="split/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="split/act2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
 </org.eventb.core.psFile>

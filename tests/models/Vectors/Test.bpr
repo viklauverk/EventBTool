@@ -83,8 +83,8 @@
         <org.eventb.core.prPred name="p7" org.eventb.core.predicate="bytes∈1 ‥ bytes_size → 0 ‥ 255"/>
         <org.eventb.core.prPred name="p9" org.eventb.core.predicate="new_size=card(1 ‥ new_size)"/>
         <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
-        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
         <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
     </org.eventb.core.prProof>
     <org.eventb.core.prProof name="cut/act2/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="x" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6">
         <org.eventb.core.lang name="L"/>
@@ -141,12 +141,12 @@
         </org.eventb.core.prPred>
         <org.eventb.core.prPred name="p13" org.eventb.core.predicate="bytes∈ℤ ⇸ ℤ"/>
         <org.eventb.core.prPred name="p6" org.eventb.core.predicate="bytes∈1 ‥ bytes_size → 0 ‥ 255"/>
-        <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
         <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+        <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
         <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
-        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
-        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
         <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
     </org.eventb.core.prProof>
     <org.eventb.core.prProof name="cut/grd3/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
         <org.eventb.core.lang name="L"/>
@@ -177,21 +177,22 @@
         <org.eventb.core.prPred name="p3" org.eventb.core.predicate="bytes∈1 ‥ bytes_size → 0 ‥ 255"/>
         <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.smt.core.externalSMT"/>
     </org.eventb.core.prProof>
-    <org.eventb.core.prProof name="split/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8">
+    <org.eventb.core.prProof name="split/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9">
         <org.eventb.core.lang name="L"/>
         <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
-            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p10">
-                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p9"/>
+            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11">
+                <org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p10"/>
                 <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with bytes_size=card(dom(bytes))" org.eventb.core.prHyps="p3">
                     <org.eventb.core.prAnte name="'">
-                        <org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p1" org.eventb.core.prInfHyps="p11"/>
-                        <org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p5" org.eventb.core.prInfHyps="p12"/>
+                        <org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p1" org.eventb.core.prInfHyps="p12"/>
+                        <org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p5" org.eventb.core.prInfHyps="p13"/>
                         <org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p1,p5"/>
-                        <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with new_size=card(dom(bytes)) − left_size" org.eventb.core.prGoal="p10" org.eventb.core.prHyps="p12">
-                            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p14">
-                                <org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p6" org.eventb.core.prInfHyps="p13"/>
-                                <org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p6"/>
-                                <org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p14" org.eventb.core.prHyps="p8,p3,p2,p6,p4,p1,p5,p7,p11,p12,p13">
+                        <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with new_size=card(dom(bytes)) − left_size" org.eventb.core.prGoal="p11" org.eventb.core.prHyps="p13">
+                            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p16">
+                                <org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p6" org.eventb.core.prInfHyps="p14"/>
+                                <org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p8" org.eventb.core.prInfHyps="p15"/>
+                                <org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p6,p8"/>
+                                <org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p16" org.eventb.core.prHyps="p9,p3,p2,p6,p4,p1,p5,p8,p7,p12,p13,p14,p15">
                                     <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
                                 </org.eventb.core.prRule>
                             </org.eventb.core.prAnte>
@@ -204,47 +205,51 @@
         <org.eventb.core.prIdent name="bytes_size" org.eventb.core.type="ℤ"/>
         <org.eventb.core.prIdent name="left_size" org.eventb.core.type="ℤ"/>
         <org.eventb.core.prIdent name="new_size" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="out_msg" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
         <org.eventb.core.prPred name="p1" org.eventb.core.predicate="bytes_size&gt;left_size"/>
-        <org.eventb.core.prPred name="p12" org.eventb.core.predicate="new_size=card(dom(bytes)) − left_size"/>
+        <org.eventb.core.prPred name="p13" org.eventb.core.predicate="new_size=card(dom(bytes)) − left_size"/>
         <org.eventb.core.prPred name="p2" org.eventb.core.predicate="finite(dom(bytes))"/>
-        <org.eventb.core.prPred name="p14" org.eventb.core.predicate="card(dom(bytes)) − left_size=card(1 ‥ card(dom(bytes)) − left_size)"/>
+        <org.eventb.core.prPred name="p16" org.eventb.core.predicate="card(dom(bytes)) − left_size=card(1 ‥ card(dom(bytes)) − left_size)"/>
         <org.eventb.core.prPred name="p3" org.eventb.core.predicate="bytes_size=card(dom(bytes))"/>
         <org.eventb.core.prPred name="p4" org.eventb.core.predicate="left_size∈ℕ1"/>
         <org.eventb.core.prPred name="p6" org.eventb.core.predicate="new_size∈ℕ1"/>
         <org.eventb.core.prPred name="p7" org.eventb.core.predicate="∀x⦂ℤ·x∈1 ‥ new_size⇒x+left_size∈dom(bytes)∧bytes∈ℤ ⇸ ℤ"/>
+        <org.eventb.core.prPred name="p8" org.eventb.core.predicate="out_msg=1 ‥ new_size ◁ bytes"/>
+        <org.eventb.core.prPred name="p15" org.eventb.core.predicate="out_msg=1 ‥ card(dom(bytes)) − left_size ◁ bytes"/>
         <org.eventb.core.prPred name="p0" org.eventb.core.predicate="new_size=card(dom({x⦂ℤ·x∈1 ‥ new_size ∣ x ↦ bytes(x+left_size)}))"/>
-        <org.eventb.core.prPred name="p13" org.eventb.core.predicate="card(dom(bytes)) − left_size∈ℕ1"/>
-        <org.eventb.core.prPred name="p11" org.eventb.core.predicate="card(dom(bytes))&gt;left_size"/>
+        <org.eventb.core.prPred name="p14" org.eventb.core.predicate="card(dom(bytes)) − left_size∈ℕ1"/>
+        <org.eventb.core.prPred name="p12" org.eventb.core.predicate="card(dom(bytes))&gt;left_size"/>
         <org.eventb.core.prPred name="p5" org.eventb.core.predicate="new_size=bytes_size − left_size"/>
-        <org.eventb.core.prPred name="p8" org.eventb.core.predicate="bytes∈1 ‥ bytes_size → 0 ‥ 255"/>
-        <org.eventb.core.prPred name="p9" org.eventb.core.predicate="finite(dom({x⦂ℤ·x∈1 ‥ new_size ∣ x ↦ bytes(x+left_size)}))"/>
-        <org.eventb.core.prPred name="p10" org.eventb.core.predicate="new_size=card(1 ‥ new_size)"/>
+        <org.eventb.core.prPred name="p9" org.eventb.core.predicate="bytes∈1 ‥ bytes_size → 0 ‥ 255"/>
+        <org.eventb.core.prPred name="p10" org.eventb.core.predicate="finite(dom({x⦂ℤ·x∈1 ‥ new_size ∣ x ↦ bytes(x+left_size)}))"/>
+        <org.eventb.core.prPred name="p11" org.eventb.core.predicate="new_size=card(1 ‥ new_size)"/>
         <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
-        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
         <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
     </org.eventb.core.prProof>
-    <org.eventb.core.prProof name="split/act2/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="x" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7">
+    <org.eventb.core.prProof name="split/act2/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="x" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8">
         <org.eventb.core.lang name="L"/>
         <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∀ goal (frees x)" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
-            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p8">
+            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p9">
                 <org.eventb.core.prIdent name="x" org.eventb.core.type="ℤ"/>
-                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⇒ goal" org.eventb.core.prGoal="p8" org.eventb.core.prHyps="">
-                    <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p10" org.eventb.core.prHyps="p9">
-                        <org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∧ goal" org.eventb.core.prGoal="p10" org.eventb.core.prHyps="">
-                            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11">
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⇒ goal" org.eventb.core.prGoal="p9" org.eventb.core.prHyps="">
+                    <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11" org.eventb.core.prHyps="p10">
+                        <org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∧ goal" org.eventb.core.prGoal="p11" org.eventb.core.prHyps="">
+                            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p12">
                                 <org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with new_size=bytes_size − left_size" org.eventb.core.prHyps="p5">
                                     <org.eventb.core.prAnte name="'">
-                                        <org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p6" org.eventb.core.prInfHyps="p12"/>
-                                        <org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p9" org.eventb.core.prInfHyps="p13"/>
-                                        <org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p6,p9"/>
-                                        <org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p11" org.eventb.core.prHyps="p7,p3,p2,p6,p4,p1,p5,p9,p12,p13">
+                                        <org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p6" org.eventb.core.prInfHyps="p13"/>
+                                        <org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p7" org.eventb.core.prInfHyps="p14"/>
+                                        <org.eventb.core.prHypAction name="FORWARD_INF2" org.eventb.core.prHyps="p10" org.eventb.core.prInfHyps="p15"/>
+                                        <org.eventb.core.prHypAction name="DESELECT3" org.eventb.core.prHyps="p6,p7,p10"/>
+                                        <org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p12" org.eventb.core.prHyps="p8,p3,p2,p6,p4,p1,p5,p7,p10,p13,p14,p15">
                                             <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
                                         </org.eventb.core.prRule>
                                     </org.eventb.core.prAnte>
                                 </org.eventb.core.prRule>
                             </org.eventb.core.prAnte>
-                            <org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p14">
-                                <org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="functional goal" org.eventb.core.prGoal="p14" org.eventb.core.prHyps="p7"/>
+                            <org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p16">
+                                <org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="functional goal" org.eventb.core.prGoal="p16" org.eventb.core.prHyps="p8"/>
                             </org.eventb.core.prAnte>
                         </org.eventb.core.prRule>
                     </org.eventb.core.prAnte>
@@ -255,36 +260,39 @@
         <org.eventb.core.prIdent name="bytes_size" org.eventb.core.type="ℤ"/>
         <org.eventb.core.prIdent name="left_size" org.eventb.core.type="ℤ"/>
         <org.eventb.core.prIdent name="new_size" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.prIdent name="out_msg" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
         <org.eventb.core.prPred name="p1" org.eventb.core.predicate="bytes_size&gt;left_size"/>
-        <org.eventb.core.prPred name="p8" org.eventb.core.predicate="x∈1 ‥ new_size⇒x+left_size∈dom(bytes)∧bytes∈ℤ ⇸ ℤ">
+        <org.eventb.core.prPred name="p9" org.eventb.core.predicate="x∈1 ‥ new_size⇒x+left_size∈dom(bytes)∧bytes∈ℤ ⇸ ℤ">
             <org.eventb.core.prIdent name="x" org.eventb.core.type="ℤ"/>
         </org.eventb.core.prPred>
-        <org.eventb.core.prPred name="p13" org.eventb.core.predicate="x∈1 ‥ bytes_size − left_size">
+        <org.eventb.core.prPred name="p15" org.eventb.core.predicate="x∈1 ‥ bytes_size − left_size">
             <org.eventb.core.prIdent name="x" org.eventb.core.type="ℤ"/>
         </org.eventb.core.prPred>
         <org.eventb.core.prPred name="p2" org.eventb.core.predicate="finite(dom(bytes))"/>
         <org.eventb.core.prPred name="p3" org.eventb.core.predicate="bytes_size=card(dom(bytes))"/>
-        <org.eventb.core.prPred name="p10" org.eventb.core.predicate="x+left_size∈dom(bytes)∧bytes∈ℤ ⇸ ℤ">
+        <org.eventb.core.prPred name="p11" org.eventb.core.predicate="x+left_size∈dom(bytes)∧bytes∈ℤ ⇸ ℤ">
             <org.eventb.core.prIdent name="x" org.eventb.core.type="ℤ"/>
         </org.eventb.core.prPred>
-        <org.eventb.core.prPred name="p11" org.eventb.core.predicate="x+left_size∈dom(bytes)">
+        <org.eventb.core.prPred name="p12" org.eventb.core.predicate="x+left_size∈dom(bytes)">
             <org.eventb.core.prIdent name="x" org.eventb.core.type="ℤ"/>
         </org.eventb.core.prPred>
         <org.eventb.core.prPred name="p4" org.eventb.core.predicate="left_size∈ℕ1"/>
-        <org.eventb.core.prPred name="p12" org.eventb.core.predicate="bytes_size − left_size∈ℕ1"/>
+        <org.eventb.core.prPred name="p13" org.eventb.core.predicate="bytes_size − left_size∈ℕ1"/>
         <org.eventb.core.prPred name="p0" org.eventb.core.predicate="∀x⦂ℤ·x∈1 ‥ new_size⇒x+left_size∈dom(bytes)∧bytes∈ℤ ⇸ ℤ"/>
         <org.eventb.core.prPred name="p6" org.eventb.core.predicate="new_size∈ℕ1"/>
+        <org.eventb.core.prPred name="p7" org.eventb.core.predicate="out_msg=1 ‥ new_size ◁ bytes"/>
+        <org.eventb.core.prPred name="p14" org.eventb.core.predicate="out_msg=1 ‥ bytes_size − left_size ◁ bytes"/>
         <org.eventb.core.prPred name="p5" org.eventb.core.predicate="new_size=bytes_size − left_size"/>
-        <org.eventb.core.prPred name="p9" org.eventb.core.predicate="x∈1 ‥ new_size">
+        <org.eventb.core.prPred name="p10" org.eventb.core.predicate="x∈1 ‥ new_size">
             <org.eventb.core.prIdent name="x" org.eventb.core.type="ℤ"/>
         </org.eventb.core.prPred>
-        <org.eventb.core.prPred name="p14" org.eventb.core.predicate="bytes∈ℤ ⇸ ℤ"/>
-        <org.eventb.core.prPred name="p7" org.eventb.core.predicate="bytes∈1 ‥ bytes_size → 0 ‥ 255"/>
-        <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+        <org.eventb.core.prPred name="p16" org.eventb.core.predicate="bytes∈ℤ ⇸ ℤ"/>
+        <org.eventb.core.prPred name="p8" org.eventb.core.predicate="bytes∈1 ‥ bytes_size → 0 ‥ 255"/>
         <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+        <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
         <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
-        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
-        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
         <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
     </org.eventb.core.prProof>
 </org.eventb.core.prFile>

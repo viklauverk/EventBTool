@@ -30,5 +30,5 @@
     <org.eventb.core.psStatus name="Improve/inv1_5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="Improve/inv1_6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="Improve/vrt/NAT" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="Improve/vrt/VAR" org.eventb.core.confidence="0" org.eventb.core.poStamp="0" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="Improve/vrt/VAR" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
 </org.eventb.core.psFile>

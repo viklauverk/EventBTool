@@ -371,11 +371,11 @@
         <org.eventb.core.prPred name="p25" org.eventb.core.predicate="∀n⦂ℤ·n∈ℕ⇒n&lt;(n+1)∗(n+1)"/>
         <org.eventb.core.prPred name="p33" org.eventb.core.predicate="result_valid∈BOOL"/>
         <org.eventb.core.prPred name="p34" org.eventb.core.predicate="(low+high) ÷ 2∗((low+high) ÷ 2)≤input"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
         <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
         <org.eventb.core.prReas name="r4" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
-        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
         <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
-        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
     </org.eventb.core.prProof>
     <org.eventb.core.prProof name="ImproveLowerBound/grd2_3/GRD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4">
         <org.eventb.core.lang name="L"/>
@@ -447,12 +447,12 @@
         <org.eventb.core.prPred name="p15" org.eventb.core.predicate="(low+high) ÷ 2∗((low+high) ÷ 2)≤input">
             <org.eventb.core.prIdent name="input" org.eventb.core.type="ℤ"/>
         </org.eventb.core.prPred>
-        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
         <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
-        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
-        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
         <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
         <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
     </org.eventb.core.prProof>
     <org.eventb.core.prProof name="ImproveUpperBound/grd2/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0">
         <org.eventb.core.lang name="L"/>
@@ -535,11 +535,11 @@
         <org.eventb.core.prPred name="p25" org.eventb.core.predicate="∀n⦂ℤ·n∈ℕ⇒n&lt;(n+1)∗(n+1)"/>
         <org.eventb.core.prPred name="p33" org.eventb.core.predicate="result_valid∈BOOL"/>
         <org.eventb.core.prPred name="p34" org.eventb.core.predicate="(low+high) ÷ 2∗((low+high) ÷ 2)&gt;input"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
         <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
         <org.eventb.core.prReas name="r4" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
-        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
         <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
-        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
     </org.eventb.core.prProof>
     <org.eventb.core.prProof name="ImproveUpperBound/grd2_3/GRD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4">
         <org.eventb.core.lang name="L"/>
@@ -611,12 +611,12 @@
         <org.eventb.core.prPred name="p15" org.eventb.core.predicate="(low+high) ÷ 2∗((low+high) ÷ 2)&gt;input">
             <org.eventb.core.prIdent name="input" org.eventb.core.type="ℤ"/>
         </org.eventb.core.prPred>
-        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
         <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
-        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
-        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
         <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
         <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
     </org.eventb.core.prProof>
     <org.eventb.core.prProof name="ImproveLowerBound/grd3_2/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0">
         <org.eventb.core.lang name="L"/>

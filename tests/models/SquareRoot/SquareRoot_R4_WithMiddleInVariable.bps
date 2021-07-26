@@ -9,13 +9,13 @@
     <org.eventb.core.psStatus name="setInput/act1_1/SIM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="setInput/act1_2/SIM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveLowerBound/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="ImproveLowerBound/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psBroken="true" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="ImproveLowerBound/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="true"/>
     <org.eventb.core.psStatus name="ImproveLowerBound/grd3_2/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveLowerBound/grd3_3/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveLowerBound/act4_2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveLowerBound/act3_1/SIM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveUpperBound/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="ImproveUpperBound/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psBroken="true" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="ImproveUpperBound/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="true"/>
     <org.eventb.core.psStatus name="ImproveUpperBound/grd3_2/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveUpperBound/grd3_3/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveUpperBound/act4_2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>

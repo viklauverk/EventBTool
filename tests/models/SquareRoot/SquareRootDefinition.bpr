@@ -47,12 +47,12 @@
         <org.eventb.core.prPred name="p1" org.eventb.core.predicate="SQRT∈ℕ → ℕ"/>
         <org.eventb.core.prPred name="p7" org.eventb.core.predicate="SQRT∈ℤ ⇸ ℤ"/>
         <org.eventb.core.prExpr name="e0" org.eventb.core.expression="ℕ"/>
-        <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
         <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
         <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
         <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
-        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
-        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+        <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
     </org.eventb.core.prProof>
     <org.eventb.core.prProof name="thm1/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="n" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1">
         <org.eventb.core.lang name="L"/>
@@ -96,28 +96,28 @@
             <org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
         </org.eventb.core.prPred>
         <org.eventb.core.prExpr name="e0" org.eventb.core.expression="ℕ"/>
-        <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
         <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
         <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
         <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
-        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
-        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+        <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
     </org.eventb.core.prProof>
-    <org.eventb.core.prProof name="thm1/THM" org.eventb.core.confidence="1000" org.eventb.core.prFresh="n" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2">
+    <org.eventb.core.prProof name="thm1/THM" org.eventb.core.confidence="1000" org.eventb.core.prFresh="n" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6">
         <org.eventb.core.lang name="L"/>
         <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∀ goal (frees n)" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
-            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p3">
+            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p7">
                 <org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
-                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⇒ goal" org.eventb.core.prGoal="p3" org.eventb.core.prHyps="">
-                    <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p5" org.eventb.core.prHyps="p4">
-                        <org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∧ goal" org.eventb.core.prGoal="p5" org.eventb.core.prHyps="">
-                            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
-                                <org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p6" org.eventb.core.prHyps="p2,p1,p4">
+                <org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⇒ goal" org.eventb.core.prGoal="p7" org.eventb.core.prHyps="">
+                    <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p9" org.eventb.core.prHyps="p8">
+                        <org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∧ goal" org.eventb.core.prGoal="p9" org.eventb.core.prHyps="">
+                            <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p10">
+                                <org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p10" org.eventb.core.prHyps="p2,p6,p1,p3,p5,p4,p8">
                                     <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
                                 </org.eventb.core.prRule>
                             </org.eventb.core.prAnte>
-                            <org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p7">
-                                <org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p7" org.eventb.core.prHyps="p2,p1,p4">
+                            <org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p11">
+                                <org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p11" org.eventb.core.prHyps="p2,p6,p1,p3,p5,p4,p8">
                                     <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1:500"/>
                                 </org.eventb.core.prRule>
                             </org.eventb.core.prAnte>
@@ -127,28 +127,32 @@
             </org.eventb.core.prAnte>
         </org.eventb.core.prRule>
         <org.eventb.core.prIdent name="SQRT" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
-        <org.eventb.core.prPred name="p6" org.eventb.core.predicate="SQRT(n)∗SQRT(n)≤n">
+        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="∀m⦂ℤ,n⦂ℤ·m∈ℕ∧n∈ℕ∧n&gt;m⇒(m+n) ÷ 2&lt;n"/>
+        <org.eventb.core.prPred name="p10" org.eventb.core.predicate="SQRT(n)∗SQRT(n)≤n">
             <org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
         </org.eventb.core.prPred>
-        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="n∈ℕ">
+        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="∀n⦂ℤ·n∈ℕ⇒(∃m⦂ℤ·m∈ℕ∧(n=2∗m∨n=2∗m+1))"/>
+        <org.eventb.core.prPred name="p8" org.eventb.core.predicate="n∈ℕ">
             <org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
         </org.eventb.core.prPred>
-        <org.eventb.core.prPred name="p1" org.eventb.core.predicate="∀m⦂ℤ,n⦂ℤ·m∈ℕ∧n∈ℕ⇒(m=SQRT(n)⇔m∗m≤n∧(m+1)∗(m+1)&gt;n)"/>
+        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="∀m⦂ℤ,n⦂ℤ·m∈ℕ∧n∈ℕ∧n&gt;m⇒(m+n) ÷ 2≥m"/>
+        <org.eventb.core.prPred name="p4" org.eventb.core.predicate="∀m⦂ℤ,n⦂ℤ·m∈ℕ∧n∈ℕ⇒(m=SQRT(n)⇔m∗m≤n∧(m+1)∗(m+1)&gt;n)"/>
         <org.eventb.core.prPred name="p0" org.eventb.core.predicate="∀n⦂ℤ·n∈ℕ⇒SQRT(n)∗SQRT(n)≤n∧(SQRT(n)+1)∗(SQRT(n)+1)&gt;n"/>
-        <org.eventb.core.prPred name="p2" org.eventb.core.predicate="SQRT∈ℕ → ℕ"/>
-        <org.eventb.core.prPred name="p3" org.eventb.core.predicate="n∈ℕ⇒SQRT(n)∗SQRT(n)≤n∧(SQRT(n)+1)∗(SQRT(n)+1)&gt;n">
+        <org.eventb.core.prPred name="p5" org.eventb.core.predicate="SQRT∈ℕ → ℕ"/>
+        <org.eventb.core.prPred name="p7" org.eventb.core.predicate="n∈ℕ⇒SQRT(n)∗SQRT(n)≤n∧(SQRT(n)+1)∗(SQRT(n)+1)&gt;n">
             <org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
         </org.eventb.core.prPred>
-        <org.eventb.core.prPred name="p5" org.eventb.core.predicate="SQRT(n)∗SQRT(n)≤n∧(SQRT(n)+1)∗(SQRT(n)+1)&gt;n">
+        <org.eventb.core.prPred name="p9" org.eventb.core.predicate="SQRT(n)∗SQRT(n)≤n∧(SQRT(n)+1)∗(SQRT(n)+1)&gt;n">
             <org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
         </org.eventb.core.prPred>
-        <org.eventb.core.prPred name="p7" org.eventb.core.predicate="(SQRT(n)+1)∗(SQRT(n)+1)&gt;n">
+        <org.eventb.core.prPred name="p6" org.eventb.core.predicate="∀n⦂ℤ·n∈ℕ⇒n&lt;(n+1)∗(n+1)"/>
+        <org.eventb.core.prPred name="p11" org.eventb.core.predicate="(SQRT(n)+1)∗(SQRT(n)+1)&gt;n">
             <org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
         </org.eventb.core.prPred>
-        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
-        <org.eventb.core.prReas name="r3" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
-        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
         <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
+        <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+        <org.eventb.core.prReas name="r3" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
     </org.eventb.core.prProof>
     <org.eventb.core.prProof name="thm2/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="n" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7" org.eventb.core.psManual="true">
         <org.eventb.core.lang name="L"/>
@@ -161,7 +165,7 @@
                             <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11">
                                 <org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="total function dom substitution in goal" org.eventb.core.prGoal="p11" org.eventb.core.prHyps="p6">
                                     <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p12">
-                                        <org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p12" org.eventb.core.prHyps="p2,p7,p1,p3,p6,p4,p5,p9">
+                                        <org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ML" org.eventb.core.prGoal="p12" org.eventb.core.prHyps="p1,p2,p9,p3,p4,p5,p6,p7">
                                             <org.eventb.core.prString name=".arg" org.eventb.core.prSValue="0;1;2;3:30000"/>
                                         </org.eventb.core.prRule>
                                     </org.eventb.core.prAnte>
@@ -204,11 +208,11 @@
         <org.eventb.core.prPred name="p7" org.eventb.core.predicate="∀n⦂ℤ·n∈ℕ⇒n&lt;(n+1)∗(n+1)"/>
         <org.eventb.core.prExpr name="e0" org.eventb.core.expression="ℕ"/>
         <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
-        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
-        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
-        <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
-        <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
         <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+        <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+        <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
+        <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
+        <org.eventb.core.prReas name="r4" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
     </org.eventb.core.prProof>
     <org.eventb.core.prProof name="thm2/THM" org.eventb.core.confidence="1000" org.eventb.core.prFresh="n" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3">
         <org.eventb.core.lang name="L"/>
@@ -238,8 +242,8 @@
         <org.eventb.core.prPred name="p6" org.eventb.core.predicate="n=SQRT(n∗n)">
             <org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
         </org.eventb.core.prPred>
+        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
         <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
         <org.eventb.core.prReas name="r2" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalPP:1"/>
-        <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
     </org.eventb.core.prProof>
 </org.eventb.core.prFile>

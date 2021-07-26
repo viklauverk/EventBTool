@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <org.eventb.core.psFile>
+    <org.eventb.core.psStatus name="ImproveLowerBound/grd1_1/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveLowerBound/grd1_2/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="ImproveLowerBound/grd1_3/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveLowerBound/grd1_4/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="ImproveLowerBound/grd1_5/GRD" org.eventb.core.confidence="0" org.eventb.core.poStamp="0" org.eventb.core.psBroken="true" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="ImproveLowerBound/grd1_5/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="ImproveLowerBound/grd1_6/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="ImproveLowerBound/grd1_7/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="ImproveLowerBound/grd1_8/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="ImproveLowerBound/grd1_9/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveLowerBound/act1_1/SIM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveLowerBound/act1_2/SIM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="ImproveUpperBound/grd1_1/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveUpperBound/grd1_2/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="ImproveUpperBound/grd1_3/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveUpperBound/grd1_4/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
-    <org.eventb.core.psStatus name="ImproveUpperBound/grd1_5/GRD" org.eventb.core.confidence="0" org.eventb.core.poStamp="0" org.eventb.core.psBroken="true" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="ImproveUpperBound/grd1_5/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="ImproveUpperBound/grd1_6/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="ImproveUpperBound/grd1_7/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="ImproveUpperBound/grd1_8/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="ImproveUpperBound/grd1_9/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveUpperBound/act1_1/SIM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
     <org.eventb.core.psStatus name="ImproveUpperBound/act1_2/SIM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="0" org.eventb.core.psManual="false"/>
 </org.eventb.core.psFile>
