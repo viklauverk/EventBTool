@@ -60,25 +60,26 @@ public class CommonRenderFunctions
         boolean has_comment = comment.length() > 0;
         boolean use_next_line = false;
 
-        // If comment contains line breaks, then always place
+        // If comment contains explicit line breaks, then always place
         // the comment on its own line below the commented material.
+        // An explicit line break is an empty line, ie two consecutive \n,
+        // like a \par in TeX.
         if (Util.hasNewLine(comment))
         {
             use_next_line = true;
         }
-        // Also any comment with a length longer than 30 characters
-        // will also be placed on its own line below the commented material.
-        if (comment.length() > 30)
+        int clen = comment.length();
+        int flen = 0;
+        if (f != null && f.formula() != null)
+        {
+            flen =  f.formula().toString().length();
+        }
+        // Check if the sum of the formula length and the comment length is greater than 50,
+        // then place the comment on its own line.
+        if (clen + flen > 60)
         {
             use_next_line = true;
         }
-        // Check if the commented formula has a raw unicode length longer than 26 characters.
-        // If so, then place the comment on its own line.
-        if (f != null && f.formula() != null && f.formula().toString().length() > 26)
-        {
-            use_next_line = true;
-        }
-
         if (has_comment && !use_next_line)
         {
             // Placing the comment on the same line.

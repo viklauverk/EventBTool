@@ -57,7 +57,7 @@ public class Canvas
     public Canvas() {}
 
     public static String align_2col = "l,R";
-    public static String align_3col = "l,R,R";
+    public static String align_3col = "l,V{8cm},R";
 
     public Canvas(Canvas parent)
     {
