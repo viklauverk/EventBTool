@@ -71,13 +71,13 @@ public class Sys
 
         typing_ = new Typing();
 
-        CarrierSet BOOL = new CarrierSet("BOOL");
-        Constant TRUE = new Constant("TRUE");
-        Constant FALSE = new Constant("FALSE");
+        CarrierSet BOOL = new CarrierSet("BOOL", null);
+        Constant TRUE = new Constant("TRUE", null);
+        Constant FALSE = new Constant("FALSE", null);
         BOOL.addMember(TRUE);
         BOOL.addMember(FALSE);
-        TRUE.setType(typing_.lookup("BOOL"));
-        FALSE.setType(typing_.lookup("BOOL"));
+        TRUE.setImplType(typing_.lookup("BOOL"));
+        FALSE.setImplType(typing_.lookup("BOOL"));
         root_symbol_table_.addSet(BOOL);
         root_symbol_table_.addConstant(TRUE);
         root_symbol_table_.addConstant(FALSE);

@@ -55,7 +55,7 @@ public class EDK_FloatingPoint_v1_Cpp extends EDKContext
         cnvs.append("\n");
     }
 
-    public String translateType(Type type, SymbolTable symbols, BaseCodeGen bcg)
+    public String translateImplType(ImplType type, SymbolTable symbols, BaseCodeGen bcg)
     {
         Formula t = type.formula();
 

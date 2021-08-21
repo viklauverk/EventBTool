@@ -176,10 +176,10 @@ public class Console
     private String deduceType(String line)
     {
         Formula result = Formula.fromString(line, current_symbol_table_);
-        Type type = null;
+        ImplType type = null;
         if (result != null)
         {
-            type = sys_.typing().deducePossibleTypesFromExpression(result, current_symbol_table_);
+            type = sys_.typing().deducePossibleImplTypesFromExpression(result, current_symbol_table_);
         }
 
         if (result != null && type != null)

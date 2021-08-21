@@ -152,9 +152,9 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
         Formula var = pattern().getVar("x");
         Variable v = symbols.getVariable(var.symbol());
 
-        assert (v.type() != null) : "Cannot generate code for set clear if type is unknown!";
+        assert (v.implType() != null) : "Cannot generate code for set clear if type is unknown!";
 
-        Formula type = v.type().formula();
+        Formula type = v.implType().formula();
 
         if (type.is(POWER_SET) || type.is(PARTIAL_FUNCTION))
         {
@@ -246,9 +246,9 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
 
         Formula val = pattern().getNumber("M");
 
-        assert (v.type() != null) : "Cannot generate code for vector clear if type is unknown!";
+        assert (v.implType() != null) : "Cannot generate code for vector clear if type is unknown!";
 
-        Formula type = v.type().formula();
+        Formula type = v.implType().formula();
 
         if (type.is(TOTAL_FUNCTION))
         {
@@ -414,7 +414,7 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
                 System.err.println("No such variable "+x+" found in symbol table");
                 System.err.println(symbols.print());
             }
-            String vtype = v.type().formula().toString();
+            String vtype = v.implType().formula().toString();
             String stype = S.toString();
             if (vtype.equals(stype))
             {
@@ -487,7 +487,7 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
 
         Formula setvar = pattern().getVar("y");
         Variable func = symbols.getVariable(setvar);
-        if (func.type().isVector())
+        if (func.implType().isVector())
         {
             System.err.println("GURURUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU "+setvar);
         }
@@ -678,28 +678,28 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
         }
     }
 
-    String translateEDKType(Type type, SymbolTable symbols)
+    String translateEDKImplType(ImplType type, SymbolTable symbols)
     {
         for (String el : mch().contextNames())
         {
             Context ctx = mch().getContext(el);
             if (ctx.isEDKContext())
             {
-                String t = ctx.edkContext().translateType(type, symbols, this);
+                String t = ctx.edkContext().translateImplType(type, symbols, this);
                 if (t != null) return t;
             }
         }
         return null;
     }
 
-    public String translateType(Type type, SymbolTable symbols)
+    public String translateImplType(ImplType type, SymbolTable symbols)
     {
         Formula t = type.formula();
 
         log.debug("translating type: %s", t);
 
         // Detect any EDK defined types and translate these.
-        String edk_type = translateEDKType(type, symbols);
+        String edk_type = translateEDKImplType(type, symbols);
         if (edk_type != null) return edk_type;
 
         boolean ok = pattern().match(t,
@@ -770,12 +770,12 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
             // So x cannot be of type books, because books is a dynamic
             // subset, we have to translate the type into the underlying type NAT.
             Variable var = symbols.getVariable(t.symbol());
-            log.debug("var_symbol: var type %s", var.type());
+            log.debug("var_symbol: var type %s", var.implType());
             // Now find the inside type of the variables type.
-            Type inner_type = sys().typing().deduceInnerType(var.type());
+            ImplType inner_type = sys().typing().deduceInnerImplType(var.implType());
             log.debug("var_symbol: inner type %s", inner_type);
-            String translated = translateType(inner_type, symbols);
-            log.debug("var_symbol: translated type %s to %s through %s", t, translated, var.type());
+            String translated = translateImplType(inner_type, symbols);
+            log.debug("var_symbol: translated type %s to %s through %s", t, translated, var.implType());
             return translated;
         }
         case "domain_of_var":
@@ -784,34 +784,34 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
             // is a relation or function. Fetch the type of the variable and look left.
             Formula x = pattern().getVar("x");
             Variable var = symbols.getVariable(x);
-            log.debug("domain_of_var: var type %s", var.type());
-            // Now var.type() must be a relation/function.
-            Type inner_type = sys().typing().lookupType(var.type().formula().left());
+            log.debug("domain_of_var: var type %s", var.implType());
+            // Now var.implType() must be a relation/function.
+            ImplType inner_type = sys().typing().lookupImplType(var.implType().formula().left());
             log.debug("domain_of_var: inner type %s", inner_type);
-            String translated = translateType(inner_type, symbols);
+            String translated = translateImplType(inner_type, symbols);
             log.debug("var_symbol: translated type %s to %s through %s", t, translated, inner_type);
             return translated;
         }
         case "power_set":
         {
             log.debug("power_set: translated power set type %s", t);
-            Type it = sys().typing().lookupType(t.child());
-            String inner_type = translateType(it, symbols);
+            ImplType it = sys().typing().lookupImplType(t.child());
+            String inner_type = translateImplType(it, symbols);
             String ts = handleTranslateSet(it, symbols);
             log.debug("power_set: translated type %s through %s to %s", t, it, ts);
             return ts;
         }
         case "domain_of_relation":
         {
-            Type it = sys().typing().lookupType(t.child());
-            String inner_type = translateType(it, symbols);
+            ImplType it = sys().typing().lookupImplType(t.child());
+            String inner_type = translateImplType(it, symbols);
             String ts = handleTranslateSet(it, symbols);
             log.debug("domain_of_relation: translated type %s through %s to %s", t, it, ts);
             return ts;
         }
         case "fixed_vector":
         {
-            Type to = sys().typing().lookupType(t.right());
+            ImplType to = sys().typing().lookupImplType(t.right());
             log.debug("fixed vector: %s", to);
             String ts = handleTranslateVector(to, symbols);
             log.debug("vector: translated type %s to %s", t, ts);
@@ -821,7 +821,7 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
         {
             Formula size = t.left().right();
             Variable v = symbols.getVariable(size.symbol());
-            Type to = sys().typing().lookupType(t.right());
+            ImplType to = sys().typing().lookupImplType(t.right());
             log.debug("variable vector: %s", to);
             String ts = handleTranslateVector(to, symbols);
             log.debug("vector: translated type %s to %s", t, ts);
@@ -829,22 +829,22 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
         }
         case "function":
         {
-            Type from = sys().typing().lookupType(t.left());
-            Type to = sys().typing().lookupType(t.right());
+            ImplType from = sys().typing().lookupImplType(t.left());
+            ImplType to = sys().typing().lookupImplType(t.right());
             log.debug("function: from %s to %s", from, to);
-            String inner_type_left = translateType(from, symbols);
-            String inner_type_right = translateType(to, symbols);
+            String inner_type_left = translateImplType(from, symbols);
+            String inner_type_right = translateImplType(to, symbols);
             String ts = handleTranslateFunction(from, to, symbols);
             log.debug("function: translated type %s to %s", t, ts);
             return ts;
         }
         case "relation":
         {
-            Type from = sys().typing().lookupType(t.left());
-            Type to = sys().typing().lookupType(t.right());
+            ImplType from = sys().typing().lookupImplType(t.left());
+            ImplType to = sys().typing().lookupImplType(t.right());
             log.debug("relation: from %s to %s", from, to);
-            String inner_type_left = translateType(from, symbols);
-            String inner_type_right = translateType(to, symbols);
+            String inner_type_left = translateImplType(from, symbols);
+            String inner_type_right = translateImplType(to, symbols);
             String ts = handleTranslateRelation(from, to, symbols);
             log.debug("relation: translated type %s to %s", t, ts);
             return ts;
@@ -854,7 +854,7 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
             log.debug("enumerated_set: translated %s", t);
             assert (t.is(ENUMERATED_SET));
 
-            Type found_type = null;
+            ImplType found_type = null;
             for (int j=0; j < t.numChildren(); ++j)
             {
                 Formula m = t.child(j);
@@ -863,9 +863,9 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
                     Constant c = symbols.getConstant(m.symbol());
                     if (found_type == null)
                     {
-                        found_type = c.type();
+                        found_type = c.implType();
                     }
-                    assert found_type == c.type() : "Ouch, constants in enumerated set belongs to different carrier sets!";
+                    assert found_type == c.implType() : "Ouch, constants in enumerated set belongs to different carrier sets!";
                 }
             }
             assert (found_type.formula().isSymbol()) : "missing type translation case handler for "+found_type;
@@ -885,7 +885,7 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
         return "GURKA";
     }
 
-    public String handleTranslateInt(Type t, SymbolTable symbols)
+    public String handleTranslateInt(ImplType t, SymbolTable symbols)
     {
         return "NOT_IMPLEMENTED_INT_TYPE";
     }
@@ -895,34 +895,34 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
         return "NOT_IMPLEMENTED_INT_RANGE";
     }
 
-    public String handleTranslateBool(Type t, SymbolTable symbols)
+    public String handleTranslateBool(ImplType t, SymbolTable symbols)
     {
         return "NOT_IMPLEMENTED_BOOL";
     }
 
-    public String handleTranslateSet(Type inner_type, SymbolTable symbols)
+    public String handleTranslateSet(ImplType inner_type, SymbolTable symbols)
     {
-        String it = translateType(inner_type, symbols);
+        String it = translateImplType(inner_type, symbols);
         return "NOT_IMPLEMENTED_SET<"+it+">";
     }
 
-    public String handleTranslateVector(Type inner_type, SymbolTable symbols)
+    public String handleTranslateVector(ImplType inner_type, SymbolTable symbols)
     {
-        String it = translateType(inner_type, symbols);
+        String it = translateImplType(inner_type, symbols);
         return "NOT_IMPLEMENTED_VECTOR<"+it+">";
     }
 
-    public String handleTranslateFunction(Type from, Type to, SymbolTable symbols)
+    public String handleTranslateFunction(ImplType from, ImplType to, SymbolTable symbols)
     {
-        String inner_type_left = translateType(from, symbols);
-        String inner_type_right = translateType(to, symbols);
+        String inner_type_left = translateImplType(from, symbols);
+        String inner_type_right = translateImplType(to, symbols);
         return "NOT_IMPLEMENTED_FUNCTION<"+inner_type_left+","+inner_type_right+">";
     }
 
-    public String handleTranslateRelation(Type from, Type to, SymbolTable symbols)
+    public String handleTranslateRelation(ImplType from, ImplType to, SymbolTable symbols)
     {
-        String inner_type_left = translateType(from, symbols);
-        String inner_type_right = translateType(to, symbols);
+        String inner_type_left = translateImplType(from, symbols);
+        String inner_type_right = translateImplType(to, symbols);
         return "NOT_IMPLEMENTED_RELATION<"+inner_type_left+","+inner_type_right+">";
     }
 

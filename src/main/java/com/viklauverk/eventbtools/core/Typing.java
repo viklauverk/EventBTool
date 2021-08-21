@@ -28,25 +28,25 @@ public class Typing
 {
     private static Log log = LogModule.lookup("typing");
 
-    private Map<String,Type> types_ = new HashMap<>();
+    private Map<String,ImplType> types_ = new HashMap<>();
 
-    public Type lookup(String t)
+    public ImplType lookup(String t)
     {
-        Type type = types_.get(t);
+        ImplType type = types_.get(t);
         if (type != null) return type;
 
         Formula f = Formula.fromString(t, new SymbolTable(""));
-        return lookupType(f);
+        return lookupImplType(f);
     }
 
-    public Type lookupType(Formula i)
+    public ImplType lookupImplType(Formula i)
     {
         String t = i.toString();
 
-        Type type = types_.get(t);
+        ImplType type = types_.get(t);
         if (type != null) return type;
 
-        type = new Type(i);
+        type = new ImplType(i);
 
         types_.put(t, type);
         return type;
@@ -74,17 +74,17 @@ public class Typing
         boolean ok = extractPossibleDefinitionFromEquals(f, symbols);
         if (ok) return;
         extractPossiblePartition(f, symbols);
-        extractPossibleTypesFromPredicate(f, symbols);
+        extractPossibleImplTypesFromPredicate(f, symbols);
     }
 
     public void extractInfoFromTheorem(Formula f, SymbolTable symbols)
     {
-        extractPossibleTypesFromPredicate(f, symbols);
+        extractPossibleImplTypesFromPredicate(f, symbols);
     }
 
     public void extractInfoFromInvariant(Formula f, SymbolTable symbols)
     {
-        extractPossibleTypesFromPredicate(f, symbols);
+        extractPossibleImplTypesFromPredicate(f, symbols);
     }
 
     public void extractInfoFromGuard(Guard g, SymbolTable symbols)
@@ -95,7 +95,7 @@ public class Typing
             g.setAsDefiningValue();
             return;
         }
-        extractPossibleTypesFromPredicate(g.formula(), symbols);
+        extractPossibleImplTypesFromPredicate(g.formula(), symbols);
     }
 
     public void extractInfoFromWitness(Witness w, SymbolTable symbols)
@@ -105,7 +105,7 @@ public class Typing
 
     public void extractInfoFromAction(Action a, SymbolTable symbols)
     {
-        extractPossibleTypesFromBecome(a.formula(), symbols);
+        extractPossibleImplTypesFromBecome(a.formula(), symbols);
     }
 
     private void extractPossiblePartition(Formula f, SymbolTable fc)
@@ -148,7 +148,7 @@ public class Typing
                     else
                     {
                         cs.addMember(c);
-                        c.setType(lookupType(sym));
+                        c.setImplType(lookupImplType(sym));
                         log.debug("adding member %s to %s", m.symbol(), sym.symbol());
                     }
                 }
@@ -161,7 +161,7 @@ public class Typing
      * type information for the variables and constants, assuming that the
      * given predicate is of course true/holds/is valid.
      */
-    private void extractPossibleTypesFromPredicate(Formula predicate, SymbolTable symbols)
+    private void extractPossibleImplTypesFromPredicate(Formula predicate, SymbolTable symbols)
     {
         boolean ok = pattern().match(predicate,
                                      "conjunction",     "P & Q",
@@ -199,25 +199,25 @@ public class Typing
         case "conjunction": // P & Q
         {
             // Recurse into the sub-formulas and extract possible type information.
-            extractPossibleTypesFromPredicate(predicate.left(), symbols);
-            extractPossibleTypesFromPredicate(predicate.right(), symbols);
+            extractPossibleImplTypesFromPredicate(predicate.left(), symbols);
+            extractPossibleImplTypesFromPredicate(predicate.right(), symbols);
             return;
         }
         case "expr_equals": // E = F
         {
             // Since this is an equals comparison, the types should be equals as well.
-            Type left = deducePossibleTypesFromExpression(predicate.left(), symbols);
-            Type right = deducePossibleTypesFromExpression(predicate.right(), symbols);
+            ImplType left = deducePossibleImplTypesFromExpression(predicate.left(), symbols);
+            ImplType right = deducePossibleImplTypesFromExpression(predicate.right(), symbols);
             // As a side effect the deduce possible types from expression, it will
             // find any types used inside the expression as well.
-            Type empty_set = lookup("{}");
+            ImplType empty_set = lookup("{}");
 
             if (left != null && right != null && !left.equals(empty_set) && !right.equals(empty_set))
             {
                 // Both are the non-empty set, lets compare.
                 if (!left.equals(right))
                 {
-                    log.debug("Oups! Types do not match for equals %s left %s right %s", predicate, left, right);
+                    log.debug("Oups! Implementation types do not match for equals %s left %s right %s", predicate, left, right);
                 }
             }
             return;
@@ -225,14 +225,14 @@ public class Typing
         case "var_primitive": // x:NAT
         {
             Variable variable = symbols.getVariable(pattern().getVar("x"));
-            Type type = variable.updateType(lookupType(predicate.right()));
+            ImplType type = variable.updateImplType(lookupImplType(predicate.right()));
             log.debug("typing variable %s to %s", variable, type);
             return;
         }
         case "const_primitive": // c:NAT
         {
             Constant constant = symbols.getConstant(pattern().getConst("c"));
-            Type type = constant.updateType(lookupType(predicate.right()));
+            ImplType type = constant.updateImplType(lookupImplType(predicate.right()));
             log.debug("typing constant %s to %s", constant, type);
             return;
         }
@@ -240,12 +240,12 @@ public class Typing
         {
             Variable variable = symbols.getVariable(pattern().getVar("x"));
             Formula n = pattern().getNumber("N");
-            Type type = lookup("NAT");
+            ImplType type = lookup("NAT");
             if (n.intData() > 0)
             {
                 type = lookup("NAT1");
             }
-            variable.setType(type);
+            variable.setImplType(type);
             log.debug("typing variable %s to %s", variable, type);
             return;
         }
@@ -253,12 +253,12 @@ public class Typing
         {
             Constant constant = symbols.getConstant(pattern().getConst("c"));
             Formula n = pattern().getNumber("N");
-            Type type = lookup("NAT");
+            ImplType type = lookup("NAT");
             if (n.intData() > 0)
             {
                 type = lookup("NAT1");
             }
-            constant.setType(type);
+            constant.setImplType(type);
             log.debug("typing constant %s to %s", constant, type);
             return;
         }
@@ -272,13 +272,13 @@ public class Typing
                 // Its a set symbol, could be DIR for example.
                 CarrierSet set  = symbols.getSet(S.symbol());
                 assert (set != null) : "internal error: set not found: "+pattern().getSet("S")+" in "+symbols.tree();
-                Type type = member.updateType(lookup(set.name())); // A carrier set is its own type!
+                ImplType type = member.updateImplType(lookup(set.name())); // A carrier set is its own type!
                 log.debug("typing variable %s to carrier set %s in %s", member, type, symbols.tree());
             }
             else
             {
                 // It is not a symbol, could be a set like POW(NAT).
-                Type type = member.updateType(lookupType(S));
+                ImplType type = member.updateImplType(lookupImplType(S));
                 log.debug("typing variable %s to set %s", member, type);
             }
             return;
@@ -293,13 +293,13 @@ public class Typing
                 // Its a set symbol, could be DIR for example.
                 CarrierSet set  = symbols.getSet(S.symbol());
                 assert (set != null) : "internal error: set not found: "+pattern().getSet("S")+" in "+symbols.tree();
-                Type type = member.updateType(lookup(set.name())); // A carrier set is its own type!
+                ImplType type = member.updateImplType(lookup(set.name())); // A carrier set is its own type!
                 log.debug("typing constant %s to carrier set %s in %s", member, type, symbols.tree());
             }
             else
             {
                 // It is not a symbol, coult be a set like POW(NAT).
-                Type type = member.updateType(lookupType(S));
+                ImplType type = member.updateImplType(lookupImplType(S));
                 log.debug("typing constant %s to set %s", member, type);
             }
             return;
@@ -308,7 +308,7 @@ public class Typing
         {
             Variable member = symbols.getVariable(pattern().getVar("x"));
             Variable set    = symbols.getVariable(pattern().getVar("y"));
-            Type type = member.updateType(deduceInnerType(set.type()));
+            ImplType type = member.updateImplType(deduceInnerImplType(set.implType()));
             log.debug("typing variable %s to %s through %s", member, type, set);
             return;
         }
@@ -322,17 +322,17 @@ public class Typing
                 // Its a set symbol, could be DIR for example.
                 CarrierSet set  = symbols.getSet(S.symbol());
                 assert (set != null) : "internal error: set not found: "+pattern().getSet("S")+" in "+symbols.tree();
-                Type type = lookup(set.name());
-                type = lookupType(FormulaFactory.newPowerSet(type.formula()));
-                type = member.updateType(type);
+                ImplType type = lookup(set.name());
+                type = lookupImplType(FormulaFactory.newPowerSet(type.formula()));
+                type = member.updateImplType(type);
                 log.debug("typing (subset) variable %s to %s in %s", member, type, symbols.tree());
             }
             else
             {
                 // It is not a symbol, could be a set like POW(NAT).
-                Type type = lookupType(S);
-                type = lookupType(FormulaFactory.newPowerSet(type.formula()));
-                type = member.updateType(type);
+                ImplType type = lookupImplType(S);
+                type = lookupImplType(FormulaFactory.newPowerSet(type.formula()));
+                type = member.updateImplType(type);
                 log.debug("typing (subset) variable %s to %s", member, type);
             }
             return;
@@ -341,20 +341,20 @@ public class Typing
         {
             Variable x = symbols.getVariable(pattern().getVar("x"));
             Variable y = symbols.getVariable(pattern().getVar("y"));
-            if (y.type() == null)
+            if (y.implType() == null)
             {
-                log.debug("No type known for %s in predicate: %s", y, predicate);
+                log.debug("No implementation type known for %s in predicate: %s", y, predicate);
                 return;
             }
-            log.debug("%s has type %s", y, y.type());
-            Type type = deduceInnerType(y.type());
+            log.debug("%s has type %s", y, y.implType());
+            ImplType type = deduceInnerImplType(y.implType());
             if (type == null)
             {
-                log.debug("Could not deduce inner type of %s", y.type());
+                log.debug("Could not deduce inner type of %s", y.implType());
                 return;
             }
-            type = lookupType(FormulaFactory.newPowerSet(type.formula()));
-            type = x.updateType(type);
+            type = lookupImplType(FormulaFactory.newPowerSet(type.formula()));
+            type = x.updateImplType(type);
             log.debug("typing (subset of var) variable %s to %s through %s", x, type, symbols.tree());
             return;
         }
@@ -368,7 +368,7 @@ public class Typing
     /**
      * This function has a type and forces it onto an expression.
      */
-    public void forceTypeOnExpression(Formula expression, Type type, SymbolTable symbols)
+    public void forceImplTypeOnExpression(Formula expression, ImplType type, SymbolTable symbols)
     {
         assert type != null;
 
@@ -391,9 +391,9 @@ public class Typing
         {
             Formula v = pattern().getVar("x");
             Variable var = symbols.getVariable(v);
-            if (var.type() != null)
+            if (var.implType() != null)
             {
-                if (var.type().equals(type))
+                if (var.implType().equals(type))
                 {
                     // The same correct type has been deduced!
                     log.debug("variable %s alread has type %s", var, type);
@@ -401,13 +401,13 @@ public class Typing
                 }
                 else
                 {
-                    log.debug("Oups! Not possible to force type %s onto variable %s with type %s",
-                             type, var, var.type());
+                    log.debug("Oups! Not possible to force implementation type %s onto variable %s with implementation type %s",
+                             type, var, var.implType());
                     return;
                 }
             }
             log.debug("forcing type %s onto variable %s", type, var);
-            var.setType(type);
+            var.setImplType(type);
             return;
         }
         default:
@@ -420,7 +420,7 @@ public class Typing
      * It does so by walking into the the expression and find the
      * appropriate type
      */
-    public Type deducePossibleTypesFromExpression(Formula expression, SymbolTable symbols)
+    public ImplType deducePossibleImplTypesFromExpression(Formula expression, SymbolTable symbols)
     {
         boolean ok = pattern().match(expression,
                                      "nat", "N",
@@ -452,29 +452,29 @@ public class Typing
         {
         case "nat":
         {
-            Type type = lookup("NAT");
+            ImplType type = lookup("NAT");
             log.debug("deduced type %s from nat expression %s", type, expression);
             return type;
         }
         case "ran":
         {
             Formula expr = pattern().getExpr("E");
-            Type type = deducePossibleTypesFromExpression(expr, symbols);
+            ImplType type = deducePossibleImplTypesFromExpression(expr, symbols);
             if (!type.formula().node().isRelation())
             {
                 log.info("Oups! Applying ran to type %s is not possible.", expr);
                 return null;
             }
-            Type target_type = lookupType(type.formula().range());
+            ImplType target_type = lookupImplType(type.formula().range());
             // But the actual range type is the power set of this range.
             Formula range = FormulaFactory.newPowerSet(target_type.formula());
-            Type range_type = lookupType(range);
+            ImplType range_type = lookupImplType(range);
             log.debug("deduced type %s from ran expression %s", range_type, expression);
             return range_type;
         }
         case "dom":
         {
-            Type type = lookupType(pattern().getSet("S"));
+            ImplType type = lookupImplType(pattern().getSet("S"));
             log.debug("deduced type %s from rel expression %s", type, expression);
             return type;
         }
@@ -482,12 +482,13 @@ public class Typing
         {
             Formula funcvar = pattern().getVar("y");
             Variable var = symbols.getVariable(funcvar.toString());
-            if (var.type() == null)
+            if (var.implType() == null)
             {
-                log.info("Oups! No type found for %s in predicate: %s", var, expression);
+                log.info("Oups! No implementation type found for variable: %s in predicate: %s in: %s %s",
+                         var, expression, var.machine(), var.event());
                 return null;
             }
-            Type type = lookupType(var.type().formula().range());
+            ImplType type = lookupImplType(var.implType().formula().range());
             log.debug("deduced type %s from fapp expression %s", type, expression);
             return type;
         }
@@ -495,12 +496,13 @@ public class Typing
         {
             Formula funcc = pattern().getConst("c");
             Constant cons = symbols.getConstant(funcc);
-            if (cons.type() == null)
+            if (cons.implType() == null)
             {
-                log.info("Oups! No type found for %s in predicate: %s", cons, expression);
+                log.info("Oups! No implementation type found for constant: %s in predicate: %s in: %s",
+                         cons, expression, cons.context());
                 return null;
             }
-            Type type = lookupType(cons.type().formula().range());
+            ImplType type = lookupImplType(cons.implType().formula().range());
             log.debug("deduced type %s from fcapp expression %s", type, expression);
             return type;
         }
@@ -508,12 +510,12 @@ public class Typing
         {
             Formula c = pattern().getConst("c");
             Constant cons = symbols.getConstant(c);
-            if (cons.type() == null)
+            if (cons.implType() == null)
             {
                 log.debug("Hmhm, no type found for const %s in predicate: %s", cons, expression);
                 return null;
             }
-            Type type = lookupType(cons.type().formula());
+            ImplType type = lookupImplType(cons.implType().formula());
             log.debug("deduced type %s from const %s", type, expression);
             return type;
         }
@@ -521,13 +523,13 @@ public class Typing
         {
             Formula x = pattern().getVar("x");
             Variable var = symbols.getVariable(x);
-            if (var.type() == null)
+            if (var.implType() == null)
             {
                 // Its ok if a variable not yet has a type.
                 log.debug("Hmhm, no type found for var %s in predicate: %s", var, expression);
                 return null;
             }
-            Type type = lookupType(var.type().formula());
+            ImplType type = lookupImplType(var.implType().formula());
             log.debug("deduced type %s from var %s", type, expression);
             return type;
         }
@@ -535,8 +537,8 @@ public class Typing
         {
             Formula left = pattern().getExpr("E");
             Formula right = pattern().getExpr("F");
-            Type left_type = deducePossibleTypesFromExpression(left, symbols);
-            Type right_type = deducePossibleTypesFromExpression(right, symbols);
+            ImplType left_type = deducePossibleImplTypesFromExpression(left, symbols);
+            ImplType right_type = deducePossibleImplTypesFromExpression(right, symbols);
 
             if (left_type != null && right_type != null)
             {
@@ -555,12 +557,12 @@ public class Typing
             // We can use this to deduce the type of the other side.
             if (left_type == null && right_type != null)
             {
-                forceTypeOnExpression(left, right_type, symbols);
+                forceImplTypeOnExpression(left, right_type, symbols);
                 return right_type;
             }
             if (left_type != null && right_type == null)
             {
-                forceTypeOnExpression(right, left_type, symbols);
+                forceImplTypeOnExpression(right, left_type, symbols);
                 return left_type;
             }
             // Neither left nor right type found.
@@ -596,7 +598,7 @@ public class Typing
             Formula lvalue = pattern().getVar("x");
             Formula rvalue = pattern().getPred("P");
             Variable var = symbols.getVariable(lvalue.symbol());
-            Type type = var.updateType(lookup("BOOL"));
+            ImplType type = var.updateImplType(lookup("BOOL"));
             log.debug("defining variable %s to be bool(%s) of type %s", var.name(), rvalue, type);
             return true;
         }
@@ -605,7 +607,7 @@ public class Typing
             Formula lvalue = pattern().getVar("x");
             Formula rvalue = pattern().getExpr("E");
             Variable var = symbols.getVariable(lvalue.symbol());
-            Type type = var.updateType(deducePossibleTypesFromExpression(rvalue, symbols));
+            ImplType type = var.updateImplType(deducePossibleImplTypesFromExpression(rvalue, symbols));
             var.setDefinition(rvalue);
             log.debug("defining variable %s to be var_def %s of type %s", var.name(), var.definition(), type);
             return true;
@@ -616,7 +618,7 @@ public class Typing
             Formula rvalue = pattern().getExpr("E");
 
             Constant co = symbols.getConstant(lvalue.symbol());
-            Type type = co.updateType(deducePossibleTypesFromExpression(rvalue, symbols));
+            ImplType type = co.updateImplType(deducePossibleImplTypesFromExpression(rvalue, symbols));
             co.setDefinition(rvalue);
             log.debug("defining constant %s to be const_def %s of type %s", co.name(), co.definition(), type);
             return true;
@@ -635,7 +637,7 @@ public class Typing
             Formula func = pattern().getVar("y");
             Formula index = pattern().getExpr("E");
             Variable variable = symbols.getVariable(var.symbol());
-            Type type = variable.updateType(deducePossibleTypesFromExpression(fapp, symbols));
+            ImplType type = variable.updateImplType(deducePossibleImplTypesFromExpression(fapp, symbols));
             variable.setDefinition(f.right());
             log.debug("defining variable %s to be var_def_func %s of type %s", variable.name(), variable.definition(), type);
             return true;
@@ -647,7 +649,7 @@ public class Typing
             Formula func = pattern().getConst("c");
             Formula index = pattern().getExpr("E");
             Variable variable = symbols.getVariable(var.symbol());
-            Type type = variable.updateType(deducePossibleTypesFromExpression(fapp, symbols));
+            ImplType type = variable.updateImplType(deducePossibleImplTypesFromExpression(fapp, symbols));
             variable.setDefinition(f.right());
             log.debug("defining variable %s to be var_def_const_func %s of type %s", variable.name(), variable.definition(), type);
             return true;
@@ -666,19 +668,19 @@ public class Typing
       ie. x i a member of something that is a member of POW(NAT):
 
      */
-    public Type memberMustBeOfThisType()
+    public ImplType memberMustBeOfThisImplType()
     {
         return null;
     }
 
-    public Type deduceInnerType(Type type)
+    public ImplType deduceInnerImplType(ImplType type)
     {
         Formula i = type.formula();
         log.debug("deducing inner type %s", i);
 
         if (i.is(POWER_SET))
         {
-            return lookupType(i.child());
+            return lookupImplType(i.child());
         }
         if (i.node().isRelation() || i.node().isFunction())
         {
@@ -694,7 +696,7 @@ public class Typing
         return null;
     }
 
-    private void extractPossibleTypesFromBecome(Formula become, SymbolTable symbols)
+    private void extractPossibleImplTypesFromBecome(Formula become, SymbolTable symbols)
     {
         boolean ok = pattern().match(become,
                                      "expression",     "x := E",
@@ -716,7 +718,7 @@ public class Typing
             Formula rvalue = pattern().getExpr("E");
             Variable var = symbols.getVariable(lvalue.symbol());
 
-            Type type = var.updateType(deducePossibleTypesFromExpression(rvalue, symbols));
+            ImplType type = var.updateImplType(deducePossibleImplTypesFromExpression(rvalue, symbols));
             log.debug("typing (become) variable %s to %s", lvalue, type);
             return;
         }
@@ -726,14 +728,14 @@ public class Typing
             Formula rvalue = pattern().getConst("c");
             Variable var = symbols.getVariable(lvalue.symbol());
 
-            Type type = var.updateType(deducePossibleTypesFromExpression(rvalue, symbols));
+            ImplType type = var.updateImplType(deducePossibleImplTypesFromExpression(rvalue, symbols));
             log.debug("typing (become) variable %s to %s", lvalue, type);
             return;
         }
         }
     }
 
-    static Type mostSpecificType(Type a, Type b)
+    static ImplType mostSpecificImplType(ImplType a, ImplType b)
     {
         return a;
     }

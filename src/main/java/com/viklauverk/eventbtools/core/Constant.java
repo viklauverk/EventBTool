@@ -23,10 +23,12 @@ public class Constant extends Typed
     private String name_;
     private String comment_;
     private Formula definition_;
+    private Context context_;
 
-    public Constant(String n)
+    public Constant(String n, Context c)
     {
         name_ = n;
+        context_ = c;
     }
 
     @Override
@@ -43,6 +45,11 @@ public class Constant extends Typed
     public String comment()
     {
         return comment_;
+    }
+
+    public Context context()
+    {
+        return context_;
     }
 
     public void addComment(String c)

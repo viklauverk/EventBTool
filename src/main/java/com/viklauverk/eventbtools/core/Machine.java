@@ -72,7 +72,7 @@ public class Machine
     private List<String> proof_obligation_names_ = new ArrayList<>();
 
     // These are the calculated types that variables can be of.
-    private Map<String,Type> types_;
+    private Map<String,ImplType> types_;
     private List<String> type_names_;
 
     // The concrete events (merged with extended events) in
@@ -428,7 +428,7 @@ public class Machine
         {
             String n = v.valueOf("@org.eventb.core.identifier");
             String c = v.valueOf("@org.eventb.core.comment");
-            Variable var = new Variable(n, c);
+            Variable var = new Variable(n, c, this, null);
             addVariable(var);
         }
 
@@ -479,7 +479,7 @@ public class Machine
             {
                 String i = p.valueOf("@org.eventb.core.identifier");
                 String c = p.valueOf("@org.eventb.core.comment");
-                event.addParameter(new Variable(i, c));
+                event.addParameter(new Variable(i, c, this, event));
             }
 
             List<Node> guards = e.selectNodes("org.eventb.core.guard");

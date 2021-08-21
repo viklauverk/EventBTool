@@ -324,7 +324,7 @@ public static String TeXDefinitions =
 "}\n"+
 "\n"+
 "% Adjust the underscore to be narrower.\n"+
-"\\newcommand{\\UL}{\\kern-.1pt\\adjustbox{scale={0.5}{1},raise={0.1pt}{\\height}}{\\textunderscore}\\kern-.1pt}\n"+
+"\\newcommand{\\UL}{\\kern-.1pt\\adjustbox{scale={0.6}{1},raise={0.1pt}{\\height}}{\\textunderscore}\\kern-.1pt}\n"+
 "\n"+
 "% Limit width of comments, labels, axioms, guards actions etc.\n"+
 "\\newcommand{\\ACOM}[1]{\\textrm{\\EVBTcolor{EvBComment}#1} \\par\n"+

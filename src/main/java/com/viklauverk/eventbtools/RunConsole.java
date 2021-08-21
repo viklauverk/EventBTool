@@ -37,7 +37,7 @@ import com.viklauverk.eventbtools.core.RenderAttributes;
 import com.viklauverk.eventbtools.core.RenderTarget;
 import com.viklauverk.eventbtools.core.Settings;
 import com.viklauverk.eventbtools.core.Sys;
-import com.viklauverk.eventbtools.core.Type;
+import com.viklauverk.eventbtools.core.ImplType;
 
 import org.jline.reader.Candidate;
 import org.jline.reader.Completer;

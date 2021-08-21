@@ -26,11 +26,15 @@ public class Variable extends Typed
     private boolean is_out_;
     private Formula definition_;
     private Variable refines_; // Points to the same variable in the refined machine.
+    private Machine machine_; // The machine in which this variable is defined.
+    private Event   event_; // The event in which this variable is potentially defined.
 
-    public Variable(String n, String c)
+    public Variable(String n, String c, Machine m, Event e)
     {
         name_ = n;
         comment_ = c;
+        machine_ = m;
+        event_ = e;
     }
 
     @Override
@@ -52,6 +56,16 @@ public class Variable extends Typed
     public String comment()
     {
         return comment_;
+    }
+
+    public Machine machine()
+    {
+        return machine_;
+    }
+
+    public Event event()
+    {
+        return event_;
     }
 
     public boolean isParameter()
@@ -94,10 +108,10 @@ public class Variable extends Typed
     }
 
     @Override
-    public Type type()
+    public ImplType implType()
     {
-        if (type_ != null) return type_;
-        if (refines_ != null) return refines_.type();
+        if (impl_type_ != null) return impl_type_;
+        if (refines_ != null) return refines_.implType();
         return null;
     }
 }

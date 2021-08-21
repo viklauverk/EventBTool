@@ -33,12 +33,14 @@ public class CarrierSet
     private Map<String,Constant> members_;
     private List<Constant> member_ordering_;
     private List<String> member_names_;
+    private Context context_;
 
-    public CarrierSet(String n)
+    public CarrierSet(String n, Context c)
     {
         name_ = n;
         members_ = new HashMap<>();
         member_names_ = new ArrayList<>();
+        context_ = c;
     }
 
     public String name()
@@ -49,6 +51,11 @@ public class CarrierSet
     public String comment()
     {
         return comment_;
+    }
+
+    public Context context()
+    {
+        return context_;
     }
 
     public void addComment(String c)

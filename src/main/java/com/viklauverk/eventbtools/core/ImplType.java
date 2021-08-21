@@ -18,9 +18,9 @@
 
 package com.viklauverk.eventbtools.core;
 
-public class Type extends IsAFormula
+public class ImplType extends IsAFormula
 {
-    public Type(Formula f)
+    public ImplType(Formula f)
     {
         super(f);
     }
@@ -32,7 +32,7 @@ public class Type extends IsAFormula
         return "?";
     }
 
-    public boolean isSubsetOf(Type type)
+    public boolean isSubsetOf(ImplType type)
     {
         // For example NAT1 is a subset of NAT which is a subset of INT
         // TODO

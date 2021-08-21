@@ -42,7 +42,7 @@ public class EDK_String_v1_Cpp extends EDKContext
     {
     }
 
-    public String translateType(Type type, SymbolTable symbols, BaseCodeGen bcg)
+    public String translateImplType(ImplType type, SymbolTable symbols, BaseCodeGen bcg)
     {
         Formula t = type.formula();
 

@@ -22,41 +22,51 @@ public class Typed
 {
     private static Log log = LogModule.lookup("typing");
 
-    protected Type type_; // null if not typed yet.
+    // Core type calculated by Rodin. E.g. ℤ,ℙ(ℤ×ℤ),S,ℙ(S),ℙ(ℤ×S) etc
+    protected CoreType core_type_;
+    // Type that hints on intended usage of variable such as: vector,map,relation,set.
+    // This information is used to pick an efficient implementation for storage.
+    // Set to null if no suitable implementation type found yet.
+    protected ImplType impl_type_;
 
-    public Type type()
+    public CoreType coreType()
     {
-        return type_;
+        return core_type_;
     }
 
-    public Type updateType(Type t)
+    public ImplType implType()
     {
-        if (t == null) return type_;
-        setType(t);
-        return type_;
+        return impl_type_;
     }
 
-    public void setType(Type t)
+    public ImplType updateImplType(ImplType t)
+    {
+        if (t == null) return impl_type_;
+        setImplType(t);
+        return impl_type_;
+    }
+
+    public void setImplType(ImplType t)
     {
         assert t != null : "Type must not be null!";
 
-        if (type_ == null)
+        if (impl_type_ == null)
         {
             log.debug("setting type %s for %s", t, this);
-            type_ = t;
+            impl_type_ = t;
         }
         else
         {
-            if (type_.equals(t))
+            if (impl_type_.equals(t))
             {
                 log.debug("not setting type %s for %s since it the type was already set", t, this);
             }
             else
             {
-                Type mst = Typing.mostSpecificType(type_, t);
+                ImplType mst = Typing.mostSpecificImplType(impl_type_, t);
                 log.debug("not setting type %s for %s since it the type was already set", t, this);
-                log.debug("setting most specific type %s for %s (the choice was between %s and %s)", mst, this, type_, t);
-                type_ = mst;
+                log.debug("setting most specific type %s for %s (the choice was between %s and %s)", mst, this, impl_type_, t);
+                impl_type_ = mst;
             }
         }
     }

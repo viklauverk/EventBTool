@@ -257,7 +257,7 @@
 }
 
 % Adjust the underscore to be narrower.
-\newcommand{\UL}{\kern-.1pt\adjustbox{scale={0.5}{1},raise={0.1pt}{\height}}{\textunderscore}\kern-.1pt}
+\newcommand{\UL}{\kern-.1pt\adjustbox{scale={0.6}{1},raise={0.1pt}{\height}}{\textunderscore}\kern-.1pt}
 
 % Limit width of comments, labels, axioms, guards actions etc.
 \newcommand{\ACOM}[1]{\textrm{\EVBTcolor{EvBComment}#1} \par

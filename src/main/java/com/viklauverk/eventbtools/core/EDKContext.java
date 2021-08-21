@@ -40,7 +40,7 @@ public abstract class EDKContext implements CommonCodeGenFunctions
         return pattern_;
     }
 
-    public String translateType(Type type, SymbolTable symbols, BaseCodeGen bcg)
+    public String translateImplType(ImplType type, SymbolTable symbols, BaseCodeGen bcg)
     {
         return null;
     }

@@ -136,7 +136,7 @@ public class CodeGenJavascript extends BaseCodeGen
         {
             Variable var = mch().getVariable(vars);
 
-            String construct = translateTypeForConstruction(var.type());
+            String construct = translateImplTypeForConstruction(var.implType());
             if (construct != null)
             {
                 pl("        this."+var.name()+construct+";");
@@ -236,7 +236,7 @@ public class CodeGenJavascript extends BaseCodeGen
         pl("        return c;");
     }
 
-    String translateTypeForConstruction(Type t)
+    String translateImplTypeForConstruction(ImplType t)
     {
         Formula f = t.formula();
         if (f.is(POWER_SET))

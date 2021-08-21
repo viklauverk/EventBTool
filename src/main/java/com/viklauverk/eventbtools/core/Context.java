@@ -327,7 +327,7 @@ public class Context
         {
             String name = n.valueOf("@org.eventb.core.identifier");
             String comment = n.valueOf("@org.eventb.core.comment");
-            CarrierSet cs = new CarrierSet(name);
+            CarrierSet cs = new CarrierSet(name, this);
             cs.addComment(comment);
             addSet(cs);
         }
@@ -338,7 +338,7 @@ public class Context
         {
             String name = n.valueOf("@org.eventb.core.identifier");
             String comment = n.valueOf("@org.eventb.core.comment");
-            Constant c = new Constant(name);
+            Constant c = new Constant(name, this);
             c.addComment(comment);
             addConstant(c);
         }
@@ -417,7 +417,7 @@ public class Context
         for (CarrierSet cs : setOrdering())
         {
             Formula f = FormulaFactory.newSetSymbol(cs.name());
-            Type type = sys().typing().lookupType(f);
+            ImplType type = sys().typing().lookupImplType(f);
             log.debug("adding carrier set type: "+type.name());
         }
         for (Axiom a : axiomOrdering())
