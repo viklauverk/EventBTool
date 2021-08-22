@@ -53,9 +53,9 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
     public void printAssumptions()
     {
         log.info("Assumptions:");
-        log.info("ℕ   uint64_t");
-        log.info("ℕ1  uint64_t and > 0 guard");
-        log.info("ℤ   int64_t  and > 0 guard");
+        log.info("ℕ   int64_t and >= 0 guard");
+        log.info("ℕ1  int64_t and > 0 guard");
+        log.info("ℤ   int64_t");
     }
 
     protected Canvas cnvs()
@@ -711,6 +711,7 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
                                      "bool", "BOOL",
                                      "var_symbol", "x",
                                      "domain_of_var", "dom(x)",
+                                     "range_of_var", "ran(x)",
                                      "power_set", "POW(S)",
                                      "function", "S+->T",
                                      "function", "x+->y",
@@ -788,6 +789,20 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
             // Now var.implType() must be a relation/function.
             ImplType inner_type = sys().typing().lookupImplType(var.implType().formula().left());
             log.debug("domain_of_var: inner type %s", inner_type);
+            String translated = translateImplType(inner_type, symbols);
+            log.debug("var_symbol: translated type %s to %s through %s", t, translated, inner_type);
+            return translated;
+        }
+        case "range_of_var":
+        {
+            // x is a member of the range of a variable, therefore the variable
+            // is a relation or function. Fetch the type of the variable and look right.
+            Formula x = pattern().getVar("x");
+            Variable var = symbols.getVariable(x);
+            log.debug("range_of_var: var type %s", var.implType());
+            // Now var.implType() must be a relation/function.
+            ImplType inner_type = sys().typing().lookupImplType(var.implType().formula().right());
+            log.debug("range_of_var: inner type %s", inner_type);
             String translated = translateImplType(inner_type, symbols);
             log.debug("var_symbol: translated type %s to %s through %s", t, translated, inner_type);
             return translated;

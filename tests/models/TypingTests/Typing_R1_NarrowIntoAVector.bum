@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1629546590939" org.eventb.texttools.text_representation="machine Typing_R1_NarrowIntoAVector refines Typing&#10;&#10;variables settings&#10;&#10;invariants&#10;  @inv1_1 settings ∈ 1‥20→0‥255&#10;  /* We narrow the partial function into a full function and&#10;     limit the bounds of the domain and the range. The checked type is still&#10;     ℙ(ℤ×ℤ) but the implementation type is 1‥20→0‥255 which can be&#10;     implemented using a fixed size vector. */&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @init1_1 settings :∈ 1‥20→0‥255&#10;  end&#10;&#10;  event setKeyValue extends setKeyValue&#10;  end&#10;end&#10;" version="5">
+    <org.eventb.core.refinesMachine name="'" org.eventb.core.target="Typing"/>
+    <org.eventb.core.event name="_MagX0bVGEeuMZpPdXDEZwB" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="_tHEiEQJdEey3oLTxhh0WPQ" org.eventb.core.assignment="settings :∈ 1‥20→0‥255" org.eventb.core.generated="false" org.eventb.core.label="init1_1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="_tHEiEgJdEey3oLTxhh0WPQ" org.eventb.core.generated="false" org.eventb.core.identifier="settings"/>
+    <org.eventb.core.invariant name="_tHEiEwJdEey3oLTxhh0WPQ" org.eventb.core.comment="We narrow the partial function into a full function and&#10;     limit the bounds of the domain and the range. The checked type is still&#10;     ℙ(ℤ×ℤ) but the implementation type is 1‥20→0‥255 which can be&#10;     implemented using a fixed size vector. " org.eventb.core.generated="false" org.eventb.core.label="inv1_1" org.eventb.core.predicate="settings ∈ 1‥20→0‥255"/>
+    <org.eventb.core.event name="_5Hy1EAJ1Eey3oLTxhh0WPQ" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="setKeyValue">
+        <org.eventb.core.refinesEvent name="_5Hy1EQJ1Eey3oLTxhh0WPQ" org.eventb.core.target="setKeyValue"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

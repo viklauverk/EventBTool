@@ -129,6 +129,10 @@ public class CommandLine
                 args = Util.shiftLeft(args);
                 continue;
             }
+            if (arg.startsWith("-"))
+            {
+                log.usageError("Unknown option "+arg);
+            }
             break;
         }
         return args;

@@ -59,6 +59,7 @@ public class Context
     private boolean loaded_;
     private File buc_;
     private File bps_;
+    private File bpo_;
     private Sys sys_;
 
     private SymbolTable symbol_table_;
@@ -88,6 +89,7 @@ public class Context
         assert (buc_ != null) : "Source file must not be null!";
 
         bps_ = new File(f.getPath().replace(".buc", ".bps"));
+        bpo_ = new File(f.getPath().replace(".buc", ".bpo"));
 
         sys_ = s;
 
@@ -358,7 +360,7 @@ public class Context
         }
     }
 
-    public void loadProofs() throws Exception
+    public void loadProofStatus() throws Exception
     {
         SAXReader reader = new SAXReader();
         Document document = reader.read(bps_);
@@ -384,9 +386,63 @@ public class Context
         }
     }
 
-    private void buildSymbolTable()
+    public void loadCheckedTypes() throws Exception
+    {
+        SAXReader reader = new SAXReader();
+        Document document = reader.read(bpo_);
+        log.debug("loading checked types from context proof obligation file "+bpo_);
+
+        Element pofile = (Element)document.selectSingleNode("/org.eventb.core.poFile");
+        if (pofile == null)
+        {
+            log.warn("broken file %s, no root org.eventb.core.poFile  found.", bpo_);
+            return;
+        }
+        if (pofile.content().size() == 0)
+        {
+            // This might be ok if there are no proof obligations?
+            log.debug("empty file %s, no content inside org.eventb.core.poFile.", bpo_);
+            return;
+        }
+
+        // First take the machine variable types found in the
+        // predicate set ABSHYP that are common for all proof obligations.
+        List<Node> pos = document.selectNodes(
+            "/org.eventb.core.poFile/org.eventb.core.poPredicateSet[@name='ABSHYP']/org.eventb.core.poIdentifier");
+        for (Node r : pos)
+        {
+            String name = r.valueOf("@name").trim();
+            String type = r.valueOf("@org.eventb.core.type").trim();
+            log.error("found identifier %s with type %s", name, type);
+            Constant cons = getConstant(name);
+            if (cons != null)
+            {
+                log.debug("found const identifier %s with type %s", name, type);
+                cons.setCheckedType(sys_.typing().lookupCheckedType(type));
+            }
+            else
+            {
+                CarrierSet cs = getSet(name);
+                if (cs != null)
+                {
+                    log.debug("found carrier set identifier %s with type %s", name, type);
+                    // We do not need to set the checked type of a carrier set since
+                    // the type is always -recursively- POW(CarrierSetName)
+                }
+                else
+                {
+                    if (name.endsWith("'")) continue;
+                    log.error("could not find neither constant nor carrier set %s from file %s in context %s", name, bpo_, this);
+                }
+            }
+        }
+    }
+
+    void buildSymbolTable()
     {
         if (symbol_table_ != null) return;
+
+        log.debug("Building symbol table for context %s", this);
 
         List<SymbolTable> parents = new ArrayList<>();
         for (Context p : extends_contexts_)
@@ -412,7 +468,6 @@ public class Context
 
     public void parse()
     {
-        buildSymbolTable();
         log.debug("parsing %s", name());
         for (CarrierSet cs : setOrdering())
         {

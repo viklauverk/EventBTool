@@ -64,29 +64,17 @@ x*x = input, ie x will become the square root.
 [SquareRoot.pdf](SquareRoot.pdf)
 
 ## TypingTests
-I assume that typing can be made arbitrarily smart, however
-I do not yet know the limits of how much typing Rodin can do.
+Event-B performs type checking of formulas and variables. Within evbt
+these types are called checked types. Such checked types can be used for
+implementing a variable but they have neither limits on integers nor
+restrictions on the sets. Thus the generated code is not very efficient.
 
-For sure both evbt and Rodin does explicit typing based on
-statements like: `x∈N` `alfa∈N→BOOL` or `p∈STAFF`
+Therefore evbt will try to deduce suitable implementation types to be
+able use an efficient map for a partial function or a vector for a
+full function with a domain 1..100.
 
-But Rodin also does implicit typing based on operations. For example:
-
-```
-@inv1 alfa ∈ ℕ⇸BOOL
-@inv2 beta ∩ ran(alfa) = ∅
-```
-
-The disjunction forces the type of beta to be the same as the type of ran(alfa) ie ℕ.
-
-```
-@inv3 x ∈ ℕ
-@inv4 x+y=7
-```
-
-The addition forces Rodin the type of y to be ℤ (not ℕ!!)
-
-This projects tests the extent of implicit typing implemented so far in evbt.
+If no implementation type can be found, then evbt will fall back
+to using the checked type for implementation.
 
 [TypingTests.pdf](TypingTests.pdf)
 

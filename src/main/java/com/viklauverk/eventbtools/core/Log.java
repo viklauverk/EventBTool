@@ -41,10 +41,10 @@ public interface Log
     void debugp(String part, String msg, Object... args);
     /** Print if trace is enabled. */
     void trace(String msg, Object... args);
-
+    /** Return true if verbose logging is enabled. */
+    boolean verboseEnabled();
     /** Return true if debug logging is enabled. */
     boolean debugEnabled();
-
     /** Return true if trace logging is enabled. */
     boolean traceEnabled();
 

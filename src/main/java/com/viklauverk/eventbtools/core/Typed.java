@@ -22,16 +22,16 @@ public class Typed
 {
     private static Log log = LogModule.lookup("typing");
 
-    // Core type calculated by Rodin. E.g. ℤ,ℙ(ℤ×ℤ),S,ℙ(S),ℙ(ℤ×S) etc
-    protected CoreType core_type_;
+    // Checked type calculated by Rodin for type checking. E.g. ℤ,ℙ(ℤ×ℤ),S,ℙ(S),ℙ(ℤ×S)
+    protected CheckedType checked_type_;
     // Type that hints on intended usage of variable such as: vector,map,relation,set.
     // This information is used to pick an efficient implementation for storage.
-    // Set to null if no suitable implementation type found yet.
+    // Set to null if no suitable implementation type has been found yet.
     protected ImplType impl_type_;
 
-    public CoreType coreType()
+    public CheckedType checkedType()
     {
-        return core_type_;
+        return checked_type_;
     }
 
     public ImplType implType()
@@ -46,26 +46,47 @@ public class Typed
         return impl_type_;
     }
 
+    public void setCheckedType(CheckedType t)
+    {
+        assert t != null : "Checked type must not be null!";
+
+        if (checked_type_ == null)
+        {
+            log.debug("setting checked type %s for %s", t, this);
+            checked_type_ = t;
+        }
+        else
+        {
+            if (checked_type_.equals(t))
+            {
+                log.debug("not setting checked type %s for %s since it the checked type was already set", t, this);
+            }
+            else
+            {
+                log.error("cannot override checked type %s with a different checked type %s for %s", checked_type_, t, this);
+            }
+        }
+    }
+
     public void setImplType(ImplType t)
     {
-        assert t != null : "Type must not be null!";
+        assert t != null : "Impl type must not be null!";
 
         if (impl_type_ == null)
         {
-            log.debug("setting type %s for %s", t, this);
+            log.debug("setting impl type %s for %s", t, this);
             impl_type_ = t;
         }
         else
         {
             if (impl_type_.equals(t))
             {
-                log.debug("not setting type %s for %s since it the type was already set", t, this);
+                log.debug("not setting impl type %s for %s since it the type was already set", t, this);
             }
             else
             {
                 ImplType mst = Typing.mostSpecificImplType(impl_type_, t);
-                log.debug("not setting type %s for %s since it the type was already set", t, this);
-                log.debug("setting most specific type %s for %s (the choice was between %s and %s)", mst, this, impl_type_, t);
+                log.debug("setting most specific impl type %s for %s (the choice was between %s and %s)", mst, this, impl_type_, t);
                 impl_type_ = mst;
             }
         }

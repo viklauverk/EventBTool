@@ -240,6 +240,11 @@ public class LogModule implements Log
         }
     }
 
+    public boolean verboseEnabled()
+    {
+        return log_level_.value() >= LogLevel.VERBOSE.value();
+    }
+
     public boolean debugEnabled()
     {
         return log_level_.value() >= LogLevel.DEBUG.value();

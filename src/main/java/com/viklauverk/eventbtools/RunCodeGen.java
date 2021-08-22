@@ -54,16 +54,25 @@ public class RunCodeGen
             gen.run();
         }
 
-        if (log.debugEnabled())
+        if (log.verboseEnabled())
         {
-            Set<String> types = sys.typing().typeNames();
+            Set<String> types = sys.typing().checkedTypeNames();
 
-            log.debug("Found distinct types:");
+            log.verbose("Found distinct checked types:");
             for (String t : types)
             {
-                log.debug(t);
+                log.verbose(t);
             }
-            log.debug("");
+            log.verbose("");
+
+            types = sys.typing().implTypeNames();
+
+            log.verbose("Found distinct implementation types:");
+            for (String t : types)
+            {
+                log.verbose(t);
+            }
+            log.verbose("");
         }
     }
 }

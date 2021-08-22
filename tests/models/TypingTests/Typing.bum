@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1629546582405" org.eventb.texttools.text_representation="machine Typing&#10;&#10;variables settings&#10;&#10;invariants&#10;  @inv_1 settings ∈ ℕ⇸ℕ&#10;  /* The core type is ℙ(ℤ×ℤ) ie it looks like&#10;  a generic relation with unbounded integers. However it&#10;  could be implemented using a map with bigints since it&#10;  is a partial function. So the implementation type is ℕ⇸ℕ.*/&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @init_1 settings :∈ ℕ⇸ℕ&#10;  end&#10;&#10;  event setKeyValue&#10;    any k v&#10;    where&#10;      @grd_1 k∈dom(settings)&#10;      @grd_2 v∈ran(settings)&#10;    then&#10;      @act_1 settings(k) ≔ v&#10;  end&#10;end&#10;" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="_S_0sYAJdEey3oLTxhh0WPQ" org.eventb.core.assignment="settings :∈ ℕ⇸ℕ" org.eventb.core.generated="false" org.eventb.core.label="init_1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="_DEuhoAJdEey3oLTxhh0WPQ" org.eventb.core.generated="false" org.eventb.core.identifier="settings"/>
+    <org.eventb.core.invariant name="_S_16gAJdEey3oLTxhh0WPQ" org.eventb.core.comment="The core type is ℙ(ℤ×ℤ) ie it looks like&#10;  a generic relation with unbounded integers. However it&#10;  could be implemented using a map with bigints since it&#10;  is a partial function. So the implementation type is ℕ⇸ℕ." org.eventb.core.generated="false" org.eventb.core.label="inv_1" org.eventb.core.predicate="settings ∈ ℕ⇸ℕ"/>
+    <org.eventb.core.event name="_32flQAJ1Eey3oLTxhh0WPQ" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="setKeyValue">
+        <org.eventb.core.parameter name="_LIgx4QJdEey3oLTxhh0WPQ" org.eventb.core.generated="false" org.eventb.core.identifier="k"/>
+        <org.eventb.core.parameter name="_LIgx4gJdEey3oLTxhh0WPQ" org.eventb.core.generated="false" org.eventb.core.identifier="v"/>
+        <org.eventb.core.guard name="_S_1TcAJdEey3oLTxhh0WPQ" org.eventb.core.generated="false" org.eventb.core.label="grd_1" org.eventb.core.predicate="k∈dom(settings)"/>
+        <org.eventb.core.guard name="_S_1TcQJdEey3oLTxhh0WPQ" org.eventb.core.generated="false" org.eventb.core.label="grd_2" org.eventb.core.predicate="v∈ran(settings)"/>
+        <org.eventb.core.action name="_S_1TcgJdEey3oLTxhh0WPQ" org.eventb.core.assignment="settings(k) ≔ v" org.eventb.core.generated="false" org.eventb.core.label="act_1"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

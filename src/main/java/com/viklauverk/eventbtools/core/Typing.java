@@ -28,11 +28,34 @@ public class Typing
 {
     private static Log log = LogModule.lookup("typing");
 
-    private Map<String,ImplType> types_ = new HashMap<>();
+    private Map<String,CheckedType> checked_types_ = new HashMap<>();
+    private Map<String,ImplType> impl_types_ = new HashMap<>();
 
-    public ImplType lookup(String t)
+    public CheckedType lookupCheckedType(String t)
     {
-        ImplType type = types_.get(t);
+        CheckedType type = checked_types_.get(t);
+        if (type != null) return type;
+
+        Formula f = Formula.fromString(t, new SymbolTable(""));
+        return lookupCheckedType(f);
+    }
+
+    public CheckedType lookupCheckedType(Formula i)
+    {
+        String t = i.toString();
+
+        CheckedType type = checked_types_.get(t);
+        if (type != null) return type;
+
+        type = new CheckedType(i);
+
+        checked_types_.put(t, type);
+        return type;
+    }
+
+    public ImplType lookupImplType(String t)
+    {
+        ImplType type = impl_types_.get(t);
         if (type != null) return type;
 
         Formula f = Formula.fromString(t, new SymbolTable(""));
@@ -43,18 +66,23 @@ public class Typing
     {
         String t = i.toString();
 
-        ImplType type = types_.get(t);
+        ImplType type = impl_types_.get(t);
         if (type != null) return type;
 
         type = new ImplType(i);
 
-        types_.put(t, type);
+        impl_types_.put(t, type);
         return type;
     }
 
-    public Set<String> typeNames()
+    public Set<String> implTypeNames()
     {
-        return types_.keySet();
+        return impl_types_.keySet();
+    }
+
+    public Set<String> checkedTypeNames()
+    {
+        return checked_types_.keySet();
     }
 
     Pattern pattern_;
@@ -210,7 +238,7 @@ public class Typing
             ImplType right = deducePossibleImplTypesFromExpression(predicate.right(), symbols);
             // As a side effect the deduce possible types from expression, it will
             // find any types used inside the expression as well.
-            ImplType empty_set = lookup("{}");
+            ImplType empty_set = lookupImplType("{}");
 
             if (left != null && right != null && !left.equals(empty_set) && !right.equals(empty_set))
             {
@@ -240,10 +268,10 @@ public class Typing
         {
             Variable variable = symbols.getVariable(pattern().getVar("x"));
             Formula n = pattern().getNumber("N");
-            ImplType type = lookup("NAT");
+            ImplType type = lookupImplType("NAT");
             if (n.intData() > 0)
             {
-                type = lookup("NAT1");
+                type = lookupImplType("NAT1");
             }
             variable.setImplType(type);
             log.debug("typing variable %s to %s", variable, type);
@@ -253,10 +281,10 @@ public class Typing
         {
             Constant constant = symbols.getConstant(pattern().getConst("c"));
             Formula n = pattern().getNumber("N");
-            ImplType type = lookup("NAT");
+            ImplType type = lookupImplType("NAT");
             if (n.intData() > 0)
             {
-                type = lookup("NAT1");
+                type = lookupImplType("NAT1");
             }
             constant.setImplType(type);
             log.debug("typing constant %s to %s", constant, type);
@@ -272,7 +300,7 @@ public class Typing
                 // Its a set symbol, could be DIR for example.
                 CarrierSet set  = symbols.getSet(S.symbol());
                 assert (set != null) : "internal error: set not found: "+pattern().getSet("S")+" in "+symbols.tree();
-                ImplType type = member.updateImplType(lookup(set.name())); // A carrier set is its own type!
+                ImplType type = member.updateImplType(lookupImplType(set.name())); // A carrier set is its own type!
                 log.debug("typing variable %s to carrier set %s in %s", member, type, symbols.tree());
             }
             else
@@ -293,7 +321,7 @@ public class Typing
                 // Its a set symbol, could be DIR for example.
                 CarrierSet set  = symbols.getSet(S.symbol());
                 assert (set != null) : "internal error: set not found: "+pattern().getSet("S")+" in "+symbols.tree();
-                ImplType type = member.updateImplType(lookup(set.name())); // A carrier set is its own type!
+                ImplType type = member.updateImplType(lookupImplType(set.name())); // A carrier set is its own type!
                 log.debug("typing constant %s to carrier set %s in %s", member, type, symbols.tree());
             }
             else
@@ -322,7 +350,7 @@ public class Typing
                 // Its a set symbol, could be DIR for example.
                 CarrierSet set  = symbols.getSet(S.symbol());
                 assert (set != null) : "internal error: set not found: "+pattern().getSet("S")+" in "+symbols.tree();
-                ImplType type = lookup(set.name());
+                ImplType type = lookupImplType(set.name());
                 type = lookupImplType(FormulaFactory.newPowerSet(type.formula()));
                 type = member.updateImplType(type);
                 log.debug("typing (subset) variable %s to %s in %s", member, type, symbols.tree());
@@ -452,7 +480,7 @@ public class Typing
         {
         case "nat":
         {
-            ImplType type = lookup("NAT");
+            ImplType type = lookupImplType("NAT");
             log.debug("deduced type %s from nat expression %s", type, expression);
             return type;
         }
@@ -598,7 +626,7 @@ public class Typing
             Formula lvalue = pattern().getVar("x");
             Formula rvalue = pattern().getPred("P");
             Variable var = symbols.getVariable(lvalue.symbol());
-            ImplType type = var.updateImplType(lookup("BOOL"));
+            ImplType type = var.updateImplType(lookupImplType("BOOL"));
             log.debug("defining variable %s to be bool(%s) of type %s", var.name(), rvalue, type);
             return true;
         }

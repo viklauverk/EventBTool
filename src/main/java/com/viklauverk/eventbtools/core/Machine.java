@@ -37,6 +37,7 @@ public class Machine
 {
     private static LogModule log = LogModule.lookup("machine");
     private static LogModule log_codegen = LogModule.lookup("codegen");
+    private static LogModule log_typing = LogModule.lookup("typing");
 
     private SymbolTable symbol_table_;
 
@@ -511,7 +512,7 @@ public class Machine
         }
     }
 
-    public void loadProofs() throws Exception
+    public void loadProofStatus() throws Exception
     {
         SAXReader reader = new SAXReader();
         Document document = reader.read(bps_);
@@ -537,9 +538,92 @@ public class Machine
         }
     }
 
-    private void buildSymbolTable(SymbolTable parent)
+    public void loadCheckedTypes() throws Exception
+    {
+        SAXReader reader = new SAXReader();
+        Document document = reader.read(bpo_);
+
+        log.debug("loading checked types from machine proof obligation file "+bpo_);
+
+        Element pofile = (Element)document.selectSingleNode("/org.eventb.core.poFile");
+        if (pofile == null)
+        {
+            log.warn("broken file %s, no root org.eventb.core.poFile  found.", bpo_);
+            return;
+        }
+        if (pofile.content().size() == 0)
+        {
+            // This might be ok if there are no proof obligations?
+            log.debug("empty file %s, no content inside org.eventb.core.poFile.", bpo_);
+            return;
+        }
+
+        // First take the machine variable types found in the
+        // predicate set ABSHYP that are common for all proof obligations.
+        List<Node> pos = document.selectNodes(
+            "/org.eventb.core.poFile/org.eventb.core.poPredicateSet[@name='ABSHYP']/org.eventb.core.poIdentifier");
+        for (Node r : pos)
+        {
+            String name = r.valueOf("@name").trim();
+            String type = r.valueOf("@org.eventb.core.type").trim();
+            log.error("found identifier %s with type %s", name, type);
+            Variable var = getVariable(name);
+            if (var == null)
+            {
+                if (name.endsWith("'")) continue;
+                log.error("could not find variable %s from file %s in machine %s", name, bpo_, this);
+            }
+            var.setCheckedType(sys_.typing().lookupCheckedType(type));
+        }
+
+        // Now look for the checked types of the event parameters.
+        for (Event event : eventOrdering())
+        {
+            // Look for the last PO for the event.
+            List<Node> nodes = pofile.content();
+            boolean found_event = false;
+            for (Node i : nodes)
+            {
+                if (i.getNodeType() != Node.ELEMENT_NODE) continue;
+                Element e = (Element)i;
+                // Skip all sequents/predicate sets until the last poSequent for the current event.
+                if (e.getName().equals("org.eventb.core.poSequent") &&
+                    e.valueOf("@name").startsWith(event.name()))
+                {
+                    found_event = true;
+                }
+                else if (found_event)
+                {
+                    // We have passed the last sequent for this event.
+                    // Is it no longer a predicate set? Then we are done!
+                    if (!e.getName().equals("org.eventb.core.poPredicateSet")) break;
+                    // Check all predicate sets following the last sequent. (Whew, weird format this is.)
+                    // and look for identifiers....
+                    List<Node> ids = e.selectNodes("//org.eventb.core.poIdentifier");
+                    for (Node id : ids)
+                    {
+                        String name = id.valueOf("@name").trim();
+                        String type = id.valueOf("@org.eventb.core.type").trim();
+                        Variable p = event.getParameter(name);
+                        if (p != null)
+                        {
+                            p.setCheckedType(sys_.typing().lookupCheckedType(type));
+                        }
+                        else
+                        {
+                            log.debug("no parameter %s in event %s in machine %s", name, event, this);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    void buildSymbolTable(SymbolTable parent)
     {
         if (symbol_table_ != null) return;
+
+        log.debug("Building symbol table for machine %s", this);
 
         symbol_table_ = sys_.newSymbolTable(name_);
         symbol_table_.addParent(parent);
@@ -570,8 +654,6 @@ public class Machine
 
     public void parse(SymbolTable st)
     {
-        buildSymbolTable(st);
-
         log.debug("parsing %s", name());
 
         for (String name : invariantNames())

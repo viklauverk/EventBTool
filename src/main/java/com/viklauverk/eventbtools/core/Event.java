@@ -208,6 +208,11 @@ public class Event
         return parameter_names_;
     }
 
+    public Variable getParameter(String name)
+    {
+        return parameters_.get(name);
+    }
+
     public void addGuard(Guard guard)
     {
         guards_.put(guard.name(), guard);
