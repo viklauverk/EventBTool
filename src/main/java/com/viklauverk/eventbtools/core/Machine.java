@@ -667,87 +667,13 @@ public class Machine
         {
             Variant i = getVariant(name);
             i.parse(symbol_table_);
-            //sys().typing().extractInfoFromInvariant(i.formula(), symbol_table_);
+            sys().typing().extractInfoFromVariant(i.formula(), symbol_table_);
         }
 
         for (String name : eventNames())
         {
             Event e = getEvent(name);
             e.parse();
-        }
-    }
-
-    public void showw(ShowSettings ss, Canvas canvas)
-    {
-        StringBuilder o = new StringBuilder();
-        o.append(name_);
-        if (refines_ != null)
-        {
-            o.append(" ⊏ ");
-            o.append(refines_.name());
-        }
-        o.append("\n");
-        o.append("-\n");
-        for (Context c : contextOrdering())
-        {
-            o.append(c.name());
-            o.append("\n");
-        }
-        o.append("-\n");
-        for (Variable v : variableOrdering())
-        {
-            if (v.comment().length() > 0)
-            {
-                String cc = "";
-                if (ss.showingComments())
-                {
-                    cc = "    "+v.comment();
-                }
-                o.append(v.name()+cc);
-                o.append("\n");
-            }
-        }
-        if (ss.showingInvariants())
-        {
-            o.append("-\n");
-            for (Invariant inv : invariantOrdering())
-            {
-                o.append(inv.writeFormulaStringToCanvas(canvas));
-                o.append("\n");
-            }
-        }
-        o.append("-\n");
-        for (Event e : eventOrdering())
-        {
-            if (!e.isEmpty())
-            {
-                o.append(e.name());
-                o.append("\n");
-            }
-        }
-        String f = canvas.frame("", o.toString(), Canvas.dline);
-        String comment = "";
-        if (ss.showingComments())
-        {
-            comment = Canvas.flow(canvas.layoutWidth(), comment_);
-        }
-        canvas.flush();
-        canvas.appendBox("\n\n"+comment);
-        canvas.flush();
-        canvas.appendBox(f);
-        canvas.flush();
-        canvas.appendBox("\n\n");
-        canvas.flush();
-
-        if (ss.showingEvents())
-        {
-            for (Event e : eventOrdering())
-            {
-                if (!e.isEmpty())
-                {
-                    e.show(ss, canvas);
-                }
-            }
         }
     }
 

@@ -115,6 +115,11 @@ public class Typing
         extractPossibleImplTypesFromPredicate(f, symbols);
     }
 
+    public void extractInfoFromVariant(Formula f, SymbolTable symbols)
+    {
+        extractPossibleImplTypesFromPredicate(f, symbols);
+    }
+
     public void extractInfoFromGuard(Guard g, SymbolTable symbols)
     {
         boolean b = extractPossibleDefinitionFromEquals(g.formula(), symbols);
