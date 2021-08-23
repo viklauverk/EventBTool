@@ -31,12 +31,12 @@ public class Typing
     private Map<String,CheckedType> checked_types_ = new HashMap<>();
     private Map<String,ImplType> impl_types_ = new HashMap<>();
 
-    public CheckedType lookupCheckedType(String t)
+    public CheckedType lookupCheckedType(String t, SymbolTable st)
     {
         CheckedType type = checked_types_.get(t);
         if (type != null) return type;
 
-        Formula f = Formula.fromString(t, new SymbolTable(""));
+        Formula f = Formula.fromString(t, st);
         return lookupCheckedType(f);
     }
 

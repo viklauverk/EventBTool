@@ -373,6 +373,11 @@ public class Event
 
         log.debug("parsing %s", name());
 
+        for (Variable var : parameterOrdering())
+        {
+            var.parseCheckedType(symbol_table_);
+        }
+
         for (String name : guardNames())
         {
             Guard g = getGuard(name);

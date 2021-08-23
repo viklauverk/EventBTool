@@ -23,6 +23,9 @@ public class Typed
     private static Log log = LogModule.lookup("typing");
 
     // Checked type calculated by Rodin for type checking. E.g. ℤ,ℙ(ℤ×ℤ),S,ℙ(S),ℙ(ℤ×S)
+    protected String checked_type_string_;
+    // The checked type when it is finally parsed, which can only be done
+    // using the same symbol tables as when we are parsing the vars/consts.
     protected CheckedType checked_type_;
     // Type that hints on intended usage of variable such as: vector,map,relation,set.
     // This information is used to pick an efficient implementation for storage.
@@ -34,9 +37,24 @@ public class Typed
         return checked_type_;
     }
 
+    public boolean hasCheckedTypeString()
+    {
+        return checked_type_string_ != null;
+    }
+
+    public boolean hasCheckedType()
+    {
+        return checked_type_ != null;
+    }
+
     public ImplType implType()
     {
         return impl_type_;
+    }
+
+    public boolean hasImplType()
+    {
+        return impl_type_ != null;
     }
 
     public ImplType updateImplType(ImplType t)
@@ -46,25 +64,38 @@ public class Typed
         return impl_type_;
     }
 
-    public void setCheckedType(CheckedType t)
+    public void setCheckedTypeString(String ct)
     {
-        assert t != null : "Checked type must not be null!";
+        assert ct != null : "Checked type must not be null!";
 
-        if (checked_type_ == null)
+        if (checked_type_string_ == null)
         {
-            log.debug("setting checked type %s for %s", t, this);
-            checked_type_ = t;
+            log.debug("setting checked type string %s for %s", ct, this);
+            checked_type_string_ = ct;
         }
         else
         {
-            if (checked_type_.equals(t))
+            if (checked_type_string_.equals(ct))
             {
-                log.debug("not setting checked type %s for %s since it the checked type was already set", t, this);
+                log.debug("ignoring second set checked type string %s for %s since it the checked type string was already set", ct, this);
             }
             else
             {
-                log.error("cannot override checked type %s with a different checked type %s for %s", checked_type_, t, this);
+                log.error("cannot override checked type string %s with a different checked type %s for %s", checked_type_string_, ct, this);
             }
+        }
+    }
+
+    public void parseCheckedType(SymbolTable st)
+    {
+        assert checked_type_ == null : "Already parsed checked type!";
+        if (checked_type_string_ == null)
+        {
+            log.info("Could not find checked type for %s", this.toString());
+        }
+        else
+        {
+            checked_type_ = new CheckedType(Formula.fromString(checked_type_string_, st));
         }
     }
 

@@ -540,6 +540,8 @@ public class Machine
 
     public void loadCheckedTypes() throws Exception
     {
+        if (!bpo_.exists()) return;
+
         SAXReader reader = new SAXReader();
         Document document = reader.read(bpo_);
 
@@ -566,14 +568,17 @@ public class Machine
         {
             String name = r.valueOf("@name").trim();
             String type = r.valueOf("@org.eventb.core.type").trim();
-            log.error("found identifier %s with type %s", name, type);
+            log.debug("found identifier %s with type %s", name, type);
             Variable var = getVariable(name);
-            if (var == null)
+            if (var != null)
+            {
+                var.setCheckedTypeString(type); //sys_.typing().lookupCheckedType(type));
+            }
+            else
             {
                 if (name.endsWith("'")) continue;
                 log.error("could not find variable %s from file %s in machine %s", name, bpo_, this);
             }
-            var.setCheckedType(sys_.typing().lookupCheckedType(type));
         }
 
         // Now look for the checked types of the event parameters.
@@ -607,7 +612,7 @@ public class Machine
                         Variable p = event.getParameter(name);
                         if (p != null)
                         {
-                            p.setCheckedType(sys_.typing().lookupCheckedType(type));
+                            p.setCheckedTypeString(type); // sys_.typing().lookupCheckedType(type));
                         }
                         else
                         {
@@ -654,7 +659,13 @@ public class Machine
 
     public void parse(SymbolTable st)
     {
+        buildSymbolTable(st);
         log.debug("parsing %s", name());
+
+        for (Variable var : variableOrdering())
+        {
+            var.parseCheckedType(symbol_table_);
+        }
 
         for (String name : invariantNames())
         {

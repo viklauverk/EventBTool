@@ -218,6 +218,18 @@ public class Context
         return sets_.get(name);
     }
 
+    public CarrierSet getSetRecursive(String name)
+    {
+        CarrierSet cs = sets_.get(name);
+        if (cs != null) return cs;
+        for (Context c : extends_contexts_)
+        {
+            cs = c.getSetRecursive(name);
+            if (cs != null) return cs;
+        }
+        return null;
+    }
+
     public List<CarrierSet> setOrdering()
     {
         return set_ordering_;
@@ -238,6 +250,18 @@ public class Context
     public Constant getConstant(String name)
     {
         return constants_.get(name);
+    }
+
+    public Constant getConstantRecursive(String name)
+    {
+        Constant cs = constants_.get(name);
+        if (cs != null) return cs;
+        for (Context c : extends_contexts_)
+        {
+            cs = c.getConstantRecursive(name);
+            if (cs != null) return cs;
+        }
+        return null;
     }
 
     public List<Constant> constantOrdering()
@@ -388,6 +412,8 @@ public class Context
 
     public void loadCheckedTypes() throws Exception
     {
+        if (!bpo_.exists()) return;
+
         SAXReader reader = new SAXReader();
         Document document = reader.read(bpo_);
         log.debug("loading checked types from context proof obligation file "+bpo_);
@@ -413,21 +439,20 @@ public class Context
         {
             String name = r.valueOf("@name").trim();
             String type = r.valueOf("@org.eventb.core.type").trim();
-            log.error("found identifier %s with type %s", name, type);
-            Constant cons = getConstant(name);
+            Constant cons = getConstantRecursive(name);
             if (cons != null)
             {
                 log.debug("found const identifier %s with type %s", name, type);
-                cons.setCheckedType(sys_.typing().lookupCheckedType(type));
+                cons.setCheckedTypeString(type); // sys_.typing().lookupCheckedType(type));
             }
             else
             {
-                CarrierSet cs = getSet(name);
+                CarrierSet cs = getSetRecursive(name);
                 if (cs != null)
                 {
                     log.debug("found carrier set identifier %s with type %s", name, type);
                     // We do not need to set the checked type of a carrier set since
-                    // the type is always -recursively- POW(CarrierSetName)
+                    // the type is always by definition POW(CarrierSetName)
                 }
                 else
                 {
@@ -468,12 +493,18 @@ public class Context
 
     public void parse()
     {
+        buildSymbolTable();
         log.debug("parsing %s", name());
         for (CarrierSet cs : setOrdering())
         {
             Formula f = FormulaFactory.newSetSymbol(cs.name());
             ImplType type = sys().typing().lookupImplType(f);
             log.debug("adding carrier set type: "+type.name());
+        }
+        for (Constant cons : constantOrdering())
+        {
+            cons.parseCheckedType(symbol_table_);
+            log.debug("parsed checked type %s for constant %s", cons.checkedType(), cons.name());
         }
         for (Axiom a : axiomOrdering())
         {
