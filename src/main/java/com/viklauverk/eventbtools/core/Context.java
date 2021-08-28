@@ -457,7 +457,7 @@ public class Context
                 else
                 {
                     if (name.endsWith("'")) continue;
-                    log.error("could not find neither constant nor carrier set %s from file %s in context %s", name, bpo_, this);
+                    log.debug("could not find neither constant nor carrier set %s from file %s in context %s", name, bpo_, this);
                 }
             }
         }

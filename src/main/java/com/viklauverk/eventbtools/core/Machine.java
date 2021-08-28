@@ -577,7 +577,7 @@ public class Machine
             else
             {
                 if (name.endsWith("'")) continue;
-                log.error("could not find variable %s from file %s in machine %s", name, bpo_, this);
+                log.debug("could not find variable %s from file %s in machine %s", name, bpo_, this);
             }
         }
 

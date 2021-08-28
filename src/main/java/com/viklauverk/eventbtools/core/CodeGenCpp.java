@@ -41,6 +41,7 @@ public class CodeGenCpp extends BaseCodeGen
 
     public void run() throws Exception
     {
+        writeEvbtHeaderFile();
         writeHeaderFile();
         writeCCFile();
     }
@@ -167,6 +168,15 @@ public class CodeGenCpp extends BaseCodeGen
         }
     }
 
+    public void writeEvbtHeaderFile() throws Exception
+    {
+        String file = "evbt.h";
+        log.info("Writing "+file);
+        open(file);
+        writeToFile(Templates.CppEvbtH);
+        close();
+    }
+
     public void writeHeaderFile() throws Exception
     {
         String file = commonSettings().nickName()+".h";
@@ -178,13 +188,7 @@ public class CodeGenCpp extends BaseCodeGen
         pl(" "+mch().comment());
         pl("");
         pl("*/");
-        pl("#include<cmath>");
-        pl("#include<functional>");
-        pl("#include<map>");
-        pl("#include<memory>");
-        pl("#include<set>");
-        pl("#include<string>");
-        pl("#include<vector>");
+        pl("#include\"evbt.h\"");
         writeContexts(mch());
         pl("");
         pl("class "+commonSettings().nickName());
@@ -192,7 +196,8 @@ public class CodeGenCpp extends BaseCodeGen
         pl("    public:");
         pl("    virtual int run() = 0;");
         pl("    virtual void trace(std::function<void(const char *)> cb) = 0;");
-
+/*        pl("    virtual void onRuntimeError();");
+          pl("    virtual void reserveMemory();");*/
         writeVirtualDeclarationsForConcretEventsWithParameters();
 
         pl("};");
@@ -257,12 +262,12 @@ public class CodeGenCpp extends BaseCodeGen
         {
             // A guard is normally a guard that prevents the event from executing if
             // it does not evaluate to true.
-            p("    bool "+label+" = ");
+            p("    try { bool "+label+" = ");
             gen.cnvs().setMark(); // For debugging formaula translation.
             VisitFormula.walk(gen, g.formula());
             String debug = gen.cnvs().getSinceMark(); // When not debugging returns empty string.
             pl("; "+Unicode.commentToCpp(g.formula().toString()));
-            pl("    if (!"+label+") return false;");
+            pl("    if (!"+label+") return false; } catch (RuntimeError e) { RETHROW("+label+", e); }");
             log.debugp("guard", "translated %s into %s =%s", g.formula(), label, debug);
         }
     }
@@ -295,7 +300,6 @@ public class CodeGenCpp extends BaseCodeGen
             c++;
         }
         pl(")\n{");
-
         for (String label : e.guardNames())
         {
             writeGuard(e, label);
@@ -317,6 +321,7 @@ public class CodeGenCpp extends BaseCodeGen
         }
 
         pl("    traceEvent(\""+e.name()+"\");");
+        pl("run();");
         if (!e.isInit()) pl("    return true;");
         pl("}\n\n");
     }
@@ -336,6 +341,8 @@ public class CodeGenCpp extends BaseCodeGen
         pl("#include\""+nickName()+".h\"");
 
         writeEDKContextsImplementationDeclarations(mch());
+
+        pl("using namespace EVBT;");
 
         pl("class "+nickName()+"Implementation : public "+nickName());
         pl("{");
@@ -525,13 +532,13 @@ public class CodeGenCpp extends BaseCodeGen
     @Override
     public String handleTranslateInt(ImplType type, SymbolTable symbols)
     {
-        return "uint64_t";
+        return "Z64";
     }
 
     @Override
     public String handleTranslateIntRange(Formula from, Formula to, SymbolTable symbols)
     {
-        return "uint64_t";
+        return "Z64";
     }
 
     @Override

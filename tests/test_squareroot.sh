@@ -39,14 +39,14 @@ int main()
     auto squareroot = createSquareRoot();
     squareroot->trace([](const char*msg) { printf("TRACE %s\n", msg); });
 
-    uint64_t num = 49;
+    Z64 num = 49;
     squareroot->setInput(num);
     squareroot->run();
 
-    uint64_t result = 0;
+    Z64 result = 0;
     squareroot->getResult(&result);
 
-    printf("Squareroot of %zu is %zu\n", num, result);
+    printf("Squareroot of %" PRId64 " is %" PRId64 "\n", num.to(), result.to());
 }
 EOF
 

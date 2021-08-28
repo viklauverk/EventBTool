@@ -36,7 +36,7 @@ public class EDK_FloatingPoint_v1_Cpp extends EDKContext
     public void generateImplementationDeclarations(Canvas cnvs)
     {
         cnvs.append("\n");
-        cnvs.append("float makeFloat(int s, int e);\n");
+        cnvs.append("float makeFloat(Z64 s, Z64 e);\n");
         cnvs.append("#define EMPTYS \"\"\n");
         cnvs.append("#define ZEROF ((float)0)\n");
 

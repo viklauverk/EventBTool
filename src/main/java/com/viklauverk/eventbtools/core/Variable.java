@@ -27,7 +27,7 @@ public class Variable extends Typed
     private Formula definition_;
     private Variable refines_; // Points to the same variable in the refined machine.
     private Machine machine_; // The machine in which this variable is defined.
-    private Event   event_; // The event in which this variable is potentially defined.
+    private Event   event_; // The event in which this variable is a parameter.
 
     public Variable(String n, String c, Machine m, Event e)
     {

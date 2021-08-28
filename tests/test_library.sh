@@ -52,10 +52,10 @@ int main()
 
     printf("isBookOnLoan(4711)=%d\n", on_loan);
 
-    uint64_t who = 0;
+    Z64 who = 0;
     library->whoBorrowsBook(4711, &who);
 
-    printf("whoBorrowsBook(4711)=%" PRIu64 "\n", who);
+    printf("whoBorrowsBook(4711)=%" PRIu64 "\n", who.to());
 
     library->returnBook(4711);
 

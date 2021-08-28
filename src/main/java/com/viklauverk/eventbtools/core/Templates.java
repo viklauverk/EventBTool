@@ -31,39 +31,6 @@ public static String TeXHeader =
 "\\titleformat{\\subsubsection}[rightmargin]{}{\\fbox{\\thesubsubsection}}{0pt}{}[]\n"+
 "\\titlespacing{\\subsubsection}{10mm}{*0.5}{*0.5}\n"+
 "";
-public static String TeXPackages =
-"\\usepackage[T1]{fontenc}    % Ignored when using xelatex\n"+
-"\\usepackage[utf8]{inputenc} % Ignored when using xelatex\n"+
-"\\usepackage{bsymb} % Standard latex symbols for Event-B formulas.\n"+
-"\\usepackage{calc}  % Improve latex calculation abilities.\n"+
-"\\usepackage{parskip} % Use parskip, instead of line-indent for new paragraphs.\n"+
-"\\usepackage{graphicx} % Include graphics.\n"+
-"\\graphicspath{ {$PATH_TO_IMAGES$} } % Points to workspace directory to find images.\n"+
-"\\usepackage{xltabular} % Advanced tabular command.\n"+
-"\\usepackage{tikz} % Draw icons for (a) (i) (r) (u)\n"+
-"\\usepackage{xcolor} % Specify colors\n"+
-"\\usepackage{makeidx} % Index generation\n"+
-"\\usepackage[margin=3cm]{geometry} % Set margins.\n"+
-"\\usepackage[explicit]{titlesec} % Used to tweak table of contents and sections.\n"+
-"\\usepackage{varwidth} % For the varwidth minipage environment.\n"+
-"\\usepackage{adjustbox} % Minimum sized box.\n"+
-"\n"+
-"%\\usepackage{blindtext} % Use this to debug latex.\n"+
-"%\\usepackage{showframe} % Use this to debug latex.\n"+
-"";
-public static String HtmqHeader =
-"html {\n"+
-"    header {\n"+
-"        meta(http-equiv=content-type content='text/html;charset=utf-8')\n"+
-"        title=$TITLE$\n"+
-"        script(src='https://polyfill.io/v3/polyfill.min.js?features=es6')\n"+
-"        script(id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js)\n"+
-"        link(rel=preconnect href=https://fonts.gstatic.com)\n"+
-"        link(href='https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap' rel=stylesheet)\n"+
-"        link(type=text/css href=$STYLE$ rel=stylesheet)\n"+
-"    }\n"+
-"    body {\n"+
-"";
 public static String TeXDefinitions =
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n"+
 "%%\n"+
@@ -355,6 +322,204 @@ public static String TeXDefinitions =
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n"+
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n"+
 "";
+public static String TeXPackages =
+"\\usepackage[T1]{fontenc}    % Ignored when using xelatex\n"+
+"\\usepackage[utf8]{inputenc} % Ignored when using xelatex\n"+
+"\\usepackage{bsymb} % Standard latex symbols for Event-B formulas.\n"+
+"\\usepackage{calc}  % Improve latex calculation abilities.\n"+
+"\\usepackage{parskip} % Use parskip, instead of line-indent for new paragraphs.\n"+
+"\\usepackage{graphicx} % Include graphics.\n"+
+"\\graphicspath{ {$PATH_TO_IMAGES$} } % Points to workspace directory to find images.\n"+
+"\\usepackage{xltabular} % Advanced tabular command.\n"+
+"\\usepackage{tikz} % Draw icons for (a) (i) (r) (u)\n"+
+"\\usepackage{xcolor} % Specify colors\n"+
+"\\usepackage{makeidx} % Index generation\n"+
+"\\usepackage[margin=3cm]{geometry} % Set margins.\n"+
+"\\usepackage[explicit]{titlesec} % Used to tweak table of contents and sections.\n"+
+"\\usepackage{varwidth} % For the varwidth minipage environment.\n"+
+"\\usepackage{adjustbox} % Minimum sized box.\n"+
+"\n"+
+"%\\usepackage{blindtext} % Use this to debug latex.\n"+
+"%\\usepackage{showframe} % Use this to debug latex.\n"+
+"";
+public static String HtmqHeader =
+"html {\n"+
+"    header {\n"+
+"        meta(http-equiv=content-type content='text/html;charset=utf-8')\n"+
+"        title=$TITLE$\n"+
+"        script(src='https://polyfill.io/v3/polyfill.min.js?features=es6')\n"+
+"        script(id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js)\n"+
+"        link(rel=preconnect href=https://fonts.gstatic.com)\n"+
+"        link(href='https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap' rel=stylesheet)\n"+
+"        link(type=text/css href=$STYLE$ rel=stylesheet)\n"+
+"    }\n"+
+"    body {\n"+
+"";
+public static String CppEvbtH =
+"/* Event-B Runtime BSD-2-Clause\n"+
+"\n"+
+"Copyright 2021 Viklauverk AB\n"+
+"Author Fredrik Öhrström\n"+
+"\n"+
+"Redistribution and use in source and binary forms, with or without\n"+
+"modification, are permitted provided that the following conditions are\n"+
+"met:\n"+
+"\n"+
+"1. Redistributions of source code must retain the above copyright\n"+
+"notice, this list of conditions and the following disclaimer.\n"+
+"\n"+
+"2. Redistributions in binary form must reproduce the above copyright\n"+
+"notice, this list of conditions and the following disclaimer in the\n"+
+"documentation and/or other materials provided with the distribution.\n"+
+"\n"+
+"THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n"+
+"\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n"+
+"LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n"+
+"A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\n"+
+"HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\n"+
+"SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\n"+
+"LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n"+
+"DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n"+
+"THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"+
+"(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n"+
+"OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"+
+"*/\n"+
+"\n"+
+"#ifndef EVBT_H\n"+
+"#define EVBT_H\n"+
+"\n"+
+"#include<cmath>\n"+
+"#include<functional>\n"+
+"#include<map>\n"+
+"#include<memory>\n"+
+"#include<set>\n"+
+"#include<string>\n"+
+"#include<vector>\n"+
+"#include<stdio.h>\n"+
+"#include<stdint.h>\n"+
+"#include<bits/stdc++.h>\n"+
+"\n"+
+"namespace EVBT\n"+
+"{\n"+
+"    struct RuntimeError\n"+
+"    {\n"+
+"        const char *event {}; // Name of event.\n"+
+"        const char *op {};    // Guard or action label.\n"+
+"        const char *file {};  // Generated source file.\n"+
+"        int line {};          // Line in source file.\n"+
+"        const char *expl;  // Explanation of error. Overflow, OutOfMemory\n"+
+"\n"+
+"        RuntimeError(const char *e) : expl(e) {}\n"+
+"    };\n"+
+"\n"+
+"    template<class T> T upper() { return 0; }\n"+
+"    template<class T> T lower() { return 0; }\n"+
+"\n"+
+"    template<int64_t> int64_t upper() { return INT64_MAX; }\n"+
+"    template<int64_t> int64_t lower() { return INT64_MIN; }\n"+
+"\n"+
+"    template<int32_t> int32_t upper() { return INT32_MAX; }\n"+
+"    template<int32_t> int32_t lower() { return INT32_MIN; }\n"+
+"\n"+
+"    template<int16_t> int16_t upper() { return INT16_MAX; }\n"+
+"    template<int16_t> int16_t lower() { return INT16_MIN; }\n"+
+"\n"+
+"    template<int8_t> int8_t upper() { return INT8_MAX; }\n"+
+"    template<int8_t> int8_t lower() { return INT8_MIN; }\n"+
+"\n"+
+"    template<class T> class Z\n"+
+"    {\n"+
+"    private:\n"+
+"\n"+
+"        T v;\n"+
+"\n"+
+"    public:\n"+
+"\n"+
+"        Z() : v(0) {}\n"+
+"        Z(int64_t x)\n"+
+"        {\n"+
+"            v = (T)x;\n"+
+"            if (v != x)\n"+
+"            {\n"+
+"                throw RuntimeError(\"overflow when storing\");\n"+
+"            }\n"+
+"        }\n"+
+"        const T to() { return v; }\n"+
+"        const Z operator+(Z z)\n"+
+"        {\n"+
+"            T a = v;\n"+
+"            T b = z.v;\n"+
+"            if ( (a > 0 && b > upper<T>() - a) ||\n"+
+"                 (a < 0 && b < lower<T>() - a))\n"+
+"            {\n"+
+"              //  throw RuntimeError(\"overflow when adding\");\n"+
+"            }\n"+
+"            return Z(a+b);\n"+
+"        }\n"+
+"        const Z operator-(Z z)\n"+
+"        {\n"+
+"            T a = v;\n"+
+"            T b = z.v;\n"+
+"            if ( (a < 0 && b < lower<T>() + a) ||\n"+
+"                 (a > 0 && b > upper<T>() + a))\n"+
+"            {\n"+
+"            //                throw RuntimeError(\"overflow when subtracting\");\n"+
+"            }\n"+
+"            return Z(a-b);\n"+
+"        }\n"+
+"        friend bool const operator<(const Z<T> &a, const Z<T> &b)\n"+
+"        {\n"+
+"            return a.v < b.v;\n"+
+"        }\n"+
+"        friend bool const operator>(const Z<T> &a, const Z<T> &b)\n"+
+"        {\n"+
+"            return a.v > b.v;\n"+
+"        }\n"+
+"        friend bool const operator<=(const Z<T> &a, const Z<T> &b)\n"+
+"        {\n"+
+"            return a.v <= b.v;\n"+
+"        }\n"+
+"        friend bool const operator>=(const Z<T> &a, const Z<T> &b)\n"+
+"        {\n"+
+"            return a.v >= b.v;\n"+
+"        }\n"+
+"        friend bool const operator!=(const Z<T> &a, const Z<T> &b)\n"+
+"        {\n"+
+"            return a.v != b.v;\n"+
+"        }\n"+
+"        friend bool const operator==(const Z<T> &a, const Z<T> &b)\n"+
+"        {\n"+
+"            return a.v == b.v;\n"+
+"        }\n"+
+"        friend Z const operator*(const Z<T> &a, const Z<T> &b)\n"+
+"        {\n"+
+"            T t = a.v * b.v;\n"+
+"            if (a.v != 0 && t / a.v != b)\n"+
+"            {\n"+
+"                throw RuntimeError(\"overflow when multiplying\");\n"+
+"            }\n"+
+"            return t;\n"+
+"        }\n"+
+"        friend Z const operator/(const Z<T> &a, const Z<T> &b)\n"+
+"        {\n"+
+"            if (b.v == 0)\n"+
+"            {\n"+
+"                throw RuntimeError(\"division by zero\");\n"+
+"            }\n"+
+"            return a.v / b.v;\n"+
+"        }\n"+
+"    };\n"+
+"}\n"+
+"\n"+
+"typedef EVBT::Z<int64_t> Z64;\n"+
+"typedef EVBT::Z<int32_t> Z32;\n"+
+"typedef EVBT::Z<int16_t> Z16;\n"+
+"typedef EVBT::Z<int8_t> Z8;\n"+
+"\n"+
+"#define RETHROW(info,e) { e.line = __LINE__; e.file = __FILE__, e.op = #info; e.event = __func__; throw e; }\n"+
+"\n"+
+"#endif\n"+
+"";
 public static String HtmqFooter =
 "    }\n"+
 "}\n"+"";
@@ -367,5 +532,5 @@ public static String HtmlCss =
 ".LABEL { color: #0066cc };\n"+
 "";
 public static final String[] templates = {
-"TeXHeader",TeXHeader,"TeXPackages",TeXPackages,"HtmqHeader",HtmqHeader,"TeXDefinitions",TeXDefinitions,"HtmqFooter",HtmqFooter,"HtmlCss",HtmlCss,"empty",empty};
+"TeXHeader",TeXHeader,"TeXDefinitions",TeXDefinitions,"TeXPackages",TeXPackages,"HtmqHeader",HtmqHeader,"CppEvbtH",CppEvbtH,"HtmqFooter",HtmqFooter,"HtmlCss",HtmlCss,"empty",empty};
 }
