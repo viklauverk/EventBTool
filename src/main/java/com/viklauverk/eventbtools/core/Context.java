@@ -321,7 +321,17 @@ public class Context
 
         log.debug("loading context "+buc_);
 
-        Document document = reader.read(buc_);
+        Document document = null;
+
+        try
+        {
+            document = reader.read(buc_);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            log.error("Failed loading context "+buc_);
+        }
 
         edk_context_ = sys().edk().lookup(name(), buc_);
 
@@ -387,6 +397,12 @@ public class Context
     public void loadProofStatus() throws Exception
     {
         SAXReader reader = new SAXReader();
+        if (!bps_.exists())
+        {
+            log.info("No proof status file: "+bps_);
+            return;
+        }
+
         Document document = reader.read(bps_);
         log.debug("loading context proof status file "+bps_);
 

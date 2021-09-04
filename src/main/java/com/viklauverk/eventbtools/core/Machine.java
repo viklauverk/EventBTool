@@ -28,6 +28,7 @@ import java.io.File;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.dom4j.dom.DOMDocumentFactory;
 import org.dom4j.Element;
 import org.dom4j.Attribute;
 import org.dom4j.Node;
@@ -395,7 +396,16 @@ public class Machine
     public void loadBUM() throws Exception
     {
         SAXReader reader = new SAXReader();
-        Document document = reader.read(bum_);
+        Document document = null;
+        try
+        {
+            document = reader.read(bum_);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            log.error("Failed loading machine from "+bum_);
+        }
         log.debug("loading machine "+bum_);
 
         List<Node> machine_comment = document.selectNodes("//org.eventb.core.machineFile");
@@ -515,6 +525,12 @@ public class Machine
     public void loadProofStatus() throws Exception
     {
         SAXReader reader = new SAXReader();
+        if (!bps_.exists())
+        {
+            log.info("No proof status file: "+bps_);
+            return;
+        }
+
         Document document = reader.read(bps_);
         log.debug("loading machine proof status file "+bps_);
 
