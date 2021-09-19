@@ -356,7 +356,7 @@ public class Typing
                 CarrierSet set  = symbols.getSet(S.symbol());
                 assert (set != null) : "internal error: set not found: "+pattern().getSet("S")+" in "+symbols.tree();
                 ImplType type = lookupImplType(set.name());
-                type = lookupImplType(FormulaFactory.newPowerSet(type.formula()));
+                type = lookupImplType(FormulaFactory.newPowerSet(type.formula(), Formula.NO_META));
                 type = member.updateImplType(type);
                 log.debug("typing (subset) variable %s to %s in %s", member, type, symbols.tree());
             }
@@ -364,7 +364,7 @@ public class Typing
             {
                 // It is not a symbol, could be a set like POW(NAT).
                 ImplType type = lookupImplType(S);
-                type = lookupImplType(FormulaFactory.newPowerSet(type.formula()));
+                type = lookupImplType(FormulaFactory.newPowerSet(type.formula(), Formula.NO_META));
                 type = member.updateImplType(type);
                 log.debug("typing (subset) variable %s to %s", member, type);
             }
@@ -386,7 +386,7 @@ public class Typing
                 log.debug("Could not deduce inner type of %s", y.implType());
                 return;
             }
-            type = lookupImplType(FormulaFactory.newPowerSet(type.formula()));
+            type = lookupImplType(FormulaFactory.newPowerSet(type.formula(), Formula.NO_META));
             type = x.updateImplType(type);
             log.debug("typing (subset of var) variable %s to %s through %s", x, type, symbols.tree());
             return;
@@ -500,7 +500,7 @@ public class Typing
             }
             ImplType target_type = lookupImplType(type.formula().range());
             // But the actual range type is the power set of this range.
-            Formula range = FormulaFactory.newPowerSet(target_type.formula());
+            Formula range = FormulaFactory.newPowerSet(target_type.formula(), Formula.NO_META);
             ImplType range_type = lookupImplType(range);
             log.debug("deduced type %s from ran expression %s", range_type, expression);
             return range_type;
@@ -708,6 +708,7 @@ public class Typing
 
     public ImplType deduceInnerImplType(ImplType type)
     {
+        if (type == null) return null;
         Formula i = type.formula();
         log.debug("deducing inner type %s", i);
 

@@ -35,7 +35,6 @@ public class RunConsoleRepl
 
     public static void main(String[] args)
     {
-        System.out.println("GURKA");
         Completer completer = new ArgumentCompleter(
                                 new StringsCompleter("foo11", "foo12", "foo13"),
                                 new StringsCompleter("foo21", "foo22", "foo23"),

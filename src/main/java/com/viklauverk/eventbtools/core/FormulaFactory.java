@@ -25,669 +25,678 @@ public class FormulaFactory
 {
 
     public static
-    Formula newBecomeEQ(Formula syms, Formula exprs)
+    Formula newBecomeEQ(Formula syms, Formula exprs, Formula meta)
     {
         return new Formula(Node.BECOME_EQ,
                            syms,
-                           exprs);
+                           exprs,
+                           meta);
     }
 
     public static
-    Formula newBecomeEQFuncApp(Formula var, Formula left, Formula right)
+    Formula newBecomeEQFuncApp(Formula var, Formula left, Formula right, Formula meta)
     {
         List<Formula> inners = new ArrayList<>();
         inners.add(var);
         inners.add(left);
         inners.add(right);
 
-        return new Formula(Node.BECOME_EQ_FUNC_APP, inners);
+        return new Formula(Node.BECOME_EQ_FUNC_APP, inners, meta);
     }
 
     public static
-    Formula newBecomeIN(Formula var, Formula f)
+    Formula newBecomeIN(Formula var, Formula f, Formula meta)
     {
         return new Formula(Node.BECOME_IN,
                            var,
-                           f);
+                           f,
+                           meta);
     }
 
     public static
-    Formula newBecomeSUCH(Formula var, Formula f)
+    Formula newBecomeSUCH(Formula var, Formula f, Formula meta)
     {
         return new Formula(Node.BECOME_SUCH,
                            var,
-                           f);
+                           f,
+                           meta);
     }
 
     public static
     Formula newTrue()
     {
-        return new Formula(Node.TRUE);
+        return new Formula(Node.TRUE, null);
     }
 
     public static
     Formula newFalse()
     {
-        return new Formula(Node.FALSE);
+        return new Formula(Node.FALSE, null);
     }
 
     public static
-    Formula newNumber (String number_string)
+    Formula newNumber (String number_string, Formula meta)
     {
         // Normalize any unicode − into ascii minus -.
         int n = Integer.parseInt(number_string.replace("−", "-"));
-        return new Formula(Node.NUMBER, n);
+        return new Formula(Node.NUMBER, n, meta);
     }
 
     public static
-    Formula newAnySymbol (String p)
+    Formula newAnySymbol (String p, Formula meta)
     {
-        return new Formula(Node.ANY_SYMBOL, Symbols.intern(p));
+        return new Formula(Node.ANY_SYMBOL, Symbols.intern(p), meta);
     }
 
     public static
-    Formula newNumberSymbol (String p)
+    Formula newNumberSymbol (String p, Formula meta)
     {
-        return new Formula(Node.NUMBER_SYMBOL, Symbols.intern(p));
+        return new Formula(Node.NUMBER_SYMBOL, Symbols.intern(p), meta);
     }
 
     public static
-    Formula newPredicateSymbol (String p)
+    Formula newPredicateSymbol (String p, Formula meta)
     {
-        return new Formula(Node.PREDICATE_SYMBOL, Symbols.intern(p));
+        return new Formula(Node.PREDICATE_SYMBOL, Symbols.intern(p), meta);
     }
 
     public static
-    Formula newVariableSymbol (String v)
+    Formula newVariableSymbol (String v, Formula meta)
     {
-        return new Formula(Node.VARIABLE_SYMBOL, Symbols.intern(v));
+        return new Formula(Node.VARIABLE_SYMBOL, Symbols.intern(v), meta);
     }
 
     public static
-    Formula newVariablePrimSymbol (String v)
+    Formula newVariablePrimSymbol (String v, Formula meta)
     {
-        return new Formula(Node.VARIABLE_PRIM_SYMBOL, Symbols.intern(v));
+        return new Formula(Node.VARIABLE_PRIM_SYMBOL, Symbols.intern(v), meta);
     }
 
     public static
-    Formula newVariableNonFreeSymbol (String v)
+    Formula newVariableNonFreeSymbol (String v, Formula meta)
     {
-        return new Formula(Node.VARIABLE_NONFREE_SYMBOL, Symbols.intern(v));
+        return new Formula(Node.VARIABLE_NONFREE_SYMBOL, Symbols.intern(v), meta);
     }
 
     public static
-    Formula newExpressionSymbol (String e)
+    Formula newExpressionSymbol (String e, Formula meta)
     {
-        return new Formula(Node.EXPRESSION_SYMBOL, Symbols.intern(e));
+        return new Formula(Node.EXPRESSION_SYMBOL, Symbols.intern(e), meta);
     }
 
     public static
-    Formula newConstantSymbol (String e)
+    Formula newConstantSymbol (String e, Formula meta)
     {
-        return new Formula(Node.CONSTANT_SYMBOL, Symbols.intern(e));
+        return new Formula(Node.CONSTANT_SYMBOL, Symbols.intern(e), meta);
     }
 
     public static
-    Formula newSetSymbol (String s)
+    Formula newSetSymbol (String s, Formula meta)
     {
-        return new Formula(Node.SET_SYMBOL, Symbols.intern(s));
+        return new Formula(Node.SET_SYMBOL, Symbols.intern(s), meta);
     }
 
     public static
-    Formula newEmptySet()
+    Formula newEmptySet(Formula meta)
     {
-        return new Formula(Node.EMPTY_SET);
+        return new Formula(Node.EMPTY_SET, meta);
     }
 
     public static
-    Formula newIdSet()
+    Formula newIdSet(Formula meta)
     {
-        return new Formula(Node.ID_SET);
+        return new Formula(Node.ID_SET, meta);
     }
 
     public static
-    Formula newPrj1(Formula inner)
+    Formula newPrj1(Formula meta)
     {
-        return new Formula(Node.PRJ1, inner);
+        return new Formula(Node.PRJ1, meta);
     }
 
     public static
-    Formula newPrj2(Formula inner)
+    Formula newPrj2(Formula meta)
     {
-        return new Formula(Node.PRJ2, inner);
+        return new Formula(Node.PRJ2, meta);
     }
 
     public static
-    Formula newNATSet()
+    Formula newNATSet(Formula meta)
     {
-        return new Formula(Node.NAT_SET);
+        return new Formula(Node.NAT_SET, meta);
     }
 
     public static
-    Formula newNAT1Set()
+    Formula newNAT1Set(Formula meta)
     {
-        return new Formula(Node.NAT1_SET);
+        return new Formula(Node.NAT1_SET, meta);
     }
 
     public static
-    Formula newINTSet()
+    Formula newINTSet(Formula meta)
     {
-        return new Formula(Node.INT_SET);
+        return new Formula(Node.INT_SET, meta);
     }
 
     public static
-    Formula newBOOLSet()
+    Formula newBOOLSet(Formula meta)
     {
-        return new Formula(Node.BOOL_SET);
+        return new Formula(Node.BOOL_SET, meta);
     }
 
     public static
-    Formula newUniversalQ(Formula list_of_variables, Formula predicate)
+    Formula newUniversalQ(Formula list_of_variables, Formula predicate, Formula meta)
     {
         return new Formula(Node.UNIVERSALQ,
                            list_of_variables,
-                           predicate);
+                           predicate,
+                           meta);
     }
 
     public static
-    Formula newExistentialQ(Formula list_of_variables, Formula predicate)
+    Formula newExistentialQ(Formula list_of_variables, Formula predicate, Formula meta)
     {
         return new Formula(Node.EXISTENTIALQ,
                            list_of_variables,
-                           predicate);
+                           predicate,
+                           meta);
     }
 
     public static
-    Formula newLambda(Formula list_of_variables, Formula predicate, Formula expression)
+    Formula newLambda(Formula list_of_variables, Formula predicate, Formula expression, Formula meta)
     {
         return new Formula(Node.LAMBDA_ABSTRACTION,
                            list_of_variables,
                            predicate,
-                           expression);
+                           expression,
+                           meta);
     }
 
     public static
-    Formula newSetComprehension(Formula list_of_variables, Formula predicate, Formula expression)
+    Formula newSetComprehension(Formula list_of_variables, Formula predicate, Formula expression, Formula meta)
     {
         return new Formula(Node.SET_COMPREHENSION,
                            list_of_variables,
                            predicate,
-                           expression);
+                           expression,
+                           meta);
     }
 
     public static
-    Formula newSetComprehensionSpecial(Formula var, Formula predicate)
+    Formula newSetComprehensionSpecial(Formula var, Formula predicate, Formula meta)
     {
-        return new Formula(Node.SET_COMPREHENSION_SPECIAL, var, predicate);
+        return new Formula(Node.SET_COMPREHENSION_SPECIAL, var, predicate, meta);
     }
 
     public static
-    Formula newParenthesisedPredicate(Formula inner)
+    Formula newParenthesisedPredicate(Formula inner, Formula meta)
     {
-        return new Formula(Node.PARENTHESISED_PREDICATE, inner);
+        return new Formula(Node.PARENTHESISED_PREDICATE, inner, meta);
     }
 
     public static
-    Formula newParenthesisedExpression(Formula inner)
+    Formula newParenthesisedExpression(Formula inner, Formula meta)
     {
-        return new Formula(Node.PARENTHESISED_EXPRESSION, inner);
+        return new Formula(Node.PARENTHESISED_EXPRESSION, inner, meta);
     }
 
     public static
-    Formula newConjunction(Formula left, Formula right)
+    Formula newConjunction(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.CONJUNCTION, left, right);
+        return new Formula(Node.CONJUNCTION, left, right, meta);
     }
 
     public static
-    Formula newImplication(Formula left, Formula right)
+    Formula newImplication(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.IMPLICATION, left, right);
+        return new Formula(Node.IMPLICATION, left, right, meta);
     }
 
     public static
-    Formula newNegation(Formula left)
+    Formula newNegation(Formula left, Formula meta)
     {
-        return new Formula(Node.NEGATION, left);
+        return new Formula(Node.NEGATION, left, meta);
     }
 
     public static
-    Formula newDisjunction (Formula left, Formula right)
+    Formula newDisjunction (Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.DISJUNCTION, left, right);
+        return new Formula(Node.DISJUNCTION, left, right, meta);
     }
 
     public static
-    Formula newEquivalence (Formula left, Formula right)
+    Formula newEquivalence (Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.EQUIVALENCE, left, right);
+        return new Formula(Node.EQUIVALENCE, left, right, meta);
     }
 
     public static
-    Formula newEquals (Formula left, Formula right)
+    Formula newEquals (Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.EQUALS, left, right);
+        return new Formula(Node.EQUALS, left, right, meta);
     }
 
     public static
-    Formula newNotEquals (Formula left, Formula right)
+    Formula newNotEquals (Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.NOT_EQUALS, left, right);
+        return new Formula(Node.NOT_EQUALS, left, right, meta);
     }
 
     public static
-    Formula newLessThan(Formula left, Formula right)
+    Formula newLessThan(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.LESS_THAN, left, right);
+        return new Formula(Node.LESS_THAN, left, right, meta);
     }
 
     public static
-    Formula newGreaterThan(Formula left, Formula right)
+    Formula newGreaterThan(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.GREATER_THAN, left, right);
+        return new Formula(Node.GREATER_THAN, left, right, meta);
     }
 
     public static
-    Formula newLessThanOrEqual(Formula left, Formula right)
+    Formula newLessThanOrEqual(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.LESS_THAN_OR_EQUAL, left, right);
+        return new Formula(Node.LESS_THAN_OR_EQUAL, left, right, meta);
     }
 
     public static
-    Formula newGreaterThanOrEqual(Formula left, Formula right)
+    Formula newGreaterThanOrEqual(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.GREATER_THAN_OR_EQUAL, left, right);
+        return new Formula(Node.GREATER_THAN_OR_EQUAL, left, right, meta);
     }
 
     public static
-    Formula newApplication(Formula left, Formula right)
+    Formula newApplication(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.APPLICATION, left, right);
+        return new Formula(Node.APPLICATION, left, right, meta);
     }
 
     public static
-    Formula newSetMembership (Formula left, Formula right)
+    Formula newSetMembership (Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.MEMBERSHIP, left, right);
+        return new Formula(Node.MEMBERSHIP, left, right, meta);
     }
 
     public static
-    Formula newSetNotMembership (Formula left, Formula right)
+    Formula newSetNotMembership (Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.NOT_MEMBERSHIP, left, right);
+        return new Formula(Node.NOT_MEMBERSHIP, left, right, meta);
     }
 
     public static
-    Formula newSubSet(Formula left, Formula right)
+    Formula newSubSet(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.SUBSET, left, right);
+        return new Formula(Node.SUBSET, left, right, meta);
     }
 
     public static
-    Formula newNotSubSet(Formula left, Formula right)
+    Formula newNotSubSet(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.NOT_SUBSET, left, right);
+        return new Formula(Node.NOT_SUBSET, left, right, meta);
     }
 
     public static
-    Formula newStrictSubSet(Formula left, Formula right)
+    Formula newStrictSubSet(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.STRICT_SUBSET, left, right);
+        return new Formula(Node.STRICT_SUBSET, left, right, meta);
     }
 
     public static
-    Formula newNotStrictSubSet(Formula left, Formula right)
+    Formula newNotStrictSubSet(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.NOT_STRICT_SUBSET, left, right);
+        return new Formula(Node.NOT_STRICT_SUBSET, left, right, meta);
     }
 
     public static
     Formula newFinite(Formula set)
     {
-        Formula f = new Formula(Node.FINITE, set);
+        Formula f = new Formula(Node.FINITE, set, null);
         return f;
     }
 
     public static
     Formula newPartition(String name, Formula elements)
     {
-        return new Formula(Node.PARTITION, newSetSymbol(name), elements);
+        return new Formula(Node.PARTITION, newSetSymbol(name, Formula.NO_META), elements, Formula.NO_META);
     }
 
     public static
-    Formula newOfType(Formula left, Formula right)
+    Formula newOfType(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.OF_TYPE, left, right);
+        return new Formula(Node.OF_TYPE, left, right, meta);
     }
 
     public static
-    Formula newChoice(Formula left)
+    Formula newChoice(Formula left, Formula meta)
     {
-        return new Formula(Node.CHOICE, left);
+        return new Formula(Node.CHOICE, left, meta);
     }
 
     public static
-    Formula newCartesianProduct(Formula left, Formula right)
+    Formula newCartesianProduct(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.CARTESIAN_PRODUCT, left, right);
+        return new Formula(Node.CARTESIAN_PRODUCT, left, right, meta);
     }
 
     public static
-    Formula newRelation(Formula left, Formula right)
+    Formula newRelation(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.RELATION, left, right);
+        return new Formula(Node.RELATION, left, right, meta);
     }
 
     public static
-    Formula newTotalRelation(Formula left, Formula right)
+    Formula newTotalRelation(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.TOTAL_RELATION, left, right);
+        return new Formula(Node.TOTAL_RELATION, left, right, meta);
     }
 
     public static
-    Formula newSurjectiveRelation(Formula left, Formula right)
+    Formula newSurjectiveRelation(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.SURJECTIVE_RELATION, left, right);
+        return new Formula(Node.SURJECTIVE_RELATION, left, right, meta);
     }
 
     public static
-    Formula newSurjectiveTotalRelation(Formula left, Formula right)
+    Formula newSurjectiveTotalRelation(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.SURJECTIVE_TOTAL_RELATION, left, right);
+        return new Formula(Node.SURJECTIVE_TOTAL_RELATION, left, right, meta);
     }
 
     public static
-    Formula newPartialFunction(Formula left, Formula right)
+    Formula newPartialFunction(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.PARTIAL_FUNCTION, left, right);
+        return new Formula(Node.PARTIAL_FUNCTION, left, right, meta);
     }
 
     public static
-    Formula newTotalFunction(Formula left, Formula right)
+    Formula newTotalFunction(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.TOTAL_FUNCTION, left, right);
+        return new Formula(Node.TOTAL_FUNCTION, left, right, meta);
     }
 
     public static
-    Formula newPartialInjection(Formula left, Formula right)
+    Formula newPartialInjection(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.PARTIAL_INJECTION, left, right);
+        return new Formula(Node.PARTIAL_INJECTION, left, right, meta);
     }
 
     public static
-    Formula newTotalInjection(Formula left, Formula right)
+    Formula newTotalInjection(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.TOTAL_INJECTION, left, right);
+        return new Formula(Node.TOTAL_INJECTION, left, right, meta);
     }
 
     public static
-    Formula newPartialSurjection(Formula left, Formula right)
+    Formula newPartialSurjection(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.PARTIAL_SURJECTION, left, right);
+        return new Formula(Node.PARTIAL_SURJECTION, left, right, meta);
     }
 
     public static
-    Formula newTotalSurjection(Formula left, Formula right)
+    Formula newTotalSurjection(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.TOTAL_SURJECTION, left, right);
+        return new Formula(Node.TOTAL_SURJECTION, left, right, meta);
     }
 
     public static
-    Formula newTotalBijection(Formula left, Formula right)
+    Formula newTotalBijection(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.TOTAL_BIJECTION, left, right);
+        return new Formula(Node.TOTAL_BIJECTION, left, right, meta);
     }
 
     public static
-    Formula newForwardComposition(Formula left, Formula right)
+    Formula newForwardComposition(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.FORWARD_COMPOSITION, left, right);
+        return new Formula(Node.FORWARD_COMPOSITION, left, right, meta);
     }
 
     public static
-    Formula newBackwardComposition(Formula left, Formula right)
+    Formula newBackwardComposition(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.BACKWARD_COMPOSITION, left, right);
+        return new Formula(Node.BACKWARD_COMPOSITION, left, right, meta);
     }
 
     public static
-    Formula newDomainRestriction(Formula left, Formula right)
+    Formula newDomainRestriction(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.DOMAIN_RESTRICTION, left, right);
+        return new Formula(Node.DOMAIN_RESTRICTION, left, right, meta);
     }
 
     public static
-    Formula newDomainSubtraction(Formula left, Formula right)
+    Formula newDomainSubtraction(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.DOMAIN_SUBTRACTION, left, right);
+        return new Formula(Node.DOMAIN_SUBTRACTION, left, right, meta);
     }
 
     public static
-    Formula newRangeRestriction(Formula left, Formula right)
+    Formula newRangeRestriction(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.RANGE_RESTRICTION, left, right);
+        return new Formula(Node.RANGE_RESTRICTION, left, right, meta);
     }
 
     public static
-    Formula newRangeSubtraction(Formula left, Formula right)
+    Formula newRangeSubtraction(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.RANGE_SUBTRACTION, left, right);
+        return new Formula(Node.RANGE_SUBTRACTION, left, right, meta);
     }
 
     public static
-    Formula newInvert(Formula inner)
+    Formula newInvert(Formula inner, Formula meta)
     {
-        return new Formula(Node.INVERT, inner);
+        return new Formula(Node.INVERT, inner, meta);
     }
 
     public static
-    Formula newRelationImage(Formula left, Formula right)
+    Formula newRelationImage(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.RELATION_IMAGE, left, right);
+        return new Formula(Node.RELATION_IMAGE, left, right, meta);
     }
 
     public static
-    Formula newOverride(Formula left, Formula right)
+    Formula newOverride(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.OVERRIDE, left, right);
+        return new Formula(Node.OVERRIDE, left, right, meta);
     }
 
     public static
-    Formula newDirectProduct(Formula left, Formula right)
+    Formula newDirectProduct(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.DIRECT_PRODUCT, left, right);
+        return new Formula(Node.DIRECT_PRODUCT, left, right, meta);
     }
 
     public static
-    Formula newParallelProduct(Formula left, Formula right)
+    Formula newParallelProduct(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.PARALLEL_PRODUCT, left, right);
+        return new Formula(Node.PARALLEL_PRODUCT, left, right, meta);
     }
 
     public static
-    Formula newPowerSet(Formula left)
+    Formula newPowerSet(Formula left, Formula meta)
     {
-        return new Formula(Node.POWER_SET, left);
+        return new Formula(Node.POWER_SET, left, meta);
     }
 
     public static
-    Formula newPower1Set(Formula left)
+    Formula newPower1Set(Formula left, Formula meta)
     {
-        return new Formula(Node.POWER1_SET, left);
+        return new Formula(Node.POWER1_SET, left, meta);
     }
 
     public static
-    Formula newGeneralizedUnion(Formula inner)
+    Formula newGeneralizedUnion(Formula inner, Formula meta)
     {
-        return new Formula(Node.G_UNION, inner);
+        return new Formula(Node.G_UNION, inner, meta);
     }
 
     public static
-    Formula newGeneralizedIntersection(Formula inner)
+    Formula newGeneralizedIntersection(Formula inner, Formula meta)
     {
-        return new Formula(Node.G_INTER, inner);
+        return new Formula(Node.G_INTER, inner, meta);
     }
 
     public static
-    Formula newQuantifiedUnion(Formula list_of_variables, Formula predicate, Formula expression)
+    Formula newQuantifiedUnion(Formula list_of_variables, Formula predicate, Formula expression, Formula meta)
     {
         return new Formula(Node.Q_UNION,
                            list_of_variables,
                            predicate,
-                           expression);
+                           expression,
+                           meta);
     }
 
     public static
-    Formula newQuantifiedIntersection(Formula list_of_variables, Formula predicate, Formula expression)
+    Formula newQuantifiedIntersection(Formula list_of_variables, Formula predicate, Formula expression, Formula meta)
     {
         return new Formula(Node.Q_INTER,
                            list_of_variables,
                            predicate,
-                           expression);
+                           expression,
+                           meta);
     }
 
     public static
-    Formula newDomain(Formula left)
+    Formula newDomain(Formula left, Formula meta)
     {
-        return new Formula(Node.DOMAIN, left);
+        return new Formula(Node.DOMAIN, left, meta);
     }
 
     public static
-    Formula newRange(Formula left)
+    Formula newRange(Formula left, Formula meta)
     {
-        return new Formula(Node.RANGE, left);
+        return new Formula(Node.RANGE, left, meta);
     }
 
     public static
-    Formula newUpTo(Formula left, Formula right)
+    Formula newUpTo(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.UP_TO, left, right);
+        return new Formula(Node.UP_TO, left, right, meta);
     }
 
     public static
-    Formula newSetUnion(Formula left, Formula right)
+    Formula newSetUnion(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.SET_UNION, left, right);
+        return new Formula(Node.SET_UNION, left, right, meta);
     }
 
     public static
-    Formula newSetIntersection(Formula left, Formula right)
+    Formula newSetIntersection(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.SET_INTERSECTION, left, right);
+        return new Formula(Node.SET_INTERSECTION, left, right, meta);
     }
 
     public static
-    Formula newSetMinus(Formula left, Formula right)
+    Formula newSetMinus(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.SET_MINUS, left, right);
+        return new Formula(Node.SET_MINUS, left, right, meta);
     }
 
     public static
     Formula newListOfVariables(List<Formula> elements)
     {
-        return new Formula(Node.LIST_OF_VARIABLES, elements);
+        return new Formula(Node.LIST_OF_VARIABLES, elements, null);
     }
 
     public static
     Formula newListOfNonFreeVariables(List<Formula> elements)
     {
-        return new Formula(Node.LIST_OF_NONFREE_VARIABLES, elements);
+        return new Formula(Node.LIST_OF_NONFREE_VARIABLES, elements, null);
     }
 
     public static
     Formula newListOfExpressions(List<Formula> elements)
     {
-        return new Formula(Node.LIST_OF_EXPRESSIONS, elements);
+        return new Formula(Node.LIST_OF_EXPRESSIONS, elements, null);
     }
 
     public static
     Formula newEnumeratedSet(List<Formula> elements)
     {
-        return new Formula(Node.ENUMERATED_SET, elements);
+        return new Formula(Node.ENUMERATED_SET, elements, null);
     }
 
     public static
-    Formula newAddition (Formula left, Formula right)
+    Formula newAddition (Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.ADDITION, left, right);
+        return new Formula(Node.ADDITION, left, right, meta);
     }
 
     public static
-    Formula newSubtraction (Formula left, Formula right)
+    Formula newSubtraction (Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.SUBTRACTION, left, right);
+        return new Formula(Node.SUBTRACTION, left, right, meta);
     }
 
     public static
-    Formula newTestBool(Formula inner)
+    Formula newTestBool(Formula inner, Formula meta)
     {
-        return new Formula(Node.TEST_BOOL, inner);
+        return new Formula(Node.TEST_BOOL, inner, meta);
     }
 
     public static
-    Formula newCardinality(Formula inner)
+    Formula newCardinality(Formula inner, Formula meta)
     {
-        return new Formula(Node.CARDINALITY, inner);
+        return new Formula(Node.CARDINALITY, inner, meta);
     }
 
     public static
-    Formula newUnaryMinus(Formula right)
+    Formula newUnaryMinus(Formula right, Formula meta)
     {
-        return new Formula(Node.UNARY_MINUS, right);
+        return new Formula(Node.UNARY_MINUS, right, meta);
     }
 
     public static
-    Formula newMultiplication (Formula left, Formula right)
+    Formula newMultiplication (Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.MULTIPLICATION, left, right);
+        return new Formula(Node.MULTIPLICATION, left, right, meta);
     }
 
     public static
-    Formula newDivision (Formula left, Formula right)
+    Formula newDivision (Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.DIVISION, left, right);
+        return new Formula(Node.DIVISION, left, right, meta);
     }
 
     public static
-    Formula newModulo(Formula left, Formula right)
+    Formula newModulo(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.MODULO, left, right);
+        return new Formula(Node.MODULO, left, right, meta);
     }
 
     public static
-    Formula newExponentiation(Formula left, Formula right)
+    Formula newExponentiation(Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.EXPONENTIATION, left, right);
+        return new Formula(Node.EXPONENTIATION, left, right, meta);
     }
 
     public static
-    Formula newMinimum(Formula inner)
+    Formula newMinimum(Formula inner, Formula meta)
     {
-        return new Formula(Node.MINIMUM, inner);
+        return new Formula(Node.MINIMUM, inner, meta);
     }
 
     public static
-    Formula newMaximum(Formula inner)
+    Formula newMaximum(Formula inner, Formula meta)
     {
-        return new Formula(Node.MAXIMUM, inner);
+        return new Formula(Node.MAXIMUM, inner, meta);
     }
 
     public static
-    Formula newMapsTo (Formula left, Formula right)
+    Formula newMapsTo (Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.MAPSTO, left, right);
+        return new Formula(Node.MAPSTO, left, right, meta);
     }
 
     public static
-    Formula newFunctionApplication (Formula left, Formula right)
+    Formula newFunctionApplication (Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.FUNC_APP, left, right);
+        return new Formula(Node.FUNC_APP, left, right, meta);
     }
 
     public static
-    Formula newFunctionInvertedApplication (Formula left, Formula right)
+    Formula newFunctionInvertedApplication (Formula left, Formula right, Formula meta)
     {
-        return new Formula(Node.FUNC_INV_APP, left, right);
+        return new Formula(Node.FUNC_INV_APP, left, right, meta);
     }
 
 }

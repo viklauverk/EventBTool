@@ -23,17 +23,24 @@ import com.viklauverk.eventbtools.core.Formula;
 public class GenerateFormulaBaseCodeGen extends RenderFormulaUnicode
 {
     private BaseCodeGen codegen_;
+    private PlanImplementation plan_;
 
-    GenerateFormulaBaseCodeGen(BaseCodeGen codegen)
+    GenerateFormulaBaseCodeGen(BaseCodeGen codegen, PlanImplementation plan)
     {
         super(codegen.cnvs());
         codegen_ = codegen;
+        plan_ = plan;
         limitToAscii();
     }
 
     protected BaseCodeGen codegen()
     {
         return codegen_;
+    }
+
+    protected PlanImplementation plan()
+    {
+        return plan_;
     }
 
     @Override public Formula visit_BECOME_EQ(Formula f)
@@ -96,5 +103,4 @@ public class GenerateFormulaBaseCodeGen extends RenderFormulaUnicode
 
         return null;
     }
-
 }

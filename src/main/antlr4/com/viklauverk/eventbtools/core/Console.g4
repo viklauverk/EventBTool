@@ -193,6 +193,9 @@ push
 format
     : 'plain' | 'terminal' | 'tex' | 'htmq';
 
+metaaa
+    : 'meta' ;
+
 treee
     : 'tree' ;
 
@@ -238,7 +241,7 @@ show
 //show:    show tex "s := s \/ { 2 }"
 //show:    show tree terminal "s := s \/ { 2 }"
 //show:    show part terminal "Elevator/invariants/inv1"
-   : 'show' 'formula' treee? framed? hiding? format? formula=STRING # ShowFormula
+   : 'show' 'formula' metaaa? treee? framed? hiding? format? formula=STRING # ShowFormula
    | 'show' 'current' 'table'        # ShowCurrentTable
    | 'show' 'table' name=STRING      # ShowTable
    | 'show' 'part' framed? format? name=STRING   # ShowPart

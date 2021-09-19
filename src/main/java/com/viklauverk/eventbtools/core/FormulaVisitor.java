@@ -20,8 +20,8 @@ package com.viklauverk.eventbtools.core;
 
 public interface FormulaVisitor
 {
-    void enterNode(Node p);
-    void exitNode(Node p);
+    void enterNode(Formula f);
+    void exitNode(Formula f);
     Formula visit_BECOME_EQ(Formula i);
     Formula visit_BECOME_EQ_FUNC_APP(Formula i);
     Formula visit_BECOME_IN(Formula i);
@@ -130,4 +130,5 @@ public interface FormulaVisitor
     Formula visit_MAPSTO(Formula i);
     Formula visit_FUNC_APP(Formula i);
     Formula visit_FUNC_INV_APP(Formula i);
+    Formula visit_META(Formula i);
 }

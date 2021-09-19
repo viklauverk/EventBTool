@@ -39,6 +39,8 @@ class Formula
     // This canvas is used to render formulas for caching and internal types.
     private static Canvas raw_unicode_canvas_;
 
+    static Formula NO_META = null;
+
     static
     {
         raw_unicode_canvas_ = new Canvas();
@@ -50,6 +52,7 @@ class Formula
     private int[] data_;         // Raw bytes storing: a symbol index or number int/long.
     private Formula[] children_; // The children nodes of the formula, if there are any.
     private String cache_;       // A cached unicode/utf8 string representation of this formula.
+    private Formula meta_;       // Extra information for codegeneration.
 
     @Override
     public String toString()
@@ -110,6 +113,21 @@ class Formula
         return data_[0];
     }
 
+    public boolean hasMeta()
+    {
+        return meta_ != null;
+    }
+
+    public void setMeta(Formula m)
+    {
+        meta_ = m;
+    }
+
+    public Formula meta()
+    {
+        return meta_;
+    }
+
     public boolean isSymbol()
     {
         return node_.isSymbol();
@@ -161,36 +179,40 @@ class Formula
         return child(1);
     }
 
-    Formula(Node node)
+    Formula(Node node, Formula meta)
     {
         node_ = node;
+        meta_ = meta;
     }
 
-    Formula(Node node, int v)
+    Formula(Node node, int v, Formula meta)
     {
         node_ = node;
         data_ = new int[1];
         data_[0] = v;
+        meta_ = meta;
     }
 
-    Formula(Node node, long v)
+    Formula(Node node, long v, Formula meta)
     {
         node_ = node;
         data_ = new int[2];
         data_[0] = (int) (v & 0xffffffff);
         data_[1] = (int) (v >>> 32);
+        meta_ = meta;
     }
 
-    Formula(Node node, Formula inner)
+    Formula(Node node, Formula inner, Formula meta)
     {
         assert (node != null && inner != null) : "Internal error when creating formula, args must be non-null.";
 
         node_ = node;
         children_ = new Formula[1];
         children_[0] = inner;
+        meta_ = meta;
     }
 
-    Formula(Node node, Formula left, Formula right)
+    Formula(Node node, Formula left, Formula right, Formula meta)
     {
         assert (node != null && left != null && right != null) : "Internal error when creating formula, args must be non-null.";
 
@@ -198,9 +220,10 @@ class Formula
         children_ = new Formula[2];
         children_[0] = left;
         children_[1] = right;
+        meta_ = meta;
     }
 
-    Formula(Node node, Formula vars, Formula pred, Formula expr)
+    Formula(Node node, Formula vars, Formula pred, Formula expr, Formula meta)
     {
         assert (node != null && vars != null && pred!= null && expr!= null) : "Internal error when creating formula, args must be non-null.";
 
@@ -209,9 +232,10 @@ class Formula
         children_[0] = vars;
         children_[1] = pred;
         children_[2] = expr;
+        meta_ = meta;
     }
 
-    Formula(Node node, List<Formula> inners)
+    Formula(Node node, List<Formula> inners, Formula meta)
     {
         assert (node != null && inners != null) : "Internal error when creating formula, args must be non-null.";
 
@@ -224,6 +248,7 @@ class Formula
             assert (f != null) : "internal error: child formula must never be null!";
             i++;
         }
+        meta_ = meta;
     }
 
     public static
@@ -269,6 +294,40 @@ class Formula
     {
         RenderFormulaUnicode gen = new RenderFormulaUnicode(canvas);
         gen.addTypes();
+        VisitFormula.walk(gen, this);
+        return gen.cnvs().render();
+    }
+
+    public String toStringWithMetas()
+    {
+        RenderFormulaUnicode gen = new RenderFormulaUnicode(raw_unicode_canvas_.copy());
+        gen.addMetas();
+        VisitFormula.walk(gen, this);
+        return gen.cnvs().render();
+    }
+
+    public String toStringWithMetas(Canvas canvas)
+    {
+        RenderFormulaUnicode gen = new RenderFormulaUnicode(canvas);
+        gen.addMetas();
+        VisitFormula.walk(gen, this);
+        return gen.cnvs().render();
+    }
+
+    public String toStringWithMetasAndTypes()
+    {
+        RenderFormulaUnicode gen = new RenderFormulaUnicode(raw_unicode_canvas_.copy());
+        gen.addTypes();
+        gen.addMetas();
+        VisitFormula.walk(gen, this);
+        return gen.cnvs().render();
+    }
+
+    public String toStringWithMetasAndTypes(Canvas canvas)
+    {
+        RenderFormulaUnicode gen = new RenderFormulaUnicode(canvas);
+        gen.addTypes();
+        gen.addMetas();
         VisitFormula.walk(gen, this);
         return gen.cnvs().render();
     }

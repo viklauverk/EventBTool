@@ -25,9 +25,9 @@ import java.util.LinkedList;
 
 public class GenerateFormulaCpp extends GenerateFormulaBaseCodeGen
 {
-    GenerateFormulaCpp(CodeGenCpp codegen)
+    GenerateFormulaCpp(CodeGenCpp codegen, PlanImplementation plan)
     {
-        super(codegen);
+        super(codegen, plan);
     }
 
     @Override public Formula visit_SET_SYMBOL(Formula i)
@@ -140,7 +140,13 @@ public class GenerateFormulaCpp extends GenerateFormulaBaseCodeGen
 
     @Override public Formula visit_ADDITION(Formula i)
     {
-        visitLeft(i); cnvs().append(" + "); visitRight(i); return i;
+        visitLeft(i);  cnvs().append(" + "); visitRight(i); return i;
+        /*
+        Implementation imp = plan().getImplementation(i);
+
+        imp.generateAddition(this, plan(), i, i.left(), i.right());
+        */
+        //return i;
     }
 
     @Override public Formula visit_SUBTRACTION(Formula i)

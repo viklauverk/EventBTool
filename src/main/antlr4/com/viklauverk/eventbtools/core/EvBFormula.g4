@@ -210,10 +210,10 @@ SYMBOL: [a-zA-Z][a-zA-Z0-9_]*;
 start : ( substitution | predicate | expression ) EOF # Done;
 
 substitution
-   : left=listOfSymbols BCMEQ right=listOfExpressions  # BecomeEQ
-   | variable=SYMBOL '(' left=expression ')' BCMEQ right=expression # BecomeEQFuncApp
-   | variable=SYMBOL BCMIN inner=expression  # BecomeIN
-   | variable=SYMBOL BCMSUCH inner=predicate # BecomeSUCH
+   : left=listOfSymbols BCMEQ meta? right=listOfExpressions  # BecomeEQ
+   | variable=SYMBOL '(' left=expression ')' BCMEQ meta? right=expression # BecomeEQFuncApp
+   | variable=SYMBOL BCMIN meta? inner=expression  # BecomeIN
+   | variable=SYMBOL BCMSUCH meta? inner=predicate # BecomeSUCH
    ;
 
 listOfNonFreeSymbols
@@ -225,116 +225,116 @@ listOfSymbols
    ;
 
 predicate
-   : TRUE                                           # AlwaysTrue
-   | FALSE                                          # AlwaysFalse
-   | { symbol_table.isAnySymbol(_input.LT(1).getText()) }?  sym=SYMBOL  # AnyPredicateSymbol
-   | { symbol_table.isPredicateSymbol(_input.LT(1).getText()) }? sym=SYMBOL  # PredicateSymbol
+   : TRUE meta?                                          # AlwaysTrue
+   | FALSE meta?                                         # AlwaysFalse
+   | { symbol_table.isAnySymbol(_input.LT(1).getText()) }?  sym=SYMBOL meta? # AnyPredicateSymbol
+   | { symbol_table.isPredicateSymbol(_input.LT(1).getText()) }? sym=SYMBOL meta? # PredicateSymbol
    | '(' inner=predicate ')'                        # PredicateParentheses
-   | left=expression IN right=expression            # SetMembership
-   | left=expression NOTIN right=expression         # SetNotMembership
-   | left=predicate operator=AND right=predicate    # Conjunction
-   | left=predicate operator=IMP right=predicate    # Implication
-   | left=predicate operator=EQUIV right=predicate  # Equivalence
-   | left=predicate operator=OR right=predicate     # Disjunction
-   | operator=NOT right=predicate                   # Negation
-   | ALL left=listOfNonFreeSymbols
+   | left=expression IN meta? right=expression            # SetMembership
+   | left=expression NOTIN meta? right=expression         # SetNotMembership
+   | left=predicate operator=AND meta? right=predicate    # Conjunction
+   | left=predicate operator=IMP meta? right=predicate    # Implication
+   | left=predicate operator=EQUIV meta? right=predicate  # Equivalence
+   | left=predicate operator=OR meta? right=predicate     # Disjunction
+   | operator=NOT meta? right=predicate                   # Negation
+   | ALL meta? left=listOfNonFreeSymbols
      { pushFrame(((UniversalContext)_localctx).left); }
      QDOT right=predicate
      { popFrame(); }
      # Universal
-   | EXI left=listOfNonFreeSymbols
+   | EXI meta? left=listOfNonFreeSymbols
      { pushFrame(((ExistentialContext)_localctx).left); }
      QDOT right=predicate
      { popFrame(); }
      # Existential
-   | left=expression operator=EQ right=expression   # Equals
-   | left=expression operator=NEQ right=expression  # NotEquals
-   | left=expression operator=LT right=expression   # LessThan
-   | left=expression operator=GT right=expression   # GreaterThan
-   | left=expression operator=LEQ right=expression  # LessThanOrEqual
-   | left=expression operator=GEQ right=expression  # GreaterThanOrEqual
-   | left=expression SUBSET right=expression        # SubSet
-   | left=expression NOT_SUBSET right=expression    # NotSubSet
-   | left=expression STRICT_SUBSET right=expression # StrictSubSet
-   | left=expression NOT_STRICT_SUBSET right=expression # NotStrictSubSet
+   | left=expression operator=EQ meta? right=expression   # Equals
+   | left=expression operator=NEQ meta? right=expression  # NotEquals
+   | left=expression operator=LT meta? right=expression   # LessThan
+   | left=expression operator=GT meta? right=expression   # GreaterThan
+   | left=expression operator=LEQ meta? right=expression  # LessThanOrEqual
+   | left=expression operator=GEQ meta? right=expression  # GreaterThanOrEqual
+   | left=expression SUBSET meta? right=expression        # SubSet
+   | left=expression NOT_SUBSET meta? right=expression    # NotSubSet
+   | left=expression STRICT_SUBSET meta? right=expression # StrictSubSet
+   | left=expression NOT_STRICT_SUBSET meta? right=expression # NotStrictSubSet
    | FINITE '(' inner=expression ')'                       # FiniteSet
    | PARTITION '(' left=expression ',' right=listOfExpressions ')' # PartitionSet
 ;
 
 expression
-   : ETRUE                                          # ExpressionTRUE
-   | EFALSE                                         # ExpressionFALSE
-   | NUMBER                                         # Number
-   | { allSymbolsAreNonFreeVars() }? variable=SYMBOL { addNonFreeVar(((SetComprehensionNonFreeExpressionVariableContext)_localctx).variable.getText()); } # SetComprehensionNonFreeExpressionVariable
-   | { symbol_table.isExpressionSymbol(_input.LT(1).getText()) }? sym=SYMBOL # ExpressionSymbol
-   | { symbol_table.isAnySymbol(_input.LT(1).getText()) }?        sym=SYMBOL # AnyExpressionSymbol
-   | { symbol_table.isNumberSymbol(_input.LT(1).getText()) }?     sym=SYMBOL # NumberSymbol
-   | { symbol_table.isNonFreeVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL # NonFreeExpressionVariable
-   | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL  PRIM? # ExpressionVariable
-   | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }?   constant=SYMBOL                       # ExpressionConstant
+   : ETRUE meta?                                    # ExpressionTRUE
+   | EFALSE meta?                                   # ExpressionFALSE
+   | NUMBER meta?                                   # Number
+   | { allSymbolsAreNonFreeVars() }? variable=SYMBOL meta? { addNonFreeVar(((SetComprehensionNonFreeExpressionVariableContext)_localctx).variable.getText()); } # SetComprehensionNonFreeExpressionVariable
+   | { symbol_table.isExpressionSymbol(_input.LT(1).getText()) }? sym=SYMBOL meta? # ExpressionSymbol
+   | { symbol_table.isAnySymbol(_input.LT(1).getText()) }?        sym=SYMBOL meta? # AnyExpressionSymbol
+   | { symbol_table.isNumberSymbol(_input.LT(1).getText()) }?     sym=SYMBOL meta? # NumberSymbol
+   | { symbol_table.isNonFreeVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL meta? # NonFreeExpressionVariable
+   | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL  PRIM? meta? # ExpressionVariable
+   | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }?   constant=SYMBOL meta?        # ExpressionConstant
    // Should we be able to talk about all functions such that their applications give such and such result? For the moment, we can't.
-   | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL PRIM? INV? '(' inner=expression ')' # VariableFunctionApplication
-   | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }?   constant=SYMBOL '(' inner=expression ')' # ConstantFunctionApplication
-   | function=expression '(' inner=expression ')'   # GenericFunctionApplication
+   | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL PRIM? INV? meta? '(' inner=expression ')' # VariableFunctionApplication
+   | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }?   constant=SYMBOL meta? '(' inner=expression ')' # ConstantFunctionApplication
+   | function=expression meta? '(' inner=expression ')'  # GenericFunctionApplication
    | '(' inner=expression ')'                       # ExpressionParentheses
    | left=expression operator=MAPSTO right=expression # MapsToExpression
    | left=expression operator=MAPSTO right=expression # MapsToSet
-   | PRJ1 '(' inner=expression ')'                  # Prj1
-   | PRJ2 '(' inner=expression ')'                  # Prj2
-   | left=expression operator=MUL right=expression  # Multiplication
-   | left=expression operator=DIV right=expression  # Division
-   | left=expression operator=ADD right=expression  # Addition
-   | left=expression operator=MINUS right=expression  # Subtraction
+   | left=expression operator=MUL meta? right=expression  # Multiplication
+   | left=expression operator=DIV meta? right=expression  # Division
+   | left=expression operator=ADD meta? right=expression  # Addition
+   | left=expression operator=MINUS meta? right=expression  # Subtraction
    | operator=MINUS right=expression                  # UnaryMinus
-   | left=expression operator=MOD right=expression  # Modulo
-   | left=expression operator=EXP right=expression  # Exponentiation
-   | MIN '(' inner=expression ')'                   # Minimum
-   | MAX '(' inner=expression ')'                   # Maximum
-   | TESTBOOL '(' inner=predicate ')'               # TestBool
-   | CARD '(' inner=expression ')'                  # Cardinality
-   | EMPTY                                          # EmptySet
-    | ID                                            # IdSet
-    | { symbol_table.isSetSymbol(_input.LT(1).getText()) }? sym=SYMBOL  # SetSymbol
-    | { symbol_table.isAnySymbol(_input.LT(1).getText()) }? sym=SYMBOL  # AnySetSymbol
-    | { symbol_table.isNonFreeVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL # NonFreeSetVariable
-    | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }? variable=SYMBOL PRIM? # SetVariable
-    | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }? constant=SYMBOL # SetConstant
-    | NAT                     # NATSet
-    | NAT1                    # NAT1Set
-    | INT                     # INTSet
-    | BOOL                    # BOOLSet
-    | POW '(' inner=expression ')'   # PowerSet
-    | POW1 '(' inner=expression ')'  # Power1Set
-    | DOM '(' inner=expression ')'   # Domain
-    | RAN '(' inner=expression ')'   # Range
-    | inner=expression INV           # InvertSet
-    | left=expression '[' right=expression ']' # RelationImage
-    | left=expression OVR right=expression  # Override
-    | left=expression DPROD right=expression  # DirectProduct
-    | left=expression PPROD right=expression  # ParallelProduct
-    | left=expression OFTYPE right=expression  # OfType
-    | '{' expression (',' expression)* '}' # EnumeratedSet
+   | left=expression operator=MOD meta? right=expression  # Modulo
+   | left=expression operator=EXP meta? right=expression  # Exponentiation
+   | MIN '(' inner=expression ')' meta?                   # Minimum
+   | MAX '(' inner=expression ')' meta?                   # Maximum
+   | TESTBOOL '(' inner=predicate ')' meta?               # TestBool
+   | CARD '(' inner=expression ')' meta?          # Cardinality
+   | EMPTY meta?                                    # EmptySet
+    | ID   meta?                                    # IdSet
+    | PRJ1 meta?                                    # Prj1
+    | PRJ2 meta?                                    # Prj2
+    | { symbol_table.isSetSymbol(_input.LT(1).getText()) }? sym=SYMBOL meta?  # SetSymbol
+    | { symbol_table.isAnySymbol(_input.LT(1).getText()) }? sym=SYMBOL meta? # AnySetSymbol
+    | { symbol_table.isNonFreeVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL meta? # NonFreeSetVariable
+    | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }? variable=SYMBOL PRIM? meta? # SetVariable
+    | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }? constant=SYMBOL meta? # SetConstant
+    | NAT meta?               # NATSet
+    | NAT1 meta?              # NAT1Set
+    | INT meta?               # INTSet
+    | BOOL meta?              # BOOLSet
+    | POW meta? '(' inner=expression ')'  # PowerSet
+    | POW1 meta? '(' inner=expression ')' # Power1Set
+    | DOM meta? '(' inner=expression ')'  # Domain
+    | RAN meta? '(' inner=expression ')'  # Range
+    | inner=expression INV meta?          # InvertSet
+    | left=expression '[' right=expression ']' meta? # RelationImage
+    | left=expression OVR meta? right=expression  # Override
+    | left=expression DPROD meta? right=expression  # DirectProduct
+    | left=expression PPROD meta? right=expression  # ParallelProduct
+    | left=expression OFTYPE meta? right=expression  # OfType
+    | '{' expression (',' expression)* '}' meta? # EnumeratedSet
 
-    | '(' LAMBDA vars=listOfNonFreeSymbols
+    | LAMBDA meta? vars=listOfNonFreeSymbols
           { pushFrame(((LambdaAbstractionExpressionContext)_localctx).vars); }
        QDOT pred=predicate MID formula=expression
-          { popFrame(); } ')'
+          { popFrame(); }
       # LambdaAbstractionExpression
 
-    | '(' LAMBDA vars=listOfNonFreeSymbols
+    | LAMBDA meta? vars=listOfNonFreeSymbols
           { pushFrame(((LambdaAbstractionSetContext)_localctx).vars); }
        QDOT pred=predicate MID formula=expression
-          { popFrame(); } ')'
+          { popFrame(); }
       # LambdaAbstractionSet
 
-    | '{' vars=listOfNonFreeSymbols
+    | '{' meta? vars=listOfNonFreeSymbols
           { pushFrame(((SetComprehensionContext)_localctx).vars); }
       QDOT pred=predicate MID formula=expression
           { popFrame(); }
       '}'
       # SetComprehension
 
-    | '{'
+    | '{' meta?
         { enableAllSymbolsAreNonFreeVars(); } // The expression definition implicitly declares the non-free vars!
         formula=expression
         { disableAllSymbolsAreNonFreeVars(); pushFrameNonFreeVars(); }
@@ -343,41 +343,41 @@ expression
       '}'
       # SetComprehensionSpecial
 
-    | from=expression UPTO to=expression     # RangeSet
-    | left=expression UNION right=expression # SetUnion
-    | left=expression INTER right=expression # SetIntersection
-    | left=expression SETMINUS right=expression # SetMinus
-    | left=expression CPROD right=expression # CartesianProduct
-    | left=expression REL right=expression   # Relation
-    | left=expression TREL right=expression  # TotalRelation
-    | left=expression SREL right=expression  # SurjectiveRelation
-    | left=expression STREL right=expression # SurjectiveTotalRelation
-    | left=expression PFUN right=expression  # PartialFunction
-    | left=expression TFUN right=expression  # TotalFunction
-    | left=expression PINJ right=expression  # PartialInjection
-    | left=expression TINJ right=expression  # TotalInjection
-    | left=expression PSUR right=expression  # PartialSurjection
-    | left=expression TSUR right=expression  # TotalSurjection
-    | left=expression TBIJ right=expression  # TotalBijection
+    | from=expression UPTO meta? to=expression     # UpTo
+    | left=expression UNION meta? right=expression # SetUnion
+    | left=expression INTER meta? right=expression # SetIntersection
+    | left=expression SETMINUS meta? right=expression # SetMinus
+    | left=expression CPROD meta? right=expression # CartesianProduct
+    | left=expression REL meta? right=expression   # Relation
+    | left=expression TREL meta? right=expression  # TotalRelation
+    | left=expression SREL meta? right=expression  # SurjectiveRelation
+    | left=expression STREL meta? right=expression # SurjectiveTotalRelation
+    | left=expression PFUN meta? right=expression  # PartialFunction
+    | left=expression TFUN meta? right=expression  # TotalFunction
+    | left=expression PINJ meta? right=expression  # PartialInjection
+    | left=expression TINJ meta? right=expression  # TotalInjection
+    | left=expression PSUR meta? right=expression  # PartialSurjection
+    | left=expression TSUR meta? right=expression  # TotalSurjection
+    | left=expression TBIJ meta? right=expression  # TotalBijection
 
-    | left=expression SEMI right=expression  # ForwardComposition
-    | left=expression CIRC right=expression  # BackwardComposition
+    | left=expression SEMI meta? right=expression  # ForwardComposition
+    | left=expression CIRC meta? right=expression  # BackwardComposition
 
-    | left=expression DOMRES right=expression  # DomainRestriction
-    | left=expression DOMSUB right=expression  # DomainSubtraction
-    | left=expression RANRES right=expression  # RangeRestriction
-    | left=expression RANSUB right=expression  # RangeSubtraction
+    | left=expression DOMRES meta? right=expression  # DomainRestriction
+    | left=expression DOMSUB meta? right=expression  # DomainSubtraction
+    | left=expression RANRES meta? right=expression  # RangeRestriction
+    | left=expression RANSUB meta? right=expression  # RangeSubtraction
 
-    | GUNION '(' inner=expression ')' # GeneralizedUnion
-    | GINTER '(' inner=expression ')' # GeneralizedIntersection
+    | GUNION meta? '(' inner=expression ')' # GeneralizedUnion
+    | GINTER meta? '(' inner=expression ')' # GeneralizedIntersection
 
-    | QUNION vars=listOfNonFreeSymbols
+    | QUNION meta? vars=listOfNonFreeSymbols
           { pushFrame(((QuantifiedUnionContext)_localctx).vars); }
        QDOT pred=predicate MID inner=expression
           { popFrame(); }
       # QuantifiedUnion
 
-    | QINTER vars=listOfNonFreeSymbols
+    | QINTER meta? vars=listOfNonFreeSymbols
           { pushFrame(((QuantifiedIntersectionContext)_localctx).vars); }
        QDOT pred=predicate MID inner=expression
           { popFrame(); }
@@ -387,4 +387,8 @@ expression
 
 listOfExpressions
    : expression (',' expression)*
+   ;
+
+meta
+   : '«' ( substitution | predicate | expression ) '»' #MetaFormula
    ;

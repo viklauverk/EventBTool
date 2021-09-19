@@ -988,5 +988,4 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
     {
         return true;
     }
-
 }

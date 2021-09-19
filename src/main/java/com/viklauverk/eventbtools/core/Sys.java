@@ -82,6 +82,20 @@ public class Sys
         root_symbol_table_.addConstant(TRUE);
         root_symbol_table_.addConstant(FALSE);
 
+        CarrierSet evbt_implementations = new CarrierSet("EVBTImplementations", null);
+        root_symbol_table_.addSet(evbt_implementations);
+
+        Constant evbt_u8 = new Constant("u8", null);
+        Constant evbt_i8 = new Constant("i8", null);
+        Constant evbt_arr = new Constant("arr", null);
+        evbt_implementations.addMember(evbt_u8);
+        evbt_implementations.addMember(evbt_i8);
+        evbt_implementations.addMember(evbt_arr);
+
+        root_symbol_table_.addConstant(evbt_u8);
+        root_symbol_table_.addConstant(evbt_i8);
+        root_symbol_table_.addConstant(evbt_arr);
+
         settings_ = s;
         console_ = new Console(this, settings_, new Canvas());
         edk_ = new EDK(this);

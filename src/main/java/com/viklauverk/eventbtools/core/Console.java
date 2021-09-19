@@ -234,9 +234,12 @@ public class Console
         "lv ", "list vars", "",
         // Show commmands....
         "sf ", "show formula", ".",
+        "sff ", "show formula framed", ".",
         "sft ", "show formula tree", ".",
         "sftf ", "show formula tree framed", ".",
-        "sff ", "show formula framed", ".",
+        "sfm ", "show formula meta", ".",
+        "sfmf ", "show formula meta framed", ".",
+        "sfmtf ", "show formula meta tree framed", ".",
         "st ", "show table", ".",
         "sp ", "show part", ".",
         "spf ", "show part framed", ".",
@@ -336,7 +339,7 @@ public class Console
         }
     }
 
-    String renderFormula(String line, boolean with_type, boolean with_frame, RenderTarget rt, RenderAttributes ra)
+    String renderFormula(String line, boolean with_meta, boolean with_type, boolean with_frame, RenderTarget rt, RenderAttributes ra)
     {
         Canvas cnvs = new Canvas();
         cnvs.setRenderTarget(rt);
@@ -353,10 +356,36 @@ public class Console
                 return "Failed to parse!";
             }
 
-            if (with_type)
+            if (!with_type && with_meta)
+            {
+                cnvs.startMath();
+                result.toStringWithMetas(cnvs);
+                cnvs.stopMath();
+                String o = cnvs.render();
+                if (with_frame)
+                {
+                    o = cnvs.frame("", o, Canvas.sline);
+                }
+                return o;
+            }
+
+            if (with_type && !with_meta)
             {
                 cnvs.startMath();
                 result.toStringWithTypes(cnvs);
+                cnvs.stopMath();
+                String o = cnvs.render();
+                if (with_frame)
+                {
+                    o = cnvs.frame("", o, Canvas.sline);
+                }
+                return o;
+            }
+
+            if (with_type && with_meta)
+            {
+                cnvs.startMath();
+                result.toStringWithMetasAndTypes(cnvs);
                 cnvs.stopMath();
                 String o = cnvs.render();
                 if (with_frame)

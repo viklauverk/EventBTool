@@ -1147,7 +1147,7 @@ public class Canvas
             append(s);
             return;
         case TERMINAL:
-            append(colorize(Red, s));
+            append(colorize(Black, s));
             return;
         case TEX:
             append("\\PSET{"+Util.texSafe(s)+"}");

@@ -207,6 +207,15 @@ class Pattern
             if (!ok) return false;
         }
 
+        // Either both has to have a meta, or none must have a meta.
+        if (f.hasMeta() != p.hasMeta()) return false;
+
+        if (f.hasMeta())
+        {
+            boolean ok = tryMatch(f.meta(), p.meta(), mr);
+            if (!ok) return false;
+        }
+
         // All children matched!
         return true;
     }

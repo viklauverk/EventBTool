@@ -31,6 +31,13 @@ public class Typed
     // This information is used to pick an efficient implementation for storage.
     // Set to null if no suitable implementation type has been found yet.
     protected ImplType impl_type_;
+    // This is the defacto chosen implementation for this variable/constant.
+    // A default implementation for unbounded INTs can be chosen at code generation,
+    // for example int32_t(Cc++) or int(Java), or unbounded Z class storing any size ints.
+    // Calculations on such unbounded ints will be checked by overflow checks.
+    // If a cardinality is known for the int, the the codegen can pick the smallest
+    // storage container needed to store the int. E.g. x:1..100 means "int8_t x;" can be used.
+    protected Implementation implementation_;
 
     public CheckedType checkedType()
     {
@@ -81,7 +88,7 @@ public class Typed
             }
             else
             {
-                log.error("cannot override checked type string %s with a different checked type %s for %s", checked_type_string_, ct, this);
+                log.info("cannot override checked type string %s with a different checked type %s for %s", checked_type_string_, ct, this);
             }
         }
     }

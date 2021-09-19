@@ -229,7 +229,8 @@ public class CodeGenCpp extends BaseCodeGen
 
     public void writeGuard(Event e, String label)
     {
-        GenerateFormulaCpp gen = new GenerateFormulaCpp(this);
+        PlanImplementation plan = new PlanImplementation(this);
+        GenerateFormulaCpp gen = new GenerateFormulaCpp(this, plan);
         gen.setSymbolTable(e.symbolTable());
         Guard g = e.getGuard(label);
         if (g.hasComment())
@@ -248,8 +249,10 @@ public class CodeGenCpp extends BaseCodeGen
             {
                 p("    "+translateImplType(v.implType(), e.symbolTable())+" ");
             }
+            VisitFormula.walkk(plan, g.formula().left());
             VisitFormula.walk(gen, g.formula().left());
             p(" = ");
+            VisitFormula.walkk(plan, g.formula().right());
             VisitFormula.walk(gen, g.formula().right());
             pl("; // "+g.formula());
         }
@@ -259,6 +262,7 @@ public class CodeGenCpp extends BaseCodeGen
             // it does not evaluate to true.
             p("    bool "+label+" = ");
             gen.cnvs().setMark(); // For debugging formaula translation.
+            VisitFormula.walkk(plan, g.formula());
             VisitFormula.walk(gen, g.formula());
             String debug = gen.cnvs().getSinceMark(); // When not debugging returns empty string.
             pl("; "+Unicode.commentToCpp(g.formula().toString()));
@@ -309,9 +313,11 @@ public class CodeGenCpp extends BaseCodeGen
             {
                 pl("    "+Unicode.commentToCpp(a.comment()));
             }
-            GenerateFormulaCpp gen = new GenerateFormulaCpp(this);
+            PlanImplementation plan = new PlanImplementation(this);
+            GenerateFormulaCpp gen = new GenerateFormulaCpp(this, plan);
             gen.setSymbolTable(e.symbolTable());
             p("    ");
+            VisitFormula.walkk(plan, a.formula());
             VisitFormula.walk(gen, a.formula());
             pl("; // "+a.formula());
         }

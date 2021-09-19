@@ -25,9 +25,9 @@ import java.util.LinkedList;
 
 public class GenerateFormulaJavascript extends GenerateFormulaBaseCodeGen
 {
-    GenerateFormulaJavascript(CodeGenJavascript codegen)
+    GenerateFormulaJavascript(CodeGenJavascript codegen, PlanImplementation plan)
     {
-        super(codegen);
+        super(codegen, plan);
     }
 
     @Override public Formula visit_BECOME_EQ(Formula f)

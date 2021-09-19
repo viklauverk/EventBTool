@@ -25,9 +25,9 @@ import java.util.LinkedList;
 
 public class GenerateFormulaJava extends GenerateFormulaBaseCodeGen
 {
-    GenerateFormulaJava(CodeGenJava codegen)
+    GenerateFormulaJava(CodeGenJava codegen, PlanImplementation plan)
     {
-        super(codegen);
+        super(codegen, plan);
     }
 
     @Override public Formula visit_CONJUNCTION(Formula i)

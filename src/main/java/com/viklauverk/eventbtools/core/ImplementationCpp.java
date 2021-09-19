@@ -11,24 +11,21 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU Affero General Public License for more details.
+
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 package com.viklauverk.eventbtools.core;
 
-public class VisitFormula
+public class ImplementationCpp implements Implementation
 {
-    public static void walkk(WalkFormula v, Formula f)
-    {
-        v.startVisiting(f);
-    }
+    private static Log log = LogModule.lookup("implementationcpp");
 
-    public static String walk(RenderFormula v, Formula f)
+    public void generateAddition(RenderFormula render, PlanImplementation plan, Formula i, Formula left, Formula right)
     {
-        v.cnvs().setMark();
-        v.startVisiting(f);
-        return v.cnvs().getSinceMark();
+        render.visitLeft(i);
+        render.cnvs().append(" + /* PLUSS */ ");
+        render.visitRight(i);
     }
-
 }

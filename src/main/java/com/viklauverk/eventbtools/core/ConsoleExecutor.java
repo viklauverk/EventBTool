@@ -219,7 +219,8 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
     @Override
     public String visitQuitQuit(ConsoleParser.QuitQuitContext ctx)
     {
-        System.out.println("GURKA");
+        System.err.println("GURKA quit quit");
+        System.out.println("GURKA quit quiiittt");
         console_.quit();
         return "quit";
     }
@@ -471,15 +472,17 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
     public String visitShowFormula(ConsoleParser.ShowFormulaContext ctx)
     {
         String f = removeQuotes(ctx.formula.getText());
+        String metaaa = ctx.metaaa() != null ? ctx.metaaa().getText() : "";
         String treee = ctx.treee() != null ? ctx.treee().getText() : "";
         RenderTarget rt = useOrDefault(ctx.format(), console_.renderTarget());
         RenderAttributes ra = console_.renderAttributes();
         String framed = ctx.framed() != null ? ctx.framed().getText() : "";
 
+        boolean show_meta = metaaa.equals("meta");
         boolean show_tree = treee.equals("tree");
         boolean show_frame = framed.equals("framed");
 
-        return console_.renderFormula(f, show_tree, show_frame, rt, ra);
+        return console_.renderFormula(f, show_meta, show_tree, show_frame, rt, ra);
     }
 
     @Override

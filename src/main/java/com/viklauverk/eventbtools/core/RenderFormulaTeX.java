@@ -390,7 +390,7 @@ public class RenderFormulaTeX extends RenderFormulaUnicode
 
     @Override public Formula visit_LAMBDA_ABSTRACTION(Formula i)
     {
-        cnvs().append("(\\lambda "); visitChildNum(i, 0); cnvs().append("\\qdot "); visitChildNum(i, 1); cnvs().append("\\mid "); visitChildNum(i, 2); cnvs().append(")"); return i;
+        cnvs().append("\\lambda "); visitChildNum(i, 0); cnvs().append("\\qdot "); visitChildNum(i, 1); cnvs().append("\\mid "); visitChildNum(i, 2); return i;
     }
 
     @Override public Formula visit_EQUIVALENCE(Formula i)

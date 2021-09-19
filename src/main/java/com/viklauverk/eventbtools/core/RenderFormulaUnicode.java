@@ -33,14 +33,20 @@ public class RenderFormulaUnicode extends RenderFormula
     private boolean limit_to_ascii_ = false;
 
 
-    @Override public void enterNode(Node p)
+    @Override public void enterNode(Formula f)
     {
-        if (add_types_) cnvs().symbol("<"+p.name()+" ");
+        if (addingTypes())
+        {
+            cnvs().symbol("<"+f.node().name()+" ");
+        }
     }
 
-    @Override public void exitNode(Node p)
+    @Override public void exitNode(Formula f)
     {
-        if (add_types_) cnvs().symbol(">");
+        if (addingTypes())
+        {
+            cnvs().symbol(">");
+        }
     }
 
     public void limitToAscii()
@@ -72,32 +78,32 @@ public class RenderFormulaUnicode extends RenderFormula
 
     @Override public Formula visit_BECOME_IN(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c(" :∈ ", " :: ")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c(" :∈ ", " :: ")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_BECOME_SUCH(Formula i)
     {
-        visitLeft(i); cnvs().symbol(" :| "); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(" :| "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_FALSE(Formula i)
     {
-        cnvs().symbol(c("⊥", "false")); return i;
+        cnvs().symbol(c("⊥", "false")); visitMeta(i); return i;
     }
 
     @Override public Formula visit_NUMBER(Formula i)
     {
-        cnvs().number(""+i.intData()); return i;
+        cnvs().number(""+i.intData()); visitMeta(i); return i;
     }
 
     @Override public Formula visit_TRUE(Formula i)
     {
-        cnvs().symbol(c("⊤", "true")); return i;
+        cnvs().symbol(c("⊤", "true")); visitMeta(i); return i;
     }
 
     @Override public Formula visit_APPLICATION(Formula i)
     {
-        cnvs().symbol("["); visitLeft(i); cnvs().symbol("]"); visitRight(i); return i;
+        visitLeft(i);  visitMeta(i); cnvs().symbol("["); visitRight(i);  cnvs().symbol("]"); return i;
     }
 
     @Override public Formula visit_PARENTHESISED_PREDICATE(Formula i)
@@ -121,18 +127,19 @@ public class RenderFormulaUnicode extends RenderFormula
         visitLeft(i);
         checkNewLineBefore(i);
         cnvs().symbol(c("∧","&"));
+        visitMeta(i);
         checkNewLineAfter(i);
         visitRight(i); return i;
     }
 
     @Override public Formula visit_IMPLICATION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("⇒ ","=>")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("⇒ ","=>")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_NEGATION(Formula i)
     {
-        cnvs().symbol(c("¬","not ")); visitChild(i); return i;
+        cnvs().symbol(c("¬","not ")); visitMeta(i); visitChild(i); return i;
     }
 
     @Override public Formula visit_DISJUNCTION(Formula i)
@@ -140,53 +147,54 @@ public class RenderFormulaUnicode extends RenderFormula
         visitLeft(i);
         checkNewLineBefore(i);
         cnvs().symbol(c("∨"," or "));
+        visitMeta(i);
         checkNewLineAfter(i);
         visitRight(i); return i;
     }
 
     @Override public Formula visit_EQUIVALENCE(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("⇔ ", "<=>")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("⇔ ", "<=>")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_UNIVERSALQ(Formula i)
     {
-        cnvs().symbol(c("∀", "!")); visitLeft(i); cnvs().symbol(c("·",".")); visitRight(i); return i;
+        cnvs().symbol(c("∀", "!")); visitMeta(i); visitLeft(i); cnvs().symbol(c("·",".")); visitRight(i); return i;
     }
 
     @Override public Formula visit_EXISTENTIALQ(Formula i)
     {
-        cnvs().symbol(c("∃","#")); visitLeft(i); cnvs().symbol(c("·", ".")); visitRight(i); return i;
+        cnvs().symbol(c("∃","#")); visitMeta(i); visitLeft(i); cnvs().symbol(c("·", ".")); visitRight(i); return i;
     }
 
     @Override public Formula visit_EQUALS(Formula i)
     {
-        visitLeft(i); cnvs().symbol("="); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol("="); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_NOT_EQUALS(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("≠", "/=")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("≠", "/=")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_LESS_THAN(Formula i)
     {
-        visitLeft(i); cnvs().symbol("<"); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol("<"); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_GREATER_THAN(Formula i)
     {
-        visitLeft(i); cnvs().symbol(">"); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(">"); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_LESS_THAN_OR_EQUAL(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("≤", "<=")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("≤", "<=")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_GREATER_THAN_OR_EQUAL(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("≥", ">=")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("≥", ">=")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_CHOICE(Formula i)
@@ -196,32 +204,32 @@ public class RenderFormulaUnicode extends RenderFormula
 
     @Override public Formula visit_MEMBERSHIP(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("∈", ":")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("∈", ":")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_NOT_MEMBERSHIP(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("∉", "/:")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("∉", "/:")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_SUBSET(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("⊆", "<:")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("⊆", "<:")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_STRICT_SUBSET(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("⊂", "<<:")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("⊂", "<<:")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_NOT_SUBSET(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("⊈", "/<:")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("⊈", "/<:")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_NOT_STRICT_SUBSET(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("⊄", "/<<:")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("⊄", "/<<:")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_FINITE(Formula i)
@@ -241,147 +249,147 @@ public class RenderFormulaUnicode extends RenderFormula
 
     @Override public Formula visit_SET_UNION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("∪", "\\/")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("∪", "\\/")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_SET_INTERSECTION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("∩", "/\\")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("∩", "/\\")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_CARTESIAN_PRODUCT(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("×", "**")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("×", "**")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_RELATION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("↔ ", "<->")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("↔ ", "<->")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_TOTAL_RELATION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c(" ", "<<->")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c(" ", "<<->")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_SURJECTIVE_RELATION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c(" ", "<->>")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c(" ", "<->>")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_SURJECTIVE_TOTAL_RELATION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c(" ", "<<->>")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c(" ", "<<->>")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_PARTIAL_FUNCTION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("⇸ ", "+->")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("⇸ ", "+->")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_TOTAL_FUNCTION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("→ ", "-->")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("→ ", "-->")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_PARTIAL_INJECTION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("⤔ ", ">+>")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("⤔ ", ">+>")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_TOTAL_INJECTION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("↣ ", ">->")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("↣ ", ">->")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_PARTIAL_SURJECTION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("⤀ ", "+->>")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("⤀ ", "+->>")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_TOTAL_SURJECTION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("↠ ", "-->>")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("↠ ", "-->>")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_TOTAL_BIJECTION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("⤖ ", ">->>")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("⤖ ", ">->>")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_FORWARD_COMPOSITION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(";"); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(";"); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_BACKWARD_COMPOSITION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("∘", "circ")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("∘", "circ")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_DOMAIN_RESTRICTION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("◁", " <| ")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("◁", " <| ")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_DOMAIN_SUBTRACTION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("⩤", " <<| ")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("⩤", " <<| ")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_RANGE_RESTRICTION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("▷", " |> ")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("▷", " |> ")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_RANGE_SUBTRACTION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("⩥", " |>> ")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("⩥", " |>> ")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_OVERRIDE(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("", " <+ ")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("", " <+ ")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_DIRECT_PRODUCT(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("⊗", "><")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("⊗", "><")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_PARALLEL_PRODUCT(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("∥", "||")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("∥", "||")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_POWER_SET(Formula i)
     {
-        cnvs().symbol(c("ℙ(", "POW(")); visitChild(i); cnvs().symbol(")"); return i;
+        cnvs().symbol(c("ℙ", "POW")); visitMeta(i); cnvs().symbol("("); visitChild(i); cnvs().symbol(")"); return i;
     }
 
     @Override public Formula visit_POWER1_SET(Formula i)
     {
-        cnvs().symbol(c("ℙ1(", "POW1(")); visitChild(i); cnvs().symbol(")"); return i;
+        cnvs().symbol(c("ℙ1", "POW1")); visitMeta(i); cnvs().symbol("("); visitChild(i); cnvs().symbol(")"); return i;
     }
 
     @Override public Formula visit_Q_UNION(Formula i)
     {
-        cnvs().symbol(c("⋃", "UNION ")); visitChildNum(i, 0); cnvs().symbol("."); visitChildNum(i, 1); cnvs().symbol("|"); visitChildNum(i, 2); return i;
+        cnvs().symbol(c("⋃", "UNION ")); visitMeta(i); visitChildNum(i, 0); cnvs().symbol("."); visitChildNum(i, 1); cnvs().symbol("|"); visitChildNum(i, 2); return i;
     }
 
     @Override public Formula visit_Q_INTER(Formula i)
     {
-        cnvs().symbol(c("⋂", "INTER ")); visitChildNum(i, 0); cnvs().symbol("."); visitChildNum(i, 1); cnvs().symbol("|"); visitChildNum(i, 2); return i;
+        cnvs().symbol(c("⋂", "INTER ")); visitMeta(i); visitChildNum(i, 0); cnvs().symbol("."); visitChildNum(i, 1); cnvs().symbol("|"); visitChildNum(i, 2); return i;
     }
 
     @Override public Formula visit_LAMBDA_ABSTRACTION(Formula i)
     {
-        cnvs().symbol(c("(λ", "(%")); visitChildNum(i, 0); cnvs().symbol(c("·",".")); visitChildNum(i, 1); cnvs().symbol("|"); visitChildNum(i, 2); cnvs().symbol(")"); return i;
+        cnvs().symbol(c("λ", "%")); visitMeta(i); visitChildNum(i, 0); cnvs().symbol(c("·",".")); visitChildNum(i, 1); cnvs().symbol("|"); visitChildNum(i, 2); return i;
     }
 
     @Override public Formula visit_SET_COMPREHENSION(Formula i)
     {
-        cnvs().symbol("{"); visitChildNum(i, 0); cnvs().symbol(c("·", ".")); visitChildNum(i, 1); cnvs().symbol("|"); visitChildNum(i, 2); cnvs().symbol("}"); return i;
+        cnvs().symbol("{"); visitMeta(i); visitChildNum(i, 0); cnvs().symbol(c("·", ".")); visitChildNum(i, 1); cnvs().symbol("|"); visitChildNum(i, 2); cnvs().symbol("}"); return i;
     }
 
     @Override public Formula visit_ENUMERATED_SET(Formula i)
@@ -406,17 +414,17 @@ public class RenderFormulaUnicode extends RenderFormula
 
     @Override public Formula visit_MULTIPLICATION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("∗", "*")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("∗", "*")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_DIVISION(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("÷", "/")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("÷", "/")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_UP_TO(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("‥", "..")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("‥", "..")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_EMPTY_SET(Formula i)
@@ -426,61 +434,57 @@ public class RenderFormulaUnicode extends RenderFormula
 
     @Override public Formula visit_NAT_SET(Formula i)
     {
-        cnvs().primitiveSet(c("ℕ", "NAT")); return i;
+        cnvs().primitiveSet(c("ℕ", "NAT")); visitMeta(i); return i;
     }
 
     @Override public Formula visit_NAT1_SET(Formula i)
     {
-        cnvs().primitiveSet(c("ℕ1", "NAT1")); return i;
+        cnvs().primitiveSet(c("ℕ1", "NAT1")); visitMeta(i); return i;
     }
 
     @Override public Formula visit_INT_SET(Formula i)
     {
-        cnvs().primitiveSet(c("ℤ", "INT")); return i;
+        cnvs().primitiveSet(c("ℤ", "INT")); visitMeta(i); return i;
     }
 
     @Override public Formula visit_MAPSTO(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c("↦", "|->")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c("↦", "|->")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_ANY_SYMBOL(Formula i)
     {
-        cnvs().any(Symbols.name(i.intData())); return i;
+        cnvs().any(Symbols.name(i.intData())); visitMeta(i); return i;
     }
 
     @Override public Formula visit_NUMBER_SYMBOL(Formula i)
     {
-        cnvs().number(Symbols.name(i.intData())); return i;
+        cnvs().number(Symbols.name(i.intData())); visitMeta(i); return i;
     }
 
     @Override public Formula visit_PREDICATE_SYMBOL(Formula i)
     {
-        cnvs().predicate(Symbols.name(i.intData())); return i;
+        cnvs().predicate(Symbols.name(i.intData())); visitMeta(i); return i;
     }
 
     @Override public Formula visit_EXPRESSION_SYMBOL(Formula i)
     {
-        cnvs().expression(Symbols.name(i.intData())); return i;
+        cnvs().expression(Symbols.name(i.intData())); visitMeta(i); return i;
     }
 
     @Override public Formula visit_SET_SYMBOL(Formula i)
     {
-        cnvs().set(Symbols.name(i.intData())); return i;
+        cnvs().set(Symbols.name(i.intData())); visitMeta(i); return i;
     }
 
     @Override public Formula visit_CONSTANT_SYMBOL(Formula i)
     {
-        cnvs().constant(Symbols.name(i.intData())); return i;
+        cnvs().constant(Symbols.name(i.intData())); visitMeta(i); return i;
     }
 
     @Override public Formula visit_VARIABLE_SYMBOL(Formula i)
     {
-        cnvs().variable(
-            Symbols.name(
-                i.intData()));
-
-        return i;
+        cnvs().variable(Symbols.name(i.intData())); visitMeta(i); return i;
     }
 
     @Override public Formula visit_VARIABLE_PRIM_SYMBOL(Formula i)
@@ -489,6 +493,7 @@ public class RenderFormulaUnicode extends RenderFormula
             Symbols.name(
                 i.intData()));
         cnvs().symbol("'");
+        visitMeta(i);
 
         return i;
     }
@@ -498,118 +503,134 @@ public class RenderFormulaUnicode extends RenderFormula
         cnvs().nonFreeVariable(
             Symbols.name(
                 i.intData()));
+        visitMeta(i);
 
         return i;
     }
 
     @Override public Formula visit_INVERT(Formula i)
     {
-        visitChild(i); cnvs().symbol("~"); return i;
+        visitChild(i); cnvs().symbol("~"); visitMeta(i); return i;
     }
 
     @Override public Formula visit_RELATION_IMAGE(Formula i)
     {
-        visitLeft(i); cnvs().symbol("["); visitRight(i); cnvs().symbol("]"); return i;
+        visitLeft(i); cnvs().symbol("["); visitRight(i); cnvs().symbol("]"); visitMeta(i); return i;
     }
 
     @Override public Formula visit_G_UNION(Formula i)
     {
-        cnvs().symbol("union("); visitChild(i); cnvs().symbol(")"); return i;
+        cnvs().symbol("union("); visitMeta(i); visitChild(i); cnvs().symbol(")"); return i;
     }
 
     @Override public Formula visit_G_INTER(Formula i)
     {
-        cnvs().symbol("inter("); visitChild(i); cnvs().symbol(")"); return i;
+        cnvs().symbol("inter("); visitMeta(i); visitChild(i); cnvs().symbol(")"); return i;
     }
 
     @Override public Formula visit_DOMAIN(Formula i)
     {
-        cnvs().symbol("dom("); visitChild(i); cnvs().symbol(")"); return i;
+        cnvs().symbol("dom("); visitMeta(i); visitChild(i); cnvs().symbol(")"); return i;
     }
 
     @Override public Formula visit_RANGE(Formula i)
     {
-        cnvs().symbol("ran("); visitChild(i); cnvs().symbol(")"); return i;
+        cnvs().symbol("ran("); visitMeta(i); visitChild(i); cnvs().symbol(")"); return i;
     }
 
     @Override public Formula visit_SET_MINUS(Formula i)
     {
-        visitLeft(i); cnvs().symbol("\\"); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol("\\"); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_SET_COMPREHENSION_SPECIAL(Formula i)
     {
-        cnvs().symbol("{"); visitLeft(i); cnvs().symbol("|"); visitRight(i); cnvs().symbol("}"); return i;
+        cnvs().symbol("{"); visitMeta(i); visitLeft(i); cnvs().symbol("|"); visitRight(i); cnvs().symbol("}"); return i;
     }
 
     @Override public Formula visit_ADDITION(Formula i)
     {
-        visitLeft(i); cnvs().symbol("+"); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol("+"); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_SUBTRACTION(Formula i)
     {
-        visitLeft(i); cnvs().symbol("-"); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol("-"); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_MODULO(Formula i)
     {
-        visitLeft(i); cnvs().symbol(" mod "); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(" mod "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_EXPONENTIATION(Formula i)
     {
-        visitLeft(i); cnvs().symbol("^"); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol("^"); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_MINIMUM(Formula i)
     {
-        cnvs().symbol("min("); visitChild(i); cnvs().symbol(")"); return i;
+        cnvs().symbol("min"); visitMeta(i); cnvs().symbol("("); visitChild(i); cnvs().symbol(")"); return i;
     }
 
     @Override public Formula visit_MAXIMUM(Formula i)
     {
-        cnvs().symbol("max("); visitChild(i); cnvs().symbol(")"); return i;
+        cnvs().symbol("max"); visitMeta(i); cnvs().symbol("("); visitChild(i); cnvs().symbol(")"); return i;
     }
 
     @Override public Formula visit_TEST_BOOL(Formula i)
     {
-        cnvs().symbol("bool("); visitChild(i); cnvs().symbol(")"); return i;
+        cnvs().symbol("bool"); visitMeta(i); cnvs().symbol("("); visitChild(i); cnvs().symbol(")"); return i;
     }
 
     @Override public Formula visit_CARDINALITY(Formula i)
     {
-        cnvs().symbol("card("); visitChild(i); cnvs().symbol(")"); return i;
+        cnvs().symbol("card"); visitMeta(i); cnvs().symbol("("); visitChild(i); cnvs().symbol(")"); return i;
     }
 
     @Override public Formula visit_ID_SET(Formula i)
     {
-        cnvs().symbol(" id "); return i;
+        cnvs().symbol(" id "); visitMeta(i); return i;
     }
 
     @Override public Formula visit_PRJ1(Formula i)
     {
-        cnvs().symbol("prj1("); visitChild(i); cnvs().symbol(")"); return i;
+        cnvs().symbol(" prj1 "); visitMeta(i); return i;
     }
 
     @Override public Formula visit_PRJ2(Formula i)
     {
-        cnvs().symbol("prj2("); visitChild(i); cnvs().symbol(")"); return i;
+        cnvs().symbol(" prj2 "); visitMeta(i); return i;
     }
 
     @Override public Formula visit_BOOL_SET(Formula i)
     {
-        cnvs().primitiveSet("BOOL"); return i;
+        cnvs().set("BOOL"); visitMeta(i); return i;
     }
 
     @Override public Formula visit_FUNC_APP(Formula i)
     {
-        visitLeft(i); cnvs().symbol("("); visitRight(i); cnvs().symbol(")"); return i;
+        visitLeft(i); visitMeta(i); cnvs().symbol("("); visitRight(i); cnvs().symbol(")"); return i;
     }
 
     @Override public Formula visit_FUNC_INV_APP(Formula i)
     {
-        visitLeft(i); cnvs().symbol("~("); visitRight(i); cnvs().symbol(")"); return i;
+        visitLeft(i); visitMeta(i); cnvs().symbol("~("); visitRight(i); cnvs().symbol(")"); return i;
+    }
+
+    @Override public Formula visit_META(Formula i)
+    {
+        if (addingMetas() && i.hasMeta())
+        {
+            cnvs().symbol("«");
+            if (addingTypes())
+            {
+                cnvs().symbol("META ");
+            }
+            innerVisit(i.meta());
+            cnvs().symbol("»"); return i;
+        }
+        return i;
     }
 
 }

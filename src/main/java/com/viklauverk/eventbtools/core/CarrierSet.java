@@ -34,6 +34,8 @@ public class CarrierSet
     private List<Constant> member_ordering_;
     private List<String> member_names_;
     private Context context_;
+    // The
+    protected Implementation implementation_;
 
     public CarrierSet(String n, Context c)
     {

@@ -513,7 +513,7 @@ public class Context
         log.debug("parsing %s", name());
         for (CarrierSet cs : setOrdering())
         {
-            Formula f = FormulaFactory.newSetSymbol(cs.name());
+            Formula f = FormulaFactory.newSetSymbol(cs.name(), Formula.NO_META);
             ImplType type = sys().typing().lookupImplType(f);
             log.debug("adding carrier set type: "+type.name());
         }

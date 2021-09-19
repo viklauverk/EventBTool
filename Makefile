@@ -95,6 +95,8 @@ $(BUILD_JAVAC_BIN)/evbt: scripts/evbt.sh $(TEMPLATES_JAVA) $(PROJECT_DEPS)/updat
 	$(AT)chmod a+x $@
 	@echo Generated $(call DROP_ROOT,$@)
 
+# To trace neeed resources for runtime, use -agentlib:native-image-agent=config-output-dir=myrun/config-dir/
+# Then compare the contents of myrun/config-dir with make/native-image-config-dir
 #--no-fallback
 $(BUILD_GRAAL_BIN)/evbt: mvn
 	@echo Compiling using graal
@@ -207,6 +209,8 @@ testinternals:
 	@echo "    dir $(call DROP_ROOT,$(BUILD)/test_$(MOST_RECENT))"
 	@java -ea -cp $(BUILD)/classes:$(BUILD)/generated-sources:$(JARS) com.viklauverk.eventbtools.TestInternals
 	@echo "OK Tested internals."
+	@java -ea -cp $(BUILD)/classes:$(BUILD)/generated-sources:$(JARS) com.viklauverk.eventbtools.core.TestInternals
+	@echo "OK Tested core internals."
 
 
 testm: testinternals

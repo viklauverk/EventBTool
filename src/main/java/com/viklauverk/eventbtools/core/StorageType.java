@@ -11,24 +11,14 @@
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU Affero General Public License for more details.
+
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 package com.viklauverk.eventbtools.core;
 
-public class VisitFormula
+public enum StorageType
 {
-    public static void walkk(WalkFormula v, Formula f)
-    {
-        v.startVisiting(f);
-    }
-
-    public static String walk(RenderFormula v, Formula f)
-    {
-        v.cnvs().setMark();
-        v.startVisiting(f);
-        return v.cnvs().getSinceMark();
-    }
-
+    VAR, SET, VEC, MAP, REL, MEM, EXT, SQL, DOM, RAN;
 }

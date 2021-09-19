@@ -167,7 +167,7 @@
 \definecolor{EvBKeyword}{HTML}{000000}%
 \definecolor{EvBVariable}{HTML}{000000}%
 \definecolor{EvBConstant}{HTML}{\Indigo}%
-\definecolor{EvBCarrierSet}{HTML}{\LimeGreen}%
+\definecolor{EvBCarrierSet}{HTML}{\DarkGreen}%
 \definecolor{EvBPrimitiveSet}{HTML}{000000}%
 \definecolor{EvBComment}{HTML}{000000}%
 \definecolor{EvBLabel}{HTML}{0066cc}%
