@@ -113,15 +113,18 @@ class Pattern
     }
 
 
-    private static boolean okToAdd(Formula f, Formula p, Map<String,Formula> prevs)
+    private static boolean okToAdd(Formula f, Formula p, Map<String,Formula> prevs, String table_name)
     {
+        Node ft = f.node();
+        Node pt = p.node();
+
         Formula prev = prevs.get(p.symbol());
         if (prev == null)
         {
             // First time we find this (P,E,S,v,c) symbol.
             // No checking needed, just store the matching formula.
             prevs.put(p.symbol(), f);
-            log.trace(" %s = %s", p.symbol(), f);
+            log.trace("match found %s(%s) == %s(%s) stored %s = %s into table %s", ft, f, pt, p, p.symbol(), f, table_name);
             return true;
         }
 
@@ -131,13 +134,35 @@ class Pattern
         boolean ok = prev.equals(f);
         if (ok)
         {
-            log.trace(" %s === %s", p.symbol(), f);
+            log.trace(" Already stored match %s === %s in table %s", p.symbol(), f, table_name);
         }
         else
         {
-            log.trace(" GOUCH %s !== %s", p.symbol(), f);
+            log.trace(" New match is different! OUCH %s !== %s in table %s", p.symbol(), f, table_name);
         }
         return ok;
+    }
+
+    private static boolean tryMetaMatch(Formula f, Formula p, MatchResult mr)
+    {
+        // Either both has to have a meta, or none must have a meta.
+        if (f.hasMeta() != p.hasMeta()) return false;
+
+        if (f.hasMeta())
+        {
+            log.trace("Matching meta \"%s\" VS \"%s\"", f.meta(), p.meta());
+            boolean ok = tryMatch(f.meta(), p.meta(), mr);
+            if (ok)
+            {
+                log.trace("Meta matched ok!");
+            }
+            else
+            {
+                log.trace("Meta match failed!");
+            }
+            if (!ok) return false;
+        }
+        return true;
     }
 
     private static boolean tryMatch(Formula f, Formula p, MatchResult mr)
@@ -145,41 +170,48 @@ class Pattern
         Node ft = f.node();
         Node pt = p.node();
 
-        log.trace(" test %s(%s) == %s(%s)", ft, f, pt, p);
+        log.trace("test %s(%s) == %s(%s)", ft, f, pt, p);
 
         if (pt == Node.PREDICATE_SYMBOL)
         {
             if (!f.isPredicate()) return false;
-            return okToAdd(f, p, mr.predicates);
+            if (!tryMetaMatch(f, p, mr)) return false;
+            return okToAdd(f, p, mr.predicates, "predicates");
         }
         if (pt == Node.EXPRESSION_SYMBOL)
         {
             if (!f.isExpression()) return false;
-            return okToAdd(f, p, mr.expressions);
+            if (!tryMetaMatch(f, p, mr)) return false;
+            return okToAdd(f, p, mr.expressions, "expressions");
         }
         if (pt == Node.SET_SYMBOL)
         {
             if (!f.isSet()) return false;
-            return okToAdd(f, p, mr.sets);
+            if (!tryMetaMatch(f, p, mr)) return false;
+            return okToAdd(f, p, mr.sets, "sets");
         }
         if (pt == Node.VARIABLE_SYMBOL)
         {
             if (!f.isVariable()) return false;
-            return okToAdd(f, p, mr.variables);
+            if (!tryMetaMatch(f, p, mr)) return false;
+            return okToAdd(f, p, mr.variables, "variables");
         }
         if (pt == Node.CONSTANT_SYMBOL)
         {
             if (!f.isConstant()) return false;
-            return okToAdd(f, p, mr.constants);
+            if (!tryMetaMatch(f, p, mr)) return false;
+            return okToAdd(f, p, mr.constants, "constants");
         }
         if (pt == Node.NUMBER_SYMBOL)
         {
             if (!f.isNumber()) return false;
-            return okToAdd(f, p, mr.numbers);
+            if (!tryMetaMatch(f, p, mr)) return false;
+            return okToAdd(f, p, mr.numbers, "numbers");
         }
         if (pt == Node.ANY_SYMBOL)
         {
-            return okToAdd(f, p, mr.anys);
+            if (!tryMetaMatch(f, p, mr)) return false;
+            return okToAdd(f, p, mr.anys, "anys");
         }
 
         // The node types do not match!
@@ -194,7 +226,8 @@ class Pattern
             // just reuse the parent as the list holder.
             // This means that matching { c, d } with the pattern { A } will match
             // and getAny("A") will return <ENUMERATED_SET {<CONSTANT_SYMBOL c>,<CONSTANT_SYMBOL d>}>
-            return okToAdd(f, p.child(0), mr.anys);
+            if (!tryMetaMatch(f, p, mr)) return false;
+            return okToAdd(f, p.child(0), mr.anys, "anys");
         }
 
         // We have identical types, now check recursively if it matches.
@@ -204,15 +237,6 @@ class Pattern
         for (int i=0; i<n; ++i)
         {
             boolean ok = tryMatch(f.child(i), p.child(i), mr);
-            if (!ok) return false;
-        }
-
-        // Either both has to have a meta, or none must have a meta.
-        if (f.hasMeta() != p.hasMeta()) return false;
-
-        if (f.hasMeta())
-        {
-            boolean ok = tryMatch(f.meta(), p.meta(), mr);
             if (!ok) return false;
         }
 
@@ -338,4 +362,40 @@ class Pattern
     {
         return match_results_.rule;
     }
+
+    public String allMatches()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        for (String pred : predicateNames())
+        {
+            sb.append(pred+"="+getPred(pred)+" ");
+        }
+        for (String e : expressionNames())
+        {
+            sb.append(e+"="+getExpr(e)+" ");
+        }
+        for (String s : setNames())
+        {
+            sb.append(s+"="+getSet(s)+" ");
+        }
+        for (String v : variableNames())
+        {
+            sb.append(v+"="+getVar(v)+" ");
+        }
+        for (String c : constantNames())
+        {
+            sb.append(c+"="+getConst(c)+" ");
+        }
+        for (String n : numberNames())
+        {
+            sb.append(n+"="+getNumber(n)+" ");
+        }
+        for (String a : anyNames())
+        {
+            sb.append(a+"="+getAny(a)+" ");
+        }
+        return sb.toString().trim();
+    }
+
 }

@@ -9,6 +9,8 @@ EVBT(show template "TeXPackages")
 EVBT(show template "TeXDefinitions")
 
 % EVBT(add defaults) make sure we have PQR ST xy mn cd in the symbol table.
+% EVBT(add vars height speeds)
+% EVBT(add consts addition)
 
 \begin{document}
 
@@ -122,9 +124,9 @@ EVBT(show template "TeXDefinitions")
 
   \fbox{EVBT(sf S || T)}
   \hfill
-  \fbox{EVBT(sf prj1(x|->y))}
+  \fbox{EVBT(sf { x|->y } <| prj1) }
   \hfill
-  \fbox{EVBT(sf prj2(x|->y))}
+  \fbox{EVBT(sf { x|->y } <| prj2) }
 
   \fbox{EVBT(sf S +->> T)}
   \hfill
@@ -168,7 +170,7 @@ EVBT(show template "TeXDefinitions")
   \hfill
   \fbox{EVBT(sf UNION x . x:0..20 | NAT)}
 
-  pred?
+  \fbox{EVBT(sfm height«5»)}
   \hfill
   \fbox{EVBT(sf 1..111)}
   \hfill

@@ -76,12 +76,23 @@ public class TestInternals
     public static boolean testMatching()
     {
         boolean ok = true;
-        // Additional variable v w
-        ok &= testMatch("v > 5", "x > E", "E=5 x=v");
-        ok &= testMatch("v ≔ v ∪ {72}", "x ≔ x ∪ {E}", "E=72 x=v");
-        //ok &= testMatch("func(constant) = 0", "c(E) = E", "GURKA");
-//        ok &= testFailedMatch("e(f) = 0", "c(E) = E", "");
-        ok &= testFailedMatch("v ≔ w ∪ {72}", "x ≔ x ∪ {E}", "FAILURE");
+
+        // Additional variables height speeds
+        //            constants addition
+
+        // Basic matching
+        ok &= testMatch("height > 5", "x > E", "E=5 x=height");
+        ok &= testMatch("speeds ≔ speeds ∪ {72}", "x ≔ x ∪ {E}", "E=72 x=speeds");
+        ok &= testMatch("addition(7)", "c(E)", "E=7 c=addition");
+        ok &= testMatch("addition(7)", "c(N)", "c=addition N=7");
+        ok &= testMatch("{1|->2}(1) = 2", "E(F) = N", "E={1↦2} F=1 N=2");
+
+        // Test Meta data matching
+        ok &= testMatch("height«5»", "x«N»", "x=height N=5");
+//        ok &= testMatch("speeds«set|->»", "x«N»", "x=height N=5");
+
+        ok &= testFailedMatch("height ≔ speeds ∪ {72}", "x ≔ x ∪ {E}", "FAILURE"); // Should be same variable in both x positions.
+
         return ok;
     }
 
@@ -99,8 +110,8 @@ public class TestInternals
     public static boolean testMatch(String f, String p, String r, boolean expect_fail)
     {
         SymbolTable symbols = new SymbolTable("root");
-        symbols.addVariableSymbols("v", "w");
-        symbols.addConstantSymbols("func", "constant");
+        symbols.addVariableSymbols("height", "speeds");
+        symbols.addConstantSymbols("addition");
 
         Formula formula = Formula.fromString(f, symbols);
         Pattern pattern = new Pattern();
@@ -115,29 +126,8 @@ public class TestInternals
             return false;
         }
 
-        StringBuilder sb = new StringBuilder();
+        String m = pattern.allMatches();
 
-        for (String pred : pattern.predicateNames())
-        {
-            sb.append(pred+"="+pattern.getPred(pred)+" ");
-        }
-        for (String e : pattern.expressionNames())
-        {
-            sb.append(e+"="+pattern.getExpr(e)+" ");
-        }
-        for (String s : pattern.setNames())
-        {
-            sb.append(s+"="+pattern.getSet(s)+" ");
-        }
-        for (String v : pattern.variableNames())
-        {
-            sb.append(v+"="+pattern.getVar(v)+" ");
-        }
-        for (String c : pattern.constantNames())
-        {
-            sb.append(c+"="+pattern.getConst(c)+" ");
-        }
-        String m = sb.toString().trim();
         if (!r.equals(m))
         {
             System.out.println("ERROR expected \""+r+"\" but got \""+m+"\"");

@@ -148,7 +148,7 @@ public class WalkFormula implements FormulaVisitor
     public Formula visit_MAPSTO(Formula i) { visitLeft(i); visitRight(i); return i; }
     public Formula visit_FUNC_APP(Formula i) { visitLeft(i); visitRight(i); return i; }
     public Formula visit_FUNC_INV_APP(Formula i) { visitLeft(i); visitRight(i); return i; }
-    public Formula visit_META(Formula i) { visitMeta(i); return i; }
+    public Formula visit_META(Formula i) { return i; }
 
 
     Formula startVisiting(Formula i)

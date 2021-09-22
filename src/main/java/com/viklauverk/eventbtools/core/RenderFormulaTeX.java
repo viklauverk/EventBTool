@@ -415,12 +415,12 @@ public class RenderFormulaTeX extends RenderFormulaUnicode
 
     @Override public Formula visit_PRJ1(Formula i)
     {
-        cnvs().append("\\prjone ("); visitChild(i); cnvs().append(")"); return i;
+        cnvs().append("\\prjone "); return i;
     }
 
     @Override public Formula visit_PRJ2(Formula i)
     {
-        cnvs().append("\\prjtwo ("); visitChild(i); cnvs().append(")"); return i;
+        cnvs().append("\\prjtwo "); return i;
     }
 
     @Override public Formula visit_SET_MINUS(Formula i)

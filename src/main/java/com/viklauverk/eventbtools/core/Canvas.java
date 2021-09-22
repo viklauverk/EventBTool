@@ -1404,6 +1404,46 @@ public class Canvas
         assert (false) : "Unknown encoding "+render_target_;
     }
 
+    public void metaLeft()
+    {
+        switch (render_target_)
+        {
+        case PLAIN:
+            append("«");
+            return;
+        case TERMINAL:
+            append(colorize(Green, "«"));
+            return;
+        case TEX:
+            append("\\ll ");
+            return;
+        case HTMQ:
+            append(" span(class=META)=«");
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
+    public void metaRight()
+    {
+        switch (render_target_)
+        {
+        case PLAIN:
+            append("»");
+            return;
+        case TERMINAL:
+            append(colorize(Green, "»"));
+            return;
+        case TEX:
+            append("\\gg ");
+            return;
+        case HTMQ:
+            append(" span(class=META)=»");
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
     public String colorize(String color, String s)
     {
         if (renderAttributes().color())

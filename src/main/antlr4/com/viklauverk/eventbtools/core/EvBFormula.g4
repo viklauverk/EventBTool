@@ -29,6 +29,7 @@ import java.util.LinkedList;
 
 @parser::members {
 public SymbolTable symbol_table = null;
+public SymbolTable meta_table = null;
 public boolean all_symbols_are_non_free_vars = false;
 public List<String> non_free_vars = new LinkedList<>();
 
@@ -78,6 +79,7 @@ void popFrame()
 }
 @lexer::members {
 public SymbolTable symbol_table = null;
+public SymbolTable meta_table = null;
 }
 
 

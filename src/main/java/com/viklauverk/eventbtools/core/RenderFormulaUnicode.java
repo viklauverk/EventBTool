@@ -622,13 +622,13 @@ public class RenderFormulaUnicode extends RenderFormula
     {
         if (addingMetas() && i.hasMeta())
         {
-            cnvs().symbol("«");
+            cnvs().metaLeft();
             if (addingTypes())
             {
                 cnvs().symbol("META ");
             }
             innerVisit(i.meta());
-            cnvs().symbol("»"); return i;
+            cnvs().metaRight(); return i;
         }
         return i;
     }
