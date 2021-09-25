@@ -215,7 +215,7 @@ substitution
    : left=listOfSymbols BCMEQ meta? right=listOfExpressions  # BecomeEQ
    | variable=SYMBOL '(' left=expression ')' BCMEQ meta? right=expression # BecomeEQFuncApp
    | variable=SYMBOL BCMIN meta? inner=expression  # BecomeIN
-   | variable=SYMBOL BCMSUCH meta? inner=predicate # BecomeSUCH
+   | left=listOfSymbols BCMSUCH meta? right=predicate # BecomeSUCH
    ;
 
 listOfNonFreeSymbols

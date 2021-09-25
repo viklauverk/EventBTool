@@ -54,10 +54,10 @@ public class FormulaFactory
     }
 
     public static
-    Formula newBecomeSUCH(Formula var, Formula f, Formula meta)
+    Formula newBecomeSUCH(Formula syms, Formula f, Formula meta)
     {
         return new Formula(Node.BECOME_SUCH,
-                           var,
+                           syms,
                            f,
                            meta);
     }

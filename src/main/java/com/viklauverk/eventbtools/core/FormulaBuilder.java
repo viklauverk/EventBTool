@@ -343,9 +343,9 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
     @Override
     public Formula visitBecomeSUCH(EvBFormulaParser.BecomeSUCHContext ctx)
     {
-        Formula var = FormulaFactory.newVariableSymbol(ctx.variable.getText(), Formula.NO_META);
-        Formula set = this.visit(ctx.inner);
-        return FormulaFactory.newBecomeSUCH(var, set, visitOptionalMeta(ctx.meta()));
+        Formula left = this.visit(ctx.left);
+        Formula right = this.visit(ctx.right);
+        return FormulaFactory.newBecomeSUCH(left, right, visitOptionalMeta(ctx.meta()));
     }
 
     @Override

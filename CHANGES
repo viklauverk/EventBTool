@@ -1,3 +1,6 @@
+
+Add proper Event-B syntax for become such assigning multiple variables.
+
 Version 1.4.0: 2021-06-11
 
 Add Event-B syntax for extending multiple contexts.
