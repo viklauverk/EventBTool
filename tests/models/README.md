@@ -38,6 +38,11 @@ from a machine through parameters prefixed with out_.
 
 [Library.pdf](Library.pdf)
 
+## Projections
+Test using projections to get the left and right parts of pairs.
+
+[Projections.pdf](Projections.pdf)
+
 ## ProofFailures
 A machine with unproven, reviewed and manually proven POs.
 

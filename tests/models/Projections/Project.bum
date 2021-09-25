@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1632553574065" org.eventb.texttools.text_representation="machine Project&#10;&#10;variables mapping left right&#10;&#10;invariants&#10;  @inv1 mapping ⊆ 1‥10 × BOOL&#10;  @inv2 left ∈ dom(mapping)&#10;  @inv3 right ∈ ran(mapping)&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @init1 mapping ≔ { 1↦FALSE }&#10;      @init2 left ≔ 1&#10;      @init3 right ≔ FALSE&#10;  end&#10;&#10;  event addPair&#10;    any l r&#10;    where&#10;      @grd1 l ∈ dom(mapping)&#10;      @grd2 r ∈ ran(mapping)&#10;    then&#10;      @act1 mapping ≔ mapping ∪ { l ↦ r }&#10;  end&#10;&#10;  event extractParts&#10;  /* Take a pair and split it into its left part and right part&#10;     using the prj function generators.&#10;  */&#10;    any x&#10;    where&#10;      @grd1 x ∈ mapping&#10;    then&#10;      @act1 left ≔ (mapping ◁ prj1)(x) // Mapping is only used to deduce the types for prj1!&#10;      @act2 right ≔ ((ℕ×BOOL) ◁ prj2)(x) // Here the types are explicit, but same function.&#10;  end&#10;end&#10;" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="_Uh7joB3NEeyHBadCV4jmVA" org.eventb.core.assignment="mapping ≔ { 1↦FALSE }" org.eventb.core.generated="false" org.eventb.core.label="init1"/>
+        <org.eventb.core.action name="_vob24B3NEeyHBadCV4jmVA" org.eventb.core.assignment="left ≔ 1" org.eventb.core.generated="false" org.eventb.core.label="init2"/>
+        <org.eventb.core.action name="_vob24R3NEeyHBadCV4jmVA" org.eventb.core.assignment="right ≔ FALSE" org.eventb.core.generated="false" org.eventb.core.label="init3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="_Qa-8YB3NEeyHBadCV4jmVA" org.eventb.core.generated="false" org.eventb.core.identifier="mapping"/>
+    <org.eventb.core.invariant name="_Qa-8YR3NEeyHBadCV4jmVA" org.eventb.core.generated="false" org.eventb.core.label="inv1" org.eventb.core.predicate="mapping ⊆ 1‥10 × BOOL"/>
+    <org.eventb.core.invariant name="_rgDFMh3NEeyHBadCV4jmVA" org.eventb.core.generated="false" org.eventb.core.label="inv2" org.eventb.core.predicate="left ∈ dom(mapping)"/>
+    <org.eventb.core.invariant name="_rgDsQB3NEeyHBadCV4jmVA" org.eventb.core.generated="false" org.eventb.core.label="inv3" org.eventb.core.predicate="right ∈ ran(mapping)"/>
+    <org.eventb.core.event name="_fcCrUB3OEeyHBadCV4jmVA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="addPair">
+        <org.eventb.core.parameter name="_fcCrUR3OEeyHBadCV4jmVA" org.eventb.core.generated="false" org.eventb.core.identifier="l"/>
+        <org.eventb.core.parameter name="_fcCrUh3OEeyHBadCV4jmVA" org.eventb.core.generated="false" org.eventb.core.identifier="r"/>
+        <org.eventb.core.guard name="_rgDsQx3NEeyHBadCV4jmVA" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="l ∈ dom(mapping)"/>
+        <org.eventb.core.guard name="_fcDSYB3OEeyHBadCV4jmVA" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="r ∈ ran(mapping)"/>
+        <org.eventb.core.action name="_rgDsRB3NEeyHBadCV4jmVA" org.eventb.core.assignment="mapping ≔ mapping ∪ { l ↦ r }" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="_Jix5AB3OEeyHBadCV4jmVA" org.eventb.core.comment="Take a pair and split it into its left part and right part&#10;     using the prj function generators.&#10;  " org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="extractParts">
+        <org.eventb.core.parameter name="_rgDsQh3NEeyHBadCV4jmVA" org.eventb.core.generated="false" org.eventb.core.identifier="x"/>
+        <org.eventb.core.guard name="_fcDSYR3OEeyHBadCV4jmVA" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="x ∈ mapping"/>
+        <org.eventb.core.action name="_fcDSYh3OEeyHBadCV4jmVA" org.eventb.core.assignment="left ≔ (mapping ◁ prj1)(x)" org.eventb.core.comment="Mapping is only used to deduce the types for prj1!" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_0IKxkB3NEeyHBadCV4jmVA" org.eventb.core.assignment="right ≔ ((ℕ×BOOL) ◁ prj2)(x)" org.eventb.core.comment="Here the types are explicit, but same function." org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="_PIchAB3OEeyHBadCV4jmVA" org.eventb.core.generated="false" org.eventb.core.identifier="left"/>
+    <org.eventb.core.variable name="_PIchAR3OEeyHBadCV4jmVA" org.eventb.core.generated="false" org.eventb.core.identifier="right"/>
+</org.eventb.core.machineFile>

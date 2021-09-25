@@ -19,6 +19,9 @@ if [ "$?" != "0" ]; then exit 1; fi
 ./tests/test_setcomprehensions.sh $PROG $OUT
 if [ "$?" != "0" ]; then exit 1; fi
 
+./tests/test_projections.sh $PROG $OUT
+if [ "$?" != "0" ]; then exit 1; fi
+
 # Test that safe (as safe as possible) latex output is generated from
 # comments, even though the comments contain Event-B unicode chars
 # and tex chars and some other unicode code points.
