@@ -39,6 +39,7 @@ class Formula
     // This canvas is used to render formulas for caching and internal types.
     private static Canvas raw_unicode_canvas_;
 
+    // This static is used to initialize formulas. In the future this might be something else than null.
     static Formula NO_META = null;
 
     static
@@ -69,6 +70,11 @@ class Formula
 
     public String toString(Canvas c)
     {
+        return toStringInternal(c, false, false);
+    }
+
+    private String toStringInternal(Canvas c, boolean with_types, boolean with_metas)
+    {
         RenderFormula gen = null;
         switch (c.renderTarget())
         {
@@ -87,6 +93,10 @@ class Formula
         default:
         assert (false) : "Unknown render target \""+c.renderTarget()+"\" when translating a formula into a string.";
         }
+
+        if (with_types) gen.addTypes();
+        if (with_metas) gen.addMetas();
+
         VisitFormula.walk(gen, this);
         return gen.cnvs().render();
     }
@@ -292,10 +302,7 @@ class Formula
 
     public String toStringWithTypes(Canvas canvas)
     {
-        RenderFormulaUnicode gen = new RenderFormulaUnicode(canvas);
-        gen.addTypes();
-        VisitFormula.walk(gen, this);
-        return gen.cnvs().render();
+        return toStringInternal(canvas, true, false);
     }
 
     public String toStringWithMetas()
@@ -308,10 +315,7 @@ class Formula
 
     public String toStringWithMetas(Canvas canvas)
     {
-        RenderFormulaUnicode gen = new RenderFormulaUnicode(canvas);
-        gen.addMetas();
-        VisitFormula.walk(gen, this);
-        return gen.cnvs().render();
+        return toStringInternal(canvas, false, true);
     }
 
     public String toStringWithMetasAndTypes()
@@ -325,11 +329,7 @@ class Formula
 
     public String toStringWithMetasAndTypes(Canvas canvas)
     {
-        RenderFormulaUnicode gen = new RenderFormulaUnicode(canvas);
-        gen.addTypes();
-        gen.addMetas();
-        VisitFormula.walk(gen, this);
-        return gen.cnvs().render();
+        return toStringInternal(canvas, true, true);
     }
 
     public boolean isPredicate()

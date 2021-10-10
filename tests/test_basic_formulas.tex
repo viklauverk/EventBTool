@@ -9,8 +9,8 @@ EVBT(show template "TeXPackages")
 EVBT(show template "TeXDefinitions")
 
 % EVBT(add defaults) make sure we have PQR ST xy mn cd in the symbol table.
-% EVBT(add vars height speeds)
-% EVBT(add consts addition)
+% EVBT(add vars height doors)
+% EVBT(add consts int8)
 
 \begin{document}
 
@@ -170,11 +170,11 @@ EVBT(show template "TeXDefinitions")
   \hfill
   \fbox{EVBT(sf UNION x . x:0..20 | NAT)}
 
-  \fbox{EVBT(sfm height«5»)}
-  \hfill
   \fbox{EVBT(sf 1..111)}
   \hfill
-  succ?
+  \fbox{EVBT(sf x,y :| x' = x+y & y' = x-y)}
+  \hfill
+  \fbox{EVBT(show formula "S +-> POW(1..3)")}
 
 
 \end{document}

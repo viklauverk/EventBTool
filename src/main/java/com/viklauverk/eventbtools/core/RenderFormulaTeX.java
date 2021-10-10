@@ -33,32 +33,32 @@ public class RenderFormulaTeX extends RenderFormulaUnicode
 
     @Override public Formula visit_BECOME_EQ(Formula i)
     {
-        visitLeft(i); cnvs().append("\\bcmeq "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\bcmeq "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_BECOME_IN(Formula i)
     {
-        visitLeft(i); cnvs().append("\\bcmin "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\bcmin "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_BECOME_SUCH(Formula i)
     {
-        visitLeft(i); cnvs().append("\\bcmsuch "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\bcmsuch "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_FALSE(Formula i)
     {
-        cnvs().append("\\bfalse "); return i;
+        cnvs().append("\\bfalse "); visitMeta(i); return i;
     }
 
     @Override public Formula visit_TRUE(Formula i)
     {
-        cnvs().append("\\btrue "); return i;
+        cnvs().append("\\btrue "); visitMeta(i); return i;
     }
 
     @Override public Formula visit_APPLICATION(Formula i)
     {
-        visitLeft(i); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol("["); visitRight(i);  cnvs().symbol("]"); visitMeta(i); return i;
     }
 
     @Override public Formula visit_CONJUNCTION(Formula i)
@@ -66,6 +66,7 @@ public class RenderFormulaTeX extends RenderFormulaUnicode
         visitLeft(i);
         checkNewLineBefore(i);
         cnvs().append(" \\land ");
+        visitMeta(i);
         checkNewLineAfter(i);
         visitRight(i); return i;
     }
@@ -75,13 +76,14 @@ public class RenderFormulaTeX extends RenderFormulaUnicode
         visitLeft(i);
         checkNewLineBefore(i);
         cnvs().append(" \\lor ");
+        visitMeta(i);
         checkNewLineAfter(i);
         visitRight(i); return i;
     }
 
     @Override public Formula visit_NEGATION(Formula i)
     {
-        cnvs().append(" \\lnot "); visitChild(i); return i;
+        cnvs().append(" \\lnot "); visitMeta(i); visitChild(i); return i;
     }
 
     @Override public Formula visit_IMPLICATION(Formula i)
@@ -89,53 +91,54 @@ public class RenderFormulaTeX extends RenderFormulaUnicode
         visitLeft(i);
         checkNewLineBefore(i);
         cnvs().append(" \\limp ");
+        visitMeta(i);
         checkNewLineAfter(i);
         visitRight(i); return i;
     }
 
     @Override public Formula visit_EQUALS(Formula i)
     {
-        visitLeft(i); cnvs().append("="); visitRight(i); return i;
+        visitLeft(i); cnvs().append("="); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_NOT_EQUALS(Formula i)
     {
-        visitLeft(i); cnvs().append("\\neq "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\neq "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_LESS_THAN_OR_EQUAL(Formula i)
     {
-        visitLeft(i); cnvs().append("\\le "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\le "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_GREATER_THAN_OR_EQUAL(Formula i)
     {
-        visitLeft(i); cnvs().append("\\ge "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\ge "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_MEMBERSHIP(Formula i)
     {
-        visitLeft(i); cnvs().append("\\in "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\in "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_EMPTY_SET(Formula i)
     {
-        cnvs().append("\\emptyset "); return i;
+        cnvs().append("\\emptyset "); visitMeta(i); return i;
     }
 
     @Override public Formula visit_NAT_SET(Formula i)
     {
-        cnvs().append("\\nat "); return i;
+        cnvs().append("\\nat "); visitMeta(i); return i;
     }
 
     @Override public Formula visit_NAT1_SET(Formula i)
     {
-        cnvs().append("\\natn "); return i;
+        cnvs().append("\\natn "); visitMeta(i); return i;
     }
 
     @Override public Formula visit_INT_SET(Formula i)
     {
-        cnvs().append("\\intg "); return i;
+        cnvs().append("\\intg "); visitMeta(i); return i;
     }
 
     @Override public Formula visit_SET_COMPREHENSION(Formula i)
@@ -155,177 +158,177 @@ public class RenderFormulaTeX extends RenderFormulaUnicode
 
     @Override public Formula visit_POWER_SET(Formula i)
     {
-        cnvs().append("\\mathbb{P}("); visitChild(i); cnvs().append(")"); return i;
+        cnvs().append("\\mathbb{P}"); visitMeta(i); cnvs().append("("); visitChild(i); cnvs().append(")"); return i;
     }
 
     @Override public Formula visit_POWER1_SET(Formula i)
     {
-        cnvs().append("\\mathbb{P_1}("); visitChild(i); cnvs().append(")"); return i;
+        cnvs().append("\\mathbb{P_1}"); visitMeta(i); cnvs().append("("); visitChild(i); cnvs().append(")"); return i;
     }
 
     @Override public Formula visit_RELATION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\rel "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\rel "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_TOTAL_RELATION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\trel "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\trel "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_SURJECTIVE_RELATION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\srel "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\srel "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_SURJECTIVE_TOTAL_RELATION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\strel "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\strel "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_PARTIAL_FUNCTION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\pfun "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\pfun "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_TOTAL_FUNCTION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\tfun "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\tfun "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_PARTIAL_INJECTION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\pinj "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\pinj "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_TOTAL_INJECTION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\tinj "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\tinj "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_PARTIAL_SURJECTION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\psur "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\psur "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_TOTAL_SURJECTION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\tsur "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\tsur "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_TOTAL_BIJECTION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\tbij "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\tbij "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_MAPSTO(Formula i)
     {
-        visitLeft(i); cnvs().append("\\mapsto "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\mapsto "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_CARTESIAN_PRODUCT(Formula i)
     {
-        visitLeft(i); cnvs().append("\\cprod "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\cprod "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_NOT_MEMBERSHIP(Formula i)
     {
-        visitLeft(i); cnvs().append("\\notin "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\notin "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_SUBSET(Formula i)
     {
-        visitLeft(i); cnvs().append("\\subseteq "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\subseteq "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_STRICT_SUBSET(Formula i)
     {
-        visitLeft(i); cnvs().append("\\subset "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\subset "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_NOT_SUBSET(Formula i)
     {
-        visitLeft(i); cnvs().append("\\not\\subseteq "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\not\\subseteq "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_NOT_STRICT_SUBSET(Formula i)
     {
-        visitLeft(i); cnvs().append("\\not\\subset "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\not\\subset "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_SET_UNION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\bunion "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\bunion "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_SET_INTERSECTION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\binter "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\binter "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_DIVISION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\div "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\div "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_BACKWARD_COMPOSITION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\bcomp "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\bcomp "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_MODULO(Formula i)
     {
-        visitLeft(i); cnvs().append("\\bmod "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\bmod "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_EXPONENTIATION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\expn "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\expn "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_MINIMUM(Formula i)
     {
-        cnvs().symbol("\\min("); visitChild(i); cnvs().symbol(")"); return i;
+        cnvs().symbol("\\min "); visitMeta(i); cnvs().append("("); visitChild(i); cnvs().symbol(")"); return i;
     }
 
     @Override public Formula visit_MAXIMUM(Formula i)
     {
-        cnvs().symbol("\\max("); visitChild(i); cnvs().symbol(")"); return i;
+        cnvs().symbol("\\max "); visitMeta(i); cnvs().append("("); visitChild(i); cnvs().symbol(")"); return i;
     }
 
     @Override public Formula visit_TEST_BOOL(Formula i)
     {
-        cnvs().append("\\bool ("); visitChild(i); cnvs().append(")"); return i;
+        cnvs().append("\\bool "); visitMeta(i); cnvs().append("("); visitChild(i); cnvs().append(")"); return i;
     }
 
     @Override public Formula visit_CARDINALITY(Formula i)
     {
-        cnvs().append("\\card ("); visitChild(i); cnvs().append(")"); return i;
+        cnvs().append("\\card "); visitMeta(i); cnvs().append("("); visitChild(i); cnvs().append(")"); return i;
     }
 
     @Override public Formula visit_ID_SET(Formula i)
     {
-        cnvs().symbol("\\id "); return i;
+        cnvs().symbol("\\id "); visitMeta(i); return i;
     }
 
     @Override public Formula visit_DOMAIN(Formula i)
     {
-        cnvs().append("\\dom ("); visitChild(i); cnvs().append(")"); return i;
+        cnvs().append("\\dom "); visitMeta(i); cnvs().append("("); visitChild(i); cnvs().append(")"); return i;
     }
 
     @Override public Formula visit_RANGE(Formula i)
     {
-        cnvs().append("\\ran ("); visitChild(i); cnvs().append(")"); return i;
+        cnvs().append("\\ran "); visitMeta(i); cnvs().append("("); visitChild(i); cnvs().append(")"); return i;
     }
 
     @Override public Formula visit_DOMAIN_RESTRICTION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\domres "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\domres "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_DOMAIN_SUBTRACTION(Formula i)
     {
-        visitLeft(i); cnvs().append("\\domsub "); visitRight(i); return i;
+        visitLeft(i); cnvs().append("\\domsub "); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_RANGE_RESTRICTION(Formula i)

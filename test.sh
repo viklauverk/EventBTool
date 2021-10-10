@@ -16,6 +16,10 @@ if [ "$?" != "0" ]; then exit 1; fi
 ./tests/test_basic_formulas.sh $PROG $OUT
 if [ "$?" != "0" ]; then exit 1; fi
 
+# Test tex rendering of meta formulas inside formulas inside a tex document.
+./tests/test_meta_formulas.sh $PROG $OUT
+if [ "$?" != "0" ]; then exit 1; fi
+
 ./tests/test_setcomprehensions.sh $PROG $OUT
 if [ "$?" != "0" ]; then exit 1; fi
 

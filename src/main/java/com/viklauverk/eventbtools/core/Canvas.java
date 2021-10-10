@@ -1404,6 +1404,46 @@ public class Canvas
         assert (false) : "Unknown encoding "+render_target_;
     }
 
+    public void typeLeft(Formula f)
+    {
+        switch (render_target_)
+        {
+        case PLAIN:
+            append("<"+f.node().name()+" ");
+            return;
+        case TERMINAL:
+            append(colorize(Green, "<"+f.node().name()+" "));
+            return;
+        case TEX:
+            append("\\allowbreak\\texttt{\\small "+Util.texSafe("<"+f.node().name())+" }");
+            return;
+        case HTMQ:
+            append(" span(class=TYPE)="+Util.htmqSafe("<"+f.node().name()+" "));
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
+    public void typeRight()
+    {
+        switch (render_target_)
+        {
+        case PLAIN:
+            append(">");
+            return;
+        case TERMINAL:
+            append(colorize(Green, ">"));
+            return;
+        case TEX:
+            append("\\texttt{\\small >}\\allowbreak ");
+            return;
+        case HTMQ:
+            append(" span(class=TYPE)=>");
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
     public void metaLeft()
     {
         switch (render_target_)
@@ -1415,7 +1455,7 @@ public class Canvas
             append(colorize(Green, "«"));
             return;
         case TEX:
-            append("\\ll ");
+            append("{\\scriptstyle\\ll ");
             return;
         case HTMQ:
             append(" span(class=META)=«");
@@ -1435,7 +1475,7 @@ public class Canvas
             append(colorize(Green, "»"));
             return;
         case TEX:
-            append("\\gg ");
+            append("\\gg}\\allowbreak ");
             return;
         case HTMQ:
             append(" span(class=META)=»");

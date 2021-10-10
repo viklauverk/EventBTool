@@ -27,13 +27,13 @@ public class Typed
     // The checked type when it is finally parsed, which can only be done
     // using the same symbol tables as when we are parsing the vars/consts.
     protected CheckedType checked_type_;
-    // Type that hints on intended usage of variable such as: vector,map,relation,set.
+    // The implementation type hints at the intended usage of variable such as: vector,map,relation,set.
     // This information is used to pick an efficient implementation for storage.
     // Set to null if no suitable implementation type has been found yet.
     protected ImplType impl_type_;
     // This is the defacto chosen implementation for this variable/constant.
     // A default implementation for unbounded INTs can be chosen at code generation,
-    // for example int32_t(Cc++) or int(Java), or unbounded Z class storing any size ints.
+    // for example int32_t(C++) or int(Java), or unbounded Z class storing any size ints.
     // Calculations on such unbounded ints will be checked by overflow checks.
     // If a cardinality is known for the int, the the codegen can pick the smallest
     // storage container needed to store the int. E.g. x:1..100 means "int8_t x;" can be used.

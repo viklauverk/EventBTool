@@ -325,6 +325,13 @@ public class Util
         return sb.toString();
     }
 
+    public static
+    String htmqSafe(String s)
+    {
+        assert s.indexOf("\n") == -1 : "Internal error: string should not contain newline \""+s+"\"";
+        return "'"+s+"'";
+    }
+
     public static String numQuotes(int n)
     {
         StringBuilder o = new StringBuilder();

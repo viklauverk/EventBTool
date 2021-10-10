@@ -132,13 +132,13 @@ public class TestInternals
                     "0‥7→ 0‥255", // Plain out
                     "0‥«8»7→ «8↦7»0‥«8+9»255", // Plain with metas
                     "<TOTAL_FUNCTION <UP_TO <NUMBER 0>‥<NUMBER 7>>→ <UP_TO <NUMBER 0>‥<NUMBER 255>>>", // Types
-                    "<TOTAL_FUNCTION <UP_TO <NUMBER 0>‥«META <NUMBER 8>»<NUMBER 7>>→ «META <MAPSTO <NUMBER 8>↦<NUMBER 7>>»<UP_TO <NUMBER 0>‥«META <ADDITION <NUMBER 8>+<NUMBER 9>>»<NUMBER 255>>>"); // Types with metas
+                    "<TOTAL_FUNCTION <UP_TO <NUMBER 0>‥«<NUMBER 8>»<NUMBER 7>>→ «<MAPSTO <NUMBER 8>↦<NUMBER 7>>»<UP_TO <NUMBER 0>‥«<ADDITION <NUMBER 8>+<NUMBER 9>>»<NUMBER 255>>>"); // Types with metas
 
         ok &= testm("5«7»",
                     "5", // Plain out
                     "5«7»", // Plain with metas
                     "<NUMBER 5>", // Types
-                    "<NUMBER 5«META <NUMBER 7>»>"); // Types with metas
+                    "<NUMBER 5«<NUMBER 7>»>"); // Types with metas
 
         return ok;
     }

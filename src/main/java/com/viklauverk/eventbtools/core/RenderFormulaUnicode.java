@@ -37,7 +37,7 @@ public class RenderFormulaUnicode extends RenderFormula
     {
         if (addingTypes())
         {
-            cnvs().symbol("<"+f.node().name()+" ");
+            cnvs().typeLeft(f);
         }
     }
 
@@ -45,7 +45,7 @@ public class RenderFormulaUnicode extends RenderFormula
     {
         if (addingTypes())
         {
-            cnvs().symbol(">");
+            cnvs().typeRight();
         }
     }
 
@@ -68,12 +68,12 @@ public class RenderFormulaUnicode extends RenderFormula
 
     @Override public Formula visit_BECOME_EQ(Formula i)
     {
-        visitLeft(i); cnvs().symbol(c(" ≔ ", " := ")); visitRight(i); return i;
+        visitLeft(i); cnvs().symbol(c(" ≔ ", " := ")); visitMeta(i); visitRight(i); return i;
     }
 
     @Override public Formula visit_BECOME_EQ_FUNC_APP(Formula i)
     {
-        visitChildNum(i, 0); cnvs().symbol("("); visitChildNum(i, 1); cnvs().symbol(c(") ≔ ", ") := ")); visitChildNum(i, 2); return i;
+        visitChildNum(i, 0); cnvs().symbol("("); visitChildNum(i, 1); cnvs().symbol(c(") ≔ ", ") := ")); visitMeta(i); visitChildNum(i, 2); return i;
     }
 
     @Override public Formula visit_BECOME_IN(Formula i)
@@ -103,7 +103,7 @@ public class RenderFormulaUnicode extends RenderFormula
 
     @Override public Formula visit_APPLICATION(Formula i)
     {
-        visitLeft(i);  visitMeta(i); cnvs().symbol("["); visitRight(i);  cnvs().symbol("]"); return i;
+        visitLeft(i); cnvs().symbol("["); visitRight(i);  cnvs().symbol("]"); visitMeta(i); return i;
     }
 
     @Override public Formula visit_PARENTHESISED_PREDICATE(Formula i)
@@ -111,6 +111,7 @@ public class RenderFormulaUnicode extends RenderFormula
         cnvs().symbol("(");
         visitChild(i);
         cnvs().symbol(")");
+        visitMeta(i);
         return i;
     }
 
@@ -119,6 +120,7 @@ public class RenderFormulaUnicode extends RenderFormula
         cnvs().symbol("(");
         visitChild(i);
         cnvs().symbol(")");
+        visitMeta(i);
         return i;
     }
 
@@ -623,10 +625,6 @@ public class RenderFormulaUnicode extends RenderFormula
         if (addingMetas() && i.hasMeta())
         {
             cnvs().metaLeft();
-            if (addingTypes())
-            {
-                cnvs().symbol("META ");
-            }
             innerVisit(i.meta());
             cnvs().metaRight(); return i;
         }
