@@ -5,7 +5,19 @@
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \overfullrule=10pt
-\newcommand{\EVBTcolor}[1]{\color{#1}}
+
+\def\EVBTMode{formula}
+\def\EVBTModeFormula{formula}
+\def\EVBTModeImpl{formula}
+
+\newcommand{\EVBTMeta}[1]{{\def\EVBTMode{impl}\EVBTcolor{EvBImpl}\mathsmaller{\ll #1 \gg}}\allowbreak}
+
+% When entering an implementation formula the mode switches to "impl".
+
+\newcommand{\EVBTcolor}[1]{\ifx\EVBTMode\EVBTModeFormula\color{#1}\else\color{EvBImpl}\fi}
+\newcommand{\EVBTtextrm}[1]{\textrm{\ifx\EVBTMode\EVBTModeFormula #1\else\textsmaller{#1}\fi}}
+\newcommand{\EVBTmathit}[1]{\mathit{\ifx\EVBTMode\EVBTModeFormula #1\else\mathsmaller{#1}\fi}}
+\newcommand{\EVBTtexttt}[1]{\texttt{\ifx\EVBTMode=\EVBTModeFormula #1\else\textsmaller{#1}\fi}}
 
 %% The X11 colors.
 \newcommand{\AliceBlue}{F0F8FF}
@@ -177,6 +189,7 @@
 \definecolor{EvBNonFree}{HTML}{660000}%
 \definecolor{EvBNumber}{HTML}{\Orange}%
 \definecolor{EvBAny}{HTML}{000000}%
+\definecolor{EvBImpl}{HTML}{\Goldenrod}%
 \else
 \definecolor{ProvedColor}{HTML}{888888}%
 \definecolor{NotProvedColor}{HTML}{888888}%
@@ -195,28 +208,31 @@
 \definecolor{EvBNonFree}{HTML}{000000}%
 \definecolor{EvBNumber}{HTML}{000000}%
 \definecolor{EvBAny}{HTML}{000000}%
+\definecolor{EvBImpl}{HTML}{000000}%
 \fi
 
 \newcommand{\nl}[0]{ \\ }%
 \newcommand{\HRULE}[0]{\rule{\textwidth}{0.5pt}}%
 \newcommand{\LINE}[1]{#1 \linebreak }%
 \newcommand{\LUFT}[0]{\par \vspace{-5mm}}%
+\newcommand{\IMPl}[1]{}%
 
 % Color/fontify keywords, identifiers, variables, constants, numbers, symbols etc.
+
 \newcommand{\ID}[1]{\textrm{\EVBTcolor{EvBId}#1\index{#1}}}%
 \newcommand{\KEYW}[1]{\noindent\texttt{\EVBTcolor{EvBKeyword}#1}}%
 \newcommand{\KEYWL}[1]{\noindent\texttt{\EVBTcolor{EvBKeyword}#1}}%
 \newcommand{\VARDEF}[1]{\textit{\EVBTcolor{EvBVariable}#1}\index{#1}}%
-\newcommand{\VAR}[1]{\mathit{\EVBTcolor{EvBVariable}#1}}%
-\newcommand{\CON}[1]{\textrm{\EVBTcolor{EvBConstant}#1}}%
-\newcommand{\CSET}[1]{\textrm{\EVBTcolor{EvBCarrierSet}#1}}%
-\newcommand{\PSET}[1]{\textrm{\EVBTcolor{EvBPrimitiveSet}#1}}%
-\newcommand{\EXPR}[1]{\texttt{\EVBTcolor{EvBExpression}#1}}%
-\newcommand{\PRED}[1]{\texttt{\EVBTcolor{EvBPredicate}#1}}%
-\newcommand{\NONF}[1]{\mathit{\EVBTcolor{EvBNonFree}#1}}%
-\newcommand{\NUM}[1]{{\EVBTcolor{EvBNumber}#1}}%
-\newcommand{\ANY}[1]{\textrm{\EVBTcolor{EvBAny}#1}}%
 \newcommand{\INDENT}[0]{\rule{5mm}{0mm}}%
+\newcommand{\VAR}[1]{\EVBTmathit{\EVBTcolor{EvBVariable}#1}}%
+\newcommand{\CON}[1]{\EVBTtextrm{\EVBTcolor{EvBConstant}#1}}%
+\newcommand{\CSET}[1]{\EVBTtextrm{\EVBTcolor{EvBCarrierSet}#1}}%
+\newcommand{\PSET}[1]{\EVBTtextrm{\EVBTcolor{EvBPrimitiveSet}#1}}%
+\newcommand{\EXPR}[1]{\EVBTtexttt{\EVBTcolor{EvBExpression}#1}}%
+\newcommand{\PRED}[1]{\EVBTtexttt{\EVBTcolor{EvBPredicate}#1}}%
+\newcommand{\NONF}[1]{\EVBTmathit{\EVBTcolor{EvBNonFree}#1}}%
+\newcommand{\NUM}[1]{{\EVBTcolor{EvBNumber}#1}}%
+\newcommand{\ANY}[1]{\EVBTtextrm{\EVBTcolor{EvBAny}#1}}%
 
 \DeclareRobustCommand{\ProvedAuto}[0]{%
  \raisebox{-1mm}{%

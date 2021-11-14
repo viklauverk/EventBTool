@@ -13,6 +13,7 @@
 \usepackage[explicit]{titlesec} % Used to tweak table of contents and sections.
 \usepackage{varwidth} % For the varwidth minipage environment.
 \usepackage{adjustbox} % Minimum sized box.
+\usepackage{relsize} % Increase/Decrease font sizes
 
 %\usepackage{blindtext} % Use this to debug latex.
 %\usepackage{showframe} % Use this to debug latex.

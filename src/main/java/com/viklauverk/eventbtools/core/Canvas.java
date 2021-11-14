@@ -1455,7 +1455,7 @@ public class Canvas
             append(colorize(Green, "«"));
             return;
         case TEX:
-            append("{\\scriptstyle\\ll ");
+            append("\\EVBTMeta{");
             return;
         case HTMQ:
             append(" span(class=META)=«");
@@ -1475,7 +1475,7 @@ public class Canvas
             append(colorize(Green, "»"));
             return;
         case TEX:
-            append("\\gg}\\allowbreak ");
+            append("}");
             return;
         case HTMQ:
             append(" span(class=META)=»");

@@ -14,6 +14,7 @@
 \usepackage[explicit]{titlesec}
 \usepackage{varwidth} % for the varwidth minipage environment
 \usepackage{adjustbox}
+\usepackage{relsize}
 
 %\usepackage{blindtext}
 %\usepackage{showframe}
