@@ -1,4 +1,28 @@
 
+Version 1.5.0: 2022-03-21
+
+Improve rendering of meta data in tex.
+Add tex rendering of formula types and metas.
+Add multiple variables assignment for become such.
+Added testing for projections prj1 and prj2.
+Pattern matching inside metas now work.
+Added meta to formulas to track implementation details.
+Gracefully handle missing bps files.
+Properly parse checked types when they are available.
+Remove show functions.
+Fetch checked types from Rodin generated bpo files.
+Split type into core type and implementation type.
+Update line break calculations.
+Fix unprovable statement in SquareRoot example.
+Fixed multicolumn widths errors.
+Improve placement and spacing of comments.
+Render context theorems in the same way as invariant theorems.
+Added workaround for bug in latex package xltabular. Improved formatting of formulas with raggedright.
+Generate Camille style comments in show command.
+Setting --docstyle=default,-labels now work.
+Comments can be disabled in docgen with docstyle -comments.
+Add --docstyle=<formatting> to docgen/docmod.
+Render unproved PO as triangle instead of circle.
 Add proper Event-B syntax for become such assigning multiple variables.
 
 Version 1.4.0: 2021-06-11

@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %% TeXDefinitions for EVBT
-%% Requires that package bsymb,calc,array and varwidth are loaded.
+%% Requires that package bsymb,calc,array,relsize and varwidth are loaded.
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \overfullrule=10pt

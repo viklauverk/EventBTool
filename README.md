@@ -4,7 +4,7 @@ The evbt (Event-B Tool) generates code and documentation from Event-B models
 stored in a Rodin workspace. The models are developed using the Rodin tool.
 [http://www.event-b.org/](http://www.event-b.org/)
 
-The tool is still in beta (the current version 1.4.0, and any future version with an odd numbered
+The tool is still in beta (the current version 1.5.0, and any future version with an odd numbered
 major release number, will be highly prone to radical changes and have a lot of bugs/missing features),
 still it can be used to generate nice TeX documents.  It might generate the code you
 are looking for, it might not, ie the tool is work in progress. :-)
@@ -13,7 +13,7 @@ are looking for, it might not, ie the tool is work in progress. :-)
 
 The tool is a single binary `evbt`. It is distributed as a single executable jar file (ie
 a jar file that starts with a Posix shell-script that starts java on the jar itself.
-[Download latest release here!](https://github.com/viklauverk/EventBTool/releases/download/v1.4.0/evbt)
+[Download latest release here!](https://github.com/viklauverk/EventBTool/releases/download/v1.5.0/evbt)
 
 Do `chmod a+x evbt` and place evbt in your PATH and make sure you have Java 11 or later in your path as well.
 
