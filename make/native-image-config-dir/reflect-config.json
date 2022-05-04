@@ -1,0 +1,28 @@
+[
+{
+  "name":"com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.dom4j.DocumentFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.dom4j.tree.QNameCache",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.dom4j.util.SimpleSingleton",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.jaxen.saxpath.XPathReader"
+},
+{
+  "name":"org.jaxen.saxpath.base.XPathReader",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.jaxen.saxpath.helpers.XPathReaderFactory"
+}
+]
