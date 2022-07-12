@@ -253,7 +253,7 @@ public class CodeGenJavascript extends BaseCodeGen
     void renderFormulaOntoCanvas(Formula f, SymbolTable st)
     {
         PlanImplementation plan = new PlanImplementation(this);
-        GenerateFormulaJavascript gen = new GenerateFormulaJavascript(this, plan);
+        CodeGenFormulaJavascript gen = new CodeGenFormulaJavascript(this, plan);
         gen.setSymbolTable(st);
         VisitFormula.walkk(plan, f);
         VisitFormula.walk(gen, f);

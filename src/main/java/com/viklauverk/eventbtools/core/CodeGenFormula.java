@@ -20,12 +20,12 @@ package com.viklauverk.eventbtools.core;
 
 import com.viklauverk.eventbtools.core.Formula;
 
-public class GenerateFormulaBaseCodeGen extends RenderFormulaUnicode
+public class CodeGenFormula extends RenderFormulaUnicode
 {
     private BaseCodeGen codegen_;
     private PlanImplementation plan_;
 
-    GenerateFormulaBaseCodeGen(BaseCodeGen codegen, PlanImplementation plan)
+    CodeGenFormula(BaseCodeGen codegen, PlanImplementation plan)
     {
         super(codegen.cnvs());
         codegen_ = codegen;

@@ -23,9 +23,9 @@ import com.viklauverk.eventbtools.core.Formula;
 import java.util.List;
 import java.util.LinkedList;
 
-public class GenerateFormulaCpp extends GenerateFormulaBaseCodeGen
+public class CodeGenFormulaCpp extends CodeGenFormula
 {
-    GenerateFormulaCpp(CodeGenCpp codegen, PlanImplementation plan)
+    CodeGenFormulaCpp(CodeGenCpp codegen, PlanImplementation plan)
     {
         super(codegen, plan);
     }

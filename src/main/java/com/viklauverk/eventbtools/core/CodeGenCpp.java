@@ -230,7 +230,7 @@ public class CodeGenCpp extends BaseCodeGen
     public void writeGuard(Event e, String label)
     {
         PlanImplementation plan = new PlanImplementation(this);
-        GenerateFormulaCpp gen = new GenerateFormulaCpp(this, plan);
+        CodeGenFormulaCpp gen = new CodeGenFormulaCpp(this, plan);
         gen.setSymbolTable(e.symbolTable());
         Guard g = e.getGuard(label);
         if (g.hasComment())
@@ -314,7 +314,7 @@ public class CodeGenCpp extends BaseCodeGen
                 pl("    "+Unicode.commentToCpp(a.comment()));
             }
             PlanImplementation plan = new PlanImplementation(this);
-            GenerateFormulaCpp gen = new GenerateFormulaCpp(this, plan);
+            CodeGenFormulaCpp gen = new CodeGenFormulaCpp(this, plan);
             gen.setSymbolTable(e.symbolTable());
             p("    ");
             VisitFormula.walkk(plan, a.formula());
