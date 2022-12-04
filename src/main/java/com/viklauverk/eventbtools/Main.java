@@ -1,6 +1,5 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- Author Fredrik Öhrström
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -115,7 +114,7 @@ public class Main
             System.out.println("  --trace=all Trace log for all modules.");
         }
         System.out.println("");
-        System.out.println("Copyright (C) 2021 Viklauverk AB Author Fredrik Öhrström");
+        System.out.println("Copyright (C) 2021-2022 Viklauverk AB");
         System.out.println("Licensed to you under the GNU Affero General Public License 3.");
         System.out.println("");
     }
@@ -124,7 +123,7 @@ public class Main
     {
         String l =
             "Event-B Tools (evbt)\n"+
-            "Copyright (C) 2021 Viklauverk AB\n"+
+            "Copyright (C) 2021-2022 Viklauverk AB\n"+
             "\n"+
             "This program is free software: you can redistribute it and/or modify\n"+
             "it under the terms of the GNU Affero General Public License as published by\n"+

@@ -11,6 +11,8 @@ evbt docgen  [options] <format> <dir>
 
 evbt docmod  [options] <format> <source_file> <dest_file> { <dir> }
 
+evbt modelgen [options] <model> <dir>
+
 evbt show    [options] <format> <dir> <part_identifier>*
 
 evbt help
@@ -50,10 +52,10 @@ The sources contains the generated code from the specified <machine> inside <dir
 
 Examples:
 
-To generate Elevator.h and Elevator.cc from the Refinement4FinalImplementation.bum file
-stored in workspace/ElevatorProject:
+To generate Elevator.h and Elevator.cc (the dir name is used) from the Refinement4FinalImplementation.bum file
+stored in the directory Elevator:
 .br
-\fBevbt codegen c++ Elevator workspace/ElevatorProject Refinement4FinalImplementation\fR
+\fBevbt codegen c++ Elevator/Refinement4FinalImplementation.bum\fR
 
 .SH console
 
@@ -72,9 +74,9 @@ for the <dir> containing Event-B files. The supported languages are:
 
 Examples:
 
-Generate tex documentation for the entire ElevatorProject:
+Generate tex documentation for the entire Elevator Event-B project:
 .br
-\fBevbt docgen tex Elevator workspace/ElevatorProject\fR
+\fBevbt docgen tex Elevator\fR
 
 .SH docmod
 
@@ -87,7 +89,20 @@ Examples:
 Inject generated documentation into a tex-document \fBarticle.tex\fR and store the result
 into \fBfinal.tex\fR:
 .br
-\fBevbt docmod tex article.tex final.tex Elevator workspace/ElevatorProject\fR
+\fBevbt docmod tex article.tex final.tex Elevator\fR
+
+.SH modelgen
+
+The modelgen command generates file(s) with suitable for use in a different formal specification toolset.
+To be implemented.
+
+\fBxyz\fR generates a <project_name>.xyz file.
+
+Examples:
+
+Exports a model for the entire Elevator Event-B project:
+.br
+\fBevbt modelgen xyz Elevator\fR
 
 .SH show
 
@@ -106,15 +121,15 @@ Examples:
 
 To show the entire project do:
 .br
-\fBevbt show terminal Elevator workspace/ElevatorProject\fR
+\fBevbt show terminal Elevator\fR
 
 To show only the moveUp event inside the Elevator.bum file:
 .br
-\fBevbt show terminal Elevator workspace/ElevatorProject Elevator.moveUp\fR
+\fBevbt show terminal Elevator Elevator.moveUp\fR
 
 To render as tex a single guard inside a specific event inside a specific machine:
 .br
-\fBevbt show tex Elevator workspace/ElevatorProject Elevator.moveUp.grd_2 > moveup_grd_2.tex\fR
+\fBevbt show tex Elevator Elevator.moveUp.grd_2 > moveup_grd_2.tex\fR
 
 .SH help
 
@@ -126,7 +141,7 @@ The license command prints the license text for evbt.
 
 
 .SH AUTHOR
-Written by Fredrik Öhrström.
+Original author Fredrik Öhrström.
 
 .SH COPYRIGHT
-Copyright \(co 2021 Viklauverk AB
+Copyright \(co 2022 Viklauverk AB
