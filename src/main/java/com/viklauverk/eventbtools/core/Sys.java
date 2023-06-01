@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -26,7 +26,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.nio.file.Files;
 import java.util.Map;
+import java.util.Set;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.Comparator;
@@ -327,10 +329,28 @@ public class Sys
 
     private void parseMachineFormulas()
     {
-        for (String name : machineNames())
+        // Before parsing a machine the refined machine must be parsed.
+        // Otherwise any extended event parameters in the refined machine will not have been found yet
+        // and this machines formula will fail to parse since the refined event parametes cannot be found.
+
+        Set<String> parsed_machines = new HashSet<>();
+
+        while (parsed_machines.size() < machineNames().size())
         {
-            Machine m = getMachine(name);
-            m.parse(rootSymbolTable());
+            for (String name : machineNames())
+            {
+                // This is already parsed, go on.
+                if (parsed_machines.contains(name)) continue;
+
+                Machine m = getMachine(name);
+                // First check that it does not depend on a machine that has not been parsed yet.
+                if (!m.hasRefines() || parsed_machines.contains(m.refines().name()))
+                {
+                    log.debug("parse machine formulas %s", name);
+                    m.parse(rootSymbolTable());
+                    parsed_machines.add(m.name());
+                }
+            }
         }
     }
 

@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -111,12 +111,6 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
     }
 
     @Override
-    public Formula visitAnySetSymbol(EvBFormulaParser.AnySetSymbolContext ctx)
-    {
-        return FormulaFactory.newAnySymbol(ctx.sym.getText(), visitOptionalMeta(ctx.meta()));
-    }
-
-    @Override
     public Formula visitPredicateSymbol(EvBFormulaParser.PredicateSymbolContext ctx)
     {
         return FormulaFactory.newPredicateSymbol(ctx.sym.getText(), visitOptionalMeta(ctx.meta()));
@@ -213,31 +207,6 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
     }
 
     @Override
-    public Formula visitSetVariable(EvBFormulaParser.SetVariableContext ctx)
-    {
-        if (ctx.PRIM() != null)
-        {
-            return FormulaFactory.newVariablePrimSymbol(ctx.variable.getText(), visitOptionalMeta(ctx.meta()));
-        }
-        else
-        {
-            return FormulaFactory.newVariableSymbol(ctx.variable.getText(), visitOptionalMeta(ctx.meta()));
-        }
-    }
-
-    @Override
-    public Formula visitNonFreeSetVariable(EvBFormulaParser.NonFreeSetVariableContext ctx)
-    {
-        return FormulaFactory.newVariableNonFreeSymbol(ctx.variable.getText(), visitOptionalMeta(ctx.meta()));
-    }
-
-    @Override
-    public Formula visitSetConstant(EvBFormulaParser.SetConstantContext ctx)
-    {
-        return FormulaFactory.newConstantSymbol(ctx.constant.getText(), visitOptionalMeta(ctx.meta()));
-    }
-
-    @Override
     public Formula visitListOfVariables(EvBFormulaParser.ListOfVariablesContext ctx)
     {
         List<Formula> elements = new LinkedList<>();
@@ -285,13 +254,6 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
 
     @Override
     public Formula visitLambdaAbstractionExpression(EvBFormulaParser.LambdaAbstractionExpressionContext ctx)
-    {
-        return FormulaFactory.newLambda(this.visit(ctx.vars), this.visit(ctx.pred), this.visit(ctx.formula),
-                                        visitOptionalMeta(ctx.meta()));
-    }
-
-    @Override
-    public Formula visitLambdaAbstractionSet(EvBFormulaParser.LambdaAbstractionSetContext ctx)
     {
         return FormulaFactory.newLambda(this.visit(ctx.vars), this.visit(ctx.pred), this.visit(ctx.formula),
                                         visitOptionalMeta(ctx.meta()));

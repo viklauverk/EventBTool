@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -482,7 +482,7 @@ public class Context
     {
         if (symbol_table_ != null) return;
 
-        log.debug("Building symbol table for context %s", this);
+        log.debug("Building symbol table for context %s", this.name());
 
         List<SymbolTable> parents = new ArrayList<>();
         for (Context p : extends_contexts_)
@@ -503,6 +503,11 @@ public class Context
         {
             log.debug("added constant set %s to symbol table %s", c, symbol_table_.name());
             symbol_table_.addConstant(c);
+        }
+
+        if (log.debugEnabled())
+        {
+            log.debug("\n%s", symbol_table_.print());
         }
     }
 

@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -643,7 +643,7 @@ public class Machine
     {
         if (symbol_table_ != null) return;
 
-        log.debug("Building symbol table for machine %s", this);
+        log.debug("Building symbol table for machine %s", this.name());
 
         symbol_table_ = sys_.newSymbolTable(name_);
         symbol_table_.addParent(parent);
@@ -669,6 +669,11 @@ public class Machine
                 v.setRefines(vv);
             }
             symbol_table_.addVariable(v);
+        }
+
+        if (log.debugEnabled())
+        {
+            log.debug("\n%s", symbol_table_.print());
         }
     }
 

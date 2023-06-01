@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -403,10 +403,12 @@ class Formula
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         EvBFormulaParser parser = new EvBFormulaParser(tokens);
         parser.symbol_table = fc;
-        //parser.setTrace(true);
+//        parser.setTrace(true);
         ParseTree tree = null;
         try
         {
+//            System.out.println("\n\nPARSING-----------------");
+//            System.out.println(line);
             tree = parser.start();
         }
         catch (Exception e)
