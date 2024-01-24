@@ -275,7 +275,6 @@ expression
    | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }?   constant=SYMBOL meta?        # ExpressionConstant
    // Should we be able to talk about all functions such that their applications give such and such result? For the moment, we can't.
    | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL PRIM? INV? meta? '(' inner=expression ')' # VariableFunctionApplication
-   | { symbol_table.isSetSymbol(_input.LT(1).getText()) }? sym=SYMBOL meta?  # SetSymbol
    | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }?   constant=SYMBOL meta? '(' inner=expression ')' # ConstantFunctionApplication
    | function=expression meta? '(' inner=expression ')'  # GenericFunctionApplication
    | '(' inner=expression ')'                       # ExpressionParentheses
@@ -296,6 +295,11 @@ expression
     | ID   meta?                                    # IdSet
     | PRJ1 meta?                                    # Prj1
     | PRJ2 meta?                                    # Prj2
+    | { symbol_table.isSetSymbol(_input.LT(1).getText()) }? sym=SYMBOL meta?  # SetSymbol
+    | { symbol_table.isAnySymbol(_input.LT(1).getText()) }? sym=SYMBOL meta? # AnySetSymbol
+    | { symbol_table.isNonFreeVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL meta? # NonFreeSetVariable
+    | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }? variable=SYMBOL PRIM? meta? # SetVariable
+    | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }? constant=SYMBOL meta? # SetConstant
     | NAT meta?               # NATSet
     | NAT1 meta?              # NAT1Set
     | INT meta?               # INTSet
@@ -312,7 +316,35 @@ expression
     | left=expression OFTYPE meta? right=expression  # OfType
     | '{' expression (',' expression)* '}' meta? # EnumeratedSet
 
-    | from=expression operator=UPTO meta? to=expression # UpTo
+    | LAMBDA meta? vars=listOfNonFreeSymbols
+          { pushFrame(((LambdaAbstractionExpressionContext)_localctx).vars); }
+       QDOT pred=predicate MID formula=expression
+          { popFrame(); }
+      # LambdaAbstractionExpression
+
+    | LAMBDA meta? vars=listOfNonFreeSymbols
+          { pushFrame(((LambdaAbstractionSetContext)_localctx).vars); }
+       QDOT pred=predicate MID formula=expression
+          { popFrame(); }
+      # LambdaAbstractionSet
+
+    | '{' meta? vars=listOfNonFreeSymbols
+          { pushFrame(((SetComprehensionContext)_localctx).vars); }
+      QDOT pred=predicate MID formula=expression
+          { popFrame(); }
+      '}'
+      # SetComprehension
+
+    | '{' meta?
+        { enableAllSymbolsAreNonFreeVars(); } // The expression definition implicitly declares the non-free vars!
+        formula=expression
+        { disableAllSymbolsAreNonFreeVars(); pushFrameNonFreeVars(); }
+        MID pred=predicate
+        { popFrame(); }
+      '}'
+      # SetComprehensionSpecial
+
+    | from=expression UPTO meta? to=expression     # UpTo
     | left=expression UNION meta? right=expression # SetUnion
     | left=expression INTER meta? right=expression # SetIntersection
     | left=expression SETMINUS meta? right=expression # SetMinus
@@ -340,22 +372,6 @@ expression
     | GUNION meta? '(' inner=expression ')' # GeneralizedUnion
     | GINTER meta? '(' inner=expression ')' # GeneralizedIntersection
 
-    | '{' meta? vars=listOfNonFreeSymbols
-          { pushFrame(((SetComprehensionContext)_localctx).vars); }
-      QDOT pred=predicate MID formula=expression
-          { popFrame(); }
-      '}'
-      # SetComprehension
-
-    | '{' meta?
-        { enableAllSymbolsAreNonFreeVars(); } // The expression definition implicitly declares the non-free vars!
-        formula=expression
-        { disableAllSymbolsAreNonFreeVars(); pushFrameNonFreeVars(); }
-        MID pred=predicate
-        { popFrame(); }
-      '}'
-      # SetComprehensionSpecial
-
     | QUNION meta? vars=listOfNonFreeSymbols
           { pushFrame(((QuantifiedUnionContext)_localctx).vars); }
        QDOT pred=predicate MID inner=expression
@@ -367,31 +383,6 @@ expression
        QDOT pred=predicate MID inner=expression
           { popFrame(); }
       # QuantifiedIntersection
-
-/*
-    | LAMBDA meta? vars=listOfNonFreeSymbols
-          { pushFrame(((LambdaAbstractionExpressionContext)_localctx).vars); }
-       QDOT pred=predicate MID formula=expression
-          { popFrame(); }
-      # LambdaAbstractionExpression
-*/
-
-    | '{' meta?
-        { enableAllSymbolsAreNonFreeVars(); } // The expression definition implicitly declares the non-free vars!
-        formula=expression
-        { disableAllSymbolsAreNonFreeVars(); pushFrameNonFreeVars(); }
-        MID pred=predicate
-        { popFrame(); }
-      '}'
-      # SetComprehensionSpecial
-
-    | LAMBDA meta?
-        { enableAllSymbolsAreNonFreeVars(); } // The expression definition implicitly declares the non-free vars!
-        vars=expression
-        { disableAllSymbolsAreNonFreeVars(); pushFrameNonFreeVars(); }
-       QDOT pred=predicate MID formula=expression
-          { popFrame(); }
-      # LambdaAbstractionExpression
 
     ;
 

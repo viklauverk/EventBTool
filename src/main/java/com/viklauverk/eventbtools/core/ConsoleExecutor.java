@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2021 Viklauverk AB
- 
+ Copyright (C) 2021-2023 Viklauverk AB
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -53,17 +53,19 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
     @Override
     public String visitDone(ConsoleParser.DoneContext ctx)
     {
-        ConsoleParser.AddContext add = ctx.add();
-        ConsoleParser.CanvasContext canvas = ctx.canvas();
         ConsoleParser.HelperContext helper = ctx.helper();
+        ConsoleParser.QuitContext quit = ctx.quit();
         ConsoleParser.HistoryContext history = ctx.history();
-        ConsoleParser.ListContext list = ctx.list();
-        ConsoleParser.MatchContext match = ctx.match();
-        ConsoleParser.PopContext pop = ctx.pop();
-        ConsoleParser.PushContext push = ctx.push();
-        ConsoleParser.ReadContext read = ctx.read();
-        ConsoleParser.SetContext set = ctx.set();
-        ConsoleParser.ShowContext show = ctx.show();
+        ConsoleParser.Ca_canvasContext ca_canvas = ctx.ca_canvas();
+        ConsoleParser.Env_readContext env_read = ctx.env_read();
+        ConsoleParser.Env_setContext env_set = ctx.env_set();
+        ConsoleParser.Env_listContext env_list = ctx.env_list();
+        ConsoleParser.Yms_addContext yms_add = ctx.yms_add();
+        ConsoleParser.Yms_popContext yms_pop = ctx.yms_pop();
+        ConsoleParser.Yms_pushContext yms_push = ctx.yms_push();
+        ConsoleParser.Yms_showContext yms_show = ctx.yms_show();
+        ConsoleParser.Eb_showContext eb_show = ctx.eb_show();
+        ConsoleParser.Util_matchContext util_match = ctx.util_match();
 		TerminalNode eof = ctx.EOF();
 
         if (eof == null) {
@@ -71,6 +73,10 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         }
 
         String r = "";
+        if (quit != null)
+        {
+            r = this.visit(quit);
+        }
         if (helper != null)
         {
             r = this.visit(helper);
@@ -79,41 +85,45 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         {
             r = this.visit(history);
         }
-        if (add != null)
+        if (ca_canvas != null)
         {
-            r = this.visit(add);
+            r = this.visit(ca_canvas);
         }
-        if (canvas != null)
+        if (env_list != null)
         {
-            r = this.visit(canvas);
+            r = this.visit(env_list);
         }
-        if (list != null)
+        if (env_read != null)
         {
-            r = this.visit(list);
+            r = this.visit(env_read);
         }
-        if (read != null)
+        if (util_match != null)
         {
-            r = this.visit(read);
+            r = this.visit(util_match);
         }
-        if (match != null)
+        if (yms_add != null)
         {
-            r = this.visit(match);
+            r = this.visit(yms_add);
         }
-        if (push != null)
+        if (yms_push != null)
         {
-            r = this.visit(push);
+            r = this.visit(yms_push);
         }
-        if (pop != null)
+        if (yms_pop != null)
         {
-            r = this.visit(pop);
+            r = this.visit(yms_pop);
         }
-        if (set != null)
+        if (yms_show != null)
         {
-            r = this.visit(set);
+            r = this.visit(yms_show);
         }
-        if (show != null)
+        if (env_set != null)
         {
-            r = this.visit(show);
+            r = this.visit(env_set);
+        }
+        if (eb_show != null)
+        {
+            r = this.visit(eb_show);
         }
 
         if (r == null)
@@ -133,7 +143,7 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
     @Override
     public String visitAddSymbols(ConsoleParser.AddSymbolsContext ctx)
     {
-        String type = ctx.typeOfSymbol().getText();
+        String type = ctx.getStart().getText();
 
         StringBuilder sb = new StringBuilder();
         List<String> elements = new LinkedList<>();
@@ -146,26 +156,26 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
 
         switch (type)
         {
-        case "vars":
-            console_.currentSymbolTable().addVariableSymbols(elements);
+        case "yms.add.anys":
+            console_.currentSymbolTable().addAnySymbols(elements);
             break;
-        case "consts":
+        case "yms.add.constants":
             console_.currentSymbolTable().addConstantSymbols(elements);
             break;
-        case "sets":
-            console_.currentSymbolTable().addSetSymbols(elements);
-            break;
-        case "preds":
-            console_.currentSymbolTable().addPredicateSymbols(elements);
-            break;
-        case "exprs":
+        case "yms.add.expressions":
             console_.currentSymbolTable().addExpressionSymbols(elements);
             break;
-        case "nums":
+        case "yms.add.numbers":
             console_.currentSymbolTable().addNumberSymbols(elements);
             break;
-        case "anys":
-            console_.currentSymbolTable().addAnySymbols(elements);
+        case "yms.add.predicates":
+            console_.currentSymbolTable().addPredicateSymbols(elements);
+            break;
+        case "yms.add.sets":
+            console_.currentSymbolTable().addSetSymbols(elements);
+            break;
+        case "yms.add.variables":
+            console_.currentSymbolTable().addVariableSymbols(elements);
             break;
         }
 
@@ -181,6 +191,7 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         return c.render();
     }
 
+    /*
     @Override
     public String visitHelp(ConsoleParser.HelpContext ctx)
     {
@@ -214,12 +225,11 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
 
         return "Unknown command "+arg;
     }
+    */
 
     @Override
     public String visitQuitQuit(ConsoleParser.QuitQuitContext ctx)
     {
-        System.err.println("GURKA quit quit");
-        System.out.println("GURKA quit quiiittt");
         console_.quit();
         return "quit";
     }
@@ -241,6 +251,18 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
     {
         StringBuilder sb = new StringBuilder();
         for (String t : console_.sys().machineNames())
+        {
+            sb.append(t);
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    @Override
+    public String visitListContexts(ConsoleParser.ListContextsContext ctx)
+    {
+        StringBuilder sb = new StringBuilder();
+        for (String t : console_.sys().contextNames())
         {
             sb.append(t);
             sb.append("\n");
@@ -275,7 +297,13 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
     }
 
     @Override
-    public String visitListSymbols(ConsoleParser.ListSymbolsContext ctx)
+    public String visitShowAllOfSymbolTable(ConsoleParser.ShowAllOfSymbolTableContext ctx)
+    {
+        return console_.currentSymbolTable().print();
+    }
+
+    @Override
+    public String visitShowPartOfSymbolTable(ConsoleParser.ShowPartOfSymbolTableContext ctx)
     {
         String type = ctx.typeOfSymbol().getText();
 
@@ -417,9 +445,9 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
     */
 
     @Override
-    public String visitSetDefaultFormat(ConsoleParser.SetDefaultFormatContext ctx)
+    public String visitSetDefaultRenderTarget(ConsoleParser.SetDefaultRenderTargetContext ctx)
     {
-        String target = ctx.format().getText();
+        String target = ctx.renderTarget().getText();
         console_.setRenderTarget(RenderTarget.lookup(target));
         return "OK";
     }
@@ -441,7 +469,7 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
             // Force the pattern to match all to the end of the path.
             pattern += "/";
         }
-        RenderTarget rt = useOrDefault(ctx.format(), console_.renderTarget());
+        RenderTarget rt = useOrDefault(ctx.renderTarget(), console_.renderTarget());
         RenderAttributes ra = console_.renderAttributes().copy();
         ra.setFrame(isSet(ctx.framed(), "framed"));
 
@@ -453,6 +481,7 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         return content;
     }
 
+    /*
     @Override
     public String visitShowTemplate(ConsoleParser.ShowTemplateContext ctx)
     {
@@ -466,14 +495,14 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
 
         return s;
     }
-
+    */
     @Override
     public String visitShowFormula(ConsoleParser.ShowFormulaContext ctx)
     {
         String f = removeQuotes(ctx.formula.getText());
         String metaaa = ctx.metaaa() != null ? ctx.metaaa().getText() : "";
         String treee = ctx.treee() != null ? ctx.treee().getText() : "";
-        RenderTarget rt = useOrDefault(ctx.format(), console_.renderTarget());
+        RenderTarget rt = useOrDefault(ctx.renderTarget(), console_.renderTarget());
         RenderAttributes ra = console_.renderAttributes();
         String framed = ctx.framed() != null ? ctx.framed().getText() : "";
 

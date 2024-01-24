@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
-
+ 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -332,7 +332,6 @@ public class Event
         }
         for (Variable p : e.parameterOrdering())
         {
-            log.debug("add parent parameter %s from event %s", p.name(), e.name());
             symbol_table_.addVariable(p);
         }
     }
@@ -341,17 +340,10 @@ public class Event
     {
         if (symbol_table_ != null) return;
 
-        log.debug("Building symbol table for event %s", this.name());
-
         symbol_table_ = machine_.sys().newSymbolTable(name_);
         symbol_table_.addParent(machine_.symbolTable());
 
         addParentParameters(this, symbol_table_);
-
-        if (log.debugEnabled())
-        {
-            log.debug("\n%s", symbol_table_.print());
-        }
     }
 
     public void parse()

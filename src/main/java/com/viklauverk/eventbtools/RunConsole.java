@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -38,6 +38,8 @@ import com.viklauverk.eventbtools.core.Settings;
 import com.viklauverk.eventbtools.core.Sys;
 import com.viklauverk.eventbtools.core.ImplType;
 
+import com.viklauverk.eventbtools.core.ConsoleCompleter;
+
 import org.jline.reader.Candidate;
 import org.jline.reader.Completer;
 import org.jline.reader.EndOfFileException;
@@ -47,9 +49,13 @@ import org.jline.reader.ParsedLine;
 import org.jline.reader.UserInterruptException;
 import org.jline.reader.impl.completer.ArgumentCompleter;
 import org.jline.reader.impl.completer.StringsCompleter;
+import org.jline.reader.impl.completer.AggregateCompleter;
+import org.jline.builtins.Completers.TreeCompleter;
+import org.jline.builtins.Completers.DirectoriesCompleter;
 
 import java.util.Scanner;
 import java.util.List;
+import java.nio.file.Paths;
 
 public class RunConsole
 {
@@ -65,17 +71,40 @@ public class RunConsole
         ra.setColor(true);
         canvas.setRenderAttributes(ra);
 
-        System.out.println("EVBT console 1.0.0");
+        System.out.println("EVBT console 2.0.0");
 
-        Completer completer = new ArgumentCompleter(
-            new StringsCompleter("show", "show", "list", "read"),
-            new StringsCompleter("formula", "framed"),
+        Completer completer = ConsoleCompleter.addCompleters(sys);
+        /*
+            new AggregateCompleter(
+                new ArgumentCompleter(
+                    new StringsCompleter("env.read"),
+                    new DirectoriesCompleter(Paths.get("."))),
+
+                new ArgumentCompleter(
+                    new StringsCompleter("env.ls"),
+                    new DirectoriesCompleter(Paths.get("."))),
+
+                new ArgumentCompleter(
+                    new StringsCompleter("ta.add.defaults")),
+
+                new ArgumentCompleter(
+                    new StringsCompleter("ta.push")));
+*/
+
+        //new DirectoriesCompleter(Paths.get("."));
+        /*new TreeCompleter(
+                node("sys",
+                node("read", */
+        //new StringsCompleter("quit", "help", "history", "sys", "util", "ca", "st", "sp", "mo", "ir", "co");
+
+        /*
             new Completer() {
                 @Override
                 public void complete(LineReader reader, ParsedLine line, List<Candidate> candidates) {
                     candidates.add(new Candidate("", "", null, "frequency in MHz", null, null, false));
                 }
             });
+            */
         LineReader reader = LineReaderBuilder
             .builder()
             .completer(completer)
@@ -88,9 +117,12 @@ public class RunConsole
             try
             {
                 line = reader.readLine(prompt);
-                String out = sys.console().go(line);
-                System.out.print(out);
-                if (!out.endsWith("\n")) System.out.println();
+                if (line.trim().length() > 0)
+                {
+                    String out = sys.console().go(line);
+                    System.out.print(out);
+                    if (!out.endsWith("\n")) System.out.println();
+                }
             }
             catch (UserInterruptException e)
             {

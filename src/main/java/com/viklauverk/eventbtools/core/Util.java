@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -62,6 +62,14 @@ public class Util
         StringBuilder sb = new StringBuilder();
         sb.append(s);
         while (len > 0) { sb.append(c); len--; }
+        return sb.toString();
+    }
+
+    public static String padLeft(String s, char c, int len)
+    {
+        StringBuilder sb = new StringBuilder();
+        while (len > 0) { sb.append(c); len--; }
+        sb.append(s);
         return sb.toString();
     }
 

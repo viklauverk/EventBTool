@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -33,8 +33,8 @@ public class ThrowingErrorListener extends BaseErrorListener
                             int charPositionInLine,
                             String msg,
                             RecognitionException e)
-      throws ParseCancellationException
+      throws ParseException
     {
-        throw new ParseCancellationException("line " + line + ":" + charPositionInLine + " " + msg);
+        throw new ParseException(line, charPositionInLine, msg);
     }
 }

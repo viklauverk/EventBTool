@@ -169,7 +169,7 @@ echo -n "\"$(notdir $(templ))\",$(notdir $(templ))," >> $(TEMPLATES_JAVA); \
 
 templates: $(TEMPLATES_JAVA)
 
-COMMANDS=$(shell cat src/main/antlr4/com/viklauverk/eventbtools/core/Console.g4 | grep //G | cut -f 2 -d ' ' | sort -u)
+HELP_COMMANDS:=$(shell cat src/main/antlr4/com/viklauverk/eventbtools/core/Console.g4 | grep //G | cut -f 2 -d ' ' | tr '.' '_' | sort -u)
 
 HELPLINES_JAVA=src/main/java/com/viklauverk/eventbtools/core/HelpLines.java
 
@@ -184,18 +184,47 @@ helplines:
                   | sed 's/\\/\\\\/g' | sed 's/"/\\"/g' | sed 's/\(.*\)/"\1\\n"+/' >> $(HELPLINES_JAVA)
 	@echo "\"\";\n\n" >> $(HELPLINES_JAVA)
 
-	@for c in $(COMMANDS); do echo "    public static String help_$${c} =" >>$(HELPLINES_JAVA) ; \
+	@for c in $(HELP_COMMANDS); do echo "    public static String help_$${c} =" >>$(HELPLINES_JAVA) ; \
         cat src/main/antlr4/com/viklauverk/eventbtools/core/Console.g4 | grep "//$${c}:" | sed "s|//$${c}:||g" \
         | sed 's/\\/\\\\/g' | sed 's/"/\\"/g' | sed 's/\(.*\)/"\1\\n"+/' >> $(HELPLINES_JAVA) ; \
         echo "\"\";\n\n" >> $(HELPLINES_JAVA) ; done
 
 	@echo "public static java.util.HashMap<String,String> helps;" >> $(HELPLINES_JAVA)
 	@echo "static { \n    helps = new java.util.HashMap<>();" >> $(HELPLINES_JAVA)
-	@for c in $(COMMANDS); do echo '    helps.put("'$${c}'", help_'$${c}');' >>$(HELPLINES_JAVA) ; done
+	@for c in $(HELP_COMMANDS); do echo '    helps.put("'$${c}'", help_'$${c}');' >>$(HELPLINES_JAVA) ; done
 	@echo "}\n\n" >> $(HELPLINES_JAVA)
 
 	@echo "}" >> $(HELPLINES_JAVA)
 	@echo Created $(HELPLINES_JAVA)
+
+CONSOLE_COMPLETER_JAVA=src/main/java/com/viklauverk/eventbtools/core/ConsoleCompleter.java
+
+COMMANDS:=$(shell cat src/main/antlr4/com/viklauverk/eventbtools/core/Console.g4 | grep -v quit | grep //G | cut -f 2 -d ' ' | sort -u)
+
+console_completer:
+	@echo "// Copyright Viklauverk AB 2021-2023" > $(CONSOLE_COMPLETER_JAVA)
+	@echo "package com.viklauverk.eventbtools.core;" >> $(CONSOLE_COMPLETER_JAVA)
+	@echo "" >> $(CONSOLE_COMPLETER_JAVA)
+	@echo "import org.jline.reader.impl.completer.ArgumentCompleter;"  >> $(CONSOLE_COMPLETER_JAVA)
+	@echo "import org.jline.reader.impl.completer.StringsCompleter;"  >> $(CONSOLE_COMPLETER_JAVA)
+	@echo "import org.jline.reader.impl.completer.AggregateCompleter;"  >> $(CONSOLE_COMPLETER_JAVA)
+	@echo "import org.jline.builtins.Completers.TreeCompleter;"  >> $(CONSOLE_COMPLETER_JAVA)
+	@echo "import org.jline.builtins.Completers.DirectoriesCompleter;"  >> $(CONSOLE_COMPLETER_JAVA)
+	@echo "import org.jline.reader.Completer;" >> $(CONSOLE_COMPLETER_JAVA)
+	@echo "" >> $(CONSOLE_COMPLETER_JAVA)
+	@echo "public class ConsoleCompleter" >> $(CONSOLE_COMPLETER_JAVA)
+	@echo "{" >> $(CONSOLE_COMPLETER_JAVA)
+	@echo "    public static Completer addCompleters(Sys sys) {" >> $(CONSOLE_COMPLETER_JAVA)
+
+	@echo "        return new AggregateCompleter(" >> $(CONSOLE_COMPLETER_JAVA)
+	@(for c in $(COMMANDS) quit; do \
+        echo -n "             new ArgumentCompleter(new StringsCompleter(\"$${c}\"))" ; \
+        if [ $$c != "quit" ] ; then echo "," ; else echo "" ; fi ; \
+    done) >> $(CONSOLE_COMPLETER_JAVA)
+	@echo "        );" >> $(CONSOLE_COMPLETER_JAVA)
+	@echo "    }" >> $(CONSOLE_COMPLETER_JAVA)
+	@echo "}" >> $(CONSOLE_COMPLETER_JAVA)
+	@echo Created $(CONSOLE_COMPLETER_JAVA)
 
 ifeq ($(MOST_RECENT),mvn)
 test: testm

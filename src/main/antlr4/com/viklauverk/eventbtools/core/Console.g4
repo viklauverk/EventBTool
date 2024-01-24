@@ -1,4 +1,4 @@
-// Copyright (C) 2021 Viklauverk AB
+// Copyright (C) 2021-2023 Viklauverk AB
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -21,72 +21,69 @@ NUMBER: [0-9]+;
 
 SYMBOL: [a-zA-Z][a-zA-Z0-9_]*;
 
-STRING: '"' (~'"')+ '"';
+STRING: '"' (~'"')+ '"' | (~' ')+;
 
-start : ( add
-        | canvas
-        | history
-        | list
-        | match
-        | pop
-        | print
-        | push
-        | read
-        | set
-        | show
+start : (
+        quit
         | helper
-        | quit
+        | history
+        | ca_canvas
+        | co_show
+        | env_list
+        | env_read
+        | env_set
+        | ir_show
+        | mo_show
+        | eb_show
+        | yms_add
+        | yms_push
+        | yms_pop
+        | yms_show
+        | util_match
         ) EOF # Done;
 
-add
-//G add <symbol_type> symbol+             § Add symbols to symbol table.
-//G add defaults                          § Add symbols to symbol table.
-//add:Usage: add <symbol_type> <symbol>+
-//add:       add defaults
-//add:
-//add:Add the supplied symbols to <table_name> or the current active symbol table.
-//add:Symbol types are: vars consts sets preds expres nums anys
-//add:Adding defaults means adding PQR xy ST EF
-//add:
-//add:Examples:
-//add:    add consts c d e
-//add:    add vars x y z to WorkSyms
-//add:    add preds P Q R
-//add:    add defaults
-   : 'add' typeOfSymbol symbols                # AddSymbols
-   | 'add' 'defaults'                          # AddDefaultSymbols
+quit
+//G quit                             § Quit evbt
+//help:Usage quit
+//help:
+//help:Quit evbt console.
+   : ('q' | 'quit') # QuitQuit
    ;
 
-typeOfSymbol
-   : 'anys'
-   | 'consts'
-   | 'exprs'
-   | 'nums'
-   | 'preds'
-   | 'sets'
-   | 'vars'
-     ;
-
-symbols
-   : SYMBOL+                           # ListOfSymbols
+helper
+//G help {<command>}                            § Give general help or help on a command.
+//help:Usage help
+//help:
+//help:Give general help.
+   : ('h' | 'help') # HelpHelp
    ;
 
-canvas
-//G canvas push "<name>"        § Push a new canvas on the canvas stack.
-//G canvas pop                  § Pop the top canvas.
-//G canvas set width            § Set canvas render width for the current canvas.
-//canvas:Usage: canvas push "<name>"
-//canvas:       canvas set width 120
+history
+//G history                                   § List the history of previous commands.
+//history:Usage history
+//history:
+//history:List the history of previous commands.
+   : 'history'                          #ListHistory
+   ;
+
+ca_canvas
+//G ca.push "<name>"        § Push a new canvas on the canvas stack.
+//G ca.pop                  § Pop the top canvas.
+//G ca.set.width            § Set canvas render width for the current canvas.
+//G ca.target <render_target>  § plain terminal tex htmq
+//G ca.attributes <render_attribute> §  Set rendering attributes, like color, labels, at, frame etc.
+//canvas:Usage: ca.push "<name>"
+//canvas:       ca.set width 120
 //canvas:
 //canvas:Create a canvas for rendering formulas.
 //canvas:
 //canvas:Examples:
-//canvas:    canvas push "test"
-//canvas:    canvas set width 80
-   : 'canvas' 'push' name=STRING               # CanvasPush
-   | 'canvas' 'target' renderTarget            # CanvasSetRenderTarget
-   | 'canvas' 'attributes' renderAttribute*    # CanvasSetRenderAttributes
-   | 'canvas' 'pop'                            # CanvasPop
+//canvas:    ca.push "test"
+//canvas:    ca.set width 80
+   : 'ca.push' name=STRING               # CanvasPush
+   | 'ca.target' renderTarget            # CanvasSetRenderTarget
+   | 'ca.attributes' renderAttribute*    # CanvasSetRenderAttributes
+   | 'ca.pop'                            # CanvasPop
    ;
 
 renderTarget
@@ -112,85 +109,182 @@ attrKey
     | 'indexes'
     ;
 
-history
-//G history                                   § List the history of previous commands.
-//history:Usage history
-//history:
-//history:List the history of previous commands.
-   : 'history'                          #ListHistory
+co_show
+//G co.show.formula {types} {<renderTarget>} "<formula>" § Render  the code for the formula given the current environment.
+//G co.show.part {framed} {<renderTarget>} "<part>"      § Render the code for the Event-B part, eg Elevator/invariants/inv1
+//show:Usage: co.show.formula {types} {<renderTarget>} "<formula>"
+//show:       co.show.part {framed} {<renderTarget>} "<formula>"
+//show:
+//show:Show the assignment/part in the select model renderTarget.
+//show:
+//show:Example:
+//show:    co.show "x:=7"
+//show:    co.show "Elevator/events/up"
+   : 'co.show.formula' formula=STRING # ShowCode
+   | 'co.show.part' framed? renderTarget? name=STRING   # ShowCodePart
    ;
 
-list
-//G list <object_type>                          § List objects of a certain type.
-//list:Usage list <object_type>
-//list:
-//list:List all objects of a given type.
-//list:The available types are: tables hyps machines contexts
-//list:anys consts exprs nums preds sets vars
-    : 'list' 'tables'                  # ListTables
-    | 'list' 'hyps'                    # ListHypothesis
-    | 'list' 'machines'                # ListMachines
-    | 'list' 'contexts'                # ListContexts
-    | 'list' typeOfSymbol              # ListSymbols
-    | 'list' 'parts'                   # ListParts
-    ;
+//  framed? hiding? renderTarget?
 
-read
-//G read "<dir>"                  § Read the machines (bum files) and contexts (buc files) stored inside dir.
-//read:Usage read "<dir>"
-//read:
-//read:Read the machines (bum) and context (buc) files stored in <dir>.
-//read:Give the system an overall nick name as well for the renderings.
-    : 'read' dir=STRING    # ReadDir
-    ;
+ir_show
+//G ir.show.formula {types} {<renderTarget>} "<formula>" § Render the ir for the formula given the current environment.
+//G ir.show.part {framed} {<renderTarget>} "<part>"      § Render the ir for the Event-B part, eg Elevator/invariants/inv1
+//show:Usage: ir.show.formula {types} {<renderTarget>} "<formula>"
+//show:       ir.show.part {framed} {<renderTarget>} "<formula>"
+//show:
+//show:Render the intermediate representation for code generation.
+//show:
+//show:Example:
+//show:    ir.show "x:=7"
+//show:    ir.show "Elevator/events/up"
+   : 'ir.show.formula' framed? hiding? renderTarget? formula=STRING # ShowIR
+   | 'ir.show.part' framed? renderTarget? name=STRING   # ShowIRPart
+   ;
 
-match
-//G match "<formula>" "<pattern>"               § Match formula against pattern and print matching sub-formulas.
-//match:Usage: match "<formula>" "<pattern>"
-//match:
-//match:Match the formula agains the pattern, then print the matching sub-formulas.
-//match:
-//match:Examples:
-//match:    match "1+5=7" "E=F"
-//match:    match "floor:NAT" "x:S"
-    : 'match' formula=STRING pattern=STRING # MatchPattern
-    ;
+mo_show
+//G mo.show.formula {types} {<renderTarget>} "<formula>" § Render a model for the formula given the current environment.
+//G mo.show.part {framed} {<renderTarget>} "<part>"      § Render a model for the Event-B part, eg Elevator/invariants/inv1
+//show:Usage: mo.show.formula {types} {<renderTarget>} "<formula>"
+//show:       mo.show.part {framed} {<renderTarget>} "<formula>"
+//show:
+//show:Render the intermediate representation for code generation.
+//show:
+//show:Example:
+//show:    mo.show "x:=7"
+//show:    mo.show "Elevator/events/up"
+   : 'mo.show.formula' framed? hiding? renderTarget? formula=STRING # ShowModel
+   | 'mo.show.part' framed? renderTarget? name=STRING   # ShowModelPart
+   ;
 
-print
-//G print all                                 § Print variables
-//match:Usage: print all
-//match:
-//match:Print all variables.
-//match:
-//match:Examples:
-//match:    print all
-    : 'print' 'all'     # printAll
-    ;
+eb_show
+//G eb.show.formula {types} {<renderTarget>} "<formula>" § Parse the formula using the current symbol table and render it.
+//G eb.show.part {framed} {<renderTarget>} "<part>"      § Show the Event-B part, eg Elevator/invariants/inv1
+//G eb.show.current.table                          § Show the name of the current symbol table.
+//G eb.show.table "<name">                         § Show the name of the current symbol table.
+//show:Usage: eb.show.formula {types} {<renderTarget>} "<formula>"
+//show:       eb.show.part {framed} {<renderTarget>} "<formula>"
+//show:       eb.show.current table
+//show:
+//show:Parse the given formula using the current symbol table and then
+//show:render the formula using the given renderTarget.
+//show:
+//show:Example:
+//show:    eb.show "x:NAT"
+//show:    eb.show tree "x+->y"
+//show:    eb.show tex "s := s \/ { 2 }"
+//show:    eb.show tree terminal "s := s \/ { 2 }"
+//show:    eb.show part terminal "Elevator/invariants/inv1"
+   : 'eb.show.formula' metaaa? treee? framed? hiding? renderTarget? formula=STRING # ShowFormula
+   | 'eb.show.current.table'        # ShowCurrentTable
+   | 'eb.show.table' name=STRING      # ShowTable
+   | 'eb.show.part' framed? renderTarget? name=STRING   # ShowPart
+//   | 'eb.show.template' name=STRING       # ShowTemplate
+   ;
 
-pop
-//G pop table                                 § Pop and remove the current symbol table.
-//match:Usage: pop table
-//match:
-//match:Pops and removes the current active symbol table.
-//match:
-//match:Examples:
-//match:    pop table
-    : 'pop' 'table'     # popTable
-    ;
+yms_add
+//G yms.add <symbol_type> symbol+             § Add symbols to symbol table.
+//G yms.add.defaults                          § Add symbols to symbol table.
+//add:Usage: yms.add <symbol_type> <symbol>+
+//add:       yms.add defaults
+//add:
+//add:Add the supplied symbols to the current active symbol table.
+//add:Symbol types are: vars consts sets preds expres nums anys
+//add:Adding defaults means adding PQR xy ST EF
+//add:
+//add:Examples:
+//add:    yms.add.anys A B C
+//add:    yms.add.constants c d e
+//add:    yms.add.expressions E F G
+//add:    yms.add.numbers M N
+//add:    yms.add.predicates P Q R
+//add:    yms.add.sets P Q R
+//add:    yms.add.variables x y z
+//add:    yms.add.defaults     Add some useful default symbols
+   : 'yms.add.anys' symbols                    # AddSymbols
+   | 'yms.add.constants' symbols                    # AddSymbols
+   | 'yms.add.expressions' symbols                  # AddSymbols
+   | 'yms.add.numbers' symbols                      # AddSymbols
+   | 'yms.add.predicates' symbols                   # AddSymbols
+   | 'yms.add.sets' symbols                         # AddSymbols
+   | 'yms.add.variables' symbols                    # AddSymbols
+   | 'yms.add.defaults'                             # AddDefaultSymbols
+   ;
 
-push
-//G new table "<name>"               § Create a new symbol table and push it on the stack.
-//match:Usage: new table "<name>"
+typeOfSymbol
+   : 'anys'
+   | 'consts'
+   | 'exprs'
+   | 'nums'
+   | 'preds'
+   | 'sets'
+   | 'vars'
+     ;
+
+symbols
+   : SYMBOL+                           # ListOfSymbols
+   ;
+
+yms_show
+//G yms.show           § Show the symbol table
+//add:Usage: yms.show
+//add:
+//add:Show the current symbol table.
+//add:
+//add:Examples:
+//add:    yms.show
+   : 'yms.show'                     # ShowAllOfSymbolTable
+     | 'yms.show' typeOfSymbol        # ShowPartOfSymbolTable
+   ;
+
+yms_push
+//G yms.push "<name>"               § Create a new symbol table and push it on the stack.
+//match:Usage: yms.push "<name>"
 //match:
 //match:Create a new symbol table which inherits from the current symbol table.
 //match:
 //match:Examples:
 //match:    new table "work"
-    : 'push' 'table' name=STRING  # pushTable
+    : 'yms.push' name=STRING  # pushTable
     ;
 
-format
-    : 'plain' | 'terminal' | 'tex' | 'htmq';
+yms_pop
+//G yms.pop                                  § Pop and remove the current symbol table.
+//match:Usage: yms.pop
+//match:
+//match:Pops and removes the current active symbol table.
+//match:
+//match:Examples:
+//match:    yms.pop
+    : 'yms.pop'  # popTable
+    ;
+
+env_list
+//G env.ls.machines                        § List objects of a certain type.
+//G env.ls.tables                          § List objects of a certain type.
+//G env.ls.hyps                            § List objects of a certain type.
+//G env.ls.contexts                        § List objects of a certain type.
+//G env.ls.pars                            § List objects of a certain type.
+//list:Usage env.ls <object_type>
+//list:
+//list:List all objects of a given type.
+//list:The available types are: tables hyps machines contexts
+//list:anys consts exprs nums preds sets vars
+    : 'env.ls.machines'                # ListMachines
+    | 'env.ls.tables'                  # ListTables
+    | 'env.ls.hyps'                    # ListHypothesis
+    | 'env.ls.contexts'                    # ListContexts
+    | 'env.ls.parts'                   # ListParts
+    ;
+
+env_read
+//G env.read "<dir>"                  § Read the machines (bum files) and contexts (buc files) stored inside dir.
+//read:Usage envread "<dir>"
+//read:
+//read:Read the machines (bum) and context (buc) files stored in <dir>.
+//read:Give the system an overall nick name as well for the renderings.
+    : 'env.read' dir=STRING    # ReadDir
+//C   SC"env.read" DC
+    ;
 
 metaaa
     : 'meta' ;
@@ -207,71 +301,29 @@ framed
 hiding
 : 'noc' | 'nol' | 'non';
 
-set
-//G set default format {plain|terminal|tex|htmq} § Set the default format for rendering.
-//G set default hiding {nol|noc}                 § Set what parts to hide by default.
-//show:Usage: set default format <format>
-//show:       set default hiding <hiding>
+env_set
+//G env.set.default.renderTarget {plain|terminal|tex|htmq} § Set the default renderTarget for rendering.
+//G env.set.default.hiding {nol|noc}                 § Set what parts to hide by default.
+//show:Usage: env.set.default.renderTarget <renderTarget>
+//show:       env.set.default.hiding <hiding>
 //show:
 //show:Set default values.
 //show:
 //show:Example:
-//show:    set default format tex
-//show:    set default hiding nol
-   : 'set' 'default' 'format' format # SetDefaultFormat
-   | 'set' 'default' 'hiding' hiding # SetDefaultHiding
+//show:    set.default.renderTarget tex
+//show:    set.default.hiding nol
+   : 'env.set.default.render_target' renderTarget # SetDefaultRenderTarget
+   | 'env.set.default.hiding' hiding # SetDefaultHiding
    ;
 
-show
-//G show formula {types} {<format>} "<formula>" § Parse the formula using the current symbol table and render it.
-//G show part {framed} {<format>} "<part>"      § Show the Event-B part, eg Elevator/invariants/inv1
-//G show current table                          § Show the name of the current symbol table.
-//G show table "<name">                         § Show the name of the current symbol table.
-//show:Usage: show formula {types} {<format>} "<formula>"
-//show:       show part {framed} {<format>} "<formula>"
-//show:       show current table
-//show:
-//show:Parse the given formula using the current symbol table and then
-//show:render the formula using the given format.
-//show:
-//show:Example:
-//show:    show "x:NAT"
-//show:    show tree "x+->y"
-//show:    show tex "s := s \/ { 2 }"
-//show:    show tree terminal "s := s \/ { 2 }"
-//show:    show part terminal "Elevator/invariants/inv1"
-   : 'show' 'formula' metaaa? treee? framed? hiding? format? formula=STRING # ShowFormula
-   | 'show' 'current' 'table'        # ShowCurrentTable
-   | 'show' 'table' name=STRING      # ShowTable
-   | 'show' 'part' framed? format? name=STRING   # ShowPart
-   | 'show' 'template' name=STRING       # ShowTemplate
-   ;
-
-
-helper
-//G help {<command>}                            § Give general help or help on a command.
-//help:Usage help {<command>}
-//help:
-//help:Give general help or help on a specific command.
-   : 'help' # HelpHelp
-   | 'help' topic #Help
-   ;
-
-topic
-   : 'add'
-   | 'help'
-   | 'list'
-   | 'match'
-   | 'read'
-   | 'render'
-   | 'show'
-   | 'shortcuts'
-   ;
-
-quit
-//G quit                             § Quit evbt
-//help:Usage quit
-//help:
-//help:Quit evbt console.
-   : 'quit' # QuitQuit
-   ;
+util_match
+//G util.match "<formula>" "<pattern>"               § Match formula against pattern and print matching sub-formulas.
+//match:Usage: util.match "<formula>" "<pattern>"
+//match:
+//match:Match the formula agains the pattern, then print the matching sub-formulas.
+//match:
+//match:Examples:
+//match:    util.match "1+5=7" "E=F"
+//match:    util.match "floor:NAT" "x:S"
+    : 'util.match' formula=STRING pattern=STRING # MatchPattern
+    ;

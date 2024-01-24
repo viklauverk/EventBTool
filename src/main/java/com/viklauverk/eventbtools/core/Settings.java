@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,7 @@ import com.viklauverk.eventbtools.core.ConsoleSettings;
 import com.viklauverk.eventbtools.core.ShowSettings;
 import com.viklauverk.eventbtools.core.CodeGenSettings;
 import com.viklauverk.eventbtools.core.DocGenSettings;
+import com.viklauverk.eventbtools.core.ModelGenSettings;
 
 public class Settings
 {
@@ -33,9 +34,11 @@ public class Settings
     private ShowSettings show_settings_ = new ShowSettings();
     private CodeGenSettings codegen_settings_ = new CodeGenSettings();
     private DocGenSettings docgen_settings_ = new DocGenSettings();
+    private ModelGenSettings modelgen_settings_ = new ModelGenSettings();
 
     public CommonSettings commonSettings() { return common_settings_; }
     public ShowSettings showSettings() { return show_settings_; }
     public CodeGenSettings codeGenSettings() { return codegen_settings_; }
     public DocGenSettings docGenSettings() { return docgen_settings_; }
+    public ModelGenSettings modelGenSettings() { return modelgen_settings_; }
 }

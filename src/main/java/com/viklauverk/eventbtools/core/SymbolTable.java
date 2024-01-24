@@ -254,9 +254,7 @@ public class SymbolTable
     {
         for (Frame f : frames_)
         {
-            if (f.vars.contains(v)) {
-                return true;
-            }
+            if (f.vars.contains(v)) return true;
         }
         return false;
     }
@@ -469,16 +467,20 @@ public class SymbolTable
         }
         String title = "SymbolTable "+name_;
 
-        o.append("predicates: "+Canvas.flow(80, printSyms(predicate_symbols_)));
+        o.append("constants: "+Canvas.flow(80, printSyms(constant_symbols_)));
         o.append("-\n");
         o.append("expressions: "+Canvas.flow(80, printSyms(expression_symbols_)));
+        o.append("-\n");
+        o.append("numbers: "+Canvas.flow(80, printSyms(number_symbols_)));
+        o.append("-\n");
+        o.append("predicates: "+Canvas.flow(80, printSyms(predicate_symbols_)));
         o.append("-\n");
         o.append("sets: "+Canvas.flow(80, printSyms(set_symbols_)));
         o.append("-\n");
         o.append("variables: "+Canvas.flow(80, printSyms(variable_symbols_)));
-        o.append("-\n");
-        o.append("constants: "+Canvas.flow(80, printSyms(constant_symbols_)));
 
+        // The anys are special and used for wildcard matching. We only print these
+        // if there are any to print.
         if (any_symbols_.size() > 0)
         {
             o.append("-\n");

@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -21,5 +21,5 @@ import com.viklauverk.eventbtools.core.Log;
 
 public enum Cmd
 {
-    ERROR, CODEGEN, CONSOLE, DOCGEN, DOCMOD, EDK, SHOW, HELP, LICENSE, VERSION,
+    ERROR, HELP, VERSION, LICENSE, CONSOLE, CODEGEN, MODELGEN, SHOW, DOCGEN, DOCMOD, EDK
 }

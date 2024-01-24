@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021-2023 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -49,6 +49,9 @@ public class Main
         case CODEGEN:
             RunCodeGen.run(s);
             break;
+        case MODELGEN:
+            RunModelGen.run(s);
+            break;
         case CONSOLE:
             RunConsole.run(s);
             break;
@@ -90,12 +93,13 @@ public class Main
         System.out.println("usage: evbt <command> [options] <args>");
         System.out.println("");
         System.out.println("Available commands:");
-        System.out.println("  codegen [options] <language> <dir>/<machine>");
-        System.out.println("  console [options] { <dir> }");
-        System.out.println("  docgen  [options] <format> <dir>");
-        System.out.println("  docmod  [options] <format> <source_file> <dest_file> { <dir> }");
-        System.out.println("  edk     [options] <dir>");
-        System.out.println("  show    [options] <dir> <part_identifier>*");
+        System.out.println("  codegen  [options] <language> <dir>/<machine>");
+        System.out.println("  modelgen [options] <model> <dir>/<machine>");
+        System.out.println("  docgen   [options] <format> <dir>");
+        System.out.println("  docmod   [options] <format> <source_file> <dest_file> { <dir> }");
+        System.out.println("  edk      [options] <dir>");
+        System.out.println("  show     [options] <dir> <part_identifier>*");
+        System.out.println("  console  [options] { <dir> }");
         System.out.println("  help");
         System.out.println("  license");
         System.out.println("  version");
@@ -114,7 +118,7 @@ public class Main
             System.out.println("  --trace=all Trace log for all modules.");
         }
         System.out.println("");
-        System.out.println("Copyright (C) 2021-2022 Viklauverk AB");
+        System.out.println("Copyright (C) 2021-2023 Viklauverk AB");
         System.out.println("Licensed to you under the GNU Affero General Public License 3.");
         System.out.println("");
     }
@@ -123,7 +127,7 @@ public class Main
     {
         String l =
             "Event-B Tools (evbt)\n"+
-            "Copyright (C) 2021-2022 Viklauverk AB\n"+
+            "Copyright (C) 2021-2023 Viklauverk AB\n"+
             "\n"+
             "This program is free software: you can redistribute it and/or modify\n"+
             "it under the terms of the GNU Affero General Public License as published by\n"+
