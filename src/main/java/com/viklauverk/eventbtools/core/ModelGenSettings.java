@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021-2023 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -14,12 +14,34 @@
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+//
+package com.viklauverk.eventbtools.core;
 
-package com.viklauverk.eventbtools;
+import java.util.Set;
+import java.util.HashSet;
 
-import com.viklauverk.eventbtools.core.Log;
-
-public enum Cmd
+public class ModelGenSettings
 {
-    ERROR, HELP, VERSION, LICENSE, CONSOLE, CODEGEN, MODELGEN, SHOW, DOCGEN, DOCMOD, EDK
+    private ModelTarget model_target_;
+
+    public ModelGenSettings()
+    {
+        model_target_ = ModelTarget.WHY3;
+    }
+
+    public ModelGenSettings(ModelTarget mt)
+    {
+        model_target_ = mt;
+    }
+
+    public ModelTarget modelTarget()
+    {
+        return model_target_;
+    }
+
+    public void setModelTarget(ModelTarget rt)
+    {
+        model_target_ = rt;
+    }
+
 }

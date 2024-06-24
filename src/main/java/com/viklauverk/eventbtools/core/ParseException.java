@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2023 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -15,11 +15,29 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.viklauverk.eventbtools;
+package com.viklauverk.eventbtools.core;
 
-import com.viklauverk.eventbtools.core.Log;
+import org.antlr.v4.runtime.misc.ParseCancellationException;
 
-public enum Cmd
+public class ParseException extends ParseCancellationException
 {
-    ERROR, HELP, VERSION, LICENSE, CONSOLE, CODEGEN, MODELGEN, SHOW, DOCGEN, DOCMOD, EDK
+    private int line_;
+    private int offset_;
+
+    public ParseException(int line, int offset, String msg)
+    {
+        super(msg);
+        line_= line;
+        offset_ = offset;
+    }
+
+    public int line()
+    {
+        return line_;
+    }
+
+    public int offset()
+    {
+        return offset_;
+    }
 }

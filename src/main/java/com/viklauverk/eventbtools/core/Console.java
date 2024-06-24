@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -38,6 +38,7 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.NoViableAltException;
+import org.antlr.v4.runtime.InputMismatchException;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 public class Console
@@ -208,8 +209,9 @@ public class Console
         if (first == last) return false;
         return true;
     }
-
-    String[] short_cuts = {
+/*
+    String[] short_cuts = {}
+        ;/*
         // Add commands...
         "aa ", "add anys", "",
         "ac ", "add consts", "",
@@ -244,7 +246,6 @@ public class Console
         "spf ", "show part framed", ".",
         "m ", "match", "..",
     };
-
     public String tryExpandCommands(String line)
     {
         assert (short_cuts.length % 3 == 0);
@@ -280,15 +281,11 @@ public class Console
         }
         return line;
     }
-
+*/
     public String go(String line_in)
     {
-        line_in = line_in + " ";
-        String line = tryExpandCommands(line_in);
-        if (!line.equals(line_in))
-        {
-            log.debug("expanded command: '%s' to '%s'", line_in, line);
-        }
+        if (line_in.trim().length() == 0) return "";
+        String line = line_in + " ";
         CharStream lineStream = CharStreams.fromString(line);
 
         ConsoleLexer lexer = new ConsoleLexer(lineStream);
@@ -305,14 +302,11 @@ public class Console
         {
             tree = parser.start();
         }
-        catch (Exception e)
+        catch (ParseException e)
         {
-            String info = "Could not parse command: \""+line+"\"\n"+e.getMessage();
-            log.info("%s", info);
-            /*
-              System.out.println("========================");
-              System.out.println(ReflectionToStringBuilder.toString(parser));
-              System.out.println("========================");*/
+            String info = Util.padLeft("^", ' ', 5+e.offset())+"\n"+
+                "I am sorry, but this is how far I could parse your command.";
+
             return info;
         }
         if (parser.getNumberOfSyntaxErrors() > 0)

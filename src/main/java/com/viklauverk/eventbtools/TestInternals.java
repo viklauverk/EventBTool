@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
-
+ 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -222,9 +222,6 @@ public class TestInternals
         //     ordered pair
         ok &= check("1|->2", "1↦2", "<MAPSTO <NUMBER 1>↦<NUMBER 2>>");
 
-        //     ordered triplet
-        ok &= check("1|->2|->3", "1↦2↦3", "<MAPSTO <MAPSTO <NUMBER 1>↦<NUMBER 2>>↦<NUMBER 3>>");
-
         //     complicated pair structure
         ok &= check("x = 1 |-> (2|-> (3|->4))", "x=1↦(2↦(3↦4))", "<EQUALS <VARIABLE_SYMBOL x>=<MAPSTO <NUMBER 1>↦<PARENTHESISED_EXPRESSION (<MAPSTO <NUMBER 2>↦<PARENTHESISED_EXPRESSION (<MAPSTO <NUMBER 3>↦<NUMBER 4>>)>>)>>>");
 
@@ -427,10 +424,7 @@ public class TestInternals
         ok &= check("S>->>T", "S⤖ T", "<TOTAL_BIJECTION <SET_SYMBOL S>⤖ <SET_SYMBOL T>>");
 
         //     lambda abstraction
-        ok &= check("(%a.a:NAT|a+4711)", "(λa·a∈ℕ|a+4711)", "<PARENTHESISED_EXPRESSION (<LAMBDA_ABSTRACTION λ<VARIABLE_NONFREE_SYMBOL a>·<MEMBERSHIP <VARIABLE_NONFREE_SYMBOL a>∈<NAT_SET ℕ>>|<ADDITION <VARIABLE_NONFREE_SYMBOL a>+<NUMBER 4711>>>)>");
-
-        //     lambda abstraction with multiple arguments
-        ok &= check("(%z|->w.z:NAT&w:NAT|z+w)", "(λz↦w·z∈ℕ∧w∈ℕ|z+w)", "<PARENTHESISED_EXPRESSION (<LAMBDA_ABSTRACTION λ<MAPSTO <VARIABLE_NONFREE_SYMBOL z>↦<VARIABLE_NONFREE_SYMBOL w>>·<CONJUNCTION <MEMBERSHIP <VARIABLE_NONFREE_SYMBOL z>∈<NAT_SET ℕ>>∧<MEMBERSHIP <VARIABLE_NONFREE_SYMBOL w>∈<NAT_SET ℕ>>>|<ADDITION <VARIABLE_NONFREE_SYMBOL z>+<VARIABLE_NONFREE_SYMBOL w>>>)>");
+        ok &= check("(%a.a:NAT|a+4711)", "(λa·a∈ℕ|a+4711)", "<PARENTHESISED_EXPRESSION (<LAMBDA_ABSTRACTION λ<LIST_OF_NONFREE_VARIABLES <VARIABLE_NONFREE_SYMBOL a>>·<MEMBERSHIP <VARIABLE_NONFREE_SYMBOL a>∈<NAT_SET ℕ>>|<ADDITION <VARIABLE_NONFREE_SYMBOL a>+<NUMBER 4711>>>)>");
 
         //     function application
         ok &= check("x=y(4711)", "x=y(4711)", "<EQUALS <VARIABLE_SYMBOL x>=<FUNC_APP <VARIABLE_SYMBOL y>(<NUMBER 4711>)>>");

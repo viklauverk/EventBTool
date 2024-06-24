@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021-2023 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -15,11 +15,19 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.viklauverk.eventbtools;
+package com.viklauverk.eventbtools.core;
 
-import com.viklauverk.eventbtools.core.Log;
-
-public enum Cmd
+public enum ModelTarget
 {
-    ERROR, HELP, VERSION, LICENSE, CONSOLE, CODEGEN, MODELGEN, SHOW, DOCGEN, DOCMOD, EDK
+    WHY3;
+
+    public static ModelTarget lookup(String s)
+    {
+        switch (s)
+        {
+        case "why3": return WHY3;
+        }
+
+        return null;
+    }
 }

@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021-2023 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -15,11 +15,20 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.viklauverk.eventbtools;
+package com.viklauverk.eventbtools.core;
 
-import com.viklauverk.eventbtools.core.Log;
-
-public enum Cmd
+public class ModelGen
 {
-    ERROR, HELP, VERSION, LICENSE, CONSOLE, CODEGEN, MODELGEN, SHOW, DOCGEN, DOCMOD, EDK
+    static Log log = LogModule.lookup("modelgen");
+
+    public static BaseModelGen lookup(CommonSettings cs, ModelGenSettings ms, Sys sys)
+    {
+        switch (ms.modelTarget())
+        {
+        case WHY3:
+            return new ModelGenWhy3(cs, ms, sys);
+        }
+        assert (false) : "Missing case for model target: "+ms.modelTarget();
+        return null;
+    }
 }
