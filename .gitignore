@@ -5,3 +5,4 @@ build
 *.rai
 *.rao
 *.toc
+models/bsymb.sty

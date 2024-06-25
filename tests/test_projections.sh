@@ -30,7 +30,7 @@ else
     exit 1
 fi
 
-mv Projections.tex $OUTDIR
+mv Projections*.tex $OUTDIR
 
 INFO="Tested xelatex on generated document."
 cp doc/bsymb.sty $OUTDIR

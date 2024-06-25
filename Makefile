@@ -194,15 +194,15 @@ testinternals:
 
 testm:
 	@./tests/test.sh $(BUILD)/mvn_bin/evbt mvn
-#	@(cd models; make EVBT=$(BUILD)/mvn_bin/evbt CLEAN=true && make reset_pdfs)
+	@(cd models; make EVBT=$(BUILD)/mvn_bin/evbt CLEAN=true && make reset_pdfs)
 
 testj: testinternals
 	@./tests/test.sh $(BUILD)/javac_bin/evbt javac
-#	@(cd models; make EVBT=$(BUILD)/javac_bin/evbt CLEAN=true && make reset_pdfs)
+	@(cd models; make EVBT=$(BUILD)/javac_bin/evbt CLEAN=true && make reset_pdfs)
 
 testg: testinternals
 	@./tests/test.sh $(BUILD)/graal_bin/evbt graal
-#	@(cd models; make EVBT=$(BUILD)/graal_bin/evbt CLEAN=true && make reset_pdfs)
+	@(cd models; make EVBT=$(BUILD)/graal_bin/evbt CLEAN=true && make reset_pdfs)
 
 PREFIX=/usr/local
 

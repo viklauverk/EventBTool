@@ -13,7 +13,10 @@ INFOS=$(addsuffix /project.info,$(DIRS))
 all: $(PDFS) README.md
 	@echo Generated pdf:s for all test models.
 
-%.pdf: %
+bsymb.sty:
+	cp ../doc/bsymb.sty .
+
+%.pdf: % bsymb.sty
 	$(EVBT) docgen -q tex $<
 	@echo "xelatex $<.tex"
 	@xelatex -interaction=batchmode -halt-on-error $<.tex >> /tmp/evbtmodels.log 2>&1
