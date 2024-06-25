@@ -49,15 +49,53 @@ public enum Cmd
         "Print a builtin template for code/documentation.",
         "",
         CmdSysPrintTemplate::new),
+    SYS_LS_CONTEXTS(
+        "sys.ls.contexts",
+        "List all contexts in the system, or only those who match text",
+        """
+        Usage: sys.ls.contexts
+               sys.ls.contexts abc
+        """,
+        CmdSysLsContexts::new),
+    SYS_LS_MACHINES(
+        "sys.ls.machines",
+        "List all machines in the system, or only those who match text",
+        """
+        Usage: sys.ls.machines
+               sys.ls.machines abc
+        """,
+        CmdSysLsContexts::new),
+    SYS_LS_PARTS(
+        "sys.ls.parts",
+        "List all machine parts in the system, or only those who match text",
+        """
+        Usage: sys.ls.parts
+               sys.ls.parts abc
+        """,
+        CmdSysLsParts::new),
+    SYS_LS_TABLES(
+        "sys.ls.tables",
+        "List all tables in the system, or only those who match text",
+        """
+        Usage: sys.ls.tables
+               sys.ls.tables abc
+        """,
+        CmdSysLsTables::new),
     SYS_READ(
         "sys.read",
         "Read an event-b directory and load all files.",
-        "",
+        "Usage: sys.read <dir>",
         CmdSysRead::new),
-    QUIT("quit",
-         "Exit console.",
-         "Exit console.",
-         null),
+    QUIT(
+        "quit",
+        "Exit console.",
+        "Exit console.",
+        null),
+    UTIL_MATCH(
+        "util.match",
+        "Match two formulas.",
+        "Usage: util.match 1+2 --- M+N",
+        CmdUtilMatch::new),
     YMS_ADD_ANYS(
         "yms.add.anys",
         "Add any (matching anything) symbols to current symbol table.",

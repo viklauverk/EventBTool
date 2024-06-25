@@ -95,23 +95,6 @@ public class ConsoleExecutor
     }
 
     /*
-    RenderTarget useOrDefault(String t, RenderTarget dt)
-    {
-        if (t == null || t.equals("")) return dt;
-        return RenderTarget.lookup(t);
-    }
-
-    boolean isSet(String t, String d)
-    {
-        if (t == null || !t.equals(d)) return false;
-        return true;
-    }
-
-    // This code is obnoxious, is there a better way to do this? And keep
-    // The detection of incomplete command lines...
-    @Override
-    public String visitDone(ConsoleParser.DoneContext ctx)
-    {
         ConsoleParser.HelperContext helper = ctx.helper();
         ConsoleParser.QuitContext quit = ctx.quit();
         ConsoleParser.HistoryContext history = ctx.history();
@@ -126,196 +109,8 @@ public class ConsoleExecutor
         ConsoleParser.Yms_showContext yms_show = ctx.yms_show();
         ConsoleParser.Eb_showContext eb_show = ctx.eb_show();
         ConsoleParser.Util_matchContext util_match = ctx.util_match();
-		TerminalNode eof = ctx.EOF();
-
-        if (eof == null) {
-            return "Could not parse whole line.\n";
-        }
-
-        String r = "";
-        if (quit != null)
-        {
-            r = this.visit(quit);
-        }
-        if (helper != null)
-        {
-            r = this.visit(helper);
-        }
-        if (history != null)
-        {
-            r = this.visit(history);
-        }
-        if (ca_canvas != null)
-        {
-            r = this.visit(ca_canvas);
-        }
-        if (env_list != null)
-        {
-            r = this.visit(env_list);
-        }
-        if (env_print_template != null)
-        {
-            r = this.visit(env_print_template);
-        }
-        if (env_read != null)
-        {
-            r = this.visit(env_read);
-        }
-        if (util_match != null)
-        {
-            r = this.visit(util_match);
-        }
-        if (yms_add != null)
-        {
-            r = this.visit(yms_add);
-        }
-        if (yms_push != null)
-        {
-            r = this.visit(yms_push);
-        }
-        if (yms_pop != null)
-        {
-            r = this.visit(yms_pop);
-        }
-        if (yms_show != null)
-        {
-            r = this.visit(yms_show);
-        }
-        if (env_set != null)
-        {
-            r = this.visit(env_set);
-        }
-        if (eb_show != null)
-        {
-            r = this.visit(eb_show);
-        }
-
-        if (r == null)
-        {
-            return "Internal error, exception inside ConsoleExecutor visitor?\n";
-        }
-        return r;
-    }
 
     @Override
-    public String visitAddDefaultSymbols(ConsoleParser.AddDefaultSymbolsContext ctx)
-    {
-        console_.currentSymbolTable().addDefaults();
-        return "OK";
-    }
-
-    @Override
-    public String visitAddSymbols(ConsoleParser.AddSymbolsContext ctx)
-    {
-        String type = ctx.getStart().getText();
-
-        StringBuilder sb = new StringBuilder();
-        List<String> elements = new LinkedList<>();
-        ConsoleParser.ListOfSymbolsContext list = (ConsoleParser.ListOfSymbolsContext)ctx.symbols();
-        for (org.antlr.v4.runtime.tree.TerminalNode sec : list.SYMBOL())
-        {
-            elements.add(sec.getText());
-        }
-        //log.debug("visit ");
-
-        switch (type)
-        {
-        case "yms.add.anys":
-            console_.currentSymbolTable().addAnySymbols(elements);
-            break;
-        case "yms.add.constants":
-            console_.currentSymbolTable().addConstantSymbols(elements);
-            break;
-        case "yms.add.expressions":
-            console_.currentSymbolTable().addExpressionSymbols(elements);
-            break;
-        case "yms.add.numbers":
-            console_.currentSymbolTable().addNumberSymbols(elements);
-            break;
-        case "yms.add.predicates":
-            console_.currentSymbolTable().addPredicateSymbols(elements);
-            break;
-        case "yms.add.sets":
-            console_.currentSymbolTable().addSetSymbols(elements);
-            break;
-        case "yms.add.variables":
-            console_.currentSymbolTable().addVariableSymbols(elements);
-            break;
-        }
-
-        return "OK";
-    }
-
-    @Override
-    public String visitHelpHelp(ConsoleParser.HelpHelpContext ctx)
-    {
-        Canvas c = new Canvas();
-        c.setRenderTarget(RenderTarget.PLAIN);
-        c.append(HelpLines.help);
-        return c.render();
-    }
-
-    @Override
-    public String visitHelp(ConsoleParser.HelpContext ctx)
-    {
-        String arg = ctx.name.getText();
-        if (arg == null) arg = "";
-
-        String help = HelpLines.helps.get(arg);
-        if (help != null)
-        {
-            Canvas c = new Canvas();
-            c.setRenderTarget(RenderTarget.PLAIN);
-            c.append(help);
-            return c.render();
-        }
-
-        return "Unknown command "+arg;
-    }
-
-    @Override
-    public String visitQuitQuit(ConsoleParser.QuitQuitContext ctx)
-    {
-        console_.quit();
-        return "quit";
-    }
-
-    @Override
-    public String visitListTables(ConsoleParser.ListTablesContext ctx)
-    {
-        StringBuilder sb = new StringBuilder();
-        for (String t : console_.sys().allSymbolTables().keySet())
-        {
-            sb.append(t);
-            sb.append("\n");
-        }
-        return sb.toString();
-    }
-
-    @Override
-    public String visitListMachines(ConsoleParser.ListMachinesContext ctx)
-    {
-        StringBuilder sb = new StringBuilder();
-        for (String t : console_.sys().machineNames())
-        {
-            sb.append(t);
-            sb.append("\n");
-        }
-        return sb.toString();
-    }
-
-    @Override
-    public String visitListContexts(ConsoleParser.ListContextsContext ctx)
-    {
-        StringBuilder sb = new StringBuilder();
-        for (String t : console_.sys().contextNames())
-        {
-            sb.append(t);
-            sb.append("\n");
-        }
-        return sb.toString();
-    }
-
     private String printSyms(Set<String> syms)
     {
         StringBuilder o = new StringBuilder();
@@ -328,19 +123,6 @@ public class ConsoleExecutor
         return o.toString();
     }
 
-    @Override
-    public String visitListParts(ConsoleParser.ListPartsContext ctx)
-    {
-        List<String> parts = console_.sys().listParts();
-
-        StringBuilder sb = new StringBuilder();
-        for (String p : parts)
-        {
-            sb.append(p);
-            sb.append("\n");
-        }
-        return sb.toString();
-    }
 
     @Override
     public String visitShowPartOfSymbolTable(ConsoleParser.ShowPartOfSymbolTableContext ctx)
@@ -378,20 +160,6 @@ public class ConsoleExecutor
         return "?";
     }
 
-    @Override
-    public String visitReadDir(ConsoleParser.ReadDirContext ctx)
-    {
-        String dir = removeQuotes(ctx.dir.getText());
-
-        try
-        {
-            return console_.sys().loadMachinesAndContexts(dir);
-        }
-        catch (Exception e)
-        {
-            return e.getMessage();
-        }
-    }
 
     @Override
     public String visitMatchPattern(ConsoleParser.MatchPatternContext ctx)
@@ -544,11 +312,6 @@ public class ConsoleExecutor
         return "OK";
     }
 
-    @Override
-    public String visitListHistory(ConsoleParser.ListHistoryContext ctx)
-    {
-        return "history...";
-    }
 
     @Override
     public String visitShowCurrentTable(ConsoleParser.ShowCurrentTableContext ctx)
@@ -556,14 +319,5 @@ public class ConsoleExecutor
         return console_.currentSymbolTable().name();
     }
 
-    String removeQuotes(String f)
-    {
-        if (f.startsWith("\"") &&
-            f.endsWith("\""))
-        {
-            return f.substring(1, f.length()-1).trim();
-        }
-        return f.trim();
-    }
     */
 }

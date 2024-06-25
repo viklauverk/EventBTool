@@ -64,10 +64,13 @@ public class ConsoleCompleter
              new ArgumentCompleter(new StringsCompleter("mo.show.part")),
              new ArgumentCompleter(new StringsCompleter("eb.show.current.table")),
              new ArgumentCompleter(new StringsCompleter("eb.show.formula")),
-             new ArgumentCompleter(new StringsCompleter("eb.show.part")),
+             new ArgumentCompleter(
+                 new StringsCompleter("eb.show.part"),
+                 new SysCompleter(sys, false, false, false, true)
+                 ),
              new ArgumentCompleter(
                  new StringsCompleter("eb.show.table"),
-                 new SysCompleter(sys, false, false, true)
+                 new SysCompleter(sys, false, false, true, false)
                  ),
              new ArgumentCompleter(new StringsCompleter("util.match")),
              new ArgumentCompleter(new StringsCompleter("yms.add.anys")),
