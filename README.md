@@ -15,7 +15,7 @@ The tool is a single binary `evbt`. It is distributed as a single executable jar
 a jar file that starts with a Posix shell-script that starts java on the jar itself.
 [Download latest release here!](https://github.com/viklauverk/EventBTool/releases/download/v1.5.0/evbt)
 
-Do `chmod a+x evbt` and place evbt in your PATH and make sure you have Java 11 or later in your path as well.
+Do `chmod a+x evbt` and place evbt in your PATH and make sure you have Java 22 or later in your path as well.
 
 You can also run: `java -jar evbt`
 
@@ -23,7 +23,7 @@ You can also run: `java -jar evbt`
 
 Building is only tested in Ubuntu GNU/Linux. Clone then run `./configure ; make; sudo make install`
 
-You need to have Java 11 or later installed and maven. To make the test-suite `make test` pass
+You need to have Java 22 or later installed and maven. To make the test-suite `make test` pass
 you have to have xelatex installed and g++ and node (javascript).
 
 # docgen - Generate documentation from your Rodin workspace directory
@@ -60,12 +60,12 @@ the console with:
 ```
 evbt console
 ```
-and you can now type for example: `add defaults` to fill the
+and you can now type for example: `yms.add.defaults` to fill the
 symbol table with a few default symbols for predicates and variables.
 
 You can now type:
 ```
-show formula "(P & x:BOOL) => Q"
+eb.show.formula (P & x:BOOL) => Q
 ```
 and it will parse and print:
 ```
@@ -74,8 +74,8 @@ and it will parse and print:
 
 If you start the console with a Rodin workspace as an argument:
 `evbt console workspace/Library` then you can also print parts of the model with the command:
-`show part "Library/events/whoBorrowsBook/guards"` or an invariant:
-`show part "Library/invariants/inv3"`
+`eb.show.part "Library/events/whoBorrowsBook/guards"` or an invariant:
+`eb.show.part "Library/invariants/inv3"`
 
 ## docmod - execute console commands within a tex document.
 
@@ -88,12 +88,12 @@ Then evbt will replace any occurences with `EVBT(...console command...)` with th
 output from the console command and store this into updated_article.tex.
 
 This is useful to generated rendered tex formulas without having to type actual tex commands,
-for example: `EVBT(show formula "x:BOOL")` (this is so common that there is a short-cut `EVBT(sf x:BOOL)`)
+for example: `EVBT(eb.show.formula x:BOOL)`
 
 It is also useful when writing a document arguing why your requirements are fulfilled
 by the invariants, since you do not need to copy the invariants/guards from the machine
 into the document, you can simply link to the system, like this:
-`EVBT(show part "Elevator/events/enterDest/guards/grd_1")` and the particular guard
+`EVBT(eb.show.part Elevator/events/enterDest/guards/grd_1)` and the particular guard
 will be inserted into your document,
 
 Read `tests/test_docmod.sh` for how it works.
