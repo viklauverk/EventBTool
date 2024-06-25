@@ -14,7 +14,7 @@ jobs:
     - id: APT_UPDATE
       run: sudo apt-get update
     - id: REMOVE_OPENJDK_11
-      run: sudo apt-get remove openjdk-11-jre
+      run: update-java-alternatives -l && sudo apt-get remove openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless
     - id: INSTALL_ADDITIONAL_BUILD_DEPENDENCIES
       run: sudo apt-get install -y eatmydata openjdk-21-jdk texlive-xetex
     - id: CONFIGURE
