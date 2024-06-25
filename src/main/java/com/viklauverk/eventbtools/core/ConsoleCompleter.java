@@ -29,6 +29,10 @@ public class ConsoleCompleter
                  new StringsCompleter("env.read"),
                  new DirectoriesCompleter(Paths.get("."))
                  ),
+             new ArgumentCompleter(
+                 new StringsCompleter("env.print.template"),
+                 new StringsCompleter(Util.everySecond(Templates.templates))
+                 ),
              new ArgumentCompleter(new StringsCompleter("env.set.default.hiding")),
              new ArgumentCompleter(new StringsCompleter("env.set.default.renderTarget")),
              new ArgumentCompleter(new StringsCompleter("help")),

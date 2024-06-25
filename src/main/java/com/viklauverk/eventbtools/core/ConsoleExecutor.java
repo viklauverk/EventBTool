@@ -50,6 +50,8 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         return true;
     }
 
+    // This code is obnoxious, is there a better way to do this? And keep
+    // The detection of incomplete command lines...
     @Override
     public String visitDone(ConsoleParser.DoneContext ctx)
     {
@@ -57,6 +59,7 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         ConsoleParser.QuitContext quit = ctx.quit();
         ConsoleParser.HistoryContext history = ctx.history();
         ConsoleParser.Ca_canvasContext ca_canvas = ctx.ca_canvas();
+        ConsoleParser.Env_print_templateContext env_print_template = ctx.env_print_template();
         ConsoleParser.Env_readContext env_read = ctx.env_read();
         ConsoleParser.Env_setContext env_set = ctx.env_set();
         ConsoleParser.Env_listContext env_list = ctx.env_list();
@@ -92,6 +95,10 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         if (env_list != null)
         {
             r = this.visit(env_list);
+        }
+        if (env_print_template != null)
+        {
+            r = this.visit(env_print_template);
         }
         if (env_read != null)
         {
@@ -191,29 +198,12 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         return c.render();
     }
 
-    /*
     @Override
     public String visitHelp(ConsoleParser.HelpContext ctx)
     {
-        String arg = ctx.topic().getText();
+        String arg = ctx.name.getText();
         if (arg == null) arg = "";
 
-        if (arg.equals("shortcuts"))
-        {
-            String[] sc = console_.short_cuts;
-            StringBuilder out = new StringBuilder();
-            out.append("Available short cuts:\n");
-            for (int i=0; i<sc.length; i+=3)
-            {
-                out.append(sc[i]);
-                out.append(" ");
-                out.append(sc[i+1]);
-                out.append(" ");
-                out.append(sc[i+2]);
-                out.append("\n");
-            }
-            return out.toString();
-        }
         String help = HelpLines.helps.get(arg);
         if (help != null)
         {
@@ -225,7 +215,6 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
 
         return "Unknown command "+arg;
     }
-    */
 
     @Override
     public String visitQuitQuit(ConsoleParser.QuitQuitContext ctx)
@@ -481,9 +470,8 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         return content;
     }
 
-    /*
     @Override
-    public String visitShowTemplate(ConsoleParser.ShowTemplateContext ctx)
+    public String visitEnvPrintTemplate(ConsoleParser.EnvPrintTemplateContext ctx)
     {
         String name = removeQuotes(ctx.name.getText());
         String s = console_.renderTemplate(name);
@@ -495,7 +483,7 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
 
         return s;
     }
-    */
+
     @Override
     public String visitShowFormula(ConsoleParser.ShowFormulaContext ctx)
     {

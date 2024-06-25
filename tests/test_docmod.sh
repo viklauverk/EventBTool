@@ -11,16 +11,16 @@ INFO="Tested docmod with formulas and the Elevator model."
 
 cat <<EOF > $OUTDIR/template.txt
 DOCUMENT
-EVBT(add vars x y)
-EVBT(add sets S T)
-EVBT(add consts c f)
-EVBT(add exprs E F)
+EVBT(yms.add.variables x y)
+EVBT(yms.add.sets S T)
+EVBT(yms.add.constants c f)
+EVBT(yms.add.expressions E F)
 +++++
-EVBT(show formula plain "x:BOOL & y:S => E = F")
+EVBT(eb.show.formula plain x:BOOL & y:S => E = F)
 +++++
-EVBT(read "tests/models/Elevator")
+EVBT(env.read models/Elevator)
 Elevator enterDest grd_1:
-EVBT(show part framed plain "Elevator/events/enterDest/guards/grd_1")
+EVBT(eb.show.part framed plain Elevator/events/enterDest/guards/grd_1)
 +++++
 END
 EOF
@@ -52,11 +52,10 @@ then
 else
     echo "ERROR $INFO"
     echo "To re-run test: echo $0 $1 $2"
-    echo "xxxxxxxxxxxxxxxxxx"
-    cat $OUTDIR/info.txt
-    echo "xxxxxxxxxxxxxxxxxx"
-    cat $OUTDIR/expected.txt
-    echo "xxxxxxxxxxxxxxxxxx"
+    if [ "$USE_MELD" = "true" ]
+    then
+        meld $OUTDIR/info.txt $OUTDIR/expected.txt
+    fi
     exit 1
 fi
 

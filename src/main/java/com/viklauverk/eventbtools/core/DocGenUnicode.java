@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -54,12 +54,12 @@ public class DocGenUnicode extends BaseDocGen
 
         for (String ctx : sys().contextNames())
         {
-            cnvs.append("EVBT(show part \""+ctx+"\")\n");
+            cnvs.append("EVBT(eb.show.part \""+ctx+"\")\n");
         }
 
         for (String mch : sys().machineNames())
         {
-            cnvs.append("EVBT(show part \""+mch+"\")\n");
+            cnvs.append("EVBT(eb.show.part \""+mch+"\")\n");
         }
         return cnvs.render();
     }

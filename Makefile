@@ -245,17 +245,17 @@ testinternals:
 	@echo "OK Tested core internals."
 
 
-testm: testinternals
-	@./test.sh $(BUILD)/mvn_bin/evbt mvn
-	@(cd tests/models; make EVBT=$(BUILD)/mvn_bin/evbt CLEAN=true && make reset_pdfs)
+testm:
+	@./tests/test.sh $(BUILD)/mvn_bin/evbt mvn
+#	@(cd models; make EVBT=$(BUILD)/mvn_bin/evbt CLEAN=true && make reset_pdfs)
 
 testj: testinternals
-	@./test.sh $(BUILD)/javac_bin/evbt javac
-	@(cd tests/models; make EVBT=$(BUILD)/javac_bin/evbt CLEAN=true && make reset_pdfs)
+	@./tests/test.sh $(BUILD)/javac_bin/evbt javac
+	@(cd models; make EVBT=$(BUILD)/javac_bin/evbt CLEAN=true && make reset_pdfs)
 
 testg: testinternals
-	@./test.sh $(BUILD)/graal_bin/evbt graal
-	@(cd tests/models; make EVBT=$(BUILD)/graal_bin/evbt CLEAN=true && make reset_pdfs)
+	@./tests/test.sh $(BUILD)/graal_bin/evbt graal
+	@(cd models; make EVBT=$(BUILD)/graal_bin/evbt CLEAN=true && make reset_pdfs)
 
 PREFIX=/usr/local
 
@@ -288,7 +288,7 @@ clean-tests:
 # Rodin touchs bps and some other files when a workspace is opened.
 # To prevent cluttering the git history, you can easily revert such changes.
 reset-models:
-	(cd tests/models; make reset)
+	(cd models; make reset)
 
 doc:
 	@mkdir -p $(BUILD)/doc

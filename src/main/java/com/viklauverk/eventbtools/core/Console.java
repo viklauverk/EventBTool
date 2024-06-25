@@ -209,83 +209,11 @@ public class Console
         if (first == last) return false;
         return true;
     }
-/*
-    String[] short_cuts = {}
-        ;/*
-        // Add commands...
-        "aa ", "add anys", "",
-        "ac ", "add consts", "",
-        "ad ", "add defaults", "",
-        "ae ", "add exprs", "",
-        "an ", "add nums", "",
-        "ap ", "add preds", "",
-        "as ", "add sets", "",
-        "av ", "add vars", "",
-        // Canvas commands
-        "ca ", "canvas attributes", "",
-        "ct ", "canvas target", "",
-        // List commands...
-        "lt ", "list tables", "",
-        "la ", "list anys", "",
-        "lc ", "list consts", "",
-        "le ", "list exprs", "",
-        "lp ", "list preds", "",
-        "ls ", "list sets", "",
-        "lh ", "list hyps", "",
-        "lv ", "list vars", "",
-        // Show commmands....
-        "sf ", "show formula", ".",
-        "sff ", "show formula framed", ".",
-        "sft ", "show formula tree", ".",
-        "sftf ", "show formula tree framed", ".",
-        "sfm ", "show formula meta", ".",
-        "sfmf ", "show formula meta framed", ".",
-        "sfmtf ", "show formula meta tree framed", ".",
-        "st ", "show table", ".",
-        "sp ", "show part", ".",
-        "spf ", "show part framed", ".",
-        "m ", "match", "..",
-    };
-    public String tryExpandCommands(String line)
-    {
-        assert (short_cuts.length % 3 == 0);
-        for (int i=0; i<short_cuts.length; i+=3)
-        {
-            String prefix = short_cuts[i];
-            if (line.startsWith(prefix))
-            {
-                String replace = short_cuts[i+1];
-                String string_args = short_cuts[i+2];
-                String r = line.substring(prefix.length()).trim();
-                if (string_args.length() == 0)
-                {
-                    return replace + " " + r;
-                }
-                if (string_args.length() == 1)
-                {
-                    return replace + " \""+r+"\"";
-                }
-                if (string_args.length() == 2)
-                {
-                    int p = r.indexOf(" ");
-                    if (p == -1)
-                    {
-                        return replace + " \""+r+"\"";
-                    }
-                    String left = r.substring(0, p);
-                    String right = r.substring(p+1);
-                    return replace + " \""+left+"\" \""+right+"\"";
-                }
-                assert (false) : "Unexpected string_args length "+string_args.length();
-            }
-        }
-        return line;
-    }
-*/
+
     public String go(String line_in)
     {
         if (line_in.trim().length() == 0) return "";
-        String line = line_in + " ";
+        String line = line_in; // + " ";
         CharStream lineStream = CharStreams.fromString(line);
 
         ConsoleLexer lexer = new ConsoleLexer(lineStream);

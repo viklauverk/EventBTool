@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -54,7 +54,7 @@ public class DocGenTeX extends BaseDocGen
 
         cnvs.append(Templates.TeXHeader.replace("$PATH_TO_IMAGES$", commonSettings().sourceDir()+"/"));
 
-        cnvs.append("EVBT(show template \"TeXDefinitions\")\n");
+        cnvs.append("EVBT(env.print.template TeXDefinitions)\n");
 
         cnvs.append("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
         cnvs.append("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
@@ -97,7 +97,7 @@ public class DocGenTeX extends BaseDocGen
 
             cnvs.append("\\pagebreak\n\n");
             cnvs.append("\\section{\\KEYWL{CONTEXT}\\small\\ "+Util.texSafe(ctx)+" "+pos+"}\n\n");
-            cnvs.append("EVBT(show part tex \""+ctx+"\")\n");
+            cnvs.append("EVBT(eb.show.part tex \""+ctx+"\")\n");
         }
 
         for (String mch : sys().machineNames())
@@ -115,7 +115,7 @@ public class DocGenTeX extends BaseDocGen
             }
 
             cnvs.append("\\section{\\KEYWL{"+m.machineOrRefinement().toUpperCase()+"}\\small\\ "+Util.texSafe(mch)+" "+pos+"}\n\n");
-            cnvs.append("EVBT(show part tex \""+mch+"\")\n");
+            cnvs.append("EVBT(eb.show.part tex \""+mch+"\")\n");
         }
 
         cnvs.append("\\printindex\n");

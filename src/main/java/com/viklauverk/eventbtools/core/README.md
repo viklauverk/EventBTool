@@ -193,9 +193,11 @@ and (in the future) proofs.
 The commands that can be executed inside the console, can also be executed inside a document
 when using docmod. Such an invocation looks like: `EVBT(command)`
 
-Type `help` for help. The commands can be abbreviated, `show formula frame "TRUE:BOOL"`
-can be abbreviated as `sff TRUE:BOOL`. You often start with `add defaults`
-to add a standard set of symbols to the symbol table.
+Type `help` for help. Press tab for tab completion of commands and arguments.
+```
+yms.add.defaults
+eb.show.formula framed "TRUE:BOOL"
+```
 
 [Console.java](Console.java)
 

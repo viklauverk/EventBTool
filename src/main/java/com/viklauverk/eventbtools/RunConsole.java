@@ -74,37 +74,6 @@ public class RunConsole
         System.out.println("EVBT console 2.0.0");
 
         Completer completer = ConsoleCompleter.addCompleters(sys);
-        /*
-            new AggregateCompleter(
-                new ArgumentCompleter(
-                    new StringsCompleter("env.read"),
-                    new DirectoriesCompleter(Paths.get("."))),
-
-                new ArgumentCompleter(
-                    new StringsCompleter("env.ls"),
-                    new DirectoriesCompleter(Paths.get("."))),
-
-                new ArgumentCompleter(
-                    new StringsCompleter("ta.add.defaults")),
-
-                new ArgumentCompleter(
-                    new StringsCompleter("ta.push")));
-*/
-
-        //new DirectoriesCompleter(Paths.get("."));
-        /*new TreeCompleter(
-                node("sys",
-                node("read", */
-        //new StringsCompleter("quit", "help", "history", "sys", "util", "ca", "st", "sp", "mo", "ir", "co");
-
-        /*
-            new Completer() {
-                @Override
-                public void complete(LineReader reader, ParsedLine line, List<Candidate> candidates) {
-                    candidates.add(new Candidate("", "", null, "frequency in MHz", null, null, false));
-                }
-            });
-            */
         LineReader reader = LineReaderBuilder
             .builder()
             .completer(completer)

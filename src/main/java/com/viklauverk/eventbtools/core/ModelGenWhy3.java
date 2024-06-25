@@ -54,12 +54,12 @@ public class ModelGenWhy3 extends BaseModelGen
 
         for (String ctx : sys().contextNames())
         {
-            cnvs.append("EVBT(show part \""+ctx+"\")\n");
+            cnvs.append("EVBT(eb.show.part \""+ctx+"\")\n");
         }
 
         for (String mch : sys().machineNames())
         {
-            cnvs.append("EVBT(show part \""+mch+"\")\n");
+            cnvs.append("EVBT(eb.show.part \""+mch+"\")\n");
         }
         return cnvs.render();
     }

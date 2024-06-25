@@ -384,4 +384,14 @@ public class Util
         return s;
     }
 
+    public static String[] everySecond(String[] a)
+    {
+        String[] r = new String[a.length / 2];
+
+        for (int i = 0; i < r.length; ++i)
+        {
+            r[i] = a[i*2];
+        }
+        return r;
+    }
 }

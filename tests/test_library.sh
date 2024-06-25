@@ -19,7 +19,7 @@ OUTDIR="$DIR/$TESTNAME"
 mkdir -p $OUTDIR
 
 INFO="Tested generation of C++ code for library model."
-$PROG codegen -q --outputdir=$OUTDIR c++  tests/models/Library/Library.bum
+$PROG codegen -q --outputdir=$OUTDIR c++  models/Library/Library.bum
 if [ "$?" = "0" ]
 then
     echo "OK $INFO"

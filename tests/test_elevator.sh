@@ -18,7 +18,7 @@ OUTDIR="$DIR/$TESTNAME"
 mkdir -p $OUTDIR
 
 INFO="Generated elevator tex file."
-$PROG docgen -q --outputdir=$OUTDIR tex tests/models/Elevator
+$PROG docgen -q --outputdir=$OUTDIR tex models/Elevator
 xelatex -output-directory=$OUTDIR -aux-directory=$OUTDIR -interaction=batchmode -halt-on-error $OUTDIR/Elevator.tex > $OUTDIR/tmp 2>&1
 
 if [ "$?" != "0" ]
@@ -50,7 +50,7 @@ Missing
 EVBT(sp FinnsEj)
 END
 EOF
-$PROG docmod -q --outputdir=$OUTDIR tex $OUTDIR/template.tex $OUTDIR/info.tex tests/models/Elevator
+$PROG docmod -q --outputdir=$OUTDIR tex $OUTDIR/template.tex $OUTDIR/info.tex models/Elevator
 if [ "$?" = "0" ]
 then
     echo "OK $INFO"
@@ -61,7 +61,7 @@ else
 fi
 
 INFO="Tested generation of C++ code for elevator model."
-$PROG codegen -q --outputdir=$OUTDIR c++ tests/models/Elevator/Elevator.bum
+$PROG codegen -q --outputdir=$OUTDIR c++ models/Elevator/Elevator.bum
 if [ "$?" = "0" ]
 then
     echo "OK $INFO"
@@ -133,7 +133,7 @@ else
 fi
 
 INFO="Tested generation of javascript code for elevator mode."
-$PROG codegen -q --outputdir=$OUTDIR javascript tests/models/Elevator/Elevator.bum
+$PROG codegen -q --outputdir=$OUTDIR javascript models/Elevator/Elevator.bum
 if [ "$?" = "0" ]
 then
     echo "OK $INFO"

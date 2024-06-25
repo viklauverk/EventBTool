@@ -27,11 +27,12 @@ public class HelpLines
 " yms.show           § Show the symbol table\n"+
 " yms.push \"<name>\"               § Create a new symbol table and push it on the stack.\n"+
 " yms.pop                                  § Pop and remove the current symbol table.\n"+
-" env.ls                                 § List objects of a certain type.\n"+
-" env.ls.tables                          § List objects of a certain type.\n"+
-" env.ls.hyps                            § List objects of a certain type.\n"+
-" env.ls.contexts                        § List objects of a certain type.\n"+
-" env.ls.pars                            § List objects of a certain type.\n"+
+" env.ls.contexts                        § List contexts\n"+
+" env.ls.hypothesis                      § List hypothesis\n"+
+" env.ls.machines                        § List machines\n"+
+" env.ls.parts                           § List all parts\n"+
+" env.ls.tables                          § List symbol tables\n"+
+" env.print.template § Print a template for document generation.\n"+
 " env.read \"<dir>\"                  § Read the machines (bum files) and contexts (buc files) stored inside dir.\n"+
 " env.set.default.renderTarget {plain|terminal|tex|htmq} § Set the default renderTarget for rendering.\n"+
 " env.set.default.hiding {nol|noc}                 § Set what parts to hide by default.\n"+
@@ -83,23 +84,27 @@ public class HelpLines
 "";
 
 
-    public static String help_env_ls =
-"";
-
-
     public static String help_env_ls_contexts =
 "";
 
 
-    public static String help_env_ls_hyps =
+    public static String help_env_ls_hypothesis =
 "";
 
 
-    public static String help_env_ls_pars =
+    public static String help_env_ls_machines =
+"";
+
+
+    public static String help_env_ls_parts =
 "";
 
 
     public static String help_env_ls_tables =
+"";
+
+
+    public static String help_env_print_template =
 "";
 
 
@@ -190,11 +195,12 @@ static {
     helps.put("eb_show_formula", help_eb_show_formula);
     helps.put("eb_show_part", help_eb_show_part);
     helps.put("eb_show_table", help_eb_show_table);
-    helps.put("env_ls", help_env_ls);
     helps.put("env_ls_contexts", help_env_ls_contexts);
-    helps.put("env_ls_hyps", help_env_ls_hyps);
-    helps.put("env_ls_pars", help_env_ls_pars);
+    helps.put("env_ls_hypothesis", help_env_ls_hypothesis);
+    helps.put("env_ls_machines", help_env_ls_machines);
+    helps.put("env_ls_parts", help_env_ls_parts);
     helps.put("env_ls_tables", help_env_ls_tables);
+    helps.put("env_print_template", help_env_print_template);
     helps.put("env_read", help_env_read);
     helps.put("env_set_default_hiding", help_env_set_default_hiding);
     helps.put("env_set_default_renderTarget", help_env_set_default_renderTarget);

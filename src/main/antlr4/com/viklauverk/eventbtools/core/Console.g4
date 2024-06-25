@@ -15,13 +15,17 @@
 
 grammar Console;
 
-WHITESPACE: [ \r\n\t]+ -> channel(HIDDEN);
+WHITESPACE: [ \t]+ -> channel(HIDDEN);
 
 NUMBER: [0-9]+;
 
 SYMBOL: [a-zA-Z][a-zA-Z0-9_]*;
 
+NL: '\n';
+
 STRING: '"' (~'"')+ '"' | (~' ')+;
+
+rest_of_line: ~NL+;
 
 start : (
         quit
@@ -30,6 +34,7 @@ start : (
         | ca_canvas
         | co_show
         | env_list
+        | env_print_template
         | env_read
         | env_set
         | ir_show
@@ -56,6 +61,7 @@ helper
 //help:
 //help:Give general help.
    : ('h' | 'help') # HelpHelp
+   | ('h' | 'help') name=rest_of_line # Help
    ;
 
 history
@@ -80,7 +86,7 @@ ca_canvas
 //canvas:Examples:
 //canvas:    ca.push "test"
 //canvas:    ca.set width 80
-   : 'ca.push' name=STRING               # CanvasPush
+   : 'ca.push' name=rest_of_line               # CanvasPush
    | 'ca.target' renderTarget            # CanvasSetRenderTarget
    | 'ca.attributes' renderAttribute*    # CanvasSetRenderAttributes
    | 'ca.pop'                            # CanvasPop
@@ -95,7 +101,7 @@ renderTarget
 
 renderAttribute
    :
-   attrKey '=' attrVal=STRING
+   attrKey '=' attrVal=rest_of_line
    ;
 
 attrKey
@@ -120,8 +126,8 @@ co_show
 //show:Example:
 //show:    co.show "x:=7"
 //show:    co.show "Elevator/events/up"
-   : 'co.show.formula' formula=STRING # ShowCode
-   | 'co.show.part' framed? renderTarget? name=STRING   # ShowCodePart
+   : 'co.show.formula' formula=rest_of_line # ShowCode
+   | 'co.show.part' framed? renderTarget? name=rest_of_line   # ShowCodePart
    ;
 
 //  framed? hiding? renderTarget?
@@ -137,8 +143,8 @@ ir_show
 //show:Example:
 //show:    ir.show "x:=7"
 //show:    ir.show "Elevator/events/up"
-   : 'ir.show.formula' framed? hiding? renderTarget? formula=STRING # ShowIR
-   | 'ir.show.part' framed? renderTarget? name=STRING   # ShowIRPart
+   : 'ir.show.formula' framed? hiding? renderTarget? formula=rest_of_line # ShowIR
+   | 'ir.show.part' framed? renderTarget? name=rest_of_line   # ShowIRPart
    ;
 
 mo_show
@@ -152,8 +158,8 @@ mo_show
 //show:Example:
 //show:    mo.show "x:=7"
 //show:    mo.show "Elevator/events/up"
-   : 'mo.show.formula' framed? hiding? renderTarget? formula=STRING # ShowModel
-   | 'mo.show.part' framed? renderTarget? name=STRING   # ShowModelPart
+   : 'mo.show.formula' framed? hiding? renderTarget? formula=rest_of_line # ShowModel
+   | 'mo.show.part' framed? renderTarget? name=rest_of_line   # ShowModelPart
    ;
 
 eb_show
@@ -174,11 +180,10 @@ eb_show
 //show:    eb.show tex "s := s \/ { 2 }"
 //show:    eb.show tree terminal "s := s \/ { 2 }"
 //show:    eb.show part terminal "Elevator/invariants/inv1"
-   : 'eb.show.formula' metaaa? treee? framed? hiding? renderTarget? formula=STRING # ShowFormula
+   : 'eb.show.formula' metaaa? treee? framed? hiding? renderTarget? formula=rest_of_line # ShowFormula
    | 'eb.show.current.table'        # ShowCurrentTable
-   | 'eb.show.table' name=STRING      # ShowTable
-   | 'eb.show.part' framed? renderTarget? name=STRING   # ShowPart
-//   | 'eb.show.template' name=STRING       # ShowTemplate
+   | 'eb.show.table' name=rest_of_line      # ShowTable
+   | 'eb.show.part' framed? renderTarget? name=rest_of_line   # ShowPart
    ;
 
 yms_add
@@ -244,7 +249,7 @@ yms_push
 //match:
 //match:Examples:
 //match:    new table "work"
-    : 'yms.push' name=STRING  # pushTable
+    : 'yms.push' name=rest_of_line  # pushTable
     ;
 
 yms_pop
@@ -259,22 +264,32 @@ yms_pop
     ;
 
 env_list
-//G env.ls.machines                        § List objects of a certain type.
-//G env.ls.tables                          § List objects of a certain type.
-//G env.ls.hyps                            § List objects of a certain type.
-//G env.ls.contexts                        § List objects of a certain type.
-//G env.ls.pars                            § List objects of a certain type.
-//list:Usage env.ls <object_type>
+//G env.ls.contexts                        § List contexts
+//G env.ls.hypothesis                      § List hypothesis
+//G env.ls.machines                        § List machines
+//G env.ls.parts                           § List all parts
+//G env.ls.tables                          § List symbol tables
+//list:Usage env.ls.machines
 //list:
 //list:List all objects of a given type.
-//list:The available types are: tables hyps machines contexts
-//list:anys consts exprs nums preds sets vars
-    : 'env.ls.machines'                # ListMachines
-    | 'env.ls.tables'                  # ListTables
-    | 'env.ls.hyps'                    # ListHypothesis
-    | 'env.ls.contexts'                    # ListContexts
+//list:The available types are: contexts hypothesis parts tables machines
+    : 'env.ls.contexts'                # ListContexts
+    | 'env.ls.hypothesis'              # ListHypothesis
     | 'env.ls.parts'                   # ListParts
+    | 'env.ls.tables'                  # ListTables
+    | 'env.ls.machines'                # ListMachines
     ;
+
+env_print_template
+//G env.print.template § Print a template for document/code generation.
+//print:Usage: env.print.template <template_name>
+//env_print_template:
+//env_print_template:Print a template used for document or code generation.
+//env_print_template:
+//env_print_template:Example:
+//env_print_template:    env.print.template TeXDefinitions
+   : 'env.print.template' name=rest_of_line       # EnvPrintTemplate
+   ;
 
 env_read
 //G env.read "<dir>"                  § Read the machines (bum files) and contexts (buc files) stored inside dir.
@@ -282,24 +297,24 @@ env_read
 //read:
 //read:Read the machines (bum) and context (buc) files stored in <dir>.
 //read:Give the system an overall nick name as well for the renderings.
-    : 'env.read' dir=STRING    # ReadDir
+    : 'env.read' dir=rest_of_line    # ReadDir
 //C   SC"env.read" DC
     ;
 
 metaaa
-    : 'meta' ;
+    : '--meta' ;
 
 treee
-    : 'tree' ;
+    : '--tree' ;
 
 framed
-    : 'framed' ;
+    : '--framed' ;
 
 // noc = No comments
 // nol = No labels @grd0_1 etc
 // non = No event names
 hiding
-: 'noc' | 'nol' | 'non';
+: '--noc' | '--nol' | '--non';
 
 env_set
 //G env.set.default.renderTarget {plain|terminal|tex|htmq} § Set the default renderTarget for rendering.

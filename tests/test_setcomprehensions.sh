@@ -19,7 +19,7 @@ OUTDIR="$DIR/$TESTNAME"
 mkdir -p $OUTDIR
 
 INFO="Test parsing of set comprehension."
-$PROG docgen -q --outputdir=$OUTDIR tex  tests/models/SetComprehensions
+$PROG docgen -q --outputdir=$OUTDIR tex  models/SetComprehensions
 if [ "$?" = "0" ]
 then
     echo "OK $INFO"

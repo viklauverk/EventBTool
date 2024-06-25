@@ -1,4 +1,7 @@
 
+New better command name structure for tab-completion to work in console.
+This is an incompatible change, but the new command names should now be stable.
+
 Version 1.5.0: 2022-03-21
 
 Improve rendering of meta data in tex.

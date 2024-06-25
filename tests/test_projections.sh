@@ -20,7 +20,7 @@ mkdir -p $OUTDIR
 
 INFO="Tested projections."
 
-$PROG docgen -q tex tests/models/Projections
+$PROG docgen -q tex models/Projections
 if [ "$?" = "0" ]
 then
     echo "OK $INFO"

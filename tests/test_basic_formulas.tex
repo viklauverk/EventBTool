@@ -5,176 +5,176 @@
 \thispagestyle{empty}
 \setlength{\parindent}{0pt}
 
-EVBT(show template "TeXPackages")
-EVBT(show template "TeXDefinitions")
+EVBT(env.print.template "TeXPackages")
+EVBT(env.print.template "TeXDefinitions")
 
-% EVBT(add defaults) make sure we have PQR ST xy mn cd in the symbol table.
-% EVBT(add vars height doors)
-% EVBT(add consts int8)
+% EVBT(yms.add.defaults) make sure we have PQR ST xy mn cd in the symbol table.
+% EVBT(yms.add.variables height doors)
+% EVBT(yms.add.constants int8)
 
 \begin{document}
 
-  \fbox{EVBT(sf x:=1+y*5+z/3)}
+  \fbox{EVBT(eb.show.formula "x:=1+y*5+z/3")}
   \hfill
-  \fbox{EVBT(sf y::NAT)}
+  \fbox{EVBT(eb.show.formula "y::NAT")}
   \hfill
-  \fbox{EVBT(sf x:|x'=x+1)}
+  \fbox{EVBT(eb.show.formula "x:|x'=x+1")}
 
-  \fbox{EVBT(sf x circ y)}
+  \fbox{EVBT(eb.show.formula "x circ y")}
   \hfill
-  \fbox{EVBT(sf false => 0=1)}
+  \fbox{EVBT(eb.show.formula "false => 0=1")}
   \hfill
-  \fbox{EVBT(sf S/\T)}
+  \fbox{EVBT(eb.show.formula "S/\T")}
 
-  \fbox{EVBT(sf x mod 42 < 42)}
+  \fbox{EVBT(eb.show.formula "x mod 42 < 42")}
   \hfill
-  \fbox{EVBT(sf FALSE : BOOL)}
+  \fbox{EVBT(eb.show.formula "FALSE : BOOL")}
   \hfill
-  \fbox{EVBT(sf bool(x=2):BOOL)}
+  \fbox{EVBT(eb.show.formula "bool(x=2):BOOL")}
 
-  \fbox{EVBT(sf true & true => true)}
+  \fbox{EVBT(eb.show.formula "true & true => true")}
   \hfill
-  \fbox{EVBT(sf S\/T)}
+  \fbox{EVBT(eb.show.formula "S\/T")}
   \hfill
-  \fbox{EVBT(sf card(S) >= 0)}
+  \fbox{EVBT(eb.show.formula "card(S) >= 0")}
 
-  \fbox{EVBT(sf x|->y : S**T)}
+  \fbox{EVBT(eb.show.formula "x|->y : S**T")}
   \hfill
   $f \defi g$
   \hfill
-  \fbox{EVBT(sf x / 2)}
+  \fbox{EVBT(eb.show.formula "x / 2")}
 
-  \fbox{EVBT(sf dom(x))}
+  \fbox{EVBT(eb.show.formula "dom(x)")}
   \hfill
-  \fbox{EVBT(sf x <| y)}
+  \fbox{EVBT(eb.show.formula "x <| y")}
   \hfill
-  \fbox{EVBT(sf x <<| y)}
+  \fbox{EVBT(eb.show.formula "x <<| y")}
 
-  \fbox{EVBT(sf S >< T)}
+  \fbox{EVBT(eb.show.formula "S >< T")}
   \hfill
-  \fbox{EVBT(sf {})}
+  \fbox{EVBT(eb.show.formula "{}")}
   \hfill
-  \fbox{EVBT(sf #x.x:NAT&x>0)}
+  \fbox{EVBT(eb.show.formula "#x.x:NAT&x>0")}
 
-  \fbox{EVBT(sf 1 ^ 2)}
+  \fbox{EVBT(eb.show.formula "1 ^ 2")}
   \hfill
-  \fbox{EVBT(sf FALSE:BOOL)}
+  \fbox{EVBT(eb.show.formula "FALSE:BOOL")}
   \hfill
-  \fbox{EVBT(sf x ; y)}
+  \fbox{EVBT(eb.show.formula "x ; y")}
 
-  \fbox{EVBT(sf finite(S/\T))}
+  \fbox{EVBT(eb.show.formula "finite(S/\T)")}
   \hfill
-  \fbox{EVBT(sf !x,y.x:NAT&y:NAT=>y+x>=x)}
+  \fbox{EVBT(eb.show.formula "!x,y.x:NAT&y:NAT=>y+x>=x")}
   \hfill
-  \fbox{EVBT(sf 5 >= y)}
+  \fbox{EVBT(eb.show.formula "5 >= y")}
 
-  \fbox{EVBT(sf S <| id)}
+  \fbox{EVBT(eb.show.formula "S <| id")}
   \hfill
-  \fbox{EVBT(sf 4711 : NAT)}
+  \fbox{EVBT(eb.show.formula "4711 : NAT")}
   \hfill
-  \fbox{EVBT(sf inter(S))}
+  \fbox{EVBT(eb.show.formula "inter(S)")}
 
-  \fbox{EVBT(sf INTER x . x:0..20 | NAT)}
+  \fbox{EVBT(eb.show.formula "INTER x . x:0..20 | NAT")}
   \hfill
-  \fbox{EVBT(sf 17 : INT)}
+  \fbox{EVBT(eb.show.formula "17 : INT")}
   \hfill
-  \fbox{EVBT(sf (%a.a:NAT|a+1))}
+  \fbox{EVBT(eb.show.formula "(%a.a:NAT|a+1)")}
 
-  \fbox{EVBT(sf P&Q&R)}
+  \fbox{EVBT(eb.show.formula "P&Q&R")}
   \hfill
-  \fbox{EVBT(sf 7 <= 77)}
+  \fbox{EVBT(eb.show.formula "7 <= 77")}
   \hfill
-  \fbox{EVBT(sf P <=> Q)}
+  \fbox{EVBT(eb.show.formula "P <=> Q")}
 
-  \fbox{EVBT(sf P=>Q)}
+  \fbox{EVBT(eb.show.formula "P=>Q")}
   \hfill
-  \fbox{EVBT(sf not P)}
+  \fbox{EVBT(eb.show.formula "not P")}
   \hfill
-  \fbox{EVBT(sf P or Q)}
+  \fbox{EVBT(eb.show.formula "P or Q")}
 
-  \fbox{EVBT(sf x|->y : S)}
+  \fbox{EVBT(eb.show.formula "x|->y : S")}
   \hfill
-  \fbox{EVBT(sf max(S) < 17)}
+  \fbox{EVBT(eb.show.formula "max(S) < 17")}
   \hfill
-  \fbox{EVBT(sf { x,y . x:0..22 & y:23..44 | x|->(x+y) })}
+  \fbox{EVBT(eb.show.formula "{ x,y . x:0..22 & y:23..44 | x|->(x+y) }")}
 
-  \fbox{EVBT(sf min(T) <= max(T))}
+  \fbox{EVBT(eb.show.formula "min(T) <= max(T)")}
   \hfill
-  \fbox{EVBT(sf x:NAT)}
+  \fbox{EVBT(eb.show.formula "x:NAT")}
   \hfill
-  \fbox{EVBT(sf y:NAT1)}
+  \fbox{EVBT(eb.show.formula "y:NAT1")}
 
-  \fbox{EVBT(sf x /= y)}
+  \fbox{EVBT(eb.show.formula "x /= y")}
   \hfill
-  \fbox{EVBT(sf x /: S)}
+  \fbox{EVBT(eb.show.formula "x /: S")}
   \hfill
-  \fbox{EVBT(sf {} oftype POW(INT**INT))}
+  \fbox{EVBT(eb.show.formula "{} oftype POW(INT**INT)")}
 
-  \fbox{EVBT(sf x <+ { 1|->2 } )}
+  \fbox{EVBT(eb.show.formula "x <+ { 1|->2 } ")}
   \hfill
-  \fbox{EVBT(sf partition(S,{c},{d}))}
+  \fbox{EVBT(eb.show.formula "partition(S,{c},{d})")}
   \hfill
-  \fbox{EVBT(sf x : S +-> T)}
+  \fbox{EVBT(eb.show.formula "x : S +-> T")}
 
-  \fbox{EVBT(sf y : S >+> T)}
+  \fbox{EVBT(eb.show.formula "y : S >+> T")}
   \hfill
-  \fbox{EVBT(sf x:POW(NAT))}
+  \fbox{EVBT(eb.show.formula "x:POW(NAT)")}
   \hfill
-  \fbox{EVBT(sf S <<: NAT1)}
+  \fbox{EVBT(eb.show.formula "S <<: NAT1")}
 
-  \fbox{EVBT(sf S || T)}
+  \fbox{EVBT(eb.show.formula "S || T")}
   \hfill
-  \fbox{EVBT(sf ((S ** T) <| prj1)(x|->y)) }
+  \fbox{EVBT(eb.show.formula "((S ** T) <| prj1)(x|->y)) }
   \hfill
-  \fbox{EVBT(sf ((S ** T) <| prj2)(x|->y)) }
+  \fbox{EVBT(eb.show.formula "((S ** T) <| prj2)(x|->y)) }
 
-  \fbox{EVBT(sf S +->> T)}
+  \fbox{EVBT(eb.show.formula "S +->> T")}
   \hfill
-  \fbox{EVBT(sf !x.x=x)}
+  \fbox{EVBT(eb.show.formula "!x.x=x")}
   \hfill
-  \fbox{EVBT(sf ran(x))}
+  \fbox{EVBT(eb.show.formula "ran(x)")}
 
-  \fbox{EVBT(sf S |> x)}
+  \fbox{EVBT(eb.show.formula "S |> x")}
   \hfill
-  \fbox{EVBT(sf S |>> x)}
+  \fbox{EVBT(eb.show.formula "S |>> x")}
   \hfill
-  \fbox{EVBT(sf S <-> T)}
+  \fbox{EVBT(eb.show.formula "S <-> T")}
 
-  \fbox{EVBT(sf S \ T)}
+  \fbox{EVBT(eb.show.formula "S \ T")}
   \hfill
-  \fbox{EVBT(sf S <->> T)}
+  \fbox{EVBT(eb.show.formula "S <->> T")}
   \hfill
-  \fbox{EVBT(sf S <<->> T)}
+  \fbox{EVBT(eb.show.formula "S <<->> T")}
 
-  \fbox{EVBT(sf S <<: T)}
+  \fbox{EVBT(eb.show.formula "S <<: T")}
   \hfill
-  \fbox{EVBT(sf S /<<: T)}
+  \fbox{EVBT(eb.show.formula "S /<<: T")}
   \hfill
-  \fbox{EVBT(sf S <: T)}
+  \fbox{EVBT(eb.show.formula "S <: T")}
 
-  \fbox{EVBT(sf S /<: T)}
+  \fbox{EVBT(eb.show.formula "S /<: T")}
   \hfill
-  \fbox{EVBT(sf S >->> T)}
+  \fbox{EVBT(eb.show.formula "S >->> T")}
   \hfill
-  \fbox{EVBT(sf S --> T)}
+  \fbox{EVBT(eb.show.formula "S --> T")}
 
-  \fbox{EVBT(sf S >-> T)}
+  \fbox{EVBT(eb.show.formula "S >-> T")}
   \hfill
-  \fbox{EVBT(sf S <<-> T)}
+  \fbox{EVBT(eb.show.formula "S <<-> T")}
   \hfill
-  \fbox{EVBT(sf TRUE : BOOL)}
+  \fbox{EVBT(eb.show.formula "TRUE : BOOL")}
 
-  \fbox{EVBT(sf S -->> T)}
+  \fbox{EVBT(eb.show.formula "S -->> T")}
   \hfill
-  \fbox{EVBT(sf union(S))}
+  \fbox{EVBT(eb.show.formula "union(S)")}
   \hfill
-  \fbox{EVBT(sf UNION x . x:0..20 | NAT)}
+  \fbox{EVBT(eb.show.formula "UNION x . x:0..20 | NAT")}
 
-  \fbox{EVBT(sf 1..111)}
+  \fbox{EVBT(eb.show.formula "1..111")}
   \hfill
-  \fbox{EVBT(sf x,y :| x' = x+y & y' = x-y)}
+  \fbox{EVBT(eb.show.formula "x,y :| x' = x+y & y' = x-y")}
   \hfill
-  \fbox{EVBT(show formula "S +-> POW(1..3)")}
+  \fbox{EVBT(eb.show.formula "S +-> POW(1..3)")}
 
 
 \end{document}

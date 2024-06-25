@@ -32,7 +32,9 @@ fi
 
 
 INFO="Tested xelatex on generated document."
-xelatex -output-directory=$OUTDIR -interaction=batchmode -halt-on-error $OUTDIR/modded_test_basic_formulas.tex > /dev/null
+cp doc/bsymb.sty $OUTDIR
+xelatex -output-directory=$OUTDIR -interaction=batchmode -halt-on-error $OUTDIR/modded_test_basic_formulas.tex
+
 if [ "$?" = "0" ]
 then
     echo "OK $INFO"
