@@ -78,7 +78,10 @@ VERSION_SOURCES:=$(shell find $(GEN_SRC)/version -type f -name "*.java")
 # Templates contains tex templates for document generation included from the templates directory.
 TEMPLATES_JAVA:=src/main/java/com/viklauverk/eventbtools/core/Templates.java
 
-$(BUILD_MVN_BIN)/evbt: scripts/run.sh $(TEMPLATES_JAVA) $(PROJECT_DEPS)/updated.timestamp $(SOURCES) $(ANTLR_SOURCES) $(VERSION_SOURCES) $(LOGMODULES_SOURCE)
+pom.xml: pom.xmq
+	xmq pom.xmq to-xml > $@
+
+$(BUILD_MVN_BIN)/evbt: pom.xml scripts/run.sh $(TEMPLATES_JAVA) $(PROJECT_DEPS)/updated.timestamp $(SOURCES) $(ANTLR_SOURCES) $(VERSION_SOURCES) $(LOGMODULES_SOURCE)
 	@echo Compiling using maven
 	@mkdir -p $(BUILD_MVN_BIN) $(GEN_ANTLR4)
 	$(AT)mvn -B -q package
