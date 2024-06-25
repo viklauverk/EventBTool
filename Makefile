@@ -122,6 +122,7 @@ $(PROJECT_DEPS)/updated.timestamp: pom.xml
 	@mvn -q initialize
 	@echo Storing java dependencies into $(PROJECT_DEPS)
 	@DEPS=`mvn dependency:tree | grep INFO | grep compile | grep -oE '[^ ]+$$'` ; \
+    sleep 2 ; \
     for DEP in $$DEPS ; do \
         GROU=$$(echo $$DEP | cut -f 1 -d ':' | sed 's|\.|/|g') ; \
         ARTI=$$(echo $$DEP | cut -f 2 -d ':') ; \
