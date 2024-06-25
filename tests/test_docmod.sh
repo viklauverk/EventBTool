@@ -16,11 +16,11 @@ EVBT(yms.add.sets S T)
 EVBT(yms.add.constants c f)
 EVBT(yms.add.expressions E F)
 +++++
-EVBT(eb.show.formula plain x:BOOL & y:S => E = F)
+EVBT(eb.show.formula --plain x:BOOL & y:S => E = F)
 +++++
-EVBT(env.read models/Elevator)
-Elevator enterDest grd_1:
-EVBT(eb.show.part framed plain Elevator/events/enterDest/guards/grd_1)
+EVBT(sys.read models/Elevator)
++++++
+EVBT(eb.show.part --frame --plain Elevator/events/enterDest/guards/grd_1)
 +++++
 END
 EOF
@@ -36,8 +36,8 @@ OK
 +++++
 x∈BOOL∧y∈S⇒ E=F
 +++++
-read 1 contexts and 1 machines
-Elevator enterDest grd_1:
+Read models/Elevator (1 contexts 1 machines)
++++++
 ┌──────────┐
 │grd_1: d∈ℕ│
 └──────────┘

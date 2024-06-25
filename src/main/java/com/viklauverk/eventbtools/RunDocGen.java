@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -57,7 +57,7 @@ public class RunDocGen
             log.info("         makeindex "+idx);
             log.info("         xelatex "+out);
         }
-        if (s.docGenSettings().renderTarget() == RenderTarget.HTMQ)
+        if (s.docGenSettings().renderTarget() == RenderTarget.HTML)
         {
             String html = s.commonSettings().outputDir()+"/"+s.commonSettings().nickName()+".html";
             log.info("Now run: xmq "+out+" > "+html);

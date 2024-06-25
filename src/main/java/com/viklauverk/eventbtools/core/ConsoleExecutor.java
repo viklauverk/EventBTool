@@ -22,31 +22,88 @@ import java.util.LinkedList;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.antlr.v4.runtime.Token;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.tree.TerminalNode;
+import com.viklauverk.eventbtools.core.cmd.Cmd;
+import com.viklauverk.eventbtools.core.cmd.CmdCommon;
 
-public class ConsoleExecutor extends ConsoleBaseVisitor<String>
+public class ConsoleExecutor
 {
-    private Console console_;
-    private CommonTokenStream tokens_;
+    private static Log log = LogModule.lookup("console");
 
-    ConsoleExecutor(Console console, CommonTokenStream tokens)
+    private Console console_;
+    private String line_;
+    private int index_;
+
+    ConsoleExecutor(Console console, String line)
     {
         console_ = console;
-        tokens_ = tokens;
+        line_ = line;
     }
 
-    RenderTarget useOrDefault(ParserRuleContext t, RenderTarget dt)
+    String go()
     {
-        if (t == null || t.getText() == null || t.getText().equals("")) return dt;
-        return RenderTarget.lookup(t.getText());
+        index_ = 0;
+        String tok = getNextToken();
+
+        if (tok.equals("q") || tok.equals("quit"))
+        {
+            console_.quit();
+            return "";
+        }
+
+        Cmd cmd = Cmd.parse(tok);
+
+        if (cmd == null || cmd == Cmd.ERROR)
+        {
+            return LogModule.safeFormat("Unknown command: %s", tok);
+        }
+
+        skipWhitespace();
+
+        String args = line_.substring(index_);
+        CmdCommon cco = cmd.constructor.create(console_, args);
+        log.debug("Executing cmd %s on line >%s<\n", cmd, args);
+        return cco.go();
     }
 
-    boolean isSet(ParserRuleContext t, String d)
+    void skipWhitespace()
     {
-        if (t == null || t.getText() == null || !t.getText().equals(d)) return false;
+        while (index_ < line_.length() && line_.charAt(index_) == ' ') index_++;
+    }
+
+    boolean isTokenChar(char c)
+    {
+        if (c >= 'a' && c <= 'z') return true;
+        if (c >= 'A' && c <= 'Z') return true;
+        if (c == '.') return true;
+        return false;
+    }
+
+    String getNextToken()
+    {
+        skipWhitespace();
+
+        StringBuilder sb = new StringBuilder();
+        while (index_ < line_.length())
+        {
+            char c = line_.charAt(index_);
+            if (!isTokenChar(c)) break;
+            sb.append(c);
+            index_++;
+        }
+
+        return sb.toString();
+    }
+
+    /*
+    RenderTarget useOrDefault(String t, RenderTarget dt)
+    {
+        if (t == null || t.equals("")) return dt;
+        return RenderTarget.lookup(t);
+    }
+
+    boolean isSet(String t, String d)
+    {
+        if (t == null || !t.equals(d)) return false;
         return true;
     }
 
@@ -286,12 +343,6 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
     }
 
     @Override
-    public String visitShowAllOfSymbolTable(ConsoleParser.ShowAllOfSymbolTableContext ctx)
-    {
-        return console_.currentSymbolTable().print();
-    }
-
-    @Override
     public String visitShowPartOfSymbolTable(ConsoleParser.ShowPartOfSymbolTableContext ctx)
     {
         String type = ctx.typeOfSymbol().getText();
@@ -411,7 +462,6 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         return console_.popSymbolTable();
     }
 
-    /*
     @Override
     public String visitRenderWithFormat(ConsoleParser.RenderWithFormatContext ctx)
     {
@@ -431,7 +481,6 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         }
         return result;
     }
-    */
 
     @Override
     public String visitSetDefaultRenderTarget(ConsoleParser.SetDefaultRenderTargetContext ctx)
@@ -449,26 +498,6 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         return st.print();
     }
 
-    @Override
-    public String visitShowPart(ConsoleParser.ShowPartContext ctx)
-    {
-        String pattern = removeQuotes(ctx.name.getText());
-        if (!pattern.startsWith("*"))
-        {
-            // Force the pattern to match all to the end of the path.
-            pattern += "/";
-        }
-        RenderTarget rt = useOrDefault(ctx.renderTarget(), console_.renderTarget());
-        RenderAttributes ra = console_.renderAttributes().copy();
-        ra.setFrame(isSet(ctx.framed(), "framed"));
-
-        String content = console_.renderPart(pattern, rt, ra);
-        if (content == null)
-        {
-            return "EVBT_ERROR: Part \""+pattern+"\" not found!";
-        }
-        return content;
-    }
 
     @Override
     public String visitEnvPrintTemplate(ConsoleParser.EnvPrintTemplateContext ctx)
@@ -488,6 +517,7 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
     public String visitShowFormula(ConsoleParser.ShowFormulaContext ctx)
     {
         String f = removeQuotes(ctx.formula.getText());
+        System.out.println("FORMAL >"+f+"<");
         String metaaa = ctx.metaaa() != null ? ctx.metaaa().getText() : "";
         String treee = ctx.treee() != null ? ctx.treee().getText() : "";
         RenderTarget rt = useOrDefault(ctx.renderTarget(), console_.renderTarget());
@@ -535,4 +565,5 @@ public class ConsoleExecutor extends ConsoleBaseVisitor<String>
         }
         return f.trim();
     }
+    */
 }

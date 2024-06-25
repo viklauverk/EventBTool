@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -519,7 +519,7 @@ public class TestInternals
             return false;
         }
 
-        c.setRenderTarget(RenderTarget.HTMQ);
+        c.setRenderTarget(RenderTarget.HTML);
         s = c.render();
 
         check =
@@ -631,7 +631,7 @@ public class TestInternals
     public static boolean testCanvas4()
     {
         Canvas c = new Canvas();
-        c.setRenderTarget(RenderTarget.HTMQ);
+        c.setRenderTarget(RenderTarget.HTML);
 
         c.startAlignments("0,0,0");
         c.append(

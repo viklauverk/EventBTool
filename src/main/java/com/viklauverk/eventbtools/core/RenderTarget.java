@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -22,7 +22,7 @@ public enum RenderTarget
     PLAIN,    // Render using plain unicode (can even be limited to ASCII)
     TERMINAL, // Use PLAIN but allow ansi-sequences for colors and positioning.
     TEX,      // Use PLAIN but use tex for symbols, colors and positioning.
-    HTMQ;     // Use PLAIN but use htmq that can later be converted into html.
+    HTML;     // Use PLAIN and add html markup.
 
     public static RenderTarget lookup(String s)
     {
@@ -31,7 +31,7 @@ public enum RenderTarget
         case "plain": return PLAIN;
         case "terminal": return TERMINAL;
         case "tex": return TEX;
-        case "htmq": return HTMQ;
+        case "html": return HTML;
         }
 
         return null;

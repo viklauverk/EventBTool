@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -201,7 +201,7 @@ class AlignmentBlock
                 postfix += generateRuleAndVSpace();
             }
         }
-        if (render_target_ == RenderTarget.HTMQ)
+        if (render_target_ == RenderTarget.HTML)
         {
             prefix = generateStartTabbingHTMQ(this);
             postfix = generateStopTabbingHTMQ();
@@ -222,8 +222,8 @@ class AlignmentBlock
             return s+"\n";
         case TEX:
             return s+"\\\\\n";
-        case HTMQ:
-            return " tr { "+s+" }\n";
+        case HTML:
+            return "<tr>"+s+"</tr>\n";
         }
         return s;
     }
@@ -261,12 +261,12 @@ class AlignmentBlock
                 }
             }
             return s+(is_last_cell?"":"&");
-        case HTMQ:
+        case HTML:
             if (colspan > 1)
             {
-                return " td(colspan="+colspan+") { "+s+" } ";
+                return "<td colspan="+colspan+">"+s+"</td>";
             }
-            return " td { "+s+" } ";
+            return "<td>"+s+"</td>";
         }
         return "ERROR "+s;
     }

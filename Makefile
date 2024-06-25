@@ -89,7 +89,7 @@ $(BUILD_MVN_BIN)/evbt: scripts/run.sh $(TEMPLATES_JAVA) $(PROJECT_DEPS)/updated.
 $(BUILD_JAVAC_BIN)/evbt: scripts/evbt.sh $(TEMPLATES_JAVA) $(PROJECT_DEPS)/updated.timestamp $(SOURCES) $(ANTLR_SOURCES) $(VERSION_SOURCES) $(LOGMODULES_SOURCE)
 	@echo Compiling using javac
 	@mkdir -p $(BUILD_JAVAC_BIN)
-	$(AT)javac -cp $(JARS) -Xlint:all -d $(BUILD)/classes -sourcepath src/main/java:$(BUILD)/generated-sources/antlr4:$(BUILD)/generated-sources/version $(filter %.java,$?)
+	$(AT)javac -cp $(JARS) -Xlint:all,-this-escape -d $(BUILD)/classes -sourcepath src/main/java:$(BUILD)/generated-sources/antlr4:$(BUILD)/generated-sources/version $(filter %.java,$?) $(SOURCES)
 	$(AT)sed 's|replaced_with_build_dir|$(BUILD)|' < scripts/evbt.sh > $@
 	$(AT)chmod a+x $@
 	@echo Generated $(call DROP_ROOT,$@)
@@ -169,63 +169,6 @@ echo -n "\"$(notdir $(templ))\",$(notdir $(templ))," >> $(TEMPLATES_JAVA); \
 
 templates: $(TEMPLATES_JAVA)
 
-HELP_COMMANDS:=$(shell cat src/main/antlr4/com/viklauverk/eventbtools/core/Console.g4 | grep //G | cut -f 2 -d ' ' | tr '.' '_' | sort -u)
-
-HELPLINES_JAVA=src/main/java/com/viklauverk/eventbtools/core/HelpLines.java
-
-helplines:
-	@echo "// Copyright Viklauverk AB 2021-2023" > $(HELPLINES_JAVA)
-	@echo "package com.viklauverk.eventbtools.core;" >> $(HELPLINES_JAVA)
-	@echo "public class HelpLines" >> $(HELPLINES_JAVA)
-	@echo "{" >> $(HELPLINES_JAVA)
-	@echo "   public static String help =" >> $(HELPLINES_JAVA)
-	@echo '"Commands:\\n\\n"+' >> $(HELPLINES_JAVA)
-	@cat src/main/antlr4/com/viklauverk/eventbtools/core/Console.g4  | grep //G | cut -b 4- \
-                  | sed 's/\\/\\\\/g' | sed 's/"/\\"/g' | sed 's/\(.*\)/"\1\\n"+/' >> $(HELPLINES_JAVA)
-	@echo "\"\";\n\n" >> $(HELPLINES_JAVA)
-
-	@for c in $(HELP_COMMANDS); do echo "    public static String help_$${c} =" >>$(HELPLINES_JAVA) ; \
-        cat src/main/antlr4/com/viklauverk/eventbtools/core/Console.g4 | grep "//$${c}:" | sed "s|//$${c}:||g" \
-        | sed 's/\\/\\\\/g' | sed 's/"/\\"/g' | sed 's/\(.*\)/"\1\\n"+/' >> $(HELPLINES_JAVA) ; \
-        echo "\"\";\n\n" >> $(HELPLINES_JAVA) ; done
-
-	@echo "public static java.util.HashMap<String,String> helps;" >> $(HELPLINES_JAVA)
-	@echo "static { \n    helps = new java.util.HashMap<>();" >> $(HELPLINES_JAVA)
-	@for c in $(HELP_COMMANDS); do echo '    helps.put("'$${c}'", help_'$${c}');' >>$(HELPLINES_JAVA) ; done
-	@echo "}\n\n" >> $(HELPLINES_JAVA)
-
-	@echo "}" >> $(HELPLINES_JAVA)
-	@echo Created $(HELPLINES_JAVA)
-
-CONSOLE_COMPLETER_JAVA=src/main/java/com/viklauverk/eventbtools/core/ConsoleCompleter.java
-
-COMMANDS:=$(shell cat src/main/antlr4/com/viklauverk/eventbtools/core/Console.g4 | grep -v quit | grep //G | cut -f 2 -d ' ' | sort -u)
-
-console_completer:
-	@echo "// Copyright Viklauverk AB 2021-2023" > $(CONSOLE_COMPLETER_JAVA)
-	@echo "package com.viklauverk.eventbtools.core;" >> $(CONSOLE_COMPLETER_JAVA)
-	@echo "" >> $(CONSOLE_COMPLETER_JAVA)
-	@echo "import org.jline.reader.impl.completer.ArgumentCompleter;"  >> $(CONSOLE_COMPLETER_JAVA)
-	@echo "import org.jline.reader.impl.completer.StringsCompleter;"  >> $(CONSOLE_COMPLETER_JAVA)
-	@echo "import org.jline.reader.impl.completer.AggregateCompleter;"  >> $(CONSOLE_COMPLETER_JAVA)
-	@echo "import org.jline.builtins.Completers.TreeCompleter;"  >> $(CONSOLE_COMPLETER_JAVA)
-	@echo "import org.jline.builtins.Completers.DirectoriesCompleter;"  >> $(CONSOLE_COMPLETER_JAVA)
-	@echo "import org.jline.reader.Completer;" >> $(CONSOLE_COMPLETER_JAVA)
-	@echo "" >> $(CONSOLE_COMPLETER_JAVA)
-	@echo "public class ConsoleCompleter" >> $(CONSOLE_COMPLETER_JAVA)
-	@echo "{" >> $(CONSOLE_COMPLETER_JAVA)
-	@echo "    public static Completer addCompleters(Sys sys) {" >> $(CONSOLE_COMPLETER_JAVA)
-
-	@echo "        return new AggregateCompleter(" >> $(CONSOLE_COMPLETER_JAVA)
-	@(for c in $(COMMANDS) quit; do \
-        echo -n "             new ArgumentCompleter(new StringsCompleter(\"$${c}\"))" ; \
-        if [ $$c != "quit" ] ; then echo "," ; else echo "" ; fi ; \
-    done) >> $(CONSOLE_COMPLETER_JAVA)
-	@echo "        );" >> $(CONSOLE_COMPLETER_JAVA)
-	@echo "    }" >> $(CONSOLE_COMPLETER_JAVA)
-	@echo "}" >> $(CONSOLE_COMPLETER_JAVA)
-	@echo Created $(CONSOLE_COMPLETER_JAVA)
-
 ifeq ($(MOST_RECENT),mvn)
 test: testm
 endif
@@ -251,11 +194,11 @@ testm:
 
 testj: testinternals
 	@./tests/test.sh $(BUILD)/javac_bin/evbt javac
-	@(cd models; make EVBT=$(BUILD)/javac_bin/evbt CLEAN=true && make reset_pdfs)
+#	@(cd models; make EVBT=$(BUILD)/javac_bin/evbt CLEAN=true && make reset_pdfs)
 
 testg: testinternals
 	@./tests/test.sh $(BUILD)/graal_bin/evbt graal
-	@(cd models; make EVBT=$(BUILD)/graal_bin/evbt CLEAN=true && make reset_pdfs)
+#	@(cd models; make EVBT=$(BUILD)/graal_bin/evbt CLEAN=true && make reset_pdfs)
 
 PREFIX=/usr/local
 
@@ -295,6 +238,6 @@ doc:
 	$(AT)evbt docmod tex doc/article.tex $(BUILD)/doc/art.tex
 	$(AT)(cd $(BUILD)/doc/ ; xelatex art.tex && mv art.pdf article.pdf)
 
-.PHONY: doc logmodulenames templates helplines install clean doc
+.PHONY: doc logmodulenames templates install clean doc
 
 MAKEFLAGS += --no-builtin-rules

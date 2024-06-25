@@ -90,7 +90,7 @@ public class RunConsole
                 {
                     String out = sys.console().go(line);
                     System.out.print(out);
-                    if (!out.endsWith("\n")) System.out.println();
+                    if (out.length() > 0 && !out.endsWith("\n")) System.out.println();
                 }
             }
             catch (UserInterruptException e)

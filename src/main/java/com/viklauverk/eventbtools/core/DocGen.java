@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -31,7 +31,7 @@ public class DocGen
             return new DocGenUnicode(cs, ds, sys);
         case TEX:
             return new DocGenTeX(cs, ds, sys);
-        case HTMQ:
+        case HTML:
             return new DocGenHtmq(cs, ds, sys);
         }
         assert (false) : "Missing case for render target: "+ds.renderTarget();

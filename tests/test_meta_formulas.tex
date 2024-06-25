@@ -7,23 +7,23 @@
 
 \raggedright
 
-EVBT(env.print.template "TeXPackages")
-EVBT(env.print.template "TeXDefinitions")
+EVBT(sys.print.template TeXPackages)
+EVBT(sys.print.template TeXDefinitions)
 
-% EVBT(add defaults) make sure we have PQR ST xy mn cd in the symbol table.
-% EVBT(add vars height doors)
-% EVBT(add consts int8 array bitset8)
+% EVBT(yms.add.defaults) make sure we have PQR ST xy mn cd in the symbol table.
+% EVBT(yms.add.variables height doors)
+% EVBT(yms.add.constants int8 array bitset8)
 
 \begin{document}
 
-EVBT(sft x:=1+y*5+z/3)
+EVBT(eb.show.formula --frame --tree x:=1+y*5+z/3)
 
-EVBT(sfm height«0..127 |-> bitset8 »)
+EVBT(eb.show.formula --meta height«0..127 |-> bitset8 »)
 
-EVBT(show formula "S«int8» +->«array» POW«bitset8»(1..3)")
+EVBT(eb.show.formula S«int8» +->«array» POW«bitset8»(1..3))
 
-EVBT(show formula meta "S«int8» +->«array» POW«bitset8»(1..3)")
+EVBT(eb.show.formula --meta S«int8» +->«array» POW«bitset8»(1..3))
 
-EVBT(show formula meta tree "S«int8» +->«array» POW«bitset8»(1..3)")
+EVBT(eb.show.formula --meta --tree S«int8» +->«array» POW«bitset8»(1..3))
 
 \end{document}

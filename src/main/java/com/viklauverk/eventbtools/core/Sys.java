@@ -53,6 +53,7 @@ public class Sys
     private Console console_;
     private EDK edk_;
 
+    @SuppressWarnings("this-escape")
     public Sys(Settings s)
     {
         project_info_ = "";
@@ -230,7 +231,7 @@ public class Sys
         // Load the projct.info file, if it exists.
         loadProjectInfo(dir);
 
-        return "read "+contextNames().size()+" contexts and "+machineNames().size()+" machines";
+        return ""+contextNames().size()+" contexts "+machineNames().size()+" machines";
     }
 
     private List<Pair<String,File>> eachFileEndingIn(File dir, String suffix)
@@ -413,7 +414,7 @@ public class Sys
                                     new RenderEventTeX(),
                                     new RenderFormulaTeX(canvas),
                                     canvas);
-        case HTMQ:
+        case HTML:
            return new AllRenders(new RenderContextHtmq(),
                                     new RenderMachineHtmq(),
                                     new RenderEventHtmq(),

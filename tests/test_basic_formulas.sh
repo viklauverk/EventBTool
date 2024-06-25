@@ -33,7 +33,7 @@ fi
 
 INFO="Tested xelatex on generated document."
 cp doc/bsymb.sty $OUTDIR
-xelatex -output-directory=$OUTDIR -interaction=batchmode -halt-on-error $OUTDIR/modded_test_basic_formulas.tex
+xelatex -output-directory=$OUTDIR -interaction=batchmode -halt-on-error $OUTDIR/modded_test_basic_formulas.tex > $OUTDIR/xelatex.output 2>&1
 
 if [ "$?" = "0" ]
 then

@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2023 Viklauverk AB
+ Copyright (C) 2024 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -15,31 +15,24 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.viklauverk.eventbtools.core;
+package com.viklauverk.eventbtools.core.cmd;
 
-import org.antlr.v4.runtime.misc.ParseCancellationException;
+import com.viklauverk.eventbtools.core.Console;
 
-public class ParseException extends ParseCancellationException
+import java.util.List;
+
+public class CmdYmsAddPredicates extends CmdCommon
 {
-    private static final long serialVersionUID = 1L;
-
-    private int line_;
-    private int offset_;
-
-    public ParseException(int line, int offset, String msg)
+    public CmdYmsAddPredicates(Console console, String line)
     {
-        super(msg);
-        line_= line;
-        offset_ = offset;
+        super(console, line);
     }
 
-    public int line()
+    @Override
+    public String go()
     {
-        return line_;
-    }
-
-    public int offset()
-    {
-        return offset_;
+        String[] preds = line_.split("\\s+");
+        console_.currentSymbolTable().addPredicateSymbols(preds);
+        return "OK";
     }
 }

@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -394,7 +394,7 @@ public class Canvas
             return frameUnicode(title, s, b);
         case TEX:
             return frameTeX(title, s, b);
-        case HTMQ:
+        case HTML:
             return frameHTMQ(title, s, b);
         }
         return s;
@@ -699,7 +699,7 @@ public class Canvas
         case TEX:
             append("$");
             return;
-        case HTMQ:
+        case HTML:
             //append(" '\\(' ");
             return;
         }
@@ -719,7 +719,7 @@ public class Canvas
         case TEX:
             append("$");
             return;
-        case HTMQ:
+        case HTML:
             //append(" '\\)' ");
             return;
         }
@@ -737,7 +737,7 @@ public class Canvas
         case TEX:
             append("\\GRD{");
             return;
-        case HTMQ:
+        case HTML:
             return;
         }
         assert (false) : "Unknown encoding "+render_target_;
@@ -754,7 +754,7 @@ public class Canvas
         case TEX:
             append("}");
             return;
-        case HTMQ:
+        case HTML:
             return;
         }
         assert (false) : "Unknown encoding "+render_target_;
@@ -771,7 +771,7 @@ public class Canvas
         case TEX:
             append("\\WIT{");
             return;
-        case HTMQ:
+        case HTML:
             return;
         }
         assert (false) : "Unknown encoding "+render_target_;
@@ -788,7 +788,7 @@ public class Canvas
         case TEX:
             append("}");
             return;
-        case HTMQ:
+        case HTML:
             return;
         }
         assert (false) : "Unknown encoding "+render_target_;
@@ -805,7 +805,7 @@ public class Canvas
         case TEX:
             append("\\ACT{");
             return;
-        case HTMQ:
+        case HTML:
             return;
         }
         assert (false) : "Unknown encoding "+render_target_;
@@ -822,7 +822,7 @@ public class Canvas
         case TEX:
             append("}");
             return;
-        case HTMQ:
+        case HTML:
             return;
         }
         assert (false) : "Unknown encoding "+render_target_;
@@ -841,7 +841,7 @@ public class Canvas
         case TEX:
             append("\\hrule");
             return;
-        case HTMQ:
+        case HTML:
             append(" hr ");
             return;
         }
@@ -866,7 +866,7 @@ public class Canvas
         case TEX:
             append(" \\newline ");
             return;
-        case HTMQ:
+        case HTML:
             append(" br ");
             return;
         }
@@ -886,7 +886,7 @@ public class Canvas
         case TEX:
             append("\\LINE{");
             return;
-        case HTMQ:
+        case HTML:
             return;
         }
         assert (false) : "Unknown encoding "+render_target_;
@@ -911,7 +911,7 @@ public class Canvas
         case TEX:
             append("}\n");
             return;
-        case HTMQ:
+        case HTML:
             append(" br \n");
             return;
         }
@@ -938,7 +938,7 @@ public class Canvas
         case TEX:
             append("\\LUFT\n");
             return;
-        case HTMQ:
+        case HTML:
             append(" br ");
             return;
         }
@@ -971,7 +971,7 @@ public class Canvas
         case TEX:
             append("\\ID{"+Util.texSafe(s)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=ID)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -991,7 +991,7 @@ public class Canvas
         case TEX:
             append("\\KEYW{"+Util.texSafe(s).toUpperCase()+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=KEYW)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1011,7 +1011,7 @@ public class Canvas
         case TEX:
             append("\\KEYWL{"+Util.texSafe(s).toUpperCase()+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=KEYWL)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1031,7 +1031,7 @@ public class Canvas
         case TEX:
             append("\\VARDEF{"+Util.texSafe(s)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=VARDEF)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1051,7 +1051,7 @@ public class Canvas
         case TEX:
             append("\\VAR{"+Util.texSafe(s)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=VAR)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1071,7 +1071,7 @@ public class Canvas
         case TEX:
             append("\\NONF{"+Util.texSafe(s)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=NONF)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1091,7 +1091,7 @@ public class Canvas
         case TEX:
             append("\\NUM{"+Util.texSafe(s)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=NUM)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1111,7 +1111,7 @@ public class Canvas
         case TEX:
             append("\\ANY{"+Util.texSafe(s)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=ANY)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1131,7 +1131,7 @@ public class Canvas
         case TEX:
             append("\\CON{"+Util.texSafe(s)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=CON)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1151,7 +1151,7 @@ public class Canvas
         case TEX:
             append("\\PSET{"+Util.texSafe(s)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=PSET)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1171,7 +1171,7 @@ public class Canvas
         case TEX:
             append("\\CSET{"+Util.texSafe(s)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=CSET)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1191,7 +1191,7 @@ public class Canvas
         case TEX:
             append("\\PRED{"+Util.texSafe(s)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=PRED)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1211,7 +1211,7 @@ public class Canvas
         case TEX:
             append("\\EXPR{"+Util.texSafe(s)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=EXPR)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1231,7 +1231,7 @@ public class Canvas
         case TEX:
             append(s);
             return;
-        case HTMQ:
+        case HTML:
             append(" "+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1251,7 +1251,7 @@ public class Canvas
         case TEX:
             append("\\label{"+s+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" a(id=\""+s+"\") ");
             return;
         }
@@ -1275,7 +1275,7 @@ public class Canvas
         case TEX:
             append("\\COM{"+Unicode.commentToTeX(s)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=COM)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1299,7 +1299,7 @@ public class Canvas
         case TEX:
             append("\\COM{\\rule{0pt}{2.5ex}"+Unicode.commentToTeX(s)+"\\rule[-2.5ex]{0pt}{0pt}}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=COM)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1323,7 +1323,7 @@ public class Canvas
         case TEX:
             append("\\ACOM{"+Unicode.commentToTeX(s)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=ACOM)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1352,7 +1352,7 @@ public class Canvas
         case TEX:
             append("\\LAB{"+Util.texSafe(pre+s+post)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=LAB)="+Util.quoteXMQ(pre+s+post)+" ");
             return;
         }
@@ -1374,7 +1374,7 @@ public class Canvas
         case TEX:
             append("\\LAB{theorem}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=LAB)="+Util.quoteXMQ("theorem")+" ");
             return;
         }
@@ -1396,7 +1396,7 @@ public class Canvas
         case TEX:
             append("\\COM{"+Unicode.commentToTeX(s)+"}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=COM)="+Util.quoteXMQ(s)+" ");
             return;
         }
@@ -1416,7 +1416,7 @@ public class Canvas
         case TEX:
             append("\\allowbreak\\texttt{\\small "+Util.texSafe("<"+f.node().name())+" }");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=TYPE)="+Util.htmqSafe("<"+f.node().name()+" "));
             return;
         }
@@ -1436,7 +1436,7 @@ public class Canvas
         case TEX:
             append("\\texttt{\\small >}\\allowbreak ");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=TYPE)=>");
             return;
         }
@@ -1456,7 +1456,7 @@ public class Canvas
         case TEX:
             append("\\EVBTMeta{");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=META)=«");
             return;
         }
@@ -1476,7 +1476,7 @@ public class Canvas
         case TEX:
             append("}");
             return;
-        case HTMQ:
+        case HTML:
             append(" span(class=META)=»");
             return;
         }

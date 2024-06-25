@@ -74,7 +74,7 @@ public class Console
         render_attributes_ = set.docGenSettings().renderAttributes();
     }
 
-    Sys sys()
+    public Sys sys()
     {
         return sys_;
     }
@@ -99,7 +99,7 @@ public class Console
         return running_;
     }
 
-    SymbolTable currentSymbolTable()
+    public SymbolTable currentSymbolTable()
     {
         return current_symbol_table_;
     }
@@ -114,7 +114,7 @@ public class Console
         render_target_ = t;
     }
 
-    String renderTemplate(String name)
+    public String renderTemplate(String name)
     {
         for (int i=0; i<Templates.templates.length; i+=2)
         {
@@ -126,7 +126,7 @@ public class Console
         return "Template "+name+" not found!";
     }
 
-    String renderPart(String name, RenderTarget rt, RenderAttributes ra)
+    public String renderPart(String name, RenderTarget rt, RenderAttributes ra)
     {
         CommonSettings cs = new CommonSettings();
         DocGenSettings ds = new DocGenSettings(rt, ra);
@@ -213,54 +213,21 @@ public class Console
     public String go(String line_in)
     {
         if (line_in.trim().length() == 0) return "";
-        String line = line_in; // + " ";
-        CharStream lineStream = CharStreams.fromString(line);
-
-        ConsoleLexer lexer = new ConsoleLexer(lineStream);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ConsoleParser parser = new ConsoleParser(tokens);
-        //parser.setTrace(true);
-        lexer.removeErrorListeners();
-        parser.removeErrorListeners();
-        parser.addErrorListener(ThrowingErrorListener.INSTANCE);
-
+        String line = line_in;
         log.debug("go: %s", line);
-        ParseTree tree = null;
         try
         {
-            tree = parser.start();
-        }
-        catch (ParseException e)
-        {
-            String info = Util.padLeft("^", ' ', 5+e.offset())+"\n"+
-                "I am sorry, but this is how far I could parse your command.";
-
-            return info;
-        }
-        if (parser.getNumberOfSyntaxErrors() > 0)
-        {
-            String info = "Could not parse: \""+line+"\" since it has "+
-                parser.getNumberOfSyntaxErrors()+
-                " syntax errors.\n";
-
-            log.debug("%s", info);
-            return info;
-        }
-
-        try
-        {
-            ConsoleExecutor ce = new ConsoleExecutor(this, tokens);
-            return ce.visit(tree);
+            ConsoleExecutor ce = new ConsoleExecutor(this, line);
+            return ce.go();
         }
         catch (Exception e)
         {
-            e.printStackTrace();
             log.info("Could not execute command \"%s\"", line);
             return "FAILED COMMAND \""+line+"\"";
         }
     }
 
-    String renderFormula(String line, boolean with_meta, boolean with_type, boolean with_frame, RenderTarget rt, RenderAttributes ra)
+    public String renderFormula(String line, boolean with_meta, boolean with_type, boolean with_frame, RenderTarget rt, RenderAttributes ra)
     {
         Canvas cnvs = new Canvas();
         cnvs.setRenderTarget(rt);
