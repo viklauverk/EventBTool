@@ -2,8 +2,8 @@ name: Build Ubuntu
 on:
   push:
     branches:
-      - master
-  pull_request:
+      - main
+    pull_request:
 
 jobs:
   job_build_ubuntu:
