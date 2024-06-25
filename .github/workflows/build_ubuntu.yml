@@ -12,9 +12,9 @@ jobs:
     - id: CHECKOUT_SOURCE
       uses: actions/checkout@v3
     - id: APT_UPDATE
-      run: sudo apt update
+      run: sudo apt-get update
     - id: INSTALL_ADDITIONAL_BUILD_DEPENDENCIES
-      run: sudo apt install -y eatmydata openjdk-21-jdk texlive-xetex
+      run: sudo apt-get install -y eatmydata openjdk-21-jdk texlive-xetex
     - id: CONFIGURE
       run: eatmydata ./configure
     - id: MAKE

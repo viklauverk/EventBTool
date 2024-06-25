@@ -1,0 +1,155 @@
+// Copyright Viklauverk AB 2021
+project(xsi:schemaLocation = 'http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd'
+        xmlns              = http://maven.apache.org/POM/4.0.0
+        xmlns:xsi          = http://www.w3.org/2001/XMLSchema-instance)
+{
+    modelVersion = 4.0.0
+    properties {
+        project.build.sourceEncoding = UTF-8
+        maven.compiler.source        = 21
+        maven.compiler.target        = 21
+    }
+    groupId    = com.viklauverk
+    artifactId = EventBTool
+    version    = 1.0-SNAPSHOT
+    // Inherit defaults from Spring Boot
+    parent {
+        groupId    = org.springframework.boot
+        artifactId = spring-boot-starter-parent
+        version    = 3.0.1
+    }
+    dependencies {
+        // https://mvnrepository.com/artifact/org.antlr/antlr4
+        dependency {
+            groupId    = org.antlr
+            artifactId = antlr4-runtime
+            version    = 4.11.1
+        }
+        // https://mvnrepository.com/artifact/org.antlr/antlr4-maven-plugin
+        dependency {
+            groupId    = org.antlr
+            artifactId = antlr4-maven-plugin
+            version    = 4.11.1
+        }
+        // https://mvnrepository.com/artifact/org.antlr/antlr4-runtime
+        dependency {
+            groupId    = org.antlr
+            artifactId = antlr4
+            version    = 4.11.1
+        }
+        // https://mvnrepository.com/artifact/net.java.dev.jna/jna
+        dependency {
+            groupId    = net.java.dev.jna
+            artifactId = jna
+            version    = 5.13.0
+        }
+        // https://mvnrepository.com/artifact/org.dom4j/dom4j
+        dependency {
+            groupId    = org.dom4j
+            artifactId = dom4j
+            version    = 2.1.3
+        }
+        // https://mvnrepository.com/artifact/jaxen/jaxen
+        dependency {
+            groupId    = jaxen
+            artifactId = jaxen
+            version    = 1.2.0
+        }
+        // https://mvnrepository.com/artifact/junit/junit
+        dependency {
+            groupId    = junit
+            artifactId = junit
+            version    = 4.13.2
+            scope      = test
+        }
+        // https://mvnrepository.com/artifact/org.jline/jline
+        dependency {
+            groupId    = org.jline
+            artifactId = jline
+            version    = 3.22.0
+        }
+        // https://mvnrepository.com/artifact/org.fusesource.jansi/jansi-native
+        dependency {
+            groupId    = org.fusesource.jansi
+            artifactId = jansi-native
+            version    = 1.8
+        }
+        // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+        dependency {
+            groupId    = org.apache.commons
+            artifactId = commons-lang3
+            version    = 3.12.0
+        }
+    }
+    build {
+        directory = build
+        plugins {
+            plugin {
+                groupId    = org.codehaus.mojo
+                artifactId = build-helper-maven-plugin
+                version    = 3.3.0
+                executions {
+                    execution {
+                        phase = generate-sources
+                        goals {
+                            goal = add-source
+                        }
+                        configuration {
+                            sources {
+                                source = build/generated-sources/version
+                            }
+                        }
+                    }
+                }
+            }
+            plugin {
+                groupId    = org.apache.maven.plugins
+                artifactId = maven-compiler-plugin
+                version    = 3.8.0
+                configuration {
+                    release = 21
+                }
+            }
+            plugin {
+                groupId    = org.springframework.boot
+                artifactId = spring-boot-maven-plugin
+                configuration {
+                    mainClass  = com.viklauverk.eventbtools.Main
+                    executable = false
+                }
+            }
+            plugin {
+                groupId    = org.antlr
+                artifactId = antlr4-maven-plugin
+                version    = 4.11.1
+                configuration {
+                    arguments {
+                        argument = -visitor
+                    }
+                }
+                executions {
+                    execution {
+                        id = antlr
+                        goals {
+                            goal = antlr4
+                        }
+                    }
+                }
+            }
+        }
+        resources {
+            resource {
+                directory  = src/event-b/EDK
+                targetPath = EDK
+            }
+            resource {
+                directory  = config-dir
+                targetPath = META-INF/native-image
+            }
+            resource {
+                directory = src/main/resources
+                filtering = true
+            }
+        }
+    }
+}
