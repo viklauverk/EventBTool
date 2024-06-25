@@ -14,7 +14,7 @@ jobs:
     - id: APT_UPDATE
       run: sudo apt-get update
     - id: LIST_JAVAS
-      run: update-java-alternatives -l
+      run: update-java-alternatives -l || true
     - id: SWITCH_TO_OPENJDK_21
       run: update-java-alternatives -s /usr/lib/jvm/temurin-21-jdk-amd64
     - id: INSTALL_ADDITIONAL_BUILD_DEPENDENCIES
