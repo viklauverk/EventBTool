@@ -19,6 +19,7 @@ mkdir -p $OUTDIR
 
 INFO="Generated elevator tex file."
 $PROG docgen -q --outputdir=$OUTDIR tex models/Elevator
+cp doc/bsymb.sty $OUTDIR
 xelatex -output-directory=$OUTDIR -aux-directory=$OUTDIR -interaction=batchmode -halt-on-error $OUTDIR/Elevator.tex > $OUTDIR/tmp 2>&1
 
 if [ "$?" != "0" ]

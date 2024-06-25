@@ -18,7 +18,7 @@ OUTDIR="$DIR/$TESTNAME"
 mkdir -p $OUTDIR
 
 INFO="Tested C++ code generation for bridge model."
-$PROG codegen -q --outputdir=$OUTDIR c++ tests/models/Bridge/WithDrawBridge.bum
+$PROG codegen -q --outputdir=$OUTDIR c++ models/Bridge/WithDrawBridge.bum
 if [ "$?" = "0" ]
 then
     echo "OK $INFO"

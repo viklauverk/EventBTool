@@ -20,8 +20,6 @@ if [ "$?" != "0" ]; then exit 1; fi
 ./tests/test_meta_formulas.sh $PROG $OUT
 if [ "$?" != "0" ]; then exit 1; fi
 
-exit 0
-
 ./tests/test_setcomprehensions.sh $PROG $OUT
 if [ "$?" != "0" ]; then exit 1; fi
 

@@ -18,7 +18,7 @@ OUTDIR="$DIR/$TESTNAME"
 mkdir -p $OUTDIR
 
 INFO="Tested C++ code generation for quare root model."
-$PROG codegen -q --outputdir=$OUTDIR c++ tests/models/SquareRoot/SquareRoot_R4_WithMiddleInVariable.bum
+$PROG codegen -q --outputdir=$OUTDIR c++ models/SquareRoot/SquareRoot_R4_WithMiddleInVariable.bum
 if [ "$?" = "0" ]
 then
     echo "OK $INFO"

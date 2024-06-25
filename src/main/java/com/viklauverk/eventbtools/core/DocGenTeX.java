@@ -54,7 +54,7 @@ public class DocGenTeX extends BaseDocGen
 
         cnvs.append(Templates.TeXHeader.replace("$PATH_TO_IMAGES$", commonSettings().sourceDir()+"/"));
 
-        cnvs.append("EVBT(env.print.template TeXDefinitions)\n");
+        cnvs.append("EVBT(sys.print.template TeXDefinitions)\n");
 
         cnvs.append("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
         cnvs.append("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");

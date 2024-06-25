@@ -20,6 +20,7 @@ mkdir -p $OUTDIR
 
 INFO="Tested generation of tex from EDK model."
 $PROG docgen -q --outputdir=$OUTDIR tex src/event-b/EDK
+cp doc/bsymb.sty $OUTDIR
 xelatex -output-directory=$OUTDIR -aux-directory=$OUTDIR -interaction=batchmode -halt-on-error $OUTDIR/EDK.tex > $OUTDIR/tmp 2>&1
 
 if [ "$?" != "0" ]

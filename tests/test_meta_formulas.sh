@@ -30,7 +30,6 @@ else
     exit 1
 fi
 
-
 INFO="Tested xelatex on generated document."
 cp doc/bsymb.sty $OUTDIR
 xelatex -output-directory=$OUTDIR -interaction=batchmode -halt-on-error $OUTDIR/modded_test_meta_formulas.tex > /dev/null

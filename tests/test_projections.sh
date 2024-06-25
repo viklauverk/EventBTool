@@ -33,6 +33,7 @@ fi
 mv Projections.tex $OUTDIR
 
 INFO="Tested xelatex on generated document."
+cp doc/bsymb.sty $OUTDIR
 xelatex -output-directory=$OUTDIR -interaction=batchmode -halt-on-error $OUTDIR/Projections.tex > /dev/null
 if [ "$?" = "0" ]
 then
