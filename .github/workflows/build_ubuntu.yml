@@ -19,6 +19,8 @@ jobs:
       run: sudo apt-get install -y eatmydata openjdk-21-jdk texlive-xetex
     - id: CONFIGURE
       run: eatmydata ./configure
+    - id: BUILD_SPEC
+      run: cat build/spec.mk
     - id: MAKE
       run: eatmydata make
     - id: TEST
