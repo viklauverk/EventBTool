@@ -56,13 +56,24 @@ DROP_ROOT=$(subst $(GIT_ROOT)/,./,$1)
 
 # You have to perform the mvn build first to have the project deps installed.
 mvn: $(BUILD_MVN_BIN)/evbt
+	@rm -f evbt
+	@ln -s $(BUILD_MVN_BIN)/evbt
+	@echo Use ./evbt
+
 # Now you can perform a javac compile with a slightly quicker rebuild time.
 # It cannot rebuild the generated classes from antlr, so if you change the grammar
 # then you have to rerun "make mvn"
 javac: $(BUILD_JAVAC_BIN)/evbt
+	@rm -f evbt
+	@ln -s $(BUILD_JAVAC_BIN)/evbt
+	@echo Use ./evbt
+
 # Or a native compile, with a much much longer rebuild time.
 # Do this when you have a build that passes the test suite.
 graal: $(BUILD_GRAAL_BIN)/evbt
+	@rm -f evbt
+	@ln -s $(BUILD_GRAAL_BIN)/evbt
+	@echo Use ./evbt
 
 # Make sure the output directories exist.
 $(shell mkdir -p $(BUILD) $(PROJECT_DEPS) $(GEN_ANTLR4))

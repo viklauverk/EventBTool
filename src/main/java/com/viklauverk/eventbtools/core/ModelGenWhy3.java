@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021-2023 Viklauverk AB
+ Copyright (C) 2024 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -54,12 +54,12 @@ public class ModelGenWhy3 extends BaseModelGen
 
         for (String ctx : sys().contextNames())
         {
-            cnvs.append("EVBT(eb.show.part \""+ctx+"\")\n");
+            cnvs.append("EVBT(mo.show.part \""+ctx+"\")\n");
         }
 
         for (String mch : sys().machineNames())
         {
-            cnvs.append("EVBT(eb.show.part \""+mch+"\")\n");
+            cnvs.append("EVBT(mo.show.part \""+mch+"\")\n");
         }
         return cnvs.render();
     }

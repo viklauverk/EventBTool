@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -21,8 +21,8 @@ import com.viklauverk.eventbtools.core.Log;
 import com.viklauverk.eventbtools.core.LogLevel;
 import com.viklauverk.eventbtools.core.LogModule;
 import com.viklauverk.eventbtools.core.ShowSettings;
-import com.viklauverk.eventbtools.core.CodeGenSettings;
-import com.viklauverk.eventbtools.core.DocGenSettings;
+import com.viklauverk.eventbtools.core.ModelGenSettings;
+import com.viklauverk.eventbtools.core.ModelTarget;
 import com.viklauverk.eventbtools.core.RenderTarget;
 import com.viklauverk.eventbtools.core.Settings;
 import com.viklauverk.eventbtools.core.Util;
@@ -59,6 +59,7 @@ public class CommandLine
         case CONSOLE:  args = parseConsole(s, args); break;
         case DOCGEN: args = parseDocGen(s, args); break;
         case DOCMOD: args = parseDocMod(s, args); break;
+        case MODELGEN: args = parseModelGen(s, args); break;
         case EDK: args = parseEDK(s, args); break;
         case SHOW:  args = parseShow(s, args); break;
         case HELP: args = parseHelp(s, args); break;
@@ -315,6 +316,47 @@ public class CommandLine
         {
             log.usageError("Usage: evbt docmod [options] <plain|tex|htmq> <source_file> <dest_file> { <dir> } ");
             System.exit(1);
+        }
+
+        return args;
+    }
+
+    private static String[] parseModelGen(Settings s, String[] args)
+    {
+        for (;;)
+        {
+            args = handleGlobalOption(s, args);
+            if (args.length == 0) break;
+
+            String arg = args[0];
+
+            if (!arg.startsWith("--")) break;
+
+            LogModule.usageErrorStatic("Unknown option \"%s\"", arg);
+        }
+
+        if (args.length < 2)
+        {
+            log.usageError("Usage: evbt modelgen [options] <why3> <dir>");
+            System.exit(1);
+        }
+
+        ModelTarget mt = ModelTarget.lookup(args[0]);
+        if (mt == null)
+        {
+            log.usageError("Not a supported model target \""+args[0]+"\", available targets are: why3");
+        }
+
+        s.modelGenSettings().setModelTarget(mt);
+        args = Util.shiftLeft(args);
+
+        s.commonSettings().setSourceDir(args[0]);
+        args = Util.shiftLeft(args);
+
+        while(args.length > 0)
+        {
+            s.commonSettings().addMachineOrContext(args[0]);
+            args = Util.shiftLeft(args);
         }
 
         return args;

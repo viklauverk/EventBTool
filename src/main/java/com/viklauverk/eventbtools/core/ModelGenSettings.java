@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021-2023 Viklauverk AB
+ Copyright (C) 2021-2024 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -39,9 +39,9 @@ public class ModelGenSettings
         return model_target_;
     }
 
-    public void setModelTarget(ModelTarget rt)
+    public void setModelTarget(ModelTarget mt)
     {
-        model_target_ = rt;
+        model_target_ = mt;
     }
 
 }
