@@ -195,6 +195,8 @@ public class Typing
      */
     private void extractPossibleImplTypesFromPredicate(Formula predicate, SymbolTable symbols)
     {
+        SymbolTable fc = SymbolTable.PQR_EFG_STU_xyz_cdf_NM_ABC;
+        Formula fo = Formula.fromString("x:S", fc);
         boolean ok = pattern().match(predicate,
                                      "conjunction",     "P & Q",
                                      "expr_equals",     "E = F",
@@ -214,7 +216,9 @@ public class Typing
                                      "const_in_set",     "c:S",
                                      "var_in_var",      "x:y",
                                      "var_is_subset",   "x<:S",
-                                     "var_is_subset_of_var", "x<:y");
+                                     "var_is_subset_of_var", "x<:y",
+                                     "var_in_dt",       "x:H",
+                                     "var_in_pdt",      "x:H(A)");
 
         if (!ok)
         {
@@ -388,6 +392,41 @@ public class Typing
             type = lookupImplType(FormulaFactory.newPowerSet(type.formula(), Formula.NO_META));
             type = x.updateImplType(type);
             log.debug("typing (subset of var) variable %s to %s through %s", x, type, symbols.tree());
+            return;
+        }
+        case "var_in_dt": // x:H used for w:REAL
+        {
+            Variable member = symbols.getVariable(pattern().getVar("x"));
+
+            Formula H = pattern().getPolymorphicDataType("H");
+            if (H.isSymbol())
+            {
+                // Its a data type symbol, could be REAL for example.
+                PolymorphicDataType pdt  = symbols.getPolymorphicDataType(H.symbol());
+                assert (pdt != null) : "internal error: data type not found: "+pattern().getSet("H")+" in "+symbols.tree();
+                ImplType type = member.updateImplType(lookupImplType(pdt.longName())); // A data type is its own type!
+                log.debug("typing variable %s to data type %s in %s", member, type, symbols.tree());
+            }
+            else
+            {
+                log.debug("cannot type variable %s", member);
+            }
+            return;
+        }
+        case "var_in_pdt": // x:H(A) used for element:List(INT)
+        {
+            Variable member = symbols.getVariable(pattern().getVar("x"));
+
+            Formula H = pattern().getPolymorphicDataType("H");
+            // H=List(ℤ)
+            assert(H.isSymbol()); // Yes List is a symbol (and there is more types)
+
+            // We have List(INT) now lookup just List.
+            PolymorphicDataType pdt  = symbols.getPolymorphicDataType(H.symbol());
+            assert (pdt != null) : "internal error: polymorphic data type not found: "+pattern().getPolymorphicDataType("H")+" in "+symbols.tree();
+            String specialisation = H.toString(); // This will generate again, for example: List(ℤ)
+            ImplType type = member.updateImplType(lookupImplType(H)); // Lookup the specialisation of this pdt.
+            log.debug("typing variable %s to data type %s in %s", member, type, symbols.tree());
             return;
         }
 

@@ -146,6 +146,23 @@ public class SymbolTable
         return polymorphic_data_type_symbols_;
     }
 
+    public PolymorphicDataType getPolymorphicDataType(Formula name)
+    {
+        return getPolymorphicDataType(name.symbol());
+    }
+
+    public PolymorphicDataType getPolymorphicDataType(String name)
+    {
+        PolymorphicDataType pdt = polymorphic_data_types_.get(name);
+        if (pdt != null) return pdt;
+        for (SymbolTable parent : parents_)
+        {
+            pdt = parent.getPolymorphicDataType(name);
+            if (pdt != null) return pdt;
+        }
+        return null;
+    }
+
     public void addPolymorphicDataTypeSymbols(String... s)
     {
         polymorphic_data_type_symbols_.addAll(Arrays.asList(s));

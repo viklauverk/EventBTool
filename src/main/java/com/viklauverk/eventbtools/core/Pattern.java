@@ -189,6 +189,8 @@ class Pattern
         if (pt == Node.SET_SYMBOL)
         {
             if (!f.isSet()) return false;
+            // Must not be polymorphic set....
+            if (f.isPolymorphicDataType()) return false;
             if (!tryMetaMatch(f, p, mr)) return false;
             return okToAdd(f, p, mr.sets, "sets");
         }
@@ -218,6 +220,7 @@ class Pattern
 
         if (pt == Node.POLYMORPHIC_DATA_TYPE_SYMBOL)
         {
+            if (!f.isPolymorphicDataType()) return false;
             if (!tryMetaMatch(f, p, mr)) return false;
             if (!okToAdd(f, p, mr.polymorphic_data_types, "polymorphic_data_types")) return false;
             // Continue with children types.

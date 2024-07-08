@@ -146,7 +146,7 @@ class Formula
     {
         assert isSymbol() : "internal error: requesting symbol of non-symbol: "+this;
 
-        return toString();
+        return Symbols.name(intData());
     }
 
     public int numChildren()
