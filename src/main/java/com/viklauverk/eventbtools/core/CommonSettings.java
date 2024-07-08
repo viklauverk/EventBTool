@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -14,7 +14,7 @@
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-// 
+//
 package com.viklauverk.eventbtools.core;
 
 import java.util.List;
@@ -30,6 +30,9 @@ public class CommonSettings
     private boolean trace_enabled_;
 
     private String source_dir_;
+    // The theory root dir is used to find imported theory projects.
+    // It often points to the workspace where theory projects are located.
+    private String theory_root_dir_;
     private String nick_name_;
     private String output_dir_ = ".";
     private List<String> machines_and_contexts_ = new ArrayList<>();
@@ -65,6 +68,7 @@ public class CommonSettings
             sd = sd.substring(0, sd.length()-1);
         }
         File dir = new File(sd);
+        dir = dir.getAbsoluteFile();
         if (!dir.exists() || !dir.isDirectory())
         {
             LogModule.usageErrorStatic("Not a directory \"%s\"", sd);
@@ -76,12 +80,35 @@ public class CommonSettings
         {
             setNickName(sd.substring(ls+1));
         }
+        if (theory_root_dir_ == null)
+        {
+            theory_root_dir_ = dir.getParentFile().toString();
+        }
+    }
+
+    public String theoryRootDir() { return theory_root_dir_; }
+    public void setTheoryRootDir(String trd)
+    {
+        if (trd.equals("")) return;
+        while (trd.charAt(trd.length()-1) == '/')
+        {
+            trd = trd.substring(0, trd.length()-1);
+        }
+        File dir = new File(trd);
+        dir = dir.getAbsoluteFile();
+        if (!dir.exists() || !dir.isDirectory())
+        {
+            LogModule.usageErrorStatic("Not a directory \"%s\"", trd);
+            System.exit(1);
+        }
+        theory_root_dir_ = trd;
     }
 
     public String outputDir() { return output_dir_; }
     public void setOutputDir(String d)
     {
         File dir = new File(d);
+        dir = dir.getAbsoluteFile();
         if (!dir.exists())
         {
             LogModule.usageErrorStatic("Not a directory \"%s\"", d);

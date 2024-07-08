@@ -300,6 +300,8 @@ expression
     | { symbol_table.isNonFreeVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL meta? # NonFreeSetVariable
     | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }? variable=SYMBOL PRIM? meta? # SetVariable
     | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }? constant=SYMBOL meta? # SetConstant
+    | { symbol_table.isPolymorphicDataTypeSymbol(_input.LT(1).getText()) }? datatype=SYMBOL
+      '(' parameters=listOfExpressions ')' meta?  # PolymorphicDataTypeSymbol
     | NAT meta?               # NATSet
     | NAT1 meta?              # NAT1Set
     | INT meta?               # INTSet

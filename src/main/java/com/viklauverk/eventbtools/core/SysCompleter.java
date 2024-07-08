@@ -65,13 +65,10 @@ public class SysCompleter implements Completer
             }
         }
 
-        System.err.println("PRUTT >"+line.line()+"<");
         if (tables_)
         {
-            System.err.println("PRUTTT >"+line.line()+"<");
             for (String t : sys_.allSymbolTables().keySet())
             {
-                System.err.println("PRUTTTT >"+t+"<");
                 candidates.add(new Candidate(t));
             }
         }

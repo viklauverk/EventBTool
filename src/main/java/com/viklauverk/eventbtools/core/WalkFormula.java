@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -51,6 +51,7 @@ public class WalkFormula implements FormulaVisitor
     public Formula visit_PREDICATE_SYMBOL(Formula i) { return i; }
     public Formula visit_EXPRESSION_SYMBOL(Formula i) { return i; }
     public Formula visit_SET_SYMBOL(Formula i) { return i; }
+    public Formula visit_POLYMORPHIC_DATA_TYPE_SYMBOL(Formula i) { return i; }
     public Formula visit_VARIABLE_SYMBOL(Formula i) { return i; }
     public Formula visit_VARIABLE_PRIM_SYMBOL(Formula i) { return i; }
     public Formula visit_VARIABLE_NONFREE_SYMBOL(Formula i) { return i; }
@@ -177,6 +178,7 @@ public class WalkFormula implements FormulaVisitor
         case PREDICATE_SYMBOL: i = visit_PREDICATE_SYMBOL(i); break;
         case EXPRESSION_SYMBOL: i = visit_EXPRESSION_SYMBOL(i); break;
         case SET_SYMBOL: i = visit_SET_SYMBOL(i); break;
+        case POLYMORPHIC_DATA_TYPE_SYMBOL: i = visit_POLYMORPHIC_DATA_TYPE_SYMBOL(i); break;
         case VARIABLE_SYMBOL: i = visit_VARIABLE_SYMBOL(i); break;
         case VARIABLE_PRIM_SYMBOL: i = visit_VARIABLE_PRIM_SYMBOL(i); break;
         case VARIABLE_NONFREE_SYMBOL: i = visit_VARIABLE_NONFREE_SYMBOL(i); break;

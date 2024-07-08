@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -210,8 +210,8 @@ public class Typing
                                      // Otherwise the S will match the primitive sets.
                                      "var_greater_than","x>N",
                                      "const_greater_than","c>N",
-                                     "var_in_set",      "x:S",
-                                     "const_in_set",    "c:S",
+                                     "var_in_set",       "x:S",
+                                     "const_in_set",     "c:S",
                                      "var_in_var",      "x:y",
                                      "var_is_subset",   "x<:S",
                                      "var_is_subset_of_var", "x<:y");

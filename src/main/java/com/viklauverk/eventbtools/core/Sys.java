@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021-2024 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -41,6 +41,16 @@ public class Sys
     private Map<String,SymbolTable> all_symbol_tables_;
     private Typing typing_;
 
+    private TheoryPath theory_path_;
+
+    private Map<String,Theory> deployed_theories_;
+    private List<Theory> deployed_theory_ordering_;
+    private List<String> deployed_theory_names_;
+
+    private Map<String,Theory> source_theories_;
+    private List<Theory> source_theory_ordering_;
+    private List<String> source_theory_names_;
+
     private Map<String,Context> contexts_;
     private List<Context> context_ordering_;
     private List<String> context_names_;
@@ -57,7 +67,13 @@ public class Sys
     public Sys(Settings s)
     {
         project_info_ = "";
-
+        theory_path_ = new TheoryPath();
+        deployed_theories_ = new HashMap<>();
+        deployed_theory_ordering_ = new ArrayList<>();
+        deployed_theory_names_ = new ArrayList<>();
+        source_theories_ = new HashMap<>();
+        source_theory_ordering_ = new ArrayList<>();
+        source_theory_names_ = new ArrayList<>();
         contexts_ = new HashMap<>();
         context_ordering_ = new ArrayList<>();
         context_names_ = new ArrayList<>();
@@ -128,6 +144,14 @@ public class Sys
         return root_symbol_table_;
     }
 
+    public SymbolTable newTheorySymbolTable(String name)
+    {
+        SymbolTable st = new SymbolTable(name);
+        all_symbol_tables_.put(name, st);
+        root_symbol_table_.addParent(st);
+        return st;
+    }
+
     public SymbolTable newSymbolTable(String name)
     {
         SymbolTable st = new SymbolTable(name);
@@ -149,6 +173,50 @@ public class Sys
     public Typing typing()
     {
         return typing_;
+    }
+
+    public void addDeployedTheory(Theory t)
+    {
+        deployed_theories_.put(t.name(), t);
+        deployed_theory_ordering_.add(t);
+        deployed_theory_names_ = deployed_theories_.keySet().stream().sorted().collect(Collectors.toList());
+    }
+
+    public Theory getDeployedTheory(String name)
+    {
+        return deployed_theories_.get(name);
+    }
+
+    public List<Theory> deployedTheoryOrdering()
+    {
+        return deployed_theory_ordering_;
+    }
+
+    public List<String> deployedTheoryNames()
+    {
+        return deployed_theory_names_;
+    }
+
+    public void addSourceTheory(Theory t)
+    {
+        source_theories_.put(t.name(), t);
+        source_theory_ordering_.add(t);
+        source_theory_names_ = source_theories_.keySet().stream().sorted().collect(Collectors.toList());
+    }
+
+    public Theory getSourceTheory(String name)
+    {
+        return source_theories_.get(name);
+    }
+
+    public List<Theory> sourceTheoryOrdering()
+    {
+        return source_theory_ordering_;
+    }
+
+    public List<String> sourceTheoryNames()
+    {
+        return source_theory_names_;
     }
 
     public void addContext(Context c)
@@ -195,7 +263,7 @@ public class Sys
         return machine_names_;
     }
 
-    public String loadMachinesAndContexts(String path) throws Exception
+    public String loadTheoriesAndContextsAndMachines(String path, String theory_path) throws Exception
     {
         if (path == null || path.equals("")) return "";
 
@@ -206,9 +274,28 @@ public class Sys
             LogModule.usageErrorStatic("Not a valid directory \"%s\"", path);
         }
 
-        // First create empty object instances for each context and machine.
+        File theory_root_dir = new File(theory_path);
+
+        if (!theory_root_dir.exists() || !theory_root_dir.isDirectory())
+        {
+            LogModule.usageErrorStatic("Not a valid directory \"%s\"", theory_path);
+        }
+
+        // Load list of deployed theories from TheoryPath.
+        theory_path_.load(dir, theory_root_dir);
+        populateDeployedTheories();
+
+        // First create empty object instances for each theory, context and machine.
         populateContexts(dir);
         populateMachines(dir);
+
+        // Now load and parse the deployed theories. This has to be completely done
+        // before parsing contexts and machines, since the DataTypes in the theories
+        // are introduced to all contexts and machines within the system through the theory path.
+        loadDeployedTheories();
+        parseDeployedTheoryFormulas();
+
+        // The root theory symbol tables have now been populated with theory data types and operators!
 
         // Now load the content, it is now possible to refer to other
         // contexts and machines since we have prepopulated those maps.
@@ -236,8 +323,11 @@ public class Sys
 
     private List<Pair<String,File>> eachFileEndingIn(File dir, String suffix)
     {
-        List<File> files = Stream.of(dir.listFiles()).sorted(Comparator.comparing(File::getName)).collect(Collectors.toList());
         List<Pair<String,File>> result = new ArrayList<>();
+
+        if (dir.listFiles() == null) return result;
+
+        List<File> files = Stream.of(dir.listFiles()).sorted(Comparator.comparing(File::getName)).collect(Collectors.toList());
 
         for (File f : files)
         {
@@ -267,6 +357,30 @@ public class Sys
         }
     }
 
+    private void populateTheories(File dir, File theory_root_dir) throws Exception
+    {
+        /*
+        List<Pair<String,File>> files = eachFileEndingIn(dir, ".tuf");
+
+        for (Pair<String,File> p : files)
+        {
+            String name = p.left;
+            File file = p.right;
+            Theory t = new Theory(name, this, file, theory_root_dir);
+            addTheory(t);
+            log.debug("found theory "+name);
+            }*/
+    }
+
+    public void populateDeployedTheories() throws Exception
+    {
+        for (String name : theory_path_.deployedTheories())
+        {
+            addDeployedTheory(new Theory(name, this, theory_path_.getDeployedTheoryDTF(name), null));
+            log.debug("found deployed theory "+name);
+        }
+    }
+
     private void populateMachines(File dir) throws Exception
     {
         List<Pair<String,File>> files = eachFileEndingIn(dir, ".bum");
@@ -278,6 +392,16 @@ public class Sys
             Machine m = new Machine(name, this, file);
             addMachine(m);
             log.debug("found machine "+m.name());
+        }
+    }
+
+    private void loadDeployedTheories() throws Exception
+    {
+     	for (String name : deployedTheoryNames())
+        {
+            Theory t = getDeployedTheory(name);
+            t.loadDeployedDTF();
+            t.buildSymbolTable();
         }
     }
 
@@ -316,6 +440,15 @@ public class Sys
                 lines.close();
                 log.debug("found project.info");
             }
+        }
+    }
+
+    private void parseDeployedTheoryFormulas()
+    {
+        for (String name : deployedTheoryNames())
+        {
+            Theory t = getDeployedTheory(name);
+            t.parse();
         }
     }
 

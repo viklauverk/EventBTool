@@ -77,6 +77,8 @@ public class ConsoleCompleter
              new ArgumentCompleter(new StringsCompleter("yms.add.constants")),
              new ArgumentCompleter(new StringsCompleter("yms.add.expressions")),
              new ArgumentCompleter(new StringsCompleter("yms.add.numbers")),
+             new ArgumentCompleter(new StringsCompleter("yms.add.polytypes")),
+             new ArgumentCompleter(new StringsCompleter("yms.add.polyops")),
              new ArgumentCompleter(new StringsCompleter("yms.add.predicates")),
              new ArgumentCompleter(new StringsCompleter("yms.add.sets")),
              new ArgumentCompleter(new StringsCompleter("yms.add.variables")),

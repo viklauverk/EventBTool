@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2024 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -15,37 +15,24 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.viklauverk.eventbtools.core;
+package com.viklauverk.eventbtools.core.cmd;
 
-import java.io.File;
+import com.viklauverk.eventbtools.core.Console;
 
-public class EDK
+import java.util.List;
+
+public class CmdYmsAddPolytypes extends CmdCommon
 {
-    private static Log log = LogModule.lookup("edk");
-
-    Sys sys_;
-
-    public EDK(Sys s)
+    public CmdYmsAddPolytypes(Console console, String line)
     {
-        sys_ = s;
+        super(console, line);
     }
 
-    public EDKContext lookupContext(String name, File buc)
+    @Override
+    public String go()
     {
-        if (name.equals("EDK_FloatingPoint_v1"))
-        {
-            return new EDK_FloatingPoint_v1_Cpp(this);
-        }
-        if (name.equals("EDK_String_v1"))
-        {
-            return new EDK_String_v1_Cpp(this);
-        }
-        return null;
+        String[] types = line_.split("\\s+");
+        console_.currentSymbolTable().addPolymorphicDataTypeSymbols(types);
+        return "OK";
     }
-
-    public EDKTheory lookupTheory(String name, File tuf)
-    {
-        return null;
-    }
-
 }

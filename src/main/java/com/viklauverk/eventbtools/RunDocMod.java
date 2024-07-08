@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -35,8 +35,10 @@ public class RunDocMod
         Sys sys = new Sys(s);
         if (s.commonSettings().sourceDir() != null)
         {
-            log.info("Loading machines and contexts from: %s", s.commonSettings().sourceDir());
-            sys.loadMachinesAndContexts(s.commonSettings().sourceDir());
+            log.info("Loading machines, contexts and theories from: %s with additional theories from: %s\n",
+                     s.commonSettings().sourceDir(),
+                     s.commonSettings().theoryRootDir());
+            sys.loadTheoriesAndContextsAndMachines(s.commonSettings().sourceDir(), s.commonSettings().theoryRootDir());
         }
 
         BaseDocGen bdg = DocGen.lookup(s.commonSettings(), s.docGenSettings(), sys);

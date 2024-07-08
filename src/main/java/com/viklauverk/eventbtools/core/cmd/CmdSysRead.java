@@ -17,6 +17,7 @@
 
 package com.viklauverk.eventbtools.core.cmd;
 
+import java.io.File;
 import java.util.List;
 
 import com.viklauverk.eventbtools.core.Console;
@@ -31,10 +32,11 @@ public class CmdSysRead extends CmdCommon
     @Override
     public String go()
     {
-        String dir = line_.trim();
         try
         {
-            String info = console_.sys().loadMachinesAndContexts(dir);
+            String dir = line_.trim();
+            String theory_dir = (new File(dir)).getParentFile().toString();
+            String info = console_.sys().loadTheoriesAndContextsAndMachines(dir, theory_dir);
             return "Read "+dir+" ("+info+")";
         }
         catch (Exception e)

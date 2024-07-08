@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021-2024 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -199,6 +199,20 @@ class Formula
         node_ = node;
         data_ = new int[1];
         data_[0] = v;
+        meta_ = meta;
+    }
+
+    Formula(Node node, int v, Formula inner, Formula meta)
+    {
+        assert (node != null && inner != null) : "Internal error when creating formula, args must be non-null.";
+
+        node_ = node;
+        data_ = new int[1];
+        data_[0] = v;
+
+        children_ = new Formula[1];
+        children_[0] = inner;
+
         meta_ = meta;
     }
 

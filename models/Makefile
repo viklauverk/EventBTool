@@ -2,7 +2,7 @@
 $(shell rm -f /tmp/evbtmodels.log)
 
 ifeq ($(CLEAN),true)
-$(shell rm *.pdf)
+$(shell rm -f *.pdf)
 endif
 
 EVBT?=evbt

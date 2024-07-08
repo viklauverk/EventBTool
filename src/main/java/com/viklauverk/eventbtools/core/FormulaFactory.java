@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -133,6 +133,12 @@ public class FormulaFactory
     Formula newSetSymbol (String s, Formula meta)
     {
         return new Formula(Node.SET_SYMBOL, Symbols.intern(s), meta);
+    }
+
+    public static
+    Formula newPolymorphicDataTypeSymbol(String s, Formula parameters, Formula meta)
+    {
+        return new Formula(Node.POLYMORPHIC_DATA_TYPE_SYMBOL, Symbols.intern(s), parameters, meta);
     }
 
     public static

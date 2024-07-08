@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -486,6 +486,16 @@ public class RenderFormulaUnicode extends RenderFormula
     @Override public Formula visit_VARIABLE_SYMBOL(Formula i)
     {
         cnvs().variable(Symbols.name(i.intData())); visitMeta(i); return i;
+    }
+
+    @Override public Formula visit_POLYMORPHIC_DATA_TYPE_SYMBOL(Formula i)
+    {
+        cnvs().set(Symbols.name(i.intData()));
+        cnvs().symbol("(");
+        visitChild(i);
+        cnvs().symbol(")");
+        visitMeta(i);
+        return i;
     }
 
     @Override public Formula visit_VARIABLE_PRIM_SYMBOL(Formula i)

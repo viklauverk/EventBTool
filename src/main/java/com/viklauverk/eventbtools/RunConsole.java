@@ -63,7 +63,13 @@ public class RunConsole
     {
         Sys sys = new Sys(s);
 
-        sys.loadMachinesAndContexts(s.commonSettings().sourceDir());
+        if (s.commonSettings().sourceDir() != null)
+        {
+            System.out.print(String.format("Loading machines, contexts and theories from: %s with additional theories from: %s\n",
+                                           s.commonSettings().sourceDir(),
+                                           s.commonSettings().theoryRootDir()));
+        }
+        sys.loadTheoriesAndContextsAndMachines(s.commonSettings().sourceDir(), s.commonSettings().theoryRootDir());
 
         Canvas canvas = new Canvas();
         canvas.setRenderTarget(RenderTarget.TERMINAL);

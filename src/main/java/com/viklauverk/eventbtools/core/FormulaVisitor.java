@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -37,6 +37,7 @@ public interface FormulaVisitor
     Formula visit_VARIABLE_PRIM_SYMBOL(Formula i);
     Formula visit_VARIABLE_NONFREE_SYMBOL(Formula i);
     Formula visit_CONSTANT_SYMBOL(Formula i);
+    Formula visit_POLYMORPHIC_DATA_TYPE_SYMBOL(Formula i);
     Formula visit_APPLICATION(Formula i);
     Formula visit_PARENTHESISED_PREDICATE(Formula i);
     Formula visit_PARENTHESISED_EXPRESSION(Formula i);

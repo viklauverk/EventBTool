@@ -34,8 +34,10 @@ public class RunDocGen
         throws Exception
     {
         Sys sys = new Sys(s);
-        log.info("Loading machines and contexts from: %s", s.commonSettings().sourceDir());
-        sys.loadMachinesAndContexts(s.commonSettings().sourceDir());
+        log.info("Loading machines, contexts and theories from: %s with additional theories from: %s\n",
+                 s.commonSettings().sourceDir(),
+                 s.commonSettings().theoryRootDir());
+        sys.loadTheoriesAndContextsAndMachines(s.commonSettings().sourceDir(), s.commonSettings().theoryRootDir());
 
         BaseDocGen bdg = DocGen.lookup(s.commonSettings(), s.docGenSettings(), sys);
 

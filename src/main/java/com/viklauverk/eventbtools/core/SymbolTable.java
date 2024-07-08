@@ -50,12 +50,19 @@ public class SymbolTable
     private Set<String> expression_symbols_ = new HashSet<>(); // EFG
     private Set<String> set_symbols_ = new HashSet<>(); // STU
     private Map<String,CarrierSet> sets_ = new HashMap<>();
+
     private Set<String> variable_symbols_ = new HashSet<>(); // xyzw
     private Map<String,Variable> variables_ = new HashMap<>();
     private Set<String> constant_symbols_ = new HashSet<>(); // cdf
     private Map<String,Constant> constants_ = new HashMap<>();
     private Set<String> number_symbols_ = new HashSet<>(); // NM
     private Set<String> any_symbols_ = new HashSet<>(); // ABC
+
+    private Set<String> polymorphic_data_type_symbols_ = new HashSet<>(); // H List Seq
+    private Map<String,PolymorphicDataType> polymorphic_data_types_ = new HashMap<>();
+
+    private Set<String> polymorphic_operator_symbols_ = new HashSet<>(); // seq seqSize listSize append
+    private Map<String,Operator> polymorphic_operators_ = new HashMap<>(); // Theory added operators.
 
     private LinkedList<Frame> frames_ = new LinkedList<>();
 
@@ -132,6 +139,21 @@ public class SymbolTable
     public Set<String> variableSymbols()
     {
         return variable_symbols_;
+    }
+
+    public Set<String> polymorphicDataTypeSymbols()
+    {
+        return polymorphic_data_type_symbols_;
+    }
+
+    public void addPolymorphicDataTypeSymbols(String... s)
+    {
+        polymorphic_data_type_symbols_.addAll(Arrays.asList(s));
+    }
+
+    public Set<String> polymorphicOperatorSymbols()
+    {
+        return polymorphic_operator_symbols_;
     }
 
     public boolean isPredicateSymbol(String p)
@@ -417,6 +439,52 @@ public class SymbolTable
         any_symbols_.addAll(s);
     }
 
+    public void addPolymorphicDataType(PolymorphicDataType pdt)
+    {
+        polymorphic_data_type_symbols_.add(pdt.baseName());
+        polymorphic_data_types_.put(pdt.baseName(), pdt);
+    }
+
+    public boolean isPolymorphicDataTypeSymbol(String base_name)
+    {
+        boolean is = polymorphic_data_type_symbols_.contains(base_name);
+        if (is) return true;
+        for (SymbolTable parent : parents_)
+        {
+            is = parent.isPolymorphicDataTypeSymbol(base_name);
+            if (is) return true;
+        }
+        return false;
+    }
+
+    public void addPolymorphicOperator(Operator o)
+    {
+        polymorphic_operator_symbols_.add(o.name());
+        polymorphic_operators_.put(o.name(), o);
+    }
+
+    public boolean isPolymorphicOperatorSymbol(String p)
+    {
+        boolean is = polymorphic_operator_symbols_.contains(p);
+        if (is) return true;
+        for (SymbolTable parent : parents_)
+        {
+            is = parent.isPolymorphicOperatorSymbol(p);
+            if (is) return true;
+        }
+        return false;
+    }
+
+    public void addPolymorphicOperatorSymbol(String s)
+    {
+        polymorphic_operator_symbols_.add(s);
+    }
+
+    public void addPolymorphicOperatorSymbols(String... s)
+    {
+        polymorphic_operator_symbols_.addAll(Arrays.asList(s));
+    }
+
     public boolean isUnknownSymbol(String p)
     {
         if (isPredicateSymbol(p)) return false;
@@ -478,6 +546,10 @@ public class SymbolTable
         o.append("sets: "+Canvas.flow(80, printSyms(set_symbols_)));
         o.append("-\n");
         o.append("variables: "+Canvas.flow(80, printSyms(variable_symbols_)));
+        o.append("-\n");
+        o.append("polytypes: "+Canvas.flow(80, printSyms(polymorphic_data_type_symbols_)));
+        o.append("-\n");
+        o.append("polyops: "+Canvas.flow(80, printSyms(polymorphic_operator_symbols_)));
 
         // The anys are special and used for wildcard matching. We only print these
         // if there are any to print.
@@ -503,6 +575,8 @@ public class SymbolTable
         set_symbols_.add("S");
         set_symbols_.add("T");
         set_symbols_.add("U");
+
+        polymorphic_data_type_symbols_.add("H");
 
         variable_symbols_.add("x");
         variable_symbols_.add("y");

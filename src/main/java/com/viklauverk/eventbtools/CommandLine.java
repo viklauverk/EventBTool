@@ -122,6 +122,13 @@ public class CommandLine
                 args = Util.shiftLeft(args);
                 continue;
             }
+            if (arg.startsWith("--theory-root-dir="))
+            {
+                String trd = arg.substring(18);
+                s.commonSettings().setTheoryRootDir(trd);
+                args = Util.shiftLeft(args);
+                continue;
+            }
             if (arg.startsWith("--outputdir="))
             {
                 String outputdir = arg.substring(12);

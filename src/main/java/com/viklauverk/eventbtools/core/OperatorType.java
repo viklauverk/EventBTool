@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2024 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -17,35 +17,8 @@
 
 package com.viklauverk.eventbtools.core;
 
-import java.io.File;
-
-public class EDK
+public enum OperatorType
 {
-    private static Log log = LogModule.lookup("edk");
-
-    Sys sys_;
-
-    public EDK(Sys s)
-    {
-        sys_ = s;
-    }
-
-    public EDKContext lookupContext(String name, File buc)
-    {
-        if (name.equals("EDK_FloatingPoint_v1"))
-        {
-            return new EDK_FloatingPoint_v1_Cpp(this);
-        }
-        if (name.equals("EDK_String_v1"))
-        {
-            return new EDK_String_v1_Cpp(this);
-        }
-        return null;
-    }
-
-    public EDKTheory lookupTheory(String name, File tuf)
-    {
-        return null;
-    }
-
+    PREDICATE,
+    EXPRESSION
 }

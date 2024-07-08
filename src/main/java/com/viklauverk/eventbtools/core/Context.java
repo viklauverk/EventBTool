@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -332,7 +332,7 @@ public class Context
             log.error("Failed loading context "+buc_);
         }
 
-        edk_context_ = sys().edk().lookup(name(), buc_);
+        edk_context_ = sys().edk().lookupContext(name(), buc_);
 
         if (edk_context_ != null)
         {

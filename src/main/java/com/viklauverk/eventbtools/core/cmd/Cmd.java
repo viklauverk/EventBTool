@@ -121,6 +121,16 @@ public enum Cmd
         "Add number symbols to current symbol table.",
         "Usage: yms.add.expression N M",
         CmdYmsAddNumbers::new),
+    YMS_ADD_POLYTYPES(
+        "yms.add.polytypes",
+        "Add polymorphic data types to current symbol table.",
+        "Usage: yms.add.polytype H(T) List(T) Pair(T,K)",
+        CmdYmsAddPolytypes::new),
+    YMS_ADD_POLYOPS(
+        "yms.add.polyops",
+        "Add polymorphic operators to current symbol table.",
+        "Usage: yms.add.polyops h(T) listSize(T)",
+        CmdYmsAddPolyops::new),
     YMS_ADD_PREDICATES(
         "yms.add.predicates",
         "Add predicate symbols to current symbol table.",

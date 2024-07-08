@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -33,7 +33,7 @@ public class CarrierSet
     private List<Constant> member_ordering_;
     private List<String> member_names_;
     private Context context_;
-    // The
+
     protected Implementation implementation_;
 
     public CarrierSet(String n, Context c)
