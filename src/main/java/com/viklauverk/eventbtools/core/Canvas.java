@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021-2024 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -1173,6 +1173,26 @@ public class Canvas
             return;
         case HTML:
             append(" span(class=CSET)="+Util.quoteXMQ(s)+" ");
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
+    public void polymorphicDataType(String s)
+    {
+        switch (render_target_)
+        {
+        case PLAIN:
+            append(s);
+            return;
+        case TERMINAL:
+            append(colorize(BPurple, s));
+            return;
+        case TEX:
+            append("\\PDT{"+Util.texSafe(s)+"}");
+            return;
+        case HTML:
+            append(" span(class=PDT)="+Util.quoteXMQ(s)+" ");
             return;
         }
         assert (false) : "Unknown encoding "+render_target_;

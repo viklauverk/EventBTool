@@ -92,6 +92,12 @@ public class TestInternals
 
         ok &= testFailedMatch("height ≔ speeds ∪ {72}", "x ≔ x ∪ {E}", "FAILURE"); // Should be same variable in both x positions.
 
+        // Test matching with polymorphic data types
+        ok &= testMatch("height:List(NAT,BOOL)", "x:H(A)", "x=height H(A)=List(ℕ,BOOL) A=ℕ,BOOL");
+
+        // Test matching with polymorphic data types
+        ok &= testFailedMatch("height:List(INT)", "x:S(A)", "...");
+
         return ok;
     }
 
@@ -111,6 +117,7 @@ public class TestInternals
         SymbolTable symbols = new SymbolTable("root");
         symbols.addVariableSymbols("height", "speeds");
         symbols.addConstantSymbols("addition");
+        symbols.addPolymorphicDataTypeSymbols("List");
 
         Formula formula = Formula.fromString(f, symbols);
         Pattern pattern = new Pattern();
@@ -434,6 +441,15 @@ public class TestInternals
 
         //     function which is a enumerated set applied variable
         ok &= check("{1|->2, 2|->3}(2)", "{1↦2,2↦3}(2)", "<FUNC_APP <ENUMERATED_SET {<MAPSTO <NUMBER 1>↦<NUMBER 2>>,<MAPSTO <NUMBER 2>↦<NUMBER 3>>}>(<NUMBER 2>)>");
+
+        //     test polymorphic data type
+        ok &= check("x:H(NAT,BOOL)", "x∈H(ℕ,BOOL)", "<MEMBERSHIP <VARIABLE_SYMBOL x>∈<POLYMORPHIC_DATA_TYPE_SYMBOL H(<LIST_OF_EXPRESSIONS <NAT_SET ℕ>,<BOOL_SET BOOL>>)>>");
+
+        //     test polymorphic data type without type parameters.
+        ok &= check("x:H", "x∈H", "<MEMBERSHIP <VARIABLE_SYMBOL x>∈<POLYMORPHIC_DATA_TYPE_SYMBOL H>>");
+
+        //     if you have a set followed by (expression) then this is a functional application, which is ok.
+        ok &= check("x:S(NAT)", "x∈S(ℕ)", "<MEMBERSHIP <VARIABLE_SYMBOL x>∈<FUNC_APP <SET_SYMBOL S>(<NAT_SET ℕ>)>>");
 
         return ok;
     }

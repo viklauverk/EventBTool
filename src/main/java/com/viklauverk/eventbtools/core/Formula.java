@@ -375,6 +375,11 @@ class Formula
         return node_ == Node.NUMBER;
     }
 
+    public boolean isPolymorphicDataType()
+    {
+        return node_.isPolymorphicDataType();
+    }
+
     public boolean equals(Formula f)
     {
         if (this == f) return true;

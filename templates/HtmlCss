@@ -3,4 +3,5 @@ body { }
 .VARDEF { font-style: italic; }
 .VAR { font-style: italic; }
 .CON { color: blue; }
+.PDT { color: cyan; }
 .LABEL { color: #0066cc };

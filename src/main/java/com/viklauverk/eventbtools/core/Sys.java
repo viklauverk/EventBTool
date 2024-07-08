@@ -518,11 +518,13 @@ public class Sys
 
     AllRenders lookupSearchWalker()
     {
-        return new AllRenders(new RenderContextSearch(),
-                              new RenderMachineSearch(),
-                              new RenderEventSearch(),
-                              new RenderFormulaSearch(null),
-                              null);
+        return new AllRenders(
+            new RenderTheorySearch(),
+            new RenderContextSearch(),
+            new RenderMachineSearch(),
+            new RenderEventSearch(),
+            new RenderFormulaSearch(null),
+            null);
     }
 
     AllRenders lookupRenders(RenderTarget format, Canvas canvas)
@@ -530,29 +532,33 @@ public class Sys
         switch (format)
         {
         case PLAIN:
-            return new AllRenders(new RenderContextUnicode(),
+            return new AllRenders(new RenderTheoryUnicode(),
+                                  new RenderContextUnicode(),
                                   new RenderMachineUnicode(),
                                   new RenderEventUnicode(),
                                   new RenderFormulaUnicode(canvas),
                                   canvas);
         case TERMINAL:
-            return new AllRenders(new RenderContextUnicode(),
-                                     new RenderMachineUnicode(),
-                                     new RenderEventUnicode(),
-                                     new RenderFormulaUnicode(canvas),
-                                     canvas);
+            return new AllRenders(new RenderTheoryUnicode(),
+                                  new RenderContextUnicode(),
+                                  new RenderMachineUnicode(),
+                                  new RenderEventUnicode(),
+                                  new RenderFormulaUnicode(canvas),
+                                  canvas);
         case TEX:
-           return new AllRenders(new RenderContextTeX(),
-                                    new RenderMachineTeX(),
-                                    new RenderEventTeX(),
-                                    new RenderFormulaTeX(canvas),
-                                    canvas);
+           return new AllRenders(new RenderTheoryTeX(),
+                                 new RenderContextTeX(),
+                                 new RenderMachineTeX(),
+                                 new RenderEventTeX(),
+                                 new RenderFormulaTeX(canvas),
+                                 canvas);
         case HTML:
-           return new AllRenders(new RenderContextHtmq(),
-                                    new RenderMachineHtmq(),
-                                    new RenderEventHtmq(),
-                                    new RenderFormulaHtmq(canvas),
-                                    canvas);
+           return new AllRenders(new RenderTheoryHtmq(),
+                                 new RenderContextHtmq(),
+                                 new RenderMachineHtmq(),
+                                 new RenderEventHtmq(),
+                                 new RenderFormulaHtmq(canvas),
+                                 canvas);
         }
         assert (false) : "No case for format: "+format;
         return null;

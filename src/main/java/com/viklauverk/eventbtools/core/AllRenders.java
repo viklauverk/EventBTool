@@ -32,6 +32,7 @@ public class AllRenders
 
     private RenderMachine rm_;
     private RenderContext rc_;
+    private RenderTheory rt_;
     private RenderEvent re_;
     private RenderFormula rf_;
 
@@ -41,10 +42,14 @@ public class AllRenders
     private SystemSearch system_search_;
 
     @SuppressWarnings("this-escape")
-    public AllRenders(RenderContext rc, RenderMachine rm,
-                      RenderEvent re, RenderFormula rf,
+    public AllRenders(RenderTheory rt,
+                      RenderContext rc,
+                      RenderMachine rm,
+                      RenderEvent re,
+                      RenderFormula rf,
                       Canvas c)
     {
+        rt_ = rt;
         rc_ = rc;
         rm_ = rm;
         re_ = re;
@@ -53,6 +58,7 @@ public class AllRenders
 
         root_canvas_ = c;
         current_ = c;
+        rt_.setRenders(this);
         rc_.setRenders(this);
         rm_.setRenders(this);
         re_.setRenders(this);
@@ -104,6 +110,11 @@ public class AllRenders
             current_ = root_canvas_;
         }
         current_.appendCanvas(front.canvas);
+    }
+
+    public void walkTheory(Theory t, String pattern)
+    {
+        VisitTheory.walk(rt_, t, pattern);
     }
 
     public void walkContext(Context c, String pattern)

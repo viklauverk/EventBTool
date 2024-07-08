@@ -84,6 +84,11 @@ public class CmdUtilMatch extends CmdCommon
             out.append(""+key+"="+p.getAny(key)+"\n");
         }
 
+        for (String key : p.polymorphicDataTypeNames())
+        {
+            out.append(""+key+"="+p.getPolymorphicDataType(key)+"\n");
+        }
+
         return out.toString();
     }
 }

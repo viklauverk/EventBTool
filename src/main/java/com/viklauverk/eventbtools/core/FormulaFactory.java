@@ -138,6 +138,11 @@ public class FormulaFactory
     public static
     Formula newPolymorphicDataTypeSymbol(String s, Formula parameters, Formula meta)
     {
+        if (parameters == null)
+        {
+            parameters = new Formula(com.viklauverk.eventbtools.core.Node.LIST_OF_EXPRESSIONS, Formula.NO_META);
+        }
+
         return new Formula(Node.POLYMORPHIC_DATA_TYPE_SYMBOL, Symbols.intern(s), parameters, meta);
     }
 

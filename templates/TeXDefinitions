@@ -181,6 +181,7 @@
 \definecolor{EvBConstant}{HTML}{\Indigo}%
 \definecolor{EvBCarrierSet}{HTML}{\DarkGreen}%
 \definecolor{EvBPrimitiveSet}{HTML}{000000}%
+\definecolor{EvBPolymorphicDataType}{HTML}{000000}%
 \definecolor{EvBComment}{HTML}{000000}%
 \definecolor{EvBLabel}{HTML}{0066cc}%
 \definecolor{EvBNames}{HTML}{000000}%
@@ -200,6 +201,7 @@
 \definecolor{EvBConstant}{HTML}{000000}%
 \definecolor{EvBCarrierSet}{HTML}{000000}%
 \definecolor{EvBPrimitiveSet}{HTML}{000000}%
+\definecolor{EvBPolymorphicDataType}{HTML}{\Cyan}%
 \definecolor{EvBComment}{HTML}{000000}%
 \definecolor{EvBLabel}{HTML}{000000}%
 \definecolor{EvBNames}{HTML}{000000}%
@@ -228,6 +230,7 @@
 \newcommand{\CON}[1]{\EVBTtextrm{\EVBTcolor{EvBConstant}#1}}%
 \newcommand{\CSET}[1]{\EVBTtextrm{\EVBTcolor{EvBCarrierSet}#1}}%
 \newcommand{\PSET}[1]{\EVBTtextrm{\EVBTcolor{EvBPrimitiveSet}#1}}%
+\newcommand{\PDT}[1]{\EVBTtextrm{\EVBTcolor{EvBPolymorphicDataType}#1}}%
 \newcommand{\EXPR}[1]{\EVBTtexttt{\EVBTcolor{EvBExpression}#1}}%
 \newcommand{\PRED}[1]{\EVBTtexttt{\EVBTcolor{EvBPredicate}#1}}%
 \newcommand{\NONF}[1]{\EVBTmathit{\EVBTcolor{EvBNonFree}#1}}%

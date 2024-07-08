@@ -490,10 +490,13 @@ public class RenderFormulaUnicode extends RenderFormula
 
     @Override public Formula visit_POLYMORPHIC_DATA_TYPE_SYMBOL(Formula i)
     {
-        cnvs().set(Symbols.name(i.intData()));
-        cnvs().symbol("(");
-        visitChild(i);
-        cnvs().symbol(")");
+        cnvs().polymorphicDataType(Symbols.name(i.intData()));
+        if (i.numChildren() == 1 && i.child(0).numChildren() > 0)
+        {
+            cnvs().symbol("(");
+            visitChild(i);
+            cnvs().symbol(")");
+        }
         visitMeta(i);
         return i;
     }

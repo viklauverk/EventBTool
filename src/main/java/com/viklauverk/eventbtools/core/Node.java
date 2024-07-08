@@ -198,14 +198,14 @@ public enum Node
     PRJ1(false, true, false, false, false, false, false, false, false),
     PRJ2(false, true, false, false, false, false, false, false, false);
 
-    private final boolean is_predicate_, is_expression_, is_set_, is_data_type_, is_variable_, is_constant_, is_symbol_, is_relation_, is_function_;
+    private final boolean is_predicate_, is_expression_, is_set_, is_polymorphic_data_type_, is_variable_, is_constant_, is_symbol_, is_relation_, is_function_;
 
     Node(boolean ip, boolean ie, boolean is, boolean idt, boolean iv, boolean ic, boolean iss, boolean ir, boolean isf)
     {
         is_predicate_ = ip;
         is_expression_ = ie;
         is_set_ = is;
-        is_data_type_ = idt;
+        is_polymorphic_data_type_ = idt;
         is_variable_ = iv;
         is_constant_ = ic;
         is_symbol_ = iss;
@@ -216,7 +216,7 @@ public enum Node
     boolean isPredicate() { return is_predicate_; }
     boolean isExpression() { return is_expression_; }
     boolean isSet() { return is_set_; }
-    boolean isDataType() { return is_data_type_; }
+    boolean isPolymorphicDataType() { return is_polymorphic_data_type_; }
     boolean isVariable() { return is_variable_; }
     boolean isConstant() { return is_constant_; }
     boolean isSymbol() { return is_symbol_; }

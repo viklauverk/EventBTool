@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2021 Viklauverk AB
- 
+ Copyright (C) 2021-2024 Viklauverk AB
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -97,6 +97,12 @@ public abstract class BaseDocGen
     {
         AllRenders ar = sys().lookupRenders(cnvs.renderTarget(),
                                             cnvs);
+
+        for (String thrs : sys().deployedTheoryNames())
+        {
+            Theory thr = sys().getDeployedTheory(thrs);
+            ar.walkTheory(thr, pattern);
+        }
 
         for (String ctxs : sys().contextNames())
         {

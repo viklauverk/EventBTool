@@ -1,0 +1,162 @@
+/* Event-B Runtime BSD-2-Clause
+
+Copyright 2021 Viklauverk AB
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1. Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+#ifndef EVBT_H
+#define EVBT_H
+
+#include<cmath>
+#include<functional>
+#include<map>
+#include<memory>
+#include<set>
+#include<string>
+#include<vector>
+#include<stdio.h>
+#include<stdint.h>
+#include<bits/stdc++.h>
+
+namespace EVBT
+{
+    struct RuntimeError
+    {
+        const char *event {}; // Name of event.
+        const char *op {};    // Guard or action label.
+        const char *file {};  // Generated source file.
+        int line {};          // Line in source file.
+        const char *expl;  // Explanation of error. Overflow, OutOfMemory
+
+        RuntimeError(const char *e) : expl(e) {}
+    };
+
+    template<class T> T upper() { return 0; }
+    template<class T> T lower() { return 0; }
+
+    template<int64_t> int64_t upper() { return INT64_MAX; }
+    template<int64_t> int64_t lower() { return INT64_MIN; }
+
+    template<int32_t> int32_t upper() { return INT32_MAX; }
+    template<int32_t> int32_t lower() { return INT32_MIN; }
+
+    template<int16_t> int16_t upper() { return INT16_MAX; }
+    template<int16_t> int16_t lower() { return INT16_MIN; }
+
+    template<int8_t> int8_t upper() { return INT8_MAX; }
+    template<int8_t> int8_t lower() { return INT8_MIN; }
+
+    template<class T> class Z
+    {
+    private:
+
+        T v;
+
+    public:
+
+        Z() : v(0) {}
+        Z(int64_t x)
+        {
+            v = (T)x;
+            if (v != x)
+            {
+                throw RuntimeError("overflow when storing");
+            }
+        }
+        const T to() { return v; }
+        const Z operator+(Z z)
+        {
+            T a = v;
+            T b = z.v;
+            if ( (a > 0 && b > upper<T>() - a) ||
+                 (a < 0 && b < lower<T>() - a))
+            {
+              //  throw RuntimeError("overflow when adding");
+            }
+            return Z(a+b);
+        }
+        const Z operator-(Z z)
+        {
+            T a = v;
+            T b = z.v;
+            if ( (a < 0 && b < lower<T>() + a) ||
+                 (a > 0 && b > upper<T>() + a))
+            {
+            //                throw RuntimeError("overflow when subtracting");
+            }
+            return Z(a-b);
+        }
+        friend bool const operator<(const Z<T> &a, const Z<T> &b)
+        {
+            return a.v < b.v;
+        }
+        friend bool const operator>(const Z<T> &a, const Z<T> &b)
+        {
+            return a.v > b.v;
+        }
+        friend bool const operator<=(const Z<T> &a, const Z<T> &b)
+        {
+            return a.v <= b.v;
+        }
+        friend bool const operator>=(const Z<T> &a, const Z<T> &b)
+        {
+            return a.v >= b.v;
+        }
+        friend bool const operator!=(const Z<T> &a, const Z<T> &b)
+        {
+            return a.v != b.v;
+        }
+        friend bool const operator==(const Z<T> &a, const Z<T> &b)
+        {
+            return a.v == b.v;
+        }
+        friend Z const operator*(const Z<T> &a, const Z<T> &b)
+        {
+            T t = a.v * b.v;
+            if (a.v != 0 && t / a.v != b)
+            {
+                throw RuntimeError("overflow when multiplying");
+            }
+            return t;
+        }
+        friend Z const operator/(const Z<T> &a, const Z<T> &b)
+        {
+            if (b.v == 0)
+            {
+                throw RuntimeError("division by zero");
+            }
+            return a.v / b.v;
+        }
+    };
+}
+
+typedef EVBT::Z<int64_t> Z64;
+typedef EVBT::Z<int32_t> Z32;
+typedef EVBT::Z<int16_t> Z16;
+typedef EVBT::Z<int8_t> Z8;
+
+#define RETHROW(info,e) { e.line = __LINE__; e.file = __FILE__, e.op = #info; e.event = __func__; throw e; }
+
+#endif

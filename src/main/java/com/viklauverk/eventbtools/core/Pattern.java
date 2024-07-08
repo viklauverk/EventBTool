@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -47,6 +47,7 @@ class Pattern
         public Map<String,Formula> constants = new HashMap<>();
         public Map<String,Formula> anys = new HashMap<>();
         public Map<String,Formula> numbers = new HashMap<>();
+        public Map<String,Formula> polymorphic_data_types = new HashMap<>();
 
         public void clear()
         {
@@ -58,6 +59,7 @@ class Pattern
             constants.clear();
             anys.clear();
             numbers.clear();
+            polymorphic_data_types.clear();
         }
     }
 
@@ -80,6 +82,7 @@ class Pattern
      * constant_symbols:cdf
      * any symbols: ABC
      * number symbols: NM
+     * polymorphic_data_types: H
      */
     public boolean match(Formula formula, String... pattern_strings)
     {
@@ -213,6 +216,13 @@ class Pattern
             return okToAdd(f, p, mr.anys, "anys");
         }
 
+        if (pt == Node.POLYMORPHIC_DATA_TYPE_SYMBOL)
+        {
+            if (!tryMetaMatch(f, p, mr)) return false;
+            if (!okToAdd(f, p, mr.polymorphic_data_types, "polymorphic_data_types")) return false;
+            // Continue with children types.
+        }
+
         // The node types do not match!
         if (ft != pt) return false;
 
@@ -340,6 +350,18 @@ class Pattern
         return match_results_.numbers.keySet();
     }
 
+    public Formula getPolymorphicDataType(String v)
+    {
+        Formula f = match_results_.polymorphic_data_types.get(v);
+        assert (f != null) : "Internal error, could not find polymorphic data type "+v+" in matched results.";
+        return f;
+    }
+
+    public Set<String> polymorphicDataTypeNames()
+    {
+        return match_results_.polymorphic_data_types.keySet();
+    }
+
     public Formula getAny(String a)
     {
         Formula f = match_results_.anys.get(a);
@@ -389,6 +411,10 @@ class Pattern
         for (String n : numberNames())
         {
             sb.append(n+"="+getNumber(n)+" ");
+        }
+        for (String n : polymorphicDataTypeNames())
+        {
+            sb.append(n+"="+getPolymorphicDataType(n)+" ");
         }
         for (String a : anyNames())
         {

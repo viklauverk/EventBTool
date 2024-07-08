@@ -137,8 +137,9 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
     @Override
     public Formula visitPolymorphicDataTypeSymbol(EvBFormulaParser.PolymorphicDataTypeSymbolContext ctx)
     {
+        EvBFormulaParser.ListOfExpressionsContext parameters = ctx.listOfExpressions();
         return FormulaFactory.newPolymorphicDataTypeSymbol(ctx.datatype.getText(),
-                                                           visitListOfExpressions(ctx.listOfExpressions()),
+                                                           parameters != null ? visitListOfExpressions(parameters):null,
                                                            visitOptionalMeta(ctx.meta()));
     }
 
