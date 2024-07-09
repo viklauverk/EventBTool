@@ -377,6 +377,9 @@ public static String TeXDefinitions =
 "\\definecolor{EvBCarrierSet}{HTML}{\\DarkGreen}%\n"+
 "\\definecolor{EvBPrimitiveSet}{HTML}{000000}%\n"+
 "\\definecolor{EvBPolymorphicDataType}{HTML}{000000}%\n"+
+"\\definecolor{EvBConstructor}{HTML}{000000}%\n"+
+"\\definecolor{EvBDestructor}{HTML}{000000}%\n"+
+"\\definecolor{EvBOperator}{HTML}{000000}%\n"+
 "\\definecolor{EvBComment}{HTML}{000000}%\n"+
 "\\definecolor{EvBLabel}{HTML}{0066cc}%\n"+
 "\\definecolor{EvBNames}{HTML}{000000}%\n"+
@@ -397,6 +400,9 @@ public static String TeXDefinitions =
 "\\definecolor{EvBCarrierSet}{HTML}{000000}%\n"+
 "\\definecolor{EvBPrimitiveSet}{HTML}{000000}%\n"+
 "\\definecolor{EvBPolymorphicDataType}{HTML}{\\Cyan}%\n"+
+"\\definecolor{EvBConstructor}{HTML}{\\Cyan}%\n"+
+"\\definecolor{EvBDestructor}{HTML}{\\Cyan}%\n"+
+"\\definecolor{EvBOperator}{HTML}{\\Cyan}%\n"+
 "\\definecolor{EvBComment}{HTML}{000000}%\n"+
 "\\definecolor{EvBLabel}{HTML}{000000}%\n"+
 "\\definecolor{EvBNames}{HTML}{000000}%\n"+
@@ -426,6 +432,9 @@ public static String TeXDefinitions =
 "\\newcommand{\\CSET}[1]{\\EVBTtextrm{\\EVBTcolor{EvBCarrierSet}#1}}%\n"+
 "\\newcommand{\\PSET}[1]{\\EVBTtextrm{\\EVBTcolor{EvBPrimitiveSet}#1}}%\n"+
 "\\newcommand{\\PDT}[1]{\\EVBTtextrm{\\EVBTcolor{EvBPolymorphicDataType}#1}}%\n"+
+"\\newcommand{\\CNST}[1]{\\EVBTtextrm{\\EVBTcolor{EvBConstructor}#1}}%\n"+
+"\\newcommand{\\DEST}[1]{\\EVBTtextrm{\\EVBTcolor{EvBDestructor}#1}}%\n"+
+"\\newcommand{\\OPER}[1]{\\EVBTtextrm{\\EVBTcolor{EvBOperator}#1}}%\n"+
 "\\newcommand{\\EXPR}[1]{\\EVBTtexttt{\\EVBTcolor{EvBExpression}#1}}%\n"+
 "\\newcommand{\\PRED}[1]{\\EVBTtexttt{\\EVBTcolor{EvBPredicate}#1}}%\n"+
 "\\newcommand{\\NONF}[1]{\\EVBTmathit{\\EVBTcolor{EvBNonFree}#1}}%\n"+

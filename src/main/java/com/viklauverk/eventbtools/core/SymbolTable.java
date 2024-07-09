@@ -712,8 +712,6 @@ public class SymbolTable
         set_symbols_.add("T");
         set_symbols_.add("U");
 
-        polymorphic_data_type_symbols_.add("H");
-
         variable_symbols_.add("x");
         variable_symbols_.add("y");
         variable_symbols_.add("z");
@@ -728,14 +726,19 @@ public class SymbolTable
         any_symbols_.add("A");
         any_symbols_.add("B");
         any_symbols_.add("C");
+
+        polymorphic_data_type_symbols_.add("H");
+        constructor_symbols_.add("cx");
+        destructor_symbols_.add("dx");
+        operator_symbols_.add("op");
     }
 
-    public static SymbolTable PQR_EFG_STU_xyz_cdf_NM_ABC;
+    public static SymbolTable PQR_EFG_STU_xyz_cdf_NM_ABC_H_cx_dx_op;
 
     static
     {
         SymbolTable st = new SymbolTable("plain");
         st.addDefaults();
-        PQR_EFG_STU_xyz_cdf_NM_ABC = st;
+        PQR_EFG_STU_xyz_cdf_NM_ABC_H_cx_dx_op = st;
     }
 }

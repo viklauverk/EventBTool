@@ -456,7 +456,7 @@ public class TestInternals
 
     public static boolean check(String in, String out, String out_with_types)
     {
-        SymbolTable fc = SymbolTable.PQR_EFG_STU_xyz_cdf_NM_ABC;
+        SymbolTable fc = SymbolTable.PQR_EFG_STU_xyz_cdf_NM_ABC_H_cx_dx_op;
 
         Formula fo = Formula.fromString(in, fc);
         String ot = fo.toStringWithTypes();
@@ -484,7 +484,7 @@ public class TestInternals
 
     public static boolean checkFail(String in)
     {
-        SymbolTable fc = SymbolTable.PQR_EFG_STU_xyz_cdf_NM_ABC;
+        SymbolTable fc = SymbolTable.PQR_EFG_STU_xyz_cdf_NM_ABC_H_cx_dx_op;
         try
         {
             Formula f = Formula.fromString(in, fc);

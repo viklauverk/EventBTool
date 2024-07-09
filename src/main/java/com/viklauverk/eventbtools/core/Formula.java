@@ -380,6 +380,21 @@ class Formula
         return node_.isPolymorphicDataType();
     }
 
+    public boolean isConstructor()
+    {
+        return node_.isConstructor();
+    }
+
+    public boolean isDestructor()
+    {
+        return node_.isDestructor();
+    }
+
+    public boolean isOperator()
+    {
+        return node_.isOperator();
+    }
+
     public boolean equals(Formula f)
     {
         if (this == f) return true;

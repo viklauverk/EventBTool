@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -79,7 +79,7 @@ public class TestInternals
     public static boolean testm(String in, String out, String out_with_metas,
                                 String out_with_types, String out_with_metas_and_types)
     {
-        SymbolTable fc = SymbolTable.PQR_EFG_STU_xyz_cdf_NM_ABC;
+        SymbolTable fc = SymbolTable.PQR_EFG_STU_xyz_cdf_NM_ABC_H_cx_dx_op;
 
         Formula fo = Formula.fromString(in, fc);
 

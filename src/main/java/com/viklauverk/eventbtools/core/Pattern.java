@@ -48,6 +48,9 @@ class Pattern
         public Map<String,Formula> anys = new HashMap<>();
         public Map<String,Formula> numbers = new HashMap<>();
         public Map<String,Formula> polymorphic_data_types = new HashMap<>();
+        public Map<String,Formula> constructors = new HashMap<>();
+        public Map<String,Formula> destructors = new HashMap<>();
+        public Map<String,Formula> operators = new HashMap<>();
 
         public void clear()
         {
@@ -60,6 +63,9 @@ class Pattern
             anys.clear();
             numbers.clear();
             polymorphic_data_types.clear();
+            constructors.clear();
+            destructors.clear();
+            operators.clear();
         }
     }
 
@@ -75,14 +81,17 @@ class Pattern
      *
      * The patterns are always parsed using a symbol table containing:
      *
-     * predicate symbols: PQR
-     * expression symbols: EFG
-     * set symbols: STU
-     * variable symbols: xyz
-     * constant_symbols:cdf
-     * any symbols: ABC
-     * number symbols: NM
+     * predicate symbols: P Q R
+     * expression symbols: E F G
+     * set symbols: S T U
+     * variable symbols: x y z
+     * constant_symbols:c d f
+     * any symbols: A B C
+     * number symbols: N M
      * polymorphic_data_types: H
+     * constructors: cx (two character symbol)
+     * destructors: dx (two character symbol)
+     * operators: op (two character symbol)
      */
     public boolean match(Formula formula, String... pattern_strings)
     {
@@ -109,7 +118,7 @@ class Pattern
         Formula f = match_rules_.get(s);
         if (f != null) return f;
 
-        f = Formula.fromString(s, SymbolTable.PQR_EFG_STU_xyz_cdf_NM_ABC);
+        f = Formula.fromString(s, SymbolTable.PQR_EFG_STU_xyz_cdf_NM_ABC_H_cx_dx_op);
         match_rules_.put(s, f);
         return f;
     }
@@ -205,6 +214,24 @@ class Pattern
             if (!f.isConstant()) return false;
             if (!tryMetaMatch(f, p, mr)) return false;
             return okToAdd(f, p, mr.constants, "constants");
+        }
+        if (pt == Node.CONSTRUCTOR_SYMBOL)
+        {
+            if (!f.isConstructor()) return false;
+            if (!tryMetaMatch(f, p, mr)) return false;
+            return okToAdd(f, p, mr.constructors, "constructors");
+        }
+        if (pt == Node.DESTRUCTOR_SYMBOL)
+        {
+            if (!f.isDestructor()) return false;
+            if (!tryMetaMatch(f, p, mr)) return false;
+            return okToAdd(f, p, mr.destructors, "destructors");
+        }
+        if (pt == Node.OPERATOR_SYMBOL)
+        {
+            if (!f.isOperator()) return false;
+            if (!tryMetaMatch(f, p, mr)) return false;
+            return okToAdd(f, p, mr.operators, "operators");
         }
         if (pt == Node.NUMBER_SYMBOL)
         {
@@ -353,18 +380,6 @@ class Pattern
         return match_results_.numbers.keySet();
     }
 
-    public Formula getPolymorphicDataType(String v)
-    {
-        Formula f = match_results_.polymorphic_data_types.get(v);
-        assert (f != null) : "Internal error, could not find polymorphic data type "+v+" in matched results.";
-        return f;
-    }
-
-    public Set<String> polymorphicDataTypeNames()
-    {
-        return match_results_.polymorphic_data_types.keySet();
-    }
-
     public Formula getAny(String a)
     {
         Formula f = match_results_.anys.get(a);
@@ -380,6 +395,54 @@ class Pattern
     public Set<String> anyNames()
     {
         return match_results_.anys.keySet();
+    }
+
+    public Formula getPolymorphicDataType(String v)
+    {
+        Formula f = match_results_.polymorphic_data_types.get(v);
+        assert (f != null) : "Internal error, could not find polymorphic data type "+v+" in matched results.";
+        return f;
+    }
+
+    public Set<String> polymorphicDataTypeNames()
+    {
+        return match_results_.polymorphic_data_types.keySet();
+    }
+
+    public Formula getConstructor(String v)
+    {
+        Formula f = match_results_.constructors.get(v);
+        assert (f != null) : "Internal error, could not find constructor "+v+" in matched results.";
+        return f;
+    }
+
+    public Set<String> constructorNames()
+    {
+        return match_results_.constructors.keySet();
+    }
+
+    public Formula getDestructor(String v)
+    {
+        Formula f = match_results_.destructors.get(v);
+        assert (f != null) : "Internal error, could not find destructor "+v+" in matched results.";
+        return f;
+    }
+
+    public Set<String> destructorNames()
+    {
+        return match_results_.destructors.keySet();
+    }
+
+    public Formula getOperator(String v)
+    {
+        Formula f = match_results_.operators.get(v);
+        assert (f != null) : "Internal error, could not find operator "+v+" in matched results.";
+        return f;
+    }
+
+    public Set<String> operatorNames()
+    {
+        return match_results_.operators.keySet();
     }
 
     public String matchedRule()
@@ -415,14 +478,27 @@ class Pattern
         {
             sb.append(n+"="+getNumber(n)+" ");
         }
-        for (String n : polymorphicDataTypeNames())
-        {
-            sb.append(n+"="+getPolymorphicDataType(n)+" ");
-        }
         for (String a : anyNames())
         {
             sb.append(a+"="+getAny(a)+" ");
         }
+        for (String n : polymorphicDataTypeNames())
+        {
+            sb.append(n+"="+getPolymorphicDataType(n)+" ");
+        }
+        for (String n : constructorNames())
+        {
+            sb.append(n+"="+getConstructor(n)+" ");
+        }
+        for (String n : destructorNames())
+        {
+            sb.append(n+"="+getDestructor(n)+" ");
+        }
+        for (String n : operatorNames())
+        {
+            sb.append(n+"="+getOperator(n)+" ");
+        }
+
         return sb.toString().trim();
     }
 

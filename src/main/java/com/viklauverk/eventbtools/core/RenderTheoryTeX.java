@@ -94,4 +94,9 @@ public class RenderTheoryTeX extends RenderTheoryUnicode
         cnvs().append("}\n");
     }
 
+    @Override
+    public void visit_PolymorphicDataTypesEnd(Theory thr)
+    {
+    }
+
 }

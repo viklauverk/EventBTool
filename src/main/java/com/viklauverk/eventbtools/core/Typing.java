@@ -195,7 +195,7 @@ public class Typing
      */
     private void extractPossibleImplTypesFromPredicate(Formula predicate, SymbolTable symbols)
     {
-        SymbolTable fc = SymbolTable.PQR_EFG_STU_xyz_cdf_NM_ABC;
+        SymbolTable fc = SymbolTable.PQR_EFG_STU_xyz_cdf_NM_ABC_H_cx_dx_op;
         Formula fo = Formula.fromString("x:S", fc);
         boolean ok = pattern().match(predicate,
                                      "conjunction",     "P & Q",

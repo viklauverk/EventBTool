@@ -655,7 +655,7 @@ public class Canvas
      */
     public void stopAlignments()
     {
-        assert(alignments_active_ == true) : "Internal error: Expected alignments to be active when starting alignments, but it was already active!";
+        assert(alignments_active_ == true) : "Internal error: Expected alignments to be active when stopping alignments, but it was inactive!";
         alignments_active_ = false;
 
         append("¤flush¤\n");
@@ -1149,10 +1149,10 @@ public class Canvas
             append(colorize(BGreen, s));
             return;
         case TEX:
-            append("\\CNSTR{"+Util.texSafe(s)+"}");
+            append("\\CNST{"+Util.texSafe(s)+"}");
             return;
         case HTML:
-            append(" span(class=CNSTR)="+Util.quoteXMQ(s)+" ");
+            append(" span(class=CNST)="+Util.quoteXMQ(s)+" ");
             return;
         }
         assert (false) : "Unknown encoding "+render_target_;
@@ -1169,10 +1169,10 @@ public class Canvas
             append(colorize(BGreen, s));
             return;
         case TEX:
-            append("\\DSTR{"+Util.texSafe(s)+"}");
+            append("\\DEST{"+Util.texSafe(s)+"}");
             return;
         case HTML:
-            append(" span(class=DSTR)="+Util.quoteXMQ(s)+" ");
+            append(" span(class=DEST)="+Util.quoteXMQ(s)+" ");
             return;
         }
         assert (false) : "Unknown encoding "+render_target_;
