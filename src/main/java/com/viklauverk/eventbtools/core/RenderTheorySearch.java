@@ -19,4 +19,19 @@ package com.viklauverk.eventbtools.core;
 
 public class RenderTheorySearch extends RenderTheory
 {
+    public void visit_TheoryStart(Theory thr)
+    {
+        renders().search().addPart(buildTheoryPartName(thr));
+    }
+
+    public void visit_Import(Theory thr, Theory ext) { }
+
+    public void visit_Operator(Theory thr, Operator oprt)
+    {
+        renders().search().addPart(buildOperatorPartName(oprt));
+    }
+
+    public void visit_Axiom(Theory thr, Axiom axiom)
+    {
+    }
 }

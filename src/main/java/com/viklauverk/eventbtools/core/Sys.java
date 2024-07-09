@@ -488,11 +488,11 @@ public class Sys
         }
     }
 
-    public List<String> listParts()
+    public List<String> listParts(String pattern)
     {
         AllRenders ar = lookupSearchWalker();
 
-        walkSystem(ar, "");
+        walkSystem(ar, pattern);
 
         return ar.search().foundParts();
     }
@@ -524,12 +524,12 @@ public class Sys
     AllRenders lookupSearchWalker()
     {
         return new AllRenders(
-            new RenderTheorySearch(),
-            new RenderPolymorphicDataTypeSearch(),
             new RenderContextSearch(),
             new RenderMachineSearch(),
             new RenderEventSearch(),
             new RenderFormulaSearch(null),
+            new RenderTheorySearch(),
+            new RenderPolymorphicDataTypeSearch(),
             null);
     }
 
@@ -538,36 +538,36 @@ public class Sys
         switch (format)
         {
         case PLAIN:
-            return new AllRenders(new RenderTheoryUnicode(),
-                                  new RenderPolymorphicDataTypeUnicode(),
-                                  new RenderContextUnicode(),
+            return new AllRenders(new RenderContextUnicode(),
                                   new RenderMachineUnicode(),
                                   new RenderEventUnicode(),
                                   new RenderFormulaUnicode(canvas),
+                                  new RenderTheoryUnicode(),
+                                  new RenderPolymorphicDataTypeUnicode(),
                                   canvas);
         case TERMINAL:
-            return new AllRenders(new RenderTheoryUnicode(),
-                                  new RenderPolymorphicDataTypeUnicode(),
-                                  new RenderContextUnicode(),
+            return new AllRenders(new RenderContextUnicode(),
                                   new RenderMachineUnicode(),
                                   new RenderEventUnicode(),
                                   new RenderFormulaUnicode(canvas),
+                                  new RenderTheoryUnicode(),
+                                  new RenderPolymorphicDataTypeUnicode(),
                                   canvas);
         case TEX:
-           return new AllRenders(new RenderTheoryTeX(),
-                                 new RenderPolymorphicDataTypeTeX(),
-                                 new RenderContextTeX(),
+           return new AllRenders(new RenderContextTeX(),
                                  new RenderMachineTeX(),
                                  new RenderEventTeX(),
                                  new RenderFormulaTeX(canvas),
+                                 new RenderTheoryTeX(),
+                                 new RenderPolymorphicDataTypeTeX(),
                                  canvas);
         case HTML:
-           return new AllRenders(new RenderTheoryHtmq(),
-                                 new RenderPolymorphicDataTypeHtmq(),
-                                 new RenderContextHtmq(),
+           return new AllRenders(new RenderContextHtmq(),
                                  new RenderMachineHtmq(),
                                  new RenderEventHtmq(),
                                  new RenderFormulaHtmq(canvas),
+                                 new RenderTheoryHtmq(),
+                                 new RenderPolymorphicDataTypeHtmq(),
                                  canvas);
         }
         assert (false) : "No case for format: "+format;

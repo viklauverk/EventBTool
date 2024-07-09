@@ -136,6 +136,24 @@ public class FormulaFactory
     }
 
     public static
+    Formula newConstructorSymbol (String s, Formula meta)
+    {
+        return new Formula(Node.CONSTRUCTOR_SYMBOL, Symbols.intern(s), meta);
+    }
+
+    public static
+    Formula newDestructorSymbol (String s, Formula meta)
+    {
+        return new Formula(Node.DESTRUCTOR_SYMBOL, Symbols.intern(s), meta);
+    }
+
+    public static
+    Formula newOperatorSymbol (String s, Formula meta)
+    {
+        return new Formula(Node.OPERATOR_SYMBOL, Symbols.intern(s), meta);
+    }
+
+    public static
     Formula newPolymorphicDataTypeSymbol(String s, Formula parameters, Formula meta)
     {
         if (parameters == null)

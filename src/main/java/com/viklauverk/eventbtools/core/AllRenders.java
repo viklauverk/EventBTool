@@ -43,28 +43,29 @@ public class AllRenders
     private SystemSearch system_search_;
 
     @SuppressWarnings("this-escape")
-    public AllRenders(RenderTheory rt,
-                      RenderPolymorphicDataType rpdt,
-                      RenderContext rc,
+    public AllRenders(RenderContext rc,
                       RenderMachine rm,
                       RenderEvent re,
                       RenderFormula rf,
+                      RenderTheory rt,
+                      RenderPolymorphicDataType rpdt,
                       Canvas c)
     {
-        rt_ = rt;
-        rpdt_ = rpdt;
         rc_ = rc;
         rm_ = rm;
         re_ = re;
         rf_ = rf;
+        rt_ = rt;
+        rpdt_ = rpdt;
         system_search_ = new SystemSearch();
 
         root_canvas_ = c;
         current_ = c;
-        rt_.setRenders(this);
         rc_.setRenders(this);
         rm_.setRenders(this);
         re_.setRenders(this);
+        rt_.setRenders(this);
+        rpdt_.setRenders(this);
     }
 
     public Canvas currentCanvas()

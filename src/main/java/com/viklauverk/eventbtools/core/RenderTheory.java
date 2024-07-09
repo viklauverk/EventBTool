@@ -58,4 +58,9 @@ public class RenderTheory extends CommonRenderFunctions
         return thr.name()+"/datatype/"+pdt.longName();
     }
 
+    protected String buildOperatorPartName(Operator oprt)
+    {
+        return oprt.name();
+    }
+
 }

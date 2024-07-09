@@ -501,6 +501,21 @@ public class RenderFormulaUnicode extends RenderFormula
         return i;
     }
 
+    @Override public Formula visit_CONSTRUCTOR_SYMBOL(Formula i)
+    {
+        cnvs().constructor(Symbols.name(i.intData())); visitMeta(i); return i;
+    }
+
+    @Override public Formula visit_DESTRUCTOR_SYMBOL(Formula i)
+    {
+        cnvs().destructor(Symbols.name(i.intData())); visitMeta(i); return i;
+    }
+
+    @Override public Formula visit_OPERATOR_SYMBOL(Formula i)
+    {
+        cnvs().operator(Symbols.name(i.intData())); visitMeta(i); return i;
+    }
+
     @Override public Formula visit_VARIABLE_PRIM_SYMBOL(Formula i)
     {
         cnvs().variable(

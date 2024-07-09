@@ -61,8 +61,14 @@ public class SymbolTable
     private Set<String> polymorphic_data_type_symbols_ = new HashSet<>(); // H List Seq
     private Map<String,PolymorphicDataType> polymorphic_data_types_ = new HashMap<>();
 
-    private Set<String> polymorphic_operator_symbols_ = new HashSet<>(); // seq seqSize listSize append
-    private Map<String,Operator> polymorphic_operators_ = new HashMap<>(); // Theory added operators.
+    private Set<String> constructor_symbols_ = new HashSet<>(); // nil epoch cons
+    private Map<String,Constructor> constructors_ = new HashMap<>();
+
+    private Set<String> destructor_symbols_ = new HashSet<>(); // head tail
+    private Map<String,Destructor> destructors_ = new HashMap<>();
+
+    private Set<String> operator_symbols_ = new HashSet<>(); // seq seqSize listSize append
+    private Map<String,Operator> operators_ = new HashMap<>(); // Theory added operators.
 
     private LinkedList<Frame> frames_ = new LinkedList<>();
 
@@ -170,7 +176,7 @@ public class SymbolTable
 
     public Set<String> polymorphicOperatorSymbols()
     {
-        return polymorphic_operator_symbols_;
+        return operator_symbols_;
     }
 
     public boolean isPredicateSymbol(String p)
@@ -402,6 +408,112 @@ public class SymbolTable
         constant_symbols_.addAll(s);
     }
 
+    // Constructor /////////////////////////////////////////////////////////////
+
+    public Constructor getConstructor(Formula name)
+    {
+        return getConstructor(name.symbol());
+    }
+
+    public Constructor getConstructor(String name)
+    {
+        Constructor var = constructors_.get(name);
+        if (var != null) return var;
+        for (SymbolTable parent : parents_)
+        {
+            var = parent.getConstructor(name);
+            if (var != null) return var;
+        }
+        return null;
+    }
+
+    public boolean isConstructorSymbol(String c)
+    {
+        boolean is = constructor_symbols_.contains(c);
+        if (is) return true;
+        for (SymbolTable parent : parents_)
+        {
+            is = parent.isConstructorSymbol(c);
+            if (is) return true;
+        }
+        return false;
+    }
+
+    public void addConstructorSymbol(String s)
+    {
+        constructor_symbols_.add(s);
+    }
+
+    public void addConstructor(Constructor c)
+    {
+        constructor_symbols_.add(c.name());
+        constructors_.put(c.name(), c);
+    }
+
+    public void addConstructorSymbols(String... s)
+    {
+        constructor_symbols_.addAll(Arrays.asList(s));
+    }
+
+    public void addConstructorSymbols(List<String> s)
+    {
+        constructor_symbols_.addAll(s);
+    }
+
+    // Destructor /////////////////////////////////////////////////////////////
+
+    public Destructor getDestructor(Formula name)
+    {
+        return getDestructor(name.symbol());
+    }
+
+    public Destructor getDestructor(String name)
+    {
+        Destructor var = destructors_.get(name);
+        if (var != null) return var;
+        for (SymbolTable parent : parents_)
+        {
+            var = parent.getDestructor(name);
+            if (var != null) return var;
+        }
+        return null;
+    }
+
+    public boolean isDestructorSymbol(String c)
+    {
+        boolean is = destructor_symbols_.contains(c);
+        if (is) return true;
+        for (SymbolTable parent : parents_)
+        {
+            is = parent.isDestructorSymbol(c);
+            if (is) return true;
+        }
+        return false;
+    }
+
+    public void addDestructorSymbol(String s)
+    {
+        destructor_symbols_.add(s);
+    }
+
+    public void addDestructor(Destructor c)
+    {
+        destructor_symbols_.add(c.name());
+        destructors_.put(c.name(), c);
+    }
+
+    public void addDestructorSymbols(String... s)
+    {
+        destructor_symbols_.addAll(Arrays.asList(s));
+    }
+
+    public void addDestructorSymbols(List<String> s)
+    {
+        destructor_symbols_.addAll(s);
+    }
+
+    // Number ////////////////////////////////////////////////
+
     public boolean isNumberSymbol(String p)
     {
         boolean is = number_symbols_.contains(p);
@@ -476,17 +588,17 @@ public class SymbolTable
 
     public void addPolymorphicOperator(Operator o)
     {
-        polymorphic_operator_symbols_.add(o.name());
-        polymorphic_operators_.put(o.name(), o);
+        operator_symbols_.add(o.name());
+        operators_.put(o.name(), o);
     }
 
-    public boolean isPolymorphicOperatorSymbol(String p)
+    public boolean isOperatorSymbol(String p)
     {
-        boolean is = polymorphic_operator_symbols_.contains(p);
+        boolean is = operator_symbols_.contains(p);
         if (is) return true;
         for (SymbolTable parent : parents_)
         {
-            is = parent.isPolymorphicOperatorSymbol(p);
+            is = parent.isOperatorSymbol(p);
             if (is) return true;
         }
         return false;
@@ -494,12 +606,12 @@ public class SymbolTable
 
     public void addPolymorphicOperatorSymbol(String s)
     {
-        polymorphic_operator_symbols_.add(s);
+        operator_symbols_.add(s);
     }
 
     public void addPolymorphicOperatorSymbols(String... s)
     {
-        polymorphic_operator_symbols_.addAll(Arrays.asList(s));
+        operator_symbols_.addAll(Arrays.asList(s));
     }
 
     public boolean isUnknownSymbol(String p)
@@ -512,6 +624,9 @@ public class SymbolTable
         if (isConstantSymbol(p)) return false;
         if (isNumberSymbol(p)) return false;
         if (isAnySymbol(p)) return false;
+        if (isPolymorphicDataTypeSymbol(p)) return false;
+        if (isConstructorSymbol(p)) return false;
+        if (isDestructorSymbol(p)) return false;
         return true;
     }
 
@@ -564,9 +679,13 @@ public class SymbolTable
         o.append("-\n");
         o.append("variables: "+Canvas.flow(80, printSyms(variable_symbols_)));
         o.append("-\n");
-        o.append("polytypes: "+Canvas.flow(80, printSyms(polymorphic_data_type_symbols_)));
+        o.append("datatypes: "+Canvas.flow(80, printSyms(polymorphic_data_type_symbols_)));
         o.append("-\n");
-        o.append("polyops: "+Canvas.flow(80, printSyms(polymorphic_operator_symbols_)));
+        o.append("constructors: "+Canvas.flow(80, printSyms(constructor_symbols_)));
+        o.append("-\n");
+        o.append("destructors: "+Canvas.flow(80, printSyms(destructor_symbols_)));
+        o.append("-\n");
+        o.append("operators: "+Canvas.flow(80, printSyms(operator_symbols_)));
 
         // The anys are special and used for wildcard matching. We only print these
         // if there are any to print.

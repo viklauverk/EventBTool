@@ -38,6 +38,9 @@ public interface FormulaVisitor
     Formula visit_VARIABLE_NONFREE_SYMBOL(Formula i);
     Formula visit_CONSTANT_SYMBOL(Formula i);
     Formula visit_POLYMORPHIC_DATA_TYPE_SYMBOL(Formula i);
+    Formula visit_CONSTRUCTOR_SYMBOL(Formula i);
+    Formula visit_DESTRUCTOR_SYMBOL(Formula i);
+    Formula visit_OPERATOR_SYMBOL(Formula i);
     Formula visit_APPLICATION(Formula i);
     Formula visit_PARENTHESISED_PREDICATE(Formula i);
     Formula visit_PARENTHESISED_EXPRESSION(Formula i);

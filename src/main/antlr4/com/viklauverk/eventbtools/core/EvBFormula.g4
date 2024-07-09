@@ -272,6 +272,9 @@ expression
    | { symbol_table.isNumberSymbol(_input.LT(1).getText()) }?     sym=SYMBOL meta? # NumberSymbol
    | { symbol_table.isNonFreeVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL meta? # NonFreeExpressionVariable
    | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL  PRIM? meta? # ExpressionVariable
+   | { symbol_table.isConstructorSymbol(_input.LT(1).getText()) }? constructor=SYMBOL meta? # Constructor
+   | { symbol_table.isDestructorSymbol(_input.LT(1).getText()) }? destructor=SYMBOL meta? # Destructor
+   | { symbol_table.isOperatorSymbol(_input.LT(1).getText()) }? operator=SYMBOL meta? # Operator
    | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }?   constant=SYMBOL meta?        # ExpressionConstant
    // Should we be able to talk about all functions such that their applications give such and such result? For the moment, we can't.
    | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL PRIM? INV? meta? '(' inner=expression ')' # VariableFunctionApplication

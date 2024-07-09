@@ -1138,6 +1138,66 @@ public class Canvas
         assert (false) : "Unknown encoding "+render_target_;
     }
 
+    public void constructor(String s)
+    {
+        switch (render_target_)
+        {
+        case PLAIN:
+            append(s);
+            return;
+        case TERMINAL:
+            append(colorize(BGreen, s));
+            return;
+        case TEX:
+            append("\\CNSTR{"+Util.texSafe(s)+"}");
+            return;
+        case HTML:
+            append(" span(class=CNSTR)="+Util.quoteXMQ(s)+" ");
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
+    public void destructor(String s)
+    {
+        switch (render_target_)
+        {
+        case PLAIN:
+            append(s);
+            return;
+        case TERMINAL:
+            append(colorize(BGreen, s));
+            return;
+        case TEX:
+            append("\\DSTR{"+Util.texSafe(s)+"}");
+            return;
+        case HTML:
+            append(" span(class=DSTR)="+Util.quoteXMQ(s)+" ");
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
+    public void operator(String s)
+    {
+        switch (render_target_)
+        {
+        case PLAIN:
+            append(s);
+            return;
+        case TERMINAL:
+            append(colorize(BGreen, s));
+            return;
+        case TEX:
+            append("\\OPRT{"+Util.texSafe(s)+"}");
+            return;
+        case HTML:
+            append(" span(class=OPRT)="+Util.quoteXMQ(s)+" ");
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
     public void primitiveSet(String s)
     {
         switch (render_target_)

@@ -17,29 +17,17 @@
 
 package com.viklauverk.eventbtools.core;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.stream.Collectors;
-
-public class Constructor extends Typed
+public class Destructor extends Typed
 {
     private String name_;
     private String comment_;
     private Formula definition_;
-    private PolymorphicDataType polymorphic_datatype_;
+    private Constructor constructor_;
 
-    private Map<String,Destructor> destructors_ = new HashMap<>();
-    private List<Destructor> destructor_ordering_ = new ArrayList<>();
-    private List<String> destructor_names_ = new ArrayList<>();
-
-    public Constructor(String n, PolymorphicDataType pdt)
+    public Destructor(String n, Constructor cnstr)
     {
         name_ = n;
-        polymorphic_datatype_ = pdt;
+        constructor_ = cnstr;
     }
 
     @Override
@@ -56,11 +44,6 @@ public class Constructor extends Typed
     public String comment()
     {
         return comment_;
-    }
-
-    public PolymorphicDataType polymorphicDataType()
-    {
-        return polymorphic_datatype_;
     }
 
     public void addComment(String c)
@@ -83,26 +66,8 @@ public class Constructor extends Typed
         return definition_ != null;
     }
 
-    public void addDestructor(Destructor o)
+    public Constructor constructor()
     {
-        destructors_.put(o.name(), o);
-        destructor_ordering_.add(o);
-        destructor_names_ = destructors_.keySet().stream().sorted().collect(Collectors.toList());
+        return constructor_;
     }
-
-    public Destructor getDestructor(String name)
-    {
-        return destructors_.get(name);
-    }
-
-    public List<Destructor> destructorOrdering()
-    {
-        return destructor_ordering_;
-    }
-
-    public List<String> destructorNames()
-    {
-        return destructor_names_;
-    }
-
 }

@@ -34,10 +34,10 @@ public class CmdSysLsParts extends CmdCommon
         String part = line_.trim();
         try
         {
-            List<String> parts = console_.sys().listParts();
+            List<String> parts = console_.sys().listParts(part);
             StringBuilder sb = new StringBuilder();
             for (String p : parts) {
-                if (p.indexOf(part) != -1) sb.append(p+"\n");
+                sb.append(p+"\n");
             }
             return sb.toString();
         }

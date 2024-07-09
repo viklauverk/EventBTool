@@ -56,6 +56,9 @@ public class WalkFormula implements FormulaVisitor
     public Formula visit_VARIABLE_PRIM_SYMBOL(Formula i) { return i; }
     public Formula visit_VARIABLE_NONFREE_SYMBOL(Formula i) { return i; }
     public Formula visit_CONSTANT_SYMBOL(Formula i) { return i; }
+    public Formula visit_CONSTRUCTOR_SYMBOL(Formula i) { return i; }
+    public Formula visit_DESTRUCTOR_SYMBOL(Formula i) { return i; }
+    public Formula visit_OPERATOR_SYMBOL(Formula i) { return i; }
     public Formula visit_APPLICATION(Formula i) { visitLeft(i); visitRight(i); return i; }
     public Formula visit_PARENTHESISED_PREDICATE(Formula i) { visitChild(i); return i; }
     public Formula visit_PARENTHESISED_EXPRESSION(Formula i) { visitChild(i); return i; }
@@ -183,6 +186,9 @@ public class WalkFormula implements FormulaVisitor
         case VARIABLE_PRIM_SYMBOL: i = visit_VARIABLE_PRIM_SYMBOL(i); break;
         case VARIABLE_NONFREE_SYMBOL: i = visit_VARIABLE_NONFREE_SYMBOL(i); break;
         case CONSTANT_SYMBOL: i = visit_CONSTANT_SYMBOL(i); break;
+        case CONSTRUCTOR_SYMBOL: i = visit_CONSTRUCTOR_SYMBOL(i); break;
+        case DESTRUCTOR_SYMBOL: i = visit_DESTRUCTOR_SYMBOL(i); break;
+        case OPERATOR_SYMBOL: i = visit_OPERATOR_SYMBOL(i); break;
         case APPLICATION: i = visit_APPLICATION(i); break;
         case PARENTHESISED_PREDICATE: i = visit_PARENTHESISED_PREDICATE(i); break;
         case PARENTHESISED_EXPRESSION: i = visit_PARENTHESISED_EXPRESSION(i); break;

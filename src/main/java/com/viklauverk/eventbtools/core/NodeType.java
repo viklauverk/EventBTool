@@ -17,18 +17,24 @@
 
 package com.viklauverk.eventbtools.core;
 
-public class RenderPolymorphicDataTypeSearch extends RenderPolymorphicDataType
+public enum NodeType
 {
-    @Override
-    public void visit_PolymorphicDataTypeStart(PolymorphicDataType pdt)
-    {
-        renders().search().addPart(buildPolymorphicDataTypePartName(pdt));
-    }
+    PRE(1),
+    EXP(2),
+    SET(4),
+    VAR(8),
+    CON(16),
+    SYM(32),
+    REL(64),
+    FUN(128),
+    PDT(256),
+    CNS(512),
+    DES(1024),
+    OPE(2048);
 
-    @Override
-    public void visit_Constructor(PolymorphicDataType pdt, Constructor cnstr)
+    public int bit;
+    NodeType(int b)
     {
-        renders().search().addPart(buildConstructorPartName(pdt, cnstr));
+        bit = b;
     }
-
 }

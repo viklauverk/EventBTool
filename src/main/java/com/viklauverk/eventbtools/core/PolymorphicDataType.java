@@ -53,9 +53,11 @@ public class PolymorphicDataType
 
         constructors_ = new HashMap<>();
         constructor_names_ = new ArrayList<>();
+        constructor_ordering_ = new ArrayList<>();
 
         operators_ = new HashMap<>();
         operator_names_ = new ArrayList<>();
+        operator_ordering_ = new ArrayList<>();
         theory_ = t;
     }
 
@@ -119,6 +121,7 @@ public class PolymorphicDataType
     public void addConstructor(Constructor o)
     {
         constructors_.put(o.name(), o);
+        constructor_ordering_.add(o);
         constructor_names_ = constructors_.keySet().stream().sorted().collect(Collectors.toList());
     }
 
@@ -140,6 +143,7 @@ public class PolymorphicDataType
     public void addOperator(Operator o)
     {
         operators_.put(o.name(), o);
+        operator_ordering_.add(o);
         operator_names_ = operators_.keySet().stream().sorted().collect(Collectors.toList());
     }
 

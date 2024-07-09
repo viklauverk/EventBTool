@@ -630,12 +630,21 @@ public class Theory
         */
 
         symbol_table_ = sys_.newTheorySymbolTable(name_);
-        //symbol_table_.addParents(parents);
 
         for (PolymorphicDataType pdt : polymorphicDataTypeOrdering())
         {
             log.debug("added polymorphic data type %s to symbol table %s", pdt.longName(), symbol_table_.name());
             symbol_table_.addPolymorphicDataType(pdt);
+            for (Constructor cnstr : pdt.constructorOrdering())
+            {
+                log.debug("    constructor %s", cnstr.name());
+                symbol_table_.addConstructor(cnstr);
+                for (Destructor dstr : cnstr.destructorOrdering())
+                {
+                    log.debug("        destructor %s", dstr.name());
+                    symbol_table_.addDestructor(dstr);
+                }
+            }
         }
         for (Operator c : operatorOrdering())
         {

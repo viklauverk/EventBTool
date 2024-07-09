@@ -175,6 +175,24 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
     }
 
     @Override
+    public Formula visitConstructor(EvBFormulaParser.ConstructorContext ctx)
+    {
+        return FormulaFactory.newConstructorSymbol(ctx.constructor.getText(), visitOptionalMeta(ctx.meta()));
+    }
+
+    @Override
+    public Formula visitDestructor(EvBFormulaParser.DestructorContext ctx)
+    {
+        return FormulaFactory.newDestructorSymbol(ctx.destructor.getText(), visitOptionalMeta(ctx.meta()));
+    }
+
+    @Override
+    public Formula visitOperator(EvBFormulaParser.OperatorContext ctx)
+    {
+        return FormulaFactory.newOperatorSymbol(ctx.operator.getText(), visitOptionalMeta(ctx.meta()));
+    }
+
+    @Override
     public Formula visitVariableFunctionApplication(EvBFormulaParser.VariableFunctionApplicationContext ctx)
     {
         Formula var;
