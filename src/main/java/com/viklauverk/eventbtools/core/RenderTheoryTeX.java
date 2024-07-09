@@ -92,7 +92,6 @@ public class RenderTheoryTeX extends RenderTheoryUnicode
             cnvs().append(" ");
         }
         cnvs().append("}\n");
-        super.visit_PolymorphicDataTypesStart(thr);
     }
 
 }

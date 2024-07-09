@@ -118,6 +118,24 @@ public class DocGenTeX extends BaseDocGen
             cnvs.append("EVBT(eb.show.part --tex "+mch+")\n");
         }
 
+        for (String thr : sys().deployedTheoryNames())
+        {
+            cnvs.append("\\pagebreak\n\n");
+            Theory t = sys().getDeployedTheory(thr);
+            String pos = "";
+            if (t.numUnproven() > 0)
+            {
+                pos += "\\Unproved ";
+            }
+            if (t.numProvedManualReviewed() > 0)
+            {
+                pos += "\\Reviewed ";
+            }
+
+            cnvs.append("\\section{\\KEYWL{THEORY}\\small\\ "+Util.texSafe(thr)+" "+pos+"}\n\n");
+            cnvs.append("EVBT(eb.show.part --tex "+thr+")\n");
+        }
+
         cnvs.append("\\printindex\n");
 
         cnvs.append("\\end{document}\n");

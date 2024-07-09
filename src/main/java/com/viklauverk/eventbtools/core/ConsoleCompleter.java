@@ -43,6 +43,7 @@ public class ConsoleCompleter
              new ArgumentCompleter(new StringsCompleter("sys.ls.hyps")),
              new ArgumentCompleter(new StringsCompleter("sys.ls.parts")),
              new ArgumentCompleter(new StringsCompleter("sys.ls.tables")),
+             new ArgumentCompleter(new StringsCompleter("sys.ls.seen-theories")),
              new ArgumentCompleter(
                  new StringsCompleter("sys.read"),
                  new DirectoriesCompleter(Paths.get("."))

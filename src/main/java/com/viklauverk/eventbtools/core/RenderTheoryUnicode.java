@@ -74,14 +74,35 @@ public class RenderTheoryUnicode extends RenderTheory
 
     @Override public void visit_PolymorphicDataType(Theory thr, PolymorphicDataType pdt)
     {
-        cnvs().startAlignedLine();
-        cnvs().set(pdt.longName());
-        cnvs().align();
-        cnvs().comment(pdt.comment());
-        cnvs().stopAlignedLine();
+        renders().walkPolymorphicDataType(pdt, "");
     }
 
     @Override public void visit_PolymorphicDataTypesEnd(Theory thr)
+    {
+        cnvs().stopAlignments();
+    }
+
+    @Override public void visit_OperatorsStart(Theory thr)
+    {
+        cnvs().startLine();
+        cnvs().keyword("operators");
+        cnvs().endLine();
+
+        cnvs().startAlignments(Canvas.align_2col);
+    }
+
+    @Override public void visit_Operator(Theory thr, Operator oprt)
+    {
+        cnvs().startAlignedLine();
+        cnvs().startMath();
+        cnvs().constant(oprt.name());
+        cnvs().stopMath();
+        cnvs().align();
+        cnvs().comment(oprt.comment());
+        cnvs().stopAlignedLine();
+    }
+
+    @Override public void visit_OperatorsEnd(Theory thr)
     {
         cnvs().stopAlignments();
     }

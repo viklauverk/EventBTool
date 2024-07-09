@@ -39,7 +39,7 @@ public class RenderTheory extends CommonRenderFunctions
     public void visit_PolymorphicDataTypesEnd(Theory thr) { }
 
     public void visit_OperatorsStart(Theory thr) { }
-    public void visit_Operator(Theory thr, Constant cnst) { }
+    public void visit_Operator(Theory thr, Operator oprt) { }
     public void visit_OperatorsEnd(Theory thr) { }
 
     public void visit_AxiomsStart(Theory thr) { }

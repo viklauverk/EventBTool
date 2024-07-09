@@ -61,6 +61,12 @@ public class DocGenUnicode extends BaseDocGen
         {
             cnvs.append("EVBT(eb.show.part \""+mch+"\")\n");
         }
+
+        for (String thr : sys().deployedTheoryNames())
+        {
+            cnvs.append("EVBT(eb.show.part \""+thr+"\")\n");
+        }
+
         return cnvs.render();
     }
 

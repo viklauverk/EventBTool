@@ -22,11 +22,13 @@ public class Operator extends Typed
     private String name_;
     private String comment_;
     private Formula definition_;
+    private OperatorNotationType notation_type_;
     private Theory theory_;
 
-    public Operator(String n, Theory t)
+    public Operator(String n, Theory t, OperatorNotationType s)
     {
         name_ = n;
+        notation_type_ = s;
         theory_ = t;
     }
 
@@ -44,6 +46,16 @@ public class Operator extends Typed
     public String comment()
     {
         return comment_;
+    }
+
+    public boolean hasComment()
+    {
+        return comment_ != null && comment_.length() > 0;
+    }
+
+    public OperatorNotationType notation()
+    {
+        return notation_type_;
     }
 
     public Theory theory()

@@ -55,6 +55,22 @@ public class VisitTheory
             if (s) rt.visit_PolymorphicDataTypesEnd(thr);
         }
 
+        if (thr.hasOperators())
+        {
+            boolean s = Util.match(thr.name()+"/operators/", pattern);
+
+            if (s) rt.visit_OperatorsStart(thr);
+            for (Operator oprt : thr.operatorOrdering())
+            {
+                boolean ss = Util.match(thr.name()+"/operator/"+oprt.name()+"/", pattern);
+                if (ss)
+                {
+                    rt.visit_Operator(thr, oprt);
+                }
+            }
+            if (s) rt.visit_OperatorsEnd(thr);
+        }
+
         if (m) rt.visit_TheoryEnd(thr);
     }
 }

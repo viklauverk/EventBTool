@@ -310,9 +310,9 @@ public class Sys
         parseContextFormulas();
         parseMachineFormulas();
 
-        if (contextNames().size() == 0 && machineNames().size() == 0)
+        if (deployedTheoryNames().size() == 0 && contextNames().size() == 0 && machineNames().size() == 0)
         {
-            log.usageError("Nothing to do! No contexts or machines found in %s",  path);
+            log.usageError("Nothing to do! No theories, contexts or machines found in %s",  path);
         }
 
         // Load the projct.info file, if it exists.
@@ -481,6 +481,11 @@ public class Sys
         {
             ar.walkMachine(m, pattern);
         }
+
+        for (Theory t : deployedTheoryOrdering())
+        {
+            ar.walkTheory(t, pattern);
+        }
     }
 
     public List<String> listParts()
@@ -520,6 +525,7 @@ public class Sys
     {
         return new AllRenders(
             new RenderTheorySearch(),
+            new RenderPolymorphicDataTypeSearch(),
             new RenderContextSearch(),
             new RenderMachineSearch(),
             new RenderEventSearch(),
@@ -533,6 +539,7 @@ public class Sys
         {
         case PLAIN:
             return new AllRenders(new RenderTheoryUnicode(),
+                                  new RenderPolymorphicDataTypeUnicode(),
                                   new RenderContextUnicode(),
                                   new RenderMachineUnicode(),
                                   new RenderEventUnicode(),
@@ -540,6 +547,7 @@ public class Sys
                                   canvas);
         case TERMINAL:
             return new AllRenders(new RenderTheoryUnicode(),
+                                  new RenderPolymorphicDataTypeUnicode(),
                                   new RenderContextUnicode(),
                                   new RenderMachineUnicode(),
                                   new RenderEventUnicode(),
@@ -547,6 +555,7 @@ public class Sys
                                   canvas);
         case TEX:
            return new AllRenders(new RenderTheoryTeX(),
+                                 new RenderPolymorphicDataTypeTeX(),
                                  new RenderContextTeX(),
                                  new RenderMachineTeX(),
                                  new RenderEventTeX(),
@@ -554,6 +563,7 @@ public class Sys
                                  canvas);
         case HTML:
            return new AllRenders(new RenderTheoryHtmq(),
+                                 new RenderPolymorphicDataTypeHtmq(),
                                  new RenderContextHtmq(),
                                  new RenderMachineHtmq(),
                                  new RenderEventHtmq(),

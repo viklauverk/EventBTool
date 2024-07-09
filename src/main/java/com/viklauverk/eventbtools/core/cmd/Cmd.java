@@ -81,6 +81,14 @@ public enum Cmd
                sys.ls.tables abc
         """,
         CmdSysLsTables::new),
+    SYS_LS_SEEN_THEORIES(
+        "sys.ls.seen-theories",
+        "List all theories listed in the theory path.",
+        """
+        Usage: sys.ls.seen-theories
+               sys.ls.seen-theories abc
+        """,
+        CmdSysLsSeenTheories::new),
     SYS_READ(
         "sys.read",
         "Read an event-b directory and load all files.",

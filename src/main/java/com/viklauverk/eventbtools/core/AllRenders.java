@@ -32,9 +32,10 @@ public class AllRenders
 
     private RenderMachine rm_;
     private RenderContext rc_;
-    private RenderTheory rt_;
     private RenderEvent re_;
     private RenderFormula rf_;
+    private RenderTheory rt_;
+    private RenderPolymorphicDataType rpdt_;
 
     Canvas current_, root_canvas_;
     LinkedList<Frame> stack_ = new LinkedList<>();
@@ -43,6 +44,7 @@ public class AllRenders
 
     @SuppressWarnings("this-escape")
     public AllRenders(RenderTheory rt,
+                      RenderPolymorphicDataType rpdt,
                       RenderContext rc,
                       RenderMachine rm,
                       RenderEvent re,
@@ -50,6 +52,7 @@ public class AllRenders
                       Canvas c)
     {
         rt_ = rt;
+        rpdt_ = rpdt;
         rc_ = rc;
         rm_ = rm;
         re_ = re;
@@ -115,6 +118,11 @@ public class AllRenders
     public void walkTheory(Theory t, String pattern)
     {
         VisitTheory.walk(rt_, t, pattern);
+    }
+
+    public void walkPolymorphicDataType(PolymorphicDataType pdt, String pattern)
+    {
+        VisitPolymorphicDataType.walk(rpdt_, pdt, pattern);
     }
 
     public void walkContext(Context c, String pattern)

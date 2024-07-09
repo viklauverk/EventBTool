@@ -74,6 +74,16 @@ public class PolymorphicDataType
         return comment_;
     }
 
+    public boolean hasComment()
+    {
+        return comment_ != null && comment_.length() > 0;
+    }
+
+    public boolean hasConstructors()
+    {
+        return constructor_ordering_.size() > 0;
+    }
+
     public Theory theory()
     {
         return theory_;

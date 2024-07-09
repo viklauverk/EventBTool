@@ -135,6 +135,11 @@ public class Theory
         return imports_theories_.size() > 0;
     }
 
+    public boolean hasDataTypes()
+    {
+        return polymorphic_data_types_.size() > 0;
+    }
+
     List<Theory> importsTheories()
     {
         return imports_theories_;
@@ -411,7 +416,10 @@ public class Theory
             for (Node c : constructors)
             {
                 name = c.valueOf("@name");
-                pdt.addConstructor(new Constructor(name, pdt));
+                comment = c.valueOf("@org.eventb.core.comment");
+                Constructor co = new Constructor(name, pdt);
+                co.addComment(comment);
+                pdt.addConstructor(co);
             }
         }
 
@@ -421,7 +429,9 @@ public class Theory
         {
             String name = n.valueOf("@org.eventb.core.identifier");
             String comment = n.valueOf("@org.eventb.core.comment");
-            Operator o = new Operator(name, this);
+            String onts = n.valueOf("@org.eventb.theory.core.notationType");
+            OperatorNotationType ont = OperatorNotationType.valueOf(onts);
+            Operator o = new Operator(name, this, ont);
             o.addComment(comment);
             addOperator(o);
         }
@@ -528,7 +538,9 @@ public class Theory
         {
             String name = n.valueOf("@org.eventb.core.identifier");
             String comment = n.valueOf("@org.eventb.core.comment");
-            Operator o = new Operator(name, this);
+            String onts = n.valueOf("@org.eventb.theory.core.notationType");
+            OperatorNotationType ont = OperatorNotationType.valueOf(onts);
+            Operator o = new Operator(name, this, ont);
             o.addComment(comment);
             addOperator(o);
         }
@@ -622,7 +634,7 @@ public class Theory
 
         for (PolymorphicDataType pdt : polymorphicDataTypeOrdering())
         {
-            log.debug("added data type %s to symbol table %s", pdt.longName(), symbol_table_.name());
+            log.debug("added polymorphic data type %s to symbol table %s", pdt.longName(), symbol_table_.name());
             symbol_table_.addPolymorphicDataType(pdt);
         }
         for (Operator c : operatorOrdering())

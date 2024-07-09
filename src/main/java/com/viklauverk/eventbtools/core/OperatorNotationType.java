@@ -17,7 +17,7 @@
 
 package com.viklauverk.eventbtools.core;
 
-public enum OperatorSyntax
+public enum OperatorNotationType
 {
     PREFIX,
     INFIX
