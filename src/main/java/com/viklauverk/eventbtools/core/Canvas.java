@@ -1189,10 +1189,10 @@ public class Canvas
             append(colorize(BGreen, s));
             return;
         case TEX:
-            append("\\OPRT{"+Util.texSafe(s)+"}");
+            append("\\OPER{"+Util.texSafe(s)+"}");
             return;
         case HTML:
-            append(" span(class=OPRT)="+Util.quoteXMQ(s)+" ");
+            append(" span(class=OPER)="+Util.quoteXMQ(s)+" ");
             return;
         }
         assert (false) : "Unknown encoding "+render_target_;
