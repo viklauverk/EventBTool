@@ -187,9 +187,55 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
     }
 
     @Override
-    public Formula visitOperator(EvBFormulaParser.OperatorContext ctx)
+    public Formula visitOperatorInfixPredicate(EvBFormulaParser.OperatorInfixPredicateContext ctx)
     {
-        return FormulaFactory.newOperatorSymbol(ctx.operator.getText(), visitOptionalMeta(ctx.meta()));
+        Formula left = this.visit(ctx.left);
+        Formula right = this.visit(ctx.right);
+
+        return FormulaFactory.newOperatorInfixSymbol(ctx.operator.getText(),
+                                                     OperatorNotationType.INFIX,
+                                                     OperatorType.PREDICATE,
+                                                     left,
+                                                     right,
+                                                     visitOptionalMeta(ctx.meta()));
+    }
+
+    @Override
+    public Formula visitOperatorInfixExpression(EvBFormulaParser.OperatorInfixExpressionContext ctx)
+    {
+        Formula left = this.visit(ctx.left);
+        Formula right = this.visit(ctx.right);
+
+        return FormulaFactory.newOperatorInfixSymbol(ctx.operator.getText(),
+                                                     OperatorNotationType.INFIX,
+                                                     OperatorType.EXPRESSION,
+                                                     left,
+                                                     right,
+                                                     visitOptionalMeta(ctx.meta()));
+    }
+
+    @Override
+    public Formula visitOperatorPrefixPredicate(EvBFormulaParser.OperatorPrefixPredicateContext ctx)
+    {
+        EvBFormulaParser.ListOfPredicatesContext parameters = ctx.listOfPredicates();
+
+        return FormulaFactory.newOperatorPrefixSymbol(ctx.operator.getText(),
+                                                      OperatorNotationType.PREFIX,
+                                                      OperatorType.PREDICATE,
+                                                      parameters != null ? visitListOfPredicates(parameters):null,
+                                                      visitOptionalMeta(ctx.meta()));
+    }
+
+    @Override
+    public Formula visitOperatorPrefixExpression(EvBFormulaParser.OperatorPrefixExpressionContext ctx)
+    {
+        EvBFormulaParser.ListOfExpressionsContext parameters = ctx.listOfExpressions();
+
+        return FormulaFactory.newOperatorPrefixSymbol(ctx.operator.getText(),
+                                                      OperatorNotationType.PREFIX,
+                                                      OperatorType.EXPRESSION,
+                                                      parameters != null ? visitListOfExpressions(parameters):null,
+                                                      visitOptionalMeta(ctx.meta()));
     }
 
     @Override
@@ -297,6 +343,17 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
             elements.add(this.visit(sec));
         }
         return FormulaFactory.newListOfExpressions(elements);
+    }
+
+    @Override
+    public Formula visitListOfPredicates(EvBFormulaParser.ListOfPredicatesContext ctx)
+    {
+        List<Formula> elements = new LinkedList<>();
+        for (EvBFormulaParser.PredicateContext sec : ctx.predicate())
+        {
+            elements.add(this.visit(sec));
+        }
+        return FormulaFactory.newListOfPredicates(elements);
     }
 
     @Override

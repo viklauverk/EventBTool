@@ -42,6 +42,8 @@ public class Sys
     private Typing typing_;
 
     private TheoryPath theory_path_;
+    // Used when adding operators for pattern matchin.
+    private static Theory dummy_theory_;
 
     private Map<String,Theory> deployed_theories_;
     private List<Theory> deployed_theory_ordering_;
@@ -68,6 +70,7 @@ public class Sys
     {
         project_info_ = "";
         theory_path_ = new TheoryPath();
+
         deployed_theories_ = new HashMap<>();
         deployed_theory_ordering_ = new ArrayList<>();
         deployed_theory_names_ = new ArrayList<>();
@@ -574,4 +577,13 @@ public class Sys
         return null;
     }
 
+    public static synchronized Theory dummyTheory()
+    {
+        if (dummy_theory_ == null)
+        {
+            dummy_theory_ = new Theory("Dummy", null, null, null);
+        }
+
+        return dummy_theory_;
+    }
 }

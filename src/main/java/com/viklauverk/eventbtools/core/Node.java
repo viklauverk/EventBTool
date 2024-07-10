@@ -41,11 +41,15 @@ public enum Node
     POLYMORPHIC_DATA_TYPE_SYMBOL(SET.bit | PDT.bit | SYM.bit), // A symbol representing a data type, eg H List, Seq
     CONSTRUCTOR_SYMBOL(CNS.bit | SYM.bit), // A constructor symbol: nil cons
     DESTRUCTOR_SYMBOL(DES.bit | SYM.bit), // A destructor symbol: head tail
-    OPERATOR_SYMBOL(OPE.bit | SYM.bit), // An operator symbol: append seqSize
+    OPERATOR_INFIX_PREDICATE_SYMBOL(OPE.bit | SYM.bit), // An operator symbol: same lessThan
+    OPERATOR_INFIX_EXPRESSION_SYMBOL(OPE.bit | SYM.bit), // An operator symbol: merge minus
+    OPERATOR_PREFIX_PREDICATE_SYMBOL(OPE.bit | SYM.bit), // An operator symbol: same(a,b) lessThan(a,b)
+    OPERATOR_PREFIX_EXPRESSION_SYMBOL(OPE.bit | SYM.bit), // An operator symbol: merge(a,b) minus(a,b)
 
     LIST_OF_VARIABLES(0), // x,y,z := 1,2,3
     LIST_OF_NONFREE_VARIABLES(0), // In a forall ∀x,y,z· or exists ∃a,b· the variables are such a list.
-    LIST_OF_EXPRESSIONS(0), // In a partition {a},{b},{c} is a list of sets.
+    LIST_OF_EXPRESSIONS(0), // In a partition {a},{b},{c} is a list of expressions (sets).
+    LIST_OF_PREDICATES(0), // For an operator pp(P,Q,R) P,Q,R is a list of predicates.
     LIST_OF_TYPES(0), // In a DataType Seq(NAT) Map(NAT,INT)
 
     PARENTHESISED_PREDICATE(PRE.bit), // A predicate wrapped in parenthesis.

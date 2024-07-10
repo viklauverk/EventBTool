@@ -58,7 +58,10 @@ public class WalkFormula implements FormulaVisitor
     public Formula visit_CONSTANT_SYMBOL(Formula i) { return i; }
     public Formula visit_CONSTRUCTOR_SYMBOL(Formula i) { return i; }
     public Formula visit_DESTRUCTOR_SYMBOL(Formula i) { return i; }
-    public Formula visit_OPERATOR_SYMBOL(Formula i) { return i; }
+    public Formula visit_OPERATOR_INFIX_PREDICATE_SYMBOL(Formula i) { return i; }
+    public Formula visit_OPERATOR_INFIX_EXPRESSION_SYMBOL(Formula i) { return i; }
+    public Formula visit_OPERATOR_PREFIX_PREDICATE_SYMBOL(Formula i) { return i; }
+    public Formula visit_OPERATOR_PREFIX_EXPRESSION_SYMBOL(Formula i) { return i; }
     public Formula visit_APPLICATION(Formula i) { visitLeft(i); visitRight(i); return i; }
     public Formula visit_PARENTHESISED_PREDICATE(Formula i) { visitChild(i); return i; }
     public Formula visit_PARENTHESISED_EXPRESSION(Formula i) { visitChild(i); return i; }
@@ -128,6 +131,7 @@ public class WalkFormula implements FormulaVisitor
     public Formula visit_LIST_OF_VARIABLES(Formula i) { visitChildren(i, ()->{}); return i; }
     public Formula visit_LIST_OF_NONFREE_VARIABLES(Formula i) { visitChildren(i, ()->{}); return i; }
     public Formula visit_LIST_OF_EXPRESSIONS(Formula i) { visitChildren(i, ()->{}); return i; }
+    public Formula visit_LIST_OF_PREDICATES(Formula i) { visitChildren(i, ()->{}); return i; }
     public Formula visit_ADDITION(Formula i) { visitLeft(i); visitRight(i); return i; }
     public Formula visit_SUBTRACTION(Formula i) { visitLeft(i); visitRight(i); return i; }
     public Formula visit_UNARY_MINUS(Formula i) { visitChild(i); return i; }
@@ -188,7 +192,10 @@ public class WalkFormula implements FormulaVisitor
         case CONSTANT_SYMBOL: i = visit_CONSTANT_SYMBOL(i); break;
         case CONSTRUCTOR_SYMBOL: i = visit_CONSTRUCTOR_SYMBOL(i); break;
         case DESTRUCTOR_SYMBOL: i = visit_DESTRUCTOR_SYMBOL(i); break;
-        case OPERATOR_SYMBOL: i = visit_OPERATOR_SYMBOL(i); break;
+        case OPERATOR_INFIX_PREDICATE_SYMBOL: i = visit_OPERATOR_INFIX_PREDICATE_SYMBOL(i); break;
+        case OPERATOR_INFIX_EXPRESSION_SYMBOL: i = visit_OPERATOR_INFIX_EXPRESSION_SYMBOL(i); break;
+        case OPERATOR_PREFIX_PREDICATE_SYMBOL: i = visit_OPERATOR_PREFIX_PREDICATE_SYMBOL(i); break;
+        case OPERATOR_PREFIX_EXPRESSION_SYMBOL: i = visit_OPERATOR_PREFIX_EXPRESSION_SYMBOL(i); break;
         case APPLICATION: i = visit_APPLICATION(i); break;
         case PARENTHESISED_PREDICATE: i = visit_PARENTHESISED_PREDICATE(i); break;
         case PARENTHESISED_EXPRESSION: i = visit_PARENTHESISED_EXPRESSION(i); break;
@@ -257,6 +264,7 @@ public class WalkFormula implements FormulaVisitor
         case LIST_OF_VARIABLES: i = visit_LIST_OF_VARIABLES(i); break;
         case LIST_OF_NONFREE_VARIABLES: i = visit_LIST_OF_NONFREE_VARIABLES(i); break;
         case LIST_OF_EXPRESSIONS: i = visit_LIST_OF_EXPRESSIONS(i); break;
+        case LIST_OF_PREDICATES: i = visit_LIST_OF_PREDICATES(i); break;
         case ADDITION: i = visit_ADDITION(i); break;
         case UNARY_MINUS: i = visit_UNARY_MINUS(i); break;
         case SUBTRACTION: i = visit_SUBTRACTION(i); break;

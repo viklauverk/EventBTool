@@ -17,18 +17,23 @@
 
 package com.viklauverk.eventbtools.core;
 
+import com.viklauverk.eventbtools.core.OperatorNotationType;
+import com.viklauverk.eventbtools.core.OperatorType;
+
 public class Operator extends Typed
 {
     private String name_;
     private String comment_;
     private Formula definition_;
     private OperatorNotationType notation_type_;
+    private OperatorType operator_type_;
     private Theory theory_;
 
-    public Operator(String n, Theory t, OperatorNotationType s)
+    public Operator(String n, Theory t, OperatorNotationType nt, OperatorType ot)
     {
         name_ = n;
-        notation_type_ = s;
+        notation_type_ = nt;
+        operator_type_ = ot;
         theory_ = t;
     }
 
@@ -81,5 +86,23 @@ public class Operator extends Typed
     public boolean hasDefinition()
     {
         return definition_ != null;
+    }
+
+    public OperatorNotationType notationType()
+    {
+        return notation_type_;
+    }
+
+    public OperatorType operatorType()
+    {
+        return operator_type_;
+    }
+
+    public boolean isOp(OperatorNotationType nt, OperatorType ot)
+    {
+        if (notation_type_ != nt) return false;
+        if (operator_type_ != ot) return false;
+
+        return true;
     }
 }

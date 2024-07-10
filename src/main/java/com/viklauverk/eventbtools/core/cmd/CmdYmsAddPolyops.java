@@ -18,6 +18,8 @@
 package com.viklauverk.eventbtools.core.cmd;
 
 import com.viklauverk.eventbtools.core.Console;
+import com.viklauverk.eventbtools.core.Operator;
+import com.viklauverk.eventbtools.core.Sys;
 
 import java.util.List;
 
@@ -32,7 +34,20 @@ public class CmdYmsAddPolyops extends CmdCommon
     public String go()
     {
         String[] ops = line_.split("\\s+");
-        console_.currentSymbolTable().addPolymorphicOperatorSymbols(ops);
+
+        for (String op : ops)
+        {
+            Operator o = Sys.dummyTheory().generatePhantomOperator(op);
+            if (o != null)
+            {
+                console_.currentSymbolTable().addOperator(o);
+            }
+            else
+            {
+                return "Cannot add operator \""+op+"\" since it does not end with +PP +PE +IP +IE.";
+            }
+        }
         return "OK";
     }
+
 }

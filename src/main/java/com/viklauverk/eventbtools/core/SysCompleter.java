@@ -30,8 +30,17 @@ public class SysCompleter implements Completer
     {
         if (tree_)
         {
-            int space= line.line().indexOf(" ");
+            String l = line.line().trim();
+            int space = l.indexOf(" ");
             if (space == -1) return;
+
+            if (space >= l.length()-1) return;
+            while (l.charAt(space+1) == '-')
+            {
+                space = l.indexOf(" ", space+1);
+                if (space == -1) return;
+                if (space+1 >= l.length()) return;
+            }
             String path = line.line().substring(space+1).trim();
 
             List<String> parts = sys_.listParts("");

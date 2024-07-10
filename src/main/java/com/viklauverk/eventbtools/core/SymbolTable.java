@@ -586,32 +586,45 @@ public class SymbolTable
         return false;
     }
 
-    public void addPolymorphicOperator(Operator o)
+    public void addOperator(Operator o)
     {
         operator_symbols_.add(o.name());
         operators_.put(o.name(), o);
     }
 
-    public boolean isOperatorSymbol(String p)
+    public Operator getOperator(Formula name)
     {
-        boolean is = operator_symbols_.contains(p);
-        if (is) return true;
+        return getOperator(name.symbol());
+    }
+
+    public Operator getOperator(String name)
+    {
+        Operator op = operators_.get(name);
+        if (op != null) return op;
         for (SymbolTable parent : parents_)
         {
-            is = parent.isOperatorSymbol(p);
-            if (is) return true;
+            op = parent.getOperator(name);
+            if (op != null) return op;
+        }
+        return null;
+    }
+
+    public boolean isOperatorSymbol(OperatorNotationType nt, OperatorType ot, String p)
+    {
+        Operator op = operators_.get(p);
+        if (op != null) {
+            boolean ok = op.isOp(nt, ot);
+            return ok;
+        }
+
+        for (SymbolTable parent : parents_)
+        {
+            boolean is = parent.isOperatorSymbol(nt, ot, p);
+            if (is) {
+                return true;
+            }
         }
         return false;
-    }
-
-    public void addPolymorphicOperatorSymbol(String s)
-    {
-        operator_symbols_.add(s);
-    }
-
-    public void addPolymorphicOperatorSymbols(String... s)
-    {
-        operator_symbols_.addAll(Arrays.asList(s));
     }
 
     public boolean isUnknownSymbol(String p)
@@ -639,6 +652,29 @@ public class SymbolTable
         {
             if (c > 0) o.append(" ");
             o.append(n);
+            c++;
+        }
+        return o.toString();
+    }
+
+    private String printOperatorSyms(Set<String> syms)
+    {
+        StringBuilder o = new StringBuilder();
+        List<String> ns = syms.stream().sorted().collect(Collectors.toList());
+        int c = 0;
+        for (String n : ns)
+        {
+            if (c > 0) o.append(" ");
+            o.append(n);
+            o.append("+");
+            Operator op = getOperator(n);
+            if (op != null)
+            {
+                if (op.notationType() == OperatorNotationType.INFIX) o.append("I");
+                else o.append("P");
+                if (op.operatorType() == OperatorType.PREDICATE) o.append("P");
+                else o.append("E");
+            }
             c++;
         }
         return o.toString();
@@ -685,7 +721,7 @@ public class SymbolTable
         o.append("-\n");
         o.append("destructors: "+Canvas.flow(80, printSyms(destructor_symbols_)));
         o.append("-\n");
-        o.append("operators: "+Canvas.flow(80, printSyms(operator_symbols_)));
+        o.append("operators: "+Canvas.flow(80, printOperatorSyms(operator_symbols_)));
 
         // The anys are special and used for wildcard matching. We only print these
         // if there are any to print.
@@ -730,7 +766,11 @@ public class SymbolTable
         polymorphic_data_type_symbols_.add("H");
         constructor_symbols_.add("cx");
         destructor_symbols_.add("dx");
-        operator_symbols_.add("op");
+
+        addOperator(Sys.dummyTheory().generatePhantomOperator("pp+PP"));
+        addOperator(Sys.dummyTheory().generatePhantomOperator("pe+PE"));
+        addOperator(Sys.dummyTheory().generatePhantomOperator("ip+IP"));
+        addOperator(Sys.dummyTheory().generatePhantomOperator("ie+IE"));
     }
 
     public static SymbolTable PQR_EFG_STU_xyz_cdf_NM_ABC_H_cx_dx_op;

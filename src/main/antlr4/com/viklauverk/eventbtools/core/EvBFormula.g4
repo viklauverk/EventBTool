@@ -21,6 +21,8 @@ import com.viklauverk.eventbtools.core.SymbolTable;
 
 @parser::header{
 import com.viklauverk.eventbtools.core.SymbolTable;
+import com.viklauverk.eventbtools.core.OperatorNotationType;
+import com.viklauverk.eventbtools.core.OperatorType;
 
 import java.util.List;
 import java.util.LinkedList;
@@ -231,6 +233,7 @@ predicate
    | { symbol_table.isAnySymbol(_input.LT(1).getText()) }?  sym=SYMBOL meta? # AnyPredicateSymbol
    | { symbol_table.isPredicateSymbol(_input.LT(1).getText()) }? sym=SYMBOL meta? # PredicateSymbol
    | '(' inner=predicate ')'                        # PredicateParentheses
+   | left=predicate { symbol_table.isOperatorSymbol(OperatorNotationType.INFIX, OperatorType.PREDICATE, _input.LT(1).getText()) }? operator=SYMBOL meta? right=predicate # OperatorInfixPredicate
    | left=expression IN meta? right=expression            # SetMembership
    | left=expression NOTIN meta? right=expression         # SetNotMembership
    | left=predicate operator=AND meta? right=predicate    # Conjunction
@@ -238,6 +241,7 @@ predicate
    | left=predicate operator=EQUIV meta? right=predicate  # Equivalence
    | left=predicate operator=OR meta? right=predicate     # Disjunction
    | operator=NOT meta? right=predicate                   # Negation
+   | { symbol_table.isOperatorSymbol(OperatorNotationType.PREFIX, OperatorType.PREDICATE, _input.LT(1).getText()) }? operator=SYMBOL meta? ( '(' parameters=listOfPredicates ')' )?  # OperatorPrefixPredicate
    | ALL meta? left=listOfNonFreeSymbols
      { pushFrame(((UniversalContext)_localctx).left); }
      QDOT right=predicate
@@ -274,7 +278,8 @@ expression
    | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL  PRIM? meta? # ExpressionVariable
    | { symbol_table.isConstructorSymbol(_input.LT(1).getText()) }? constructor=SYMBOL meta? # Constructor
    | { symbol_table.isDestructorSymbol(_input.LT(1).getText()) }? destructor=SYMBOL meta? # Destructor
-   | { symbol_table.isOperatorSymbol(_input.LT(1).getText()) }? operator=SYMBOL meta? # Operator
+   | { symbol_table.isOperatorSymbol(OperatorNotationType.PREFIX, OperatorType.EXPRESSION, _input.LT(1).getText()) }? operator=SYMBOL
+      meta? ( '(' parameters=listOfExpressions ')' )? # OperatorPrefixExpression
    | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }?   constant=SYMBOL meta?        # ExpressionConstant
    // Should we be able to talk about all functions such that their applications give such and such result? For the moment, we can't.
    | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL PRIM? INV? meta? '(' inner=expression ')' # VariableFunctionApplication
@@ -287,6 +292,7 @@ expression
    | left=expression operator=DIV meta? right=expression  # Division
    | left=expression operator=ADD meta? right=expression  # Addition
    | left=expression operator=MINUS meta? right=expression  # Subtraction
+   | left=expression { symbol_table.isOperatorSymbol(OperatorNotationType.INFIX, OperatorType.EXPRESSION, _input.LT(1).getText()) }? operator=SYMBOL meta? right=expression # OperatorInfixExpression
    | operator=MINUS right=expression                  # UnaryMinus
    | left=expression operator=MOD meta? right=expression  # Modulo
    | left=expression operator=EXP meta? right=expression  # Exponentiation
@@ -393,6 +399,10 @@ expression
 
 listOfExpressions
    : expression (',' expression)*
+   ;
+
+listOfPredicates
+   : predicate (',' predicate)*
    ;
 
 meta

@@ -40,7 +40,10 @@ public interface FormulaVisitor
     Formula visit_POLYMORPHIC_DATA_TYPE_SYMBOL(Formula i);
     Formula visit_CONSTRUCTOR_SYMBOL(Formula i);
     Formula visit_DESTRUCTOR_SYMBOL(Formula i);
-    Formula visit_OPERATOR_SYMBOL(Formula i);
+    Formula visit_OPERATOR_INFIX_PREDICATE_SYMBOL(Formula i);
+    Formula visit_OPERATOR_INFIX_EXPRESSION_SYMBOL(Formula i);
+    Formula visit_OPERATOR_PREFIX_PREDICATE_SYMBOL(Formula i);
+    Formula visit_OPERATOR_PREFIX_EXPRESSION_SYMBOL(Formula i);
     Formula visit_APPLICATION(Formula i);
     Formula visit_PARENTHESISED_PREDICATE(Formula i);
     Formula visit_PARENTHESISED_EXPRESSION(Formula i);
@@ -111,6 +114,7 @@ public interface FormulaVisitor
     Formula visit_LIST_OF_VARIABLES(Formula i);
     Formula visit_LIST_OF_NONFREE_VARIABLES(Formula i);
     Formula visit_LIST_OF_EXPRESSIONS(Formula i);
+    Formula visit_LIST_OF_PREDICATES(Formula i);
     Formula visit_ADDITION(Formula i);
     Formula visit_SUBTRACTION(Formula i);
     Formula visit_MULTIPLICATION(Formula i);

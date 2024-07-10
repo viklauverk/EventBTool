@@ -227,7 +227,7 @@ class Pattern
             if (!tryMetaMatch(f, p, mr)) return false;
             return okToAdd(f, p, mr.destructors, "destructors");
         }
-        if (pt == Node.OPERATOR_SYMBOL)
+        if (pt.isOperator())
         {
             if (!f.isOperator()) return false;
             if (!tryMetaMatch(f, p, mr)) return false;

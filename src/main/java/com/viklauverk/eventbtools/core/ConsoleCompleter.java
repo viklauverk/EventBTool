@@ -18,6 +18,7 @@
 package com.viklauverk.eventbtools.core;
 
 import org.jline.reader.impl.completer.ArgumentCompleter;
+import org.jline.reader.impl.completer.NullCompleter;
 import org.jline.reader.impl.completer.StringsCompleter;
 import org.jline.reader.impl.completer.AggregateCompleter;
 import org.jline.builtins.Completers.TreeCompleter;
@@ -67,6 +68,7 @@ public class ConsoleCompleter
              new ArgumentCompleter(new StringsCompleter("eb.show.formula")),
              new ArgumentCompleter(
                  new StringsCompleter("eb.show.part"),
+                 new StringsCompleter("--frame", "--tex"),
                  new SysCompleter(sys, false, false, false, true)
                  ),
              new ArgumentCompleter(
@@ -78,8 +80,8 @@ public class ConsoleCompleter
              new ArgumentCompleter(new StringsCompleter("yms.add.constants")),
              new ArgumentCompleter(new StringsCompleter("yms.add.expressions")),
              new ArgumentCompleter(new StringsCompleter("yms.add.numbers")),
-             new ArgumentCompleter(new StringsCompleter("yms.add.polytypes")),
-             new ArgumentCompleter(new StringsCompleter("yms.add.polyops")),
+             new ArgumentCompleter(new StringsCompleter("yms.add.datatypes")),
+             new ArgumentCompleter(new StringsCompleter("yms.add.operators")),
              new ArgumentCompleter(new StringsCompleter("yms.add.predicates")),
              new ArgumentCompleter(new StringsCompleter("yms.add.sets")),
              new ArgumentCompleter(new StringsCompleter("yms.add.variables")),

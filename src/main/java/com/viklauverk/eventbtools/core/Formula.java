@@ -246,6 +246,19 @@ class Formula
         meta_ = meta;
     }
 
+    Formula(Node node, int v, Formula left, Formula right, Formula meta)
+    {
+        assert (node != null && left != null && right != null) : "Internal error when creating formula, args must be non-null.";
+
+        node_ = node;
+        data_ = new int[1];
+        data_[0] = v;
+        children_ = new Formula[2];
+        children_[0] = left;
+        children_[1] = right;
+        meta_ = meta;
+    }
+
     Formula(Node node, Formula vars, Formula pred, Formula expr, Formula meta)
     {
         assert (node != null && vars != null && pred!= null && expr!= null) : "Internal error when creating formula, args must be non-null.";

@@ -89,21 +89,21 @@ public class Theory
         axiom_names_ = new ArrayList<>();
 
         loaded_ = false;
-        tuf_ = f;
-        assert (tuf_ != null) : "Source file must not be null!";
-
-        if (tuf_.getPath().endsWith(".dtf"))
-        {
-            tuf_ = new File(tuf_.getPath().replace(".dtf",".tuf"));
-            deployed_ = true;
-        }
-
         theory_root_dir_ = trd;
-        //assert (theory_root_dir_ != null) : "Theory root dir must not be null!";
+        tuf_ = f;
 
-        bps_ = new File(tuf_.getPath().replace(".tuf", ".bps"));
-        bpo_ = new File(tuf_.getPath().replace(".tuf", ".bpo"));
-        dtf_ = new File(tuf_.getPath().replace(".tuf", ".dtf"));
+        if (tuf_ != null)
+        {
+            if (tuf_.getPath().endsWith(".dtf"))
+            {
+                tuf_ = new File(tuf_.getPath().replace(".dtf",".tuf"));
+                deployed_ = true;
+            }
+
+            bps_ = new File(tuf_.getPath().replace(".tuf", ".bps"));
+            bpo_ = new File(tuf_.getPath().replace(".tuf", ".bpo"));
+            dtf_ = new File(tuf_.getPath().replace(".tuf", ".dtf"));
+        }
 
         sys_ = s;
 
@@ -424,14 +424,27 @@ public class Theory
         }
 
         // Load the operators.
-        list = document.selectNodes("//org.eventb.core.operator");
+        list = document.selectNodes("//org.eventb.theory.core.scNewOperatorDefinition");
         for (Node n : list)
         {
-            String name = n.valueOf("@org.eventb.core.identifier");
+            String name = n.valueOf("@org.eventb.core.label");
+            String is_preds = n.valueOf("@org.eventb.core.predicate");
+            String is_assocs = n.valueOf("@org.eventb.theory.core.associative");
+            String is_commus = n.valueOf("@org.eventb.theory.core.commutative");
             String comment = n.valueOf("@org.eventb.core.comment");
             String onts = n.valueOf("@org.eventb.theory.core.notationType");
             OperatorNotationType ont = OperatorNotationType.valueOf(onts);
-            Operator o = new Operator(name, this, ont);
+            String ots = n.valueOf("@org.eventb.theory.core.formulaType");
+            OperatorType ot = null;
+            if (ots.equals("true")) ot = OperatorType.EXPRESSION;
+            else if (ots.equals("false")) ot = OperatorType.PREDICATE;
+            else LogModule.usageErrorStatic("Invalid formulaType %s for operator %s in theory %s in file %s",
+                                            ots,
+                                            name,
+                                            name(),
+                                            dtf_);
+
+            Operator o = new Operator(name, this, ont, ot);
             o.addComment(comment);
             addOperator(o);
         }
@@ -540,7 +553,7 @@ public class Theory
             String comment = n.valueOf("@org.eventb.core.comment");
             String onts = n.valueOf("@org.eventb.theory.core.notationType");
             OperatorNotationType ont = OperatorNotationType.valueOf(onts);
-            Operator o = new Operator(name, this, ont);
+            Operator o = new Operator(name, this, ont, OperatorType.PREDICATE);
             o.addComment(comment);
             addOperator(o);
         }
@@ -648,8 +661,8 @@ public class Theory
         }
         for (Operator c : operatorOrdering())
         {
-            log.debug("added operator set %s to symbol table %s", c, symbol_table_.name());
-            symbol_table_.addPolymorphicOperator(c);
+            log.debug("added operator %s to symbol table %s", c, symbol_table_.name());
+            symbol_table_.addOperator(c);
         }
     }
 
@@ -676,4 +689,30 @@ public class Theory
             sys().typing().extractInfoFromAxiom(a.formula(), symbol_table_);
         }
     }
+
+    public Operator generatePhantomOperator(String name)
+    {
+        // Take an argument like listSize+PE
+        // and return an operator with name listSize
+        // and notation PREFIX and type Expression.
+
+        name = name.trim();
+        int len = name.length();
+        if (len < 4) return null;
+        if (name.charAt(len-3) != '+') return null;
+        char c = name.charAt(len-2);
+        char cc = name.charAt(len-1);
+        if (c != 'P' && c != 'I') return null;
+        if (cc != 'P' && cc != 'E') return null;
+        OperatorNotationType nt = (c=='P'?OperatorNotationType.PREFIX:OperatorNotationType.INFIX);
+        OperatorType ot = (cc=='P'?OperatorType.PREDICATE:OperatorType.EXPRESSION);
+        name = name.substring(0, len-3);
+
+        Operator o = new Operator(name, this, nt, ot);
+
+        log.debug("adding phantom operator %s with %s %s", o.name(), o.notationType(), o.operatorType());
+
+        return o;
+    }
+
 }

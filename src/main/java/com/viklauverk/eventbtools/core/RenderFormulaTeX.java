@@ -436,4 +436,9 @@ public class RenderFormulaTeX extends RenderFormulaUnicode
         visitChildren(i, ()->{cnvs().append(",\\allowbreak "); }); return i;
     }
 
+    @Override public Formula visit_LIST_OF_PREDICATES(Formula i)
+    {
+        visitChildren(i, ()->{cnvs().append(",\\allowbreak "); }); return i;
+    }
+
 }

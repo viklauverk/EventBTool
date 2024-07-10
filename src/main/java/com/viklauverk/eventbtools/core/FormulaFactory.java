@@ -148,9 +148,46 @@ public class FormulaFactory
     }
 
     public static
-    Formula newOperatorSymbol (String s, Formula meta)
+    Formula newOperatorPrefixSymbol(String s, OperatorNotationType nt, OperatorType ot, Formula parameters, Formula meta)
     {
-        return new Formula(Node.OPERATOR_SYMBOL, Symbols.intern(s), meta);
+        Node n = null;
+        if (nt == OperatorNotationType.INFIX)
+        {
+            if (ot == OperatorType.PREDICATE) n = Node.OPERATOR_INFIX_PREDICATE_SYMBOL;
+            else n = Node.OPERATOR_INFIX_PREDICATE_SYMBOL;
+        }
+        else
+        {
+            if (ot == OperatorType.PREDICATE) n = Node.OPERATOR_PREFIX_PREDICATE_SYMBOL;
+            else n = Node.OPERATOR_PREFIX_PREDICATE_SYMBOL;
+        }
+
+        if (parameters != null)
+        {
+            return new Formula(n, Symbols.intern(s), parameters, meta);
+        }
+        else
+        {
+            return new Formula(n, Symbols.intern(s), meta);
+        }
+    }
+
+    public static
+    Formula newOperatorInfixSymbol(String s, OperatorNotationType nt, OperatorType ot,
+                                   Formula left, Formula right, Formula meta)
+    {
+        Node n = null;
+        if (nt == OperatorNotationType.INFIX)
+        {
+            if (ot == OperatorType.PREDICATE) n = Node.OPERATOR_INFIX_PREDICATE_SYMBOL;
+            else n = Node.OPERATOR_INFIX_PREDICATE_SYMBOL;
+        }
+        else
+        {
+            if (ot == OperatorType.PREDICATE) n = Node.OPERATOR_PREFIX_PREDICATE_SYMBOL;
+            else n = Node.OPERATOR_PREFIX_PREDICATE_SYMBOL;
+        }
+        return new Formula(n, Symbols.intern(s), left, right, meta);
     }
 
     public static
@@ -635,6 +672,12 @@ public class FormulaFactory
     Formula newListOfExpressions(List<Formula> elements)
     {
         return new Formula(Node.LIST_OF_EXPRESSIONS, elements, null);
+    }
+
+    public static
+    Formula newListOfPredicates(List<Formula> elements)
+    {
+        return new Formula(Node.LIST_OF_PREDICATES, elements, null);
     }
 
     public static

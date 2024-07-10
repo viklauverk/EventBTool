@@ -130,14 +130,16 @@ public enum Cmd
         "Usage: yms.add.expression N M",
         CmdYmsAddNumbers::new),
     YMS_ADD_POLYTYPES(
-        "yms.add.polytypes",
+        "yms.add.datatypes",
         "Add polymorphic data types to current symbol table.",
-        "Usage: yms.add.polytype H(T) List(T) Pair(T,K)",
+        "Usage: yms.add.datatype H List Pair",
         CmdYmsAddPolytypes::new),
     YMS_ADD_POLYOPS(
-        "yms.add.polyops",
-        "Add polymorphic operators to current symbol table.",
-        "Usage: yms.add.polyops h(T) listSize(T)",
+        "yms.add.operators",
+        "Add polymorphic operators to current symbol table.\n"+
+        "The name must be suffixed with +PE for notation Prefix/Expression\n"+
+        "+IP for Infix/Predicate, etc for +PP and +IE",
+        "Usage: yms.add.operators h+IP listSize+PE",
         CmdYmsAddPolyops::new),
     YMS_ADD_PREDICATES(
         "yms.add.predicates",

@@ -413,6 +413,11 @@ public class RenderFormulaUnicode extends RenderFormula
         visitChildren(i, ()->{cnvs().symbol(","); }); return i;
     }
 
+    @Override public Formula visit_LIST_OF_PREDICATES(Formula i)
+    {
+        visitChildren(i, ()->{cnvs().symbol(","); }); return i;
+    }
+
     @Override public Formula visit_MULTIPLICATION(Formula i)
     {
         visitLeft(i); cnvs().symbol(c("∗", "*")); visitMeta(i); visitRight(i); return i;
@@ -511,9 +516,42 @@ public class RenderFormulaUnicode extends RenderFormula
         cnvs().destructor(Symbols.name(i.intData())); visitMeta(i); return i;
     }
 
-    @Override public Formula visit_OPERATOR_SYMBOL(Formula i)
+    @Override public Formula visit_OPERATOR_INFIX_PREDICATE_SYMBOL(Formula i)
     {
-        cnvs().operator(Symbols.name(i.intData())); visitMeta(i); return i;
+        visitLeft(i); cnvs().space(); cnvs().operator(Symbols.name(i.intData())); visitMeta(i); cnvs().space(); visitRight(i); return i;
+    }
+
+    @Override public Formula visit_OPERATOR_INFIX_EXPRESSION_SYMBOL(Formula i)
+    {
+        visitLeft(i); cnvs().space(); cnvs().operator(Symbols.name(i.intData())); visitMeta(i); cnvs().space(); visitRight(i); return i;
+    }
+
+    @Override public Formula visit_OPERATOR_PREFIX_PREDICATE_SYMBOL(Formula i)
+    {
+        cnvs().operator(Symbols.name(i.intData())); visitMeta(i);
+
+        if (i.numChildren() == 1 && i.child(0).numChildren() > 0)
+        {
+            cnvs().symbol("(");
+            visitChild(i);
+            cnvs().symbol(")");
+        }
+
+        return i;
+    }
+
+    @Override public Formula visit_OPERATOR_PREFIX_EXPRESSION_SYMBOL(Formula i)
+    {
+        cnvs().operator(Symbols.name(i.intData())); visitMeta(i);
+
+        if (i.numChildren() == 1 && i.child(0).numChildren() > 0)
+        {
+            cnvs().symbol("(");
+            visitChild(i);
+            cnvs().symbol(")");
+        }
+
+        return i;
     }
 
     @Override public Formula visit_VARIABLE_PRIM_SYMBOL(Formula i)
