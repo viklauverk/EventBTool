@@ -20,7 +20,7 @@ EVBT(eb.show.formula --plain x:BOOL & y:S => E = F)
 +++++
 EVBT(sys.read models/Elevator)
 +++++
-EVBT(eb.show.part --frame --plain Elevator/events/enterDest/guards/grd_1)
+EVBT(eb.show.part --frame --plain mch/Elevator/event/enterDest/guard/grd_1)
 +++++
 END
 EOF

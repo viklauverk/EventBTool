@@ -46,12 +46,7 @@ public class CmdEbShowPart extends CmdCommon
             return unknownOptions();
         }
 
-        String pattern = line_;
-        if (!pattern.startsWith("*"))
-        {
-            // Force the pattern to match all to the end of the path.
-            pattern += "/";
-        }
+        String pattern = line_.trim();
 
         RenderTarget rt = toRenderTarget(render_plain, render_terminal, render_tex, render_html, console_.renderTarget());
         RenderAttributes ra = console_.renderAttributes().copy();

@@ -24,7 +24,7 @@ public class VisitTheory
     */
     public static void walk(RenderTheory rt, Theory thr, String pattern)
     {
-        boolean m = Util.match(thr.name()+"/", pattern);
+        boolean m = Util.match(RenderTheory.buildTheoryPartName(thr), pattern);
         if (m) rt.visit_TheoryStart(thr);
 
         if (m && thr.hasImports())
@@ -41,12 +41,12 @@ public class VisitTheory
 
         if (thr.hasPolymorphicDataTypes())
         {
-            boolean s = Util.match(thr.name()+"/datatypes/", pattern);
+            boolean s = Util.match(RenderTheory.buildDataTypePartName(thr, null), pattern);
 
             if (s) rt.visit_PolymorphicDataTypesStart(thr);
             for (PolymorphicDataType pdt : thr.polymorphicDataTypeOrdering())
             {
-                boolean ss = Util.match(thr.name()+"/datatypes/"+pdt.baseName()+"/", pattern);
+                boolean ss = Util.match(RenderTheory.buildDataTypePartName(thr, pdt), pattern);
                 if (ss)
                 {
                     rt.visit_PolymorphicDataType(thr, pdt);
@@ -57,12 +57,12 @@ public class VisitTheory
 
         if (thr.hasOperators())
         {
-            boolean s = Util.match(thr.name()+"/operators/", pattern);
+            boolean s = Util.match(RenderTheory.buildOperatorPartName(thr, null), pattern);
 
             if (s) rt.visit_OperatorsStart(thr);
             for (Operator oprt : thr.operatorOrdering())
             {
-                boolean ss = Util.match(thr.name()+"/operator/"+oprt.name()+"/", pattern);
+                boolean ss = Util.match(RenderTheory.buildOperatorPartName(thr, oprt), pattern);
                 if (ss)
                 {
                     rt.visit_Operator(thr, oprt);

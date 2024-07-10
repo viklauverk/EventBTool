@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -48,29 +48,24 @@ public class RenderContext extends CommonRenderFunctions
 
     public void visit_ContextEnd(Context ctx) { }
 
-    protected String buildContextPartName(Context ctx)
+    public static String buildContextPartName(Context ctx)
     {
-        return ctx.name();
+        return "ctx/"+ctx.name();
     }
 
-    protected String buildContextSetsPartName(Context ctx)
+    public static String buildSetPartName(Context ctx, CarrierSet set)
     {
-        return ctx.name()+"/sets";
+        return "ctx/"+ctx.name()+"/set/"+(set!=null?set.name():"");
     }
 
-    protected String buildContextSetPartName(Context ctx, CarrierSet set)
+    public static String buildConstantPartName(Context ctx, Constant con)
     {
-        return ctx.name()+"/constant/"+set.name();
+        return "ctx/"+ctx.name()+"/constant/"+(con!=null?con.name():"");
     }
 
-    protected String buildContextConstantsPartName(Context ctx)
+    public static String buildAxiomPartName(Context ctx, Axiom axm)
     {
-        return ctx.name()+"/constants";
-    }
-
-    protected String buildContextConstantPartName(Context ctx, Constant con)
-    {
-        return ctx.name()+"/constant/"+con.name();
+        return "ctx/"+ctx.name()+"/axiom/"+(axm!=null?axm.name():"");
     }
 
 

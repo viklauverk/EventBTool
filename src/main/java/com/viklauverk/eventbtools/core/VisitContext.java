@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -24,7 +24,7 @@ public class VisitContext
     */
     public static void walk(RenderContext rc, Context ctx, String pattern)
     {
-        boolean m = Util.match(ctx.name()+"/", pattern);
+        boolean m = Util.match(RenderContext.buildContextPartName(ctx), pattern);
         if (m) rc.visit_ContextStart(ctx);
 
         if (m && ctx.hasExtend())
@@ -41,12 +41,12 @@ public class VisitContext
 
         if (ctx.hasSets())
         {
-            boolean s = Util.match(ctx.name()+"/sets/", pattern);
+            boolean s = Util.match(RenderContext.buildSetPartName(ctx, null), pattern);
 
             if (s) rc.visit_SetsStart(ctx);
             for (CarrierSet set : ctx.setOrdering())
             {
-                boolean ss = Util.match(ctx.name()+"/sets/"+set.name()+"/", pattern);
+                boolean ss = Util.match(RenderContext.buildSetPartName(ctx, set), pattern);
                 if (ss)
                 {
                     rc.visit_Set(ctx, set);
@@ -57,12 +57,12 @@ public class VisitContext
 
         if (ctx.hasConstants())
         {
-            boolean c = Util.match(ctx.name()+"/constants/", pattern);
+            boolean c = Util.match(RenderContext.buildConstantPartName(ctx, null), pattern);
 
             if (c) rc.visit_ConstantsStart(ctx);
             for (Constant constant : ctx.constantOrdering())
             {
-                boolean cc =  Util.match(ctx.name()+"/constants/"+constant.name()+"/", pattern);
+                boolean cc =  Util.match(RenderContext.buildConstantPartName(ctx, constant), pattern);
                 if (cc) rc.visit_Constant(ctx, constant);
             }
             if (c) rc.visit_ConstantsEnd(ctx);
@@ -70,12 +70,12 @@ public class VisitContext
 
         if (ctx.hasAxioms())
         {
-            boolean a = Util.match(ctx.name()+"/axioms/", pattern);
+            boolean a = Util.match(RenderContext.buildAxiomPartName(ctx, null), pattern);
 
             if (a) rc.visit_AxiomsStart(ctx);
             for (Axiom axi : ctx.axiomOrdering())
             {
-                boolean aa =  Util.match(ctx.name()+"/axioms/"+axi.name()+"/", pattern);
+                boolean aa =  Util.match(RenderContext.buildAxiomPartName(ctx, axi), pattern);
                 if (aa) rc.visit_Axiom(ctx, axi);
             }
             if (a) rc.visit_AxiomsEnd(ctx);

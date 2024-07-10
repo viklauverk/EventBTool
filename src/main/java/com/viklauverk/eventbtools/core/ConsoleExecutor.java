@@ -62,7 +62,17 @@ public class ConsoleExecutor
         String args = line_.substring(index_);
         CmdCommon cco = cmd.constructor.create(console_, args);
         log.debug("Executing cmd %s on line >%s<\n", cmd, args);
-        return cco.go();
+        String response = "";
+        try
+        {
+            response = cco.go();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace(System.err);
+            response = "CAUGHT: "+e.toString();
+        }
+        return response;
     }
 
     void skipWhitespace()

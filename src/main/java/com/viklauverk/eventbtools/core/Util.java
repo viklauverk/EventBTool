@@ -233,10 +233,10 @@ public class Util
         return out.toString();
     }
 
-    // Pattern Elevator -- render whole machine
-    //         Elevator/invariants -- render all invariants
-    //         Elevator/invariants/inv_space -- render only this invariant
-
+    // Pattern mch/Elevator -- render whole machine
+    //         mch/Elevator/invariant -- render all invariants
+    //         mch/Elevator/event/moveUp -- render event
+    //         mch/Elevator/event/moveUp/guard/grd_1 -- render this guard only
     public static boolean match(String path, String pattern)
     {
         log_match.trace("match? \"%s\" \"%s\"", path, pattern);

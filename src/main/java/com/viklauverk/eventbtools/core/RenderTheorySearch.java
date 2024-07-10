@@ -26,12 +26,18 @@ public class RenderTheorySearch extends RenderTheory
 
     public void visit_Import(Theory thr, Theory ext) { }
 
+    public void visit_PolymorphicDataType(Theory thr, PolymorphicDataType pdt)
+    {
+        renders().walkPolymorphicDataType(pdt, "");
+    }
+
     public void visit_Operator(Theory thr, Operator oprt)
     {
-        renders().search().addPart(buildOperatorPartName(oprt));
+        renders().search().addPart(RenderTheory.buildOperatorPartName(thr, oprt));
     }
 
     public void visit_Axiom(Theory thr, Axiom axiom)
     {
+        renders().search().addPart(RenderTheory.buildAxiomPartName(thr, axiom));
     }
 }

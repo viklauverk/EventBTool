@@ -26,8 +26,7 @@ public class VisitPolymorphicDataType
 {
     public static void walk(RenderPolymorphicDataType re, PolymorphicDataType pdt, String pattern)
     {
-        String path = pdt.theory().name()+"/datatypes/"+pdt.baseName()+"/";
-        boolean m = Util.match(path, pattern);
+        boolean m = Util.match(RenderPolymorphicDataType.buildPolymorphicDataTypePartName(pdt), pattern);
 
         if (m) re.visit_PolymorphicDataTypeStart(pdt);
 
@@ -38,7 +37,7 @@ public class VisitPolymorphicDataType
             if (m) re.visit_ConstructorsStart(pdt);
             for (Constructor cnstr : pdt.constructorOrdering())
             {
-                boolean pp =  Util.match(path+"constructors/"+cnstr.name()+"/", pattern);
+                boolean pp =  Util.match(RenderPolymorphicDataType.buildConstructorPartName(pdt, cnstr), pattern);
                 if (pp) re.visit_Constructor(pdt, cnstr);
             }
             if (m) re.visit_ConstructorsEnd(pdt);

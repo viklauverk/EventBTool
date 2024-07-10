@@ -48,19 +48,24 @@ public class RenderTheory extends CommonRenderFunctions
 
     public void visit_TheoryEnd(Theory thr) { }
 
-    protected String buildTheoryPartName(Theory thr)
+    protected static String buildTheoryPartName(Theory thr)
     {
-        return thr.name();
+        return "thr/"+thr.name();
     }
 
-    protected String buildTheoryDataTypePartName(Theory thr, PolymorphicDataType pdt)
+    protected static String buildDataTypePartName(Theory thr, PolymorphicDataType pdt)
     {
-        return thr.name()+"/datatype/"+pdt.longName();
+        return "thr/"+thr.name()+"/datatype/"+(pdt!=null?pdt.longName():"");
     }
 
-    protected String buildOperatorPartName(Operator oprt)
+    protected static String buildOperatorPartName(Theory thr, Operator oprt)
     {
-        return oprt.name();
+        return "thr/"+thr.name()+"/operator/"+(oprt!=null?oprt.name():"");
+    }
+
+    protected static String buildAxiomPartName(Theory thr, Axiom axm)
+    {
+        return "thr/"+thr.name()+"/axiom/"+(axm!=null?axm.name():"");
     }
 
 }

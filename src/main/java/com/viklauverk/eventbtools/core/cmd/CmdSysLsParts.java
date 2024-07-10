@@ -32,18 +32,11 @@ public class CmdSysLsParts extends CmdCommon
     public String go()
     {
         String part = line_.trim();
-        try
-        {
-            List<String> parts = console_.sys().listParts(part);
-            StringBuilder sb = new StringBuilder();
-            for (String p : parts) {
-                sb.append(p+"\n");
-            }
-            return sb.toString();
+        List<String> parts = console_.sys().listParts(part);
+        StringBuilder sb = new StringBuilder();
+        for (String p : parts) {
+            sb.append(p+"\n");
         }
-        catch (Exception e)
-        {
-            return e.getMessage();
-        }
+        return sb.toString();
     }
 }

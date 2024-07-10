@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -54,35 +54,24 @@ public class RenderMachine extends CommonRenderFunctions
 
     public void visit_MachineEnd(Machine mch) { }
 
-    protected String buildMachinePartName(Machine mch)
+    protected static String buildMachinePartName(Machine mch)
     {
-        return mch.name();
+        return "mch/"+(mch!=null?mch.name():"");
     }
 
-    protected String buildMachineVariablesPartName(Machine mch)
+    protected static String buildMachineVariablePartName(Machine mch, Variable var)
     {
-        return mch.name()+"/variables";
+        return "mch/"+mch.name()+"/variable/"+(var!=null?var.name():"");
     }
 
-    protected String buildMachineVariablePartName(Machine mch, Variable var)
+    protected static String buildMachineInvariantPartName(Machine mch, Invariant inv)
     {
-        return mch.name()+"/variable/"+var.name();
+        return "mch/"+mch.name()+"/invariant/"+(inv!=null?inv.name():"");
     }
 
-    protected String buildMachineInvariantsPartName(Machine mch)
+    protected static String buildMachineVariantPartName(Machine mch, Variant var)
     {
-        return mch.name()+"/invariants";
+        return "mch/"+mch.name()+"/variant/"+(var!=null?var.name():"");
     }
-
-    protected String buildMachineInvariantPartName(Machine mch, Invariant inv)
-    {
-        return mch.name()+"/invariant/"+inv.name();
-    }
-
-    protected String buildMachineEventsPartName(Machine mch)
-    {
-        return mch.name()+"/events";
-    }
-
 
 }

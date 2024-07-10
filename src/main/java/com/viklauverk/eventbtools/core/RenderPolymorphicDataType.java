@@ -34,18 +34,13 @@ public class RenderPolymorphicDataType extends CommonRenderFunctions
 
     public void visit_PolymorphicDataTypeEnd(PolymorphicDataType pdt) { }
 
-    protected String buildPolymorphicDataTypePartName(PolymorphicDataType pdt)
+    protected static String buildPolymorphicDataTypePartName(PolymorphicDataType pdt)
     {
-        return pdt.theory().name()+"/"+pdt.baseName();
+        return "thr/"+pdt.theory().name()+"/datatype/"+pdt.baseName();
     }
 
-    protected String buildConstructorsPartName(PolymorphicDataType pdt)
+    protected static String buildConstructorPartName(PolymorphicDataType pdt, Constructor cnstr)
     {
-        return pdt.theory().name()+"/"+pdt.baseName()+"/constructors";
-    }
-
-    protected String buildConstructorPartName(PolymorphicDataType pdt, Constructor cnstr)
-    {
-        return pdt.theory().name()+"/"+pdt.baseName()+"/constructor/"+cnstr.name();
+        return "thr/"+pdt.theory().name()+"/datatype/"+pdt.baseName()+"/constructor/"+(cnstr!=null?cnstr.name():"");
     }
 }

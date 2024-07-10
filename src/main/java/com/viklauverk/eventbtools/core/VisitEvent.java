@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -26,8 +26,7 @@ public class VisitEvent
 {
     public static void walk(RenderEvent re, Event e, String pattern)
     {
-        String path = e.machine().name()+"/events/"+e.name()+"/";
-        boolean m = Util.match(path, pattern);
+        boolean m = Util.match(RenderEvent.buildEventPartName(e), pattern);
 
         if (m) re.visit_EventStart(e);
 
@@ -55,7 +54,7 @@ public class VisitEvent
             if (m) re.visit_ParametersStart(e);
             for (Variable par : e.parameterOrdering())
             {
-                boolean pp =  Util.match(path+"parameters/"+par.name()+"/", pattern);
+                boolean pp =  Util.match(RenderEvent.buildParameterPartName(e, par), pattern);
                 if (pp) re.visit_Parameter(e, par);
             }
             if (m) re.visit_ParametersEnd(e);
@@ -66,17 +65,18 @@ public class VisitEvent
             if (m) re.visit_GuardsStart(e);
             for (Guard gua : e.guardOrdering())
             {
-                boolean gg =  Util.match(path+"guards/"+gua.name()+"/", pattern);
+                boolean gg =  Util.match(RenderEvent.buildGuardPartName(e, gua), pattern);
                 if (gg) re.visit_Guard(e, gua);
             }
             if (m) re.visit_GuardsEnd(e);
         }
+
         if (e.hasWitnesses())
         {
             if (m) re.visit_WitnessesStart(e);
             for (Witness wit : e.witnessOrdering())
             {
-                boolean ww =  Util.match(path+"witnesses/"+wit.name()+"/", pattern);
+                boolean ww =  Util.match(RenderEvent.buildWitnessPartName(e, wit), pattern);
                 if (ww) re.visit_Witness(e, wit);
             }
             if (m) re.visit_WitnessesEnd(e);
@@ -87,7 +87,7 @@ public class VisitEvent
             if (m) re.visit_ActionsStart(e);
             for (Action act : e.actionOrdering())
             {
-                boolean aa =  Util.match(path+"actions/"+act.name()+"/", pattern);
+                boolean aa =  Util.match(RenderEvent.buildActionPartName(e, act), pattern);
                 if (aa) re.visit_Action(e, act);
             }
             if (m) re.visit_ActionsEnd(e);

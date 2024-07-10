@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -54,39 +54,29 @@ public class RenderEvent extends CommonRenderFunctions
 
     public void visit_EventEnd(Event eve) { }
 
-    protected String buildEventPartName(Event e)
+    protected static String buildEventPartName(Event e)
     {
-        return e.machine().name()+"/"+e.name();
+        return "mch/"+e.machine().name()+"/event/"+e.name();
     }
 
-    protected String buildParametersPartName(Event e)
+    protected static String buildParameterPartName(Event e, Variable var)
     {
-        return e.machine().name()+"/"+e.name()+"/parameters";
+        return "mch/"+e.machine().name()+"/event/"+e.name()+"/parameter/"+var.name();
     }
 
-    protected String buildParameterPartName(Event e, Variable var)
+    protected static String buildGuardPartName(Event e, Guard g)
     {
-        return e.machine().name()+"/"+e.name()+"/parameter/"+var.name();
+        return "mch/"+e.machine().name()+"/event/"+e.name()+"/guard/"+g.name();
     }
 
-    protected String buildGuardsPartName(Event e)
+    protected static String buildWitnessPartName(Event e, Witness wtn)
     {
-        return e.machine().name()+"/"+e.name()+"/guards";
+        return "mch/"+e.machine().name()+"/event/"+e.name()+"/witness/"+wtn.name();
     }
 
-    protected String buildGuardPartName(Event e, Guard g)
+    protected static String buildActionPartName(Event e, Action a)
     {
-        return e.machine().name()+"/"+e.name()+"/guard/"+g.name();
-    }
-
-    protected String buildActionsPartName(Event e)
-    {
-        return e.machine().name()+"/"+e.name()+"/actions";
-    }
-
-    protected String buildActionPartName(Event e, Action a)
-    {
-        return e.machine().name()+"/"+e.name()+"/action/"+a.name();
+        return "mch/"+e.machine().name()+"/event/"+e.name()+"/action/"+a.name();
     }
 
 }

@@ -97,7 +97,7 @@ public class DocGenTeX extends BaseDocGen
 
             cnvs.append("\\pagebreak\n\n");
             cnvs.append("\\section{\\KEYWL{CONTEXT}\\small\\ "+Util.texSafe(ctx)+" "+pos+"}\n\n");
-            cnvs.append("EVBT(eb.show.part --tex "+ctx+")\n");
+            cnvs.append("EVBT(eb.show.part --tex ctx/"+ctx+")\n");
         }
 
         for (String mch : sys().machineNames())
@@ -115,7 +115,7 @@ public class DocGenTeX extends BaseDocGen
             }
 
             cnvs.append("\\section{\\KEYWL{"+m.machineOrRefinement().toUpperCase()+"}\\small\\ "+Util.texSafe(mch)+" "+pos+"}\n\n");
-            cnvs.append("EVBT(eb.show.part --tex "+mch+")\n");
+            cnvs.append("EVBT(eb.show.part --tex mch/"+mch+")\n");
         }
 
         for (String thr : sys().deployedTheoryNames())
@@ -133,7 +133,7 @@ public class DocGenTeX extends BaseDocGen
             }
 
             cnvs.append("\\section{\\KEYWL{THEORY}\\small\\ "+Util.texSafe(thr)+" "+pos+"}\n\n");
-            cnvs.append("EVBT(eb.show.part --tex "+thr+")\n");
+            cnvs.append("EVBT(eb.show.part --tex thr/"+thr+")\n");
         }
 
         cnvs.append("\\printindex\n");

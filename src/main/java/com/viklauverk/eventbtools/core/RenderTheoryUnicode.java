@@ -100,6 +100,30 @@ public class RenderTheoryUnicode extends RenderTheory
         cnvs().align();
         cnvs().comment(oprt.comment());
         cnvs().stopAlignedLine();
+
+/*
+        String id = buildOperatorPartName(oprt);
+
+        cnvs().marker(id);
+
+        cnvs().startLine();
+        if (oprt.notation() == OperatorNotationType.PREFIX)
+        {
+            cnvs().keywordLeft("prefix ");
+        }
+        if (oprt.notation() == OperatorNotationType.INFIX)
+        {
+            cnvs().keywordLeft("infix ");
+        }
+        cnvs().keywordLeft("operator ");
+        cnvs().id(oprt.name());
+        cnvs().endLine();
+
+        if (oprt.hasComment())
+        {
+            cnvs().acomment(oprt.comment());
+        }
+*/
     }
 
     @Override public void visit_OperatorsEnd(Theory thr)

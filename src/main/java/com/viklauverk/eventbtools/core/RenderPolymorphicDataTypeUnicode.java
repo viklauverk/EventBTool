@@ -32,27 +32,34 @@ public class RenderPolymorphicDataTypeUnicode extends RenderPolymorphicDataType
         }
         cnvs().startLine();
         cnvs().id(pdt.longName());
+        if (pdt.hasConstructors())
+        {
+            cnvs().keyword(" ≜");
+        }
         cnvs().endLine();
     }
 
     @Override
     public void visit_ConstructorsStart(PolymorphicDataType pdt)
     {
-        cnvs().startLine();
-        cnvs().keywordLeft("► ");
-        cnvs().space();
     }
 
     @Override
     public void visit_Constructor(PolymorphicDataType pdt, Constructor cnstr)
     {
-        //renders().walkConstructor(pdt, "");
+        cnvs().startAlignedLine();
+        cnvs().keywordLeft("    ► ");
+        cnvs().startMath();
+        cnvs().constructor(cnstr.name());
+        cnvs().stopMath();
+        cnvs().align();
+        cnvs().comment(cnstr.comment());
+        cnvs().stopAlignedLine();
     }
 
     @Override
     public void visit_ConstructorsEnd(PolymorphicDataType pdt)
     {
-        cnvs().endLine();
     }
 
     @Override
@@ -63,8 +70,5 @@ public class RenderPolymorphicDataTypeUnicode extends RenderPolymorphicDataType
     @Override
     public void visit_PolymorphicDataTypeEnd(PolymorphicDataType pdt)
     {
-        cnvs().startLine();
-        cnvs().keyword("end");
-        cnvs().endLine();
     }
 }

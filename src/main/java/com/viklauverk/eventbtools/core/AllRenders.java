@@ -121,11 +121,6 @@ public class AllRenders
         VisitTheory.walk(rt_, t, pattern);
     }
 
-    public void walkPolymorphicDataType(PolymorphicDataType pdt, String pattern)
-    {
-        VisitPolymorphicDataType.walk(rpdt_, pdt, pattern);
-    }
-
     public void walkContext(Context c, String pattern)
     {
         VisitContext.walk(rc_, c, pattern);
@@ -139,6 +134,11 @@ public class AllRenders
     public void walkEvent(Event e, String pattern)
     {
         VisitEvent.walk(re_, e, pattern);
+    }
+
+    public void walkPolymorphicDataType(PolymorphicDataType pdt, String pattern)
+    {
+        VisitPolymorphicDataType.walk(rpdt_, pdt, pattern);
     }
 
     public void walkFormula(Formula i)

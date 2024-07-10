@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -31,22 +31,9 @@ public class RenderMachineSearch extends RenderMachine
     }
 
     @Override
-    public void visit_VariablesStart(Machine mch)
-    {
-        renders().search().addPart(buildMachineVariablesPartName(mch));
-    }
-
-    @Override
     public void visit_Variable(Machine mch, Variable variable)
     {
         renders().search().addPart(buildMachineVariablePartName(mch, variable));
-    }
-
-
-    @Override
-    public void visit_InvariantsStart(Machine mch)
-    {
-        renders().search().addPart(buildMachineInvariantsPartName(mch));
     }
 
     @Override
@@ -56,9 +43,9 @@ public class RenderMachineSearch extends RenderMachine
     }
 
     @Override
-    public void visit_EventsStart(Machine mch)
+    public void visit_Variant(Machine mch, Variant variant)
     {
-        renders().search().addPart(buildMachineEventsPartName(mch));
+        renders().search().addPart(buildMachineVariantPartName(mch, variant));
     }
 
     @Override

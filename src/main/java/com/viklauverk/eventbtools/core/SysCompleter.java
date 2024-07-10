@@ -32,18 +32,13 @@ public class SysCompleter implements Completer
         {
             int space= line.line().indexOf(" ");
             if (space == -1) return;
-
             String path = line.line().substring(space+1).trim();
 
-            String[] parts = path.split("/");
+            List<String> parts = sys_.listParts("");
 
-            if (sys_.getMachine(parts[0]) == null)
+            for (String s : parts)
             {
-                String mname = parts[0].trim();
-                for (String m : sys_.machineNames())
-                {
-                    if (m.startsWith(mname)) candidates.add(new Candidate(m+"/"));
-                }
+                if (s.startsWith(path)) candidates.add(new Candidate(s));
             }
 
             return;

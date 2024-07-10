@@ -26,7 +26,6 @@ public class RenderPolymorphicDataTypeTeX extends RenderPolymorphicDataTypeUnico
         cnvs().set(pdt.longName());
         cnvs().append(" ");
         cnvs().append("}\n");
-        super.visit_PolymorphicDataTypeStart(pdt);
     }
 
 }
