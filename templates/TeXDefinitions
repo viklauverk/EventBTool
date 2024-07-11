@@ -172,6 +172,7 @@
 %\def\EvBUseGrayScale{1}
 
 \ifx\EvBUseGrayScale\undefined
+% Values for colored pretty printing.
 \definecolor{ProvedColor}{HTML}{\LimeGreen}%
 \definecolor{NotProvedColor}{HTML}{\Firebrick}%
 \definecolor{ReviewedColor}{HTML}{\CornflowerBlue}%
@@ -181,10 +182,10 @@
 \definecolor{EvBConstant}{HTML}{\Indigo}%
 \definecolor{EvBCarrierSet}{HTML}{\DarkGreen}%
 \definecolor{EvBPrimitiveSet}{HTML}{000000}%
-\definecolor{EvBPolymorphicDataType}{HTML}{000000}%
-\definecolor{EvBConstructor}{HTML}{000000}%
-\definecolor{EvBDestructor}{HTML}{000000}%
-\definecolor{EvBOperator}{HTML}{000000}%
+\definecolor{EvBPolymorphicDataType}{HTML}{\MediumVioletRed}%
+\definecolor{EvBConstructor}{HTML}{\MediumVioletRed}%
+\definecolor{EvBDestructor}{HTML}{\MediumVioletRed}%
+\definecolor{EvBOperator}{HTML}{\MediumVioletRed}%
 \definecolor{EvBComment}{HTML}{000000}%
 \definecolor{EvBLabel}{HTML}{0066cc}%
 \definecolor{EvBNames}{HTML}{000000}%
@@ -195,6 +196,7 @@
 \definecolor{EvBAny}{HTML}{000000}%
 \definecolor{EvBImpl}{HTML}{\Goldenrod}%
 \else
+% Values for grayscale pretty printing.
 \definecolor{ProvedColor}{HTML}{888888}%
 \definecolor{NotProvedColor}{HTML}{888888}%
 \definecolor{ReviewedColor}{HTML}{888888}%
@@ -204,10 +206,10 @@
 \definecolor{EvBConstant}{HTML}{000000}%
 \definecolor{EvBCarrierSet}{HTML}{000000}%
 \definecolor{EvBPrimitiveSet}{HTML}{000000}%
-\definecolor{EvBPolymorphicDataType}{HTML}{\Cyan}%
-\definecolor{EvBConstructor}{HTML}{\Cyan}%
-\definecolor{EvBDestructor}{HTML}{\Cyan}%
-\definecolor{EvBOperator}{HTML}{\Cyan}%
+\definecolor{EvBPolymorphicDataType}{HTML}{000000}%
+\definecolor{EvBConstructor}{HTML}{000000}%
+\definecolor{EvBDestructor}{HTML}{000000}%
+\definecolor{EvBOperator}{HTML}{000000}%
 \definecolor{EvBComment}{HTML}{000000}%
 \definecolor{EvBLabel}{HTML}{000000}%
 \definecolor{EvBNames}{HTML}{000000}%

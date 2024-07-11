@@ -64,7 +64,7 @@ public class TheoryPath
         return deployed_theories_;
     }
 
-    public synchronized void load(File dir, File trd) throws Exception
+    public void load(File dir, File trd) throws Exception
     {
         if (loaded_) return;
 
@@ -99,36 +99,47 @@ public class TheoryPath
         for (Node at : ats)
         {
             String s = at.valueOf("@org.eventb.theory.core.availableTheory");
-            int p = s.indexOf("|");
-            int pp = s.indexOf("#");
-            String dtf_file = s.substring(0, p); // Deployed Theory File
-            String name = s.substring(pp+1);
+            String source = at.valueOf("@org.eventb.core.source");
+            useTheory(s, source);
+        }
+    }
 
-            // Try to populate with this imported theory.
-            File dtf = new File(theory_root_dir_, dtf_file);
-            dtf = dtf.getAbsoluteFile();
-            if (!dtf.exists() || !dtf.isFile())
-            {
-                LogModule.usageErrorStatic("Cannot find \"%s\" for theory \"%s\" which is used from theory path \"%s\"!\n"+
-                                           "Use --theory-root-dir=... to point where theory projects are located.",
-                                           dtf,
-                                           name,
-                                           tcl_);
-            }
-            deployed_theories_.add(name);
-            deployed_theory_.put(name, dtf);
+    public String useTheory(String in, String source)
+    {
+        // in is: /SimpleTheoryTest/Crabs.dtf|org.eventb.theory.core.deployedTheoryRoot#Crabs
+        int p = in.indexOf("|");
+        int pp = in.indexOf("#");
+        String dtf_file = in.substring(0, p); // Deployed Theory File
+        String name = in.substring(pp+1);
 
-            log.debug("uses deployed theory: "+name+" loaded from: "+dtf);
+        // Try to populate with this imported theory.
+        File dtf = new File(theory_root_dir_, dtf_file);
+        dtf = dtf.getAbsoluteFile();
+        if (!dtf.exists() || !dtf.isFile())
+        {
+            LogModule.usageErrorStatic("Cannot find \"%s\" for theory \"%s\" which is used from theory path \"%s\"!\n"+
+                                       "Use --theory-root-dir=... to point where theory projects are located.",
+                                       dtf,
+                                       name,
+                                       tcl_);
+        }
+        deployed_theories_.add(name);
+        deployed_theory_.put(name, dtf);
 
+        log.debug("uses deployed theory: "+name+" loaded from: "+dtf);
+
+        if (source != null)
+        {
             // Check if we have the source to the theory.
-            s = at.valueOf("@org.eventb.core.source");
-            p = s.indexOf("|");
-            String tul_file = s.substring(0, p); // Source for theory
+            p = source.indexOf("|");
+            String tul_file = source.substring(0, p); // Source for theory
             File tul = new File(theory_root_dir_, tul_file);
             if (tul.exists() && tul.isFile())
             {
                 deployed_theory_source_.put(name, tul);
             }
         }
+
+        return name;
     }
 }

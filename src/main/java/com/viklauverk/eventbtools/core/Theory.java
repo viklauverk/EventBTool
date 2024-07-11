@@ -332,9 +332,10 @@ public class Theory
         return edk_theory_;
     }
 
-    public synchronized void loadDeployedDTF() throws Exception
+    public void loadDeployedDTF() throws Exception
     {
         if (loaded_) return;
+        // We mark ourselves early to prevent restart when loading imported theories.
         loaded_ = true;
         deployed_ = true;
         SAXReader reader = new SAXReader();
@@ -368,40 +369,17 @@ public class Theory
         }
 
         // Does this theory import other theories?
-        /*
-        List<Node> itps = document.selectNodes("//org.eventb.theory.core.importTheoryProject");
-        for (Node itp : itps)
+        List<Node> its = document.selectNodes("//org.eventb.theory.core.useTheory");
+        for (Node it : its)
         {
-            List<Node> its = itp.selectNodes("//org.eventb.theory.core.importTheory");
-            for (Node it : its)
-            {
-                String s = it.valueOf("@org.eventb.theory.core.importTheory");
-                int p = s.indexOf("|");
-                int pp = s.indexOf("#");
-                String dtf_file = s.substring(0, p); // Deployed Theory File
-                String name = s.substring(pp+1);
-
-                Theory t = sys_.getDeployedTheory(name);
-                if (t == null)
-                {
-                    // Try to populate with this imported theory.
-                    File source = new File(theory_root_dir_, dtf_file);
-                    if (!source.exists() || !source.isFile())
-                    {
-                        LogModule.usageErrorStatic("Cannot find \"%s\" for theory \"%s\" which is imported from theory \"%s\"!\n"+
-                                                   "Use --theory-root-dir=... to point where theory projects are located.",
-                                                   source,
-                                                   name,
-                                                   name());
-                    }
-                    //sys().populateDeployedTheory(name, source, theory_root_dir_);
-                    t = sys_.getDeployedTheory(name);
-                }
-                assert (t != null) : "Error in loaded theory xml file. Cannot find imported theory "+name;
-                imports_theories_.add(t);
-            }
+            String in = it.valueOf("@org.eventb.core.scTarget");
+            String name = sys().theoryPath().useTheory(in, null);
+            sys().populateDeployedTheories();
+            sys().loadDeployedTheories();
+            Theory t = sys().getDeployedTheory(name);
+            assert (t != null) : "Error when loading used theory xml file. Cannot find imported theory "+name;
         }
-        */
+
         // Load the data types.
         List<Node> list = document.selectNodes("//org.eventb.theory.core.scDatatypeDefinition");
         for (Node n : list)
@@ -713,6 +691,11 @@ public class Theory
         log.debug("adding phantom operator %s with %s %s", o.name(), o.notationType(), o.operatorType());
 
         return o;
+    }
+
+    public boolean isLoaded()
+    {
+        return loaded_;
     }
 
 }

@@ -367,6 +367,7 @@ public static String TeXDefinitions =
 "%\\def\\EvBUseGrayScale{1}\n"+
 "\n"+
 "\\ifx\\EvBUseGrayScale\\undefined\n"+
+"% Values for colored pretty printing.\n"+
 "\\definecolor{ProvedColor}{HTML}{\\LimeGreen}%\n"+
 "\\definecolor{NotProvedColor}{HTML}{\\Firebrick}%\n"+
 "\\definecolor{ReviewedColor}{HTML}{\\CornflowerBlue}%\n"+
@@ -376,10 +377,10 @@ public static String TeXDefinitions =
 "\\definecolor{EvBConstant}{HTML}{\\Indigo}%\n"+
 "\\definecolor{EvBCarrierSet}{HTML}{\\DarkGreen}%\n"+
 "\\definecolor{EvBPrimitiveSet}{HTML}{000000}%\n"+
-"\\definecolor{EvBPolymorphicDataType}{HTML}{000000}%\n"+
-"\\definecolor{EvBConstructor}{HTML}{000000}%\n"+
-"\\definecolor{EvBDestructor}{HTML}{000000}%\n"+
-"\\definecolor{EvBOperator}{HTML}{000000}%\n"+
+"\\definecolor{EvBPolymorphicDataType}{HTML}{\\MediumVioletRed}%\n"+
+"\\definecolor{EvBConstructor}{HTML}{\\MediumVioletRed}%\n"+
+"\\definecolor{EvBDestructor}{HTML}{\\MediumVioletRed}%\n"+
+"\\definecolor{EvBOperator}{HTML}{\\MediumVioletRed}%\n"+
 "\\definecolor{EvBComment}{HTML}{000000}%\n"+
 "\\definecolor{EvBLabel}{HTML}{0066cc}%\n"+
 "\\definecolor{EvBNames}{HTML}{000000}%\n"+
@@ -390,6 +391,7 @@ public static String TeXDefinitions =
 "\\definecolor{EvBAny}{HTML}{000000}%\n"+
 "\\definecolor{EvBImpl}{HTML}{\\Goldenrod}%\n"+
 "\\else\n"+
+"% Values for grayscale pretty printing.\n"+
 "\\definecolor{ProvedColor}{HTML}{888888}%\n"+
 "\\definecolor{NotProvedColor}{HTML}{888888}%\n"+
 "\\definecolor{ReviewedColor}{HTML}{888888}%\n"+
@@ -399,10 +401,10 @@ public static String TeXDefinitions =
 "\\definecolor{EvBConstant}{HTML}{000000}%\n"+
 "\\definecolor{EvBCarrierSet}{HTML}{000000}%\n"+
 "\\definecolor{EvBPrimitiveSet}{HTML}{000000}%\n"+
-"\\definecolor{EvBPolymorphicDataType}{HTML}{\\Cyan}%\n"+
-"\\definecolor{EvBConstructor}{HTML}{\\Cyan}%\n"+
-"\\definecolor{EvBDestructor}{HTML}{\\Cyan}%\n"+
-"\\definecolor{EvBOperator}{HTML}{\\Cyan}%\n"+
+"\\definecolor{EvBPolymorphicDataType}{HTML}{000000}%\n"+
+"\\definecolor{EvBConstructor}{HTML}{000000}%\n"+
+"\\definecolor{EvBDestructor}{HTML}{000000}%\n"+
+"\\definecolor{EvBOperator}{HTML}{000000}%\n"+
 "\\definecolor{EvBComment}{HTML}{000000}%\n"+
 "\\definecolor{EvBLabel}{HTML}{000000}%\n"+
 "\\definecolor{EvBNames}{HTML}{000000}%\n"+

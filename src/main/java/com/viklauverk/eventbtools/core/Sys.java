@@ -379,8 +379,12 @@ public class Sys
     {
         for (String name : theory_path_.deployedTheories())
         {
-            addDeployedTheory(new Theory(name, this, theory_path_.getDeployedTheoryDTF(name), null));
-            log.debug("found deployed theory "+name);
+            Theory t = getDeployedTheory(name);
+            if (t == null)
+            {
+                addDeployedTheory(new Theory(name, this, theory_path_.getDeployedTheoryDTF(name), null));
+                log.debug("populate deployed theory "+name);
+            }
         }
     }
 
@@ -398,13 +402,16 @@ public class Sys
         }
     }
 
-    private void loadDeployedTheories() throws Exception
+    public void loadDeployedTheories() throws Exception
     {
      	for (String name : deployedTheoryNames())
         {
             Theory t = getDeployedTheory(name);
-            t.loadDeployedDTF();
-            t.buildSymbolTable();
+            if (!t.isLoaded())
+            {
+                t.loadDeployedDTF();
+                t.buildSymbolTable();
+            }
         }
     }
 
@@ -585,5 +592,10 @@ public class Sys
         }
 
         return dummy_theory_;
+    }
+
+    public TheoryPath theoryPath()
+    {
+        return theory_path_;
     }
 }
