@@ -93,7 +93,7 @@ public class TestInternals
         ok &= testFailedMatch("height ≔ speeds ∪ {72}", "x ≔ x ∪ {E}", "FAILURE"); // Should be same variable in both x positions.
 
         // Test matching with polymorphic data types
-        ok &= testMatch("height:List(NAT,BOOL)", "x:H(A)", "x=height H(A)=List(ℕ,BOOL) A=ℕ,BOOL");
+        ok &= testMatch("height:List(NAT,BOOL)", "x:H(A)", "x=height A=ℕ,BOOL H=List(ℕ,BOOL) ");
 
         // Test matching with polymorphic data types
         ok &= testFailedMatch("height:List(INT)", "x:S(A)", "...");
