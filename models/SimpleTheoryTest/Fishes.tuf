@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.theory.core.theoryRoot org.eventb.core.comment="A fishy theory." org.eventb.core.configuration="org.eventb.theory.core.thy">
+    <org.eventb.theory.core.importTheoryProject name="'" org.eventb.theory.core.importTheoryProject="/SimpleTheoryTest">
+        <org.eventb.theory.core.importTheory name="'" org.eventb.theory.core.importTheory="/SimpleTheoryTest/Crabs.dtf|org.eventb.theory.core.deployedTheoryRoot#Crabs"/>
+    </org.eventb.theory.core.importTheoryProject>
+    <org.eventb.theory.core.typeParameter name="(" org.eventb.core.comment="The type parameter T." org.eventb.core.identifier="T"/>
+    <org.eventb.theory.core.datatypeDefinition name=")" org.eventb.core.comment="A fishy fish." org.eventb.core.identifier="Salmon">
+        <org.eventb.theory.core.typeArgument name="'" org.eventb.theory.core.givenType="T"/>
+        <org.eventb.theory.core.datatypeConstructor name="(" org.eventb.core.comment="A big constructor." org.eventb.core.identifier="LeBigFish"/>
+    </org.eventb.theory.core.datatypeDefinition>
+</org.eventb.theory.core.theoryRoot>

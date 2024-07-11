@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1720727007697" org.eventb.texttools.text_representation="machine LePond&#10;&#10;variables fish fush&#10;&#10;&#10;invariants&#10;&#9;@inv1 fish ∈ Salmon(ℤ) // Invariant 1 comment&#10;&#9;@inv2 fush ∈ Salmon(Crustean(BOOL)) // Invariant 2 comment&#10;&#10;events&#10;  event INITIALISATION&#10;  then&#10;  @act1 fish ≔  LeBigFish  // Constructor makes Salmon(ℤ)&#10;  @act2 fush ≔  LeBigFish // Constructor make Salmon(Crustean(BOOL))&#10;  end&#10;end&#10;" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="_tMLRUD-9Ee-sh8HVMshK-g" org.eventb.core.assignment="fish ≔  LeBigFish" org.eventb.core.comment="Constructor makes Salmon(ℤ)" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="_wN1rgD-9Ee-sh8HVMshK-g" org.eventb.core.assignment="fush ≔  LeBigFish" org.eventb.core.comment="Constructor make Salmon(Crustean(BOOL))" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="_mDTKID-9Ee-sh8HVMshK-g" org.eventb.core.generated="false" org.eventb.core.identifier="fish"/>
+    <org.eventb.core.invariant name="_mDTKIT-9Ee-sh8HVMshK-g" org.eventb.core.comment="Invariant 1 comment" org.eventb.core.generated="false" org.eventb.core.label="inv1" org.eventb.core.predicate="fish ∈ Salmon(ℤ)"/>
+    <org.eventb.core.invariant name="_mDTKIj-9Ee-sh8HVMshK-g" org.eventb.core.comment="Invariant 2 comment" org.eventb.core.generated="false" org.eventb.core.label="inv2" org.eventb.core.predicate="fush ∈ Salmon(Crustean(BOOL))"/>
+    <org.eventb.core.variable name="_nktSgD-9Ee-sh8HVMshK-g" org.eventb.core.generated="false" org.eventb.core.identifier="fush"/>
+</org.eventb.core.machineFile>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.theory.core.theoryRoot org.eventb.core.configuration="org.eventb.theory.core.thy">
+    <org.eventb.theory.core.typeParameter name="'" org.eventb.core.identifier="T"/>
+    <org.eventb.theory.core.datatypeDefinition name="(" org.eventb.core.identifier="Crustean">
+        <org.eventb.theory.core.datatypeConstructor name="'" org.eventb.core.identifier="nilfish"/>
+        <org.eventb.theory.core.typeArgument name="(" org.eventb.theory.core.givenType="T"/>
+        <org.eventb.theory.core.datatypeConstructor name=")" org.eventb.core.identifier="conshel">
+            <org.eventb.theory.core.constructorArgument name="'" org.eventb.core.identifier="head" org.eventb.theory.core.type="T"/>
+            <org.eventb.theory.core.constructorArgument name="(" org.eventb.core.identifier="tail" org.eventb.theory.core.type="Crustean(T)"/>
+        </org.eventb.theory.core.datatypeConstructor>
+    </org.eventb.theory.core.datatypeDefinition>
+    <org.eventb.theory.core.newOperatorDefinition name=")" org.eventb.core.label="compo" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="false" org.eventb.theory.core.notationType="INFIX">
+        <org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="ℤ&#9;" org.eventb.core.identifier="left"/>
+        <org.eventb.theory.core.operatorArgument name="(" org.eventb.core.expression="ℤ&#9;" org.eventb.core.identifier="right"/>
+        <org.eventb.theory.core.directOperatorDefinition name=")" org.eventb.theory.core.formula="⊤"/>
+    </org.eventb.theory.core.newOperatorDefinition>
+</org.eventb.theory.core.theoryRoot>

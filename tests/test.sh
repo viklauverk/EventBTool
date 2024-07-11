@@ -50,6 +50,9 @@ if [ "$?" != "0" ]; then exit 1; fi
 ./tests/test_squareroot.sh $PROG $OUT
 if [ "$?" != "0" ]; then exit 1; fi
 
+./tests/test_simpletheory.sh $PROG $OUT
+if [ "$?" != "0" ]; then exit 1; fi
+
 #tests/test_trivial_atc.sh $PROG $OUT
 #if [ "$?" != "0" ]; then RC="1"; fi
 

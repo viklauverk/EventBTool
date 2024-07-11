@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.theory.core.scTheoryRoot org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.theory.core.thy" org.eventb.core.source="/SimpleTheoryTest/Fishes.tuf">
+    <org.eventb.theory.core.scImportTheoryProject name="'" org.eventb.core.source="/SimpleTheoryTest/Fishes.tuf|org.eventb.theory.core.theoryRoot#Fishes|org.eventb.theory.core.importTheoryProject#'" org.eventb.theory.core.importTheoryProject="/SimpleTheoryTest">
+        <org.eventb.theory.core.scImportTheory name="'" org.eventb.core.source="/SimpleTheoryTest/Fishes.tuf|org.eventb.theory.core.theoryRoot#Fishes|org.eventb.theory.core.importTheoryProject#'|org.eventb.theory.core.importTheory#'" org.eventb.theory.core.importTheory="/SimpleTheoryTest/Crabs.dtf|org.eventb.theory.core.deployedTheoryRoot#Crabs"/>
+    </org.eventb.theory.core.scImportTheoryProject>
+    <org.eventb.theory.core.scTypeParameter name="T" org.eventb.core.source="/SimpleTheoryTest/Fishes.tuf|org.eventb.theory.core.theoryRoot#Fishes|org.eventb.theory.core.typeParameter#(" org.eventb.core.type="ℙ(T)"/>
+    <org.eventb.theory.core.scDatatypeDefinition name="Salmon" org.eventb.core.source="/SimpleTheoryTest/Fishes.tuf|org.eventb.theory.core.theoryRoot#Fishes|org.eventb.theory.core.datatypeDefinition#)" org.eventb.theory.core.hasError="false">
+        <org.eventb.theory.core.scTypeArgument name="T" org.eventb.core.source="/SimpleTheoryTest/Fishes.tuf|org.eventb.theory.core.theoryRoot#Fishes|org.eventb.theory.core.datatypeDefinition#)|org.eventb.theory.core.typeArgument#'" org.eventb.theory.core.givenType="T"/>
+        <org.eventb.theory.core.scDatatypeConstructor name="LeBigFish" org.eventb.core.source="/SimpleTheoryTest/Fishes.tuf|org.eventb.theory.core.theoryRoot#Fishes|org.eventb.theory.core.datatypeDefinition#)|org.eventb.theory.core.datatypeConstructor#("/>
+    </org.eventb.theory.core.scDatatypeDefinition>
+</org.eventb.theory.core.scTheoryRoot>

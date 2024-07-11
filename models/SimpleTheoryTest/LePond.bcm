@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scMachineFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+    <org.eventb.core.scInvariant name="'" org.eventb.core.label="inv1" org.eventb.core.predicate="fish∈Salmon(ℤ)" org.eventb.core.source="/SimpleTheoryTest/LePond.bum|org.eventb.core.machineFile#LePond|org.eventb.core.invariant#_mDTKIT-9Ee-sh8HVMshK-g" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scInvariant name="(" org.eventb.core.label="inv2" org.eventb.core.predicate="fush∈Salmon(Crustean(BOOL))" org.eventb.core.source="/SimpleTheoryTest/LePond.bum|org.eventb.core.machineFile#LePond|org.eventb.core.invariant#_mDTKIj-9Ee-sh8HVMshK-g" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scVariable name="fush" org.eventb.core.abstract="false" org.eventb.core.concrete="true" org.eventb.core.source="/SimpleTheoryTest/LePond.bum|org.eventb.core.machineFile#LePond|org.eventb.core.variable#_nktSgD-9Ee-sh8HVMshK-g" org.eventb.core.type="Salmon(Crustean(BOOL))"/>
+    <org.eventb.core.scVariable name="fish" org.eventb.core.abstract="false" org.eventb.core.concrete="true" org.eventb.core.source="/SimpleTheoryTest/LePond.bum|org.eventb.core.machineFile#LePond|org.eventb.core.variable#_mDTKID-9Ee-sh8HVMshK-g" org.eventb.core.type="Salmon(ℤ)"/>
+    <org.eventb.core.scEvent name="fusi" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION" org.eventb.core.source="/SimpleTheoryTest/LePond.bum|org.eventb.core.machineFile#LePond|org.eventb.core.event#'">
+        <org.eventb.core.scAction name="'" org.eventb.core.assignment="fish ≔ LeBigFish ⦂ Salmon(ℤ)" org.eventb.core.label="act1" org.eventb.core.source="/SimpleTheoryTest/LePond.bum|org.eventb.core.machineFile#LePond|org.eventb.core.event#'|org.eventb.core.action#_tMLRUD-9Ee-sh8HVMshK-g"/>
+        <org.eventb.core.scAction name="(" org.eventb.core.assignment="fush ≔ LeBigFish ⦂ Salmon(Crustean(BOOL))" org.eventb.core.label="act2" org.eventb.core.source="/SimpleTheoryTest/LePond.bum|org.eventb.core.machineFile#LePond|org.eventb.core.event#'|org.eventb.core.action#_wN1rgD-9Ee-sh8HVMshK-g"/>
+    </org.eventb.core.scEvent>
+</org.eventb.core.scMachineFile>

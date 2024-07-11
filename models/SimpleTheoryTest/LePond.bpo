@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="2">
+    <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/SimpleTheoryTest/LePond.bpo|org.eventb.core.poFile#LePond|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="2">
+        <org.eventb.core.poIdentifier name="fush" org.eventb.core.type="Salmon(Crustean(BOOL))"/>
+        <org.eventb.core.poIdentifier name="fish" org.eventb.core.type="Salmon(ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTIDENTfusi" org.eventb.core.parentSet="/SimpleTheoryTest/LePond.bpo|org.eventb.core.poFile#LePond|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="fush'" org.eventb.core.type="Salmon(Crustean(BOOL))"/>
+        <org.eventb.core.poIdentifier name="fish'" org.eventb.core.type="Salmon(ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPfusi" org.eventb.core.parentSet="/SimpleTheoryTest/LePond.bpo|org.eventb.core.poFile#LePond|org.eventb.core.poPredicateSet#EVTIDENTfusi" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/SimpleTheoryTest/LePond.bpo|org.eventb.core.poFile#LePond|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="2">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="fish∈Salmon(ℤ)" org.eventb.core.source="/SimpleTheoryTest/LePond.bum|org.eventb.core.machineFile#LePond|org.eventb.core.invariant#_mDTKIT-9Ee-sh8HVMshK-g"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="fush∈Salmon(Crustean(BOOL))" org.eventb.core.source="/SimpleTheoryTest/LePond.bum|org.eventb.core.machineFile#LePond|org.eventb.core.invariant#_mDTKIj-9Ee-sh8HVMshK-g"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>
