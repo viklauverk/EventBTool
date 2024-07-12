@@ -296,9 +296,8 @@ class Formula
         {
             System.out.print("Could not parse formula:\n    ");
             System.out.println(s);
-            System.out.println("\nWhile using symbol table:");
-            fc.print();
-            System.exit(1);
+            System.out.println("\nWhile using symbol table:\n"+fc.print());
+            throw new AbortIntoConsole("Could not parse formula: "+s, s, fc);
         }
         return f;
     }
@@ -312,8 +311,7 @@ class Formula
         {
             System.out.print("Could not parse formula :\n    ");
             System.out.println(s);
-            System.out.println("\nWhile using symbol table:");
-            fc.print();
+            System.out.println("\nWhile using symbol table:\n"+fc.print());
         }
         return f;
     }

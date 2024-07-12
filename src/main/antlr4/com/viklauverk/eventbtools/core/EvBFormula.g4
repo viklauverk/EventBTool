@@ -220,8 +220,12 @@ substitution
    ;
 
 listOfNonFreeSymbols
-   : SYMBOL (',' SYMBOL)*                          # ListOfNonFreeVariables
+   : SYMBOL ofTyping? (',' SYMBOL ofTyping? )*                          # ListOfNonFreeVariables
    ;
+
+ofTyping
+    : OFTYPE meta? type=expression                 # OfTypeVar
+    ;
 
 listOfSymbols
    : SYMBOL (',' SYMBOL)*                          # ListOfVariables
@@ -241,7 +245,7 @@ predicate
    | left=predicate operator=EQUIV meta? right=predicate  # Equivalence
    | left=predicate operator=OR meta? right=predicate     # Disjunction
    | operator=NOT meta? right=predicate                   # Negation
-   | { symbol_table.isOperatorSymbol(OperatorNotationType.PREFIX, OperatorType.PREDICATE, _input.LT(1).getText()) }? operator=SYMBOL meta? ( '(' parameters=listOfPredicates ')' )?  # OperatorPrefixPredicate
+   | { symbol_table.isOperatorSymbol(OperatorNotationType.PREFIX, OperatorType.PREDICATE, _input.LT(1).getText()) }? operator=SYMBOL meta? ( '(' parameters=listOfExpressions ')' )?  # OperatorPrefixPredicate
    | ALL meta? left=listOfNonFreeSymbols
      { pushFrame(((UniversalContext)_localctx).left); }
      QDOT right=predicate
@@ -399,10 +403,6 @@ expression
 
 listOfExpressions
    : expression (',' expression)*
-   ;
-
-listOfPredicates
-   : predicate (',' predicate)*
    ;
 
 meta

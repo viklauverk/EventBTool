@@ -20,6 +20,7 @@ package com.viklauverk.eventbtools;
 import com.viklauverk.eventbtools.core.Machine;
 import com.viklauverk.eventbtools.core.Sys;
 
+import com.viklauverk.eventbtools.core.AbortIntoConsole;
 import com.viklauverk.eventbtools.core.Canvas;
 import com.viklauverk.eventbtools.core.Console;
 import com.viklauverk.eventbtools.core.ConsoleException;
@@ -69,8 +70,15 @@ public class RunConsole
                                            s.commonSettings().sourceDir(),
                                            s.commonSettings().theoryRootDir()));
         }
-        sys.loadTheoriesAndContextsAndMachines(s.commonSettings().sourceDir(), s.commonSettings().theoryRootDir());
-
+        try
+        {
+            sys.loadTheoriesAndContextsAndMachines(s.commonSettings().sourceDir(), s.commonSettings().theoryRootDir());
+        }
+        catch (AbortIntoConsole e)
+        {
+            sys.console().forceCurrentSymbolTable(e.symbolTable());
+            System.out.println(e.formula());
+        }
         Canvas canvas = new Canvas();
         canvas.setRenderTarget(RenderTarget.TERMINAL);
         RenderAttributes ra = sys.console().renderAttributes();

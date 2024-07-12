@@ -149,6 +149,11 @@ public class Console
         return result;
     }
 
+    public void forceCurrentSymbolTable(SymbolTable st)
+    {
+        current_symbol_table_ = st;
+    }
+
     void pushSymbolTable(String name)
     {
         SymbolTable st = sys_.newSymbolTable(name);

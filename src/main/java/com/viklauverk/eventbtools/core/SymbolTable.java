@@ -152,6 +152,61 @@ public class SymbolTable
         return polymorphic_data_type_symbols_;
     }
 
+    public boolean hasAnySymbols()
+    {
+        return any_symbols_.size() > 0;
+    }
+
+    public boolean hasConstantSymbols()
+    {
+        return constant_symbols_.size() > 0;
+    }
+
+    public boolean hasExpressionSymbols()
+    {
+        return expression_symbols_.size() > 0;
+    }
+
+    public boolean hasNumberSymbols()
+    {
+        return number_symbols_.size() > 0;
+    }
+
+    public boolean hasSetSymbols()
+    {
+        return set_symbols_.size() > 0;
+    }
+
+    public boolean hasPredicateSymbols()
+    {
+        return predicate_symbols_.size() > 0;
+    }
+
+    public boolean hasVariableSymbols()
+    {
+        return variable_symbols_.size() > 0;
+    }
+
+    public boolean hasPolymorphicDataTypeSymbols()
+    {
+        return polymorphic_data_type_symbols_.size() > 0;
+    }
+
+    public boolean hasConstructorSymbols()
+    {
+        return constructors_.size() > 0;
+    }
+
+    public boolean hasDestructorSymbols()
+    {
+        return destructors_.size() > 0;
+    }
+
+    public boolean hasOperatorSymbols()
+    {
+        return operators_.size() > 0;
+    }
+
     public PolymorphicDataType getPolymorphicDataType(Formula name)
     {
         return getPolymorphicDataType(name.symbol());
@@ -586,6 +641,7 @@ public class SymbolTable
         return false;
     }
 
+
     public void addOperator(Operator o)
     {
         operator_symbols_.add(o.name());
@@ -697,38 +753,78 @@ public class SymbolTable
         cnvs.setRenderTarget(RenderTarget.PLAIN);
         StringBuilder o = new StringBuilder();
 
+        String title = "SymbolTable "+name_;
+        boolean need_line = false;
+
+        if (hasConstantSymbols())
+        {
+            if (need_line) o.append("-\n");
+            o.append("constants: "+Canvas.flow(80, printSyms(constant_symbols_)));
+            need_line = true;
+        }
+        if (hasExpressionSymbols())
+        {
+            if (need_line) o.append("-\n");
+            o.append("expressions: "+Canvas.flow(80, printSyms(expression_symbols_)));
+            need_line = true;
+        }
+        if (hasNumberSymbols())
+        {
+            if (need_line) o.append("-\n");
+            o.append("numbers: "+Canvas.flow(80, printSyms(number_symbols_)));
+            need_line = true;
+        }
+        if (hasPredicateSymbols())
+        {
+            if (need_line) o.append("-\n");
+            o.append("predicates: "+Canvas.flow(80, printSyms(predicate_symbols_)));
+            need_line = true;
+        }
+        if (hasSetSymbols())
+        {
+            if (need_line) o.append("-\n");
+            o.append("sets: "+Canvas.flow(80, printSyms(set_symbols_)));
+            need_line = true;
+        }
+        if (hasVariableSymbols())
+        {
+            if (need_line) o.append("-\n");
+            o.append("variables: "+Canvas.flow(80, printSyms(variable_symbols_)));
+            need_line = true;
+        }
+        if (hasPolymorphicDataTypeSymbols())
+        {
+            if (need_line) o.append("-\n");
+            o.append("datatypes: "+Canvas.flow(80, printSyms(polymorphic_data_type_symbols_)));
+            need_line = true;
+        }
+        if (hasConstructorSymbols())
+        {
+            if (need_line) o.append("-\n");
+            o.append("constructors: "+Canvas.flow(80, printSyms(constructor_symbols_)));
+            need_line = true;
+        }
+        if (hasDestructorSymbols())
+        {
+            if (need_line) o.append("-\n");
+            o.append("destructors: "+Canvas.flow(80, printSyms(destructor_symbols_)));
+            need_line = true;
+        }
+        if (hasOperatorSymbols())
+        {
+            if (need_line) o.append("-\n");
+            o.append("operators: "+Canvas.flow(80, printOperatorSyms(operator_symbols_)));
+            need_line = true;
+        }
+        if (hasAnySymbols())
+        {
+            if (need_line) o.append("-\n");
+            o.append("anys: "+Canvas.flow(80, printSyms(any_symbols_)));
+            need_line = true;
+        }
         for (SymbolTable p : parents_)
         {
-            p.print();
-        }
-        String title = "SymbolTable "+name_;
-
-        o.append("constants: "+Canvas.flow(80, printSyms(constant_symbols_)));
-        o.append("-\n");
-        o.append("expressions: "+Canvas.flow(80, printSyms(expression_symbols_)));
-        o.append("-\n");
-        o.append("numbers: "+Canvas.flow(80, printSyms(number_symbols_)));
-        o.append("-\n");
-        o.append("predicates: "+Canvas.flow(80, printSyms(predicate_symbols_)));
-        o.append("-\n");
-        o.append("sets: "+Canvas.flow(80, printSyms(set_symbols_)));
-        o.append("-\n");
-        o.append("variables: "+Canvas.flow(80, printSyms(variable_symbols_)));
-        o.append("-\n");
-        o.append("datatypes: "+Canvas.flow(80, printSyms(polymorphic_data_type_symbols_)));
-        o.append("-\n");
-        o.append("constructors: "+Canvas.flow(80, printSyms(constructor_symbols_)));
-        o.append("-\n");
-        o.append("destructors: "+Canvas.flow(80, printSyms(destructor_symbols_)));
-        o.append("-\n");
-        o.append("operators: "+Canvas.flow(80, printOperatorSyms(operator_symbols_)));
-
-        // The anys are special and used for wildcard matching. We only print these
-        // if there are any to print.
-        if (any_symbols_.size() > 0)
-        {
-            o.append("-\n");
-            o.append("anys: "+Canvas.flow(80, printSyms(any_symbols_)));
+            o.append(p.print());
         }
         String f = cnvs.frame(title, o.toString(), Canvas.sline);
         return f;
