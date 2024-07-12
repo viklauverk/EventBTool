@@ -27,6 +27,7 @@ public class Operator extends Typed
     private Formula definition_;
     private OperatorNotationType notation_type_;
     private OperatorType operator_type_;
+    private String predicate_; // Used by axiomatic operator definitions.
     private Theory theory_;
 
     public Operator(String n, Theory t, OperatorNotationType nt, OperatorType ot)
@@ -71,6 +72,11 @@ public class Operator extends Typed
     public void addComment(String c)
     {
         comment_ = c;
+    }
+
+    public void setPredicate(String p)
+    {
+        predicate_ = p;
     }
 
     public void setDefinition(Formula f)

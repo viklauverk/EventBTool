@@ -294,6 +294,8 @@ public class Util
     public static
     String texSafe(String s)
     {
+        if (s == null) return "null";
+
         assert s.indexOf("\n") == -1 : "Internal error: string should not contain newline \""+s+"\"";
 
         StringBuilder sb = new StringBuilder();
@@ -335,6 +337,8 @@ public class Util
     public static
     String htmqSafe(String s)
     {
+        if (s == null) return "null";
+
         assert s.indexOf("\n") == -1 : "Internal error: string should not contain newline \""+s+"\"";
         return "'"+s+"'";
     }

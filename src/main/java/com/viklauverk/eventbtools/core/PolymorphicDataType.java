@@ -49,6 +49,7 @@ public class PolymorphicDataType
     {
         base_name_ = bn;
         long_name_ = bn;
+        hr_long_name_ = bn;
 
         type_parameters_ = new ArrayList<>();
 

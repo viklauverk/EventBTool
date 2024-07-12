@@ -415,7 +415,7 @@ public class Theory
             }
         }
 
-        // Load the operators.
+        // Load the operator definitions.
         list = document.selectNodes("//org.eventb.theory.core.scNewOperatorDefinition");
         for (Node n : list)
         {
@@ -438,6 +438,33 @@ public class Theory
 
             Operator o = new Operator(name, this, ont, ot);
             o.addComment(comment);
+            addOperator(o);
+        }
+
+        // Load the axiomatic operator definitions.
+        list = document.selectNodes("//org.eventb.theory.core.scAxiomaticOperatorDefinition");
+        for (Node n : list)
+        {
+            String name = n.valueOf("@org.eventb.core.label");
+            String predicate = n.valueOf("@org.eventb.core.predicate");
+            String is_assocs = n.valueOf("@org.eventb.theory.core.associative");
+            String is_commus = n.valueOf("@org.eventb.theory.core.commutative");
+            String comment = n.valueOf("@org.eventb.core.comment");
+            String onts = n.valueOf("@org.eventb.theory.core.notationType");
+            OperatorNotationType ont = OperatorNotationType.valueOf(onts);
+            String ots = n.valueOf("@org.eventb.theory.core.formulaType");
+            OperatorType ot = null;
+            if (ots.equals("true")) ot = OperatorType.EXPRESSION;
+            else if (ots.equals("false")) ot = OperatorType.PREDICATE;
+            else LogModule.usageErrorStatic("Invalid formulaType %s for axiomatic operator %s in theory %s in file %s",
+                                            ots,
+                                            name,
+                                            name(),
+                                            dtf_);
+
+            Operator o = new Operator(name, this, ont, ot);
+            o.addComment(comment);
+            o.setPredicate(predicate);
             addOperator(o);
         }
 
