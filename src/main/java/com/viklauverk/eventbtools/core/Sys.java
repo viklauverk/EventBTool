@@ -45,21 +45,29 @@ public class Sys
     // Used when adding operators for pattern matchin.
     private static Theory dummy_theory_;
 
-    private Map<String,Theory> deployed_theories_;
-    private List<Theory> deployed_theory_ordering_;
-    private List<String> deployed_theory_names_;
+    private Map<String,Theory> deployed_theories_ = new HashMap<>();
+    private List<Theory> deployed_theory_ordering_ = new ArrayList<>();
+    private List<String> deployed_theory_names_ = new ArrayList<>();
 
-    private Map<String,Theory> source_theories_;
-    private List<Theory> source_theory_ordering_;
-    private List<String> source_theory_names_;
+    private Map<String,Theory> source_theories_ = new HashMap<>();
+    private List<Theory> source_theory_ordering_ = new ArrayList<>();
+    private List<String> source_theory_names_ = new ArrayList<>();
 
-    private Map<String,Context> contexts_;
-    private List<Context> context_ordering_;
-    private List<String> context_names_;
+    private Map<String,Context> contexts_ = new HashMap<>();
+    private List<Context> context_ordering_ = new ArrayList<>();
+    private List<String> context_names_ = new ArrayList<>();
 
-    private Map<String,Machine> machines_;
-    private List<Machine> machine_ordering_;
-    private List<String> machine_names_;
+    private Map<String,Machine> machines_ = new HashMap<>();
+    private List<Machine> machine_ordering_ = new ArrayList<>();
+    private List<String> machine_names_ = new ArrayList<>();
+
+    private Map<String,PolymorphicDataType> polymorphic_data_types_  = new HashMap<>();
+    private List<PolymorphicDataType> polymorphic_data_type_ordering_ = new ArrayList<>();
+    private List<String> polymorphic_data_type_names_ = new ArrayList<>();
+
+    private Map<String,SpecialisedDataType> specialised_data_types_ = new HashMap<>();
+    private List<SpecialisedDataType> specialised_data_type_ordering_ = new ArrayList<>();
+    private List<String> specialised_data_type_names_ = new ArrayList<>();
 
     private Settings settings_;
     private Console console_;
@@ -71,24 +79,11 @@ public class Sys
         project_info_ = "";
         theory_path_ = new TheoryPath();
 
-        deployed_theories_ = new HashMap<>();
-        deployed_theory_ordering_ = new ArrayList<>();
-        deployed_theory_names_ = new ArrayList<>();
-        source_theories_ = new HashMap<>();
-        source_theory_ordering_ = new ArrayList<>();
-        source_theory_names_ = new ArrayList<>();
-        contexts_ = new HashMap<>();
-        context_ordering_ = new ArrayList<>();
-        context_names_ = new ArrayList<>();
-        machines_ = new HashMap<>();
-        machine_ordering_ = new ArrayList<>();
-        machine_names_ = new ArrayList<>();
-
         root_symbol_table_ = new SymbolTable("root");
         all_symbol_tables_ = new HashMap<>();
         all_symbol_tables_.put("root", root_symbol_table_);
 
-        typing_ = new Typing();
+        typing_ = new Typing(this);
 
         CarrierSet BOOL = new CarrierSet("BOOL", null);
         Constant TRUE = new Constant("TRUE", null);
@@ -598,4 +593,49 @@ public class Sys
     {
         return theory_path_;
     }
+
+    public void addSpecialisedDataType(SpecialisedDataType sdt)
+    {
+        specialised_data_types_.put(sdt.longName(), sdt);
+        specialised_data_type_ordering_.add(sdt);
+        specialised_data_type_names_ = specialised_data_types_.keySet().stream().sorted().collect(Collectors.toList());
+    }
+
+    public SpecialisedDataType getSpecialisedDataType(String name)
+    {
+        return specialised_data_types_.get(name);
+    }
+
+    public List<SpecialisedDataType> specialisedDataTypeOrdering()
+    {
+        return specialised_data_type_ordering_;
+    }
+
+    public List<String> specialisedDataTypeNames()
+    {
+        return specialised_data_type_names_;
+    }
+
+    public void addPolymorphicDataType(PolymorphicDataType pdt)
+    {
+        polymorphic_data_types_.put(pdt.baseName(), pdt);
+        polymorphic_data_type_ordering_.add(pdt);
+        polymorphic_data_type_names_ = polymorphic_data_types_.keySet().stream().sorted().collect(Collectors.toList());
+    }
+
+    public PolymorphicDataType getPolymorphicDataType(String name)
+    {
+        return polymorphic_data_types_.get(name);
+    }
+
+    public List<PolymorphicDataType> polymorphicDataTypeOrdering()
+    {
+        return polymorphic_data_type_ordering_;
+    }
+
+    public List<String> polymorphicDataTypeNames()
+    {
+        return polymorphic_data_type_names_;
+    }
+
 }

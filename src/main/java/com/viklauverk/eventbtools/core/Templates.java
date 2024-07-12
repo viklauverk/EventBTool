@@ -531,6 +531,7 @@ public static String TeXHeader =
 "\\usepackage{varwidth} % for the varwidth minipage environment\n"+
 "\\usepackage{adjustbox}\n"+
 "\\usepackage{relsize}\n"+
+"\\usepackage{amsmath}\n"+
 "\n"+
 "%\\usepackage{blindtext}\n"+
 "%\\usepackage{showframe}\n"+

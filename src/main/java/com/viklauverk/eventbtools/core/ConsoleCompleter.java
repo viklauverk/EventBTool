@@ -41,10 +41,12 @@ public class ConsoleCompleter
              new ArgumentCompleter(new StringsCompleter("co.show.part")),
              new ArgumentCompleter(new StringsCompleter("sys.ls.machines")),
              new ArgumentCompleter(new StringsCompleter("sys.ls.contexts")),
+             new ArgumentCompleter(new StringsCompleter("sys.ls.data-types")),
              new ArgumentCompleter(new StringsCompleter("sys.ls.hyps")),
              new ArgumentCompleter(new StringsCompleter("sys.ls.parts")),
              new ArgumentCompleter(new StringsCompleter("sys.ls.tables")),
              new ArgumentCompleter(new StringsCompleter("sys.ls.seen-theories")),
+             new ArgumentCompleter(new StringsCompleter("sys.ls.specialised-data-types")),
              new ArgumentCompleter(
                  new StringsCompleter("sys.read"),
                  new DirectoriesCompleter(Paths.get("."))

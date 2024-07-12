@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021-2024 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -29,8 +29,10 @@ public class RenderFormulaUnicode extends RenderFormula
         super(canvas);
     }
 
-    private boolean limit_to_ascii_ = false;
-
+    // Do not print any unicode, this is used when generating TeX where we override characters anyway.
+    protected boolean limit_to_ascii_ = false;
+    // Print DataType specialisations using () instead of <>. Necessary if you want to move code back to rodin.
+    protected boolean limit_to_rodin_ = false;
 
     @Override public void enterNode(Formula f)
     {
@@ -498,9 +500,11 @@ public class RenderFormulaUnicode extends RenderFormula
         cnvs().polymorphicDataType(Symbols.name(i.intData()));
         if (i.numChildren() == 1 && i.child(0).numChildren() > 0)
         {
-            cnvs().symbol("(");
+            if (limit_to_rodin_) cnvs().symbol("(");
+            else cnvs().specialisationLeft();
             visitChild(i);
-            cnvs().symbol(")");
+            if (limit_to_rodin_) cnvs().symbol(")");
+            else cnvs().specialisationRight();
         }
         visitMeta(i);
         return i;

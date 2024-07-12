@@ -31,7 +31,7 @@ public class RenderPolymorphicDataTypeUnicode extends RenderPolymorphicDataType
             cnvs().acomment(pdt.comment());
         }
         cnvs().startLine();
-        cnvs().id(pdt.longName());
+        cnvs().polymorphicDataType(pdt.hrLongName());
         if (pdt.hasConstructors())
         {
             cnvs().keyword(" ≜");

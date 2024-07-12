@@ -57,6 +57,12 @@ a non-free variable in a set comprehension.
 
 [SetComprehensions.pdf](SetComprehensions.pdf)
 
+## SimpleTheoryTest
+This model tests a machine that uses a theory that in turn uses another theory.
+
+
+[SimpleTheoryTest.pdf](SimpleTheoryTest.pdf)
+
 ## SquareRoot
 This Event-B system is based on a model that appeared in the book:
 System Modelling & Design Using Event-B by Ken Robinson.

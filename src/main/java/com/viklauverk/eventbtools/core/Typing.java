@@ -29,6 +29,14 @@ public class Typing
 
     private Map<String,CheckedType> checked_types_ = new HashMap<>();
     private Map<String,ImplType> impl_types_ = new HashMap<>();
+    private Sys sys_;
+    Pattern pattern_;
+
+    public Typing(Sys sys)
+    {
+        sys_ = sys;
+        pattern_ = new Pattern();
+    }
 
     public CheckedType lookupCheckedType(String t, SymbolTable st)
     {
@@ -84,13 +92,6 @@ public class Typing
         return checked_types_.keySet();
     }
 
-    Pattern pattern_;
-
-    public Typing()
-    {
-        pattern_ = new Pattern();
-    }
-
     Pattern pattern()
     {
         return pattern_;
@@ -98,6 +99,7 @@ public class Typing
 
     public void extractInfoFromAxiom(Formula f, SymbolTable symbols)
     {
+        SpecialisedDataType.findSpecialisations(f, sys_);
         boolean ok = extractPossibleDefinitionFromEquals(f, symbols);
         if (ok) return;
         extractPossiblePartition(f, symbols);
@@ -106,21 +108,25 @@ public class Typing
 
     public void extractInfoFromTheorem(Formula f, SymbolTable symbols)
     {
+        SpecialisedDataType.findSpecialisations(f, sys_);
         extractPossibleImplTypesFromPredicate(f, symbols);
     }
 
     public void extractInfoFromInvariant(Formula f, SymbolTable symbols)
     {
+        SpecialisedDataType.findSpecialisations(f, sys_);
         extractPossibleImplTypesFromPredicate(f, symbols);
     }
 
     public void extractInfoFromVariant(Formula f, SymbolTable symbols)
     {
+        SpecialisedDataType.findSpecialisations(f, sys_);
         extractPossibleImplTypesFromPredicate(f, symbols);
     }
 
     public void extractInfoFromGuard(Guard g, SymbolTable symbols)
     {
+        SpecialisedDataType.findSpecialisations(g.formula(), sys_);
         boolean b = extractPossibleDefinitionFromEquals(g.formula(), symbols);
         if (b) {
             log.debug("guard %s defines a value.", g.name());
@@ -137,6 +143,7 @@ public class Typing
 
     public void extractInfoFromAction(Action a, SymbolTable symbols)
     {
+        SpecialisedDataType.findSpecialisations(a.formula(), sys_);
         extractPossibleImplTypesFromBecome(a.formula(), symbols);
     }
 

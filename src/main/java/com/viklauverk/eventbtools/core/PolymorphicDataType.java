@@ -29,6 +29,7 @@ public class PolymorphicDataType
 {
     private String base_name_; // List Seq
     private String long_name_; // List(T) Seq(T)
+    private String hr_long_name_; // List<T> Seq<T>
     private String comment_;
 
     private List<String> type_parameters_;
@@ -71,6 +72,11 @@ public class PolymorphicDataType
         return long_name_;
     }
 
+    public String hrLongName()
+    {
+        return hr_long_name_;
+    }
+
     public String comment()
     {
         return comment_;
@@ -105,17 +111,27 @@ public class PolymorphicDataType
     {
         type_parameters_.add(p);
         StringBuilder sb = new StringBuilder();
+        StringBuilder sbb = new StringBuilder();
         sb.append(base_name_);
+        sbb.append(base_name_);
         sb.append("(");
+        sbb.append("‹");
         boolean add_comma = false;
         for (String s : type_parameters_)
         {
-            if (add_comma) sb.append(",");
+            if (add_comma)
+            {
+                sb.append(",");
+                sbb.append(",");
+            }
             sb.append(s);
+            sbb.append(s);
             add_comma = true;
         }
         sb.append(")");
+        sbb.append("\\guilsinglright ");
         long_name_ = sb.toString();
+        hr_long_name_ = sbb.toString();
     }
 
     public void addConstructor(Constructor o)

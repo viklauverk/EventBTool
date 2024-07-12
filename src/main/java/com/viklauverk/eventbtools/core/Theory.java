@@ -372,6 +372,7 @@ public class Theory
         List<Node> its = document.selectNodes("//org.eventb.theory.core.useTheory");
         for (Node it : its)
         {
+            // Load the imported theory, since without it we cannot parse this theory.
             String in = it.valueOf("@org.eventb.core.scTarget");
             String name = sys().theoryPath().useTheory(in, null);
             sys().populateDeployedTheories();
@@ -389,6 +390,13 @@ public class Theory
             PolymorphicDataType pdt = new PolymorphicDataType(name, this);
             pdt.addComment(comment);
             addPolymorphicDataType(pdt);
+
+            List<Node> parameters = n.selectNodes("//org.eventb.theory.core.scTypeArgument");
+            for (Node c : parameters)
+            {
+                String p = c.valueOf("@org.eventb.theory.core.givenType");
+                pdt.addTypeParameter(p);
+            }
 
             List<Node> constructors = n.selectNodes("//org.eventb.theory.core.scDatatypeConstructor");
             for (Node c : constructors)
@@ -611,19 +619,11 @@ public class Theory
 
         log.debug("building symbol table for theory: %s", name_);
 
-        /*
-        List<SymbolTable> parents = new ArrayList<>();
-        for (Theory t : imports_theories_)
-        {
-            t.buildSymbolTable();
-            parents.add(t.symbolTable());
-        }
-        */
-
         symbol_table_ = sys_.newTheorySymbolTable(name_);
 
         for (PolymorphicDataType pdt : polymorphicDataTypeOrdering())
         {
+            sys().addPolymorphicDataType(pdt);
             log.debug("added polymorphic data type %s to symbol table %s", pdt.longName(), symbol_table_.name());
             symbol_table_.addPolymorphicDataType(pdt);
             for (Constructor cnstr : pdt.constructorOrdering())

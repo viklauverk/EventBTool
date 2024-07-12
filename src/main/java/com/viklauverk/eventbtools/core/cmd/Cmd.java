@@ -57,6 +57,14 @@ public enum Cmd
                sys.ls.contexts abc
         """,
         CmdSysLsContexts::new),
+    SYS_LS_DATA_TYPES(
+        "sys.ls.data-types",
+        "List all data types loaded from theories.",
+        """
+        Usage: sys.ls.data-types
+               sys.ls.data-types abc
+        """,
+        CmdSysLsDataTypes::new),
     SYS_LS_MACHINES(
         "sys.ls.machines",
         "List all machines in the system, or only those who match text",
@@ -73,14 +81,6 @@ public enum Cmd
                sys.ls.parts abc
         """,
         CmdSysLsParts::new),
-    SYS_LS_TABLES(
-        "sys.ls.tables",
-        "List all tables in the system, or only those who match text",
-        """
-        Usage: sys.ls.tables
-               sys.ls.tables abc
-        """,
-        CmdSysLsTables::new),
     SYS_LS_SEEN_THEORIES(
         "sys.ls.seen-theories",
         "List all theories listed in the theory path.",
@@ -89,6 +89,22 @@ public enum Cmd
                sys.ls.seen-theories abc
         """,
         CmdSysLsSeenTheories::new),
+    SYS_LS_SPECIALISED_DATA_TYPES(
+        "sys.ls.specialised-data-types",
+        "List all specialised data types.",
+        """
+        Usage: sys.ls.specialised-data-types
+               sys.ls.specialised-data-types abc
+        """,
+        CmdSysLsSpecialisedDataTypes::new),
+    SYS_LS_TABLES(
+        "sys.ls.tables",
+        "List all tables in the system, or only those who match text",
+        """
+        Usage: sys.ls.tables
+               sys.ls.tables abc
+        """,
+        CmdSysLsTables::new),
     SYS_READ(
         "sys.read",
         "Read an event-b directory and load all files.",

@@ -23,7 +23,7 @@ public class RenderPolymorphicDataTypeTeX extends RenderPolymorphicDataTypeUnico
     public void visit_PolymorphicDataTypeStart(PolymorphicDataType pdt)
     {
         cnvs().append("\\subsection{\\footnotesize ");
-        cnvs().set(pdt.longName());
+        cnvs().set(pdt.hrLongName());
         cnvs().append(" ");
         cnvs().append("}\n");
     }

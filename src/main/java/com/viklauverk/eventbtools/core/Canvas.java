@@ -1563,6 +1563,48 @@ public class Canvas
         assert (false) : "Unknown encoding "+render_target_;
     }
 
+    public void specialisationLeft()
+    {
+        // Or should we use ‹ ›
+        switch (render_target_)
+        {
+        case PLAIN:
+            append("‹");
+            return;
+        case TERMINAL:
+            append(colorize(BPurple, "‹"));
+            return;
+        case TEX:
+            append("\\text{\\Large\\guilsinglleft}");
+            return;
+        case HTML:
+            append(" span(class=TYPE)="+Util.htmqSafe("<"));
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
+    public void specialisationRight()
+    {
+        switch (render_target_)
+        {
+        case PLAIN:
+            append("›");
+            return;
+        case TERMINAL:
+            append(colorize(Green, "›"));
+            return;
+        case TEX:
+            append("\\text{\\Large\\guilsinglright}");
+            return;
+        case HTML:
+            append(" span(class=TYPE)=>");
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
+
     public String colorize(String color, String s)
     {
         if (renderAttributes().color())

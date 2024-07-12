@@ -85,13 +85,6 @@ public class RenderTheoryTeX extends RenderTheoryUnicode
     @Override
     public void visit_PolymorphicDataTypesStart(Theory thr)
     {
-        cnvs().append("\\subsection{\\footnotesize ");
-        for (PolymorphicDataType pdt : thr.polymorphicDataTypeOrdering())
-        {
-            cnvs().set(pdt.longName());
-            cnvs().append(" ");
-        }
-        cnvs().append("}\n");
         super.visit_PolymorphicDataTypesStart(thr);
     }
 

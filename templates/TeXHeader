@@ -15,6 +15,7 @@
 \usepackage{varwidth} % for the varwidth minipage environment
 \usepackage{adjustbox}
 \usepackage{relsize}
+\usepackage{amsmath}
 
 %\usepackage{blindtext}
 %\usepackage{showframe}
