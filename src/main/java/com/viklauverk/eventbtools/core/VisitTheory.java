@@ -71,6 +71,22 @@ public class VisitTheory
             if (s) rt.visit_OperatorsEnd(thr);
         }
 
+        if (thr.hasAxioms())
+        {
+            boolean s = Util.match(RenderTheory.buildAxiomPartName(thr, null), pattern);
+
+            if (s) rt.visit_AxiomsStart(thr);
+            for (Axiom axm : thr.axiomOrdering())
+            {
+                boolean ss = Util.match(RenderTheory.buildAxiomPartName(thr, axm), pattern);
+                if (ss)
+                {
+                    rt.visit_Axiom(thr, axm);
+                }
+            }
+            if (s) rt.visit_AxiomsEnd(thr);
+        }
+
         if (m) rt.visit_TheoryEnd(thr);
     }
 }

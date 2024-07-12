@@ -131,6 +131,33 @@ public class RenderTheoryUnicode extends RenderTheory
         cnvs().stopAlignments();
     }
 
+    @Override public void visit_AxiomsStart(Theory thr)
+    {
+        cnvs().startLine();
+        cnvs().keyword("theorems");
+        cnvs().endLine();
+
+        cnvs().startAlignments(Canvas.align_3col);
+    }
+
+    @Override public void visit_Axiom(Theory thr, Axiom axiom)
+    {
+        cnvs().startAlignedLine();
+        cnvs().label(axiom.name());
+        cnvs().align();
+        cnvs().startMath();
+        axiom.writeFormulaStringToCanvas(cnvs());
+        cnvs().stopMath();
+
+        stopAlignedLineAndHandlePotentialComment(axiom.comment(), cnvs(), axiom);
+
+    }
+
+    @Override public void visit_AxiomsEnd(Theory thr)
+    {
+        cnvs().stopAlignments();
+    }
+
     @Override public void visit_TheoryEnd(Theory thr)
     {
         cnvs().startLine();

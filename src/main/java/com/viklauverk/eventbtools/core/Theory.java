@@ -37,19 +37,23 @@ public class Theory
 
     private String name_;
     private String comment_;
-    private List<Theory> imports_theories_;
+    private List<Theory> imports_theories_ = new ArrayList<>();
 
-    private Map<String,PolymorphicDataType> polymorphic_data_types_;
-    private List<PolymorphicDataType> polymorphic_data_type_ordering_;
-    private List<String> polymorphic_data_type_names_;
+    private Map<String,String> parameter_types_ = new HashMap<>();
+    private List<String> parameter_type_ordering_ = new ArrayList<>();
+    private List<String> parameter_type_names_ = new ArrayList<>();
 
-    private Map<String,Operator> operators_;
-    private List<Operator> operator_ordering_;
-    private List<String> operator_names_;
+    private Map<String,PolymorphicDataType> polymorphic_data_types_ = new HashMap<>();
+    private List<PolymorphicDataType> polymorphic_data_type_ordering_ = new ArrayList<>();
+    private List<String> polymorphic_data_type_names_ = new ArrayList<>();
 
-    private Map<String,Axiom> axioms_;
-    private List<Axiom> axiom_ordering_;
-    private List<String> axiom_names_;
+    private Map<String,Operator> operators_ = new HashMap<>();
+    private List<Operator> operator_ordering_ = new ArrayList<>();
+    private List<String> operator_names_ = new ArrayList<>();
+
+    private Map<String,Axiom> axioms_ = new HashMap<>();
+    private List<Axiom> axiom_ordering_ = new ArrayList<>();
+    private List<String> axiom_names_ = new ArrayList<>();
 
     private Map<String,ProofObligation> proof_obligations_ = new HashMap<>();
     private List<ProofObligation> proof_obligation_ordering_ = new ArrayList<>();
@@ -66,7 +70,8 @@ public class Theory
     private File theory_root_dir_; // Where to look for imported theories.
     private Sys sys_;
 
-    private SymbolTable symbol_table_;
+    private SymbolTable global_symbol_table_; // Inserted as parent to root symbol table in systen.
+    private SymbolTable local_symbol_table_;  // Contains type parameters to be able to parse theorems etc.
 
     private EDKTheory edk_theory_; // Points to the proper EVBT supported EDK information.
 
@@ -74,19 +79,6 @@ public class Theory
     {
         name_ = n;
         comment_ = "";
-        imports_theories_ = new ArrayList<>();
-
-        polymorphic_data_types_ = new HashMap<>();
-        polymorphic_data_type_ordering_ = new ArrayList<>();
-        polymorphic_data_type_names_ = new ArrayList<>();
-
-        operators_ = new HashMap<>();
-        operator_ordering_ = new ArrayList<>();
-        operator_names_ = new ArrayList<>();
-
-        axioms_ = new HashMap<>();
-        axiom_ordering_ = new ArrayList<>();
-        axiom_names_ = new ArrayList<>();
 
         loaded_ = false;
         theory_root_dir_ = trd;
@@ -107,7 +99,8 @@ public class Theory
 
         sys_ = s;
 
-        symbol_table_ = null;
+        global_symbol_table_ = null;
+
     }
 
     public Sys sys()
@@ -145,9 +138,14 @@ public class Theory
         return imports_theories_;
     }
 
-    SymbolTable symbolTable()
+    SymbolTable globalSymbolTable()
     {
-        return symbol_table_;
+        return global_symbol_table_;
+    }
+
+    SymbolTable localSymbolTable()
+    {
+        return local_symbol_table_;
     }
 
     public boolean hasPolymorphicDataTypes()
@@ -368,6 +366,14 @@ public class Theory
             comment_ = m.valueOf("@org.eventb.core.comment");
         }
 
+        List<Node> pts = document.selectNodes("//org.eventb.theory.core.scTypeParameter");
+        for (Node pt : pts)
+        {
+            String name = pt.valueOf("@name");
+            String core_type = pt.valueOf("@org.eventb.core.type"); // 'ℙ(T)')
+            addParameterType(name);
+        }
+
         // Does this theory import other theories?
         List<Node> its = document.selectNodes("//org.eventb.theory.core.useTheory");
         for (Node it : its)
@@ -435,17 +441,14 @@ public class Theory
             addOperator(o);
         }
 
-        // Load the axioms and theorems.
-        list = document.selectNodes("//org.eventb.core.axiom");
+        list = document.selectNodes("//org.eventb.theory.core.scTheorem");
         for (Node n : list)
         {
             String name = n.valueOf("@org.eventb.core.label");
             String pred = n.valueOf("@org.eventb.core.predicate");
             String comment = n.valueOf("@org.eventb.core.comment");
-            String is_theorem = n.valueOf("@org.eventb.core.theorem");
 
-            boolean it = is_theorem.equals("true");
-            Axiom a = new Axiom(name, pred, comment, it);
+            Axiom a = new Axiom(name, pred, comment, true);
             addAxiom(a);
         }
 
@@ -615,33 +618,41 @@ public class Theory
 
     void buildSymbolTable()
     {
-        if (symbol_table_ != null) return;
+        if (global_symbol_table_ != null) return;
 
         log.debug("building symbol table for theory: %s", name_);
 
-        symbol_table_ = sys_.newTheorySymbolTable(name_);
+        global_symbol_table_ = sys_.newTheorySymbolTable(name_);
 
         for (PolymorphicDataType pdt : polymorphicDataTypeOrdering())
         {
             sys().addPolymorphicDataType(pdt);
-            log.debug("added polymorphic data type %s to symbol table %s", pdt.longName(), symbol_table_.name());
-            symbol_table_.addPolymorphicDataType(pdt);
+            log.debug("added polymorphic data type %s to symbol table %s", pdt.longName(), global_symbol_table_.name());
+            global_symbol_table_.addPolymorphicDataType(pdt);
             for (Constructor cnstr : pdt.constructorOrdering())
             {
                 log.debug("    constructor %s", cnstr.name());
-                symbol_table_.addConstructor(cnstr);
+                global_symbol_table_.addConstructor(cnstr);
                 for (Destructor dstr : cnstr.destructorOrdering())
                 {
                     log.debug("        destructor %s", dstr.name());
-                    symbol_table_.addDestructor(dstr);
+                    global_symbol_table_.addDestructor(dstr);
                 }
             }
         }
         for (Operator c : operatorOrdering())
         {
-            log.debug("added operator %s to symbol table %s", c, symbol_table_.name());
-            symbol_table_.addOperator(c);
+            log.debug("added operator %s to symbol table %s", c, global_symbol_table_.name());
+            global_symbol_table_.addOperator(c);
         }
+
+        local_symbol_table_ = sys_.newSymbolTable("ParameterTypes_"+name_);
+        for (String p : parameterTypeOrdering())
+        {
+            log.debug("added parameter type %s to symbol table >%s<", p, local_symbol_table_.name());
+            local_symbol_table_.addSetSymbol(p);
+        }
+
     }
 
     public void parse()
@@ -658,13 +669,13 @@ public class Theory
         }
         for (Operator o : operatorOrdering())
         {
-            o.parseCheckedType(symbol_table_);
+            o.parseCheckedType(local_symbol_table_);
             log.debug("parsed checked type %s for operator %s", o.checkedType(), o.name());
         }
         for (Axiom a : axiomOrdering())
         {
-            a.parse(symbol_table_);
-            sys().typing().extractInfoFromAxiom(a.formula(), symbol_table_);
+            a.parse(local_symbol_table_);
+            sys().typing().extractInfoFromAxiom(a.formula(), local_symbol_table_);
         }
     }
 
@@ -696,6 +707,28 @@ public class Theory
     public boolean isLoaded()
     {
         return loaded_;
+    }
+
+    public void addParameterType(String a)
+    {
+        parameter_types_.put(a, a);
+        parameter_type_ordering_.add(a);
+        parameter_type_names_ = parameter_types_.keySet().stream().sorted().collect(Collectors.toList());
+    }
+
+    public String getParameterType(String name)
+    {
+        return parameter_types_.get(name);
+    }
+
+    public List<String> parameterTypeOrdering()
+    {
+        return parameter_type_ordering_;
+    }
+
+    public List<String> parameterTypeNames()
+    {
+        return parameter_type_names_;
     }
 
 }

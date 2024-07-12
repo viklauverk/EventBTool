@@ -7,5 +7,9 @@
     <org.eventb.theory.core.datatypeDefinition name=")" org.eventb.core.comment="A fishy fish." org.eventb.core.identifier="Salmon">
         <org.eventb.theory.core.typeArgument name="'" org.eventb.theory.core.givenType="T"/>
         <org.eventb.theory.core.datatypeConstructor name="(" org.eventb.core.comment="A big constructor." org.eventb.core.identifier="LeBigFish"/>
+        <org.eventb.theory.core.datatypeConstructor name=")" org.eventb.core.comment="Another constructor" org.eventb.core.identifier="LeSmallFish"/>
     </org.eventb.theory.core.datatypeDefinition>
+    <org.eventb.theory.core.theorem name="*" org.eventb.core.comment="Another comment another day." org.eventb.core.label="thm1" org.eventb.core.predicate="1∈ℕ"/>
+    <org.eventb.theory.core.theorem name="+" org.eventb.core.comment="Complicated proven theorem." org.eventb.core.label="thm2" org.eventb.core.predicate="LeBigFish ∈ Salmon(T) "/>
+    <org.eventb.theory.core.theorem name="," org.eventb.core.label="thm3" org.eventb.core.predicate="⊤"/>
 </org.eventb.theory.core.theoryRoot>
