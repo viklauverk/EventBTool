@@ -70,7 +70,6 @@ public class ConsoleCompleter
              new ArgumentCompleter(new StringsCompleter("eb.show.formula")),
              new ArgumentCompleter(
                  new StringsCompleter("eb.show.part"),
-                 new StringsCompleter("--frame", "--tex"),
                  new SysCompleter(sys, false, false, false, true)
                  ),
              new ArgumentCompleter(

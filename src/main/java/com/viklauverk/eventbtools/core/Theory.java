@@ -431,7 +431,7 @@ public class Theory
             }
             type_parameters_ = type_parameters_.trim();
 
-            List<Node> constructors = n.selectNodes("//org.eventb.theory.core.scDatatypeConstructor");
+            List<Node> constructors = n.selectNodes("org.eventb.theory.core.scDatatypeConstructor");
             for (Node c : constructors)
             {
                 name = c.valueOf("@name");
@@ -463,8 +463,20 @@ public class Theory
                                             name(),
                                             dtf_);
 
+            log.debug("    operator %s", name);
+
             Operator o = new Operator(name, this, ont, ot);
             o.addComment(comment);
+
+            List<Node> args = n.selectNodes("org.eventb.theory.core.scOperatorArgument");
+            for (Node a : args)
+            {
+                String an = a.valueOf("@name");
+                String at = a.valueOf("@org.eventb.core.type");
+                log.debug("    operator argument %s %s", an, at);
+                o.addArgument(an, at);
+            }
+
             addOperator(o);
         }
 
@@ -490,6 +502,8 @@ public class Theory
                                             dtf_);
 
             Operator o = new Operator(name, this, ont, ot);
+            log.debug("    operator axiomatic %s", name);
+
             o.addComment(comment);
             o.setPredicate(predicate);
             addOperator(o);
@@ -511,6 +525,7 @@ public class Theory
 
     public synchronized void loadSourceTUF() throws Exception
     {
+        /*
         if (loaded_) return;
         loaded_ = true;
         SAXReader reader = new SAXReader();
@@ -614,6 +629,7 @@ public class Theory
             Axiom a = new Axiom(name, pred, comment, it);
             addAxiom(a);
         }
+        */
     }
 
     public void loadProofStatus() throws Exception
@@ -711,6 +727,15 @@ public class Theory
         {
             pdt.reparse(local_symbol_table_);
         }
+        for (Operator oprt : operator_ordering_)
+        {
+            for (OperatorArgument oa : oprt.arguments())
+            {
+                oa.reparse();
+            }
+            oprt.reparse();
+        }
+
     }
 
     public void parse()

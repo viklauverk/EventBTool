@@ -212,6 +212,7 @@ public static String TeXDefinitions =
 "\\newcommand{\\EVBTcolor}[1]{\\ifx\\EVBTMode\\EVBTModeFormula\\color{#1}\\else\\color{EvBImpl}\\fi}\n"+
 "\\newcommand{\\EVBTtextrm}[1]{\\textrm{\\ifx\\EVBTMode\\EVBTModeFormula #1\\else\\textsmaller{#1}\\fi}}\n"+
 "\\newcommand{\\EVBTtextrmbf}[1]{\\textrm{\\textbf{\\ifx\\EVBTMode\\EVBTModeFormula #1\\else\\textsmaller{#1}\\fi}}}\n"+
+"\\newcommand{\\EVBTtextrmbfsmaller}[1]{\\textrm{\\textbf{\\textsmaller{\\ifx\\EVBTMode\\EVBTModeFormula #1\\else\\textsmaller{#1}\\fi}}}}\n"+
 "\\newcommand{\\EVBTmathit}[1]{\\mathit{\\ifx\\EVBTMode\\EVBTModeFormula #1\\else\\mathsmaller{#1}\\fi}}\n"+
 "\\newcommand{\\EVBTtexttt}[1]{\\texttt{\\ifx\\EVBTMode=\\EVBTModeFormula #1\\else\\textsmaller{#1}\\fi}}\n"+
 "\n"+
@@ -435,9 +436,9 @@ public static String TeXDefinitions =
 "\\newcommand{\\CSET}[1]{\\EVBTtextrm{\\EVBTcolor{EvBCarrierSet}#1}}%\n"+
 "\\newcommand{\\PSET}[1]{\\EVBTtextrm{\\EVBTcolor{EvBPrimitiveSet}#1}}%\n"+
 "\\newcommand{\\PDT}[1]{\\EVBTtextrmbf{\\EVBTcolor{EvBPolymorphicDataType}#1}}%\n"+
-"\\newcommand{\\CNST}[1]{\\EVBTtextrmbf{\\EVBTcolor{EvBConstructor}#1}}%\n"+
-"\\newcommand{\\DEST}[1]{\\EVBTtextrmbf{\\EVBTcolor{EvBDestructor}#1}}%\n"+
-"\\newcommand{\\OPER}[1]{\\EVBTtextrmbf{\\EVBTcolor{EvBOperator}#1}}%\n"+
+"\\newcommand{\\CNST}[1]{\\EVBTtextrmbfsmaller{\\EVBTcolor{EvBConstructor}#1}}%\n"+
+"\\newcommand{\\DEST}[1]{\\EVBTtextrmbfsmaller{\\EVBTcolor{EvBDestructor}#1}}%\n"+
+"\\newcommand{\\OPER}[1]{\\EVBTtextrmbfsmaller{\\EVBTcolor{EvBOperator}#1}}%\n"+
 "\\newcommand{\\EXPR}[1]{\\EVBTtexttt{\\EVBTcolor{EvBExpression}#1}}%\n"+
 "\\newcommand{\\PRED}[1]{\\EVBTtexttt{\\EVBTcolor{EvBPredicate}#1}}%\n"+
 "\\newcommand{\\NONF}[1]{\\EVBTmathit{\\EVBTcolor{EvBNonFree}#1}}%\n"+

@@ -92,13 +92,22 @@ public class RenderTheoryTeX extends RenderTheoryUnicode
             for (Constructor c: pdt.constructorOrdering())
             {
                 cnvs().append(" ");
-                cnvs().constructorArrow();
                 cnvs().constructor(c.name());
             }
         }
         cnvs().append("}\n");
 
         super.visit_PolymorphicDataType(thr, pdt);
+    }
+
+    @Override
+    public void visit_Operator(Theory thr, Operator oprt)
+    {
+        cnvs().append("\\subsection{\\footnotesize ");
+        oprt.formula().toString(cnvs());
+        cnvs().append("}\n");
+
+        super.visit_Operator(thr, oprt);
     }
 
 }

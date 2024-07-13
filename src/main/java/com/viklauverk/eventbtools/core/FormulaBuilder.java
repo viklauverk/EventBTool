@@ -81,7 +81,8 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
         EvBFormulaParser.SubstitutionContext sc = ctx.substitution();
         EvBFormulaParser.PredicateContext pc = ctx.predicate();
         EvBFormulaParser.ExpressionContext ec = ctx.expression();
-		TerminalNode eof = ctx.EOF();
+
+        TerminalNode eof = ctx.EOF();
 
         if (eof == null) return null;
 
@@ -193,7 +194,6 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
         Formula right = this.visit(ctx.right);
 
         return FormulaFactory.newOperatorInfixSymbol(ctx.operator.getText(),
-                                                     OperatorNotationType.INFIX,
                                                      OperatorType.PREDICATE,
                                                      left,
                                                      right,
@@ -207,7 +207,6 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
         Formula right = this.visit(ctx.right);
 
         return FormulaFactory.newOperatorInfixSymbol(ctx.operator.getText(),
-                                                     OperatorNotationType.INFIX,
                                                      OperatorType.EXPRESSION,
                                                      left,
                                                      right,
@@ -220,7 +219,6 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
         EvBFormulaParser.ListOfExpressionsContext parameters = ctx.listOfExpressions();
 
         return FormulaFactory.newOperatorPrefixSymbol(ctx.operator.getText(),
-                                                      OperatorNotationType.PREFIX,
                                                       OperatorType.PREDICATE,
                                                       parameters != null ? visitListOfExpressions(parameters):null,
                                                       visitOptionalMeta(ctx.meta()));
@@ -232,7 +230,6 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
         EvBFormulaParser.ListOfExpressionsContext parameters = ctx.listOfExpressions();
 
         return FormulaFactory.newOperatorPrefixSymbol(ctx.operator.getText(),
-                                                      OperatorNotationType.PREFIX,
                                                       OperatorType.EXPRESSION,
                                                       parameters != null ? visitListOfExpressions(parameters):null,
                                                       visitOptionalMeta(ctx.meta()));

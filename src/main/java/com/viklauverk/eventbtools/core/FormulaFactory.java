@@ -148,19 +148,12 @@ public class FormulaFactory
     }
 
     public static
-    Formula newOperatorPrefixSymbol(String s, OperatorNotationType nt, OperatorType ot, Formula parameters, Formula meta)
+    Formula newOperatorPrefixSymbol(String s, OperatorType ot, Formula parameters, Formula meta)
     {
         Node n = null;
-        if (nt == OperatorNotationType.INFIX)
-        {
-            if (ot == OperatorType.PREDICATE) n = Node.OPERATOR_INFIX_PREDICATE_SYMBOL;
-            else n = Node.OPERATOR_INFIX_PREDICATE_SYMBOL;
-        }
-        else
-        {
-            if (ot == OperatorType.PREDICATE) n = Node.OPERATOR_PREFIX_PREDICATE_SYMBOL;
-            else n = Node.OPERATOR_PREFIX_PREDICATE_SYMBOL;
-        }
+
+        if (ot == OperatorType.PREDICATE) n = Node.OPERATOR_PREFIX_PREDICATE_SYMBOL;
+        else n = Node.OPERATOR_PREFIX_EXPRESSION_SYMBOL;
 
         if (parameters != null)
         {
@@ -173,20 +166,12 @@ public class FormulaFactory
     }
 
     public static
-    Formula newOperatorInfixSymbol(String s, OperatorNotationType nt, OperatorType ot,
-                                   Formula left, Formula right, Formula meta)
+    Formula newOperatorInfixSymbol(String s, OperatorType ot, Formula left, Formula right, Formula meta)
     {
         Node n = null;
-        if (nt == OperatorNotationType.INFIX)
-        {
-            if (ot == OperatorType.PREDICATE) n = Node.OPERATOR_INFIX_PREDICATE_SYMBOL;
-            else n = Node.OPERATOR_INFIX_PREDICATE_SYMBOL;
-        }
-        else
-        {
-            if (ot == OperatorType.PREDICATE) n = Node.OPERATOR_PREFIX_PREDICATE_SYMBOL;
-            else n = Node.OPERATOR_PREFIX_PREDICATE_SYMBOL;
-        }
+        if (ot == OperatorType.PREDICATE) n = Node.OPERATOR_INFIX_PREDICATE_SYMBOL;
+        else n = Node.OPERATOR_INFIX_EXPRESSION_SYMBOL;
+
         return new Formula(n, Symbols.intern(s), left, right, meta);
     }
 

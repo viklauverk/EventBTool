@@ -17,17 +17,27 @@
 
 package com.viklauverk.eventbtools.core;
 
+import java.util.List;
+import java.util.LinkedList;
+
 import com.viklauverk.eventbtools.core.OperatorNotationType;
 import com.viklauverk.eventbtools.core.OperatorType;
 
 public class Operator extends Typed
 {
-    private String name_;
+    private String name_; // add
+    private String long_name_; // "x add y"
+    private Formula formula_; // The long name parsed as a formula.
     private String comment_;
+
+    private List<OperatorArgument> arguments_ = new LinkedList<>();
     private Formula definition_;
+    private String predicate_; // Used by axiomatic operator definitions.
+
     private OperatorNotationType notation_type_;
     private OperatorType operator_type_;
-    private String predicate_; // Used by axiomatic operator definitions.
+    private SymbolTable operator_symbol_table_;
+
     private Theory theory_;
 
     public Operator(String n, Theory t, OperatorNotationType nt, OperatorType ot)
@@ -36,6 +46,7 @@ public class Operator extends Typed
         notation_type_ = nt;
         operator_type_ = ot;
         theory_ = t;
+        operator_symbol_table_ = new SymbolTable(name_);
     }
 
     @Override
@@ -106,9 +117,72 @@ public class Operator extends Typed
 
     public boolean isOp(OperatorNotationType nt, OperatorType ot)
     {
+        System.out.println("isOP "+name_+" "+nt+" "+ot);
         if (notation_type_ != nt) return false;
         if (operator_type_ != ot) return false;
 
+        System.out.println("TRUE isOP "+name_+" "+nt+" "+ot);
         return true;
+    }
+
+    public void reparse()
+    {
+        if (notation_type_ == OperatorNotationType.PREFIX)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.append(name_);
+            sb.append("(");
+            boolean first = true;
+            for (OperatorArgument oa : arguments_)
+            {
+                if (!first) sb.append(",");
+                sb.append(oa.name());
+                first = false;
+            }
+            sb.append(")");
+            long_name_ = sb.toString();
+        }
+        else
+        {
+            StringBuilder sb = new StringBuilder();
+            if (arguments_.size() >= 2)
+            {
+                OperatorArgument left = arguments_.get(0);
+                OperatorArgument right = arguments_.get(1);
+
+                sb.append(left.name());
+                sb.append(" ");
+                sb.append(name_);
+                sb.append(" ");
+                sb.append(right.name());
+            }
+            else
+            {
+                sb.append("ERROR");
+            }
+            long_name_ = sb.toString();
+        }
+        System.out.println("LONG NAME >"+long_name_+"<");
+        if (!operator_symbol_table_.hasParents())
+        {
+            operator_symbol_table_.addParent(theory_.localSymbolTable());
+        }
+        formula_ = Formula.fromString(long_name_, operator_symbol_table_);
+    }
+
+    public void addArgument(String name, String type)
+    {
+        operator_symbol_table_.addVariableSymbol(name);
+        arguments_.add(new OperatorArgument(name, type, this));
+    }
+
+    public List<OperatorArgument> arguments()
+    {
+        return arguments_;
+    }
+
+    public Formula formula()
+    {
+        return formula_;
     }
 }

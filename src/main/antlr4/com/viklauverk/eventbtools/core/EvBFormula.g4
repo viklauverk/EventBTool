@@ -231,13 +231,18 @@ listOfSymbols
    : SYMBOL (',' SYMBOL)*                          # ListOfVariables
    ;
 
+operator_ip: { symbol_table.isOperatorSymbol(OperatorNotationType.INFIX, OperatorType.PREDICATE, _input.LT(1).getText()) }? SYMBOL;
+operator_ie: { symbol_table.isOperatorSymbol(OperatorNotationType.INFIX, OperatorType.EXPRESSION, _input.LT(1).getText()) }? SYMBOL;
+operator_pp: { symbol_table.isOperatorSymbol(OperatorNotationType.PREFIX, OperatorType.PREDICATE, _input.LT(1).getText()) }? SYMBOL;
+operator_pe: { symbol_table.isOperatorSymbol(OperatorNotationType.PREFIX, OperatorType.EXPRESSION, _input.LT(1).getText()) }? SYMBOL;
+
 predicate
    : TRUE meta?                                          # AlwaysTrue
    | FALSE meta?                                         # AlwaysFalse
    | { symbol_table.isAnySymbol(_input.LT(1).getText()) }?  sym=SYMBOL meta? # AnyPredicateSymbol
    | { symbol_table.isPredicateSymbol(_input.LT(1).getText()) }? sym=SYMBOL meta? # PredicateSymbol
    | '(' inner=predicate ')'                        # PredicateParentheses
-   | left=predicate { symbol_table.isOperatorSymbol(OperatorNotationType.INFIX, OperatorType.PREDICATE, _input.LT(1).getText()) }? operator=SYMBOL meta? right=predicate # OperatorInfixPredicate
+   | left=expression operator=operator_ip meta? { System.out.println("PRUTTO"); } right=expression # OperatorInfixPredicate
    | left=expression IN meta? right=expression            # SetMembership
    | left=expression NOTIN meta? right=expression         # SetNotMembership
    | left=predicate operator=AND meta? right=predicate    # Conjunction
@@ -245,7 +250,7 @@ predicate
    | left=predicate operator=EQUIV meta? right=predicate  # Equivalence
    | left=predicate operator=OR meta? right=predicate     # Disjunction
    | operator=NOT meta? right=predicate                   # Negation
-   | { symbol_table.isOperatorSymbol(OperatorNotationType.PREFIX, OperatorType.PREDICATE, _input.LT(1).getText()) }? operator=SYMBOL meta? ( '(' parameters=listOfExpressions ')' )?  # OperatorPrefixPredicate
+   | operator=operator_pp meta? ( '(' parameters=listOfExpressions ')' )?  # OperatorPrefixPredicate
    | ALL meta? left=listOfNonFreeSymbols
      { pushFrame(((UniversalContext)_localctx).left); }
      QDOT right=predicate
@@ -275,6 +280,7 @@ expression
    | EFALSE meta?                                   # ExpressionFALSE
    | NUMBER meta?                                   # Number
    | { allSymbolsAreNonFreeVars() }? variable=SYMBOL meta? { addNonFreeVar(((SetComprehensionNonFreeExpressionVariableContext)_localctx).variable.getText()); } # SetComprehensionNonFreeExpressionVariable
+
    | { symbol_table.isExpressionSymbol(_input.LT(1).getText()) }? sym=SYMBOL meta? # ExpressionSymbol
    | { symbol_table.isAnySymbol(_input.LT(1).getText()) }?        sym=SYMBOL meta? # AnyExpressionSymbol
    | { symbol_table.isNumberSymbol(_input.LT(1).getText()) }?     sym=SYMBOL meta? # NumberSymbol
@@ -287,22 +293,22 @@ expression
    | { symbol_table.isDestructorSymbol(_input.LT(1).getText()) }? destructor=SYMBOL
         meta? ( '(' parameters=listOfExpressions ')' )? # Destructor
 
-   | { symbol_table.isOperatorSymbol(OperatorNotationType.PREFIX, OperatorType.EXPRESSION, _input.LT(1).getText()) }? operator=SYMBOL
-      meta? ( '(' parameters=listOfExpressions ')' )? # OperatorPrefixExpression
+   | operator=operator_pe meta? ( '(' parameters=listOfExpressions ')' )? # OperatorPrefixExpression
 
    | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }?   constant=SYMBOL meta?        # ExpressionConstant
+
    // Should we be able to talk about all functions such that their applications give such and such result? For the moment, we can't.
    | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL PRIM? INV? meta? '(' inner=expression ')' # VariableFunctionApplication
    | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }?   constant=SYMBOL meta? '(' inner=expression ')' # ConstantFunctionApplication
    | function=expression meta? '(' inner=expression ')'  # GenericFunctionApplication
    | '(' inner=expression ')'                       # ExpressionParentheses
+   | 'HOWDY' left=expression operator=operator_ie meta? { System.out.println("BAJSO"); } right=expression # OperatorInfixExpression
    | left=expression operator=MAPSTO right=expression # MapsToExpression
    | left=expression operator=MAPSTO right=expression # MapsToSet
    | left=expression operator=MUL meta? right=expression  # Multiplication
    | left=expression operator=DIV meta? right=expression  # Division
    | left=expression operator=ADD meta? right=expression  # Addition
    | left=expression operator=MINUS meta? right=expression  # Subtraction
-   | left=expression { symbol_table.isOperatorSymbol(OperatorNotationType.INFIX, OperatorType.EXPRESSION, _input.LT(1).getText()) }? operator=SYMBOL meta? right=expression # OperatorInfixExpression
    | operator=MINUS right=expression                  # UnaryMinus
    | left=expression operator=MOD meta? right=expression  # Modulo
    | left=expression operator=EXP meta? right=expression  # Exponentiation

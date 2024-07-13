@@ -99,16 +99,23 @@ public class SymbolTable
         frames_.removeFirst();
     }
 
+    public boolean hasParents()
+    {
+        return parents_.size() > 0;
+    }
+
     public void addParents(List<SymbolTable> parents)
     {
         for (SymbolTable p : parents)
         {
+            assert(p != null);
             parents_.add(p);
         }
     }
 
     public void addParent(SymbolTable p)
     {
+        assert(p != null);
         parents_.add(p);
     }
 

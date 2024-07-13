@@ -78,7 +78,8 @@ public class RenderTheoryUnicode extends RenderTheory
     @Override public void visit_PolymorphicDataType(Theory thr, PolymorphicDataType pdt)
     {
         cnvs().startLine();
-        cnvs().keyword("datatype");
+        cnvs().keyword("datatype ");
+        pdt.formula().toString(cnvs());
         cnvs().endLine();
 
         cnvs().startAlignments(Canvas.align_2col);
@@ -89,15 +90,12 @@ public class RenderTheoryUnicode extends RenderTheory
         {
             cnvs().acomment(pdt.comment());
         }
-        cnvs().startAlignedLine();
-        pdt.formula().toString(cnvs());
-        cnvs().stopAlignedLine();
 
         for (Constructor c : pdt.constructorOrdering())
         {
             cnvs().startAlignedLine();
             cnvs().startMath();
-            cnvs().constructorArrow();
+            cnvs().append("\\ \\ ");
             cnvs().constructor(c.name());
             cnvs().stopMath();
             cnvs().align();
@@ -113,22 +111,23 @@ public class RenderTheoryUnicode extends RenderTheory
 
     @Override public void visit_OperatorsStart(Theory thr)
     {
-        cnvs().startLine();
-        cnvs().keyword("operators");
-        cnvs().endLine();
-
-        cnvs().startAlignments(Canvas.align_2col);
     }
 
     @Override public void visit_Operator(Theory thr, Operator oprt)
     {
-        cnvs().startAlignedLine();
-        cnvs().startMath();
-        cnvs().constant(oprt.name());
-        cnvs().stopMath();
-        cnvs().align();
-        cnvs().comment(oprt.comment());
-        cnvs().stopAlignedLine();
+        cnvs().startLine();
+        cnvs().keyword("operator ");
+        cnvs().operator(oprt.name());
+        cnvs().endLine();
+
+        String id = buildOperatorPartName(thr, oprt);
+        cnvs().marker(id);
+        if (oprt.hasComment())
+        {
+            cnvs().acomment(oprt.comment());
+        }
+
+        cnvs().startAlignments(Canvas.align_2col);
 
 /*
         String id = buildOperatorPartName(oprt);
@@ -153,11 +152,11 @@ public class RenderTheoryUnicode extends RenderTheory
             cnvs().acomment(oprt.comment());
         }
 */
+        cnvs().stopAlignments();
     }
 
     @Override public void visit_OperatorsEnd(Theory thr)
     {
-        cnvs().stopAlignments();
     }
 
     @Override public void visit_AxiomsStart(Theory thr)

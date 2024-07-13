@@ -14,4 +14,12 @@
         <org.eventb.theory.core.operatorArgument name="(" org.eventb.core.expression="ℤ&#9;" org.eventb.core.identifier="right"/>
         <org.eventb.theory.core.directOperatorDefinition name=")" org.eventb.theory.core.formula="⊤"/>
     </org.eventb.theory.core.newOperatorDefinition>
+    <org.eventb.theory.core.newOperatorDefinition name="*" org.eventb.core.label="yesbox" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="false" org.eventb.theory.core.notationType="PREFIX">
+        <org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="ℤ" org.eventb.core.identifier="a"/>
+        <org.eventb.theory.core.directOperatorDefinition name="(" org.eventb.theory.core.formula="a = a"/>
+    </org.eventb.theory.core.newOperatorDefinition>
+    <org.eventb.theory.core.newOperatorDefinition name="+" org.eventb.core.label="inc" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="PREFIX">
+        <org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="ℤ" org.eventb.core.identifier="a"/>
+        <org.eventb.theory.core.directOperatorDefinition name="(" org.eventb.theory.core.formula="a+1"/>
+    </org.eventb.theory.core.newOperatorDefinition>
 </org.eventb.theory.core.theoryRoot>
