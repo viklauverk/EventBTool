@@ -19,23 +19,28 @@ package com.viklauverk.eventbtools.core;
 
 public class RenderTheorySearch extends RenderTheory
 {
+    @Override
     public void visit_TheoryStart(Theory thr)
     {
         renders().search().addPart(buildTheoryPartName(thr));
     }
 
+    @Override
     public void visit_Import(Theory thr, Theory ext) { }
 
+    @Override
     public void visit_PolymorphicDataType(Theory thr, PolymorphicDataType pdt)
     {
-        renders().walkPolymorphicDataType(pdt, "");
+        renders().search().addPart(RenderTheory.buildDataTypePartName(thr, pdt));
     }
 
+    @Override
     public void visit_Operator(Theory thr, Operator oprt)
     {
         renders().search().addPart(RenderTheory.buildOperatorPartName(thr, oprt));
     }
 
+    @Override
     public void visit_Axiom(Theory thr, Axiom axiom)
     {
         renders().search().addPart(RenderTheory.buildAxiomPartName(thr, axiom));

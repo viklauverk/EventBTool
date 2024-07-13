@@ -35,7 +35,6 @@ public class AllRenders
     private RenderEvent re_;
     private RenderFormula rf_;
     private RenderTheory rt_;
-    private RenderPolymorphicDataType rpdt_;
 
     Canvas current_, root_canvas_;
     LinkedList<Frame> stack_ = new LinkedList<>();
@@ -48,7 +47,6 @@ public class AllRenders
                       RenderEvent re,
                       RenderFormula rf,
                       RenderTheory rt,
-                      RenderPolymorphicDataType rpdt,
                       Canvas c)
     {
         rc_ = rc;
@@ -56,7 +54,6 @@ public class AllRenders
         re_ = re;
         rf_ = rf;
         rt_ = rt;
-        rpdt_ = rpdt;
         system_search_ = new SystemSearch();
 
         root_canvas_ = c;
@@ -65,7 +62,6 @@ public class AllRenders
         rm_.setRenders(this);
         re_.setRenders(this);
         rt_.setRenders(this);
-        rpdt_.setRenders(this);
     }
 
     public Canvas currentCanvas()
@@ -134,11 +130,6 @@ public class AllRenders
     public void walkEvent(Event e, String pattern)
     {
         VisitEvent.walk(re_, e, pattern);
-    }
-
-    public void walkPolymorphicDataType(PolymorphicDataType pdt, String pattern)
-    {
-        VisitPolymorphicDataType.walk(rpdt_, pdt, pattern);
     }
 
     public void walkFormula(Formula i)

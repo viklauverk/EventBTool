@@ -26,9 +26,17 @@ public class RenderTheoryUnicode extends RenderTheory
     @Override public void visit_TheoryStart(Theory thr)
     {
         cnvs().startLine();
-        cnvs().keywordLeft("theory");
+        String info = "theory";
+        if (thr.isDeployed()) info = "deployed theory";
+        cnvs().keywordLeft(info);
         cnvs().space();
-        cnvs().id(thr.name());
+        cnvs().id(thr.name()+" "+thr.typeParameters());
+        cnvs().space();
+        if (thr.isDeployed())
+        {
+            cnvs().hfil();
+            cnvs().keyword(thr.deployedHash());
+        }
         renderProofSummary(thr);
         cnvs().endLine();
 
@@ -65,21 +73,42 @@ public class RenderTheoryUnicode extends RenderTheory
 
     @Override public void visit_PolymorphicDataTypesStart(Theory thr)
     {
-        cnvs().startLine();
-        cnvs().keyword("datatypes");
-        cnvs().endLine();
-
-        cnvs().startAlignments(Canvas.align_2col);
     }
 
     @Override public void visit_PolymorphicDataType(Theory thr, PolymorphicDataType pdt)
     {
-        renders().walkPolymorphicDataType(pdt, "");
+        cnvs().startLine();
+        cnvs().keyword("datatype");
+        cnvs().endLine();
+
+        cnvs().startAlignments(Canvas.align_2col);
+
+        String id = buildDataTypePartName(pdt);
+        cnvs().marker(id);
+        if (pdt.hasComment())
+        {
+            cnvs().acomment(pdt.comment());
+        }
+        cnvs().startAlignedLine();
+        pdt.formula().toString(cnvs());
+        cnvs().stopAlignedLine();
+
+        for (Constructor c : pdt.constructorOrdering())
+        {
+            cnvs().startAlignedLine();
+            cnvs().startMath();
+            cnvs().constructorArrow();
+            cnvs().constructor(c.name());
+            cnvs().stopMath();
+            cnvs().align();
+            cnvs().comment(c.comment());
+            cnvs().stopAlignedLine();
+        }
+        cnvs().stopAlignments();
     }
 
     @Override public void visit_PolymorphicDataTypesEnd(Theory thr)
     {
-        cnvs().stopAlignments();
     }
 
     @Override public void visit_OperatorsStart(Theory thr)

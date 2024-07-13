@@ -36,6 +36,7 @@ public class Theory
     private static Log log = LogModule.lookup("theory");
 
     private String name_;
+    private String type_parameters_ = "";
     private String comment_;
     private List<Theory> imports_theories_ = new ArrayList<>();
 
@@ -60,9 +61,12 @@ public class Theory
     private List<String> proof_obligation_names_ = new ArrayList<>();
 
     private boolean loaded_;
+
     // If this theory was loaded from a dtf file, then it is a deployed theory that can be
     // loaded into a symbol table and used in contexts and machines.
     private boolean deployed_;
+    private String  deployed_hash_;
+
     private File tuf_; // Theory source
     private File dtf_; // Deployed theory
     private File bps_; // Proof statistics
@@ -111,6 +115,11 @@ public class Theory
     public String name()
     {
         return name_;
+    }
+
+    public String typeParameters()
+    {
+        return type_parameters_;
     }
 
     public String comment()
@@ -330,6 +339,16 @@ public class Theory
         return edk_theory_;
     }
 
+    public boolean isDeployed()
+    {
+        return deployed_;
+    }
+
+    public String deployedHash()
+    {
+        return deployed_hash_;
+    }
+
     public void loadDeployedDTF() throws Exception
     {
         if (loaded_) return;
@@ -359,18 +378,22 @@ public class Theory
             log.debug("detected EDK Deployed Theory "+name());
         }
 
-        List<Node> theory_comment = document.selectNodes("//org.eventb.theory.core.theoryRoot");
+        Node root = document.selectSingleNode("/org.eventb.theory.core.deployedTheoryRoot");
+        assert(root != null);
 
-        for (Node m : theory_comment)
+        comment_ = ""; // root.valueOf("@org.eventb.core.comment");
+        deployed_hash_ = root.valueOf("@org.eventb.theory.core.modificationHashValue");
+
+        if (deployed_hash_ == null || deployed_hash_.length() == 0)
         {
-            comment_ = m.valueOf("@org.eventb.core.comment");
+            assert(false);
         }
-
         List<Node> pts = document.selectNodes("//org.eventb.theory.core.scTypeParameter");
         for (Node pt : pts)
         {
             String name = pt.valueOf("@name");
             String core_type = pt.valueOf("@org.eventb.core.type"); // 'ℙ(T)')
+            // String source = pt.valueOf("@org.eventb.core.source");
             addParameterType(name);
         }
 
@@ -385,6 +408,7 @@ public class Theory
             sys().loadDeployedTheories();
             Theory t = sys().getDeployedTheory(name);
             assert (t != null) : "Error when loading used theory xml file. Cannot find imported theory "+name;
+            imports_theories_.add(t);
         }
 
         // Load the data types.
@@ -398,11 +422,14 @@ public class Theory
             addPolymorphicDataType(pdt);
 
             List<Node> parameters = n.selectNodes("//org.eventb.theory.core.scTypeArgument");
+            type_parameters_ = " ";
             for (Node c : parameters)
             {
                 String p = c.valueOf("@org.eventb.theory.core.givenType");
                 pdt.addTypeParameter(p);
+                type_parameters_ += p+" ";
             }
+            type_parameters_ = type_parameters_.trim();
 
             List<Node> constructors = n.selectNodes("//org.eventb.theory.core.scDatatypeConstructor");
             for (Node c : constructors)
@@ -680,6 +707,10 @@ public class Theory
             local_symbol_table_.addSetSymbol(p);
         }
 
+        for (PolymorphicDataType pdt : polymorphic_data_type_ordering_)
+        {
+            pdt.reparse(local_symbol_table_);
+        }
     }
 
     public void parse()

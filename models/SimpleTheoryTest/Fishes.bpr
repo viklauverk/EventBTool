@@ -74,6 +74,18 @@
                 <org.eventb.theory.core.scDatatypeConstructor name="LeBigFish"/>
                 <org.eventb.theory.core.scDatatypeConstructor name="LeSmallFish"/>
             </org.eventb.theory.core.scDatatypeDefinition>
+            <org.eventb.theory.core.scDatatypeDefinition name="Bass">
+                <org.eventb.theory.core.scDatatypeConstructor name="boson"/>
+                <org.eventb.theory.core.scDatatypeConstructor name="oson">
+                    <org.eventb.theory.core.scConstructorArgument name="son" org.eventb.core.type="Bass"/>
+                    <org.eventb.theory.core.scConstructorArgument name="nos" org.eventb.core.type="Bass"/>
+                </org.eventb.theory.core.scDatatypeConstructor>
+            </org.eventb.theory.core.scDatatypeDefinition>
+            <org.eventb.theory.core.scNewOperatorDefinition name="addo" org.eventb.core.label="addo" org.eventb.core.predicate="⊤" org.eventb.core.source="/SimpleTheoryTest/Fishes.tuf|org.eventb.theory.core.theoryRoot#Fishes|org.eventb.theory.core.newOperatorDefinition#." org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.groupID="infix extended expression group" org.eventb.theory.core.hasError="false" org.eventb.theory.core.notationType="INFIX" org.eventb.theory.core.type="ℤ" org.eventb.theory.core.wd="⊤">
+                <org.eventb.theory.core.scOperatorArgument name="a" org.eventb.core.source="/SimpleTheoryTest/Fishes.tuf|org.eventb.theory.core.theoryRoot#Fishes|org.eventb.theory.core.newOperatorDefinition#.|org.eventb.theory.core.operatorArgument#'" org.eventb.core.type="Salmon(T)"/>
+                <org.eventb.theory.core.scOperatorArgument name="b" org.eventb.core.source="/SimpleTheoryTest/Fishes.tuf|org.eventb.theory.core.theoryRoot#Fishes|org.eventb.theory.core.newOperatorDefinition#.|org.eventb.theory.core.operatorArgument#)" org.eventb.core.type="Bass"/>
+                <org.eventb.theory.core.scDirectOperatorDefinition name="(" org.eventb.core.source="/SimpleTheoryTest/Fishes.tuf|org.eventb.theory.core.theoryRoot#Fishes|org.eventb.theory.core.newOperatorDefinition#.|org.eventb.theory.core.directOperatorDefinition#(" org.eventb.theory.core.formula="17"/>
+            </org.eventb.theory.core.scNewOperatorDefinition>
         </org.eventb.core.lang>
         <org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
             <org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p1">

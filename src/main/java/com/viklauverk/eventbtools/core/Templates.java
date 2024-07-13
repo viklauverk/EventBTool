@@ -211,6 +211,7 @@ public static String TeXDefinitions =
 "\n"+
 "\\newcommand{\\EVBTcolor}[1]{\\ifx\\EVBTMode\\EVBTModeFormula\\color{#1}\\else\\color{EvBImpl}\\fi}\n"+
 "\\newcommand{\\EVBTtextrm}[1]{\\textrm{\\ifx\\EVBTMode\\EVBTModeFormula #1\\else\\textsmaller{#1}\\fi}}\n"+
+"\\newcommand{\\EVBTtextrmbf}[1]{\\textrm{\\textbf{\\ifx\\EVBTMode\\EVBTModeFormula #1\\else\\textsmaller{#1}\\fi}}}\n"+
 "\\newcommand{\\EVBTmathit}[1]{\\mathit{\\ifx\\EVBTMode\\EVBTModeFormula #1\\else\\mathsmaller{#1}\\fi}}\n"+
 "\\newcommand{\\EVBTtexttt}[1]{\\texttt{\\ifx\\EVBTMode=\\EVBTModeFormula #1\\else\\textsmaller{#1}\\fi}}\n"+
 "\n"+
@@ -377,10 +378,10 @@ public static String TeXDefinitions =
 "\\definecolor{EvBConstant}{HTML}{\\Indigo}%\n"+
 "\\definecolor{EvBCarrierSet}{HTML}{\\DarkGreen}%\n"+
 "\\definecolor{EvBPrimitiveSet}{HTML}{000000}%\n"+
-"\\definecolor{EvBPolymorphicDataType}{HTML}{\\MediumVioletRed}%\n"+
-"\\definecolor{EvBConstructor}{HTML}{\\MediumVioletRed}%\n"+
-"\\definecolor{EvBDestructor}{HTML}{\\MediumVioletRed}%\n"+
-"\\definecolor{EvBOperator}{HTML}{\\MediumVioletRed}%\n"+
+"\\definecolor{EvBPolymorphicDataType}{HTML}{\\Purple}%\n"+
+"\\definecolor{EvBConstructor}{HTML}{\\DarkOliveGreen}%\n"+
+"\\definecolor{EvBDestructor}{HTML}{\\DarkOliveGreen}%\n"+
+"\\definecolor{EvBOperator}{HTML}{\\DarkOliveGreen}%\n"+
 "\\definecolor{EvBComment}{HTML}{000000}%\n"+
 "\\definecolor{EvBLabel}{HTML}{0066cc}%\n"+
 "\\definecolor{EvBNames}{HTML}{000000}%\n"+
@@ -433,10 +434,10 @@ public static String TeXDefinitions =
 "\\newcommand{\\CON}[1]{\\EVBTtextrm{\\EVBTcolor{EvBConstant}#1}}%\n"+
 "\\newcommand{\\CSET}[1]{\\EVBTtextrm{\\EVBTcolor{EvBCarrierSet}#1}}%\n"+
 "\\newcommand{\\PSET}[1]{\\EVBTtextrm{\\EVBTcolor{EvBPrimitiveSet}#1}}%\n"+
-"\\newcommand{\\PDT}[1]{\\EVBTtextrm{\\EVBTcolor{EvBPolymorphicDataType}#1}}%\n"+
-"\\newcommand{\\CNST}[1]{\\EVBTtextrm{\\EVBTcolor{EvBConstructor}#1}}%\n"+
-"\\newcommand{\\DEST}[1]{\\EVBTtextrm{\\EVBTcolor{EvBDestructor}#1}}%\n"+
-"\\newcommand{\\OPER}[1]{\\EVBTtextrm{\\EVBTcolor{EvBOperator}#1}}%\n"+
+"\\newcommand{\\PDT}[1]{\\EVBTtextrmbf{\\EVBTcolor{EvBPolymorphicDataType}#1}}%\n"+
+"\\newcommand{\\CNST}[1]{\\EVBTtextrmbf{\\EVBTcolor{EvBConstructor}#1}}%\n"+
+"\\newcommand{\\DEST}[1]{\\EVBTtextrmbf{\\EVBTcolor{EvBDestructor}#1}}%\n"+
+"\\newcommand{\\OPER}[1]{\\EVBTtextrmbf{\\EVBTcolor{EvBOperator}#1}}%\n"+
 "\\newcommand{\\EXPR}[1]{\\EVBTtexttt{\\EVBTcolor{EvBExpression}#1}}%\n"+
 "\\newcommand{\\PRED}[1]{\\EVBTtexttt{\\EVBTcolor{EvBPredicate}#1}}%\n"+
 "\\newcommand{\\NONF}[1]{\\EVBTmathit{\\EVBTcolor{EvBNonFree}#1}}%\n"+

@@ -28,7 +28,6 @@ class AlignmentBlock
 
     private RenderTarget render_target_;
 
-    private boolean do_align_;
     private List<Integer> cols_ = new ArrayList<>();  // A distinct column.
     // Read: alfa § beta § gamma
     // Set:  0=5,1=5,2=6

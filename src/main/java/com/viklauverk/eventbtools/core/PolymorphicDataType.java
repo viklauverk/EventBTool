@@ -29,7 +29,7 @@ public class PolymorphicDataType
 {
     private String base_name_; // List Seq
     private String long_name_; // List(T) Seq(T)
-    private String hr_long_name_; // List<T> Seq<T>
+    private Formula formula_; // List<T> Seq<T>
     private String comment_;
 
     private List<String> type_parameters_;
@@ -49,7 +49,6 @@ public class PolymorphicDataType
     {
         base_name_ = bn;
         long_name_ = bn;
-        hr_long_name_ = bn;
 
         type_parameters_ = new ArrayList<>();
 
@@ -57,9 +56,6 @@ public class PolymorphicDataType
         constructor_names_ = new ArrayList<>();
         constructor_ordering_ = new ArrayList<>();
 
-        operators_ = new HashMap<>();
-        operator_names_ = new ArrayList<>();
-        operator_ordering_ = new ArrayList<>();
         theory_ = t;
     }
 
@@ -73,9 +69,14 @@ public class PolymorphicDataType
         return long_name_;
     }
 
-    public String hrLongName()
+    public Formula formula()
     {
-        return hr_long_name_;
+        return formula_;
+    }
+
+    public void reparse(SymbolTable st)
+    {
+        formula_ = Formula.fromString(long_name_, st);
     }
 
     public String comment()
@@ -112,27 +113,20 @@ public class PolymorphicDataType
     {
         type_parameters_.add(p);
         StringBuilder sb = new StringBuilder();
-        StringBuilder sbb = new StringBuilder();
         sb.append(base_name_);
-        sbb.append(base_name_);
         sb.append("(");
-        sbb.append("‹");
         boolean add_comma = false;
         for (String s : type_parameters_)
         {
             if (add_comma)
             {
                 sb.append(",");
-                sbb.append(",");
             }
             sb.append(s);
-            sbb.append(s);
             add_comma = true;
         }
         sb.append(")");
-        sbb.append("\\guilsinglright ");
         long_name_ = sb.toString();
-        hr_long_name_ = sbb.toString();
     }
 
     public void addConstructor(Constructor o)
@@ -156,27 +150,4 @@ public class PolymorphicDataType
     {
         return constructor_names_;
     }
-
-    public void addOperator(Operator o)
-    {
-        operators_.put(o.name(), o);
-        operator_ordering_.add(o);
-        operator_names_ = operators_.keySet().stream().sorted().collect(Collectors.toList());
-    }
-
-    public Operator getOperator(String name)
-    {
-        return operators_.get(name);
-    }
-
-    public List<Operator> operatorOrdering()
-    {
-        return operator_ordering_;
-    }
-
-    public List<String> operatorNames()
-    {
-        return operator_names_;
-    }
-
 }

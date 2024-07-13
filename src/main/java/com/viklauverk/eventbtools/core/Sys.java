@@ -534,7 +534,6 @@ public class Sys
             new RenderEventSearch(),
             new RenderFormulaSearch(null),
             new RenderTheorySearch(),
-            new RenderPolymorphicDataTypeSearch(),
             null);
     }
 
@@ -548,7 +547,6 @@ public class Sys
                                   new RenderEventUnicode(),
                                   new RenderFormulaUnicode(canvas),
                                   new RenderTheoryUnicode(),
-                                  new RenderPolymorphicDataTypeUnicode(),
                                   canvas);
         case TERMINAL:
             return new AllRenders(new RenderContextUnicode(),
@@ -556,7 +554,6 @@ public class Sys
                                   new RenderEventUnicode(),
                                   new RenderFormulaUnicode(canvas),
                                   new RenderTheoryUnicode(),
-                                  new RenderPolymorphicDataTypeUnicode(),
                                   canvas);
         case TEX:
            return new AllRenders(new RenderContextTeX(),
@@ -564,7 +561,6 @@ public class Sys
                                  new RenderEventTeX(),
                                  new RenderFormulaTeX(canvas),
                                  new RenderTheoryTeX(),
-                                 new RenderPolymorphicDataTypeTeX(),
                                  canvas);
         case HTML:
            return new AllRenders(new RenderContextHtmq(),
@@ -572,7 +568,6 @@ public class Sys
                                  new RenderEventHtmq(),
                                  new RenderFormulaHtmq(canvas),
                                  new RenderTheoryHtmq(),
-                                 new RenderPolymorphicDataTypeHtmq(),
                                  canvas);
         }
         assert (false) : "No case for format: "+format;

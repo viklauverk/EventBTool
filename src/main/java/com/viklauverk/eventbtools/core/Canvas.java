@@ -1572,7 +1572,7 @@ public class Canvas
             append("‹");
             return;
         case TERMINAL:
-            append(colorize(BPurple, "‹"));
+            append(colorize(BGreen, "‹"));
             return;
         case TEX:
             append("\\text{\\Large\\guilsinglleft}");
@@ -1592,7 +1592,7 @@ public class Canvas
             append("›");
             return;
         case TERMINAL:
-            append(colorize(Green, "›"));
+            append(colorize(BGreen, "›"));
             return;
         case TEX:
             append("\\text{\\Large\\guilsinglright}");
@@ -1604,6 +1604,44 @@ public class Canvas
         assert (false) : "Unknown encoding "+render_target_;
     }
 
+
+    public void constructorArrow()
+    {
+        switch (render_target_)
+        {
+        case PLAIN:
+            append("▹");
+            return;
+        case TERMINAL:
+            append(colorize(BGreen, "▹"));
+            return;
+        case TEX:
+            append("\\raisebox{1pt}{$\\scriptscriptstyle\\triangleright$}");;
+            return;
+        case HTML:
+            append(" span(class=ID)=▹");
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
+    public void hfil()
+    {
+        switch (render_target_)
+        {
+        case PLAIN:
+            return;
+        case TERMINAL:
+            return;
+        case TEX:
+            append("\\hfil ");
+            return;
+        case HTML:
+            //append(" '\\(' ");
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
 
     public String colorize(String color, String s)
     {

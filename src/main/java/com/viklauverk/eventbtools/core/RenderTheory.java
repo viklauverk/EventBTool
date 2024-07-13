@@ -58,6 +58,16 @@ public class RenderTheory extends CommonRenderFunctions
         return "thr/"+thr.name()+"/datatype/"+(pdt!=null?pdt.longName():"");
     }
 
+    protected static String buildDataTypePartName(PolymorphicDataType pdt)
+    {
+        return "thr/"+pdt.theory().name()+"/datatype/"+pdt.baseName();
+    }
+
+    protected static String buildConstructorPartName(PolymorphicDataType pdt, Constructor cnstr)
+    {
+        return "thr/"+pdt.theory().name()+"/datatype/"+pdt.baseName()+"/constructor/"+(cnstr!=null?cnstr.name():"");
+    }
+
     protected static String buildOperatorPartName(Theory thr, Operator oprt)
     {
         return "thr/"+thr.name()+"/operator/"+(oprt!=null?oprt.name():"");

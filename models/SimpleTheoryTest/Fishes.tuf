@@ -12,4 +12,16 @@
     <org.eventb.theory.core.theorem name="*" org.eventb.core.comment="Another comment another day." org.eventb.core.label="thm1" org.eventb.core.predicate="1∈ℕ"/>
     <org.eventb.theory.core.theorem name="+" org.eventb.core.comment="Complicated proven theorem." org.eventb.core.label="thm2" org.eventb.core.predicate="LeBigFish ∈ Salmon(T) "/>
     <org.eventb.theory.core.theorem name="," org.eventb.core.label="thm3" org.eventb.core.predicate="⊤"/>
+    <org.eventb.theory.core.datatypeDefinition name="-" org.eventb.core.comment="Fine fish." org.eventb.core.identifier="Bass">
+        <org.eventb.theory.core.datatypeConstructor name="'" org.eventb.core.identifier="boson"/>
+        <org.eventb.theory.core.datatypeConstructor name="(" org.eventb.core.identifier="oson">
+            <org.eventb.theory.core.constructorArgument name="'" org.eventb.core.identifier="son" org.eventb.theory.core.type="Bass"/>
+            <org.eventb.theory.core.constructorArgument name="(" org.eventb.core.identifier="nos" org.eventb.theory.core.type="Bass"/>
+        </org.eventb.theory.core.datatypeConstructor>
+    </org.eventb.theory.core.datatypeDefinition>
+    <org.eventb.theory.core.newOperatorDefinition name="." org.eventb.core.label="addo" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="INFIX">
+        <org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="Salmon(T)" org.eventb.core.identifier="a"/>
+        <org.eventb.theory.core.directOperatorDefinition name="(" org.eventb.theory.core.formula="17"/>
+        <org.eventb.theory.core.operatorArgument name=")" org.eventb.core.expression="Bass" org.eventb.core.identifier="b"/>
+    </org.eventb.theory.core.newOperatorDefinition>
 </org.eventb.theory.core.theoryRoot>
