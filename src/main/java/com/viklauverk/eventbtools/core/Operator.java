@@ -117,11 +117,13 @@ public class Operator extends Typed
 
     public boolean isOp(OperatorNotationType nt, OperatorType ot)
     {
-        System.out.println("isOP "+name_+" "+nt+" "+ot);
-        if (notation_type_ != nt) return false;
-        if (operator_type_ != ot) return false;
+        if (notation_type_ != nt || operator_type_ != ot)
+        {
+            System.out.println("SemPred? FALSE returned for isOp \""+name_+"\" "+nt+" "+ot);
+            return false;
+        }
 
-        System.out.println("TRUE isOP "+name_+" "+nt+" "+ot);
+        System.out.println("SemPred? TRUE returned for isOp \""+name_+"\" "+nt+" "+ot);
         return true;
     }
 

@@ -839,6 +839,7 @@ public class SymbolTable
 
     public void addDefaults()
     {
+        /*
         predicate_symbols_.add("P");
         predicate_symbols_.add("Q");
         predicate_symbols_.add("R");
@@ -850,11 +851,11 @@ public class SymbolTable
         set_symbols_.add("S");
         set_symbols_.add("T");
         set_symbols_.add("U");
-
+        */
         variable_symbols_.add("x");
         variable_symbols_.add("y");
         variable_symbols_.add("z");
-
+/*
         constant_symbols_.add("c");
         constant_symbols_.add("d");
         constant_symbols_.add("f");
@@ -869,9 +870,9 @@ public class SymbolTable
         polymorphic_data_type_symbols_.add("H");
         constructor_symbols_.add("cx");
         destructor_symbols_.add("dx");
-
-        addOperator(Sys.dummyTheory().generatePhantomOperator("pp+PP"));
-        addOperator(Sys.dummyTheory().generatePhantomOperator("pe+PE"));
+*/
+        //      addOperator(Sys.dummyTheory().generatePhantomOperator("pp+PP"));
+//        addOperator(Sys.dummyTheory().generatePhantomOperator("pe+PE"));
         addOperator(Sys.dummyTheory().generatePhantomOperator("ip+IP"));
         addOperator(Sys.dummyTheory().generatePhantomOperator("ie+IE"));
     }
