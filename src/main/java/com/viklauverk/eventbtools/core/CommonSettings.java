@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021-2024 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -28,6 +28,7 @@ public class CommonSettings
     private boolean verbose_enabled_;
     private boolean debug_enabled_;
     private boolean trace_enabled_;
+    private boolean quiet_enabled_;
 
     private String source_dir_;
     // The theory root dir is used to find imported theory projects.
@@ -55,6 +56,9 @@ public class CommonSettings
 
     public boolean traceEnabled() { return trace_enabled_; }
     public void setTraceEnabled(boolean v) { trace_enabled_ = v; }
+
+    public boolean quietEnabled() { return quiet_enabled_; }
+    public void quietEnabled(boolean v) { quiet_enabled_ = v; }
 
     public String nickName() { return nick_name_; }
     public void setNickName(String n) { nick_name_ = n; }

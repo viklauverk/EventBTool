@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021-2023 Viklauverk AB
+ Copyright (C) 2021-2024 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -30,7 +30,7 @@ public class RunModelGen
 {
     private static Log log = LogModule.lookup("modelgen");
 
-    public static void run(Settings s)
+    public static void run(CmdArgs ca, Settings s)
         throws Exception
     {
         Sys sys = new Sys(s);

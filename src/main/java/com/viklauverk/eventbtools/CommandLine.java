@@ -33,11 +33,11 @@ public class CommandLine
 {
     static Log log = LogModule.lookup("cmdline");
 
-    public static Cmd parse(Settings s, String[] args)
+    public static CmdArgs parse(Settings s, String[] args)
     {
         if (args.length < 1)
         {
-            return Cmd.HELP;
+            return new CmdArgs(Cmd.HELP, args);
         }
         String cs = args[0];
         Cmd cmd = Cmd.ERROR;
@@ -48,7 +48,7 @@ public class CommandLine
         catch (IllegalArgumentException e)
         {
             log.usageError("Unknown command \"%s\"", cs);
-            return Cmd.ERROR;
+            return new CmdArgs(Cmd.ERROR, args);
         }
 
         args = Util.shiftLeft(args);
@@ -66,7 +66,7 @@ public class CommandLine
         case LICENSE: args = parseLicense(s, args); break;
         case VERSION: break;
         }
-        return cmd;
+        return new CmdArgs(cmd, args);
     }
 
     private static String[] handleGlobalOption(Settings s, String[] args)
@@ -78,6 +78,7 @@ public class CommandLine
             if (arg.equals("-q"))
             {
                 LogModule.setLogLevelFor("all", LogLevel.WARN);
+                s.commonSettings().quietEnabled(true);
                 args = Util.shiftLeft(args);
                 continue;
             }
@@ -200,11 +201,12 @@ public class CommandLine
             break;
         }
 
+        /*
         if (args.length == 0) return args;
 
         s.commonSettings().setSourceDir(args[0]);
         args = Util.shiftLeft(args);
-
+        */
         return args;
     }
 

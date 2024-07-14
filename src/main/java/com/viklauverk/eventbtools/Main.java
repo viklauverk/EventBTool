@@ -32,9 +32,9 @@ public class Main
         try
         {
             Settings s = new Settings();
-            Cmd c = CommandLine.parse(s, args);
+            CmdArgs ca = CommandLine.parse(s, args);
             log.debug("debug output enabled for: %s", LogModule.debugEnabledModules());
-            run(c, s);
+            run(ca, s);
         }
         catch (Exception e)
         {
@@ -42,30 +42,30 @@ public class Main
         }
     }
 
-    public static void run(Cmd c, Settings s) throws Exception
+    public static void run(CmdArgs ca, Settings s) throws Exception
     {
-        switch (c)
+        switch (ca.cmd)
         {
         case CODEGEN:
-            RunCodeGen.run(s);
+            RunCodeGen.run(ca, s);
             break;
         case MODELGEN:
-            RunModelGen.run(s);
+            RunModelGen.run(ca, s);
             break;
         case CONSOLE:
-            RunConsole.run(s);
+            RunConsole.run(ca, s);
             break;
         case DOCGEN:
-            RunDocGen.run(s);
+            RunDocGen.run(ca, s);
             break;
         case DOCMOD:
-            RunDocMod.run(s);
+            RunDocMod.run(ca, s);
             break;
         case EDK:
-            RunEDK.run(s);
+            RunEDK.run(ca, s);
             break;
         case SHOW:
-            RunShow.run(s);
+            RunShow.run(ca, s);
             break;
         case HELP:
             printHelp(s);

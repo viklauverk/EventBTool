@@ -448,7 +448,7 @@ class Formula
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         EvBFormulaParser parser = new EvBFormulaParser(tokens);
         parser.symbol_table = fc;
-        //parser.setTrace(true);
+        parser.setTrace(log.traceEnabled());
         ParseTree tree = null;
         try
         {

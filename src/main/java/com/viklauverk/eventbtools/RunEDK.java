@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2021 Viklauverk AB
- 
+ Copyright (C) 2021-2024 Viklauverk AB
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -41,7 +41,7 @@ public class RunEDK
 {
     private static Log log = LogModule.lookup("edk");
 
-    public static void run(Settings s)
+    public static void run(CmdArgs ca, Settings s)
         throws Exception
     {
         log.info("installing EDK into %s", s.commonSettings().outputDir());

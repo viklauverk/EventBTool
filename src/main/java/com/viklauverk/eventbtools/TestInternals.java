@@ -66,9 +66,9 @@ public class TestInternals
         boolean ok = true;
         Settings s = new Settings();
         String[] a1 = { "help" };
-        Cmd c = CommandLine.parse(s, a1);
+        CmdArgs ca = CommandLine.parse(s, a1);
 
-        ok &= c == Cmd.HELP;
+        ok &= ca.cmd == Cmd.HELP;
         return ok;
     }
 

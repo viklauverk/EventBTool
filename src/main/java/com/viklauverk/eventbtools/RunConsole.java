@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021-2024 Viklauverk AB
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -60,7 +60,9 @@ import java.nio.file.Paths;
 
 public class RunConsole
 {
-    public static void run(Settings s) throws Exception
+    private static Log log = LogModule.lookup("console");
+
+    public static void run(CmdArgs ca, Settings s) throws Exception
     {
         Sys sys = new Sys(s);
 
@@ -85,7 +87,7 @@ public class RunConsole
         ra.setColor(true);
         canvas.setRenderAttributes(ra);
 
-        System.out.println("EVBT console 2.0.0");
+        log.info("EVBT console 2.0.0");
 
         Completer completer = ConsoleCompleter.addCompleters(sys);
         LineReader reader = LineReaderBuilder
@@ -94,17 +96,33 @@ public class RunConsole
             .build();
         String prompt = "evbt>";
 
+        int i = 0;
         while (sys.console().running())
         {
             String line = null;
             try
             {
-                line = reader.readLine(prompt);
+                if (i >= ca.args.length)
+                {
+                    line = reader.readLine(prompt);
+                }
+                else
+                {
+                    line = ca.args[i];
+                    i++;
+                }
                 if (line.trim().length() > 0)
                 {
                     String out = sys.console().go(line);
-                    System.out.print(out);
-                    if (out.length() > 0 && !out.endsWith("\n")) System.out.println();
+                    if (s.commonSettings().quietEnabled() && out.equals("OK"))
+                    {
+                        // Be silent.
+                    }
+                    else
+                    {
+                        System.out.print(out);
+                        if (out.length() > 0 && !out.endsWith("\n")) System.out.println();
+                    }
                 }
             }
             catch (UserInterruptException e)
