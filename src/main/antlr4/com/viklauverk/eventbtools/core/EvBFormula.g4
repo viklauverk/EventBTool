@@ -23,9 +23,6 @@ grammar EvBFormula;
 //import com.viklauverk.eventbtools.core.SymbolTable;
 //import com.viklauverk.eventbtools.core.OperatorNotationType;
 //import com.viklauverk.eventbtools.core.OperatorType;
-
-import java.util.List;
-import java.util.LinkedList;
 }
 
 @parser::members {
