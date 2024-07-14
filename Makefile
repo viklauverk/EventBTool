@@ -42,7 +42,9 @@ ifneq ($(strip $(CHANGES)),)
 endif
 
 VERSION_FILE:=$(GEN_SRC)/version/com/viklauverk/eventbtools/core/Version.java
+
 $(shell mkdir -p $(dir $(VERSION_FILE)))
+$(shell rm -f src/main/java/com/viklauverk/eventbtools/core/Version.java)
 $(shell echo "package com.viklauverk.eventbtools.core;" > $(VERSION_FILE))
 $(shell echo "public class Version {" >> $(VERSION_FILE))
 $(shell echo "    public static String version = \"$(VERSION)\"; " >> $(VERSION_FILE))

@@ -98,18 +98,8 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
     @Override
     public Formula visitExpressionVariable(EvBFormulaParser.ExpressionVariableContext ctx)
     {
-        if (ctx.PRIM() != null)
-        {
-            return FormulaFactory.newVariablePrimSymbol(ctx.variable.getText(), null);
-        }
-        else
-        {
-            return FormulaFactory.newVariableSymbol(ctx.variable.getText(), null);
-        }
+        return FormulaFactory.newVariableSymbol(ctx.variable.getText(), null);
     }
-
-
-
 
 
     @Override

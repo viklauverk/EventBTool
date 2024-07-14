@@ -444,10 +444,10 @@ class Formula
         CharStream lineStream = CharStreams.fromString(line);
 
         EvBFormulaLexer lexer = new EvBFormulaLexer(lineStream);
-        lexer.symbol_table = fc;
+        // lexer.symbol_table = fc;
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         EvBFormulaParser parser = new EvBFormulaParser(tokens);
-        parser.symbol_table = fc;
+        //parser.symbol_table = fc;
         parser.setTrace(log.traceEnabled());
         ParseTree tree = null;
         try
