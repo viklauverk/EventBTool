@@ -6,7 +6,7 @@ $(shell rm -f *.pdf)
 endif
 
 EVBT?=evbt
-DIRS=$(shell echo */ | tr -d '/')
+DIRS=$(filter-out $(shell echo */ | tr -d '/'), SimpleTheoryTest)
 PDFS=$(addsuffix .pdf,$(DIRS))
 INFOS=$(addsuffix /project.info,$(DIRS))
 
