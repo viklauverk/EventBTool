@@ -876,6 +876,29 @@ public class SymbolTable
         addOperator(Sys.dummyTheory().generatePhantomOperator("ie+IE"));
     }
 
+    public void collectInfixOperators(HashMap<String,Integer> map)
+    {
+        for (SymbolTable st : parents_)
+        {
+            st.collectInfixOperators(map);
+        }
+        for (Map.Entry<String, Operator> entry : operators_.entrySet())
+        {
+            Operator op = entry.getValue();
+            if (op.notationType() == OperatorNotationType.INFIX)
+            {
+                if (op.operatorType() == OperatorType.PREDICATE)
+                {
+                    map.put(op.name(), EvBFormulaParser.OP_IP);
+                }
+                else
+                {
+                    map.put(op.name(), EvBFormulaParser.OP_IE);
+                }
+            }
+        }
+    }
+
     public static SymbolTable PQR_EFG_STU_xyz_cdf_NM_ABC_H_cx_dx_op;
 
     static

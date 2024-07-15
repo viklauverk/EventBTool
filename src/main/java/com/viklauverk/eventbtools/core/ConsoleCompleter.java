@@ -87,6 +87,7 @@ public class ConsoleCompleter
              new ArgumentCompleter(new StringsCompleter("yms.add.sets")),
              new ArgumentCompleter(new StringsCompleter("yms.add.variables")),
              new ArgumentCompleter(new StringsCompleter("yms.add.defaults")),
+             new ArgumentCompleter(new StringsCompleter("yms.lookup")),
              new ArgumentCompleter(new StringsCompleter("yms.pop")),
              new ArgumentCompleter(new StringsCompleter("yms.push")),
              new ArgumentCompleter(new StringsCompleter("yms.show")),

@@ -172,6 +172,11 @@ public enum Cmd
         "Add variable symbols to current symbol table.",
         "Usage: yms.add.variables x y",
         CmdYmsAddVariables::new),
+    YMS_LOOKUP(
+        "yms.lookup",
+        "Lookup the string and find the object registered for this symbol.",
+        "Usage: yms.lookup lessThan",
+        CmdYmsLookup::new),
     YMS_SHOW(
         "yms.show",
         "Show active symbol table.",

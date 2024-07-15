@@ -21,6 +21,7 @@ import static com.viklauverk.eventbtools.core.Node.*;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.TreeMap;
@@ -444,7 +445,11 @@ class Formula
         CharStream lineStream = CharStreams.fromString(line);
 
         EvBFormulaLexer lexer = new EvBFormulaLexer(lineStream);
-        lexer.symbol_table = fc;
+
+        HashMap<String,Integer> symbol_overrides = new HashMap<>();
+        fc.collectInfixOperators(symbol_overrides);
+        lexer.symbol_overrides = symbol_overrides;
+
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         EvBFormulaParser parser = new EvBFormulaParser(tokens);
         parser.symbol_table = fc;

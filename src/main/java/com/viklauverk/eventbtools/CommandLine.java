@@ -201,12 +201,15 @@ public class CommandLine
             break;
         }
 
-        /*
         if (args.length == 0) return args;
 
-        s.commonSettings().setSourceDir(args[0]);
-        args = Util.shiftLeft(args);
-        */
+        File dir = new File(args[0]);
+        if (dir.isDirectory())
+        {
+            s.commonSettings().setSourceDir(args[0]);
+            args = Util.shiftLeft(args);
+        }
+
         return args;
     }
 

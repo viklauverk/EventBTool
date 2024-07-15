@@ -117,11 +117,8 @@ public class Operator extends Typed
 
     public boolean isOp(OperatorNotationType nt, OperatorType ot)
     {
-        System.out.println("isOP "+name_+" "+nt+" "+ot);
         if (notation_type_ != nt) return false;
         if (operator_type_ != ot) return false;
-
-        System.out.println("TRUE isOP "+name_+" "+nt+" "+ot);
         return true;
     }
 
@@ -162,7 +159,6 @@ public class Operator extends Typed
             }
             long_name_ = sb.toString();
         }
-        System.out.println("LONG NAME >"+long_name_+"<");
         if (!operator_symbol_table_.hasParents())
         {
             operator_symbol_table_.addParent(theory_.localSymbolTable());

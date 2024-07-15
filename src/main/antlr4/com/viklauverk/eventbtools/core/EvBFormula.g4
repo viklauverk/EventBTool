@@ -17,6 +17,9 @@ grammar EvBFormula;
 
 @lexer::header{
 import com.viklauverk.eventbtools.core.SymbolTable;
+
+import java.util.Map;
+import java.util.HashMap;
 }
 
 @parser::header{
@@ -79,8 +82,15 @@ void popFrame()
 
 }
 @lexer::members {
-public SymbolTable symbol_table = null;
-public SymbolTable meta_table = null;
+public HashMap<String,Integer> symbol_overrides = new HashMap<>();
+
+int potentialTypeOverride(String t)
+{
+    Integer i = symbol_overrides.get(t);
+    if (i == null) return EvBFormulaParser.SYMBOL;
+    return i;
+}
+
 }
 
 
@@ -208,9 +218,26 @@ PRIM: '\'';
 
 NUMBER: [0-9]+;
 
-SYMBOL: [a-zA-Z][a-zA-Z0-9_]*;
+SYMBOL: [a-zA-Z][a-zA-Z0-9_]*
+   {
+       // There is an interesting limitation/bug? in antlr4 where semantic predicates
+       // does not work properly for infix operator selection. This is a workaround for
+       // those operators....
+       int pto = potentialTypeOverride(getText());
+       if (pto != EvBFormulaParser.SYMBOL)
+       {
+           setType(pto);
+       };
+    }
+    ;
+
+OP_IP: ;
+OP_IE: ;
 
 start : ( substitution | predicate | expression ) EOF # Done;
+
+operator_pp: { symbol_table.isOperatorSymbol(OperatorNotationType.PREFIX, OperatorType.PREDICATE, _input.LT(1).getText()) }? SYMBOL;
+operator_pe: { symbol_table.isOperatorSymbol(OperatorNotationType.PREFIX, OperatorType.EXPRESSION, _input.LT(1).getText()) }? SYMBOL;
 
 substitution
    : left=listOfSymbols BCMEQ meta? right=listOfExpressions  # BecomeEQ
@@ -231,18 +258,13 @@ listOfSymbols
    : SYMBOL (',' SYMBOL)*                          # ListOfVariables
    ;
 
-operator_ip: { symbol_table.isOperatorSymbol(OperatorNotationType.INFIX, OperatorType.PREDICATE, _input.LT(1).getText()) }? SYMBOL;
-operator_ie: { symbol_table.isOperatorSymbol(OperatorNotationType.INFIX, OperatorType.EXPRESSION, _input.LT(1).getText()) }? SYMBOL;
-operator_pp: { symbol_table.isOperatorSymbol(OperatorNotationType.PREFIX, OperatorType.PREDICATE, _input.LT(1).getText()) }? SYMBOL;
-operator_pe: { symbol_table.isOperatorSymbol(OperatorNotationType.PREFIX, OperatorType.EXPRESSION, _input.LT(1).getText()) }? SYMBOL;
-
 predicate
    : TRUE meta?                                          # AlwaysTrue
    | FALSE meta?                                         # AlwaysFalse
    | { symbol_table.isAnySymbol(_input.LT(1).getText()) }?  sym=SYMBOL meta? # AnyPredicateSymbol
    | { symbol_table.isPredicateSymbol(_input.LT(1).getText()) }? sym=SYMBOL meta? # PredicateSymbol
    | '(' inner=predicate ')'                        # PredicateParentheses
-   | left=expression operator=operator_ip meta? { System.out.println("PRUTTO"); } right=expression # OperatorInfixPredicate
+   | left=expression operator=OP_IP meta? right=expression # OperatorInfixPredicate
    | left=expression IN meta? right=expression            # SetMembership
    | left=expression NOTIN meta? right=expression         # SetNotMembership
    | left=predicate operator=AND meta? right=predicate    # Conjunction
@@ -302,7 +324,7 @@ expression
    | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }?   constant=SYMBOL meta? '(' inner=expression ')' # ConstantFunctionApplication
    | function=expression meta? '(' inner=expression ')'  # GenericFunctionApplication
    | '(' inner=expression ')'                       # ExpressionParentheses
-   | 'HOWDY' left=expression operator=operator_ie meta? { System.out.println("BAJSO"); } right=expression # OperatorInfixExpression
+   | left=expression operator=OP_IE meta? right=expression # OperatorInfixExpression
    | left=expression operator=MAPSTO right=expression # MapsToExpression
    | left=expression operator=MAPSTO right=expression # MapsToSet
    | left=expression operator=MUL meta? right=expression  # Multiplication
