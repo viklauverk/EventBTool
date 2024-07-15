@@ -86,6 +86,7 @@ public class RenderTheoryTeX extends RenderTheoryUnicode
     public void visit_PolymorphicDataType(Theory thr, PolymorphicDataType pdt)
     {
         cnvs().append("\\subsection{\\footnotesize ");
+        cnvs().startMath();
         pdt.formula().toString(cnvs());
         if (pdt.hasConstructors())
         {
@@ -95,6 +96,7 @@ public class RenderTheoryTeX extends RenderTheoryUnicode
                 cnvs().constructor(c.name());
             }
         }
+        cnvs().stopMath();
         cnvs().append("}\n");
 
         super.visit_PolymorphicDataType(thr, pdt);
@@ -104,7 +106,9 @@ public class RenderTheoryTeX extends RenderTheoryUnicode
     public void visit_Operator(Theory thr, Operator oprt)
     {
         cnvs().append("\\subsection{\\footnotesize ");
+        cnvs().startMath();
         oprt.formula().toString(cnvs());
+        cnvs().stopMath();
         cnvs().append("}\n");
 
         super.visit_Operator(thr, oprt);
