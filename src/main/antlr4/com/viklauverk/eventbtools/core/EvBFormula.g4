@@ -310,12 +310,12 @@ expression
    | { symbol_table.isVariableSymbol(_input.LT(1).getText()) }?   variable=SYMBOL  PRIM? meta? # ExpressionVariable
 
    | { symbol_table.isConstructorSymbol(_input.LT(1).getText()) }? constructor=SYMBOL
-        meta? ( '(' parameters=listOfExpressions ')' )? # Constructor
+        meta? ( '(' ')' | '(' parameters=listOfExpressions ')' )? # Constructor
 
    | { symbol_table.isDestructorSymbol(_input.LT(1).getText()) }? destructor=SYMBOL
-        meta? ( '(' parameters=listOfExpressions ')' )? # Destructor
+        meta? ( '(' ')' | '(' parameters=listOfExpressions ')' )? # Destructor
 
-   | operator=operator_pe meta? ( '(' parameters=listOfExpressions ')' )? # OperatorPrefixExpression
+   | operator=operator_pe meta? ( '(' ')' | '(' parameters=listOfExpressions ')' )? # OperatorPrefixExpression
 
    | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }?   constant=SYMBOL meta?        # ExpressionConstant
 
