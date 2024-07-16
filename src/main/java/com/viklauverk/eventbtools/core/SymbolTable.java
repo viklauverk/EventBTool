@@ -896,6 +896,17 @@ public class SymbolTable
                     map.put(op.name(), EvBFormulaParser.OP_IE);
                 }
             }
+            else
+            {
+                if (op.operatorType() == OperatorType.PREDICATE)
+                {
+                    map.put(op.name(), EvBFormulaParser.OP_PP);
+                }
+                else
+                {
+                    map.put(op.name(), EvBFormulaParser.OP_PE);
+                }
+            }
         }
     }
 

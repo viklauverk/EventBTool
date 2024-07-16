@@ -97,7 +97,7 @@ int potentialTypeOverride(String t)
 /* Accept all unicode whitespace:
    \u0020 	SPACE 	foo bar 	Depends on font, typically 1/4 em, often adjusted
    \u00A0 	NO-BREAK SPACE 	foo bar 	As a space, but often not adjusted
-   \u1680 	OGHAM SPACE MARK 	foo bar 	Unspecified; usually not really a space but a dash
+  \u1680 	OGHAM SPACE MARK 	foo bar 	Unspecified; usually not really a space but a dash
    \u180E 	MONGOLIAN VOWEL SEPARATOR 	foo᠎bar 	0
    \u2000 	EN QUAD 	foo bar 	1 en (= 1/2 em)
    \u2001 	EM QUAD 	foo bar 	1 em (nominally, the height of the font)
@@ -231,13 +231,13 @@ SYMBOL: [a-zA-Z][a-zA-Z0-9_]*
     }
     ;
 
-OP_IP: ;
-OP_IE: ;
+// New operators loaded from theories.
+OP_IP: ; // Infix predicate operator
+OP_IE: ; // Infix expression operator
+OP_PP: ; // Prefix predicate operator
+OP_PE: ; // Prefix expression operator
 
 start : ( substitution | predicate | expression ) EOF # Done;
-
-operator_pp: { symbol_table.isOperatorSymbol(OperatorNotationType.PREFIX, OperatorType.PREDICATE, _input.LT(1).getText()) }? SYMBOL;
-operator_pe: { symbol_table.isOperatorSymbol(OperatorNotationType.PREFIX, OperatorType.EXPRESSION, _input.LT(1).getText()) }? SYMBOL;
 
 substitution
    : left=listOfSymbols BCMEQ meta? right=listOfExpressions  # BecomeEQ
@@ -272,7 +272,7 @@ predicate
    | left=predicate operator=EQUIV meta? right=predicate  # Equivalence
    | left=predicate operator=OR meta? right=predicate     # Disjunction
    | operator=NOT meta? right=predicate                   # Negation
-   | operator=operator_pp meta? ( '(' parameters=listOfExpressions ')' )?  # OperatorPrefixPredicate
+   | operator=OP_PP meta? ( '(' parameters=listOfExpressions ')' )?  # OperatorPrefixPredicate
    | ALL meta? left=listOfNonFreeSymbols
      { pushFrame(((UniversalContext)_localctx).left); }
      QDOT right=predicate
@@ -315,7 +315,7 @@ expression
    | { symbol_table.isDestructorSymbol(_input.LT(1).getText()) }? destructor=SYMBOL
         meta? ( '(' ')' | '(' parameters=listOfExpressions ')' )? # Destructor
 
-   | operator=operator_pe meta? ( '(' ')' | '(' parameters=listOfExpressions ')' )? # OperatorPrefixExpression
+   | operator=OP_PE meta? ( '(' ')' | '(' parameters=listOfExpressions ')' )? # OperatorPrefixExpression
 
    | { symbol_table.isConstantSymbol(_input.LT(1).getText()) }?   constant=SYMBOL meta?        # ExpressionConstant
 
