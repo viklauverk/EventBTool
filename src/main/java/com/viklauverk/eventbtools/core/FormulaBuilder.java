@@ -112,12 +112,6 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
     }
 
     @Override
-    public Formula visitAnySetSymbol(EvBFormulaParser.AnySetSymbolContext ctx)
-    {
-        return FormulaFactory.newAnySymbol(ctx.sym.getText(), visitOptionalMeta(ctx.meta()));
-    }
-
-    @Override
     public Formula visitPredicateSymbol(EvBFormulaParser.PredicateSymbolContext ctx)
     {
         return FormulaFactory.newPredicateSymbol(ctx.sym.getText(), visitOptionalMeta(ctx.meta()));
@@ -282,30 +276,6 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
         return FormulaFactory.newConstantSymbol("FALSE", visitOptionalMeta(ctx.meta()));
     }
 
-    @Override
-    public Formula visitSetVariable(EvBFormulaParser.SetVariableContext ctx)
-    {
-        if (ctx.PRIM() != null)
-        {
-            return FormulaFactory.newVariablePrimSymbol(ctx.variable.getText(), visitOptionalMeta(ctx.meta()));
-        }
-        else
-        {
-            return FormulaFactory.newVariableSymbol(ctx.variable.getText(), visitOptionalMeta(ctx.meta()));
-        }
-    }
-
-    @Override
-    public Formula visitNonFreeSetVariable(EvBFormulaParser.NonFreeSetVariableContext ctx)
-    {
-        return FormulaFactory.newVariableNonFreeSymbol(ctx.variable.getText(), visitOptionalMeta(ctx.meta()));
-    }
-
-    @Override
-    public Formula visitSetConstant(EvBFormulaParser.SetConstantContext ctx)
-    {
-        return FormulaFactory.newConstantSymbol(ctx.constant.getText(), visitOptionalMeta(ctx.meta()));
-    }
 
     @Override
     public Formula visitListOfVariables(EvBFormulaParser.ListOfVariablesContext ctx)

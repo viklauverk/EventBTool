@@ -93,7 +93,7 @@ public class TestInternals
         ok &= testFailedMatch("height ≔ speeds ∪ {72}", "x ≔ x ∪ {E}", "FAILURE"); // Should be same variable in both x positions.
 
         // Test matching with polymorphic data types
-        ok &= testMatch("height:List(NAT,BOOL)", "x:H(A)", "x=height A=ℕ,BOOL H=List(ℕ,BOOL) ");
+        ok &= testMatch("height:List(NAT,BOOL)", "x:H(A)", "x=height A=ℕ,BOOL H=List‹ℕ,BOOL›");
 
         // Test matching with polymorphic data types
         ok &= testFailedMatch("height:List(INT)", "x:S(A)", "...");
@@ -443,7 +443,7 @@ public class TestInternals
         ok &= check("{1|->2, 2|->3}(2)", "{1↦2,2↦3}(2)", "<FUNC_APP <ENUMERATED_SET {<MAPSTO <NUMBER 1>↦<NUMBER 2>>,<MAPSTO <NUMBER 2>↦<NUMBER 3>>}>(<NUMBER 2>)>");
 
         //     test polymorphic data type
-        ok &= check("x:H(NAT,BOOL)", "x∈H(ℕ,BOOL)", "<MEMBERSHIP <VARIABLE_SYMBOL x>∈<POLYMORPHIC_DATA_TYPE_SYMBOL H(<LIST_OF_EXPRESSIONS <NAT_SET ℕ>,<BOOL_SET BOOL>>)>>");
+        ok &= check("x:H(NAT,BOOL)", "x∈H‹ℕ,BOOL›", "<MEMBERSHIP <VARIABLE_SYMBOL x>∈<POLYMORPHIC_DATA_TYPE_SYMBOL H‹<LIST_OF_EXPRESSIONS <NAT_SET ℕ>,<BOOL_SET BOOL>>›>>");
 
         //     test polymorphic data type without type parameters.
         ok &= check("x:H", "x∈H", "<MEMBERSHIP <VARIABLE_SYMBOL x>∈<POLYMORPHIC_DATA_TYPE_SYMBOL H>>");
