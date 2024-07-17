@@ -95,6 +95,12 @@ public class TestInternals
         // Test matching with polymorphic data types
         ok &= testMatch("height:List(NAT,BOOL)", "x:H(A)", "x=height A=ℕ,BOOL H=List‹ℕ,BOOL›");
 
+        // Test matching with polymorphic data types with <>
+        ok &= testMatch("height:List(NAT,BOOL)", "x:H<A>", "x=height A=ℕ,BOOL H=List‹ℕ,BOOL›");
+
+        // Test matching with polymorphic data types with ‹›
+        ok &= testMatch("height:List(NAT,BOOL)", "x:H‹A›", "x=height A=ℕ,BOOL H=List‹ℕ,BOOL›");
+
         // Test matching with polymorphic data types
         ok &= testFailedMatch("height:List(INT)", "x:S(A)", "...");
 
