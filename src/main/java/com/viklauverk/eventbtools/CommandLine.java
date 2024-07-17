@@ -137,10 +137,6 @@ public class CommandLine
                 args = Util.shiftLeft(args);
                 continue;
             }
-            if (arg.startsWith("-"))
-            {
-                log.usageError("Unknown option "+arg);
-            }
             break;
         }
         return args;
@@ -215,6 +211,30 @@ public class CommandLine
 
     private static boolean parseDocStyle(Settings s, String arg)
     {
+        if (arg.equals("--plain"))
+        {
+            log.debug("setting render target plain");
+            s.docGenSettings().setRenderTarget(RenderTarget.PLAIN);
+            return true;
+        }
+        if (arg.equals("--terminal"))
+        {
+            log.debug("setting render target terminal");
+            s.docGenSettings().setRenderTarget(RenderTarget.TERMINAL);
+            return true;
+        }
+        if (arg.equals("--tex"))
+        {
+            log.debug("setting render target tex");
+            s.docGenSettings().setRenderTarget(RenderTarget.TEX);
+            return true;
+        }
+        if (arg.equals("--html"))
+        {
+            log.debug("setting render target html");
+            s.docGenSettings().setRenderTarget(RenderTarget.HTML);
+            return true;
+        }
         if (arg.startsWith("--docstyle="))
         {
             String style = arg.substring(11);
@@ -240,7 +260,7 @@ public class CommandLine
 
             String arg = args[0];
 
-            if (!arg.startsWith("--")) break;
+            if (!arg.startsWith("-")) break;
 
             if (parseDocStyle(s, arg))
             {
@@ -251,20 +271,18 @@ public class CommandLine
             LogModule.usageErrorStatic("Unknown option \"%s\"", arg);
         }
 
-        if (args.length < 2)
+        if (args.length < 1)
         {
-            log.usageError("Usage: evbt docgen [options] <plain|tex|htmq> <dir> <machine|context>*");
+            log.usageError("Usage: evbt docgen [options] <dir> <machine|context>*");
             System.exit(1);
         }
 
         RenderTarget rt = RenderTarget.lookup(args[0]);
-        if (rt == null)
+        if (rt != null)
         {
-            log.usageError("Not a supported render target \""+args[0]+"\", available targets are: plain, terminal, tex and htmq.");
+            log.usageError("Use --tex/--html instead of tex/html to select render target.");
+            System.exit(1);
         }
-
-        s.docGenSettings().setRenderTarget(rt);
-        args = Util.shiftLeft(args);
 
         s.commonSettings().setSourceDir(args[0]);
         args = Util.shiftLeft(args);

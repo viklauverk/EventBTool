@@ -30,7 +30,7 @@ you have to have xelatex installed and g++ and node (javascript).
 
 Run:
 ```
-evbt docgen tex workspace/YourGreatEventBSystem
+evbt docgen --tex workspace/YourGreatEventBSystem
 ```
 to generate a tex document named `YourGreatEventBSystem.tex`
 
@@ -50,7 +50,7 @@ variables.
 
 You can tailor the output to remove labels:
 ```
-evbt docgen --docstyle=default,-labels tex workspace/YourGreatEventBSystem
+evbt docgen --tex --docstyle=default,-labels workspace/YourGreatEventBSystem
 ```
 
 ## console - exploration of Event-B models.
@@ -81,7 +81,7 @@ If you start the console with a Rodin workspace as an argument:
 
 Run:
 ```
-evbt docmod tex your_article.tex updated_article.tex workspace/YourGreateEvebtBSystem
+evbt docmod --tex your_article.tex updated_article.tex workspace/YourGreateEvebtBSystem
 ```
 
 Then evbt will replace any occurences with `EVBT(...console command...)` with the

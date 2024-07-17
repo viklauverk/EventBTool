@@ -477,6 +477,14 @@ public class Theory
                 o.addArgument(an, at);
             }
 
+            Node def = n.selectSingleNode("org.eventb.theory.core.scDirectOperatorDefinition");
+            if (def != null)
+            {
+                String definition = def.valueOf("@org.eventb.theory.core.formula");
+                System.out.println("DIRECT DEFINITION >"+definition+"<");
+                o.setDefinitionString(definition);
+            }
+
             addOperator(o);
         }
 

@@ -25,12 +25,15 @@ import com.viklauverk.eventbtools.core.OperatorType;
 
 public class Operator extends Typed
 {
+    private static Log log = LogModule.lookup("theory");
+
     private String name_; // add
     private String long_name_; // "x add y"
     private Formula formula_; // The long name parsed as a formula.
     private String comment_;
 
     private List<OperatorArgument> arguments_ = new LinkedList<>();
+    private String definition_s_;
     private Formula definition_;
     private String predicate_; // Used by axiomatic operator definitions.
 
@@ -90,6 +93,16 @@ public class Operator extends Typed
         predicate_ = p;
     }
 
+    public void setDefinitionString(String d)
+    {
+        definition_s_ = d;
+    }
+
+    public String definitionString()
+    {
+        return definition_s_;
+    }
+
     public void setDefinition(Formula f)
     {
         definition_ = f;
@@ -124,46 +137,59 @@ public class Operator extends Typed
 
     public void reparse()
     {
-        if (notation_type_ == OperatorNotationType.PREFIX)
+        try
         {
-            StringBuilder sb = new StringBuilder();
-            sb.append(name_);
-            sb.append("(");
-            boolean first = true;
-            for (OperatorArgument oa : arguments_)
+            if (!operator_symbol_table_.hasParents())
             {
-                if (!first) sb.append(",");
-                sb.append(oa.name());
-                first = false;
+                operator_symbol_table_.addParent(theory_.localSymbolTable());
             }
-            sb.append(")");
-            long_name_ = sb.toString();
-        }
-        else
-        {
-            StringBuilder sb = new StringBuilder();
-            if (arguments_.size() >= 2)
+            if (definition_s_ != null)
             {
-                OperatorArgument left = arguments_.get(0);
-                OperatorArgument right = arguments_.get(1);
-
-                sb.append(left.name());
-                sb.append(" ");
+                definition_ = Formula.fromString(definition_s_, operator_symbol_table_);
+            }
+            if (notation_type_ == OperatorNotationType.PREFIX)
+            {
+                StringBuilder sb = new StringBuilder();
                 sb.append(name_);
-                sb.append(" ");
-                sb.append(right.name());
+                sb.append("(");
+                boolean first = true;
+                for (OperatorArgument oa : arguments_)
+                {
+                    if (!first) sb.append(",");
+                    sb.append(oa.name());
+                    first = false;
+                }
+                sb.append(")");
+                long_name_ = sb.toString();
             }
             else
             {
-                sb.append("ERROR");
+                StringBuilder sb = new StringBuilder();
+                if (arguments_.size() >= 2)
+                {
+                    OperatorArgument left = arguments_.get(0);
+                    OperatorArgument right = arguments_.get(1);
+
+                    sb.append(left.name());
+                    sb.append(" ");
+                    sb.append(name_);
+                    sb.append(" ");
+                    sb.append(right.name());
+                }
+                else
+                {
+                    sb.append("ERROR");
+                }
+                long_name_ = sb.toString();
             }
-            long_name_ = sb.toString();
+            formula_ = Formula.fromString(long_name_, operator_symbol_table_);
         }
-        if (!operator_symbol_table_.hasParents())
+        catch (Error e)
         {
-            operator_symbol_table_.addParent(theory_.localSymbolTable());
+            log.warn("reparse failed in operator: %s in theory: %s",
+                     name_, theory_.name());
+            throw e;
         }
-        formula_ = Formula.fromString(long_name_, operator_symbol_table_);
     }
 
     public void addArgument(String name, String type)

@@ -331,13 +331,6 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
     }
 
     @Override
-    public Formula visitLambdaAbstractionSet(EvBFormulaParser.LambdaAbstractionSetContext ctx)
-    {
-        return FormulaFactory.newLambda(this.visit(ctx.vars), this.visit(ctx.pred), this.visit(ctx.formula),
-                                        visitOptionalMeta(ctx.meta()));
-    }
-
-    @Override
     public Formula visitSetComprehension(EvBFormulaParser.SetComprehensionContext ctx)
     {
         return FormulaFactory.newSetComprehension(this.visit(ctx.vars), this.visit(ctx.pred), this.visit(ctx.formula),
@@ -702,7 +695,7 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
     @Override
     public Formula visitUpTo(EvBFormulaParser.UpToContext ctx)
     {
-        return FormulaFactory.newUpTo(this.visit(ctx.from), this.visit(ctx.to), visitOptionalMeta(ctx.meta()));
+        return FormulaFactory.newUpTo(this.visit(ctx.left), this.visit(ctx.right), visitOptionalMeta(ctx.meta()));
     }
 
     @Override

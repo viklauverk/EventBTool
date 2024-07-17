@@ -117,10 +117,13 @@ public class RenderTheoryUnicode extends RenderTheory
     {
         cnvs().startLine();
         cnvs().keyword("operator ");
-        cnvs().operator(oprt.name());
+        cnvs().startMath();
+        oprt.formula().toString(cnvs());
+        cnvs().stopMath();
         cnvs().endLine();
 
         String id = buildOperatorPartName(thr, oprt);
+
         cnvs().marker(id);
         if (oprt.hasComment())
         {
@@ -128,6 +131,21 @@ public class RenderTheoryUnicode extends RenderTheory
         }
 
         cnvs().startAlignments(Canvas.align_2col);
+
+        cnvs().startAlignedLine();
+
+        if (oprt.hasDefinition())
+        {
+            cnvs().startMath();
+            oprt.definition().toString(cnvs());
+            cnvs().stopMath();
+        }
+
+        cnvs().align();
+
+        cnvs().append("");
+
+        cnvs().stopAlignedLine();
 
 /*
         String id = buildOperatorPartName(oprt);
