@@ -439,6 +439,15 @@ public class Theory
                 Constructor co = new Constructor(name, pdt);
                 co.addComment(comment);
                 pdt.addConstructor(co);
+
+                List<Node> args = c.selectNodes("org.eventb.theory.core.scConstructorArgument");
+                for (Node a : args)
+                {
+                    name = a.valueOf("@name");
+                    String type = a.valueOf("@org.eventb.core.type");
+                    OperatorArgument oa = new OperatorArgument(name, type, null);
+                    //co.addArgument(oa);
+                }
             }
         }
 

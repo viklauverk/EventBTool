@@ -19,9 +19,9 @@
             <org.eventb.theory.core.constructorArgument name="(" org.eventb.core.identifier="nos" org.eventb.theory.core.type="Bass"/>
         </org.eventb.theory.core.datatypeConstructor>
     </org.eventb.theory.core.datatypeDefinition>
-    <org.eventb.theory.core.newOperatorDefinition name="." org.eventb.core.label="addo" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="INFIX">
-        <org.eventb.theory.core.operatorArgument name="'" org.eventb.core.expression="Salmon(T)" org.eventb.core.identifier="a"/>
-        <org.eventb.theory.core.directOperatorDefinition name="(" org.eventb.theory.core.formula="17"/>
-        <org.eventb.theory.core.operatorArgument name=")" org.eventb.core.expression="Bass" org.eventb.core.identifier="b"/>
+    <org.eventb.theory.core.newOperatorDefinition name="." org.eventb.core.comment="This is an adding operator" org.eventb.core.label="addo" org.eventb.theory.core.associative="false" org.eventb.theory.core.commutative="false" org.eventb.theory.core.formulaType="true" org.eventb.theory.core.notationType="INFIX">
+        <org.eventb.theory.core.operatorArgument name="'" org.eventb.core.comment="The first argument comment." org.eventb.core.expression="Salmon(T)" org.eventb.core.identifier="a"/>
+        <org.eventb.theory.core.directOperatorDefinition name="(" org.eventb.core.comment="A direct definition." org.eventb.theory.core.formula="17"/>
+        <org.eventb.theory.core.operatorArgument name=")" org.eventb.core.comment="The second argument comment." org.eventb.core.expression="Bass" org.eventb.core.identifier="b"/>
     </org.eventb.theory.core.newOperatorDefinition>
 </org.eventb.theory.core.theoryRoot>

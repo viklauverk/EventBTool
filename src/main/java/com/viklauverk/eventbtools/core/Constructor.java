@@ -19,6 +19,7 @@ package com.viklauverk.eventbtools.core;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
@@ -29,12 +30,15 @@ public class Constructor extends Typed
 {
     private String name_;
     private String comment_;
-    private Formula definition_;
     private PolymorphicDataType polymorphic_datatype_;
+
+    private List<OperatorArgument> arguments_ = new LinkedList<>();
 
     private Map<String,Destructor> destructors_ = new HashMap<>();
     private List<Destructor> destructor_ordering_ = new ArrayList<>();
     private List<String> destructor_names_ = new ArrayList<>();
+
+    private SymbolTable constructor_symbol_table_;
 
     public Constructor(String n, PolymorphicDataType pdt)
     {
@@ -53,6 +57,16 @@ public class Constructor extends Typed
         return name_;
     }
 
+    public void toString(Canvas cnvs)
+    {
+        cnvs.constructor(name_);
+        if (destructor_ordering_.size() > 0)
+        {
+            cnvs.append("(");
+            cnvs.append(")");
+        }
+    }
+
     public String comment()
     {
         return comment_;
@@ -68,20 +82,6 @@ public class Constructor extends Typed
         comment_ = c;
     }
 
-    public void setDefinition(Formula f)
-    {
-        definition_ = f;
-    }
-
-    public Formula definition()
-    {
-        return definition_;
-    }
-
-    public boolean hasDefinition()
-    {
-        return definition_ != null;
-    }
 
     public void addDestructor(Destructor o)
     {
@@ -103,6 +103,12 @@ public class Constructor extends Typed
     public List<String> destructorNames()
     {
         return destructor_names_;
+    }
+
+    public void addArgument(String name, String type)
+    {
+        constructor_symbol_table_.addVariableSymbol(name);
+        arguments_.add(new OperatorArgument(name, type, null));
     }
 
 }

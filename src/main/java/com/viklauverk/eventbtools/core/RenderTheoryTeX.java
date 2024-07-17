@@ -92,8 +92,8 @@ public class RenderTheoryTeX extends RenderTheoryUnicode
         {
             for (Constructor c: pdt.constructorOrdering())
             {
-                cnvs().append(" ");
-                cnvs().constructor(c.name());
+                cnvs().space();
+                c.toString(cnvs());
             }
         }
         cnvs().stopMath();

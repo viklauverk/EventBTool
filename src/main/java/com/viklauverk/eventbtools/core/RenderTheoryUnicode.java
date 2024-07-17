@@ -94,8 +94,8 @@ public class RenderTheoryUnicode extends RenderTheory
         for (Constructor c : pdt.constructorOrdering())
         {
             cnvs().startAlignedLine();
+            cnvs().indent(1);
             cnvs().startMath();
-            cnvs().append("\\ \\ ");
             cnvs().constructor(c.name());
             cnvs().stopMath();
             cnvs().align();
@@ -119,6 +119,8 @@ public class RenderTheoryUnicode extends RenderTheory
         cnvs().keyword("operator ");
         cnvs().startMath();
         oprt.formula().toString(cnvs());
+        cnvs().space();
+        cnvs().definedAs();
         cnvs().stopMath();
         cnvs().endLine();
 
@@ -136,6 +138,7 @@ public class RenderTheoryUnicode extends RenderTheory
 
         if (oprt.hasDefinition())
         {
+            cnvs().indent(1);
             cnvs().startMath();
             oprt.definition().toString(cnvs());
             cnvs().stopMath();
@@ -147,29 +150,6 @@ public class RenderTheoryUnicode extends RenderTheory
 
         cnvs().stopAlignedLine();
 
-/*
-        String id = buildOperatorPartName(oprt);
-
-        cnvs().marker(id);
-
-        cnvs().startLine();
-        if (oprt.notation() == OperatorNotationType.PREFIX)
-        {
-            cnvs().keywordLeft("prefix ");
-        }
-        if (oprt.notation() == OperatorNotationType.INFIX)
-        {
-            cnvs().keywordLeft("infix ");
-        }
-        cnvs().keywordLeft("operator ");
-        cnvs().id(oprt.name());
-        cnvs().endLine();
-
-        if (oprt.hasComment())
-        {
-            cnvs().acomment(oprt.comment());
-        }
-*/
         cnvs().stopAlignments();
     }
 

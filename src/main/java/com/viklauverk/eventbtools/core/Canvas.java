@@ -953,9 +953,54 @@ public class Canvas
         num_aligns_++;
     }
 
+    public void indent(int n)
+    {
+        n *= 4;
+        while (n > 0)
+        {
+            space();
+            n--;
+        }
+    }
+
+    public void definedAs()
+    {
+        switch (render_target_)
+        {
+        case PLAIN:
+            append("≙");
+            return;
+        case TERMINAL:
+            append("≙");
+            return;
+        case TEX:
+            append("\\defi ");
+            return;
+        case HTML:
+            append("≙");
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
+    }
+
     public void space()
     {
-        append(" ");
+        switch (render_target_)
+        {
+        case PLAIN:
+            append(" ");
+            return;
+        case TERMINAL:
+            append(" ");
+            return;
+        case TEX:
+            append("\\ ");
+            return;
+        case HTML:
+            append("&nbsp;");
+            return;
+        }
+        assert (false) : "Unknown encoding "+render_target_;
     }
 
     public void id(String s)
