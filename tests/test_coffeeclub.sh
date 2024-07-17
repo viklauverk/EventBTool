@@ -19,7 +19,7 @@ rm -rf $OUTDIR
 mkdir -p $OUTDIR
 
 INFO="Generated coffee club tex file."
-$PROG docgen -q --outputdir=$OUTDIR tex models/CoffeeClub
+$PROG docgen --tex -q --outputdir=$OUTDIR models/CoffeeClub
 cp doc/bsymb.sty $OUTDIR
 xelatex -output-directory=$OUTDIR -interaction=batchmode -halt-on-error $OUTDIR/CoffeeClub.tex > $OUTDIR/tmp 2>&1
 

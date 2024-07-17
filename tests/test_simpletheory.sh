@@ -18,7 +18,7 @@ OUTDIR="$DIR/$TESTNAME"
 mkdir -p $OUTDIR
 
 INFO="Generated simple theory tex file."
-$PROG docgen -q --outputdir=$OUTDIR tex models/SimpleTheoryTest
+$PROG docgen --tex -q --outputdir=$OUTDIR models/SimpleTheoryTest
 cp doc/bsymb.sty $OUTDIR
 xelatex -output-directory=$OUTDIR -aux-directory=$OUTDIR -interaction=batchmode -halt-on-error $OUTDIR/SimpleTheoryTest.tex > $OUTDIR/tmp 2>&1
 

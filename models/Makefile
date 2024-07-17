@@ -17,7 +17,7 @@ bsymb.sty:
 	cp ../doc/bsymb.sty .
 
 %.pdf: % bsymb.sty
-	$(EVBT) docgen -q tex $<
+	$(EVBT) docgen --tex -q $<
 	@echo "xelatex $<.tex"
 	@xelatex -interaction=batchmode -halt-on-error $<.tex >> /tmp/evbtmodels.log 2>&1
 	@echo "makeindex $<.idx"
