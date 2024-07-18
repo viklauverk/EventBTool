@@ -49,7 +49,7 @@ public enum Node
     LIST_OF_VARIABLES(0), // x,y,z := 1,2,3
     LIST_OF_NONFREE_VARIABLES(0), // In a forall ∀x,y,z· or exists ∃a,b· the variables are such a list.
     LIST_OF_EXPRESSIONS(0), // In a partition {a},{b},{c} is a list of expressions (sets).
-    LIST_OF_PREDICATES(0), // For an operator pp(P,Q,R) P,Q,R is a list of predicates.
+    LIST_OF_PREDICATES(0), // For the api formila for a constructor or operator, such as: cx(x:NAT,y:BOOL)
     LIST_OF_TYPES(0), // In a DataType Seq(NAT) Map(NAT,INT)
 
     PARENTHESISED_PREDICATE(PRE.bit), // A predicate wrapped in parenthesis.

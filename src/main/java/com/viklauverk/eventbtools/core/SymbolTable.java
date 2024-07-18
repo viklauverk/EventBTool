@@ -201,12 +201,12 @@ public class SymbolTable
 
     public boolean hasConstructorSymbols()
     {
-        return constructors_.size() > 0;
+        return constructor_symbols_.size() > 0;
     }
 
     public boolean hasDestructorSymbols()
     {
-        return destructors_.size() > 0;
+        return destructor_symbols_.size() > 0;
     }
 
     public boolean hasOperatorSymbols()

@@ -28,22 +28,33 @@ import java.util.stream.Collectors;
 
 public class Constructor extends Typed
 {
+    // The base name, such as nil or cons
     private String name_;
+
+    // The full api for usage, such as cons(head:T, tail:List<T>)
+    private Formula api_;
+
+    // Any comment regarding this constructo.
     private String comment_;
+
+    // The constructor belongs to this datatype.
     private PolymorphicDataType polymorphic_datatype_;
 
-    private List<OperatorArgument> arguments_ = new LinkedList<>();
+    // Any arguments to this constructor.
+    private List<ConstructorArgument> arguments_ = new LinkedList<>();
 
     private Map<String,Destructor> destructors_ = new HashMap<>();
     private List<Destructor> destructor_ordering_ = new ArrayList<>();
     private List<String> destructor_names_ = new ArrayList<>();
 
+    // This symbol tables contains the name of the constructor and constructor argument variables.
     private SymbolTable constructor_symbol_table_;
 
     public Constructor(String n, PolymorphicDataType pdt)
     {
         name_ = n;
         polymorphic_datatype_ = pdt;
+        constructor_symbol_table_ = new SymbolTable("CNSTR_"+name_);
     }
 
     @Override
@@ -59,12 +70,7 @@ public class Constructor extends Typed
 
     public void toString(Canvas cnvs)
     {
-        cnvs.constructor(name_);
-        if (destructor_ordering_.size() > 0)
-        {
-            cnvs.append("(");
-            cnvs.append(")");
-        }
+        api_.toString(cnvs);
     }
 
     public String comment()
@@ -81,7 +87,6 @@ public class Constructor extends Typed
     {
         comment_ = c;
     }
-
 
     public void addDestructor(Destructor o)
     {
@@ -108,7 +113,44 @@ public class Constructor extends Typed
     public void addArgument(String name, String type)
     {
         constructor_symbol_table_.addVariableSymbol(name);
-        arguments_.add(new OperatorArgument(name, type, null));
+        arguments_.add(new ConstructorArgument(name, type, this));
+    }
+
+    public SymbolTable constructorSymbolTable()
+    {
+        return constructor_symbol_table_;
+    }
+
+    void buildAPI(SymbolTable st)
+    {
+        if (arguments_.size() == 0)
+        {
+            api_ = FormulaFactory.newConstructorSymbol (name_, null, null);
+            return;
+        }
+
+        List<Formula> types = new LinkedList<>();
+        for (ConstructorArgument ca : arguments_)
+        {
+            String info = ca.name()+":"+ca.type();
+            Formula var = Formula.fromString(info, st);
+            types.add(var);
+        }
+        Formula type_preds = FormulaFactory.newListOfPredicates(types);
+        api_ = FormulaFactory.newConstructorSymbol (name_, type_preds, null);
+    }
+
+    public void reparse()
+    {
+        if (!constructor_symbol_table_.hasParents())
+        {
+            constructor_symbol_table_.addParent(polymorphic_datatype_.pdtSymbolTable());
+        }
+        for (ConstructorArgument ca : arguments_)
+        {
+            ca.reparse();
+        }
+        buildAPI(constructor_symbol_table_);
     }
 
 }

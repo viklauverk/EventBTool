@@ -172,7 +172,11 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
     @Override
     public Formula visitConstructor(EvBFormulaParser.ConstructorContext ctx)
     {
-        return FormulaFactory.newConstructorSymbol(ctx.constructor.getText(), visitOptionalMeta(ctx.meta()));
+        EvBFormulaParser.ListOfExpressionsContext parameters = ctx.listOfExpressions();
+
+        return FormulaFactory.newConstructorSymbol(ctx.constructor.getText(),
+                                                   parameters != null ? visitListOfExpressions(parameters):null,
+                                                   visitOptionalMeta(ctx.meta()));
     }
 
     @Override

@@ -38,9 +38,7 @@ public class PolymorphicDataType
     private List<Constructor> constructor_ordering_;
     private List<String> constructor_names_;
 
-    private Map<String,Operator> operators_;
-    private List<Operator> operator_ordering_;
-    private List<String> operator_names_;
+    private SymbolTable pdt_symbol_table_;
     private Theory theory_;
 
     protected Implementation implementation_;
@@ -55,6 +53,9 @@ public class PolymorphicDataType
         constructors_ = new HashMap<>();
         constructor_names_ = new ArrayList<>();
         constructor_ordering_ = new ArrayList<>();
+
+        pdt_symbol_table_ = new SymbolTable("PDT_"+bn);
+        pdt_symbol_table_.addPolymorphicDataTypeSymbols(bn);
 
         theory_ = t;
     }
@@ -74,9 +75,17 @@ public class PolymorphicDataType
         return formula_;
     }
 
-    public void reparse(SymbolTable st)
+    public void reparse()
     {
-        formula_ = Formula.fromString(long_name_, st);
+        if (!pdt_symbol_table_.hasParents())
+        {
+            pdt_symbol_table_.addParent(theory_.localSymbolTable());
+        }
+        formula_ = Formula.fromString(long_name_, pdt_symbol_table_);
+        for (Constructor c : constructor_ordering_)
+        {
+            c.reparse();
+        }
     }
 
     public String comment()
@@ -112,6 +121,7 @@ public class PolymorphicDataType
     public void addTypeParameter(String p)
     {
         type_parameters_.add(p);
+        pdt_symbol_table_.addSetSymbol(p);
         StringBuilder sb = new StringBuilder();
         sb.append(base_name_);
         sb.append("(");
@@ -149,5 +159,10 @@ public class PolymorphicDataType
     public List<String> constructorNames()
     {
         return constructor_names_;
+    }
+
+    public SymbolTable pdtSymbolTable()
+    {
+        return pdt_symbol_table_;
     }
 }

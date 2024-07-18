@@ -445,8 +445,7 @@ public class Theory
                 {
                     name = a.valueOf("@name");
                     String type = a.valueOf("@org.eventb.core.type");
-                    OperatorArgument oa = new OperatorArgument(name, type, null);
-                    //co.addArgument(oa);
+                    co.addArgument(name, type);
                 }
             }
         }
@@ -490,7 +489,6 @@ public class Theory
             if (def != null)
             {
                 String definition = def.valueOf("@org.eventb.theory.core.formula");
-                System.out.println("DIRECT DEFINITION >"+definition+"<");
                 o.setDefinitionString(definition);
             }
 
@@ -742,7 +740,7 @@ public class Theory
 
         for (PolymorphicDataType pdt : polymorphic_data_type_ordering_)
         {
-            pdt.reparse(local_symbol_table_);
+            pdt.reparse();
         }
         for (Operator oprt : operator_ordering_)
         {

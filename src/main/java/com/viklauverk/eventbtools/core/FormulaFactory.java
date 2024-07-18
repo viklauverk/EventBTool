@@ -136,9 +136,16 @@ public class FormulaFactory
     }
 
     public static
-    Formula newConstructorSymbol (String s, Formula meta)
+    Formula newConstructorSymbol (String s, Formula parameters, Formula meta)
     {
-        return new Formula(Node.CONSTRUCTOR_SYMBOL, Symbols.intern(s), meta);
+        if (parameters != null)
+        {
+            return new Formula(Node.CONSTRUCTOR_SYMBOL, Symbols.intern(s), parameters, meta);
+        }
+        else
+        {
+            return new Formula(Node.CONSTRUCTOR_SYMBOL, Symbols.intern(s), meta);
+        }
     }
 
     public static

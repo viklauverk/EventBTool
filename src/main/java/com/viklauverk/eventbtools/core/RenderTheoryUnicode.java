@@ -96,7 +96,7 @@ public class RenderTheoryUnicode extends RenderTheory
             cnvs().startAlignedLine();
             cnvs().indent(1);
             cnvs().startMath();
-            cnvs().constructor(c.name());
+            c.toString(cnvs());
             cnvs().stopMath();
             cnvs().align();
             cnvs().comment(c.comment());

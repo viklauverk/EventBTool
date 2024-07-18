@@ -49,7 +49,7 @@ public class Operator extends Typed
         notation_type_ = nt;
         operator_type_ = ot;
         theory_ = t;
-        operator_symbol_table_ = new SymbolTable(name_);
+        operator_symbol_table_ = new SymbolTable("OP_"+name_);
     }
 
     @Override
