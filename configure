@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+mkdir -p build
+
 CURDIR=$(pwd)
 JAVA=$(command -v java)
 
@@ -19,7 +21,23 @@ then
     exit 1
 fi
 
-mkdir -p build
+XMQ=$(command -v xmq)
+
+if [ -z "$XMQ" ]
+then
+    XMQ=$(pwd)/3rdparty/xmq/build/default/release/xmq
+
+    if [ ! -x $XMQ ]
+    then
+       echo "You need to have xmq. Building a local xmq for you."
+       (mkdir -p 3rdparty; cd 3rdparty; git clone https://github.com/libxmq/xmq.git; cd xmq; ./configure; make; make test SILENT= )
+    fi
+    if ! $XMQ --version > /dev/null
+    then
+        echo "Failed to install xmq. Please fix."
+        exit 1
+    fi
+fi
 
 M2REPO="$HOME/.m2/repository"
 JAVA="$JAVA"
@@ -34,10 +52,12 @@ GEN_SRC="$BUILD/generated-sources"
 GEN_ANTLR4="$GEN_SRC/antlr4"
 PROJECT_DEPS="$BUILD/project-deps"
 TEST_MODELS="$BUILD/test-models"
+XMQ="$XMQ"
 
 echo "# Generated $(date)" > build/spec.mk
 {
     echo "SPEC_MK:=$BUILD/spec.mk"
+    echo "XMQ:=$XMQ"
     echo "M2REPO:=$M2REPO"
     echo "JAVA:=$JAVA"
     echo "JAVA_VERSION:='$JAVA_VERSION'"
@@ -69,3 +89,5 @@ endif
 EVBT:=\$(BUILD)/\$(MOST_RECENT)_bin/evbt
 
 EOF
+
+echo "Generated build/spec.mk you can now run make"
