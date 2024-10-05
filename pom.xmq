@@ -114,7 +114,7 @@ project(xsi:schemaLocation = 'http://maven.apache.org/POM/4.0.0 http://maven.apa
                 groupId    = org.springframework.boot
                 artifactId = spring-boot-maven-plugin
                 configuration {
-                    mainClass  = com.viklauverk.eventbtools.Main
+                    mainClass  = com.viklauverk.evbt.Main
                     executable = false
                 }
             }

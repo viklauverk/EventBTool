@@ -11,4 +11,4 @@ then
     AGENTLIB=-agentlib:native-image-agent=config-output-dir=config-dir
 fi
 
-java -ea $AGENTLIB -cp $BUILD/classes:$JARS com.viklauverk.eventbtools.Main "$@"
+java -ea $AGENTLIB -cp $BUILD/classes:$JARS com.viklauverk.evbt.Main "$@"
