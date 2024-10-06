@@ -19,10 +19,10 @@ package com.viklauverk.evbt;
 
 import java.util.Set;
 
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
 import com.viklauverk.evbt.core.BaseCodeGen;
 import com.viklauverk.evbt.core.CodeGen;
-import com.viklauverk.evbt.core.Log;
-import com.viklauverk.evbt.core.LogModule;
 import com.viklauverk.evbt.core.Machine;
 import com.viklauverk.evbt.core.ProgrammingLanguage;
 import com.viklauverk.evbt.core.Settings;

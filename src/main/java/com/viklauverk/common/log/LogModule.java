@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2021 Viklauverk AB
- 
+ Copyright (C) 2021-2024 Viklauverk AB (spdx: agpl-3.0-or-later)
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -14,11 +14,8 @@
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-// All rights reserved! Do not share!
 
-package com.viklauverk.evbt.core;
-
-import com.viklauverk.evbt.core.Log;
+package com.viklauverk.common.log;
 
 import java.util.Set;
 import java.util.HashSet;
@@ -130,7 +127,7 @@ public class LogModule implements Log
         }
     }
 
-    static String safeFormat(String msg, Object... args)
+    public static String safeFormat(String msg, Object... args)
     {
         try
         {

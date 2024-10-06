@@ -17,9 +17,8 @@
 
 package com.viklauverk.evbt;
 
-import com.viklauverk.evbt.core.Log;
-import com.viklauverk.evbt.core.LogLevel;
-import com.viklauverk.evbt.core.LogModule;
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
 import com.viklauverk.evbt.core.Settings;
 import com.viklauverk.evbt.core.Version;
 

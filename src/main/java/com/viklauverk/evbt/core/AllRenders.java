@@ -17,8 +17,8 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.evbt.core.Log;
-import com.viklauverk.evbt.core.LogModule;
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
 import com.viklauverk.evbt.core.Helpers.*;
 
 import java.util.LinkedList;

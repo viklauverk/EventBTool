@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB
- 
+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -17,6 +17,8 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
 import java.util.HashMap;
 
 public class PlanImplementation extends WalkFormula

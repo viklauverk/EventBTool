@@ -17,6 +17,9 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
+
 public abstract class EDKTheory implements CommonCodeGenFunctions
 {
     private static Log log = LogModule.lookup("edk");

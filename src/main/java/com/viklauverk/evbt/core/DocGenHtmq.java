@@ -17,8 +17,9 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
 import java.net.URL;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Iterator;

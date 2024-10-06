@@ -17,6 +17,10 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogLevel;
+import com.viklauverk.common.log.LogModule;
+
 public class TestInternals
 {
     public static void main(String[] args)

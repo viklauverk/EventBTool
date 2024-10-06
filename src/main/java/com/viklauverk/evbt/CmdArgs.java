@@ -17,7 +17,8 @@
 
 package com.viklauverk.evbt;
 
-import com.viklauverk.evbt.core.Log;
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
 
 public class CmdArgs
 {

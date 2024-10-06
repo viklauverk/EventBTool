@@ -17,10 +17,11 @@
 
 package com.viklauverk.evbt;
 
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogLevel;
+import com.viklauverk.common.log.LogModule;
 import com.viklauverk.evbt.core.Bounds;
 import com.viklauverk.evbt.core.Canvas;
-import com.viklauverk.evbt.core.LogModule;
-import com.viklauverk.evbt.core.LogLevel;
 import com.viklauverk.evbt.core.FormulaBuilder;
 import com.viklauverk.evbt.core.Formula;
 import com.viklauverk.evbt.core.ContainingCardinality;

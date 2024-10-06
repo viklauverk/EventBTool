@@ -17,6 +17,9 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
+
 import static com.viklauverk.evbt.core.Helpers.*;
 
 import java.util.ArrayList;
@@ -26,7 +29,7 @@ import java.util.Set;
 
 public class Canvas
 {
-    static Log log = LogModule.lookup("canvas");
+    private static Log log = LogModule.lookup("canvas");
 
     private RenderTarget render_target_ = RenderTarget.PLAIN;
     private RenderAttributes render_attributes_ = null;

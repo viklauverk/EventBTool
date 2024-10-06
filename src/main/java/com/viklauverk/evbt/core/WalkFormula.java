@@ -23,6 +23,9 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.HashMap;
 
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
+
 import com.viklauverk.evbt.core.Formula;
 
 public class WalkFormula implements FormulaVisitor

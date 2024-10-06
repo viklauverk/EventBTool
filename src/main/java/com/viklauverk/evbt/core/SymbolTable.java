@@ -17,6 +17,9 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
+
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;

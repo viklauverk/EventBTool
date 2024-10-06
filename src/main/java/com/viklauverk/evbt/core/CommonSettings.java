@@ -17,6 +17,8 @@
 //
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
 import java.util.List;
 import java.util.ArrayList;
 

@@ -17,6 +17,8 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;

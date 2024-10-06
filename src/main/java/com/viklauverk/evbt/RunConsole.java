@@ -20,13 +20,12 @@ package com.viklauverk.evbt;
 import com.viklauverk.evbt.core.Machine;
 import com.viklauverk.evbt.core.Sys;
 
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
 import com.viklauverk.evbt.core.AbortIntoConsole;
 import com.viklauverk.evbt.core.Canvas;
 import com.viklauverk.evbt.core.Console;
 import com.viklauverk.evbt.core.ConsoleException;
-import com.viklauverk.evbt.core.Log;
-import com.viklauverk.evbt.core.LogLevel;
-import com.viklauverk.evbt.core.LogModule;
 import com.viklauverk.evbt.core.Machine;
 import com.viklauverk.evbt.core.FormulaBuilder;
 import com.viklauverk.evbt.core.Formula;

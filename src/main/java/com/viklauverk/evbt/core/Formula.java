@@ -17,6 +17,9 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
+
 import static com.viklauverk.evbt.core.Node.*;
 
 import java.util.Arrays;
