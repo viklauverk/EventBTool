@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021-2024 Viklauverk AB
+ Copyright (C) 2021-2024 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -37,7 +37,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 public
 class Formula
 {
-    private static Log log = LogModule.lookup("formula");
+    private static Log log = LogModule.lookup("formula", Formula.class);
 
     // This canvas is used to render formulas for caching and internal types.
     private static Canvas raw_unicode_canvas_;

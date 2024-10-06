@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -38,7 +38,7 @@ import java.util.stream.Collectors;
 
 public class CodeGenJavascript extends BaseCodeGen
 {
-    private static Log log = LogModule.lookup("codegen");
+    private static Log log = LogModule.lookup("codegen", CodeGenJavascript.class);
 
     public CodeGenJavascript(CommonSettings coms, CodeGenSettings cdgs, Sys sys, Machine mch)
     {

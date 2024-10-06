@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -37,9 +37,9 @@ import org.dom4j.io.SAXReader;
 
 public class Machine
 {
-    private static LogModule log = LogModule.lookup("machine");
-    private static LogModule log_codegen = LogModule.lookup("codegen");
-    private static LogModule log_typing = LogModule.lookup("typing");
+    private static LogModule log = LogModule.lookup("machine", Machine.class);
+    private static LogModule log_codegen = LogModule.lookup("codegen", Machine.class);
+    private static LogModule log_typing = LogModule.lookup("typing", Machine.class);
 
     private SymbolTable symbol_table_;
 

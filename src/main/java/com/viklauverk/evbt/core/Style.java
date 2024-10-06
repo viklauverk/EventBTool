@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -26,7 +26,7 @@ import java.util.Set;
 
 public class Style
 {
-    private static LogModule log = LogModule.lookup("style");
+    private static LogModule log = LogModule.lookup("style", Style.class);
 
     private boolean valid_;
     private String main_;

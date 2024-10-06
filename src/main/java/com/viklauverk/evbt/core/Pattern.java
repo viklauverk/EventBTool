@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -29,7 +29,7 @@ import java.util.HashMap;
 public
 class Pattern
 {
-    private static Log log = LogModule.lookup("pattern");
+    private static Log log = LogModule.lookup("pattern", Pattern.class);
 
     private static Map<String,Formula> match_rules_ = new HashMap<>();
 

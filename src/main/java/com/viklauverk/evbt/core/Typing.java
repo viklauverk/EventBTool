@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -28,7 +28,7 @@ import java.util.Set;
 
 public class Typing
 {
-    private static Log log = LogModule.lookup("typing");
+    private static Log log = LogModule.lookup("typing", Typing.class);
 
     private Map<String,CheckedType> checked_types_ = new HashMap<>();
     private Map<String,ImplType> impl_types_ = new HashMap<>();

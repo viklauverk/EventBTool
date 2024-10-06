@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -28,7 +28,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
 {
-    static Log log = LogModule.lookup("parser");
+    static Log log = LogModule.lookup("parser", FormulaBuilder.class);
 
     private CommonTokenStream tokens_;
 

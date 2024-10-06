@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 
 public class Event
 {
-    private static Log log = LogModule.lookup("event");
+    private static Log log = LogModule.lookup("event", Event.class);
 
     private String name_;
     private boolean is_concrete_;

@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -22,7 +22,7 @@ import com.viklauverk.common.log.LogModule;
 
 public class ImplementationCpp implements Implementation
 {
-    private static Log log = LogModule.lookup("implementationcpp");
+    private static Log log = LogModule.lookup("implementationcpp", ImplementationCpp.class);
 
     public void generateAddition(RenderFormula render, PlanImplementation plan, Formula i, Formula left, Formula right)
     {

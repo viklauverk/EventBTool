@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -28,7 +28,7 @@ import static com.viklauverk.evbt.core.Node.*;
 
 public abstract class BaseCodeGen implements CommonCodeGenFunctions
 {
-    private static Log log = LogModule.lookup("codegen");
+    private static Log log = LogModule.lookup("codegen", BaseCodeGen.class);
 
     private CommonSettings common_settings_;
     private CodeGenSettings codegen_settings_;

@@ -1,4 +1,4 @@
-// Copyright 2015 Christian d'Heureuse, Inventec Informatik AG, Zurich, Switzerland
+// Copyright (C) 2015 Christian d'Heureuse, Inventec Informatik AG, Zurich, Switzerland (gpl-3.0-or-later)
 // www.source-code.biz, www.inventec.ch/chdh
 //
 // This module is multi-licensed and may be used under the terms of any of the following licenses:
@@ -12,6 +12,8 @@
 // Home page: http://www.source-code.biz/snippets/java/RawConsoleInput
 
 // Tiny changes introduced 2020 by Fredrik Öhrström to adjust for changes in JNA.
+// License is changed from LGPL-2.1-or-later to GPL-2.1-or-later to GPL-3.0-or-later
+// which is then combined with AGPL-3.0-or-later of the rest of the evbt.
 
 package com.viklauverk.evbt.ext;
 

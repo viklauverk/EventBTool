@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -34,7 +34,7 @@ import java.util.Optional;
 */
 public class CodeGenCpp extends BaseCodeGen
 {
-    public static Log log = LogModule.lookup("codegen");
+    public static Log log = LogModule.lookup("codegen", CodeGenCpp.class);
 
     public CodeGenCpp(CommonSettings coms, CodeGenSettings cdgs, Sys sys, Machine mch)
     {

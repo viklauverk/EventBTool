@@ -1,5 +1,5 @@
 /*
- Copyright (C) 20212-2023 Viklauverk AB
+ Copyright (C) 2021-2023 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
 
 public abstract class BaseModelGen
 {
-    static Log log = LogModule.lookup("modelgen");
+    static Log log = LogModule.lookup("modelgen", BaseModelGen.class);
 
     private CommonSettings common_settings_;
     private ModelGenSettings modelgen_settings_;

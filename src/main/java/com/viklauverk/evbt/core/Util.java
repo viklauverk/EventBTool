@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -35,8 +35,8 @@ import java.util.function.Function;
 
 public class Util
 {
-    public static Log log = LogModule.lookup("util");
-    public static Log log_match = LogModule.lookup("match");
+    public static Log log = LogModule.lookup("util", Util.class);
+    public static Log log_match = LogModule.lookup("match", Util.class);
 
     public static String[] shiftLeft(String[] args)
     {

@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -22,7 +22,7 @@ import com.viklauverk.common.log.LogModule;
 
 public class RenderAttributes implements Cloneable
 {
-    private static LogModule log = LogModule.lookup("renderattributes");
+    private static LogModule log = LogModule.lookup("renderattributes", RenderAttributes.class);
 
     private boolean color_ = true;    // Colorize the output.
     private boolean labels_ = true;   // Display the labels, like axm0_1: or @inv2 etc.

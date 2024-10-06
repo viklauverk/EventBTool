@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -46,8 +46,8 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 public class Console
 {
-    private static Log log = LogModule.lookup("console");
-    private static Log log_docgen = LogModule.lookup("docgen");
+    private static Log log = LogModule.lookup("console", Console.class);
+    private static Log log_docgen = LogModule.lookup("docgen", Console.class);
 
     private Sys sys_;
 

@@ -25,6 +25,8 @@ public interface Log
     void usageError(String msg, Object... args);
     /** Print the msg prefixed with the module and internal error and exit. */
     void internalError(String msg, Object... args);
+    /** An exception must belogged, print it. */
+    void exception(Throwable t, String msg, Object... args);
     /** Print the msg prefixed with the module and continue. */
     void failure(String msg, Object... args);
     /** Print a warning and continue. */

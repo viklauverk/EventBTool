@@ -1,3 +1,4 @@
+Copyright (C) 2021-2024 Viklauverk AB (agpl-3.0-or-later)
 
 ╭ ╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╴╮<br>
 ║ Alla mathematical statements are stored in Formulas.                                  <br>

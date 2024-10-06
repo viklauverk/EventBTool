@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -30,7 +30,7 @@ import com.viklauverk.evbt.core.Formula;
 
 public class RenderFormula extends WalkFormula
 {
-    private static Log log = LogModule.lookup("renderformula");
+    private static Log log = LogModule.lookup("renderformula", RenderFormula.class);
 
     private static Map<Formula,Boolean> new_line_before_ = new HashMap<>();
     private static Map<Formula,Boolean> new_line_after_ = new HashMap<>();

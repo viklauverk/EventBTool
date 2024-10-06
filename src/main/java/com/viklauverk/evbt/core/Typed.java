@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021 Viklauverk AB
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -22,7 +22,7 @@ import com.viklauverk.common.log.LogModule;
 
 public class Typed
 {
-    private static Log log = LogModule.lookup("typing");
+    private static Log log = LogModule.lookup("typing", Typed.class);
 
     // Checked type calculated by Rodin for type checking. E.g. ℤ,ℙ(ℤ×ℤ),S,ℙ(S),ℙ(ℤ×S)
     protected String checked_type_string_;

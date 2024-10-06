@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021-2024 Viklauverk AB
+ Copyright (C) 2021-2024 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -27,7 +27,7 @@ import com.viklauverk.evbt.core.OperatorType;
 
 public class Operator extends Typed
 {
-    private static Log log = LogModule.lookup("theory");
+    private static Log log = LogModule.lookup("theory", Operator.class);
 
     private String name_; // add
     private String long_name_; // "x add y"

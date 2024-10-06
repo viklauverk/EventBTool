@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021-2024 Viklauverk AB
+ Copyright (C) 2021-2024 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -29,7 +29,7 @@ import java.util.Set;
 
 public class Canvas
 {
-    private static Log log = LogModule.lookup("canvas");
+    private static Log log = LogModule.lookup("canvas", Canvas.class);
 
     private RenderTarget render_target_ = RenderTarget.PLAIN;
     private RenderAttributes render_attributes_ = null;

@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2021-2024 Viklauverk AB
+ Copyright (C) 2021-2024 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -59,7 +59,7 @@ import java.nio.file.Paths;
 
 public class RunConsole
 {
-    private static Log log = LogModule.lookup("console");
+    private static Log log = LogModule.lookup("console", RunConsole.class);
 
     public static void run(CmdArgs ca, Settings s) throws Exception
     {
