@@ -17,7 +17,6 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogLevel;
 import com.viklauverk.common.log.LogModule;
 
@@ -74,7 +73,7 @@ public class TestInternals
 
         ok &= testfb(0, Long.MAX_VALUE, ContainingCardinality.Z);
 
-        Bounds b = Bounds.parse("-i16..i16");
+        // FIXME Bounds b = Bounds.parse("-i16..i16");
 //        System.out.println(b.toString());
 
         return ok;

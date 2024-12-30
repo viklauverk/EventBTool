@@ -17,26 +17,10 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-import java.net.URL;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import com.viklauverk.common.console.Canvas;
 
 public class ModelGenWhy3 extends BaseModelGen
 {
-    private static Log log = LogModule.lookup("why3", ModelGenWhy3.class);
-
     public ModelGenWhy3(CommonSettings common_settings, ModelGenSettings modelgen_settings, Sys sys)
     {
         super(common_settings, modelgen_settings, sys, "why3");

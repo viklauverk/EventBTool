@@ -17,15 +17,10 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-
 import java.io.File;
 
 public class EDK
 {
-    private static Log log = LogModule.lookup("edk", EDK.class);
-
     Sys sys_;
 
     public EDK(Sys s)

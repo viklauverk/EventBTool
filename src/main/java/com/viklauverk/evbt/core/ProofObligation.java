@@ -17,8 +17,6 @@
 
 package com.viklauverk.evbt.core;
 
-import org.dom4j.Node;
-
 public class ProofObligation
 {
     String name_; // Name of the proof obligation.

@@ -17,6 +17,8 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.common.console.Canvas;
+
 public interface CommonCodeGenFunctions
 {
     boolean handleSetClear(Formula setvar, SymbolTable symbols, Canvas cnvs, Formula origin);

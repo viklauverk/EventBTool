@@ -17,19 +17,16 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
+import com.viklauverk.common.console.Canvas;
 
 public abstract class EDKTheory implements CommonCodeGenFunctions
 {
-    private static Log log = LogModule.lookup("edk", EDKTheory.class);
-
-    private EDK edk_;
+	// private EDK edk_;
     private Pattern pattern_;
 
     public EDKTheory(EDK e)
     {
-        edk_ = e;
+       // edk_ = e;
         pattern_ = new Pattern();
     }
 

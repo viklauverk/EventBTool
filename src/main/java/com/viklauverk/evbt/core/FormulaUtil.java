@@ -17,15 +17,9 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-import static com.viklauverk.evbt.core.Node.*;
-
 public
 class FormulaUtil
 {
-    private static Log log = LogModule.lookup("formula", FormulaUtil.class);
-
     /**
        This function takes a formula like:
        (((P))) becomes P

@@ -17,8 +17,6 @@
 
 package com.viklauverk.evbt.core;
 
-import org.antlr.v4.runtime.misc.ParseCancellationException;
-
 public class AbortIntoConsole extends Error
 {
     private static final long serialVersionUID = 1L;

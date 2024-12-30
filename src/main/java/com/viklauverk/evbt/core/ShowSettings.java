@@ -17,10 +17,10 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.viklauverk.common.log.LogModule;
 
 public class ShowSettings
 {
@@ -41,7 +41,6 @@ public class ShowSettings
 
     private List<String> parts_ = new ArrayList<>();
 
-    @SuppressWarnings("this-escape")
     public ShowSettings()
     {
         showAll();

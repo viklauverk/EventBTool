@@ -17,6 +17,7 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.common.console.Canvas;
 import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogModule;
 
@@ -333,7 +334,7 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
         Formula member = pattern().getVar("x");
         Formula setvar = pattern().getVar("y");
 
-        Variable set = symbols.getVariable(setvar.symbol());
+        // FIXME Variable set = symbols.getVariable(setvar.symbol());
 
         if (pattern().matchedRule().equals("in"))
         {
@@ -813,7 +814,7 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
         {
             log.debug("power_set: translated power set type %s", t);
             ImplType it = sys().typing().lookupImplType(t.child());
-            String inner_type = translateImplType(it, symbols);
+            //FIXME String inner_type = translateImplType(it, symbols);
             String ts = handleTranslateSet(it, symbols);
             log.debug("power_set: translated type %s through %s to %s", t, it, ts);
             return ts;
@@ -821,7 +822,7 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
         case "domain_of_relation":
         {
             ImplType it = sys().typing().lookupImplType(t.child());
-            String inner_type = translateImplType(it, symbols);
+            // FIXME String inner_type = translateImplType(it, symbols);
             String ts = handleTranslateSet(it, symbols);
             log.debug("domain_of_relation: translated type %s through %s to %s", t, it, ts);
             return ts;
@@ -836,8 +837,8 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
         }
         case "variable_vector":
         {
-            Formula size = t.left().right();
-            Variable v = symbols.getVariable(size.symbol());
+        	// FIXME Formula size = t.left().right();
+            // FIXME Variable v = symbols.getVariable(size.symbol());
             ImplType to = sys().typing().lookupImplType(t.right());
             log.debug("variable vector: %s", to);
             String ts = handleTranslateVector(to, symbols);
@@ -849,8 +850,8 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
             ImplType from = sys().typing().lookupImplType(t.left());
             ImplType to = sys().typing().lookupImplType(t.right());
             log.debug("function: from %s to %s", from, to);
-            String inner_type_left = translateImplType(from, symbols);
-            String inner_type_right = translateImplType(to, symbols);
+            // FIXME String inner_type_left = translateImplType(from, symbols);
+            // FIXME String inner_type_right = translateImplType(to, symbols);
             String ts = handleTranslateFunction(from, to, symbols);
             log.debug("function: translated type %s to %s", t, ts);
             return ts;
@@ -860,8 +861,8 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
             ImplType from = sys().typing().lookupImplType(t.left());
             ImplType to = sys().typing().lookupImplType(t.right());
             log.debug("relation: from %s to %s", from, to);
-            String inner_type_left = translateImplType(from, symbols);
-            String inner_type_right = translateImplType(to, symbols);
+            // FIXME String inner_type_left = translateImplType(from, symbols);
+            // FIXME String inner_type_right = translateImplType(to, symbols);
             String ts = handleTranslateRelation(from, to, symbols);
             log.debug("relation: translated type %s to %s", t, ts);
             return ts;

@@ -17,12 +17,11 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
+import com.viklauverk.common.log.LogModule;
 
 public class Style
 {

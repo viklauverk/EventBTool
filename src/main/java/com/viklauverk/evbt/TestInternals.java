@@ -17,19 +17,14 @@
 
 package com.viklauverk.evbt;
 
-import com.viklauverk.common.log.Log;
+import com.viklauverk.common.console.Canvas;
 import com.viklauverk.common.log.LogLevel;
 import com.viklauverk.common.log.LogModule;
-import com.viklauverk.evbt.core.Bounds;
-import com.viklauverk.evbt.core.Canvas;
-import com.viklauverk.evbt.core.FormulaBuilder;
 import com.viklauverk.evbt.core.Formula;
-import com.viklauverk.evbt.core.ContainingCardinality;
-import com.viklauverk.evbt.core.Typing;
 import com.viklauverk.evbt.core.Pattern;
-import com.viklauverk.evbt.core.SymbolTable;
 import com.viklauverk.evbt.core.RenderTarget;
 import com.viklauverk.evbt.core.Settings;
+import com.viklauverk.evbt.core.SymbolTable;
 import com.viklauverk.evbt.core.Unicode;
 
 
@@ -494,7 +489,7 @@ public class TestInternals
         SymbolTable fc = SymbolTable.PQR_EFG_STU_xyz_cdf_NM_ABC_H_cx_dx_op;
         try
         {
-            Formula f = Formula.fromString(in, fc);
+            Formula.fromString(in, fc);
         }
         catch (Exception e)
         {

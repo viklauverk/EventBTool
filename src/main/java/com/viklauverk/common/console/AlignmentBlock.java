@@ -15,16 +15,16 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.viklauverk.evbt.core;
+package com.viklauverk.common.console;
 
-
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
+import com.viklauverk.evbt.core.RenderTarget;
+import com.viklauverk.evbt.core.Util;
 
 class AlignmentBlock
 {
@@ -306,23 +306,23 @@ class AlignmentBlock
     {
         StringBuilder o = new StringBuilder();
         o.append("\\begin{xltabular}{\\linewidth}[l]{");
-        if (false) o.append("|");
+//        if (false) o.append("|");
         for (int i=0; i<aligns_.size(); ++i)
         {
             if (aligns_.get(i) != null)
             {
                 String s = aligns_.get(i);
                 o.append(s);
-                if (false) o.append("|");
+ //               if (false) o.append("|");
             }
             else
             {
                 o.append("l");
-                if (false) o.append("|");
+ //               if (false) o.append("|");
             }
         }
         o.append("}");
-        if (false) o.append("\\hline");
+ //       if (false) o.append("\\hline");
         o.append("\n");
 
         return o.toString();

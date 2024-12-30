@@ -17,11 +17,10 @@
 
 package com.viklauverk.evbt.core.cmd;
 
-import java.util.List;
-
-import com.viklauverk.evbt.core.Console;
-import com.viklauverk.evbt.core.RenderTarget;
+import com.viklauverk.common.cmd.CmdCommon;
+import com.viklauverk.common.console.Console;
 import com.viklauverk.evbt.core.RenderAttributes;
+import com.viklauverk.evbt.core.RenderTarget;
 
 public class CmdEbShowPart extends CmdCommon
 {

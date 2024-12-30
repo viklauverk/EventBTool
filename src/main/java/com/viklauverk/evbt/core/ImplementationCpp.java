@@ -17,13 +17,8 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-
 public class ImplementationCpp implements Implementation
 {
-    private static Log log = LogModule.lookup("implementationcpp", ImplementationCpp.class);
-
     public void generateAddition(RenderFormula render, PlanImplementation plan, Formula i, Formula left, Formula right)
     {
         render.visitLeft(i);

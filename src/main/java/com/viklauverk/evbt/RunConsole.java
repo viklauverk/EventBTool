@@ -17,45 +17,21 @@
 
 package com.viklauverk.evbt;
 
-import com.viklauverk.evbt.core.Machine;
-import com.viklauverk.evbt.core.Sys;
-
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-import com.viklauverk.evbt.core.AbortIntoConsole;
-import com.viklauverk.evbt.core.Canvas;
-import com.viklauverk.evbt.core.Console;
-import com.viklauverk.evbt.core.ConsoleException;
-import com.viklauverk.evbt.core.Machine;
-import com.viklauverk.evbt.core.FormulaBuilder;
-import com.viklauverk.evbt.core.Formula;
-import com.viklauverk.evbt.core.Typing;
-import com.viklauverk.evbt.core.SymbolTable;
-import com.viklauverk.evbt.core.Prover;
-import com.viklauverk.evbt.core.RenderAttributes;
-import com.viklauverk.evbt.core.RenderTarget;
-import com.viklauverk.evbt.core.Settings;
-import com.viklauverk.evbt.core.Sys;
-import com.viklauverk.evbt.core.ImplType;
-
-import com.viklauverk.evbt.core.ConsoleCompleter;
-
-import org.jline.reader.Candidate;
 import org.jline.reader.Completer;
 import org.jline.reader.EndOfFileException;
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
-import org.jline.reader.ParsedLine;
 import org.jline.reader.UserInterruptException;
-import org.jline.reader.impl.completer.ArgumentCompleter;
-import org.jline.reader.impl.completer.StringsCompleter;
-import org.jline.reader.impl.completer.AggregateCompleter;
-import org.jline.builtins.Completers.TreeCompleter;
-import org.jline.builtins.Completers.DirectoriesCompleter;
 
-import java.util.Scanner;
-import java.util.List;
-import java.nio.file.Paths;
+import com.viklauverk.common.console.Canvas;
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
+import com.viklauverk.evbt.core.AbortIntoConsole;
+import com.viklauverk.evbt.core.EvbtConsoleCompleter;
+import com.viklauverk.evbt.core.RenderAttributes;
+import com.viklauverk.evbt.core.RenderTarget;
+import com.viklauverk.evbt.core.Settings;
+import com.viklauverk.evbt.core.Sys;
 
 public class RunConsole
 {
@@ -88,7 +64,7 @@ public class RunConsole
 
         log.info("EVBT console 2.0.0");
 
-        Completer completer = ConsoleCompleter.addCompleters(sys);
+        Completer completer = EvbtConsoleCompleter.addCompleters(sys);
         LineReader reader = LineReaderBuilder
             .builder()
             .completer(completer)

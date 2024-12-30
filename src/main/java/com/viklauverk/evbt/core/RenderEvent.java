@@ -17,11 +17,6 @@
 
 package com.viklauverk.evbt.core;
 
-import java.util.List;
-import java.util.LinkedList;
-
-import com.viklauverk.evbt.core.Formula;
-
 public class RenderEvent extends CommonRenderFunctions
 {
     public void visit_EventStart(Event eve) { }

@@ -17,22 +17,20 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-
-import static com.viklauverk.evbt.core.Node.*;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.LinkedList;
-import java.util.TreeMap;
+import java.util.List;
 
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+
+import com.viklauverk.common.console.Canvas;
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
 
 public
 class Formula

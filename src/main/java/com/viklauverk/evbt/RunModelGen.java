@@ -21,7 +21,6 @@ import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogModule;
 import com.viklauverk.evbt.core.BaseModelGen;
 import com.viklauverk.evbt.core.ModelGen;
-import com.viklauverk.evbt.core.Machine;
 import com.viklauverk.evbt.core.ModelTarget;
 import com.viklauverk.evbt.core.Settings;
 import com.viklauverk.evbt.core.Sys;
@@ -53,7 +52,7 @@ public class RunModelGen
 
         if (s.modelGenSettings().modelTarget() == ModelTarget.WHY3)
         {
-            String idx = s.commonSettings().outputDir()+"/"+s.commonSettings().nickName()+".idx";
+        	// FIXME String idx = s.commonSettings().outputDir()+"/"+s.commonSettings().nickName()+".idx";
 
             log.info("Now run: why3 "+out);
         }

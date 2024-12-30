@@ -17,24 +17,22 @@
 
 package com.viklauverk.evbt.core;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import com.viklauverk.common.console.Canvas;
 import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogModule;
-
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public class SymbolTable
 {
     private static Log log = LogModule.lookup("symbols", SymbolTable.class);
-
-    private static Set<String> all_vars = new HashSet<>();
 
     public SymbolTable(String name)
     {

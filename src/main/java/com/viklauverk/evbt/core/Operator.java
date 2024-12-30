@@ -17,13 +17,11 @@
 
 package com.viklauverk.evbt.core;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogModule;
-import java.util.List;
-import java.util.LinkedList;
-
-import com.viklauverk.evbt.core.OperatorNotationType;
-import com.viklauverk.evbt.core.OperatorType;
 
 public class Operator extends Typed
 {
@@ -95,6 +93,11 @@ public class Operator extends Typed
         predicate_ = p;
     }
 
+    public String getPredicate()
+    {
+    	return predicate_;
+    }
+    
     public void setDefinitionString(String d)
     {
         definition_s_ = d;

@@ -24,10 +24,8 @@ import com.viklauverk.common.log.LogModule;
 import com.viklauverk.evbt.core.BaseCodeGen;
 import com.viklauverk.evbt.core.CodeGen;
 import com.viklauverk.evbt.core.Machine;
-import com.viklauverk.evbt.core.ProgrammingLanguage;
 import com.viklauverk.evbt.core.Settings;
 import com.viklauverk.evbt.core.Sys;
-import com.viklauverk.evbt.core.Typing;
 
 public class RunCodeGen
 {

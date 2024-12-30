@@ -15,34 +15,25 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.viklauverk.evbt.core;
+package com.viklauverk.common.console;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogModule;
-
-import java.net.URL;
-
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.Comparator;
-
-import org.antlr.v4.runtime.CharStream;
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.NoViableAltException;
-import org.antlr.v4.runtime.InputMismatchException;
-import org.antlr.v4.runtime.tree.ParseTree;
+import com.viklauverk.evbt.core.BaseDocGen;
+import com.viklauverk.evbt.core.CommonSettings;
+import com.viklauverk.evbt.core.DocGen;
+import com.viklauverk.evbt.core.DocGenSettings;
+import com.viklauverk.evbt.core.Formula;
+import com.viklauverk.evbt.core.ImplType;
+import com.viklauverk.evbt.core.RenderAttributes;
+import com.viklauverk.evbt.core.RenderTarget;
+import com.viklauverk.evbt.core.Settings;
+import com.viklauverk.evbt.core.SymbolTable;
+import com.viklauverk.evbt.core.Sys;
+import com.viklauverk.evbt.core.Templates;
 
 public class Console
 {
@@ -176,12 +167,7 @@ public class Console
         return "OK";
     }
 
-    private void setSymbolTable(SymbolTable st)
-    {
-        current_symbol_table_ = st;
-    }
-
-    private String deduceType(String line)
+    String deduceType(String line)
     {
         Formula result = Formula.fromString(line, current_symbol_table_);
         ImplType type = null;

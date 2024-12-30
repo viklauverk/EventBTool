@@ -17,22 +17,20 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 import java.util.stream.Collectors;
-import java.io.File;
 
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.Element;
-import org.dom4j.Attribute;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
+
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
 
 public class Theory
 {
@@ -74,7 +72,7 @@ public class Theory
     private File dtf_; // Deployed theory
     private File bps_; // Proof statistics
     private File bpo_; // Proof obligations
-    private File theory_root_dir_; // Where to look for imported theories.
+//    private File theory_root_dir_; // Where to look for imported theories.
     private Sys sys_;
 
     private SymbolTable global_symbol_table_; // Inserted as parent to root symbol table in systen.
@@ -88,7 +86,7 @@ public class Theory
         comment_ = "";
 
         loaded_ = false;
-        theory_root_dir_ = trd;
+//        theory_root_dir_ = trd;
         tuf_ = f;
 
         if (tuf_ != null)
@@ -395,7 +393,7 @@ public class Theory
         for (Node pt : pts)
         {
             String name = pt.valueOf("@name");
-            String core_type = pt.valueOf("@org.eventb.core.type"); // 'ℙ(T)')
+            // FIXME String core_type = pt.valueOf("@org.eventb.core.type"); // 'ℙ(T)')
             // String source = pt.valueOf("@org.eventb.core.source");
             addParameterType(name);
         }
@@ -458,9 +456,9 @@ public class Theory
         for (Node n : list)
         {
             String name = n.valueOf("@org.eventb.core.label");
-            String is_preds = n.valueOf("@org.eventb.core.predicate");
-            String is_assocs = n.valueOf("@org.eventb.theory.core.associative");
-            String is_commus = n.valueOf("@org.eventb.theory.core.commutative");
+            // FIXME String is_preds = n.valueOf("@org.eventb.core.predicate");
+            // FIXME String is_assocs = n.valueOf("@org.eventb.theory.core.associative");
+            // FIXME String is_commus = n.valueOf("@org.eventb.theory.core.commutative");
             String comment = n.valueOf("@org.eventb.core.comment");
             String onts = n.valueOf("@org.eventb.theory.core.notationType");
             OperatorNotationType ont = OperatorNotationType.valueOf(onts);
@@ -504,8 +502,8 @@ public class Theory
         {
             String name = n.valueOf("@org.eventb.core.label");
             String predicate = n.valueOf("@org.eventb.core.predicate");
-            String is_assocs = n.valueOf("@org.eventb.theory.core.associative");
-            String is_commus = n.valueOf("@org.eventb.theory.core.commutative");
+            // FIXME String is_assocs = n.valueOf("@org.eventb.theory.core.associative");
+            // FIXME String is_commus = n.valueOf("@org.eventb.theory.core.commutative");
             String comment = n.valueOf("@org.eventb.core.comment");
             String onts = n.valueOf("@org.eventb.theory.core.notationType");
             OperatorNotationType ont = OperatorNotationType.valueOf(onts);

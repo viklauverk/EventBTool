@@ -25,12 +25,12 @@ public class PlanImplementation extends WalkFormula
 {
     private static Log log = LogModule.lookup("planimplementation", PlanImplementation.class);
 
-    private BaseCodeGen codegen_;
+//    private BaseCodeGen codegen_;
     private HashMap<Formula,Implementation> imps_;
 
     PlanImplementation(BaseCodeGen bcg)
     {
-        codegen_ = bcg;
+  //      codegen_ = bcg;
         imps_ = new HashMap<>();
     }
 

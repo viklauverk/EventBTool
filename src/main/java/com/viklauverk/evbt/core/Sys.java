@@ -17,22 +17,19 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-
-import java.net.URL;
-
 import java.io.File;
-import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.nio.file.Files;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.Comparator;
+
+import com.viklauverk.common.console.Canvas;
+import com.viklauverk.common.console.Console;
+import com.viklauverk.common.log.LogModule;
 
 public class Sys
 {
@@ -76,7 +73,6 @@ public class Sys
     private Console console_;
     private EDK edk_;
 
-    @SuppressWarnings("this-escape")
     public Sys(Settings s)
     {
         project_info_ = "";
@@ -358,9 +354,10 @@ public class Sys
         }
     }
 
+    /*
     private void populateTheories(File dir, File theory_root_dir) throws Exception
     {
-        /*
+        
         List<Pair<String,File>> files = eachFileEndingIn(dir, ".tuf");
 
         for (Pair<String,File> p : files)
@@ -370,9 +367,9 @@ public class Sys
             Theory t = new Theory(name, this, file, theory_root_dir);
             addTheory(t);
             log.debug("found theory "+name);
-            }*/
+            }
     }
-
+*/
     public void populateDeployedTheories() throws Exception
     {
         for (String name : theory_path_.deployedTheories())

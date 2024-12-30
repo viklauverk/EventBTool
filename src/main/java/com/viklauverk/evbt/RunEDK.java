@@ -17,25 +17,21 @@
 
 package com.viklauverk.evbt;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-import com.viklauverk.evbt.core.BaseDocGen;
-import com.viklauverk.evbt.core.DocGen;
-import com.viklauverk.evbt.core.Settings;
-import com.viklauverk.evbt.core.Sys;
-
-
-import java.io.InputStream;
 import java.io.IOException;
-import java.nio.file.StandardCopyOption;
+import java.io.InputStream;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.security.CodeSource;
 import java.util.ArrayList;
 import java.util.List;
-import java.security.CodeSource;
-import java.net.URL;
-import java.util.zip.ZipInputStream;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
+import com.viklauverk.evbt.core.Settings;
 
 public class RunEDK
 {

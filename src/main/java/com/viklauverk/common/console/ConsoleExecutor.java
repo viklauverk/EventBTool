@@ -15,17 +15,12 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.viklauverk.evbt.core;
+package com.viklauverk.common.console;
 
+import com.viklauverk.common.cmd.CmdCommon;
 import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogModule;
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import com.viklauverk.evbt.core.cmd.Cmd;
-import com.viklauverk.evbt.core.cmd.CmdCommon;
+import com.viklauverk.evbt.core.cmd.EvbtCmd;
 
 public class ConsoleExecutor
 {
@@ -52,9 +47,9 @@ public class ConsoleExecutor
             return "";
         }
 
-        Cmd cmd = Cmd.parse(tok);
+        EvbtCmd cmd = EvbtCmd.parse(tok);
 
-        if (cmd == null || cmd == Cmd.ERROR)
+        if (cmd == null || cmd == EvbtCmd.ERROR)
         {
             return LogModule.safeFormat("Unknown command: %s", tok);
         }

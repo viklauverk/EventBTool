@@ -17,6 +17,8 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.common.console.Canvas;
+
 public class RenderEventUnicode extends RenderEvent
 {
     @Override

@@ -17,10 +17,7 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.evbt.core.Formula;
-
-import java.util.List;
-import java.util.LinkedList;
+import com.viklauverk.common.console.Canvas;
 
 public class RenderFormulaUnicode extends RenderFormula
 {

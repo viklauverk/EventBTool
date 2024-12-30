@@ -17,18 +17,13 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-
 public abstract class EDK_FloatingPoint_v1 extends EDKContext
 {
-    private static Log log = LogModule.lookup("edk", EDK_FloatingPoint_v1.class);
-
-    private EDK edk_;
+    // private EDK edk_;
 
     public EDK_FloatingPoint_v1(EDK e)
     {
         super(e);
-        edk_ = e;
+        // edk_ = e;
     }
 }

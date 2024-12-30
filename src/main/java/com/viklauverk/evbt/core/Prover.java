@@ -17,8 +17,8 @@
 
 package com.viklauverk.evbt.core;
 
-import java.io.*;
-import java.util.*;
+import java.util.Hashtable;
+import java.util.LinkedList;
 
 public
 class Prover

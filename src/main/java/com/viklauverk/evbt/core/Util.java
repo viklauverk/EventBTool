@@ -17,21 +17,14 @@
 
 package com.viklauverk.evbt.core;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.function.Function;
+
 import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogModule;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.charset.Charset;
-
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.function.Function;
 
 public class Util
 {

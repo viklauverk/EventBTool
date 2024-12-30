@@ -17,9 +17,8 @@
 
 package com.viklauverk.evbt.core.cmd;
 
-import com.viklauverk.evbt.core.Console;
-
-import java.util.List;
+import com.viklauverk.common.cmd.CmdCommon;
+import com.viklauverk.common.console.Console;
 
 public class CmdYmsShow extends CmdCommon
 {

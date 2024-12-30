@@ -17,14 +17,11 @@
 
 package com.viklauverk.evbt.core;
 
+import java.util.LinkedList;
+
+import com.viklauverk.common.console.Canvas;
 import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogModule;
-import com.viklauverk.evbt.core.Helpers.*;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
 
 public class AllRenders
 {
@@ -41,7 +38,6 @@ public class AllRenders
 
     private SystemSearch system_search_;
 
-    @SuppressWarnings("this-escape")
     public AllRenders(RenderContext rc,
                       RenderMachine rm,
                       RenderEvent re,

@@ -205,8 +205,6 @@ public class Typing
      */
     private void extractPossibleImplTypesFromPredicate(Formula predicate, SymbolTable symbols)
     {
-        SymbolTable fc = SymbolTable.PQR_EFG_STU_xyz_cdf_NM_ABC_H_cx_dx_op;
-        Formula fo = Formula.fromString("x:S", fc);
         boolean ok = pattern().match(predicate,
                                      "conjunction",     "P & Q",
                                      "expr_equals",     "E = F",
@@ -415,7 +413,7 @@ public class Typing
             // We have List(INT) now lookup just List.
             PolymorphicDataType pdt  = symbols.getPolymorphicDataType(H.symbol());
             assert (pdt != null) : "internal error: polymorphic data type not found: "+pattern().getPolymorphicDataType("H")+" in "+symbols.tree();
-            String specialisation = H.toString(); // This will generate again, for example: List(ℤ)
+            // FIXME String specialisation = H.toString(); // This will generate again, for example: List(ℤ)
             ImplType type = member.updateImplType(lookupImplType(H)); // Lookup the specialisation of this pdt.
             log.debug("typing variable %s to data type %s in %s", member, type, symbols.tree());
             return;
@@ -696,8 +694,8 @@ public class Typing
         {
             Formula fapp = f.right();
             Formula var = pattern().getVar("x");
-            Formula func = pattern().getVar("y");
-            Formula index = pattern().getExpr("E");
+            // FIXME Formula func = pattern().getVar("y");
+            // FIXME Formula index = pattern().getExpr("E");
             Variable variable = symbols.getVariable(var.symbol());
             ImplType type = variable.updateImplType(deducePossibleImplTypesFromExpression(fapp, symbols));
             variable.setDefinition(f.right());
@@ -708,8 +706,8 @@ public class Typing
         {
             Formula fapp = f.right();
             Formula var = pattern().getVar("x");
-            Formula func = pattern().getConst("c");
-            Formula index = pattern().getExpr("E");
+            // FIXME Formula func = pattern().getConst("c");
+            // FIXME Formula index = pattern().getExpr("E");
             Variable variable = symbols.getVariable(var.symbol());
             ImplType type = variable.updateImplType(deducePossibleImplTypesFromExpression(fapp, symbols));
             variable.setDefinition(f.right());

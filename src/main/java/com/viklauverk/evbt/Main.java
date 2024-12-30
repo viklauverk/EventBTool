@@ -72,6 +72,9 @@ public class Main
         case LICENSE:
             printLicense();
             break;
+        case ERROR:
+        	// It never gets here.
+        	break;
         case VERSION:
             printVersion();
             break;

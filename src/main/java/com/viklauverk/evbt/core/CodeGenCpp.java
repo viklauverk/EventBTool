@@ -17,10 +17,9 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.common.console.Canvas;
 import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogModule;
-
-import java.util.Optional;
 
 /**
   NAT        int

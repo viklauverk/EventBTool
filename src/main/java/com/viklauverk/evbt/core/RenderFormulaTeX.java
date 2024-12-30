@@ -17,14 +17,10 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.evbt.core.Formula;
-
-import java.util.List;
-import java.util.LinkedList;
+import com.viklauverk.common.console.Canvas;
 
 public class RenderFormulaTeX extends RenderFormulaUnicode
 {
-    @SuppressWarnings("this-escape")
     public RenderFormulaTeX(Canvas canvas)
     {
         super(canvas);

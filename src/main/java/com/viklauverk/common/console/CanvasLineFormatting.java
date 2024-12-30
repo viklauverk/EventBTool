@@ -15,15 +15,14 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.viklauverk.evbt.core;
-
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
+package com.viklauverk.common.console;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
+import com.viklauverk.evbt.core.RenderTarget;
 
 /**
 CanvasLineFormatting understands a special meta-language that instructs
@@ -70,7 +69,6 @@ class CanvasLineFormatting
 
     protected void createBlocks(List<CanvasLine> lines)
     {
-        int bn = 0;
         current_ = new AlignmentBlock(render_target_);
         blocks_.add(current_);
 

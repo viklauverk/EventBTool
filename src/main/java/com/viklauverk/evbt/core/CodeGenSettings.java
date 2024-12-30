@@ -17,10 +17,8 @@
 //
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogModule;
 
-import java.io.File;
 
 public class CodeGenSettings
 {
@@ -30,7 +28,7 @@ public class CodeGenSettings
     {
     }
 
-    public ProgrammingLanguage language()
+    public ProgrammingLanguage language()	
     {
         return language_;
     }

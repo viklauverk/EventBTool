@@ -17,6 +17,8 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.common.console.Canvas;
+
 public class RenderContextUnicode extends RenderContext
 {
     public void renderProofSummary(Context ctx)

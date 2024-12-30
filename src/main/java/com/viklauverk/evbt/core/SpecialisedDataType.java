@@ -20,14 +20,6 @@ package com.viklauverk.evbt.core;
 import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogModule;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.stream.Collectors;
-
 public class SpecialisedDataType
 {
     private static Log log = LogModule.lookup("theory", SpecialisedDataType.class);
@@ -54,7 +46,12 @@ public class SpecialisedDataType
     {
         return long_name_;
     }
-
+    
+    public PolymorphicDataType template()
+    {
+    	return template_;
+    }
+    
     public static void findSpecialisations(Formula f, Sys sys)
     {
         if (f.isPolymorphicDataType())

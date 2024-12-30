@@ -17,9 +17,9 @@
 
 package com.viklauverk.common.log;
 
-import com.viklauverk.common.core.InternalError;
-import java.util.List;
 import java.util.LinkedList;
+
+import com.viklauverk.common.core.InternalError;
 
 public class LogFilter
 {

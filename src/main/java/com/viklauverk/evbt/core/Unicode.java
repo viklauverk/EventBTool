@@ -230,12 +230,12 @@ public class Unicode
                 // Not a special unicode character, just append it.
                 o.append(c);
                 word_len++;
-/*                if (word_len > 15)
+                if (word_len > 15)
                 {
                     // Make long words hyphenable.
                     o.append("\\-");
                     word_len = 0;
-                    }*/
+                    }
             }
             else
             {

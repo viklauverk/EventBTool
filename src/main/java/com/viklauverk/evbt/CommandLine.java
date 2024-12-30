@@ -17,17 +17,15 @@
 
 package com.viklauverk.evbt;
 
+import java.io.File;
+
 import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogLevel;
 import com.viklauverk.common.log.LogModule;
-import com.viklauverk.evbt.core.ShowSettings;
-import com.viklauverk.evbt.core.ModelGenSettings;
 import com.viklauverk.evbt.core.ModelTarget;
 import com.viklauverk.evbt.core.RenderTarget;
 import com.viklauverk.evbt.core.Settings;
 import com.viklauverk.evbt.core.Util;
-
-import java.io.File;
 
 public class CommandLine
 {
@@ -64,6 +62,7 @@ public class CommandLine
         case SHOW:  args = parseShow(s, args); break;
         case HELP: args = parseHelp(s, args); break;
         case LICENSE: args = parseLicense(s, args); break;
+        case ERROR: break;
         case VERSION: break;
         }
         return new CmdArgs(cmd, args);

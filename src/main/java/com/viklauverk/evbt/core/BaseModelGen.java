@@ -17,22 +17,11 @@
 
 package com.viklauverk.evbt.core;
 
+import java.io.FileWriter;
+
+import com.viklauverk.common.console.Canvas;
 import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogModule;
-
-import java.net.URL;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public abstract class BaseModelGen
 {

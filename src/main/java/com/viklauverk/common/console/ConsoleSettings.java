@@ -1,6 +1,6 @@
 /*
  Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
-
+ 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -14,13 +14,12 @@
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+// 
+package com.viklauverk.common.console;
 
-package com.viklauverk.evbt.core;
-
-class CanvasLine
+public class ConsoleSettings
 {
-    StringBuilder line;
-
-    CanvasLine(StringBuilder l) { line = l; }
-    CanvasLine(String l) { line = new StringBuilder(l); }
+    public ConsoleSettings()
+    {
+    }
 }

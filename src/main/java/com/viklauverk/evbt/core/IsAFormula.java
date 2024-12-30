@@ -17,10 +17,7 @@
 
 package com.viklauverk.evbt.core;
 
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.HashSet;
+import com.viklauverk.common.console.Canvas;
 
 public class IsAFormula
 {

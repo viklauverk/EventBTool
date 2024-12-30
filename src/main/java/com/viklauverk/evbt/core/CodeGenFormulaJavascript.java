@@ -17,11 +17,6 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.evbt.core.Formula;
-
-import java.util.List;
-import java.util.LinkedList;
-
 public class CodeGenFormulaJavascript extends CodeGenFormula
 {
     CodeGenFormulaJavascript(CodeGenJavascript codegen, PlanImplementation plan)
@@ -50,7 +45,7 @@ public class CodeGenFormulaJavascript extends CodeGenFormula
             System.out.println("Could not find \""+symbol+"\"");
             symbols().print();
         }
-        ImplType type = variable.implType();
+        // FIXME ImplType type = variable.implType();
 
         if (variable.isParameter())
         {

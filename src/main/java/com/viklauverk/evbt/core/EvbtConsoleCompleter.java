@@ -17,18 +17,17 @@
 
 package com.viklauverk.evbt.core;
 
-import org.jline.reader.impl.completer.ArgumentCompleter;
-import org.jline.reader.impl.completer.NullCompleter;
-import org.jline.reader.impl.completer.StringsCompleter;
-import org.jline.reader.impl.completer.AggregateCompleter;
-import org.jline.builtins.Completers.TreeCompleter;
-import org.jline.builtins.Completers.DirectoriesCompleter;
-import org.jline.reader.Completer;
 import java.nio.file.Paths;
 
-import com.viklauverk.evbt.core.cmd.Cmd;
+import org.jline.builtins.Completers.DirectoriesCompleter;
+import org.jline.reader.Completer;
+import org.jline.reader.impl.completer.AggregateCompleter;
+import org.jline.reader.impl.completer.ArgumentCompleter;
+import org.jline.reader.impl.completer.StringsCompleter;
 
-public class ConsoleCompleter
+import com.viklauverk.evbt.core.cmd.EvbtCmd;
+
+public class EvbtConsoleCompleter
 {
     public static Completer addCompleters(Sys sys) {
         return new AggregateCompleter(
@@ -59,7 +58,7 @@ public class ConsoleCompleter
              new ArgumentCompleter(new StringsCompleter("sys.set.default.renderTarget")),
              new ArgumentCompleter(
                  new StringsCompleter("help"),
-                 new StringsCompleter(Cmd.getNames())
+                 new StringsCompleter(EvbtCmd.getNames())
                  ),
              new ArgumentCompleter(new StringsCompleter("history")),
              new ArgumentCompleter(new StringsCompleter("ir.show.formula")),

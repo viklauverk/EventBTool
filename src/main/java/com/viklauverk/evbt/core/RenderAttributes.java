@@ -17,7 +17,6 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
 import com.viklauverk.common.log.LogModule;
 
 public class RenderAttributes implements Cloneable
@@ -63,7 +62,7 @@ public class RenderAttributes implements Cloneable
         color_ = co;
     }
 
-    boolean color()
+    public boolean color()
     {
         return color_;
     }

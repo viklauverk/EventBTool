@@ -17,13 +17,10 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
+import com.viklauverk.common.console.Canvas;
 
 public class EDK_FloatingPoint_v1_Cpp extends EDKContext
 {
-    private static Log log = LogModule.lookup("edk", EDK_FloatingPoint_v1_Cpp.class);
-
     public EDK_FloatingPoint_v1_Cpp(EDK e)
     {
         super(e);

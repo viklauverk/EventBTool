@@ -15,17 +15,20 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.viklauverk.evbt.core;
+package com.viklauverk.common.console;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-
-import static com.viklauverk.evbt.core.Helpers.*;
+import static com.viklauverk.evbt.core.Helpers.pushBack;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.HashSet;
-import java.util.Set;
+
+import com.viklauverk.common.log.Log;
+import com.viklauverk.common.log.LogModule;
+import com.viklauverk.evbt.core.Formula;
+import com.viklauverk.evbt.core.RenderAttributes;
+import com.viklauverk.evbt.core.RenderTarget;
+import com.viklauverk.evbt.core.Unicode;
+import com.viklauverk.evbt.core.Util;
 
 public class Canvas
 {
@@ -39,7 +42,7 @@ public class Canvas
     private boolean force_raw_ = false; // Set to true when generating formulas for caching.
 
     private int layout_width_ = 120;
-    private int used_width_ = 0;
+//    private int used_width_ = 0;
 
     private boolean use_borders_ = false;
 
@@ -54,7 +57,6 @@ public class Canvas
     private boolean alignments_active_ = false;
     private boolean aligned_line_active_ = false;
     private boolean math_active_ = false;
-    private int num_aligns_ = 0;
 
     public Canvas() {}
 
@@ -67,7 +69,6 @@ public class Canvas
         use_layout_ = parent.use_layout_;
         use_at_signs_ = parent.use_at_signs_;
         layout_width_ = parent.layout_width_;
-        used_width_ = 0;
         use_borders_ = parent.use_borders_;
         render_target_ = parent.render_target_;
         render_attributes_ = parent.render_attributes_;
@@ -380,8 +381,8 @@ public class Canvas
         }
     }
 
-    static Box sline = new Box("┌", "┐", "└", "┘", "─", "│", "├", "─", "┤", "┬", "│", "┴", " ", " ");
-    static Box dline = new Box("╔", "╗", "╚", "╝", "═", "║", "╟", "─", "╢", "╤", "│", "╧", "╡", "╞");
+    static public Box sline = new Box("┌", "┐", "└", "┘", "─", "│", "├", "─", "┤", "┬", "│", "┴", " ", " ");
+    static public Box dline = new Box("╔", "╗", "╚", "╝", "═", "║", "╟", "─", "╢", "╤", "│", "╧", "╡", "╞");
 
     public
     String frame(String title, String s, Box b)
@@ -559,22 +560,23 @@ public class Canvas
     private static String Black="\033[0;30m";
     public static String Red="\033[0;31m";
     private static String Green="\033[0;32m";
-    private static String Yellow="\033[0;33m";
+//    private static String Yellow="\033[0;33m";
     private static String Blue="\033[0;34m";
-    private static String Purple="\033[0;35m";
-    private static String Cyan="\033[0;36m";
-    private static String White="\033[0;37m";
+//    private static String Purple="\033[0;35m";
+//    private static String Cyan="\033[0;36m";
+//    private static String White="\033[0;37m";
 
+    
     // Bold
-    private static String BBlack="\033[1;30m";
+//    private static String BBlack="\033[1;30m";
     private static String BRed="\033[1;31m";
     private static String BGreen="\033[1;32m";
-    private static String BYellow="\033[1;33m";
+//    private static String BYellow="\033[1;33m";
     private static String BBlue="\033[1;34m";
     private static String BPurple="\033[1;35m";
-    private static String BCyan="\033[1;36m";
-    private static String BWhite="\033[1;37m";
-
+//    private static String BCyan="\033[1;36m";
+//    private static String BWhite="\033[1;37m";
+/*
     // Underline
     private static String UBlack="\033[4;30m";
     private static String URed="\033[4;31m";
@@ -625,7 +627,7 @@ public class Canvas
     private static String On_ICyan="\033[0;106m";
     private static String On_IWhite="\033[0;107m";
 
-    /*
+    
     public int lengthIgnoringAnsi(String s)
     {
         int c = 0;
@@ -953,7 +955,7 @@ public class Canvas
        assert(aligned_line_active_ == true) : "Internal error: Expected aligned line active when aligning!";
 
         append("§"); // Canvas.render will use § on multiple lines to force horisontal alignement.
-        num_aligns_++;
+        // num_aligns_++;
     }
 
     public void indent(int n)

@@ -18,9 +18,9 @@
 package com.viklauverk.evbt.core.cmd;
 
 import java.io.File;
-import java.util.List;
 
-import com.viklauverk.evbt.core.Console;
+import com.viklauverk.common.cmd.CmdCommon;
+import com.viklauverk.common.console.Console;
 
 public class CmdSysRead extends CmdCommon
 {

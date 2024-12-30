@@ -17,8 +17,6 @@
 
 package com.viklauverk.evbt.core;
 
-import java.util.HashMap;
-
 public class Meta
 {
     final Bounds bounds;
@@ -52,8 +50,8 @@ public class Meta
         // card(EXT) = 22
         // exts: 0..num <-> EXT    <0..2200|F16
 
-        String[] parts = s.split("|");
-        Bounds b = Bounds.parse(parts[0]);
+        // FIXME String[] parts = s.split("|");
+        // FIXME Bounds b = Bounds.parse(parts[0]);
         return new Meta(null,null,null);
     }
 

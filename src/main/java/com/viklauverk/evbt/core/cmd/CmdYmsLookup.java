@@ -17,13 +17,12 @@
 
 package com.viklauverk.evbt.core.cmd;
 
-import com.viklauverk.evbt.core.Console;
+import com.viklauverk.common.cmd.CmdCommon;
+import com.viklauverk.common.console.Console;
 import com.viklauverk.evbt.core.Operator;
 import com.viklauverk.evbt.core.OperatorNotationType;
 import com.viklauverk.evbt.core.OperatorType;
 import com.viklauverk.evbt.core.SymbolTable;
-
-import java.util.List;
 
 public class CmdYmsLookup extends CmdCommon
 {

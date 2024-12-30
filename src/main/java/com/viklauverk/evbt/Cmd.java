@@ -17,9 +17,6 @@
 
 package com.viklauverk.evbt;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-
 public enum Cmd
 {
     ERROR, HELP, VERSION, LICENSE, CONSOLE, CODEGEN, MODELGEN, SHOW, DOCGEN, DOCMOD, EDK

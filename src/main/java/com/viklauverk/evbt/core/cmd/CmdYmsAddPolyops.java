@@ -17,11 +17,10 @@
 
 package com.viklauverk.evbt.core.cmd;
 
-import com.viklauverk.evbt.core.Console;
+import com.viklauverk.common.cmd.CmdCommon;
+import com.viklauverk.common.console.Console;
 import com.viklauverk.evbt.core.Operator;
 import com.viklauverk.evbt.core.Sys;
-
-import java.util.List;
 
 public class CmdYmsAddPolyops extends CmdCommon
 {

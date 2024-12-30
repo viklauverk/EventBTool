@@ -17,11 +17,10 @@
 
 package com.viklauverk.evbt.core.cmd;
 
-import java.util.List;
-
-import com.viklauverk.evbt.core.Canvas;
+import com.viklauverk.common.cmd.CmdCommon;
+import com.viklauverk.common.console.Canvas;
+import com.viklauverk.common.console.Console;
 import com.viklauverk.evbt.core.RenderTarget;
-import com.viklauverk.evbt.core.Console;
 
 public class CmdHelp extends CmdCommon
 {
@@ -48,7 +47,7 @@ public class CmdHelp extends CmdCommon
         c.setRenderTarget(RenderTarget.PLAIN);
 
         c.append("Commands:\n\n");
-        for (Cmd cmd : Cmd.values())
+        for (EvbtCmd cmd : EvbtCmd.values())
         {
             c.append(cmd.name+"§"+cmd.explanation+"\n");
         }
@@ -57,7 +56,7 @@ public class CmdHelp extends CmdCommon
 
     String cmdHelp(String cmds)
     {
-        Cmd cmd = Cmd.parse(cmds);
+        EvbtCmd cmd = EvbtCmd.parse(cmds);
         Canvas c = new Canvas();
         c.setRenderTarget(RenderTarget.PLAIN);
 

@@ -17,21 +17,8 @@
 
 package com.viklauverk.evbt.core;
 
-import java.util.List;
-import java.util.LinkedList;
-
-import java.util.Map;
-import java.util.HashMap;
-
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-
-import com.viklauverk.evbt.core.Formula;
-
 public class WalkFormula implements FormulaVisitor
 {
-    private static Log log = LogModule.lookup("walkformula", WalkFormula.class);
-
     private SymbolTable symbols_;
 
     WalkFormula() { }

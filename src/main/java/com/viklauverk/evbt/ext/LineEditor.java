@@ -17,9 +17,6 @@
 
 package com.viklauverk.evbt.ext;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-
 import java.io.IOException;
 import java.util.ArrayList;
 

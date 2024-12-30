@@ -22,13 +22,13 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/*import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 public class LogModule implements Log
 {
-    private static boolean initialized_ = false;
+//    private static boolean initialized_ = false;
     private static Map<String,LogModule> modules_ = new HashMap<>();
     private static LogLevel all_level_ = LogLevel.INFO;
     private static LogFilter all_filter_ = null;
@@ -41,7 +41,7 @@ public class LogModule implements Log
     private LogModuleNames module_;
     private LogLevel log_level_;
     private LogFilter log_filter_;
-    private Logger logger_;
+//  FIXME   private Logger logger_;
 
     static
     {
@@ -361,7 +361,7 @@ public class LogModule implements Log
     {
         if (klass != null)
         {
-            logger_ = LoggerFactory.getLogger(klass);
+        	// logger_ = LoggerFactory.getLogger(klass);
         }
     }
 }

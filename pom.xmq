@@ -53,13 +53,11 @@ project(xsi:schemaLocation = 'http://maven.apache.org/POM/4.0.0 http://maven.apa
         dependency {
             groupId    = jaxen
             artifactId = jaxen
-            version    = 1.2.0
         }
         // https://mvnrepository.com/artifact/junit/junit
         dependency {
             groupId    = junit
             artifactId = junit
-            version    = 4.13.2
             scope      = test
         }
         // https://mvnrepository.com/artifact/org.jline/jline
@@ -78,7 +76,6 @@ project(xsi:schemaLocation = 'http://maven.apache.org/POM/4.0.0 http://maven.apa
         dependency {
             groupId    = org.apache.commons
             artifactId = commons-lang3
-            version    = 3.12.0
         }
     }
     build {
@@ -87,7 +84,6 @@ project(xsi:schemaLocation = 'http://maven.apache.org/POM/4.0.0 http://maven.apa
             plugin {
                 groupId    = org.codehaus.mojo
                 artifactId = build-helper-maven-plugin
-                version    = 3.3.0
                 executions {
                     execution {
                         phase = generate-sources
@@ -105,7 +101,6 @@ project(xsi:schemaLocation = 'http://maven.apache.org/POM/4.0.0 http://maven.apa
             plugin {
                 groupId    = org.apache.maven.plugins
                 artifactId = maven-compiler-plugin
-                version    = 3.8.0
                 configuration {
                     release = 21
                 }

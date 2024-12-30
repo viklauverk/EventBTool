@@ -15,30 +15,29 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.viklauverk.evbt.core.cmd;
+package com.viklauverk.common.cmd;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
-import com.viklauverk.evbt.core.Console;
+import com.viklauverk.common.console.Console;
 import com.viklauverk.evbt.core.RenderTarget;
 
 public class CmdCommon
 {
-    Console console_;
+    protected Console console_;
 
     // The remaining command line to parse for command.
-    String line_;
-    int index_;
+    protected String line_;
+    protected int index_;
 
     // Options are extracted and stored here.
     // For example --tex
-    Set<String> options_;
+    protected Set<String> options_;
     // For example --indent=123
-    Map<String,String> option_values_;
+    protected Map<String,String> option_values_;
 
     public CmdCommon(Console console, String line)
     {
@@ -95,7 +94,6 @@ public class CmdCommon
 
         int from = index_;
 
-        StringBuilder sb = new StringBuilder();
         while (index_ < line_.length())
         {
             c = line_.charAt(index_);
@@ -118,14 +116,14 @@ public class CmdCommon
         return name;
     }
 
-    boolean checkOption(String name)
+    public boolean checkOption(String name)
     {
         if (!options_.contains(name)) return false;
         options_.remove(name);
         return true;
     }
 
-    String checkOptionValue(String name)
+    public String checkOptionValue(String name)
     {
         if (option_values_.get(name) == null) return null;
 
@@ -134,12 +132,12 @@ public class CmdCommon
         return v;
     }
 
-    boolean nomoreOptions()
+    public boolean nomoreOptions()
     {
         return options_.size() == 0 && option_values_.size() == 0;
     }
 
-    String unknownOptions()
+    public String unknownOptions()
     {
         StringBuilder sb = new StringBuilder();
         sb.append("Unknown options: ");
@@ -157,7 +155,7 @@ public class CmdCommon
         return sb.toString();
     }
 
-    RenderTarget toRenderTarget(boolean render_plain, boolean render_terminal, boolean render_tex, boolean render_html, RenderTarget dt)
+    public RenderTarget toRenderTarget(boolean render_plain, boolean render_terminal, boolean render_tex, boolean render_html, RenderTarget dt)
     {
         if (render_plain) return RenderTarget.PLAIN;
         if (render_terminal) return RenderTarget.TERMINAL;

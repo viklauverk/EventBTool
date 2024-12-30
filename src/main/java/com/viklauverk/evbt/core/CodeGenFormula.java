@@ -17,8 +17,6 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.evbt.core.Formula;
-
 public class CodeGenFormula extends RenderFormulaUnicode
 {
     private BaseCodeGen codegen_;
@@ -30,7 +28,7 @@ public class CodeGenFormula extends RenderFormulaUnicode
         codegen_ = codegen;
         plan_ = plan;
         limitToAscii();
-    }
+    }	
 
     protected BaseCodeGen codegen()
     {

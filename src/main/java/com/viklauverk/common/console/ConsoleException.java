@@ -18,7 +18,7 @@
 //╟──────────────────────────────────────────────────────────────────────────────╢
 //╚══════════════════════════════════════════════════════════════════════════════╝
 
-package com.viklauverk.evbt.core;
+package com.viklauverk.common.console;
 
 public class ConsoleException extends Exception
 {

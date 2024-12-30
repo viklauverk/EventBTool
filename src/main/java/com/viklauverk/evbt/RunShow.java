@@ -17,7 +17,7 @@
 
 package com.viklauverk.evbt;
 
-import com.viklauverk.evbt.core.Canvas;
+import com.viklauverk.common.console.Canvas;
 import com.viklauverk.evbt.core.Machine;
 import com.viklauverk.evbt.core.Sys;
 import com.viklauverk.evbt.core.RenderTarget;
@@ -52,10 +52,10 @@ public class RunShow
 
         if (s.showSettings().parts().size() > 0)
         {
-            for (String p : s.showSettings().parts())
+         /*   for (String p : s.showSettings().parts())
             {
-                //System.out.println(parts.getPart(p));
-            }
+                // System.out.println(parts.getPart(p));
+            }*/
         }
         else
         {

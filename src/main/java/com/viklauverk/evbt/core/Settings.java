@@ -17,15 +17,7 @@
 
 package com.viklauverk.evbt.core;
 
-import java.util.List;
-import java.util.ArrayList;
-
-import com.viklauverk.evbt.core.CommonSettings;
-import com.viklauverk.evbt.core.ConsoleSettings;
-import com.viklauverk.evbt.core.ShowSettings;
-import com.viklauverk.evbt.core.CodeGenSettings;
-import com.viklauverk.evbt.core.DocGenSettings;
-import com.viklauverk.evbt.core.ModelGenSettings;
+import com.viklauverk.common.console.ConsoleSettings;
 
 public class Settings
 {
@@ -37,6 +29,7 @@ public class Settings
     private ModelGenSettings modelgen_settings_ = new ModelGenSettings();
 
     public CommonSettings commonSettings() { return common_settings_; }
+    public ConsoleSettings consoleSettings() { return console_settings_; }
     public ShowSettings showSettings() { return show_settings_; }
     public CodeGenSettings codeGenSettings() { return codegen_settings_; }
     public DocGenSettings docGenSettings() { return docgen_settings_; }

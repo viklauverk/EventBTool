@@ -17,29 +17,24 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 import java.util.stream.Collectors;
-import java.io.File;
 
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.dom.DOMDocumentFactory;
 import org.dom4j.Element;
-import org.dom4j.Attribute;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
+
+import com.viklauverk.common.log.LogModule;
 
 public class Machine
 {
     private static LogModule log = LogModule.lookup("machine", Machine.class);
     private static LogModule log_codegen = LogModule.lookup("codegen", Machine.class);
-    private static LogModule log_typing = LogModule.lookup("typing", Machine.class);
 
     private SymbolTable symbol_table_;
 
@@ -75,8 +70,8 @@ public class Machine
     private List<String> proof_obligation_names_ = new ArrayList<>();
 
     // These are the calculated types that variables can be of.
-    private Map<String,ImplType> types_;
-    private List<String> type_names_;
+    // FIXME private Map<String,ImplType> types_;
+    // FIXME private List<String> type_names_;
 
     // The concrete events (merged with extended events) in
     // more abstract machines.
@@ -97,8 +92,8 @@ public class Machine
     {
         name_ = n;
 
-        types_ = new HashMap<>();
-        type_names_ = new ArrayList<>();
+//        types_ = new HashMap<>();
+//        type_names_ = new ArrayList<>();
         bum_ = f;
         sys_ = s;
         bum_ = f;

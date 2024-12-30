@@ -17,9 +17,6 @@
 // 
 package com.viklauverk.evbt.core;
 
-import java.util.Set;
-import java.util.HashSet;
-
 public class DocGenSettings
 {
     private RenderTarget render_target_;

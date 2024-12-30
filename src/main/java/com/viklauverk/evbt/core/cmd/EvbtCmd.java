@@ -17,10 +17,9 @@
 
 package com.viklauverk.evbt.core.cmd;
 
-import java.util.List;
-import java.util.LinkedList;
+import com.viklauverk.common.cmd.CreateCmd;
 
-public enum Cmd
+public enum EvbtCmd
 {
     EB_SHOW_FORMULA(
         "eb.show.formula",
@@ -189,7 +188,7 @@ public enum Cmd
     public String manual;
     public CreateCmd constructor;
 
-    Cmd(String n, String e, String m, CreateCmd co)
+    EvbtCmd(String n, String e, String m, CreateCmd co)
     {
         name = n;
         explanation = e;
@@ -197,9 +196,9 @@ public enum Cmd
         constructor = co;
     }
 
-    public static Cmd parse(String s)
+    public static EvbtCmd parse(String s)
     {
-        for (Cmd c : Cmd.values())
+        for (EvbtCmd c : EvbtCmd.values())
         {
             if (s.equals(c.name)) return c;
         }
@@ -208,10 +207,10 @@ public enum Cmd
 
     public static String[] getNames()
     {
-        String[] r = new String[Cmd.values().length];
+        String[] r = new String[EvbtCmd.values().length];
 
         int i = 0;
-        for (Cmd c : Cmd.values())
+        for (EvbtCmd c : EvbtCmd.values())
         {
             r[i] = c.name;
             i++;

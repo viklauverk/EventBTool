@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2024 Viklauverk AB (agpl-3.0-or-later)
+ Copyright (C) 2021 Viklauverk AB (agpl-3.0-or-later)
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -15,11 +15,12 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.viklauverk.evbt.core.cmd;
+package com.viklauverk.common.console;
 
-import com.viklauverk.evbt.core.Console;
-
-public interface CreateCmd
+class CanvasLine
 {
-    CmdCommon create(Console console, String line);
+    StringBuilder line;
+
+    CanvasLine(StringBuilder l) { line = l; }
+    CanvasLine(String l) { line = new StringBuilder(l); }
 }
