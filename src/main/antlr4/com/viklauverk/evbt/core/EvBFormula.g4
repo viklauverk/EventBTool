@@ -16,16 +16,16 @@
 grammar EvBFormula;
 
 @lexer::header{
-import com.viklauverk.evbt.core.SymbolTable;
+import com.viklauverk.evbt.core.sys.SymbolTable;
 
 import java.util.Map;
 import java.util.HashMap;
 }
 
 @parser::header{
-import com.viklauverk.evbt.core.SymbolTable;
-import com.viklauverk.evbt.core.OperatorNotationType;
-import com.viklauverk.evbt.core.OperatorType;
+import com.viklauverk.evbt.core.sys.SymbolTable;
+import com.viklauverk.evbt.core.sys.OperatorNotationType;
+import com.viklauverk.evbt.core.sys.OperatorType;
 
 import java.util.List;
 import java.util.LinkedList;

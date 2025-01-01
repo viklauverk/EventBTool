@@ -96,7 +96,7 @@ $(BUILD_MVN_BIN)/evbt: pom.xml scripts/run.sh $(TEMPLATES_JAVA) $(PROJECT_DEPS)/
 	@echo Compiling using maven
 	@mkdir -p $(BUILD_MVN_BIN) $(GEN_ANTLR4)
 	$(AT)mvn -B -q package
-	$(AT)cat scripts/run.sh $(BUILD)/EventBTool-1.0-SNAPSHOT.jar > $@
+	$(AT)cat scripts/run.sh $(BUILD)/EVBT-1.0.jar > $@
 	@chmod a+x $@
 	@echo Generated $(call DROP_ROOT,$@)
 

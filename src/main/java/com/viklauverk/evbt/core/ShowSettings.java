@@ -20,7 +20,7 @@ package com.viklauverk.evbt.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.viklauverk.common.log.LogModule;
+import com.viklauverk.evbt.core.log.LogModule;
 
 public class ShowSettings
 {

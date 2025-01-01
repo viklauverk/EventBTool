@@ -19,13 +19,13 @@ package com.viklauverk.evbt;
 
 import java.util.Set;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-import com.viklauverk.evbt.core.BaseCodeGen;
-import com.viklauverk.evbt.core.CodeGen;
-import com.viklauverk.evbt.core.Machine;
 import com.viklauverk.evbt.core.Settings;
-import com.viklauverk.evbt.core.Sys;
+import com.viklauverk.evbt.core.codegen.BaseCodeGen;
+import com.viklauverk.evbt.core.codegen.CodeGen;
+import com.viklauverk.evbt.core.log.Log;
+import com.viklauverk.evbt.core.log.LogModule;
+import com.viklauverk.evbt.core.sys.Machine;
+import com.viklauverk.evbt.core.sys.Sys;
 
 public class RunCodeGen
 {

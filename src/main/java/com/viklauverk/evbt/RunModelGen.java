@@ -17,13 +17,13 @@
 
 package com.viklauverk.evbt;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
-import com.viklauverk.evbt.core.BaseModelGen;
-import com.viklauverk.evbt.core.ModelGen;
-import com.viklauverk.evbt.core.ModelTarget;
 import com.viklauverk.evbt.core.Settings;
-import com.viklauverk.evbt.core.Sys;
+import com.viklauverk.evbt.core.log.Log;
+import com.viklauverk.evbt.core.log.LogModule;
+import com.viklauverk.evbt.core.modelgen.BaseModelGen;
+import com.viklauverk.evbt.core.modelgen.ModelGen;
+import com.viklauverk.evbt.core.modelgen.ModelTarget;
+import com.viklauverk.evbt.core.sys.Sys;
 
 public class RunModelGen
 {

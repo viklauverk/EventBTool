@@ -22,9 +22,9 @@ import java.util.List;
 
 public class SystemSearch
 {
-    protected List<String> parts_ = new LinkedList<>();;
+    List<String> parts_ = new LinkedList<>();;
 
-    protected void addPart(String part)
+    public void addPart(String part)
     {
         parts_.add(part);
     }

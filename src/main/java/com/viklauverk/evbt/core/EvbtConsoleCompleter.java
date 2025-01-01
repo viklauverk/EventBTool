@@ -25,7 +25,9 @@ import org.jline.reader.impl.completer.AggregateCompleter;
 import org.jline.reader.impl.completer.ArgumentCompleter;
 import org.jline.reader.impl.completer.StringsCompleter;
 
-import com.viklauverk.evbt.core.cmd.EvbtCmd;
+import com.viklauverk.evbt.core.console.EvbtCmd;
+import com.viklauverk.evbt.core.helpers.Util;
+import com.viklauverk.evbt.core.sys.Sys;
 
 public class EvbtConsoleCompleter
 {

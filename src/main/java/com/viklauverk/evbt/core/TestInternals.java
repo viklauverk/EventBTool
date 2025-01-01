@@ -17,8 +17,12 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.LogLevel;
-import com.viklauverk.common.log.LogModule;
+import com.viklauverk.evbt.core.log.LogLevel;
+import com.viklauverk.evbt.core.log.LogModule;
+import com.viklauverk.evbt.core.sys.Bounds;
+import com.viklauverk.evbt.core.sys.ContainingCardinality;
+import com.viklauverk.evbt.core.sys.Formula;
+import com.viklauverk.evbt.core.sys.SymbolTable;
 
 public class TestInternals
 {

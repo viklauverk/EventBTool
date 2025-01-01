@@ -18,6 +18,11 @@
 package com.viklauverk.evbt.core;
 
 import java.util.List;
+
+import com.viklauverk.evbt.core.sys.Formula;
+import com.viklauverk.evbt.core.sys.Node;
+import com.viklauverk.evbt.core.sys.OperatorType;
+
 import java.util.ArrayList;
 
 public class FormulaFactory
@@ -187,7 +192,7 @@ public class FormulaFactory
     {
         if (parameters == null)
         {
-            parameters = new Formula(com.viklauverk.evbt.core.Node.LIST_OF_EXPRESSIONS, Formula.NO_META);
+            parameters = new Formula(com.viklauverk.evbt.core.sys.Node.LIST_OF_EXPRESSIONS, Formula.NO_META);
         }
 
         return new Formula(Node.POLYMORPHIC_DATA_TYPE_SYMBOL, Symbols.intern(s), parameters, meta);

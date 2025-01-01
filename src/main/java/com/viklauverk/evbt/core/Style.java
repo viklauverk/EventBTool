@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.viklauverk.common.log.LogModule;
+import com.viklauverk.evbt.core.log.LogModule;
 
 public class Style
 {
@@ -31,33 +31,33 @@ public class Style
     private String main_;
     private Map<String,String> settings_;
 
-    Style(String s)
+    public Style(String s)
     {
         settings_ = new HashMap<String,String>();
         parse(s);
     }
 
-    boolean valid()
+    public boolean valid()
     {
         return valid_;
     }
 
-    String main()
+    public String main()
     {
         return main_;
     }
 
-    String get(String key)
+    public String get(String key)
     {
         return settings_.get(key);
     }
 
-    Set<String> keys()
+    public Set<String> keys()
     {
         return settings_.keySet();
     }
 
-    void parse(String s)
+    public void parse(String s)
     {
         // A style starts with a name:
         // default
@@ -92,7 +92,7 @@ public class Style
         }
     }
 
-    void handleSetting(String s)
+    public void handleSetting(String s)
     {
         if (s.length() == 0)
         {

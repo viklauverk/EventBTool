@@ -17,8 +17,13 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
+import com.viklauverk.evbt.core.docgen.RenderFormula;
+import com.viklauverk.evbt.core.helpers.Util;
+import com.viklauverk.evbt.core.log.Log;
+import com.viklauverk.evbt.core.log.LogModule;
+import com.viklauverk.evbt.core.sys.Formula;
+import com.viklauverk.evbt.core.sys.OperatorType;
+
 import java.util.List;
 import java.util.LinkedList;
 
@@ -32,7 +37,7 @@ public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
 
     private CommonTokenStream tokens_;
 
-    FormulaBuilder(CommonTokenStream tokens)
+    public FormulaBuilder(CommonTokenStream tokens)
     {
         tokens_ = tokens;
     }

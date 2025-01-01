@@ -23,6 +23,8 @@ import org.jline.reader.Candidate;
 import org.jline.reader.LineReader;
 import org.jline.reader.ParsedLine;
 
+import com.viklauverk.evbt.core.sys.Sys;
+
 public class SysCompleter implements Completer
 {
     Sys sys_;

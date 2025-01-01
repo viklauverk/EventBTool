@@ -17,6 +17,8 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.evbt.core.sys.SymbolTable;
+
 public class AbortIntoConsole extends Error
 {
     private static final long serialVersionUID = 1L;

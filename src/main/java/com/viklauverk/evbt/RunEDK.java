@@ -29,9 +29,9 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
 import com.viklauverk.evbt.core.Settings;
+import com.viklauverk.evbt.core.log.Log;
+import com.viklauverk.evbt.core.log.LogModule;
 
 public class RunEDK
 {

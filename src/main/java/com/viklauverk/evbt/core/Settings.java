@@ -17,7 +17,10 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.common.console.ConsoleSettings;
+import com.viklauverk.evbt.core.codegen.CodeGenSettings;
+import com.viklauverk.evbt.core.console.ConsoleSettings;
+import com.viklauverk.evbt.core.docgen.DocGenSettings;
+import com.viklauverk.evbt.core.modelgen.ModelGenSettings;
 
 public class Settings
 {

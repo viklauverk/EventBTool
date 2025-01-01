@@ -10,8 +10,8 @@ project(xsi:schemaLocation = 'http://maven.apache.org/POM/4.0.0 http://maven.apa
         maven.compiler.target        = 21
     }
     groupId    = com.viklauverk
-    artifactId = EventBTool
-    version    = 1.0-SNAPSHOT
+    artifactId = EVBT
+    version    = 1.0
     // Inherit defaults from Spring Boot
     parent {
         groupId    = org.springframework.boot

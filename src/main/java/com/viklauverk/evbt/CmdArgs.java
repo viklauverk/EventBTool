@@ -19,10 +19,10 @@ package com.viklauverk.evbt;
 
 public class CmdArgs
 {
-    public Cmd cmd;
+    public EvbtCmd cmd;
     public String[] args;
 
-    public CmdArgs(Cmd c, String[] a)
+    public CmdArgs(EvbtCmd c, String[] a)
     {
         cmd = c;
         args = a;

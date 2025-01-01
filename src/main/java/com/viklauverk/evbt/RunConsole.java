@@ -23,15 +23,15 @@ import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
 import org.jline.reader.UserInterruptException;
 
-import com.viklauverk.common.console.Canvas;
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogModule;
 import com.viklauverk.evbt.core.AbortIntoConsole;
 import com.viklauverk.evbt.core.EvbtConsoleCompleter;
-import com.viklauverk.evbt.core.RenderAttributes;
-import com.viklauverk.evbt.core.RenderTarget;
 import com.viklauverk.evbt.core.Settings;
-import com.viklauverk.evbt.core.Sys;
+import com.viklauverk.evbt.core.console.Canvas;
+import com.viklauverk.evbt.core.docgen.RenderAttributes;
+import com.viklauverk.evbt.core.docgen.RenderTarget;
+import com.viklauverk.evbt.core.log.Log;
+import com.viklauverk.evbt.core.log.LogModule;
+import com.viklauverk.evbt.core.sys.Sys;
 
 public class RunConsole
 {

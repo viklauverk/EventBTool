@@ -21,7 +21,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.viklauverk.common.log.LogModule;
+import com.viklauverk.evbt.core.log.LogModule;
 
 public class CommonSettings
 {

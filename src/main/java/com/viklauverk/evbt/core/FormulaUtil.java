@@ -17,6 +17,9 @@
 
 package com.viklauverk.evbt.core;
 
+import com.viklauverk.evbt.core.sys.Formula;
+import com.viklauverk.evbt.core.sys.Node;
+
 public
 class FormulaUtil
 {

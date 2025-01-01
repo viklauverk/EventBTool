@@ -19,13 +19,13 @@ package com.viklauverk.evbt;
 
 import java.io.File;
 
-import com.viklauverk.common.log.Log;
-import com.viklauverk.common.log.LogLevel;
-import com.viklauverk.common.log.LogModule;
-import com.viklauverk.evbt.core.ModelTarget;
-import com.viklauverk.evbt.core.RenderTarget;
 import com.viklauverk.evbt.core.Settings;
-import com.viklauverk.evbt.core.Util;
+import com.viklauverk.evbt.core.docgen.RenderTarget;
+import com.viklauverk.evbt.core.helpers.Util;
+import com.viklauverk.evbt.core.log.Log;
+import com.viklauverk.evbt.core.log.LogLevel;
+import com.viklauverk.evbt.core.log.LogModule;
+import com.viklauverk.evbt.core.modelgen.ModelTarget;
 
 public class CommandLine
 {
@@ -35,18 +35,18 @@ public class CommandLine
     {
         if (args.length < 1)
         {
-            return new CmdArgs(Cmd.HELP, args);
+            return new CmdArgs(EvbtCmd.HELP, args);
         }
         String cs = args[0];
-        Cmd cmd = Cmd.ERROR;
+        EvbtCmd cmd = EvbtCmd.ERROR;
         try
         {
-            cmd = Cmd.valueOf(cs.toUpperCase());
+            cmd = EvbtCmd.valueOf(cs.toUpperCase());
         }
         catch (IllegalArgumentException e)
         {
             log.usageError("Unknown command \"%s\"", cs);
-            return new CmdArgs(Cmd.ERROR, args);
+            return new CmdArgs(EvbtCmd.ERROR, args);
         }
 
         args = Util.shiftLeft(args);

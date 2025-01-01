@@ -6,7 +6,7 @@ public static String empty = "";
 public static String CppEvbtH =
 "/* Event-B Runtime BSD-2-Clause\n"+
 "\n"+
-"Copyright 2021 Viklauverk AB\n"+
+"Copyright 2021-2024 Viklauverk AB\n"+
 "\n"+
 "Redistribution and use in source and binary forms, with or without\n"+
 "modification, are permitted provided that the following conditions are\n"+

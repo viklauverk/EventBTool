@@ -17,15 +17,15 @@
 
 package com.viklauverk.evbt;
 
-import com.viklauverk.common.console.Canvas;
-import com.viklauverk.common.log.LogLevel;
-import com.viklauverk.common.log.LogModule;
-import com.viklauverk.evbt.core.Formula;
-import com.viklauverk.evbt.core.Pattern;
-import com.viklauverk.evbt.core.RenderTarget;
 import com.viklauverk.evbt.core.Settings;
-import com.viklauverk.evbt.core.SymbolTable;
 import com.viklauverk.evbt.core.Unicode;
+import com.viklauverk.evbt.core.console.Canvas;
+import com.viklauverk.evbt.core.docgen.RenderTarget;
+import com.viklauverk.evbt.core.log.LogLevel;
+import com.viklauverk.evbt.core.log.LogModule;
+import com.viklauverk.evbt.core.sys.Formula;
+import com.viklauverk.evbt.core.sys.Pattern;
+import com.viklauverk.evbt.core.sys.SymbolTable;
 
 
 public class TestInternals
@@ -64,7 +64,7 @@ public class TestInternals
         String[] a1 = { "help" };
         CmdArgs ca = CommandLine.parse(s, a1);
 
-        ok &= ca.cmd == Cmd.HELP;
+        ok &= ca.cmd == EvbtCmd.HELP;
         return ok;
     }
 

@@ -17,12 +17,12 @@
 
 package com.viklauverk.evbt;
 
-import com.viklauverk.common.console.Canvas;
-import com.viklauverk.evbt.core.Machine;
-import com.viklauverk.evbt.core.Sys;
-import com.viklauverk.evbt.core.RenderTarget;
-import com.viklauverk.evbt.core.RenderAttributes;
+import com.viklauverk.evbt.core.docgen.RenderAttributes;
+import com.viklauverk.evbt.core.docgen.RenderTarget;
+import com.viklauverk.evbt.core.sys.Machine;
+import com.viklauverk.evbt.core.sys.Sys;
 import com.viklauverk.evbt.core.Settings;
+import com.viklauverk.evbt.core.console.Canvas;
 
 public class RunShow
 {
