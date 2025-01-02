@@ -32,34 +32,24 @@ public class LogModule implements Log
     private static Map<String,LogModule> modules_ = new HashMap<>();
     private static LogLevel all_level_ = LogLevel.INFO;
     private static LogFilter all_filter_ = null;
-    private static Map<LogModuleNames,LogLevel> module_levels_ = new HashMap<>();
-    private static Map<LogModuleNames,LogFilter> module_filters_ = new HashMap<>();
+    private static Map<String,LogLevel> module_levels_ = new HashMap<>();
+    private static Map<String,LogFilter> module_filters_ = new HashMap<>();
     private static Set<String> expected_modules_ = new HashSet<>();
     private static boolean debug_enabled_ = true;
     private static boolean debug_canvas_enabled_ = false;
 
-    private LogModuleNames module_;
+    private String module_;
     private LogLevel log_level_;
     private LogFilter log_filter_;
 //  FIXME   private Logger logger_;
 
-    static
-    {
-        for (LogModuleNames lm : LogModuleNames.values())
-        {
-            String name = lm.toString();
-            expected_modules_.add(name);
-            modules_.put(name, new LogModule(name));
-        }
-    }
-
     private LogModule(String name)
     {
-        log_level_ = LogLevel.INFO;
+        log_level_ = null;
 
         try
         {
-            module_  = LogModuleNames.valueOf(name);
+            module_  = name;
         }
         catch (IllegalArgumentException e)
         {
@@ -104,7 +94,9 @@ public class LogModule implements Log
         LogModule lm = modules_.get(name);
         if (lm == null)
         {
-            internalErrorStatic("Log module %s is not expected! Rerun \"make logmodulenames\" to build again.", name);
+            expected_modules_.add(name);
+            lm = new LogModule(name);
+            modules_.put(name, lm);
         }
         lm.add(klass);
         return lm;
@@ -131,6 +123,7 @@ public class LogModule implements Log
             if (m.charAt(0) == '-')
             {
                 tmp = LogLevel.INFO;
+                m = m.substring(1);
             }
             if (m.equals("all"))
             {
@@ -142,38 +135,20 @@ public class LogModule implements Log
             }
             else
             {
-                LogModuleNames module = null;
-                try
-                {
-                    module = LogModuleNames.valueOf(m);
-                }
-                catch (Exception e)
-                {
-                }
-                if (module == null)
-                {
-                    StringBuilder sb = new StringBuilder();
-                    for (var name : LogModuleNames.values())
-                    {
-                        sb.append("    ");
-                        sb.append(name);
-                        sb.append("\n");
-                    }
-                    internalErrorStatic("Unknown log module \"%s\" available modules are:\n%s", m, sb);
-                }
-                module_levels_.put(module, ll);
+                module_levels_.put(m, ll);
                 if (filter != null)
                 {
                     LogFilter lf = new LogFilter(filter);
-                    module_filters_.put(module, lf);
+                    module_filters_.put(m, lf);
                 }
             }
         }
+        /*
         for (LogModule lm : modules_.values())
         {
             lm.evalLogLevel();
             lm.evalLogFilter();
-        }
+            }*/
     }
 
     public static String safeFormat(String msg, Object... args)
@@ -193,7 +168,7 @@ public class LogModule implements Log
     public void error(String msg, Object... args)
     {
         String m = "("+module_+") "+safeFormat(msg, args);
-        System.err.println(m);
+        System.out.println(m);
         System.exit(1);
     }
 
@@ -252,6 +227,12 @@ public class LogModule implements Log
 
     public void info(String msg, Object... args)
     {
+        if (log_level_ == null)
+        {
+            evalLogLevel();
+            evalLogFilter();
+        }
+
         if (log_level_.value() >= LogLevel.INFO.value())
         {
             String out = safeFormat(msg, args);
@@ -264,6 +245,12 @@ public class LogModule implements Log
 
     public void verbose(String msg, Object... args)
     {
+        if (log_level_ == null)
+        {
+            evalLogLevel();
+            evalLogFilter();
+        }
+
         if (log_level_.value() >= LogLevel.VERBOSE.value())
         {
             String out = safeFormat(msg, args);
@@ -276,6 +263,12 @@ public class LogModule implements Log
 
     public void debug(String msg, Object... args)
     {
+        if (log_level_ == null)
+        {
+            evalLogLevel();
+            evalLogFilter();
+        }
+
         if (log_level_.value() >= LogLevel.DEBUG.value())
         {
             String out = "("+module_+") "+safeFormat(msg, args);
@@ -288,6 +281,12 @@ public class LogModule implements Log
 
     public void debugp(String part, String msg, Object... args)
     {
+        if (log_level_ == null)
+        {
+            evalLogLevel();
+            evalLogFilter();
+        }
+
         if (log_level_.value() >= LogLevel.DEBUG.value())
         {
             String out = "("+module_+"-"+part+") "+safeFormat(msg, args);
@@ -300,6 +299,12 @@ public class LogModule implements Log
 
     public void trace(String msg, Object... args)
     {
+        if (log_level_ == null)
+        {
+            evalLogLevel();
+            evalLogFilter();
+        }
+
         if (log_level_.value() >= LogLevel.TRACE.value())
         {
             String out = "("+module_+") "+safeFormat(msg, args);
@@ -337,9 +342,9 @@ public class LogModule implements Log
 
     public static void printLogModules()
     {
-        for (LogModuleNames lm : LogModuleNames.values())
+        for (String name : expected_modules_)
         {
-            System.out.println(lm);
+            System.out.println(name);
         }
     }
 
@@ -348,11 +353,12 @@ public class LogModule implements Log
         StringBuilder sb = new StringBuilder();
         for (String name : modules_.keySet())
         {
-            LogModule lm = modules_.get(name);
+            sb.append(name+" ");
+            /*LogModule lm = modules_.get(name);
             if (lm.log_level_.value() <= LogLevel.DEBUG.value())
             {
                 sb.append(name+" ");
-            }
+                }*/
         }
         return sb.toString().trim();
     }
