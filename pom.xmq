@@ -111,6 +111,7 @@ project(xsi:schemaLocation = 'http://maven.apache.org/POM/4.0.0 http://maven.apa
                 configuration {
                     mainClass  = com.viklauverk.evbt.Main
                     executable = false
+                    classifier = exec
                 }
             }
             plugin {
