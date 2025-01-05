@@ -63,7 +63,11 @@ public class LogModule implements Log
         log_level_ = module_levels_.get(module_);
         if (log_level_ == null)
         {
-            log_level_ = all_level_;
+            log_level_ = all_level_;            
+            if (log_level_ == null)
+            {
+            	log_level_ = LogLevel.INFO;
+            }
         }
         if (log_level_ == LogLevel.DEBUG ||
             log_level_ == LogLevel.TRACE)
@@ -193,7 +197,7 @@ public class LogModule implements Log
         System.exit(1);
     }
 
-    private static void internalErrorStatic(String msg, Object... args)
+    public static void internalErrorStatic(String msg, Object... args)
     {
         String out = "(log) internal error "+safeFormat(msg, args);
         System.out.println(out);
@@ -208,6 +212,12 @@ public class LogModule implements Log
 
     public void warn(String msg, Object... args)
     {
+        if (log_level_ == null)
+        {
+            evalLogLevel();
+            evalLogFilter();
+        }
+
         if (log_level_.value() >= LogLevel.WARN.value())
         {
             String out = "("+module_+") warning "+safeFormat(msg, args);
@@ -217,6 +227,12 @@ public class LogModule implements Log
 
     public void exception(Throwable t, String msg, Object... args)
     {
+        if (log_level_ == null)
+        {
+            evalLogLevel();
+            evalLogFilter();
+        }
+        
         if (log_level_.value() >= LogLevel.WARN.value())
         {
             System.out.println(ExceptionUtils.getStackTrace(t));
