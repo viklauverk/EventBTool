@@ -64,13 +64,7 @@ project(xsi:schemaLocation = 'http://maven.apache.org/POM/4.0.0 http://maven.apa
         dependency {
             groupId    = org.jline
             artifactId = jline
-            version    = 3.22.0
-        }
-        // https://mvnrepository.com/artifact/org.fusesource.jansi/jansi-native
-        dependency {
-            groupId    = org.fusesource.jansi
-            artifactId = jansi-native
-            version    = 1.8
+            version    = 3.28.0
         }
         // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
         dependency {

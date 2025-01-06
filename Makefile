@@ -220,6 +220,13 @@ install:
      if [ "$$BSYMB" = "" ]; then echo "Installed bsymb.sty in $${TEXMF}" ; mkdir -p "$${TEXMF}/tex/latex/local/" ; cp doc/bsymb.sty "$${TEXMF}/tex/latex/local/" ; chown -R $$USER:$$USER "$${TEXMF}" ; else echo "bsymb.sty alread installed" ; fi)
 
 clean:
+	@echo -n "Removing class and jar files..."
+	@find build -name "*.class" -delete
+	@rm -f build/EVBT-*.jar
+	@rm -rf build/generated-sources
+	@echo "done."
+
+clean-all:
 	@echo -n "Removing build directory..."
 	@rm -rf build
 	@echo "done."
