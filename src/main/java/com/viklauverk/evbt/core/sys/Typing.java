@@ -17,10 +17,10 @@
 
 package com.viklauverk.evbt.core.sys;
 
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.FormulaFactory;
 import com.viklauverk.evbt.core.implementation.ImplType;
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
 
 import java.util.Map;
 

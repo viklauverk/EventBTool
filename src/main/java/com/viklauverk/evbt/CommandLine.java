@@ -19,12 +19,12 @@ package com.viklauverk.evbt;
 
 import java.io.File;
 
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogLevel;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.Settings;
 import com.viklauverk.evbt.core.docgen.RenderTarget;
 import com.viklauverk.evbt.core.helpers.Util;
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogLevel;
-import com.viklauverk.evbt.core.log.LogModule;
 import com.viklauverk.evbt.core.modelgen.ModelTarget;
 
 public class CommandLine

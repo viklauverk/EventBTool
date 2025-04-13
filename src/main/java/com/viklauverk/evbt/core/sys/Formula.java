@@ -28,6 +28,8 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.AbortIntoConsole;
 import com.viklauverk.evbt.core.EvBFormulaLexer;
 import com.viklauverk.evbt.core.EvBFormulaParser;
@@ -39,8 +41,6 @@ import com.viklauverk.evbt.core.docgen.RenderFormulaHtmq;
 import com.viklauverk.evbt.core.docgen.RenderFormulaTeX;
 import com.viklauverk.evbt.core.docgen.RenderFormulaUnicode;
 import com.viklauverk.evbt.core.docgen.RenderTarget;
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
 import com.viklauverk.evbt.core.visitors.VisitFormula;
 
 public

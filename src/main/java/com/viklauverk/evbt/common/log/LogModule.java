@@ -15,7 +15,7 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.viklauverk.evbt.core.log;
+package com.viklauverk.evbt.common.log;
 
 import java.util.Set;
 import java.util.HashSet;

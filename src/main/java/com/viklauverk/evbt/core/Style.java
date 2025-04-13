@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.viklauverk.evbt.core.log.LogModule;
+import com.viklauverk.evbt.common.log.LogModule;
 
 public class Style
 {

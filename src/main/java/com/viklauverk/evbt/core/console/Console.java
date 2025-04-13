@@ -20,6 +20,8 @@ package com.viklauverk.evbt.core.console;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.CommonSettings;
 import com.viklauverk.evbt.core.Settings;
 import com.viklauverk.evbt.core.Templates;
@@ -29,8 +31,6 @@ import com.viklauverk.evbt.core.docgen.DocGenSettings;
 import com.viklauverk.evbt.core.docgen.RenderAttributes;
 import com.viklauverk.evbt.core.docgen.RenderTarget;
 import com.viklauverk.evbt.core.implementation.ImplType;
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
 import com.viklauverk.evbt.core.sys.Formula;
 import com.viklauverk.evbt.core.sys.SymbolTable;
 import com.viklauverk.evbt.core.sys.Sys;

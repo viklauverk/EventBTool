@@ -19,11 +19,11 @@ package com.viklauverk.evbt.core.docgen;
 
 import java.io.FileWriter;
 
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.CommonSettings;
 import com.viklauverk.evbt.core.console.Canvas;
 import com.viklauverk.evbt.core.helpers.Util;
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
 import com.viklauverk.evbt.core.sys.Context;
 import com.viklauverk.evbt.core.sys.Machine;
 import com.viklauverk.evbt.core.sys.Sys;

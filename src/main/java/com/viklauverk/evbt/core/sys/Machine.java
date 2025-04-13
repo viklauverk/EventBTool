@@ -29,8 +29,8 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.helpers.Util;
-import com.viklauverk.evbt.core.log.LogModule;
 
 public class Machine
 {

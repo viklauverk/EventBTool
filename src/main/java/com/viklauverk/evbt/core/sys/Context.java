@@ -29,11 +29,11 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.FormulaFactory;
 import com.viklauverk.evbt.core.edk.EDKContext;
 import com.viklauverk.evbt.core.implementation.ImplType;
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
 
 public class Context
 {

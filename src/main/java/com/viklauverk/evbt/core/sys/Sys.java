@@ -27,6 +27,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.Pair;
 import com.viklauverk.evbt.core.Settings;
 import com.viklauverk.evbt.core.ShowSettings;
@@ -55,7 +56,6 @@ import com.viklauverk.evbt.core.docgen.RenderTheorySearch;
 import com.viklauverk.evbt.core.docgen.RenderTheoryTeX;
 import com.viklauverk.evbt.core.docgen.RenderTheoryUnicode;
 import com.viklauverk.evbt.core.edk.EDK;
-import com.viklauverk.evbt.core.log.LogModule;
 
 public class Sys
 {

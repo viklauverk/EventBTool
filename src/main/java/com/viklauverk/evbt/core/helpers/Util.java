@@ -23,8 +23,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.function.Function;
 
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 
 public class Util
 {

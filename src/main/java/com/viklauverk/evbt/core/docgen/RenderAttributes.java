@@ -17,8 +17,8 @@
 
 package com.viklauverk.evbt.core.docgen;
 
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.Style;
-import com.viklauverk.evbt.core.log.LogModule;
 
 public class RenderAttributes implements Cloneable
 {

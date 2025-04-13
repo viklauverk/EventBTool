@@ -20,8 +20,8 @@ package com.viklauverk.evbt.core.sys;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 
 public class Operator extends Typed
 {

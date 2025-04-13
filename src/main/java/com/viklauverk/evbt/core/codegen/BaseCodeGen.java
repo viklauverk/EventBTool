@@ -17,12 +17,12 @@
 
 package com.viklauverk.evbt.core.codegen;
 
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.CommonSettings;
 import com.viklauverk.evbt.core.console.Canvas;
 import com.viklauverk.evbt.core.docgen.RenderTarget;
 import com.viklauverk.evbt.core.implementation.ImplType;
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
 import com.viklauverk.evbt.core.sys.Constant;
 import com.viklauverk.evbt.core.sys.Context;
 import com.viklauverk.evbt.core.sys.Formula;

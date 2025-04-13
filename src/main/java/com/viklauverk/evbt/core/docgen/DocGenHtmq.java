@@ -20,11 +20,11 @@ package com.viklauverk.evbt.core.docgen;
 import java.io.File;
 import java.io.FileWriter;
 
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.CommonSettings;
 import com.viklauverk.evbt.core.Templates;
 import com.viklauverk.evbt.core.console.Canvas;
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
 import com.viklauverk.evbt.core.sys.Sys;
 
 public class DocGenHtmq extends BaseDocGen

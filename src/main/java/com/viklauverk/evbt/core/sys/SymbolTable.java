@@ -26,11 +26,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.EvBFormulaParser;
 import com.viklauverk.evbt.core.console.Canvas;
 import com.viklauverk.evbt.core.docgen.RenderTarget;
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
 
 public class SymbolTable
 {

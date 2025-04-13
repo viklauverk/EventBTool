@@ -22,12 +22,12 @@ import static com.viklauverk.evbt.core.helpers.Helpers.pushBack;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.Unicode;
 import com.viklauverk.evbt.core.docgen.RenderAttributes;
 import com.viklauverk.evbt.core.docgen.RenderTarget;
 import com.viklauverk.evbt.core.helpers.Util;
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
 import com.viklauverk.evbt.core.sys.Formula;
 
 public class Canvas

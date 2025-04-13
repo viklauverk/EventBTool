@@ -17,10 +17,10 @@
 
 package com.viklauverk.evbt;
 
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.Settings;
 import com.viklauverk.evbt.core.Version;
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
 
 public class Main
 {

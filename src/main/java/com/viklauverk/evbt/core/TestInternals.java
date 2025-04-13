@@ -17,8 +17,8 @@
 
 package com.viklauverk.evbt.core;
 
-import com.viklauverk.evbt.core.log.LogLevel;
-import com.viklauverk.evbt.core.log.LogModule;
+import com.viklauverk.evbt.common.log.LogLevel;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.sys.Bounds;
 import com.viklauverk.evbt.core.sys.ContainingCardinality;
 import com.viklauverk.evbt.core.sys.Formula;

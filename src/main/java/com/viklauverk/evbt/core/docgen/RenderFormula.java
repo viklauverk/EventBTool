@@ -20,9 +20,9 @@ package com.viklauverk.evbt.core.docgen;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.console.Canvas;
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
 import com.viklauverk.evbt.core.sys.Formula;
 import com.viklauverk.evbt.core.visitors.WalkFormula;
 

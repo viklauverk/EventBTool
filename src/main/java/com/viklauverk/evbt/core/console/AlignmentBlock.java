@@ -21,10 +21,10 @@ package com.viklauverk.evbt.core.console;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.docgen.RenderTarget;
 import com.viklauverk.evbt.core.helpers.Util;
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
 
 class AlignmentBlock
 {

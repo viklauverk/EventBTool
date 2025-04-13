@@ -17,12 +17,12 @@
 
 package com.viklauverk.evbt;
 
+import com.viklauverk.evbt.common.log.LogLevel;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.Settings;
 import com.viklauverk.evbt.core.Unicode;
 import com.viklauverk.evbt.core.console.Canvas;
 import com.viklauverk.evbt.core.docgen.RenderTarget;
-import com.viklauverk.evbt.core.log.LogLevel;
-import com.viklauverk.evbt.core.log.LogModule;
 import com.viklauverk.evbt.core.sys.Formula;
 import com.viklauverk.evbt.core.sys.Pattern;
 import com.viklauverk.evbt.core.sys.SymbolTable;

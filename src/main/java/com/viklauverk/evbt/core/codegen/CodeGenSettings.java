@@ -17,7 +17,7 @@
 //
 package com.viklauverk.evbt.core.codegen;
 
-import com.viklauverk.evbt.core.log.LogModule;
+import com.viklauverk.evbt.common.log.LogModule;
 
 
 public class CodeGenSettings

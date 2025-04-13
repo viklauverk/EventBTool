@@ -20,12 +20,12 @@ package com.viklauverk.evbt.core.codegen;
 import static com.viklauverk.evbt.core.sys.Node.PARTIAL_FUNCTION;
 import static com.viklauverk.evbt.core.sys.Node.POWER_SET;
 
+import com.viklauverk.evbt.common.log.Log;
+import com.viklauverk.evbt.common.log.LogModule;
 import com.viklauverk.evbt.core.CommonSettings;
 import com.viklauverk.evbt.core.console.Canvas;
 import com.viklauverk.evbt.core.implementation.ImplType;
 import com.viklauverk.evbt.core.implementation.PlanImplementation;
-import com.viklauverk.evbt.core.log.Log;
-import com.viklauverk.evbt.core.log.LogModule;
 import com.viklauverk.evbt.core.sys.Action;
 import com.viklauverk.evbt.core.sys.CarrierSet;
 import com.viklauverk.evbt.core.sys.Constant;
