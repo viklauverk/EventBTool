@@ -31,7 +31,7 @@ import com.viklauverk.evbt.core.sys.Theory;
 
 public abstract class BaseDocGen
 {
-    static Log log = LogModule.lookup("docgen", BaseDocGen.class);
+    static Log log = LogModule.lookup("evbt.docgen", BaseDocGen.class);
 
     private CommonSettings common_settings_;
     private DocGenSettings docgen_settings_;

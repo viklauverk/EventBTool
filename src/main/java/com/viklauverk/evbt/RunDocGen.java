@@ -27,7 +27,7 @@ import com.viklauverk.evbt.core.sys.Sys;
 
 public class RunDocGen
 {
-    private static Log log = LogModule.lookup("docgen", RunDocGen.class);
+    private static Log log = LogModule.lookup("evbt.docgen", RunDocGen.class);
 
     public static void run(CmdArgs ca, Settings s)
         throws Exception

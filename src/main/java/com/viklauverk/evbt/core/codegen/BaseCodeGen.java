@@ -40,7 +40,7 @@ import java.util.function.Function;
 
 public abstract class BaseCodeGen implements CommonCodeGenFunctions
 {
-    private static Log log = LogModule.lookup("codegen", BaseCodeGen.class);
+    private static Log log = LogModule.lookup("evbt.codegen", BaseCodeGen.class);
 
     private CommonSettings common_settings_;
     private CodeGenSettings codegen_settings_;
@@ -66,10 +66,12 @@ public abstract class BaseCodeGen implements CommonCodeGenFunctions
 
     public void printAssumptions()
     {
-        log.info("Assumptions:");
-        log.info("ℕ   int64_t and >= 0 guard");
-        log.info("ℕ1  int64_t and > 0 guard");
-        log.info("ℤ   int64_t");
+        log.info("""
+                 Assumptions:
+                 ℕ   int64_t and >= 0 guard
+                 ℕ1  int64_t and > 0 guard
+                 ℤ   int64_t
+                 """);
     }
 
     public Canvas cnvs()

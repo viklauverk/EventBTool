@@ -29,7 +29,7 @@ import com.viklauverk.evbt.core.sys.Sys;
 
 public class DocGenHtmq extends BaseDocGen
 {
-    private static Log log = LogModule.lookup("htmq", DocGenHtmq.class);
+    private static Log log = LogModule.lookup("evbt.htmq", DocGenHtmq.class);
 
     public DocGenHtmq(CommonSettings common_settings, DocGenSettings docgen_settings, Sys sys)
     {

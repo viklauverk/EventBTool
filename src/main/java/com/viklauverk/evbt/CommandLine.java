@@ -29,7 +29,7 @@ import com.viklauverk.evbt.core.modelgen.ModelTarget;
 
 public class CommandLine
 {
-    static Log log = LogModule.lookup("cmdline", CommandLine.class);
+    static Log log = LogModule.lookup("evbt.cmdline", CommandLine.class);
 
     public static CmdArgs parse(Settings s, String[] args)
     {
@@ -98,6 +98,12 @@ public class CommandLine
             {
                 LogModule.printLogModules();
                 System.exit(1);
+                continue;
+            }
+            if (arg.equals("--slf4j"))
+            {
+                LogModule.useSLF4J();
+                args = Util.shiftLeft(args);
                 continue;
             }
             if (arg.startsWith("--debug="))

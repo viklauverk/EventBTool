@@ -24,7 +24,7 @@ import com.viklauverk.evbt.core.implementation.Implementation;
 
 public class Typed
 {
-    private static Log log = LogModule.lookup("typing", Typed.class);
+    private static Log log = LogModule.lookup("evbt.typing", Typed.class);
 
     // Checked type calculated by Rodin for type checking. E.g. ℤ,ℙ(ℤ×ℤ),S,ℙ(S),ℙ(ℤ×S)
     protected String checked_type_string_;

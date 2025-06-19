@@ -27,7 +27,7 @@ import com.viklauverk.evbt.core.sys.Sys;
 
 public class RunModelGen
 {
-    private static Log log = LogModule.lookup("modelgen", RunModelGen.class);
+    private static Log log = LogModule.lookup("evbt.modelgen", RunModelGen.class);
 
     public static void run(CmdArgs ca, Settings s)
         throws Exception

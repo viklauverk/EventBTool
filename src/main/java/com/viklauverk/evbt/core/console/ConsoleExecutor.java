@@ -22,7 +22,7 @@ import com.viklauverk.evbt.common.log.LogModule;
 
 public class ConsoleExecutor
 {
-    private static Log log = LogModule.lookup("console", ConsoleExecutor.class);
+    private static Log log = LogModule.lookup("evbt.console", ConsoleExecutor.class);
 
     private Console console_;
     private String line_;
@@ -49,7 +49,7 @@ public class ConsoleExecutor
 
         if (cmd == null || cmd == EvbtCmd.ERROR)
         {
-            return LogModule.safeFormat("Unknown command: %s", tok);
+            return LogModule.safeFormat(null, false, "Unknown command: %s", tok);
         }
 
         skipWhitespace();

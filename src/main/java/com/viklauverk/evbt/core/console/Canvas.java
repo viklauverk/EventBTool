@@ -32,7 +32,7 @@ import com.viklauverk.evbt.core.sys.Formula;
 
 public class Canvas
 {
-    private static Log log = LogModule.lookup("canvas", Canvas.class);
+    private static Log log = LogModule.lookup("evbt.canvas", Canvas.class);
 
     private RenderTarget render_target_ = RenderTarget.PLAIN;
     private RenderAttributes render_attributes_ = null;
@@ -566,7 +566,7 @@ public class Canvas
 //    private static String Cyan="\033[0;36m";
 //    private static String White="\033[0;37m";
 
-    
+
     // Bold
 //    private static String BBlack="\033[1;30m";
     private static String BRed="\033[1;31m";
@@ -627,7 +627,7 @@ public class Canvas
     private static String On_ICyan="\033[0;106m";
     private static String On_IWhite="\033[0;107m";
 
-    
+
     public int lengthIgnoringAnsi(String s)
     {
         int c = 0;

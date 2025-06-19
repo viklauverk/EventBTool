@@ -24,7 +24,7 @@ import com.viklauverk.evbt.core.implementation.Implementation;
 
 public class SpecialisedDataType
 {
-    private static Log log = LogModule.lookup("theory", SpecialisedDataType.class);
+    private static Log log = LogModule.lookup("evbt.theory", SpecialisedDataType.class);
 
     private PolymorphicDataType template_;
     private Formula specialisation_;
@@ -48,12 +48,12 @@ public class SpecialisedDataType
     {
         return long_name_;
     }
-    
+
     public PolymorphicDataType template()
     {
     	return template_;
     }
-    
+
     public static void findSpecialisations(Formula f, Sys sys)
     {
         if (f.isPolymorphicDataType())

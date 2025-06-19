@@ -27,7 +27,7 @@ import com.viklauverk.evbt.core.sys.Sys;
 
 public class RunDocMod
 {
-    private static Log log = LogModule.lookup("docmod", RunDocMod.class);
+    private static Log log = LogModule.lookup("evbt.docmod", RunDocMod.class);
 
     public static void run(CmdArgs ca, Settings s)
         throws Exception

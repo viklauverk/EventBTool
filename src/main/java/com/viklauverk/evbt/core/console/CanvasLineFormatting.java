@@ -42,7 +42,7 @@ It also understands ¤hfil¤ which will expand to fill the available space.
 
 class CanvasLineFormatting
 {
-    static Log log = LogModule.lookup("canvaslineformatting", CanvasLineFormatting.class);
+    static Log log = LogModule.lookup("evbt.canvaslineformatting", CanvasLineFormatting.class);
 
     private RenderTarget render_target_;
     private AlignmentBlock current_ = null;

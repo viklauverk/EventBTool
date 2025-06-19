@@ -34,7 +34,7 @@ import com.viklauverk.evbt.core.docgen.RenderTarget;
 
 public class SymbolTable
 {
-    private static Log log = LogModule.lookup("symbols", SymbolTable.class);
+    private static Log log = LogModule.lookup("evbt.symbols", SymbolTable.class);
 
     public SymbolTable(String name)
     {

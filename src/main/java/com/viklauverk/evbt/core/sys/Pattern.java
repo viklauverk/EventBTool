@@ -27,7 +27,7 @@ import com.viklauverk.evbt.common.log.LogModule;
 public
 class Pattern
 {
-    private static Log log = LogModule.lookup("pattern", Pattern.class);
+    private static Log log = LogModule.lookup("evbt.pattern", Pattern.class);
 
     private static Map<String,Formula> match_rules_ = new HashMap<>();
 

@@ -31,7 +31,7 @@ import java.util.Set;
 
 public class Typing
 {
-    private static Log log = LogModule.lookup("typing", Typing.class);
+    private static Log log = LogModule.lookup("evbt.typing", Typing.class);
 
     private Map<String,CheckedType> checked_types_ = new HashMap<>();
     private Map<String,ImplType> impl_types_ = new HashMap<>();

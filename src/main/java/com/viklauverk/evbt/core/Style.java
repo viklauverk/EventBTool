@@ -25,7 +25,7 @@ import com.viklauverk.evbt.common.log.LogModule;
 
 public class Style
 {
-    private static LogModule log = LogModule.lookup("style", Style.class);
+    private static LogModule log = LogModule.lookup("evbt.style", Style.class);
 
     private boolean valid_;
     private String main_;

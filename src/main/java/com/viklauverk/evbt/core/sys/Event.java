@@ -28,7 +28,7 @@ import com.viklauverk.evbt.common.log.LogModule;
 
 public class Event
 {
-    private static Log log = LogModule.lookup("event", Event.class);
+    private static Log log = LogModule.lookup("evbt.event", Event.class);
 
     private String name_;
     private boolean is_concrete_;

@@ -59,7 +59,7 @@ import com.viklauverk.evbt.core.edk.EDK;
 
 public class Sys
 {
-    private static LogModule log = LogModule.lookup("sys", Sys.class);
+    private static LogModule log = LogModule.lookup("evbt.sys", Sys.class);
 
     private String project_info_; // Loaded from project.info and displayed above the table of contents.
 
@@ -383,7 +383,7 @@ public class Sys
     /*
     private void populateTheories(File dir, File theory_root_dir) throws Exception
     {
-        
+
         List<Pair<String,File>> files = eachFileEndingIn(dir, ".tuf");
 
         for (Pair<String,File> p : files)

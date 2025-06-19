@@ -22,7 +22,7 @@ import com.viklauverk.evbt.core.Style;
 
 public class RenderAttributes implements Cloneable
 {
-    private static LogModule log = LogModule.lookup("renderattributes", RenderAttributes.class);
+    private static LogModule log = LogModule.lookup("evbt.renderattributes", RenderAttributes.class);
 
     private boolean color_ = true;    // Colorize the output.
     private boolean labels_ = true;   // Display the labels, like axm0_1: or @inv2 etc.

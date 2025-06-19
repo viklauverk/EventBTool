@@ -42,7 +42,7 @@ import com.viklauverk.evbt.core.visitors.VisitFormula;
 
 public class CodeGenJavascript extends BaseCodeGen
 {
-    private static Log log = LogModule.lookup("codegen", CodeGenJavascript.class);
+    private static Log log = LogModule.lookup("evbt.codegen", CodeGenJavascript.class);
 
     public CodeGenJavascript(CommonSettings coms, CodeGenSettings cdgs, Sys sys, Machine mch)
     {

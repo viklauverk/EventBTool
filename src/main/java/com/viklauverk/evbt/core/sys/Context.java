@@ -37,7 +37,7 @@ import com.viklauverk.evbt.core.implementation.ImplType;
 
 public class Context
 {
-    private static Log log = LogModule.lookup("context", Context.class);
+    private static Log log = LogModule.lookup("evbt.context", Context.class);
 
     private String name_;
     private String comment_;

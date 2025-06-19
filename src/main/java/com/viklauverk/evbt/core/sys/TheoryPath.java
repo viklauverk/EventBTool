@@ -32,7 +32,7 @@ import com.viklauverk.evbt.common.log.LogModule;
 
 public class TheoryPath
 {
-    private static Log log = LogModule.lookup("theory", TheoryPath.class);
+    private static Log log = LogModule.lookup("evbt.theory", TheoryPath.class);
 
     private boolean loaded_;
     private List<String> deployed_theories_;

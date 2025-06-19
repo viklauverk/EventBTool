@@ -35,7 +35,7 @@ import com.viklauverk.evbt.core.sys.Sys;
 
 public class RunConsole
 {
-    private static Log log = LogModule.lookup("console", RunConsole.class);
+    private static Log log = LogModule.lookup("evbt.console", RunConsole.class);
 
     public static void run(CmdArgs ca, Settings s) throws Exception
     {

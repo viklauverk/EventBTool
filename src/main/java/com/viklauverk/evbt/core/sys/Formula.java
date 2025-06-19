@@ -46,7 +46,7 @@ import com.viklauverk.evbt.core.visitors.VisitFormula;
 public
 class Formula
 {
-    private static Log log = LogModule.lookup("formula", Formula.class);
+    private static Log log = LogModule.lookup("ebvbt.formula", Formula.class);
 
     // This canvas is used to render formulas for caching and internal types.
     private static Canvas raw_unicode_canvas_;

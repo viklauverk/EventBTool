@@ -28,7 +28,7 @@ import com.viklauverk.evbt.core.helpers.Util;
 
 class AlignmentBlock
 {
-    static Log log = LogModule.lookup("canvas", AlignmentBlock.class);
+    static Log log = LogModule.lookup("evbt.canvas", AlignmentBlock.class);
 
     private RenderTarget render_target_;
 

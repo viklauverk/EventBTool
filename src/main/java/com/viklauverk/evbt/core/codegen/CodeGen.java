@@ -25,7 +25,7 @@ import com.viklauverk.evbt.core.sys.Sys;
 
 public class CodeGen
 {
-    static Log log = LogModule.lookup("codegen", CodeGen.class);
+    static Log log = LogModule.lookup("evbt.codegen", CodeGen.class);
 
     public static BaseCodeGen lookup(CommonSettings cs, CodeGenSettings cgs, Sys sys, Machine mch)
     {

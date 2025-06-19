@@ -28,8 +28,8 @@ import com.viklauverk.evbt.common.log.LogModule;
 
 public class Util
 {
-    public static Log log = LogModule.lookup("util", Util.class);
-    public static Log log_match = LogModule.lookup("match", Util.class);
+    public static Log log = LogModule.lookup("evbt.util", Util.class);
+    public static Log log_match = LogModule.lookup("evbt.match", Util.class);
 
     public static String[] shiftLeft(String[] args)
     {

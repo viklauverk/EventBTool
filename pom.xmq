@@ -71,6 +71,12 @@ project(xsi:schemaLocation = 'http://maven.apache.org/POM/4.0.0 http://maven.apa
             groupId    = org.apache.commons
             artifactId = commons-lang3
         }
+        // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+        dependency {
+            groupId = org.slf4j
+            artifactId = slf4j-simple
+            version = 2.0.17
+        }
         dependency {
             groupId    = org.apache.logging.log4j
             artifactId = log4j-api

@@ -28,7 +28,7 @@ import com.viklauverk.evbt.core.visitors.WalkFormula;
 
 public class RenderFormula extends WalkFormula
 {
-    private static Log log = LogModule.lookup("renderformula", RenderFormula.class);
+    private static Log log = LogModule.lookup("evbt.renderformula", RenderFormula.class);
 
     private static Map<Formula,Boolean> new_line_before_ = new HashMap<>();
     private static Map<Formula,Boolean> new_line_after_ = new HashMap<>();

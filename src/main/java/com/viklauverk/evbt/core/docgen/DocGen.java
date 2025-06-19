@@ -24,7 +24,7 @@ import com.viklauverk.evbt.core.sys.Sys;
 
 public class DocGen
 {
-    static Log log = LogModule.lookup("docgen", DocGen.class);
+    static Log log = LogModule.lookup("evbt.docgen", DocGen.class);
 
     public static BaseDocGen lookup(CommonSettings cs, DocGenSettings ds, Sys sys)
     {

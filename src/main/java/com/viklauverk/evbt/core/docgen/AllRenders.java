@@ -37,7 +37,7 @@ import com.viklauverk.evbt.core.visitors.VisitTheory;
 
 public class AllRenders
 {
-    private static Log log = LogModule.lookup("doc", AllRenders.class);
+    private static Log log = LogModule.lookup("evbt.doc", AllRenders.class);
 
     private RenderMachine rm_;
     private RenderContext rc_;

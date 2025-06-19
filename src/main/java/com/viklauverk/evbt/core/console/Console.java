@@ -37,8 +37,8 @@ import com.viklauverk.evbt.core.sys.Sys;
 
 public class Console
 {
-    private static Log log = LogModule.lookup("console", Console.class);
-    private static Log log_docgen = LogModule.lookup("docgen", Console.class);
+    private static Log log = LogModule.lookup("evbt.console", Console.class);
+    private static Log log_docgen = LogModule.lookup("evbt.docgen", Console.class);
 
     private Sys sys_;
 

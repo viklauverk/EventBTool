@@ -24,7 +24,7 @@ import com.viklauverk.evbt.core.Version;
 
 public class Main
 {
-    private static Log log = LogModule.lookup("main", Main.class);
+    private static Log log = LogModule.lookup("evbt.main", Main.class);
 
     public static void main(String[] args)
     {

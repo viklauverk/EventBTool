@@ -37,7 +37,7 @@ import com.viklauverk.evbt.core.implementation.ImplType;
 
 public class Theory
 {
-    private static Log log = LogModule.lookup("theory", Theory.class);
+    private static Log log = LogModule.lookup("evbt.theory", Theory.class);
 
     private String name_;
     private String type_parameters_ = "";

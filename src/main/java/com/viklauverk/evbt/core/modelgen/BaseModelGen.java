@@ -31,7 +31,7 @@ import com.viklauverk.evbt.core.sys.Sys;
 
 public abstract class BaseModelGen
 {
-    static Log log = LogModule.lookup("modelgen", BaseModelGen.class);
+    static Log log = LogModule.lookup("evbt.modelgen", BaseModelGen.class);
 
     private CommonSettings common_settings_;
     private ModelGenSettings modelgen_settings_;

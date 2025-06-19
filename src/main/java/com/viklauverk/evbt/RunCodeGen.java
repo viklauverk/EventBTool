@@ -29,7 +29,7 @@ import com.viklauverk.evbt.core.sys.Sys;
 
 public class RunCodeGen
 {
-    public static Log log = LogModule.lookup("codegen", RunCodeGen.class);
+    public static Log log = LogModule.lookup("evbt.codegen", RunCodeGen.class);
 
     public static void run(CmdArgs ca, Settings s)
         throws Exception

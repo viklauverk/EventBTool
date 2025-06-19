@@ -34,8 +34,8 @@ import com.viklauverk.evbt.core.helpers.Util;
 
 public class Machine
 {
-    private static LogModule log = LogModule.lookup("machine", Machine.class);
-    private static LogModule log_codegen = LogModule.lookup("codegen", Machine.class);
+    private static LogModule log = LogModule.lookup("evbt.machine", Machine.class);
+    private static LogModule log_codegen = LogModule.lookup("evbt.codegen", Machine.class);
 
     private SymbolTable symbol_table_;
 

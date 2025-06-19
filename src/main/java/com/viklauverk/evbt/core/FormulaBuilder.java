@@ -33,7 +33,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 public class FormulaBuilder extends EvBFormulaBaseVisitor<Formula>
 {
-    static Log log = LogModule.lookup("parser", FormulaBuilder.class);
+    static Log log = LogModule.lookup("evbt.parser", FormulaBuilder.class);
 
     private CommonTokenStream tokens_;
 

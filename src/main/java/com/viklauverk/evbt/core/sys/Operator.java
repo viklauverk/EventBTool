@@ -25,7 +25,7 @@ import com.viklauverk.evbt.common.log.LogModule;
 
 public class Operator extends Typed
 {
-    private static Log log = LogModule.lookup("theory", Operator.class);
+    private static Log log = LogModule.lookup("evbt.theory", Operator.class);
 
     private String name_; // add
     private String long_name_; // "x add y"
@@ -97,7 +97,7 @@ public class Operator extends Typed
     {
     	return predicate_;
     }
-    
+
     public void setDefinitionString(String d)
     {
         definition_s_ = d;

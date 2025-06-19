@@ -37,7 +37,10 @@ public class LogModule implements Log
     private static boolean debug_enabled_ = true;
     private static boolean debug_canvas_enabled_ = false;
 
+    private static boolean use_slf4j_ = false;
+
     private String module_;
+    private String klass_name_;
     private LogLevel log_level_;
     private LogFilter log_filter_;
     private Logger logger_;
@@ -49,15 +52,14 @@ public class LogModule implements Log
 
         try
         {
-            String klass_name = klass.getSimpleName().toLowerCase().replaceAll("[aoueiy]", "");
-            module_  = name+"."+klass_name;
+            klass_name_ = klass.getSimpleName();
+            module_  = name;
         }
         catch (IllegalArgumentException e)
         {
             LogModule.usageErrorStatic("Unknown log module \"%s\"", name);
         }
     }
-
 
     private void evalLogLevel()
     {
@@ -84,6 +86,11 @@ public class LogModule implements Log
         {
             log_filter_ = all_filter_;
         }
+    }
+
+    public static void useSLF4J()
+    {
+        use_slf4j_ = true;
     }
 
     public static boolean debugEnabledSomewhere()
@@ -156,11 +163,27 @@ public class LogModule implements Log
             }*/
     }
 
-    public static String safeFormat(String msg, Object... args)
+    public static String safeFormat(String module, boolean l4j, String msg, Object... args)
     {
         try
         {
-            return String.format(msg, args);
+            String out = String.format(msg, args);
+            String[] lines = out.split("\n");
+            StringBuilder sb = new StringBuilder();
+//            if (l4j) sb.append("\n");
+            for (String l : lines)
+            {
+                if (module != null)
+                {
+                    sb.append("(");
+                    sb.append(module);
+                    sb.append(") ");
+                }
+                sb.append(l);
+                sb.append("\n");
+            }
+            if (l4j) sb.setLength(sb.length() - 1);
+            return sb.toString();
         }
         catch (Exception e)
         {
@@ -172,43 +195,43 @@ public class LogModule implements Log
 
     public void error(String msg, Object... args)
     {
-        String m = "("+module_+") "+safeFormat(msg, args);
-        System.err.println(m);
+        String out = safeFormat(module_, use_slf4j_, msg, args);
+        System.err.print(out);
         System.exit(1);
     }
 
     public void usageError(String msg, Object... args)
     {
-        String out = safeFormat(msg, args);
-        System.err.println(out);
+        String out = safeFormat(module_, use_slf4j_, msg, args);
+        System.err.print(out);
         System.exit(1);
     }
 
     public static void usageErrorStatic(String msg, Object... args)
     {
-        String out = safeFormat(msg, args);
-        System.err.println(out);
+        String out = safeFormat(null, use_slf4j_, msg, args);
+        System.err.print(out);
         System.exit(1);
     }
 
     public void internalError(String msg, Object... args)
     {
-        String out = "("+module_+") internal error "+safeFormat(msg, args);
-        System.err.println(out);
+        String out = safeFormat(module_, use_slf4j_, msg, args);
+        System.err.print(out);
         System.exit(1);
     }
 
     public static void internalErrorStatic(String msg, Object... args)
     {
-        String out = "(log) internal error "+safeFormat(msg, args);
-        System.err.println(out);
+        String out = safeFormat(null, use_slf4j_, msg, args);
+        System.err.print(out);
         System.exit(1);
     }
 
     public void failure(String msg, Object... args)
     {
-        String out = "("+module_+") failure "+safeFormat(msg, args);
-        System.err.println(out);
+        String out = safeFormat(module_, use_slf4j_, msg, args);
+        System.err.print(out);
     }
 
     public void warn(String msg, Object... args)
@@ -221,8 +244,8 @@ public class LogModule implements Log
 
         if (log_level_.value() >= LogLevel.WARN.value())
         {
-            String out = "("+module_+") warning "+safeFormat(msg, args);
-            System.err.println(out);
+            String out = safeFormat(module_, use_slf4j_, msg, args);
+            System.err.print(out);
         }
     }
 
@@ -237,8 +260,8 @@ public class LogModule implements Log
         if (log_level_.value() >= LogLevel.WARN.value())
         {
             System.err.println(ExceptionUtils.getStackTrace(t));
-            String out = "("+module_+") exception "+safeFormat(msg, args);
-            System.err.println(out);
+            String out = safeFormat(module_, use_slf4j_, msg, args);
+            System.err.print(out);
         }
     }
 
@@ -252,10 +275,17 @@ public class LogModule implements Log
 
         if (log_level_.value() >= LogLevel.INFO.value())
         {
-            String out = safeFormat(msg, args);
+            String out = safeFormat(module_, use_slf4j_, msg, args);
             if (log_filter_ == null || log_filter_.check(out))
             {
-                System.out.println(out);
+                if (!use_slf4j_)
+                {
+                    System.out.print(out);
+                }
+                else
+                {
+                    logger_.info("\n"+out);
+                }
             }
         }
     }
@@ -270,15 +300,10 @@ public class LogModule implements Log
 
         if (log_level_.value() >= LogLevel.VERBOSE.value())
         {
-            String out = safeFormat(msg, args);
+            String out = safeFormat(module_, use_slf4j_, msg, args);
             if (log_filter_ == null || log_filter_.check(out))
             {
-                String[] lines = out.split("\n");
-                for (String s : lines)
-                {
-                    System.err.print("("+module_+") ");
-                    System.err.println(s);
-                }
+                System.err.print(out);
             }
         }
     }
@@ -293,14 +318,16 @@ public class LogModule implements Log
 
         if (log_level_.value() >= LogLevel.DEBUG.value())
         {
-            String out = safeFormat(msg, args);
+            String out = safeFormat(module_, use_slf4j_, msg, args);
             if (log_filter_ == null || log_filter_.check(out))
             {
-                String[] lines = out.split("\n");
-                for (String s : lines)
+                if (!use_slf4j_)
                 {
-                    System.err.print("("+module_+") ");
-                    System.err.println(s);
+                    System.err.print(out);
+                }
+                else
+                {
+                    logger_.debug("\n"+out);
                 }
             }
         }
@@ -316,10 +343,17 @@ public class LogModule implements Log
 
         if (log_level_.value() >= LogLevel.DEBUG.value())
         {
-            String out = "("+module_+"-"+part+") "+safeFormat(msg, args);
+            String out = safeFormat(module_+"."+part, use_slf4j_, msg, args);
             if (log_filter_ == null || log_filter_.check(out))
             {
-                System.err.println(out);
+                if (!use_slf4j_)
+                {
+                    System.err.print(out);
+                }
+                else
+                {
+                    logger_.info("\n"+out);
+                }
             }
         }
     }
@@ -334,15 +368,11 @@ public class LogModule implements Log
 
         if (log_level_.value() >= LogLevel.TRACE.value())
         {
-            String out = safeFormat(msg, args);
+            String out = safeFormat(module_, use_slf4j_, msg, args);
             if (log_filter_ == null || log_filter_.check(out))
             {
-                String[] lines = out.split("\n");
-                for (String s : lines)
-                {
-                    System.err.print("("+module_+") ");
-                    System.err.println(s);
-                }
+                if (use_slf4j_) logger_.info(out);
+                else            System.err.print(out);
             }
         }
     }

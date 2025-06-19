@@ -49,7 +49,7 @@ import com.viklauverk.evbt.core.visitors.VisitFormula;
 */
 public class CodeGenCpp extends BaseCodeGen
 {
-    public static Log log = LogModule.lookup("codegen", CodeGenCpp.class);
+    public static Log log = LogModule.lookup("evbt.codegen", CodeGenCpp.class);
 
     public CodeGenCpp(CommonSettings coms, CodeGenSettings cdgs, Sys sys, Machine mch)
     {

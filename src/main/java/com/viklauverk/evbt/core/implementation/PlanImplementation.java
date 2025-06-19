@@ -27,7 +27,7 @@ import java.util.HashMap;
 
 public class PlanImplementation extends WalkFormula
 {
-    private static Log log = LogModule.lookup("planimplementation", PlanImplementation.class);
+    private static Log log = LogModule.lookup("evbt.planimplementation", PlanImplementation.class);
 
 //    private BaseCodeGen codegen_;
     private HashMap<Formula,Implementation> imps_;

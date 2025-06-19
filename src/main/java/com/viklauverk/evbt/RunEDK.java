@@ -35,7 +35,7 @@ import com.viklauverk.evbt.core.Settings;
 
 public class RunEDK
 {
-    private static Log log = LogModule.lookup("edk", RunEDK.class);
+    private static Log log = LogModule.lookup("evbt.edk", RunEDK.class);
 
     public static void run(CmdArgs ca, Settings s)
         throws Exception
