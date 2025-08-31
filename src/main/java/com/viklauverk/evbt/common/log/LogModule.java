@@ -63,7 +63,13 @@ public class LogModule implements Log
 
     private void evalLogLevel()
     {
-        log_level_ = module_levels_.get(module_);
+        String m = module_;
+        do
+        {
+            log_level_ = module_levels_.get(m);
+            if (log_level_ == null) m = m.substring(0, m.length()-1);
+        } while (log_level_ == null && m.length() > 0);
+
         if (log_level_ == null)
         {
             log_level_ = all_level_;

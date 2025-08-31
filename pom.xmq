@@ -117,7 +117,12 @@ project(xsi:schemaLocation = 'http://maven.apache.org/POM/4.0.0 http://maven.apa
                 groupId    = org.apache.maven.plugins
                 artifactId = maven-compiler-plugin
                 configuration {
-                    release = 21
+                    forceJavacCompilerUse = true
+                    release = 23
+                    compilerArgs {
+                        arg = -verbose
+                        arg = -Xlint:all,-options,-path
+                    }
                 }
             }
             plugin {

@@ -54,6 +54,9 @@ $(info Building $(VERSION))
 AT=@
 DROP_ROOT=$(subst $(GIT_ROOT)/,./,$1)
 
+FILTER=
+#2>&1 | grep -v "WARNING: Ax res" | grep -v "WARNING: java.lang.System::load" | grep -v "WARNING: Use --enable-native" | grep -v "WARNING: Restr" | grep -v "WARNING: A ter" | grep -v "WARNING: sun.misc.Unsafe" | grep -v "WARNING: Please cons" | grep -v "WARNING: A restr"
+
 # You have to perform the mvn build first to have the project deps installed.
 mvn: $(BUILD_MVN_BIN)/evbt
 	@rm -f evbt
@@ -95,7 +98,7 @@ pom.xml: pom.xmq
 $(BUILD_MVN_BIN)/evbt: pom.xml scripts/run.sh $(TEMPLATES_JAVA) $(PROJECT_DEPS)/updated.timestamp $(SOURCES) $(ANTLR_SOURCES) $(VERSION_SOURCES) $(LOGMODULES_SOURCE)
 	@echo Compiling using maven
 	@mkdir -p $(BUILD_MVN_BIN) $(GEN_ANTLR4)
-	$(AT)mvn -B -q package
+	$(AT)mvn -B -q package $(FILTER)
 	$(AT)cat scripts/run.sh $(BUILD)/EVBT-1.0-exec.jar > $@
 	@chmod a+x $@
 	@echo Generated $(call DROP_ROOT,$@)
@@ -103,7 +106,7 @@ $(BUILD_MVN_BIN)/evbt: pom.xml scripts/run.sh $(TEMPLATES_JAVA) $(PROJECT_DEPS)/
 $(BUILD_JAVAC_BIN)/evbt: scripts/evbt.sh $(TEMPLATES_JAVA) $(PROJECT_DEPS)/updated.timestamp $(SOURCES) $(ANTLR_SOURCES) $(VERSION_SOURCES) $(LOGMODULES_SOURCE)
 	@echo Compiling using javac
 	@mkdir -p $(BUILD_JAVAC_BIN)
-	$(AT)javac -cp $(JARS) -Xlint:all,-this-escape -d $(BUILD)/classes -sourcepath src/main/java:$(BUILD)/generated-sources/antlr4:$(BUILD)/generated-sources/version $(filter %.java,$?) $(SOURCES)
+	$(AT)javac -cp $(JARS) -Xlint:all,-this-escape -d $(BUILD)/classes -sourcepath src/main/java:$(BUILD)/generated-sources/antlr4:$(BUILD)/generated-sources/version $(filter %.java,$?) $(SOURCES) $(FILTER)
 	$(AT)sed 's|replaced_with_build_dir|$(BUILD)|' < scripts/evbt.sh > $@
 	$(AT)chmod a+x $@
 	@echo Generated $(call DROP_ROOT,$@)
