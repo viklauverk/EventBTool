@@ -222,6 +222,25 @@ install:
      export BSYMB=`kpsewhich bsymb.sty` ; \
      if [ "$$BSYMB" = "" ]; then echo "Installed bsymb.sty in $${TEXMF}" ; mkdir -p "$${TEXMF}/tex/latex/local/" ; cp doc/bsymb.sty "$${TEXMF}/tex/latex/local/" ; chown -R $$USER:$$USER "$${TEXMF}" ; else echo "bsymb.sty alread installed" ; fi)
 
+
+status_dependencies:
+	@echo "Available newer versions of dependencies."
+	mvn versions:display-dependency-updates
+
+status_plugins:
+	@echo "Available newer versions of plugins."
+	mvn versions:display-plugin-updates
+
+update_pom_properties:
+	@echo "Updates properties to the latest versions."
+	mvn versions:update-properties
+	xmq pom.xml > pom.xmq
+
+update_pom_dependencies:
+	@echo "Updates dependencies to the latest release versions."
+	mvn versions:use-latest-releases
+	xmq pom.xml > pom.xmq
+
 clean:
 	@echo -n "Removing class and jar files..."
 	@find build -name "*.class" -delete
