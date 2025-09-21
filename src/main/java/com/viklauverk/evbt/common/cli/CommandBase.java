@@ -18,20 +18,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package com.viklauverk.evbt.common.cli;
 
 import java.util.List;
-import java.util.LinkedList;
 
-public class Config
+public abstract class CommandBase
 {
-    private List<CommandWithArguments> commands_ = new LinkedList<>();
+    private Environment environment_;
+    private CommandSequence sequence_;
 
-    public void addCommandWithArguments(CommandWithArguments c)
+    public CommandBase(Environment environment, CommandSequence sequence)
     {
-        commands_.add(c);
+        environment_ = environment;
+        sequence_ = sequence;
     }
 
-    public List<CommandWithArguments> commands()
+    CommandSequence sequence()
     {
-        return commands_;
+        return sequence_;
     }
 
+    Environment environment()
+    {
+        return environment_;
+    }
+
+    public abstract void run(String[] args);
+    public abstract String help();
 }

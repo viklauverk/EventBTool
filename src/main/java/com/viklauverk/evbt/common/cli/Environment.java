@@ -21,11 +21,11 @@ import java.util.List;
 
 public class Environment
 {
-    Config config_;
+    CommandSequence sequence_;
 
-    public Environment(Config config)
+    public Environment(CommandSequence sequence)
     {
-        config_ = config;
+        sequence_ = sequence;
     }
 
     public boolean setup()
@@ -33,14 +33,14 @@ public class Environment
         return true;
     }
 
-    public void go(List<CommandWithArguments> cwas)
+    public void go()
     {
-        for (CommandWithArguments cwa : cwas)
+        for (CommandWithArguments cwa : sequence_.commands())
         {
             try
             {
-                CommandCommon cmd = cwa.cmd().constructor().create(this, config_);
-                cmd.run(cwa.args());
+                CommandBase cmd = cwa.cmd().constructor().create(this, sequence_);
+                cmd.run(cwa.args().toArray(new String[0]));
             }
             catch (UsageError e)
             {

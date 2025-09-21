@@ -22,21 +22,23 @@ import java.util.LinkedList;
 
 public class Command
 {
-    private Commands commands_;
-    private String cmd_;
+    private AvailableCommands available_commands_;
+    private String name_;
     private String help_;
     private CommandConstructor constructor_;
+    private Environment environment_;
+    private CommandSequence sequence_;
 
-    Command(String c, String h, CommandConstructor co)
+    public Command(String n, String h, CommandConstructor co)
     {
-        cmd_ = c;
+        name_ = n;
         help_ = h;
         constructor_ = co;
     }
 
-    public String cmd()
+    public String name()
     {
-        return cmd_;
+        return name_;
     }
 
     public String help()
@@ -44,9 +46,9 @@ public class Command
         return help_;
     }
 
-    public Commands commands()
+    public AvailableCommands availableCommands()
     {
-        return commands_;
+        return available_commands_;
     }
 
     public CommandConstructor constructor()
@@ -54,8 +56,8 @@ public class Command
         return constructor_;
     }
 
-    public void setCommands(Commands c)
+    public void setCommands(AvailableCommands ac)
     {
-        commands_ = c;
+        available_commands_ = ac;
     }
 }

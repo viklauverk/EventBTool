@@ -9,55 +9,62 @@ public class CommandLine
 {
     public static Log log = LogModule.lookup("evbt.commandline", CommandLine.class);
 
-    private Commands commands_;
+    private AvailableCommands available_commands_;
+    private CommandSequence command_sequence_;
 
     public CommandLine()
     {
-        commands_ = new Commands();
+        available_commands_ = new AvailableCommands();
+        command_sequence_ = new CommandSequence();
     }
 
     public void addCommand(Command c)
     {
-        commands_.add(c);
+        available_commands_.add(c);
     }
 
-    public Config parse(String[] args)
+    public AvailableCommands availableCommands()
     {
-        Config cfg = new Config();
-        Environment env = new Environment(cfg);
+        return available_commands_;
+    }
+
+    public CommandSequence parse(String[] args)
+    {
+        command_sequence_ = new CommandSequence();
+        Environment env = new Environment(command_sequence_);
 
         for (int i = 0; i < args.length; ++i)
         {
             String s = args[i];
-            Command ct = commands_.lookup(s);
+            Command ct = available_commands_.lookup(s);
             if (ct == null) return noSuchCommand(s);
 
             CommandWithArguments cwa = new CommandWithArguments(ct);
-            i += cwa.parseExtras(args, i);
-            cfg.addCommandWithArguments(cwa);
+            i += cwa.parseExtras(args, i+1);
+            command_sequence_.addCommandWithArguments(cwa);
         }
-        return cfg;
+        return command_sequence_;
     }
 
-    static Config moreArgsNeeded()
+    static CommandSequence moreArgsNeeded()
     {
         System.out.println("More arguments needed!");
         return null;
     }
 
-    static Config expected(String keyword)
+    static CommandSequence expected(String keyword)
     {
         System.out.println("Expected \""+keyword+"\"");
         return null;
     }
 
-    static Config noSuchCommand(String s)
+    static CommandSequence noSuchCommand(String s)
     {
-        log.info("sprauk: no such command \"%s\"", s);
+        log.info("prauk: no such command \"%s\"", s);
         return null;
     }
 
-    static Config tooManyArguments()
+    static CommandSequence tooManyArguments()
     {
         System.out.println("Too many arguments!");
         return null;

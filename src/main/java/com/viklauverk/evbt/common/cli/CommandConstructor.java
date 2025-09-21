@@ -19,5 +19,5 @@ package com.viklauverk.evbt.common.cli;
 
 public interface CommandConstructor
 {
-    CommandCommon create(Environment environment, Config config);
+    CommandBase create(Environment environment, CommandSequence sequence);
 }

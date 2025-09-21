@@ -22,7 +22,7 @@ import java.util.LinkedList;
 import java.util.Set;
 import java.util.HashSet;
 
-public class Commands
+public class AvailableCommands
 {
     private Set<String> command_names_ = new HashSet<>();
     private List<Command> commands_ = new LinkedList<>();
@@ -30,7 +30,7 @@ public class Commands
     public void add(Command c)
     {
         commands_.add(c);
-        command_names_.add(c.cmd());
+        command_names_.add(c.name());
         c.setCommands(this);
     }
 
@@ -43,9 +43,13 @@ public class Commands
     {
         for (Command c : commands_)
         {
-            if (c.cmd().equals(s)) return c;
+            if (c.name().equals(s)) return c;
         }
         return null;
     }
 
+    public List<Command> list()
+    {
+        return commands_;
+    }
 }

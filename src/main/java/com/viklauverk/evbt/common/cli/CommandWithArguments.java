@@ -43,16 +43,15 @@ public class CommandWithArguments
 
     public int parseExtras(String[] s, int i)
     {
+        System.out.println("parseExtras");
         int n = 0;
         for (; i < s.length; i++)
         {
-            // End of command section. Stop here.
-            if (s[i].equals("out:")) return n;
-
             String a = s[i];
 
+            System.out.println(" FOO "+a);
             // This is another command! Stop parsing args here.
-            if (cmd_.commands().isCommand(a)) return n;
+            if (cmd_.availableCommands().isCommand(a)) return n;
 
             // Add this as an argument. The exact parsing will happen
             // later inside the CommandXYZ class.
