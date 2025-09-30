@@ -43,7 +43,6 @@ public class CommandWithArguments
 
     public int parseExtras(String[] s, int i)
     {
-        System.out.println("parseExtras");
         int n = 0;
         for (; i < s.length; i++)
         {
