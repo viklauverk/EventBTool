@@ -296,6 +296,12 @@ public class LogModule implements Log
         }
     }
 
+    public void stdout(String msg, Object... args)
+    {
+        String out = safeFormat(null, false, msg, args);
+        System.out.print(out);
+    }
+
     public void verbose(String msg, Object... args)
     {
         if (log_level_ == null)

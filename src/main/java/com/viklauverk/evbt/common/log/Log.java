@@ -33,6 +33,8 @@ public interface Log
     void warn(String msg, Object... args);
     /** Print info. */
     void info(String msg, Object... args);
+    /** Print on stdout. */
+    void stdout(String msg, Object... args);
     /** Print if verbose is enabled. */
     void verbose(String msg, Object... args);
     /** Print if deubg is enabled. */

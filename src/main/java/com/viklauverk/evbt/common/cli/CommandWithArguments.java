@@ -49,7 +49,6 @@ public class CommandWithArguments
         {
             String a = s[i];
 
-            System.out.println(" FOO "+a);
             // This is another command! Stop parsing args here.
             if (cmd_.availableCommands().isCommand(a)) return n;
 
