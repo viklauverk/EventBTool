@@ -120,7 +120,7 @@ $(BUILD_GRAAL_BIN)/evbt: mvn
            echo You have to use the Graal JVM to generate native code!; exit 1; fi
 	@mkdir -p $(BUILD_GRAAL_BIN)
 # --verbose --allow-incomplete-classpath --link-at-build-time
-	$(AT)native-image --install-exit-handlers -ea --no-fallback --initialize-at-build-time=org.dom4j.dom.DOMDocument --initialize-at-build-time=org.dom4j.dom.DOMDocumentFactory -H:TraceClassInitialization=true -H:ResourceConfigurationFiles=make/native-image-config-dir/resource-config.json -H:+ReportExceptionStackTraces -cp $(BUILD)/classes:$(JARS) com.viklauverk.evbt.Main $@
+	$(AT)native-image -H:+UnlockExperimentalVMOptions --install-exit-handlers -ea --no-fallback --initialize-at-build-time=org.dom4j.util.SimpleSingleton --initialize-at-build-time=org.dom4j.tree.QNameCache --initialize-at-build-time=org.dom4j.dom.DOMDocument --initialize-at-build-time=org.dom4j.dom.DOMDocumentFactory -H:TraceClassInitialization=true -H:ResourceConfigurationFiles=make/native-image-config-dir/resource-config.json -H:+ReportExceptionStackTraces -cp $(BUILD)/classes:$(JARS) com.viklauverk.evbt.Main $@
 	@echo Generated $(call DROP_ROOT,$@)
 
 # The mvn tree command generates lines like this:
