@@ -1,3 +1,4 @@
+---
 name: Build Ubuntu
 on:
   push:
@@ -9,22 +10,24 @@ jobs:
   job_build_ubuntu:
     runs-on: ubuntu-latest
     steps:
-    - id: CHECKOUT_SOURCE
-      uses: actions/checkout@v3
-    - id: APT_UPDATE
-      run: sudo apt-get update
-    - id: INSTALL_JAVA
-    - uses: actions/setup-java@v5
-      with:
-        distribution: 'temurin' #
-        java-version: '25'
-      run: java -version
-      run: sudo apt-get install -y eatmydata texlive-xetex libxml2-dev libxslt1-dev
-    - id: CONFIGURE
-      run: eatmydata ./configure
-    - id: BUILD_SPEC
-      run: cat build/spec.mk
-    - id: MAKE
-      run: eatmydata make
-    - id: TEST
-      run: eatmydata make test
+      - id: CHECKOUT_SOURCE
+        uses: actions/checkout@v3
+      - id: INSTALL_JAVA
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '25'
+      - id: JAVA_VERISON
+          run: java -version
+      - id: APT_UPDATE
+        run: sudo apt-get update
+      - id: INSTALL_DEBS
+        run: sudo apt-get install -y eatmydata texlive-xetex libxml2-dev libxslt1-dev
+      - id: CONFIGURE
+        run: eatmydata ./configure
+      - id: BUILD_SPEC
+        run: cat build/spec.mk
+      - id: MAKE
+        run: eatmydata make
+      - id: TEST
+        run: eatmydata make test
