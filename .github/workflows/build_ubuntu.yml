@@ -13,12 +13,13 @@ jobs:
       uses: actions/checkout@v3
     - id: APT_UPDATE
       run: sudo apt-get update
-    - id: LIST_JAVAS
-      run: update-java-alternatives -l || true
-    - id: SWITCH_TO_OPENJDK_21
-      run: sudo update-java-alternatives -s /usr/lib/jvm/temurin-21-jdk-amd64
-    - id: INSTALL_ADDITIONAL_BUILD_DEPENDENCIES
-      run: sudo apt-get install -y eatmydata openjdk-21-jdk texlive-xetex libxml2-dev libxslt1-dev
+    - id: INSTALL_JAVA
+    - uses: actions/setup-java@v5
+      with:
+        distribution: 'temurin' #
+        java-version: '25'
+      run: java -version
+      run: sudo apt-get install -y eatmydata texlive-xetex libxml2-dev libxslt1-dev
     - id: CONFIGURE
       run: eatmydata ./configure
     - id: BUILD_SPEC
