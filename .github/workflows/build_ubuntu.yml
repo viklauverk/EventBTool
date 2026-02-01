@@ -13,7 +13,7 @@ jobs:
       - id: CHECKOUT_SOURCE
         uses: actions/checkout@v3
       - id: INSTALL_JAVA
-      - uses: actions/setup-java@v5
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '25'
