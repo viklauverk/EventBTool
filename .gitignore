@@ -1,0 +1,8 @@
+build
+*.aux
+*.bcf
+*.log
+*.rai
+*.rao
+*.toc
+models/bsymb.sty
